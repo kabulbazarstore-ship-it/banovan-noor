@@ -1,0 +1,85 @@
+{
+  "_meta": { "lang": "fa", "dir": "rtl", "name": "فارسی" },
+
+  "app": {
+    "name": "بانوان نور",
+    "tagline": "همراه هوشمند بانوان مسلمان"
+  },
+
+  "welcome": {
+    "line1": "به",
+    "line2": "خوش آمدید",
+    "start": "شروع"
+  },
+
+  "home": {
+    "greeting_morning": "صبح بخیر",
+    "greeting_noon": "ظهر بخیر",
+    "greeting_evening": "شب بخیر",
+    "greeting_night": "شب آرام",
+    "sister": "خواهر گرامی",
+    "daily_hokm": "حکم امروز",
+    "daily_tip": "نکته امروز",
+    "main_sections": "بخش‌های اصلی",
+    "quick_access": "دسترسی سریع"
+  },
+
+  "nav": {
+    "home": "خانه",
+    "health": "سلامت",
+    "hamraz": "همراز",
+    "ahkam": "احکام",
+    "more": "بیشتر"
+  },
+
+  "features": {
+    "ahkam": "احکام من",
+    "health": "سلامت بانوان",
+    "menstruation": "قاعدگی",
+    "pregnancy": "بارداری",
+    "childbirth": "زایمان",
+    "hamraz": "همراز بانوان",
+    "education": "آموزش",
+    "duas": "دعا و اعمال",
+    "doctors": "پزشکان",
+    "favorites": "علاقه‌مندی‌ها",
+    "notes": "یادداشت",
+    "guide": "راهنما",
+    "settings": "تنظیمات"
+  },
+
+  "search": {
+  "title": "جستجو",
+  "placeholder": "جستجو در همه بخش‌ها...",
+  "all": "همه",
+  "no_results": "نتیجه‌ای یافت نشد",
+  "loading": "در حال بارگذاری...",
+  "results_count": "نتیجه یافت شد",
+  "items_ready": "محتوا در فهرست آماده است"
+},
+
+  "settings": {
+    "title": "تنظیمات",
+    "language": "زبان",
+    "theme": "تم",
+    "dark_mode": "حالت تاریک",
+    "light_mode": "حالت روشن",
+    "about": "درباره ما",
+    "privacy": "حریم خصوصی",
+    "contact": "تماس با ما"
+  },
+
+  "common": {
+    "back": "بازگشت",
+    "close": "بستن",
+    "save": "ذخیره",
+    "cancel": "لغو",
+    "delete": "حذف",
+    "edit": "ویرایش",
+    "yes": "بله",
+    "no": "خیر",
+    "loading": "در حال بارگذاری...",
+    "empty": "محتوایی یافت نشد",
+    "error": "خطایی رخ داد"
+  }
+}

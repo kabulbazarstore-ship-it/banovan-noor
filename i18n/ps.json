@@ -1,0 +1,80 @@
+{
+  "_meta": { "lang": "ps", "dir": "rtl", "name": "پښتو" },
+
+  "app": {
+    "name": "بانوان نور",
+    "tagline": "د مسلمانه ښځو هوښیار ملګری"
+  },
+
+  "welcome": {
+    "line1": "ته",
+    "line2": "ښه راغلاست",
+    "start": "پیل"
+  },
+
+  "home": {
+    "greeting_morning": "سهار پخیر",
+    "greeting_noon": "غرمه پخیر",
+    "greeting_evening": "ماښام پخیر",
+    "greeting_night": "ارامه شپه",
+    "sister": "ګرانه خور",
+    "daily_hokm": "د نن حکم",
+    "daily_tip": "د نن ټکی",
+    "main_sections": "اصلي برخې",
+    "quick_access": "ژر لاسرسی"
+  },
+
+  "nav": {
+    "home": "کور",
+    "health": "روغتیا",
+    "hamraz": "همراز",
+    "ahkam": "احکام",
+    "more": "نور"
+  },
+
+  "features": {
+    "ahkam": "زما احکام",
+    "health": "د ښځو روغتیا",
+    "menstruation": "حیض",
+    "pregnancy": "امیدواري",
+    "childbirth": "زېږون",
+    "hamraz": "د ښځو همراز",
+    "education": "زده کړه",
+    "duas": "دعا او اعمال",
+    "doctors": "ډاکټران",
+    "favorites": "خوښې",
+    "notes": "یادښتونه",
+    "guide": "لارښود",
+    "settings": "تنظیمات"
+  },
+
+  "search": {
+    "placeholder": "لټون...",
+    "title": "هوښیار لټون"
+  },
+
+  "settings": {
+    "title": "تنظیمات",
+    "language": "ژبه",
+    "theme": "تیم",
+    "dark_mode": "تیاره حالت",
+    "light_mode": "روښانه حالت",
+    "about": "زموږ په اړه",
+    "privacy": "محرمیت",
+    "contact": "اړیکه"
+  },
+
+  "common": {
+    "back": "بېرته",
+    "close": "بندول",
+    "save": "خوندي کول",
+    "cancel": "لغوه",
+    "delete": "ړنګول",
+    "edit": "سمون",
+    "yes": "هو",
+    "no": "نه",
+    "loading": "بار کیږي...",
+    "empty": "هیڅ منځپانګه ونه موندل شوه",
+    "error": "یوه ستونزه رامنځته شوه"
+  }
+}

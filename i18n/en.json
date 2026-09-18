@@ -1,0 +1,80 @@
+{
+  "_meta": { "lang": "en", "dir": "ltr", "name": "English" },
+
+  "app": {
+    "name": "Banovan Noor",
+    "tagline": "Smart Companion for Muslim Women"
+  },
+
+  "welcome": {
+    "line1": "Welcome to",
+    "line2": "",
+    "start": "Start"
+  },
+
+  "home": {
+    "greeting_morning": "Good morning",
+    "greeting_noon": "Good afternoon",
+    "greeting_evening": "Good evening",
+    "greeting_night": "Good night",
+    "sister": "Dear Sister",
+    "daily_hokm": "Today's Ruling",
+    "daily_tip": "Today's Tip",
+    "main_sections": "Main Sections",
+    "quick_access": "Quick Access"
+  },
+
+  "nav": {
+    "home": "Home",
+    "health": "Health",
+    "hamraz": "Companion",
+    "ahkam": "Rulings",
+    "more": "More"
+  },
+
+  "features": {
+    "ahkam": "My Rulings",
+    "health": "Women's Health",
+    "menstruation": "Menstruation",
+    "pregnancy": "Pregnancy",
+    "childbirth": "Childbirth",
+    "hamraz": "Women's Companion",
+    "education": "Education",
+    "duas": "Prayers",
+    "doctors": "Doctors",
+    "favorites": "Favorites",
+    "notes": "Notes",
+    "guide": "Guide",
+    "settings": "Settings"
+  },
+
+  "search": {
+    "placeholder": "Search...",
+    "title": "Smart Search"
+  },
+
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "dark_mode": "Dark mode",
+    "light_mode": "Light mode",
+    "about": "About Us",
+    "privacy": "Privacy",
+    "contact": "Contact"
+  },
+
+  "common": {
+    "back": "Back",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "yes": "Yes",
+    "no": "No",
+    "loading": "Loading...",
+    "empty": "No content found",
+    "error": "An error occurred"
+  }
+}
