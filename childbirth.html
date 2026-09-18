@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#10b981" />
+<title>زایمان | بانوان نور</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<style>
+:root{
+  --bg-1:#ecfdf5;--bg-2:#d1fae5;--bg-3:#a7f3d0;--bg-4:#6ee7b7;
+  --text:#064e3b;--text-soft:#065f46;--text-card:#064e3b;--text-muted:#047857;
+  --card:rgba(255,255,255,.85);--card-border:rgba(16,185,129,.22);
+  --card-shadow:0 8px 22px rgba(5,150,105,.12);
+  --icon-bg:rgba(255,255,255,.85);--icon-border:rgba(16,185,129,.25);--icon-color:#059669;
+  --nav-bg:rgba(255,255,255,.94);--nav-border:rgba(16,185,129,.2);
+  --nav-color:#047857;--nav-active:#059669;
+  --star:.2;
+  --search-bg:rgba(255,255,255,.92);
+  --chip-bg:rgba(255,255,255,.7);
+  --chip-border:rgba(16,185,129,.25);
+  --accent:#10b981;
+  --accent-dark:#059669;
+  --mint-soft:rgba(16,185,129,.1);
+}
+body.dark{
+  --bg-1:#022c22;--bg-2:#064e3b;--bg-3:#065f46;--bg-4:#022c22;
+  --text:#fff;--text-soft:#a7f3d0;--text-card:#fff;--text-muted:#6ee7b7;
+  --card:rgba(255,255,255,.08);--card-border:rgba(110,231,183,.3);
+  --card-shadow:0 8px 22px rgba(0,0,0,.3);
+  --icon-bg:rgba(255,255,255,.08);--icon-border:rgba(110,231,183,.3);--icon-color:#a7f3d0;
+  --nav-bg:rgba(6,78,59,.94);--nav-border:rgba(110,231,183,.25);
+  --nav-color:#6ee7b7;--nav-active:#a7f3d0;
+  --star:.7;
+  --search-bg:rgba(255,255,255,.08);
+  --chip-bg:rgba(255,255,255,.06);
+  --chip-border:rgba(110,231,183,.3);
+  --mint-soft:rgba(110,231,183,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%}
+body{
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;direction:rtl;font-size:17px;
+  line-height:1.8;font-weight:600;color:var(--text);background-color:var(--bg-1);
+  background-image:
+    radial-gradient(ellipse 500px 400px at 20% 5%,rgba(16,185,129,.15) 0,transparent 60%),
+    radial-gradient(ellipse 400px 350px at 85% 15%,rgba(52,211,153,.18) 0,transparent 65%),
+    linear-gradient(160deg,var(--bg-1) 0,var(--bg-2) 25%,var(--bg-3) 50%,var(--bg-2) 75%,var(--bg-4) 100%);
+  background-attachment:fixed;min-height:100vh;padding:0 0 110px;position:relative;overflow-x:hidden;
+  transition:background-color .4s,color .3s;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background-image:
+    radial-gradient(circle at 12% 8%,rgba(253,230,138,var(--star)) 0,transparent 1.2%),
+    radial-gradient(circle at 88% 6%,rgba(253,230,138,var(--star)) 0,transparent 1%),
+    radial-gradient(circle at 78% 45%,rgba(253,230,138,var(--star)) 0,transparent 1%);
+  pointer-events:none;z-index:0;
+}
+.app{max-width:520px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
+
+.page-header{display:flex;align-items:center;gap:12px;padding:20px 0 16px}
+.back-btn{
+  width:44px;height:44px;border-radius:14px;background:var(--icon-bg);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--icon-border);color:var(--icon-color);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  flex:0 0 44px;text-decoration:none;box-shadow:0 4px 12px rgba(16,185,129,.15);
+}
+.back-btn:active{transform:scale(.94)}
+.back-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
+.page-header h1{font-size:1.35rem;font-weight:900;color:var(--text);flex:1;text-align:center;padding-right:44px}
+
+.hero{
+  background:linear-gradient(135deg,#34d399 0,#059669 100%);
+  border-radius:20px;padding:22px;margin-bottom:16px;color:#fff;
+  position:relative;overflow:hidden;
+  box-shadow:0 12px 30px rgba(5,150,105,.35);
+  display:flex;align-items:center;gap:14px;
+}
+.hero::before{
+  content:"";position:absolute;top:-40px;right:-40px;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.2),transparent 70%);
+  pointer-events:none;
+}
+.hero-icon{
+  width:56px;height:56px;border-radius:16px;
+  background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.3);
+  display:flex;align-items:center;justify-content:center;flex:0 0 56px;
+  backdrop-filter:blur(10px);
+}
+.hero-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hero-text{flex:1}
+.hero-title{font-size:1.1rem;font-weight:900;margin-bottom:5px;text-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hero-sub{font-size:.85rem;opacity:.95;font-weight:700;line-height:1.7}
+
+.tabs{
+  display:flex;gap:6px;background:var(--chip-bg);
+  border:1.5px solid var(--chip-border);border-radius:16px;
+  padding:5px;margin-bottom:16px;
+  backdrop-filter:blur(12px);
+  overflow-x:auto;scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:1;min-width:fit-content;padding:11px 10px;border-radius:12px;border:0;
+  background:transparent;color:var(--text-soft);
+  font-family:inherit;font-size:.85rem;font-weight:800;
+  cursor:pointer;transition:all .22s;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  white-space:nowrap;
+}
+.tab:active{transform:scale(.96)}
+.tab.active{
+  background:linear-gradient(135deg,#34d399,#059669);
+  color:#fff;box-shadow:0 4px 14px rgba(5,150,105,.4);
+}
+.tab svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;flex:0 0 15px}
+
+.tab-content{display:none;animation:fadeIn .3s ease}
+.tab-content.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.card{
+  background:var(--card);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:18px;
+  padding:20px;margin-bottom:12px;
+  box-shadow:var(--card-shadow);
+}
+.card-title{
+  font-size:1.08rem;font-weight:900;color:var(--text);
+  margin-bottom:16px;display:flex;align-items:center;gap:9px;
+}
+.card-title svg{width:20px;height:20px;fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 20px}
+
+/* STATUS */
+.status-box{
+  text-align:center;padding:22px 14px;
+  background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(5,150,105,.08));
+  border-radius:14px;border:1px dashed var(--card-border);
+  margin-bottom:14px;
+}
+.status-icon{
+  width:70px;height:70px;border-radius:50%;
+  background:linear-gradient(135deg,#34d399,#059669);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;
+  box-shadow:0 8px 20px rgba(5,150,105,.4);
+}
+.status-icon svg{width:36px;height:36px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.status-title{font-size:1.1rem;font-weight:900;color:var(--text);margin-bottom:8px;line-height:1.7}
+.status-sub{font-size:.94rem;font-weight:700;color:var(--text-muted);line-height:2}
+.status-sub strong{color:var(--accent);font-weight:900;font-size:1.05rem}
+
+.stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
+  margin-top:14px;
+}
+.stat{
+  background:var(--mint-soft);border:1px solid var(--card-border);
+  border-radius:14px;padding:16px 10px;text-align:center;
+}
+.stat-value{
+  font-size:1.6rem;font-weight:900;color:var(--accent);
+  line-height:1.2;margin-bottom:6px;
+}
+.stat-label{
+  font-size:.78rem;font-weight:800;color:var(--text-muted);
+  letter-spacing:.3px;line-height:1.5;
+}
+
+/* FORM */
+.form-row{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.form-group{flex:1;min-width:130px}
+.form-label{
+  display:block;font-size:.85rem;font-weight:900;
+  color:var(--text-muted);margin-bottom:8px;
+  letter-spacing:.3px;
+}
+.form-input{
+  width:100%;padding:14px 16px;border-radius:12px;
+  border:1.5px solid var(--card-border);
+  background:var(--search-bg);color:var(--text);
+  font-family:inherit;font-size:1.02rem;font-weight:700;
+  outline:none;transition:border-color .25s;
+}
+.form-input:focus{border-color:var(--accent)}
+.form-input::placeholder{color:var(--text-muted);opacity:.7}
+
+.btn{
+  padding:14px 22px;border-radius:12px;border:0;
+  font-family:inherit;font-size:.95rem;font-weight:900;
+  cursor:pointer;transition:all .2s;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn:active{transform:scale(.96)}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;flex:0 0 18px}
+.btn-primary{
+  background:linear-gradient(135deg,#34d399,#059669);color:#fff;
+  box-shadow:0 4px 14px rgba(5,150,105,.4);
+  width:100%;
+}
+.btn-secondary{
+  background:var(--chip-bg);color:var(--text-soft);
+  border:1.5px solid var(--chip-border);
+  width:100%;
+}
+
+/* STAGE LIST */
+.stage-list{display:flex;flex-direction:column;gap:8px}
+.stage-item{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:16px;
+  padding:16px;cursor:pointer;transition:all .22s;
+  display:flex;align-items:flex-start;gap:12px;
+  box-shadow:var(--card-shadow);width:100%;text-align:right;
+  font-family:inherit;position:relative;overflow:hidden;
+}
+.stage-item:active{transform:scale(.98)}
+.stage-item:hover{border-color:rgba(5,150,105,.45)}
+.stage-badge{
+  width:52px;height:52px;border-radius:14px;flex:0 0 52px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#34d399,#059669);
+  color:#fff;font-weight:900;
+  box-shadow:0 6px 14px rgba(5,150,105,.3);
+  font-size:1.4rem;
+}
+.stage-item-body{flex:1;min-width:0}
+.stage-item-title{
+  font-size:1rem;font-weight:900;color:var(--text-card);
+  line-height:1.5;margin-bottom:5px;
+}
+.stage-item-desc{
+  font-size:.85rem;font-weight:700;color:var(--text-muted);
+  line-height:1.7;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+
+/* TYPE CARDS */
+.type-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
+}
+.type-card{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:16px;
+  padding:16px 12px;cursor:pointer;transition:all .22s;
+  box-shadow:var(--card-shadow);text-align:center;
+  font-family:inherit;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  min-height:120px;
+}
+.type-card:active{transform:scale(.96)}
+.type-card:hover{border-color:rgba(5,150,105,.45);transform:translateY(-2px)}
+.type-icon{
+  width:46px;height:46px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#34d399,#059669);
+  box-shadow:0 6px 14px rgba(5,150,105,.3);
+}
+.type-icon svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.type-title{
+  font-size:.9rem;font-weight:900;color:var(--text-card);
+  line-height:1.4;
+}
+.type-sub{
+  font-size:.72rem;font-weight:700;color:var(--text-muted);
+  line-height:1.5;
+}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:8px}
+.check-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;background:var(--card);
+  border:1.5px solid var(--card-border);border-radius:14px;
+  cursor:pointer;transition:all .2s;
+}
+.check-item:active{transform:scale(.98)}
+.check-item.done{opacity:.65;background:var(--mint-soft)}
+.check-box{
+  width:26px;height:26px;border-radius:8px;flex:0 0 26px;
+  border:2px solid var(--card-border);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;margin-top:1px;
+}
+.check-box svg{
+  width:15px;height:15px;fill:none;stroke:#fff;
+  stroke-width:3;stroke-linecap:round;stroke-linejoin:round;
+  opacity:0;transition:opacity .2s;
+}
+.check-item.done .check-box{
+  background:linear-gradient(135deg,#34d399,#059669);
+  border-color:transparent;
+}
+.check-item.done .check-box svg{opacity:1}
+.check-text{flex:1;font-size:.95rem;font-weight:800;color:var(--text-card);line-height:1.7}
+.check-item.done .check-text{text-decoration:line-through}
+.check-week{
+  display:inline-block;font-size:.68rem;font-weight:900;
+  color:var(--accent);background:var(--mint-soft);
+  padding:2px 8px;border-radius:10px;margin-bottom:4px;
+}
+
+/* ALERT BOX */
+.alert-box{
+  background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(220,38,38,.08));
+  border:1.5px solid rgba(239,68,68,.4);
+  border-radius:16px;padding:16px;margin-top:12px;
+}
+.alert-title{
+  display:flex;align-items:center;gap:8px;
+  font-size:.95rem;font-weight:900;color:#b91c1c;
+  margin-bottom:10px;
+}
+body.dark .alert-title{color:#fca5a5}
+.alert-title svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;flex:0 0 18px}
+.alert-text{
+  font-size:.88rem;font-weight:700;color:var(--text-card);
+  line-height:2;white-space:pre-line;
+}
+
+/* ARTICLES */
+.art-grid{display:flex;flex-direction:column;gap:10px}
+.art-card{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:18px;
+  padding:16px;cursor:pointer;transition:all .22s;
+  display:flex;align-items:flex-start;gap:12px;
+  box-shadow:var(--card-shadow);width:100%;text-align:right;
+  font-family:inherit;position:relative;overflow:hidden;
+}
+.art-card:active{transform:scale(.98)}
+.art-card:hover{border-color:rgba(5,150,105,.45)}
+.art-card-emoji{
+  width:38px;height:38px;border-radius:11px;flex:0 0 38px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(5,150,105,.15));
+  border:1px solid rgba(16,185,129,.2);
+}
+.art-card-svg{display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#059669}
+.art-card-svg svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+body.dark .art-card-svg{color:#a7f3d0}
+.art-card-body{flex:1;min-width:0;padding-left:32px}
+.art-card-title{
+  font-size:1rem;font-weight:900;color:var(--text-card);
+  line-height:1.6;margin-bottom:6px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.art-card-excerpt{
+  font-size:.85rem;font-weight:700;color:var(--text-muted);
+  line-height:1.8;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.art-card-bookmark{
+  position:absolute;top:12px;left:12px;
+  width:30px;height:30px;border-radius:10px;
+  background:transparent;border:1px solid transparent;
+  color:var(--text-muted);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;padding:0;
+}
+.art-card-bookmark.active{color:#d97706}
+.art-card-bookmark.active svg{fill:currentColor}
+.art-card-bookmark svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+.loader,.empty{
+  text-align:center;padding:50px 20px;
+  color:var(--text-muted);font-size:.95rem;font-weight:700;line-height:2;
+}
+.loader::before{
+  content:"";display:block;width:32px;height:32px;
+  border:3px solid rgba(5,150,105,.2);border-top-color:#10b981;
+  border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* MODAL */
+.modal{
+  position:fixed;inset:0;background:rgba(0,0,0,.65);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  display:none;align-items:flex-end;justify-content:center;
+  z-index:10000;padding:0;
+}
+.modal.show{display:flex;animation:mFade .3s ease}
+@keyframes mFade{from{opacity:0}to{opacity:1}}
+.modal-box{
+  width:100%;max-width:520px;max-height:92vh;overflow-y:auto;
+  background:var(--bg-1);border-radius:28px 28px 0 0;
+  padding:24px 22px calc(28px + env(safe-area-inset-bottom,0px));
+  animation:mSlide .35s ease;
+}
+@keyframes mSlide{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  margin-bottom:18px;padding-bottom:14px;
+  border-bottom:1.5px solid var(--card-border);gap:12px;
+}
+.modal-head-text{flex:1;min-width:0}
+.modal-badge{
+  display:inline-block;font-size:.75rem;font-weight:900;
+  padding:4px 14px;border-radius:20px;
+  background:linear-gradient(135deg,#34d399,#059669);
+  color:#fff;margin-bottom:10px;box-shadow:0 4px 12px rgba(5,150,105,.35);
+}
+.modal-q{font-size:1.15rem;font-weight:900;color:var(--text);line-height:1.7}
+.modal-close{
+  width:44px;height:44px;border-radius:14px;
+  background:var(--card);border:1px solid var(--card-border);
+  color:var(--text-soft);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex:0 0 44px;
+}
+.modal-close:active{transform:scale(.9)}
+.modal-close svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.modal-content{
+  background:linear-gradient(135deg,rgba(16,185,129,.06),rgba(5,150,105,.06));
+  border:1px solid var(--card-border);border-radius:18px;
+  padding:18px;margin-top:6px;
+}
+.answer-text{
+  font-size:1rem;line-height:2.2;color:var(--text-card);
+  font-weight:700;white-space:pre-line;
+}
+.modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.modal-tag{
+  font-size:.72rem;font-weight:800;padding:4px 12px;
+  border-radius:20px;background:rgba(16,185,129,.12);
+  color:var(--text-soft);border:1px solid var(--card-border);
+}
+.modal-source{
+  font-size:.82rem;font-weight:800;color:var(--text-muted);
+  margin-top:14px;padding-top:12px;
+  border-top:1px dashed var(--card-border);
+  display:flex;align-items:center;gap:6px;
+}
+.modal-source svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;flex:0 0 15px}
+
+.action-bar{
+  display:flex;gap:4px;margin-top:14px;padding-top:14px;
+  border-top:1px dashed var(--card-border);flex-wrap:wrap;
+}
+.act-btn{
+  width:40px;height:40px;border-radius:11px;
+  background:transparent;border:1px solid transparent;
+  color:var(--text-muted);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;padding:0;transition:all .18s;
+}
+.act-btn:hover{background:var(--icon-bg);border-color:var(--icon-border);color:var(--icon-color)}
+.act-btn:active{transform:scale(.88)}
+.act-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.act-btn.active{color:#d97706;background:rgba(251,191,36,.15)}
+.act-btn.active svg{fill:currentColor}
+.act-btn.speaking{color:#059669;background:rgba(16,185,129,.12);animation:pulse 1.1s infinite}
+body.dark .act-btn.speaking{color:#a7f3d0;background:rgba(167,243,208,.15)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:var(--nav-bg);backdrop-filter:blur(24px);
+  border-top:1px solid var(--nav-border);
+  display:flex;justify-content:space-around;
+  padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));
+  max-width:520px;margin:0 auto;
+  box-shadow:0 -8px 30px rgba(5,150,105,.15);
+}
+.nav-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  color:var(--nav-color);padding:8px 2px;font-size:.68rem;font-weight:800;
+  text-decoration:none;cursor:pointer;border-radius:12px;position:relative;
+}
+.nav-item.active{color:var(--nav-active)}
+.nav-item.active::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:22px;height:3px;border-radius:0 0 4px 4px;
+  background:linear-gradient(90deg,#34d399,#059669,#fde68a);
+  box-shadow:0 0 12px rgba(5,150,105,.8);
+}
+.nav-item svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-item.active svg{stroke-width:2.4}
+
+.toast{
+  position:fixed;bottom:110px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:linear-gradient(135deg,#065f46,#10b981);color:#fff;
+  padding:14px 26px;border-radius:30px;font-size:.95rem;font-weight:900;
+  z-index:10002;opacity:0;transition:all .3s;pointer-events:none;
+  box-shadow:0 12px 30px rgba(5,150,105,.5);max-width:90vw;text-align:center;
+  white-space:pre-line;line-height:1.7;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:380px){
+  body{font-size:16px}
+  .app{padding:0 12px}
+  .page-header h1{font-size:1.2rem}
+  .hero{padding:18px}
+  .hero-icon{width:48px;height:48px;flex:0 0 48px}
+  .hero-icon svg{width:24px;height:24px}
+  .stat-value{font-size:1.4rem}
+  .stage-badge{width:46px;height:46px;flex:0 0 46px;font-size:1.2rem}
+  .type-icon{width:42px;height:42px}
+  .type-title{font-size:.82rem}
+  .nav-item{font-size:.62rem}
+  .nav-item svg{width:21px;height:21px}
+  .tab{font-size:.78rem;padding:10px 8px}
+  .type-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<script>
+(function(){
+  try{ if(localStorage.getItem('bn_theme')==='dark') document.body.classList.add('dark'); }catch(e){}
+})();
+</script>
+
+<div class="app">
+
+  <header class="page-header">
+    <a class="back-btn" href="home.html" aria-label="بازگشت">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <h1>زایمان</h1>
+  </header>
+
+  <div class="hero">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    </div>
+    <div class="hero-text">
+      <div class="hero-title">آماده‌سازی برای لحظه بزرگ</div>
+      <div class="hero-sub">مراحل، انواع و آمادگی‌ها 💚</div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="status">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      وضعیت من
+    </button>
+    <button class="tab" data-tab="stages">
+      <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+      مراحل زایمان
+    </button>
+    <button class="tab" data-tab="types">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="6"/><circle cx="15" cy="15" r="6"/></svg>
+      انواع زایمان
+    </button>
+    <button class="tab" data-tab="checklist">
+      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      کیف بیمارستان
+    </button>
+    <button class="tab" data-tab="articles">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      مقالات
+    </button>
+  </div>
+
+  <!-- ══════════ TAB: وضعیت ══════════ -->
+  <div class="tab-content active" id="tab-status">
+
+    <div class="card">
+      <div class="card-title">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        شمارش معکوس زایمان
+      </div>
+
+      <div class="status-box" id="statusBox">
+        <div class="status-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <div class="status-title" id="statusTitle">هنوز اطلاعاتی ثبت نشده</div>
+        <div class="status-sub" id="statusSub">برای شروع، تاریخ زایمان تخمینی یا تاریخ آخرین قاعدگی را وارد کن</div>
+      </div>
+
+      <div class="stats" id="statsGrid" style="display:none">
+        <div class="stat">
+          <div class="stat-value" id="daysLeft">—</div>
+          <div class="stat-label">روز تا زایمان</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="weekNow">—</div>
+          <div class="stat-label">هفته بارداری</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
+        تاریخ‌های مهم
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">تاریخ آخرین قاعدگی (LMP)</label>
+          <input type="date" class="form-input" id="lmpDate" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">یا تاریخ زایمان تخمینی (EDD)</label>
+          <input type="date" class="form-input" id="eddDate" />
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="saveDates">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        ذخیره اطلاعات
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+        علائم شروع زایمان
+      </div>
+      <div class="answer-text" style="font-size:.92rem">
+🩸 <strong>علائم اصلی:</strong>
+
+• <strong>انقباضات منظم</strong> — قوی‌تر و طولانی‌تر می‌شن، فاصله‌شون کم می‌شه
+• <strong>پارگی کیسه آب</strong> — خروج مایع شفاف یا کمی صورتی
+• <strong>خروج «مشک»</strong> — توده ژله‌ای مخاطی با کمی خون
+• <strong>فشار در لگن</strong> — حس سنگینی و نیاز به دفع
+• <strong>کمردرد مداوم</strong> — مخصوصاً پایین کمر
+
+⏰ <strong>کی به بیمارستان برو:</strong>
+• انقباضات هر ۵ دقیقه، هر بار ۱ دقیقه، به مدت ۱ ساعت
+• پارگی کیسه آب
+• خونریزی زیاد
+• کاهش حرکت جنین
+      </div>
+
+      <div class="alert-box">
+        <div class="alert-title">
+          <svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+          فوری به اورژانس
+        </div>
+        <div class="alert-text">🚨 خونریزی واژینال زیاد
+🚨 ترشح مایع سبز یا بدبو
+🚨 سردرد شدید و تاری دید
+🚨 کاهش یا قطع حرکت جنین
+🚨 تب بالا
+🚨 درد شدید و مداوم شکم</div>
+      </div>
+    </div>
+
+    <button class="btn btn-secondary" id="clearDates">
+      <svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+      پاک کردن اطلاعات
+    </button>
+  </div>
+
+  <!-- ══════════ TAB: مراحل ══════════ -->
+  <div class="tab-content" id="tab-stages">
+    <div class="stage-list" id="stageList"></div>
+  </div>
+
+  <!-- ══════════ TAB: انواع ══════════ -->
+  <div class="tab-content" id="tab-types">
+    <div class="type-grid" id="typeGrid"></div>
+  </div>
+
+  <!-- ══════════ TAB: کیف بیمارستان ══════════ -->
+  <div class="tab-content" id="tab-checklist">
+    <div class="card">
+      <div class="card-title">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        کیف بیمارستان
+      </div>
+      <div class="checklist" id="checklist"></div>
+    </div>
+    <button class="btn btn-secondary" id="resetChecklist">
+      <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
+      پاک کردن چک‌لیست
+    </button>
+  </div>
+
+  <!-- ══════════ TAB: مقالات ══════════ -->
+  <div class="tab-content" id="tab-articles">
+    <div class="art-grid" id="artGrid">
+      <div class="loader">در حال بارگذاری مقالات...</div>
+    </div>
+  </div>
+
+  <div style="height:20px"></div>
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-item" href="home.html">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>خانه</span>
+  </a>
+  <a class="nav-item" href="search.html">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <span>جستجو</span>
+  </a>
+  <a class="nav-item" href="hamraz.html">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>همراز</span>
+  </a>
+  <a class="nav-item" href="ahkam.html">
+    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <span>احکام</span>
+  </a>
+  <a class="nav-item" href="settings.html">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span>بیشتر</span>
+  </a>
+</nav>
+
+<div class="modal" id="artModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-text">
+        <span class="modal-badge" id="modalBadge">مقاله</span>
+        <div class="modal-q" id="modalTitle">—</div>
+      </div>
+      <button class="modal-close" id="modalClose" type="button" aria-label="بستن">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-content">
+      <div class="answer-text" id="modalContent">—</div>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-source" id="modalSource" style="display:none"></div>
+      <div class="action-bar">
+        <button class="act-btn" data-art-act="copy" title="کپی">
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+        <button class="act-btn" data-art-act="share" title="اشتراک‌گذاری">
+          <svg viewBox="0 0 24 24"><path d="M15 14l5-5-5-5"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>
+        </button>
+        <button class="act-btn" data-art-act="speak" title="خواندن صوتی">
+          <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        </button>
+        <button class="act-btn" data-art-act="bookmark" id="modalBookmarkBtn" title="نشان‌گذاری">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+
+var CHILDBIRTH_PATH = 'data/medical/childbirth.json';
+var BIRTH_KEY = 'bn_birth_dates';
+var BM_KEY = 'bn_childbirth_bookmarks';
+var CHECK_KEY = 'bn_childbirth_checklist';
+
+var allArticles = [];
+var currentArticle = null;
+var speechBtn = null;
+var toastTimer = null;
+
+/* ═══ مراحل زایمان ═══ */
+var STAGES = [
+  {
+    num:'۱',
+    title:'فاز مخفی (Latent)',
+    short:'باز شدن دهانه رحم از ۰ تا ۳ سانتی‌متر',
+    content:'🕐 <strong>فاز مخفی زایمان</strong>\n\n📌 مشخصات:\n• باز شدن دهانه رحم: ۰ تا ۳ سانتی‌متر\n• طول: ۶ تا ۱۲ ساعت (بار اول بیشتر)\n• انقباضات: خفیف، نامنظم، با فاصله ۵-۲۰ دقیقه\n• هر انقباض: ۳۰-۴۵ ثانیه\n\n📌 چه کار کنی:\n• در خانه بمان (اگه آب پاره نشده)\n• استراحت کن، بخواب اگه ممکنه\n• دوش آب گرم بگیر\n• پیاده‌روی سبک\n• تغذیه سبک\n• آب کافی بنوش\n• تنفس عمیق تمرین کن\n\n📌 کی به بیمارستان:\n• انقباضات منظم و قوی‌تر شدن\n• هر ۵ دقیقه، هر بار ۱ دقیقه\n• پارگی کیسه آب\n• خونریزی'
+  },
+  {
+    num:'۲',
+    title:'فاز فعال (Active)',
+    short:'باز شدن از ۴ تا ۷ سانتی‌متر',
+    content:'🕐 <strong>فاز فعال زایمان</strong>\n\n📌 مشخصات:\n• باز شدن دهانه رحم: ۴ تا ۷ سانتی‌متر\n• طول: ۴ تا ۸ ساعت\n• انقباضات: قوی‌تر، منظم، هر ۳-۵ دقیقه\n• هر انقباض: ۴۵-۶۰ ثانیه\n• دردناک‌تر و متمرکز\n\n📌 چه کار کنی:\n• در بیمارستان هستی\n• تنفس عمیق و آرام\n• تغییر وضعیت (راه رفتن، چهارزانو، نشستن)\n• ماساژ کمر توسط همراه\n• آب و مایعات\n• توپ زایمان\n• دوش آب گرم\n\n📌 ممکنه درخواست اپیدورال کنی (با مشورت پزشک)\n\n📌 نشانه پیشرفت:\n• فشار در ناحیه لگن\n• لرزش\n• تهوع'
+  },
+  {
+    num:'۳',
+    title:'فاز انتقالی (Transition)',
+    short:'باز شدن از ۸ تا ۱۰ سانتی‌متر',
+    content:'🕐 <strong>فاز انتقالی</strong>\n\n📌 مشخصات:\n• باز شدن دهانه رحم: ۸ تا ۱۰ سانتی‌متر\n• طول: ۱۵ دقیقه تا ۲ ساعت\n• شدیدترین انقباضات\n• هر ۱-۲ دقیقه\n• هر انقباض: ۶۰-۹۰ ثانیه\n\n📌 احساسات:\n• فشار شدید مثل نیاز به دفع\n• لرزش و تهوع\n• خستگی زیاد\n• بی‌قراری\n• ترس و اضطراب\n\n📌 چه کار کنی:\n• نفس عمیق و آرام\n• فکرت رو روی یه نقطه بگذار\n• ذکر و دعا\n• گوش دادن به بدن\n• همراه باید حمایت کنه\n• تصمیم نگیر (در این لحظه سخت)\n\n📌 پیام مهم:\n«تو نزدیک پایان راه هستی. الان وقت زور زدنه!»\n\n🩺 زمانی که پزشک بگه، زور بزن'
+  },
+  {
+    num:'۴',
+    title:'خروج نوزاد',
+    short:'مرحله دوم زایمان — تولد!',
+    content:'👶 <strong>خروج نوزاد</strong>\n\n📌 مشخصات:\n• طول: ۳۰ دقیقه تا ۲ ساعت\n• نیاز به زور زدن\n• ابتدا سر، بعد شانه‌ها، بعد بدن\n\n📌 زور زدن:\n• نفس عمیق بکش\n• چانه رو به سینه\n• زور بزن مثل دفع\n• بین انقباضات استراحت\n• با دستور پزشک\n\n📌 ممکنه پزشک:\n• اپیزیوتومی (برش کوچک) بزنه\n• از وکیوم یا فورسپس استفاده کنه\n• فشار روی شکم بیاره\n\n📌 بعد تولد:\n• نوزاد روی سینه‌ات گذاشته می‌شه\n• اولین شیردهی (طی ساعت اول)\n• بند ناف بریده می‌شه\n• آپگار نوزاد چک می‌شه\n\n🌟 این لحظه، لحظه‌ای که یک عمر یادت می‌مونه!'
+  },
+  {
+    num:'۵',
+    title:'خروج جفت',
+    short:'مرحله سوم — پایان زایمان',
+    content:'🌿 <strong>خروج جفت (Placenta)</strong>\n\n📌 مشخصات:\n• طول: ۵ تا ۳۰ دقیقه\n• انقباضات خفیف\n• خروج جفت و پرده‌ها\n\n📌 چه اتفاقی می‌افته:\n• پزشک جفت رو بررسی می‌کنه\n• اگه کامل بیرون نیاد، دستکاری می‌کنه\n• تزریق دارو برای جمع شدن رحم\n• بررسی خونریزی\n\n📌 مراقبت‌ها:\n• ماساژ رحم روی شکم\n• بررسی خونریزی\n• دوش و تمیز کردن\n• انتقال به اتاق\n\n📌 اولین ساعت بعد:\n• پیوند پوست با پوست با نوزاد\n• شروع شیردهی\n• استراحت\n• پایش علائم حیاتی\n\n💚 آفرین! تو یه معجزه انجام دادی!'
+  }
+];
+
+/* ═══ انواع زایمان ═══ */
+var BIRTH_TYPES = [
+  {
+    id:'natural',
+    title:'زایمان طبیعی',
+    sub:'بدون دارو یا با داروی کم',
+    icon:'<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>',
+    content:'🌸 <strong>زایمان طبیعی</strong>\n\n📌 مزایا:\n• بهبود سریع‌تر مادر\n• شیردهی راحت‌تر\n• نوزاد از کانال زایمان رد می‌شه (مفید برای ریه)\n• خطر عفونت کمتر\n• بستری کوتاه‌تر\n• هزینه کمتر\n• هورمون‌های طبیعی زایمان فعال\n\n📌 معایب:\n• درد شدید\n• ممکنه طولانی بشه\n• خطر پارگی\n• نیاز به تیم پزشکی\n\n📌 شرایط مناسب:\n• بارداری سالم\n• جنین در وضعیت درست (سر پایین)\n• جفت سر راهی نباشه\n• بدون بیماری مادر\n\n📌 آماده‌سازی:\n• ورزش کگل\n• تمرین تنفس\n• کلاس آمادگی زایمان\n• ورزش سبک روزانه\n• ذکر و دعا\n\n💚 بهترین روش برای بارداری سالم'
+  },
+  {
+    id:'epidural',
+    title:'زایمان با اپیدورال',
+    sub:'کاهش درد با بی‌حسی',
+    icon:'<svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>',
+    content:'💉 <strong>زایمان با اپیدورال</strong>\n\n📌 اپیدورال چیه:\n• تزریق بی‌حسی در نخاع\n• درد رو کم می‌کنه\n• در فاز فعال یا اوایل زایمان\n\n📌 مزایا:\n• کاهش چشمگیر درد\n• مادر آرام‌تر\n• می‌تونه استراحت کنه\n• بیدار می‌مونه\n\n📌 معایب:\n• زایمان طولانی‌تر\n• خطر افت فشار خون\n• سردرد بعد از تزریق\n• ممکنه زور زدن سخت بشه\n• محدودیت در حرکت\n\n📌 نکات:\n• بعد تزریق، مایعات وریدی\n• پایش ضربان قلب جنین\n• با پزشک مشورت کن\n• برای همه مناسب نیست\n\n💡 انتخاب شخصی، با مشورت پزشک'
+  },
+  {
+    id:'csection',
+    title:'سزارین',
+    sub:'جراحی برای خروج نوزاد',
+    icon:'<svg viewBox="0 0 24 24"><path d="M12 2v20M8 6h8M8 12h8M8 18h8"/></svg>',
+    content:'🩺 <strong>سزارین</strong>\n\n📌 چه زمانی لازمه:\n• وضعیت بریچ (سر پایین نیست)\n• جفت سر راهی\n• دیسترس جنینی\n• زایمان متوقف شده\n• سزارین قبلی\n• دوقلو (بعضی موارد)\n• مشکلات پزشکی مادر\n\n📌 مزایا:\n• سریع و کنترل‌شده\n• نجات‌بخش در مواقع خطر\n\n📌 معایب:\n• نقاهت طولانی‌تر (۴-۶ هفته)\n• خطر عفونت\n• درد بعد از عمل\n• بستری طولانی‌تر\n• محدودیت در بارداری‌های بعدی\n\n📌 مراقبت بعد:\n• استراحت کافی\n• مراقبت از زخم\n• پرهیز از بلند کردن اجسام\n• آنتی‌بیوتیک\n• پیاده‌روی سبک (بعد ۲۴ ساعت)\n• ویزیت پیگیری\n\n⚠️ تصمیم پزشکیه، نه شخصی'
+  },
+  {
+    id:'water',
+    title:'زایمان در آب',
+    sub:'آرامش و کاهش درد در وان',
+    icon:'<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
+    content:'💧 <strong>زایمان در آب</strong>\n\n📌 چیست:\n• زایمان در وان آب گرم\n• آب به ۳۷ درجه\n• کاهش درد و آرامش\n\n📌 مزایا:\n• کاهش درد\n• آرامش مادر\n• کاهش فشار روی بدن\n• محیط آشنا (شبیه مایع آمنیوتیک)\n• کاهش پارگی پرینه\n\n📌 معایب:\n• محدودیت دسترسی به بیمارستان\n• خطر عفونت (کم)\n• نیاز به تیم متخصص\n• برای همه مناسب نیست\n\n📌 شرایط:\n• بارداری کم‌خطر\n• بیمارستان مجهز\n• تیم پزشکی حاضر\n\n💡 در بعضی کشورها رایجه، در ایران کم'
+  }
+];
+
+/* ═══ چک‌لیست کیف بیمارستان ═══ */
+var CHECKLIST = [
+  { id:'c1', week:'مدارک', text:'شناسنامه و کارت ملی' },
+  { id:'c2', week:'مدارک', text:'کارت بارداری و سونوگرافی‌ها' },
+  { id:'c3', week:'مدارک', text:'دفترچه بیمه' },
+  { id:'c4', week:'مدارک', text:'گواهی بارداری از پزشک' },
+  { id:'c5', week:'مادر', text:'۲-۳ دست لباس راحتی گشاد' },
+  { id:'c6', week:'مادر', text:'لباس زیر نخی و گشاد' },
+  { id:'c7', week:'مادر', text:'پد نفاس (۳ بسته)' },
+  { id:'c8', week:'مادر', text:'دمپایی و صندل' },
+  { id:'c9', week:'مادر', text:'حوله و لیف' },
+  { id:'c10', week:'مادر', text:'لوازم بهداشتی (مسواک، شامپو، صابون)' },
+  { id:'c11', week:'مادر', text:'سوتین شیردهی' },
+  { id:'c12', week:'مادر', text:'لباس گشاد برای برگشت' },
+  { id:'c13', week:'نوزاد', text:'۳ دست لباس نوزاد' },
+  { id:'c14', week:'نوزاد', text:'قنداق و پتو' },
+  { id:'c15', week:'نوزاد', text:'کلاه و جوراب نوزاد' },
+  { id:'c16', week:'نوزاد', text:'پوشک (بسته کوچک)' },
+  { id:'c17', week:'نوزاد', text:'دستمال مرطوب نوزاد' },
+  { id:'c18', week:'لوازم', text:'گوشی و شارژر' },
+  { id:'c19', week:'لوازم', text:'قرآن کوچک' },
+  { id:'c20', week:'لوازم', text:'خوراکی سبک' },
+  { id:'c21', week:'لوازم', text:'لیوان و قمقمه' },
+  { id:'c22', week:'لوازم', text:'دوربین یا گوشی برای عکس' }
+];
+
+/* ═══ HELPERS ═══ */
+function $(id){ return document.getElementById(id); }
+function escapeHtml(s){
+  if(s==null) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function faNum(n){ return String(n).replace(/\d/g,function(d){ return '۰۱۲۳۴۵۶۷۸۹'[d]; }); }
+function showMsg(msg,dur){
+  dur=dur||2200;
+  var t=$('toast'); if(!t) return;
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(function(){ t.classList.remove('show'); },dur);
+}
+function getTheme(){ try{ return localStorage.getItem('bn_theme')||'light'; }catch(e){ return 'light'; } }
+function applyTheme(){
+  if(getTheme()==='dark') document.body.classList.add('dark');
+  else document.body.classList.remove('dark');
+}
+function pad2(n){ return n<10?'0'+n:''+n; }
+function parseDate(str){
+  if(!str) return null;
+  var parts = String(str).split('-');
+  if(parts.length !== 3) return null;
+  return new Date(parseInt(parts[0],10), parseInt(parts[1],10)-1, parseInt(parts[2],10));
+}
+function daysBetween(d1, d2){
+  var one = 24*60*60*1000;
+  var a = new Date(d1.getFullYear(), d1.getMonth(), d1.getDate());
+  var b = new Date(d2.getFullYear(), d2.getMonth(), d2.getDate());
+  return Math.round((b-a)/one);
+}
+function addDays(date, days){
+  var d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  d.setDate(d.getDate() + days);
+  return d;
+}
+
+/* ═══ BIRTH DATES STORAGE ═══ */
+function getBirthDates(){
+  try{
+    var raw = localStorage.getItem(BIRTH_KEY);
+    if(!raw) return null;
+    var obj = JSON.parse(raw);
+    if(obj && (obj.lmp || obj.edd)) return obj;
+  }catch(e){}
+  return null;
+}
+function saveBirthDates(obj){ try{ localStorage.setItem(BIRTH_KEY, JSON.stringify(obj)); }catch(e){} }
+function clearBirthDates(){ try{ localStorage.removeItem(BIRTH_KEY); }catch(e){} }
+
+/* ═══ CALCULATIONS ═══ */
+function getBirthInfo(){
+  var b = getBirthDates();
+  if(!b) return null;
+  var lmp = b.lmp ? parseDate(b.lmp) : null;
+  var edd = b.edd ? parseDate(b.edd) : null;
+  if(!lmp && edd) lmp = addDays(edd, -280);
+  if(!lmp) return null;
+  if(!edd) edd = addDays(lmp, 280);
+
+  var today = new Date();
+  var today0 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  var daysLeft = daysBetween(today0, edd);
+  var daysSince = daysBetween(lmp, today0);
+  if(daysSince < 0) daysSince = 0;
+  var currentWeek = Math.max(1, Math.min(40, Math.floor(daysSince / 7) + 1));
+
+  return {
+    lmp: lmp, edd: edd,
+    daysLeft: daysLeft,
+    weeks: currentWeek,
+    daysSince: daysSince
+  };
+}
+
+function renderStatus(){
+  var info = getBirthInfo();
+  var titleEl = $('statusTitle');
+  var subEl = $('statusSub');
+  var statsGrid = $('statsGrid');
+
+  if(!info){
+    if(titleEl) titleEl.textContent = 'هنوز اطلاعاتی ثبت نشده';
+    if(subEl) subEl.textContent = 'برای شروع، تاریخ زایمان تخمینی یا تاریخ آخرین قاعدگی را وارد کن';
+    if(statsGrid) statsGrid.style.display = 'none';
+    return;
+  }
+
+  var dl = info.daysLeft;
+  if(dl < 0){
+    if(titleEl) titleEl.innerHTML = 'تاریخ زایمان گذشته';
+    if(subEl) subEl.innerHTML = 'امیدوارم همه چیز خوب پیش رفته باشه 💚';
+  } else if(dl === 0){
+    if(titleEl) titleEl.innerHTML = '🎉 امروز موعد زایمانه!';
+    if(subEl) subEl.innerHTML = 'امیدوارم به زودی نوزادت رو در آغوش بگیری 💚';
+  } else if(dl <= 7){
+    if(titleEl) titleEl.innerHTML = 'فقط <strong>' + faNum(dl) + ' روز</strong> مونده!';
+    if(subEl) subEl.innerHTML = 'هفته <strong>' + faNum(info.weeks) + '</strong> • کیفت رو آماده کن 🎒';
+  } else {
+    if(titleEl) titleEl.innerHTML = '<strong>' + faNum(dl) + ' روز</strong> تا زایمان';
+    if(subEl) subEl.innerHTML = 'هفته <strong>' + faNum(info.weeks) + '</strong> بارداری 💚';
+  }
+
+  if(statsGrid) statsGrid.style.display = 'grid';
+  var dlEl = $('daysLeft'); if(dlEl) dlEl.textContent = faNum(Math.max(0, dl));
+  var wEl = $('weekNow'); if(wEl) wEl.textContent = faNum(info.weeks);
+}
+
+/* ═══ RENDER STAGES ═══ */
+function renderStages(){
+  var list = $('stageList');
+  if(!list) return;
+  var html = '';
+  STAGES.forEach(function(s, i){
+    html += '<div class="stage-item" data-idx="' + i + '" role="button" tabindex="0">' +
+      '<div class="stage-badge">' + s.num + '</div>' +
+      '<div class="stage-item-body">' +
+        '<div class="stage-item-title">' + escapeHtml(s.title) + '</div>' +
+        '<div class="stage-item-desc">' + escapeHtml(s.short) + '</div>' +
+      '</div>' +
+    '</div>';
+  });
+  list.innerHTML = html;
+  list.querySelectorAll('.stage-item').forEach(function(el){
+    el.addEventListener('click', function(){
+      var i = parseInt(el.getAttribute('data-idx'), 10);
+      openStageModal(i);
+    });
+  });
+}
+
+function openStageModal(i){
+  var s = STAGES[i];
+  if(!s) return;
+  $('modalBadge').textContent = 'مرحله ' + s.num;
+  $('modalTitle').textContent = s.title;
+  $('modalContent').innerHTML = s.content;
+  $('modalTags').innerHTML = '';
+  $('modalTags').style.display = 'none';
+  $('modalSource').style.display = 'none';
+  $('modalBookmarkBtn').style.display = 'none';
+  $('artModal').classList.add('show');
+}
+
+/* ═══ RENDER TYPES ═══ */
+function renderTypes(){
+  var grid = $('typeGrid');
+  if(!grid) return;
+  var html = '';
+  BIRTH_TYPES.forEach(function(t, i){
+    html += '<div class="type-card" data-idx="' + i + '" role="button" tabindex="0">' +
+      '<div class="type-icon">' + t.icon + '</div>' +
+      '<div class="type-title">' + escapeHtml(t.title) + '</div>' +
+      '<div class="type-sub">' + escapeHtml(t.sub) + '</div>' +
+    '</div>';
+  });
+  grid.innerHTML = html;
+  grid.querySelectorAll('.type-card').forEach(function(el){
+    el.addEventListener('click', function(){
+      var i = parseInt(el.getAttribute('data-idx'), 10);
+      openTypeModal(i);
+    });
+  });
+}
+
+function openTypeModal(i){
+  var t = BIRTH_TYPES[i];
+  if(!t) return;
+  $('modalBadge').textContent = 'نوع زایمان';
+  $('modalTitle').textContent = t.title;
+  $('modalContent').innerHTML = t.content;
+  $('modalTags').innerHTML = '';
+  $('modalTags').style.display = 'none';
+  $('modalSource').style.display = 'none';
+  $('modalBookmarkBtn').style.display = 'none';
+  $('artModal').classList.add('show');
+}
+
+/* ═══ CHECKLIST ═══ */
+function getChecked(){
+  try{
+    var raw = localStorage.getItem(CHECK_KEY);
+    if(!raw) return [];
+    var arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  }catch(e){ return []; }
+}
+function setChecked(arr){ try{ localStorage.setItem(CHECK_KEY, JSON.stringify(arr)); }catch(e){} }
+function isChecked(id){ return getChecked().indexOf(id) > -1; }
+function toggleChecked(id){
+  var arr = getChecked();
+  var i = arr.indexOf(id);
+  if(i > -1){ arr.splice(i,1); setChecked(arr); return false; }
+  arr.push(id); setChecked(arr); return true;
+}
+
+function renderChecklist(){
+  var list = $('checklist');
+  if(!list) return;
+  var html = '';
+  CHECKLIST.forEach(function(item){
+    var done = isChecked(item.id);
+    html += '<div class="check-item' + (done ? ' done' : '') + '" data-id="' + item.id + '" role="button" tabindex="0">' +
+      '<div class="check-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>' +
+      '<div class="check-text">' +
+        '<span class="check-week">' + escapeHtml(item.week) + '</span><br>' +
+        escapeHtml(item.text) +
+      '</div>' +
+    '</div>';
+  });
+  list.innerHTML = html;
+  list.querySelectorAll('.check-item').forEach(function(el){
+    el.addEventListener('click', function(){
+      var id = el.getAttribute('data-id');
+      var now = toggleChecked(id);
+      el.classList.toggle('done', now);
+      if(now) showMsg('انجام شد ✓');
+    });
+  });
+}
+
+/* ═══ ARTICLES ═══ */
+function normalizeArticle(a, idx){
+  if(!a) return null;
+  if(typeof a === 'string') a = { content: a };
+  var id = a.id || ('cb_'+(idx+1));
+  var title = a.title || a.q || a.question || '';
+  var excerpt = a.excerpt || a.short || a.summary || '';
+  var content = a.content || a.a || a.answer || a.text || '';
+  if(content && typeof content === 'object'){
+    content = content.jafari || content.sistani || content[Object.keys(content)[0]] || '';
+  }
+  var tags = Array.isArray(a.tags) ? a.tags : [];
+  var source = a.source || '';
+  var icon = a.icon || '';
+  if(!excerpt && content){
+    var flat = String(content).replace(/\n/g,' ').trim();
+    excerpt = flat.slice(0,120) + (flat.length>120?'…':'');
+  }
+  if(!title && !content) return null;
+  return { id:String(id), title:String(title), excerpt:String(excerpt), content:String(content), tags:tags, source:String(source), icon:icon };
+}
+
+function extractArticles(data){
+  if(!data) return [];
+  if(Array.isArray(data)) return data;
+  if(Array.isArray(data.articles)) return data.articles;
+  if(Array.isArray(data.items)) return data.items;
+  if(Array.isArray(data.questions)) return data.questions;
+  if(Array.isArray(data.list)) return data.list;
+  if(Array.isArray(data.data)) return data.data;
+  if(Array.isArray(data.categories)){
+    var out=[];
+    data.categories.forEach(function(c){
+      if(Array.isArray(c.articles)) out = out.concat(c.articles);
+      else if(Array.isArray(c.questions)) out = out.concat(c.questions);
+      else out = out.concat([c]);
+    });
+    return out;
+  }
+  if(data.q || data.title || data.content) return [data];
+  return [];
+}
+
+function renderArticles(){
+  var grid = $('artGrid');
+  if(!grid) return;
+  if(allArticles.length === 0){
+    grid.innerHTML = '<div class="empty">هنوز مقاله‌ای اضافه نشده<br><br><span style="font-size:.85rem;opacity:.8">فایل: <strong>data/medical/childbirth.json</strong></span></div>';
+    return;
+  }
+  var html = '';
+  allArticles.forEach(function(a){
+    var bm = isBookmarked(a.id);
+    var iconHtml;
+    if(a.icon && a.icon.indexOf('<svg') === 0){
+      iconHtml = '<span class="art-card-svg">' + a.icon + '</span>';
+    } else {
+      iconHtml = '<span class="art-card-svg"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>';
+    }
+    html += '<div class="art-card" data-id="' + escapeHtml(a.id) + '" role="button" tabindex="0">' +
+      '<div class="art-card-emoji">' + iconHtml + '</div>' +
+      '<div class="art-card-body">' +
+        '<div class="art-card-title">' + escapeHtml(a.title) + '</div>' +
+        '<div class="art-card-excerpt">' + escapeHtml(a.excerpt) + '</div>' +
+      '</div>' +
+      '<button class="art-card-bookmark ' + (bm ? 'active' : '') + '" data-bm="' + escapeHtml(a.id) + '" type="button" aria-label="نشان‌گذاری">' +
+        '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' +
+      '</button>' +
+    '</div>';
+  });
+  grid.innerHTML = html;
+  grid.querySelectorAll('.art-card').forEach(function(card){
+    card.addEventListener('click', function(e){
+      if(e.target.closest('[data-bm]')) return;
+      openArticle(card.getAttribute('data-id'));
+    });
+  });
+  grid.querySelectorAll('[data-bm]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var id = btn.getAttribute('data-bm');
+      var now = toggleBookmark(id);
+      btn.classList.toggle('active', now);
+      showMsg(now ? 'به نشان‌شده‌ها اضافه شد ⭐' : 'از نشان‌شده‌ها حذف شد');
+    });
+  });
+}
+
+function openArticle(id){
+  var art = null;
+  for(var i=0; i<allArticles.length; i++){
+    if(allArticles[i].id === id){ art = allArticles[i]; break; }
+  }
+  if(!art) return;
+  currentArticle = art;
+  $('modalBadge').textContent = 'زایمان';
+  $('modalTitle').textContent = art.title;
+  $('modalContent').textContent = art.content || art.excerpt || '';
+  var tagsEl = $('modalTags');
+  if(art.tags && art.tags.length){
+    tagsEl.innerHTML = art.tags.map(function(t){
+      return '<span class="modal-tag">' + escapeHtml(t) + '</span>';
+    }).join('');
+    tagsEl.style.display = 'flex';
+  } else { tagsEl.innerHTML = ''; tagsEl.style.display = 'none'; }
+  var srcEl = $('modalSource');
+  if(art.source){
+    srcEl.style.display = 'flex';
+    srcEl.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>' + escapeHtml(art.source) + '</span>';
+  } else { srcEl.style.display = 'none'; }
+  var bmBtn = $('modalBookmarkBtn');
+  bmBtn.style.display = '';
+  if(bmBtn) bmBtn.classList.toggle('active', isBookmarked(art.id));
+  $('artModal').classList.add('show');
+}
+
+function closeModal(){
+  stopSpeech();
+  $('artModal').classList.remove('show');
+  currentArticle = null;
+  var bmBtn = $('modalBookmarkBtn');
+  if(bmBtn) bmBtn.style.display = '';
+}
+
+/* ═══ BOOKMARKS ═══ */
+function getBookmarks(){
+  try{
+    var raw=localStorage.getItem(BM_KEY);
+    if(!raw) return [];
+    var arr=JSON.parse(raw);
+    return Array.isArray(arr)?arr:[];
+  }catch(e){ return []; }
+}
+function setBookmarks(arr){ try{ localStorage.setItem(BM_KEY,JSON.stringify(arr)); }catch(e){} }
+function isBookmarked(id){ return getBookmarks().indexOf(id)>-1; }
+function toggleBookmark(id){
+  var arr=getBookmarks();
+  var i=arr.indexOf(id);
+  if(i>-1){ arr.splice(i,1); setBookmarks(arr); return false; }
+  else { arr.push(id); setBookmarks(arr); return true; }
+}
+
+/* ═══ COPY / SHARE / SPEAK ═══ */
+function fallbackCopy(text){
+  var ta=document.createElement('textarea');
+  ta.value=text; ta.style.position='fixed'; ta.style.top='-1000px'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); showMsg('متن کپی شد ✓'); }
+  catch(e){ showMsg('...'); }
+  document.body.removeChild(ta);
+}
+function copyText(text){
+  if(!text) return;
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text)
+      .then(function(){ showMsg('متن کپی شد ✓'); })
+      .catch(function(){ fallbackCopy(text); });
+  } else fallbackCopy(text);
+}
+function shareText(text,title){
+  if(!text) return;
+  if(navigator.share){
+    navigator.share({title:title||'بانوان نور',text:text}).catch(function(){});
+  } else { copyText(text); showMsg('متن کپی شد'); }
+}
+function speakText(text,btn){
+  if(!text) return;
+  if(!('speechSynthesis' in window)){ showMsg('خواندن صوتی پشتیبانی نمی‌شود'); return; }
+  if(window.speechSynthesis.speaking || window.speechSynthesis.pending){
+    window.speechSynthesis.cancel();
+    if(speechBtn) speechBtn.classList.remove('speaking');
+    if(speechBtn === btn){ speechBtn = null; return; }
+  }
+  var utt = new SpeechSynthesisUtterance(text);
+  utt.lang='fa-IR'; utt.rate=0.95; utt.pitch=1;
+  try{
+    var voices = window.speechSynthesis.getVoices();
+    for(var i=0;i<voices.length;i++){
+      if(voices[i].lang && voices[i].lang.toLowerCase().indexOf('fa')===0){ utt.voice=voices[i]; break; }
+    }
+  }catch(e){}
+  if(btn){ btn.classList.add('speaking'); speechBtn = btn; }
+  utt.onend = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
+  utt.onerror = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
+  window.speechSynthesis.speak(utt);
+}
+function stopSpeech(){
+  try{
+    if('speechSynthesis' in window) window.speechSynthesis.cancel();
+    if(speechBtn) speechBtn.classList.remove('speaking');
+    speechBtn = null;
+  }catch(e){}
+}
+
+/* ═══ MODAL ACTIONS ═══ */
+function setupModalActions(){
+  var bar = document.querySelector('.action-bar');
+  if(bar){
+    bar.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-art-act]');
+      if(!btn || !currentArticle) return;
+      var act = btn.getAttribute('data-art-act');
+      var art = currentArticle;
+      var fullText = (art.title ? art.title + '\n\n' : '') + (art.content || '') + (art.source ? '\n\n— ' + art.source : '');
+      if(act === 'copy') copyText(fullText);
+      else if(act === 'share') shareText(fullText + '\n\n— بانوان نور', 'بانوان نور');
+      else if(act === 'speak') speakText((art.title ? art.title + '. ' : '') + (art.content || ''), btn);
+      else if(act === 'bookmark'){
+        var now = toggleBookmark(art.id);
+        btn.classList.toggle('active', now);
+        showMsg(now ? 'به نشان‌شده‌ها اضافه شد ⭐' : 'از نشان‌شده‌ها حذف شد');
+        renderArticles();
+      }
+    });
+  }
+  var closeBtn = $('modalClose');
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  var modal = $('artModal');
+  if(modal) modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && $('artModal').classList.contains('show')) closeModal();
+  });
+}
+
+/* ═══ TABS ═══ */
+function setupTabs(){
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      var name = tab.getAttribute('data-tab');
+      document.querySelectorAll('.tab-content').forEach(function(c){ c.classList.remove('active'); });
+      var target = $('tab-' + name);
+      if(target) target.classList.add('active');
+    });
+  });
+}
+
+/* ═══ FORM ═══ */
+function setupForm(){
+  var b = getBirthDates();
+  if(b){
+    if($('lmpDate') && b.lmp) $('lmpDate').value = b.lmp;
+    if($('eddDate') && b.edd) $('eddDate').value = b.edd;
+  }
+  var saveBtn = $('saveDates');
+  if(saveBtn){
+    saveBtn.addEventListener('click', function(){
+      var lmp = $('lmpDate').value;
+      var edd = $('eddDate').value;
+      if(!lmp && !edd){ showMsg('حداقل یکی از تاریخ‌ها را وارد کن'); return; }
+      saveBirthDates({ lmp: lmp || '', edd: edd || '' });
+      showMsg('اطلاعات ذخیره شد ✓');
+      renderStatus();
+    });
+  }
+  var clearBtn = $('clearDates');
+  if(clearBtn){
+    clearBtn.addEventListener('click', function(){
+      if(!getBirthDates()){ showMsg('اطلاعاتی برای پاک کردن نیست'); return; }
+      if(confirm('مطمئنی می‌خوای همه اطلاعات رو پاک کنی؟')){
+        clearBirthDates();
+        if($('lmpDate')) $('lmpDate').value = '';
+        if($('eddDate')) $('eddDate').value = '';
+        showMsg('اطلاعات پاک شد');
+        renderStatus();
+      }
+    });
+  }
+  var resetBtn = $('resetChecklist');
+  if(resetBtn){
+    resetBtn.addEventListener('click', function(){
+      if(confirm('همه چک‌لیست پاک بشه؟')){
+        setChecked([]);
+        renderChecklist();
+        showMsg('چک‌لیست پاک شد');
+      }
+    });
+  }
+}
+
+/* ═══ LOAD ARTICLES ═══ */
+function loadArticles(){
+  return fetch(CHILDBIRTH_PATH)
+    .then(function(res){
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      return res.json();
+    })
+    .then(function(data){
+      var arr = extractArticles(data);
+      allArticles = arr.map(function(a,i){ return normalizeArticle(a,i); }).filter(Boolean);
+      renderArticles();
+      return allArticles;
+    })
+    .catch(function(err){
+      console.warn('childbirth.json:', err.message);
+      allArticles = [];
+      renderArticles();
+      return [];
+    });
+}
+
+/* ═══ INIT ═══ */
+function init(){
+  applyTheme();
+  setupTabs();
+  setupForm();
+  setupModalActions();
+  renderStatus();
+  renderStages();
+  renderTypes();
+  renderChecklist();
+  loadArticles();
+
+  window.addEventListener('storage', function(e){
+    if(e.key === 'bn_theme') applyTheme();
+    if(e.key === BIRTH_KEY) renderStatus();
+  });
+
+  try{
+    if('speechSynthesis' in window) window.speechSynthesis.getVoices();
+  }catch(e){}
+
+  console.log('💚 صفحه زایمان آماده');
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else init();
+
+})();
+</script>
+
+</body>
+</html>

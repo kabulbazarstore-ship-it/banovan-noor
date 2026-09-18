@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#6d28d9" />
+  <title>خانه | بانوان نور</title>
+  <link rel="icon" href="assets/icon-192.png" type="image/png" />
+
+  <style>
+    :root {
+      --bg-1: #f3e8ff; --bg-2: #e9d5ff; --bg-3: #ddd6fe; --bg-4: #c4b5fd;
+      --text: #2d1259; --text-soft: #4c1d95; --text-card: #1f1147;
+      --text-muted: #7c6f9a;
+      --card: rgba(255,255,255,0.78); --card-border: rgba(168,85,247,0.2);
+      --card-shadow: 0 8px 22px rgba(109,40,217,0.12);
+      --icon-bg: rgba(255,255,255,0.8); --icon-border: rgba(168,85,247,0.25);
+      --icon-color: #6d28d9;
+      --nav-bg: rgba(255,255,255,0.92); --nav-border: rgba(168,85,247,0.2);
+      --nav-color: #7c6f9a; --nav-active: #6d28d9;
+      --star: 0.2; --flower: 0.15;
+      --greet-1: rgba(236,72,153,0.85); --greet-2: rgba(168,85,247,0.9); --greet-3: rgba(109,40,217,0.95);
+      --label-color: #be185d;
+    }
+    body.dark {
+      --bg-1: #3b0764; --bg-2: #4c1d95; --bg-3: #5b21b6; --bg-4: #2d1259;
+      --text: #ffffff; --text-soft: #e9d5ff; --text-card: #ffffff;
+      --text-muted: #c4b5fd;
+      --card: rgba(255,255,255,0.08); --card-border: rgba(244,114,182,0.25);
+      --card-shadow: 0 8px 22px rgba(0,0,0,0.3);
+      --icon-bg: rgba(255,255,255,0.08); --icon-border: rgba(244,114,182,0.3);
+      --icon-color: #fbcfe8;
+      --nav-bg: rgba(26,11,61,0.94); --nav-border: rgba(244,114,182,0.25);
+      --nav-color: #a78bfa; --nav-active: #fbcfe8;
+      --star: 0.7; --flower: 0.12;
+      --greet-1: rgba(236,72,153,0.3); --greet-2: rgba(168,85,247,0.35); --greet-3: rgba(109,40,217,0.4);
+      --label-color: #fbcfe8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body { height: 100%; width: 100%; }
+
+    body {
+      font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+      direction: rtl;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg-1);
+      background-image:
+        radial-gradient(ellipse 500px 400px at 20% 5%, rgba(236,72,153,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 400px 350px at 85% 15%, rgba(168,85,247,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 450px 400px at 15% 90%, rgba(139,92,246,0.18) 0%, transparent 60%),
+        linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 25%, var(--bg-3) 50%, var(--bg-2) 75%, var(--bg-4) 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 0 0 110px 0;
+      position: relative;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.3s ease;
+    }
+    body.lang-ltr { direction: ltr; }
+
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      background-image:
+        radial-gradient(circle at 12% 8%, rgba(253,230,138,var(--star)) 0%, transparent 1.2%),
+        radial-gradient(circle at 88% 6%, rgba(253,230,138,var(--star)) 0%, transparent 1%),
+        radial-gradient(circle at 78% 45%, rgba(253,230,138,var(--star)) 0%, transparent 1%),
+        radial-gradient(circle at 30% 20%, rgba(168,85,247,var(--star)) 0%, transparent 0.7%),
+        radial-gradient(circle at 70% 25%, rgba(168,85,247,var(--star)) 0%, transparent 0.6%);
+      pointer-events: none; z-index: 0;
+    }
+
+    .bg-flowers { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .flower { position: absolute; opacity: var(--flower); animation: floatFlower 9s ease-in-out infinite; }
+    .flower svg { width: 100%; height: 100%; display: block; }
+    .flower-1 { top: 3%; left: -3%; width: 90px; height: 90px; }
+    .flower-2 { top: 40%; right: -4%; width: 100px; height: 100px; animation-delay: -3s; }
+    .flower-3 { bottom: 20%; left: -4%; width: 85px; height: 85px; animation-delay: -5s; }
+    @keyframes floatFlower {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-18px) rotate(10deg); }
+    }
+
+    .app { max-width: 520px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
+
+    .header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0 16px; gap: 10px;
+    }
+    .header-brand { display: flex; align-items: center; gap: 12px; }
+    .header-logo {
+      width: 46px; height: 46px; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 8px 20px rgba(76,29,149,0.35), 0 0 0 1.5px rgba(253,230,138,0.5);
+      flex: 0 0 46px; background: #2d1259;
+    }
+    .header-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .header-titles h1 {
+      font-size: 1.05rem; font-weight: 900; color: var(--text);
+      letter-spacing: 0.3px; transition: color 0.3s ease;
+    }
+    .header-titles span {
+      font-size: 0.6rem; color: var(--text-soft);
+      letter-spacing: 2px; font-weight: 700; display: block; margin-top: 1px;
+    }
+    .header-actions { display: flex; gap: 8px; }
+    .icon-btn {
+      width: 42px; height: 42px; border-radius: 14px;
+      background: var(--icon-bg); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--icon-border);
+      color: var(--icon-color);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s ease;
+      flex: 0 0 42px; text-decoration: none;
+      box-shadow: 0 4px 12px rgba(109,40,217,0.15);
+      padding: 0;
+    }
+    .icon-btn:active { transform: scale(0.94); }
+    .icon-btn svg {
+      width: 18px; height: 18px; fill: none; stroke: currentColor;
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .icon-btn .icon-moon { display: block; }
+    .icon-btn .icon-sun { display: none; }
+    body.dark .icon-btn .icon-moon { display: none; }
+    body.dark .icon-btn .icon-sun { display: block; }
+
+    .greeting {
+      background: linear-gradient(135deg, var(--greet-1) 0%, var(--greet-2) 50%, var(--greet-3) 100%);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(244,114,182,0.3);
+      border-radius: 24px; padding: 22px 20px; color: #fff;
+      margin-bottom: 16px; position: relative; overflow: hidden;
+      box-shadow: 0 14px 34px rgba(109,40,217,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+    .greeting::before {
+      content: ""; position: absolute; top: -50px; left: -50px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(253,230,138,0.25), transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .greeting::after {
+      content: ""; position: absolute; bottom: -60px; right: -40px;
+      width: 140px; height: 140px;
+      background: radial-gradient(circle, rgba(244,114,182,0.3), transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .greeting > * { position: relative; z-index: 1; }
+    .greeting-label {
+      font-size: 0.75rem; opacity: 0.9; font-weight: 700;
+      color: #fbcfe8; letter-spacing: 0.5px;
+    }
+    .greeting-name {
+      font-size: 1.25rem; font-weight: 900; margin: 6px 0 8px;
+      color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .greeting-quote {
+      font-size: 0.85rem; line-height: 1.9; opacity: 0.95; color: #ffffff;
+    }
+
+    /* ═══ DAILY CARDS ═══ */
+    .daily-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-bottom: 22px;
+    }
+    .daily-card {
+      background: var(--card); backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px; padding: 16px 14px;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s, background 0.4s ease, border-color 0.4s ease;
+      cursor: pointer; position: relative; overflow: hidden;
+      display: flex; flex-direction: column; gap: 8px;
+      min-height: 130px; user-select: none;
+    }
+    .daily-card::before {
+      content: ""; position: absolute; top: -30px; right: -30px;
+      width: 90px; height: 90px; border-radius: 50%;
+      opacity: 0.12; pointer-events: none;
+    }
+    .daily-card.hikm::before { background: radial-gradient(circle, #10b981, transparent 70%); }
+    .daily-card.tip::before  { background: radial-gradient(circle, #f59e0b, transparent 70%); }
+    .daily-card:active { transform: scale(0.97); }
+    .daily-card:hover { border-color: rgba(253,230,138,0.55); }
+    .daily-card .d-label {
+      font-size: 0.7rem; color: var(--label-color);
+      font-weight: 800; margin-bottom: 0;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .daily-card .d-title {
+      font-size: 0.82rem; color: var(--text-card);
+      font-weight: 700; line-height: 1.7;
+      display: -webkit-box; -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; overflow: hidden;
+      margin-top: auto;
+    }
+    .daily-card .d-hint {
+      font-size: 0.6rem; color: var(--text-muted);
+      font-weight: 700; opacity: 0.75;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .daily-card .d-hint svg {
+      width: 11px; height: 11px; fill: none;
+      stroke: currentColor; stroke-width: 2.2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .section-title {
+      display: flex; align-items: center; justify-content: space-between;
+      margin: 22px 4px 14px;
+    }
+    .section-title h2 {
+      font-size: 1rem; font-weight: 900; color: var(--text);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-title h2::before {
+      content: ""; width: 4px; height: 18px; border-radius: 2px;
+      background: linear-gradient(180deg, #fde68a 0%, #ec4899 50%, #a855f7 100%);
+      box-shadow: 0 0 12px rgba(236,72,153,0.6);
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .feature {
+      background: var(--card); backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px; padding: 16px 8px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; cursor: pointer; transition: transform 0.25s ease;
+      box-shadow: var(--card-shadow); text-decoration: none; color: inherit;
+      min-height: 108px; position: relative; overflow: hidden;
+    }
+    .feature:active { transform: scale(0.96); }
+    .feature-icon {
+      width: 50px; height: 50px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      flex: 0 0 50px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .feature-icon svg {
+      width: 24px; height: 24px; fill: none; stroke-width: 1.9;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .feature span {
+      font-size: 0.72rem; font-weight: 800;
+      color: var(--text-card); text-align: center; line-height: 1.35;
+    }
+
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg); backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-top: 1px solid var(--nav-border);
+      display: flex; justify-content: space-around;
+      padding: 8px 4px calc(8px + env(safe-area-inset-bottom, 0px));
+      max-width: 520px; margin: 0 auto;
+      box-shadow: 0 -8px 30px rgba(109,40,217,0.15);
+    }
+    .nav-item {
+      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
+      color: var(--nav-color); padding: 8px 2px;
+      font-size: 0.62rem; font-weight: 800;
+      text-decoration: none; cursor: pointer;
+      border-radius: 12px; position: relative;
+    }
+    .nav-item.active { color: var(--nav-active); }
+    .nav-item.active::before {
+      content: ""; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 22px; height: 3px;
+      border-radius: 0 0 4px 4px;
+      background: linear-gradient(90deg, #ec4899, #a855f7, #fde68a);
+      box-shadow: 0 0 12px rgba(236,72,153,0.8);
+    }
+    .nav-item svg {
+      width: 22px; height: 22px; fill: none; stroke: currentColor;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .nav-item.active svg { stroke-width: 2.4; }
+
+    .reset-btn {
+      display: block;
+      margin: 24px auto 10px;
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      color: var(--text-soft);
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .reset-btn:active { transform: scale(0.96); }
+
+    /* ═══ DAILY MODAL ═══ */
+    .daily-modal {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center;
+      z-index: 10001; padding: 20px;
+    }
+    .daily-modal.show { display: flex; animation: dmFade 0.3s ease; }
+    @keyframes dmFade { from { opacity: 0; } to { opacity: 1; } }
+    .daily-modal-box {
+      background: var(--bg-1);
+      border-radius: 24px;
+      padding: 24px 22px calc(22px + env(safe-area-inset-bottom, 0px));
+      max-width: 440px; width: 100%;
+      max-height: 88vh; overflow-y: auto;
+      animation: dmSlide 0.35s ease;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(109,40,217,0.35);
+      border: 1px solid var(--card-border);
+    }
+    @keyframes dmSlide {
+      from { transform: translateY(20px) scale(0.95); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .daily-modal-head {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px; padding-bottom: 14px;
+      border-bottom: 1.5px solid var(--card-border);
+    }
+    .daily-modal-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex: 0 0 48px;
+      box-shadow: 0 6px 16px rgba(109,40,217,0.3);
+    }
+    .daily-modal-icon.hikm { background: linear-gradient(135deg, #10b981, #059669); }
+    .daily-modal-icon.tip  { background: linear-gradient(135deg, #fbbf24, #d97706); }
+    .daily-modal-icon svg {
+      width: 26px; height: 26px; fill: none; stroke: #fff;
+      stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .daily-modal-title-wrap { flex: 1; min-width: 0; }
+    .daily-modal-label {
+      font-size: 0.68rem; font-weight: 900;
+      color: var(--text-muted); letter-spacing: 0.3px; margin-bottom: 2px;
+    }
+    .daily-modal-title {
+      font-size: 1rem; font-weight: 900;
+      color: var(--text); line-height: 1.5;
+      word-wrap: break-word;
+    }
+    .daily-modal-close {
+      width: 38px; height: 38px; border-radius: 12px;
+      background: var(--card); border: 1px solid var(--card-border);
+      color: var(--text-soft);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex: 0 0 38px;
+    }
+    .daily-modal-close:active { transform: scale(0.9); }
+    .daily-modal-close svg {
+      width: 18px; height: 18px; fill: none; stroke: currentColor;
+      stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .daily-modal-text {
+      font-size: 0.92rem; line-height: 2.1;
+      color: var(--text-card); font-weight: 700;
+      white-space: pre-line; margin-bottom: 14px;
+    }
+    .daily-modal-source {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; font-weight: 800;
+      color: var(--text-muted);
+      background: var(--card); padding: 6px 12px;
+      border-radius: 20px; border: 1px solid var(--card-border);
+    }
+    .daily-modal-source svg {
+      width: 13px; height: 13px; fill: none; stroke: currentColor;
+      stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .daily-actions {
+      display: flex; gap: 4px;
+      margin-top: 16px; padding-top: 14px;
+      border-top: 1px dashed var(--card-border);
+    }
+    .daily-actions .act-btn {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: transparent; border: 1px solid transparent;
+      color: var(--text-muted);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; padding: 0; transition: all 0.18s ease;
+    }
+    .daily-actions .act-btn:hover {
+      background: var(--icon-bg);
+      border-color: var(--icon-border);
+      color: var(--icon-color);
+    }
+    .daily-actions .act-btn:active { transform: scale(0.88); }
+    .daily-actions .act-btn.speaking {
+      color: #6d28d9; background: rgba(109,40,217,0.12);
+      animation: pulseAnim 1.1s infinite;
+    }
+    body.dark .daily-actions .act-btn.speaking {
+      color: #fbcfe8; background: rgba(251,207,232,0.15);
+    }
+    @keyframes pulseAnim { 0%,100% { opacity: 1; } 50% { opacity: 0.55; } }
+    .daily-actions .act-btn svg {
+      width: 18px; height: 18px; fill: none; stroke: currentColor;
+      stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .toast {
+      position: fixed; bottom: 110px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: linear-gradient(135deg, #6d28d9, #a855f7);
+      color: #fff; padding: 14px 26px; border-radius: 30px;
+      font-size: 0.9rem; font-weight: 900; z-index: 10002;
+      opacity: 0; transition: all 0.3s; pointer-events: none;
+      box-shadow: 0 12px 30px rgba(139,92,246,0.5);
+      max-width: 90vw; text-align: center;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 380px) {
+      .app { padding: 0 12px; }
+      .feature-icon { width: 44px; height: 44px; flex: 0 0 44px; }
+      .feature-icon svg { width: 22px; height: 22px; }
+      .feature span { font-size: 0.66rem; }
+      .greeting-name { font-size: 1.1rem; }
+      .grid { gap: 8px; }
+      .nav-item { font-size: 0.58rem; }
+      .nav-item svg { width: 20px; height: 20px; }
+      .daily-card { min-height: 120px; padding: 14px 12px; }
+      .daily-card .d-title { font-size: 0.76rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    // اعمال فوری تم قبل از رندر
+    (function () {
+      try {
+        if (localStorage.getItem('bn_theme') === 'dark') {
+          document.body.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <div class="bg-flowers">
+    <div class="flower flower-1"><svg viewBox="0 0 100 100"><g fill="#f9a8d4"><ellipse cx="50" cy="25" rx="14" ry="22"/><ellipse cx="50" cy="75" rx="14" ry="22"/><ellipse cx="25" cy="50" rx="22" ry="14"/><ellipse cx="75" cy="50" rx="22" ry="14"/></g><circle cx="50" cy="50" r="10" fill="#fde68a"/></svg></div>
+    <div class="flower flower-2"><svg viewBox="0 0 100 100"><g fill="#c4b5fd"><ellipse cx="50" cy="25" rx="13" ry="21"/><ellipse cx="50" cy="75" rx="13" ry="21"/><ellipse cx="25" cy="50" rx="21" ry="13"/><ellipse cx="75" cy="50" rx="21" ry="13"/></g><circle cx="50" cy="50" r="9" fill="#fbbf24"/></svg></div>
+    <div class="flower flower-3"><svg viewBox="0 0 100 100"><g fill="#a78bfa"><ellipse cx="50" cy="22" rx="15" ry="24"/><ellipse cx="50" cy="78" rx="15" ry="24"/><ellipse cx="22" cy="50" rx="24" ry="15"/><ellipse cx="78" cy="50" rx="24" ry="15"/></g><circle cx="50" cy="50" r="11" fill="#fbcfe8"/></svg></div>
+  </div>
+
+  <div class="app">
+
+    <header class="header">
+      <div class="header-brand">
+        <div class="header-logo">
+          <img src="assets/icon-192.png" alt="Banovan Noor" onerror="this.style.display='none'" />
+        </div>
+        <div class="header-titles">
+          <h1 id="headerTitle">بانوان نور</h1>
+          <span>BANOVAN NOOR</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="icon-btn" href="search.html" aria-label="جستجو">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </a>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="تغییر تم">
+          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="greeting">
+      <div class="greeting-label" id="greetTime">سلام</div>
+      <div class="greeting-name">🌸 <span data-i18n="sister">خواهر گرامی</span></div>
+      <div class="greeting-quote" id="greetQuote">امروز یک فرصت تازه برای یادگیری است</div>
+    </div>
+
+    <!-- ═══ کارت‌های حکم و نکته روز (کلیک‌پذیر) ═══ -->
+    <div class="daily-row">
+      <div class="daily-card hikm" id="dailyHikmCard" role="button" tabindex="0" aria-label="حکم امروز">
+        <div class="d-label">📖 <span data-i18n="daily_hokm">حکم امروز</span></div>
+        <div class="d-title" id="dailyHokm">در حال بارگذاری...</div>
+        <div class="d-hint">
+          <svg viewBox="0 0 24 24"><path d="M15 14l5-5-5-5"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>
+          <span data-i18n="tap_more">مشاهده کامل</span>
+        </div>
+      </div>
+      <div class="daily-card tip" id="dailyTipCard" role="button" tabindex="0" aria-label="نکته امروز">
+        <div class="d-label">💡 <span data-i18n="daily_tip">نکته امروز</span></div>
+        <div class="d-title" id="dailyTip">در حال بارگذاری...</div>
+        <div class="d-hint">
+          <svg viewBox="0 0 24 24"><path d="M15 14l5-5-5-5"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>
+          <span data-i18n="tap_more">مشاهده کامل</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2 data-i18n="main_sections">بخش‌های اصلی</h2>
+    </div>
+
+    <div class="grid">
+      <a class="feature" href="ahkam.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#a855f7,#6d28d9)"><svg viewBox="0 0 24 24" stroke="#ffffff"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+        <span data-i18n="f_ahkam">احکام من</span>
+      </a>
+      <a class="feature" href="health.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#ec4899,#be185d)"><svg viewBox="0 0 24 24" stroke="#ffffff"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <span data-i18n="f_health">سلامت بانوان</span>
+      </a>
+      <a class="feature" href="menstruation.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#f472b6,#db2777)"><svg viewBox="0 0 24 24" stroke="#ffffff"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+        <span data-i18n="f_menstruation">قاعدگی</span>
+      </a>
+      <a class="feature" href="pregnancy.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)"><svg viewBox="0 0 24 24" stroke="#ffffff"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></div>
+        <span data-i18n="f_pregnancy">بارداری</span>
+      </a>
+      <a class="feature" href="childbirth.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#c084fc,#9333ea)"><svg viewBox="0 0 24 24" stroke="#ffffff"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <span data-i18n="f_childbirth">زایمان</span>
+      </a>
+      <a class="feature" href="hamraz.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#fb7185,#e11d48)"><svg viewBox="0 0 24 24" stroke="#ffffff"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <span data-i18n="f_hamraz">همراز بانوان</span>
+      </a>
+      <a class="feature" href="education.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)"><svg viewBox="0 0 24 24" stroke="#ffffff"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <span data-i18n="f_education">آموزش</span>
+      </a>
+      <a class="feature" href="duas.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#fbbf24,#d97706)"><svg viewBox="0 0 24 24" stroke="#ffffff"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg></div>
+        <span data-i18n="f_duas">دعا و اعمال</span>
+      </a>
+      <a class="feature" href="health.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#f9a8d4,#ec4899)"><svg viewBox="0 0 24 24" stroke="#ffffff"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+        <span data-i18n="f_doctors">پزشکان</span>
+      </a>
+    </div>
+
+    <div class="section-title">
+      <h2 data-i18n="quick_access">دسترسی سریع</h2>
+    </div>
+
+    <div class="grid grid-2">
+      <a class="feature" href="favorites.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#fde68a,#f59e0b)"><svg viewBox="0 0 24 24" stroke="#7c2d12"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <span data-i18n="f_favorites">علاقه‌مندی‌ها</span>
+      </a>
+      <a class="feature" href="notes.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#d8b4fe,#a855f7)"><svg viewBox="0 0 24 24" stroke="#ffffff"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <span data-i18n="f_notes">یادداشت</span>
+      </a>
+      <a class="feature" href="guide.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#c4b5fd,#7c3aed)"><svg viewBox="0 0 24 24" stroke="#ffffff"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <span data-i18n="f_guide">راهنما</span>
+      </a>
+      <a class="feature" href="settings.html">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#fbcfe8,#ec4899)"><svg viewBox="0 0 24 24" stroke="#ffffff"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        <span data-i18n="f_settings">تنظیمات</span>
+      </a>
+    </div>
+
+    <button class="reset-btn" id="resetBtn" type="button">
+      🔄 <span data-i18n="reset_welcome">بازگشت به صفحه شروع</span>
+    </button>
+
+    <div style="height:20px"></div>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <a class="nav-item active" href="home.html">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span data-i18n="n_home">خانه</span>
+    </a>
+    <a class="nav-item" href="search.html">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <span data-i18n="n_search">جستجو</span>
+    </a>
+    <a class="nav-item" href="hamraz.html">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span data-i18n="n_hamraz">همراز</span>
+    </a>
+    <a class="nav-item" href="ahkam.html">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span data-i18n="n_ahkam">احکام</span>
+    </a>
+    <a class="nav-item" href="settings.html">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span data-i18n="n_more">بیشتر</span>
+    </a>
+  </nav>
+
+  <!-- ═══ MODAL حکم/نکته ═══ -->
+  <div class="daily-modal" id="dailyModal" role="dialog" aria-modal="true">
+    <div class="daily-modal-box">
+      <div class="daily-modal-head">
+        <div class="daily-modal-icon" id="dailyModalIcon"></div>
+        <div class="daily-modal-title-wrap">
+          <div class="daily-modal-label" id="dailyModalLabel">—</div>
+          <div class="daily-modal-title" id="dailyModalTitle">—</div>
+        </div>
+        <button class="daily-modal-close" id="dailyModalClose" type="button" aria-label="بستن">
+          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="daily-modal-text" id="dailyModalText">—</div>
+      <div class="daily-modal-source" id="dailyModalSource" style="display:none;"></div>
+      <div class="daily-actions">
+        <button class="act-btn" data-daily-act="copy" title="کپی">
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+        <button class="act-btn" data-daily-act="share" title="اشتراک‌گذاری">
+          <svg viewBox="0 0 24 24"><path d="M15 14l5-5-5-5"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>
+        </button>
+        <button class="act-btn" data-daily-act="speak" title="خواندن صوتی">
+          <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // ============================================================
+      //  ترجمه‌ها
+      // ============================================================
+      var T = {
+        fa: {
+          headerTitle: 'بانوان نور',
+          sister: 'خواهر گرامی',
+          daily_hokm: 'حکم امروز',
+          daily_tip: 'نکته امروز',
+          tap_more: 'مشاهده کامل',
+          main_sections: 'بخش‌های اصلی',
+          quick_access: 'دسترسی سریع',
+          f_ahkam: 'احکام من',
+          f_health: 'سلامت بانوان',
+          f_menstruation: 'قاعدگی',
+          f_pregnancy: 'بارداری',
+          f_childbirth: 'زایمان',
+          f_hamraz: 'همراز بانوان',
+          f_education: 'آموزش',
+          f_duas: 'دعا و اعمال',
+          f_doctors: 'پزشکان',
+          f_favorites: 'علاقه‌مندی‌ها',
+          f_notes: 'یادداشت',
+          f_guide: 'راهنما',
+          f_settings: 'تنظیمات',
+          n_home: 'خانه',
+          n_search: 'جستجو',
+          n_hamraz: 'همراز',
+          n_ahkam: 'احکام',
+          n_more: 'بیشتر',
+          reset_welcome: 'بازگشت به صفحه شروع',
+          greet_morning: 'صبح بخیر',
+          greet_noon: 'ظهر بخیر',
+          greet_evening: 'شب بخیر',
+          greet_night: 'شب آرام',
+          modal_label_hikm: '📖 حکم امروز',
+          modal_label_tip: '💡 نکته امروز',
+          loading: 'در حال بارگذاری...',
+          not_found: 'محتوایی یافت نشد',
+          copied: 'متن کپی شد ✓',
+          share_fallback: 'متن کپی شد (اشتراک‌گذاری در این مرورگر نیست)',
+          speech_unsupported: 'خواندن صوتی پشتیبانی نمی‌شود',
+          daily_load_fail: 'فایل daily.json یافت نشد',
+          dir: 'rtl'
+        },
+        ps: {
+          headerTitle: 'بانوان نور',
+          sister: 'ګرانه خور',
+          daily_hokm: 'د نن حکم',
+          daily_tip: 'د نن ټکی',
+          tap_more: 'بشپړ وګوره',
+          main_sections: 'اصلي برخې',
+          quick_access: 'ژر لاسرسی',
+          f_ahkam: 'زما احکام',
+          f_health: 'د ښځو روغتیا',
+          f_menstruation: 'حیض',
+          f_pregnancy: 'امیدواري',
+          f_childbirth: 'زېږون',
+          f_hamraz: 'د ښځو همراز',
+          f_education: 'زده کړه',
+          f_duas: 'دعا او اعمال',
+          f_doctors: 'ډاکټران',
+          f_favorites: 'خوښې',
+          f_notes: 'یادښتونه',
+          f_guide: 'لارښود',
+          f_settings: 'تنظیمات',
+          n_home: 'کور',
+          n_search: 'لټون',
+          n_hamraz: 'همراز',
+          n_ahkam: 'احکام',
+          n_more: 'نور',
+          reset_welcome: 'د پیل پاڼې ته بېرته',
+          greet_morning: 'سهار پخیر',
+          greet_noon: 'غرمه پخیر',
+          greet_evening: 'ماښام پخیر',
+          greet_night: 'ارامه شپه',
+          modal_label_hikm: '📖 د نن حکم',
+          modal_label_tip: '💡 د نن ټکی',
+          loading: 'بار کیږي...',
+          not_found: 'منځپانګه ونه موندل شوه',
+          copied: 'متن کاپي شو ✓',
+          share_fallback: 'متن کاپي شو (شریکول نشي کېدای)',
+          speech_unsupported: 'غږیز لوستل نشي کېدای',
+          daily_load_fail: 'daily.json ونه موندل شو',
+          dir: 'rtl'
+        },
+        en: {
+          headerTitle: 'Banovan Noor',
+          sister: 'Dear Sister',
+          daily_hokm: "Today's Ruling",
+          daily_tip: "Today's Tip",
+          tap_more: 'View more',
+          main_sections: 'Main Sections',
+          quick_access: 'Quick Access',
+          f_ahkam: 'My Rulings',
+          f_health: "Women's Health",
+          f_menstruation: 'Menstruation',
+          f_pregnancy: 'Pregnancy',
+          f_childbirth: 'Childbirth',
+          f_hamraz: "Women's Companion",
+          f_education: 'Education',
+          f_duas: 'Prayers',
+          f_doctors: 'Doctors',
+          f_favorites: 'Favorites',
+          f_notes: 'Notes',
+          f_guide: 'Guide',
+          f_settings: 'Settings',
+          n_home: 'Home',
+          n_search: 'Search',
+          n_hamraz: 'Companion',
+          n_ahkam: 'Rulings',
+          n_more: 'More',
+          reset_welcome: 'Back to start page',
+          greet_morning: 'Good morning',
+          greet_noon: 'Good afternoon',
+          greet_evening: 'Good evening',
+          greet_night: 'Good night',
+          modal_label_hikm: "📖 Today's Ruling",
+          modal_label_tip: "💡 Today's Tip",
+          loading: 'Loading...',
+          not_found: 'No content found',
+          copied: 'Text copied ✓',
+          share_fallback: 'Text copied (share not supported)',
+          speech_unsupported: 'Speech not supported',
+          daily_load_fail: 'daily.json not found',
+          dir: 'ltr'
+        }
+      };
+
+      var SUPPORTED = ['fa', 'ps', 'en'];
+      var DEFAULT_LANG = 'fa';
+      var currentT = T.fa;
+
+      // ============================================================
+      //  مسیر فایل روزانه
+      //  اگر فایل رو مستقیم داخل data گذاشتی، این خط رو عوض کن به: 'data/daily.json'
+      // ============================================================
+      var DAILY_PATH = 'data/daily/daily.json';
+
+      // ============================================================
+      //  ذخیره‌سازی
+      // ============================================================
+      function getLang() {
+        try {
+          var l = localStorage.getItem('bn_lang');
+          if (l && SUPPORTED.indexOf(l) > -1) return l;
+        } catch (e) {}
+        return DEFAULT_LANG;
+      }
+      function getTheme() {
+        try { return localStorage.getItem('bn_theme') || 'light'; }
+        catch (e) { return 'light'; }
+      }
+      function setTheme(t) {
+        try { localStorage.setItem('bn_theme', t); } catch (e) {}
+      }
+
+      // ============================================================
+      //  اعمال زبان
+      // ============================================================
+      function applyLang(lang) {
+        if (SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
+        var t = T[lang] || T.fa;
+        currentT = t;
+
+        document.documentElement.setAttribute('dir', t.dir);
+        document.documentElement.setAttribute('lang', lang);
+
+        var els = document.querySelectorAll('[data-i18n]');
+        for (var i = 0; i < els.length; i++) {
+          var key = els[i].getAttribute('data-i18n');
+          if (t[key] !== undefined) els[i].textContent = t[key];
+        }
+
+        var ht = document.getElementById('headerTitle');
+        if (ht) ht.textContent = t.headerTitle;
+
+        if (t.dir === 'ltr') document.body.classList.add('lang-ltr');
+        else document.body.classList.remove('lang-ltr');
+
+        document.title = t.headerTitle + ' | BANOVAN NOOR';
+
+        updateGreeting(t);
+      }
+
+      function updateGreeting(t) {
+        var h = new Date().getHours();
+        var g = '';
+        if (h < 12) g = t.greet_morning;
+        else if (h < 17) g = t.greet_noon;
+        else if (h < 20) g = t.greet_evening;
+        else g = t.greet_night;
+        var el = document.getElementById('greetTime');
+        if (el) el.textContent = g;
+      }
+
+      // ============================================================
+      //  تم
+      // ============================================================
+      function applyTheme() {
+        if (getTheme() === 'dark') document.body.classList.add('dark');
+        else document.body.classList.remove('dark');
+      }
+
+      // ============================================================
+      //  ابزارهای کمکی
+      // ============================================================
+      function $(id) { return document.getElementById(id); }
+      function escapeHtml(s) {
+        if (s == null) return '';
+        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      }
+
+      var toastTimer = null;
+      function showMsg(msg, dur) {
+        dur = dur || 2200;
+        var t = $('toast');
+        if (!t) return;
+        t.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { t.classList.remove('show'); }, dur);
+      }
+
+      // شماره روز سال — همه کاربرا یه حکم یکسان در یه روز می‌بینن
+      function dayOfYear() {
+        var now = new Date();
+        var start = new Date(now.getFullYear(), 0, 0);
+        return Math.floor((now - start) / 86400000);
+      }
+      function pickDaily(arr) {
+        if (!Array.isArray(arr) || arr.length === 0) return null;
+        return arr[dayOfYear() % arr.length];
+      }
+
+      // ============================================================
+      //  کپی / اشتراک / صوت
+      // ============================================================
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-1000px';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); showMsg(currentT.copied); }
+        catch (e) { showMsg('...'); }
+        document.body.removeChild(ta);
+      }
+      function copyText(text) {
+        if (!text) return;
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text)
+            .then(function () { showMsg(currentT.copied); })
+            .catch(function () { fallbackCopy(text); });
+        } else {
+          fallbackCopy(text);
+        }
+      }
+      function shareText(text, title) {
+        if (!text) return;
+        if (navigator.share) {
+          navigator.share({ title: title || currentT.headerTitle, text: text }).catch(function () {});
+        } else {
+          copyText(text);
+          showMsg(currentT.share_fallback);
+        }
+      }
+      var speechBtn = null;
+      function speakText(text, btn) {
+        if (!text) return;
+        if (!('speechSynthesis' in window)) {
+          showMsg(currentT.speech_unsupported);
+          return;
+        }
+        if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+          window.speechSynthesis.cancel();
+          if (speechBtn) speechBtn.classList.remove('speaking');
+          if (speechBtn === btn) { speechBtn = null; return; }
+        }
+        var utt = new SpeechSynthesisUtterance(text);
+        utt.lang = 'fa-IR'; utt.rate = 0.95; utt.pitch = 1;
+        try {
+          var voices = window.speechSynthesis.getVoices();
+          for (var i = 0; i < voices.length; i++) {
+            if (voices[i].lang && voices[i].lang.toLowerCase().indexOf('fa') === 0) {
+              utt.voice = voices[i]; break;
+            }
+          }
+        } catch (e) {}
+        if (btn) { btn.classList.add('speaking'); speechBtn = btn; }
+        utt.onend = function () { if (btn) btn.classList.remove('speaking'); if (speechBtn === btn) speechBtn = null; };
+        utt.onerror = function () { if (btn) btn.classList.remove('speaking'); if (speechBtn === btn) speechBtn = null; };
+        window.speechSynthesis.speak(utt);
+      }
+      function stopSpeech() {
+        try {
+          if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+          if (speechBtn) speechBtn.classList.remove('speaking');
+          speechBtn = null;
+        } catch (e) {}
+      }
+
+      // ============================================================
+      //  بارگذاری داده روزانه
+      // ============================================================
+      var dailyData = null;
+      var currentDailyItem = null;
+
+      function loadDaily() {
+        return fetch(DAILY_PATH)
+          .then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+          })
+          .then(function (d) { dailyData = d; return d; })
+          .catch(function (err) {
+            console.warn('daily.json load failed:', err.message);
+            return null;
+          });
+      }
+
+      function renderDailyCards() {
+        var hokmEl = $('dailyHokm');
+        var tipEl = $('dailyTip');
+        if (!dailyData) {
+          if (hokmEl) hokmEl.textContent = currentT.daily_load_fail;
+          if (tipEl) tipEl.textContent = currentT.daily_load_fail;
+          return;
+        }
+        var hikm = pickDaily(dailyData.hikm);
+        var tip = pickDaily(dailyData.tip);
+        if (hokmEl) hokmEl.textContent = hikm ? hikm.title : currentT.not_found;
+        if (tipEl) tipEl.textContent = tip ? tip.title : currentT.not_found;
+      }
+
+      // ============================================================
+      //  MODAL روزانه
+      // ============================================================
+      function openDailyModal(type) {
+        if (!dailyData) return;
+        var item = pickDaily(type === 'hikm' ? dailyData.hikm : dailyData.tip);
+        if (!item) return;
+        currentDailyItem = { type: type, item: item };
+
+        var isHikm = (type === 'hikm');
+        var iconEl = $('dailyModalIcon');
+        iconEl.className = 'daily-modal-icon ' + type;
+        iconEl.innerHTML = isHikm
+          ? '<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>'
+          : '<svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>';
+
+        $('dailyModalLabel').textContent = isHikm ? currentT.modal_label_hikm : currentT.modal_label_tip;
+        $('dailyModalTitle').textContent = item.title || '—';
+        $('dailyModalText').textContent = item.text || '—';
+
+        var srcEl = $('dailyModalSource');
+        if (item.source) {
+          srcEl.style.display = 'inline-flex';
+          srcEl.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>' + escapeHtml(item.source) + '</span>';
+        } else {
+          srcEl.style.display = 'none';
+        }
+
+        $('dailyModal').classList.add('show');
+      }
+
+      function closeDailyModal() {
+        stopSpeech();
+        $('dailyModal').classList.remove('show');
+        currentDailyItem = null;
+      }
+
+      function setupDailyHandlers() {
+        var hikmCard = $('dailyHikmCard');
+        var tipCard = $('dailyTipCard');
+
+        function openFromCard(type) {
+          if (!dailyData) { showMsg(currentT.daily_load_fail); return; }
+          openDailyModal(type);
+        }
+
+        if (hikmCard) {
+          hikmCard.addEventListener('click', function () { openFromCard('hikm'); });
+          hikmCard.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFromCard('hikm'); }
+          });
+        }
+        if (tipCard) {
+          tipCard.addEventListener('click', function () { openFromCard('tip'); });
+          tipCard.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFromCard('tip'); }
+          });
+        }
+
+        var closeBtn = $('dailyModalClose');
+        if (closeBtn) closeBtn.addEventListener('click', closeDailyModal);
+
+        var modal = $('dailyModal');
+        if (modal) modal.addEventListener('click', function (e) {
+          if (e.target === modal) closeDailyModal();
+        });
+
+        var actions = document.querySelector('.daily-actions');
+        if (actions) {
+          actions.addEventListener('click', function (e) {
+            var btn = e.target.closest('[data-daily-act]');
+            if (!btn || !currentDailyItem) return;
+            var act = btn.getAttribute('data-daily-act');
+            var item = currentDailyItem.item;
+            var fullText = (item.title ? item.title + '\n\n' : '') + (item.text || '') +
+                           (item.source ? '\n\n— ' + item.source : '');
+            if (act === 'copy') {
+              copyText(fullText);
+            } else if (act === 'share') {
+              shareText(fullText + '\n\n— ' + currentT.headerTitle, currentT.headerTitle);
+            } else if (act === 'speak') {
+              speakText((item.title ? item.title + '. ' : '') + (item.text || ''), btn);
+            }
+          });
+        }
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && $('dailyModal').classList.contains('show')) {
+            closeDailyModal();
+          }
+        });
+      }
+
+      // ============================================================
+      //  INIT
+      // ============================================================
+      function init() {
+        applyTheme();
+        applyLang(getLang());
+
+        var themeBtn = $('themeToggle');
+        if (themeBtn) {
+          themeBtn.addEventListener('click', function () {
+            document.body.classList.toggle('dark');
+            setTheme(document.body.classList.contains('dark') ? 'dark' : 'light');
+          });
+        }
+
+        var resetBtn = $('resetBtn');
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function () {
+            try { localStorage.removeItem('bn_entered'); } catch (e) {}
+            window.location.href = 'index.html';
+          });
+        }
+
+        window.addEventListener('storage', function (e) {
+          if (e.key === 'bn_lang') applyLang(e.newValue || DEFAULT_LANG);
+        });
+
+        // راه‌اندازی کارت‌های روزانه
+        setupDailyHandlers();
+        loadDaily().then(function (d) {
+          if (!d) {
+            var h = $('dailyHokm');
+            var t = $('dailyTip');
+            if (h) h.textContent = currentT.daily_load_fail;
+            if (t) t.textContent = currentT.daily_load_fail;
+            return;
+          }
+          renderDailyCards();
+          console.log('✅ حکم و نکته روزانه بارگذاری شد');
+        });
+
+        console.log('🌸 home.html آماده');
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+
+</body>
+</html>

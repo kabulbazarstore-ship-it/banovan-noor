@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#6d28d9" />
+  <title>تنظیمات | بانوان نور</title>
+  <link rel="icon" href="assets/icon-192.png" type="image/png" />
+
+  <style>
+    :root {
+      --bg-1: #f3e8ff; --bg-2: #e9d5ff; --bg-3: #ddd6fe; --bg-4: #c4b5fd;
+      --text: #2d1259; --text-soft: #4c1d95; --text-card: #1f1147;
+      --text-muted: #6b5a8a;
+      --card: rgba(255,255,255,0.82); --card-border: rgba(168,85,247,0.2);
+      --card-shadow: 0 8px 22px rgba(109,40,217,0.12);
+      --icon-bg: rgba(255,255,255,0.8); --icon-border: rgba(168,85,247,0.25);
+      --icon-color: #6d28d9;
+      --nav-bg: rgba(255,255,255,0.92); --nav-border: rgba(168,85,247,0.2);
+      --nav-color: #7c6f9a; --nav-active: #6d28d9;
+      --star: 0.2;
+      --input-bg: rgba(255,255,255,0.9);
+      --input-border: rgba(168,85,247,0.3);
+    }
+    body.dark {
+      --bg-1: #3b0764; --bg-2: #4c1d95; --bg-3: #5b21b6; --bg-4: #2d1259;
+      --text: #ffffff; --text-soft: #e9d5ff; --text-card: #ffffff;
+      --text-muted: #c4b5fd;
+      --card: rgba(255,255,255,0.08); --card-border: rgba(244,114,182,0.25);
+      --card-shadow: 0 8px 22px rgba(0,0,0,0.3);
+      --icon-bg: rgba(255,255,255,0.08); --icon-border: rgba(244,114,182,0.3);
+      --icon-color: #fbcfe8;
+      --nav-bg: rgba(26,11,61,0.94); --nav-border: rgba(244,114,182,0.25);
+      --nav-color: #a78bfa; --nav-active: #fbcfe8;
+      --star: 0.7;
+      --input-bg: rgba(255,255,255,0.08);
+      --input-border: rgba(244,114,182,0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body { height: 100%; width: 100%; }
+
+    body {
+      font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+      direction: rtl;
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 600;
+      color: var(--text);
+      background-color: var(--bg-1);
+      background-image:
+        radial-gradient(ellipse 500px 400px at 20% 5%, rgba(236,72,153,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 400px 350px at 85% 15%, rgba(168,85,247,0.18) 0%, transparent 65%),
+        linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 25%, var(--bg-3) 50%, var(--bg-2) 75%, var(--bg-4) 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 0 0 110px 0;
+      position: relative;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.3s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 12% 8%, rgba(253,230,138,var(--star)) 0%, transparent 1.2%),
+        radial-gradient(circle at 88% 6%, rgba(253,230,138,var(--star)) 0%, transparent 1%),
+        radial-gradient(circle at 78% 45%, rgba(253,230,138,var(--star)) 0%, transparent 1%),
+        radial-gradient(circle at 30% 20%, rgba(168,85,247,var(--star)) 0%, transparent 0.7%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app { max-width: 520px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
+
+    .page-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 20px 0 16px;
+    }
+    .back-btn {
+      width: 42px; height: 42px; border-radius: 14px;
+      background: var(--icon-bg); backdrop-filter: blur(16px);
+      border: 1px solid var(--icon-border);
+      color: var(--icon-color);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex: 0 0 42px; text-decoration: none;
+      box-shadow: 0 4px 12px rgba(109,40,217,0.15);
+    }
+    .back-btn:active { transform: scale(0.94); }
+    .back-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transform: scaleX(-1); }
+    .page-header h1 {
+      font-size: 1.3rem; font-weight: 900; color: var(--text);
+      flex: 1; text-align: center; padding-right: 42px;
+    }
+
+    .section-card {
+      background: var(--card); backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 22px; padding: 6px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      display: flex; align-items: center; gap: 10px;
+      padding: 16px 18px 10px;
+      font-size: 1rem; font-weight: 900;
+      color: var(--text-soft);
+      border-bottom: 1.5px solid var(--card-border);
+      margin-bottom: 4px;
+    }
+    .section-title svg {
+      width: 22px; height: 22px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .list-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 18px; border-radius: 16px;
+      cursor: pointer; transition: background 0.2s ease;
+      text-decoration: none; color: inherit;
+      border: none; background: transparent;
+      width: 100%; font-family: inherit; text-align: right;
+      font-weight: 700;
+    }
+    .list-item:active { background: rgba(168,85,247,0.1); }
+    body.dark .list-item:active { background: rgba(244,114,182,0.1); }
+
+    .list-icon {
+      width: 46px; height: 46px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex: 0 0 46px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+      overflow: hidden;
+    }
+    .list-icon svg {
+      width: 22px; height: 22px;
+      fill: none; stroke: #ffffff;
+      stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .list-content { flex: 1; min-width: 0; }
+    .list-title {
+      font-size: 1rem; font-weight: 900;
+      color: var(--text-card);
+      margin-bottom: 3px;
+    }
+    .list-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .list-arrow {
+      width: 20px; height: 20px;
+      flex: 0 0 20px;
+      fill: none; stroke: var(--text-muted);
+      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+      transform: scaleX(-1);
+    }
+
+    .profile-card {
+      background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #6d28d9 100%);
+      border-radius: 24px; padding: 22px 20px;
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 18px;
+      box-shadow: 0 14px 34px rgba(109,40,217,0.35);
+      position: relative; overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .profile-card::before {
+      content: ""; position: absolute;
+      top: -50px; left: -50px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(253,230,138,0.25), transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .profile-avatar {
+      width: 64px; height: 64px; border-radius: 20px;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.4);
+      display: flex; align-items: center; justify-content: center;
+      flex: 0 0 64px; overflow: hidden;
+      position: relative; z-index: 1;
+    }
+    .profile-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .profile-avatar svg {
+      width: 32px; height: 32px;
+      fill: none; stroke: #ffffff;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .profile-info { flex: 1; position: relative; z-index: 1; color: #fff; }
+    .profile-name { font-size: 1.15rem; font-weight: 900; margin-bottom: 4px; }
+    .profile-sub { font-size: 0.8rem; opacity: 0.95; font-weight: 700; }
+    .profile-card svg.arrow {
+      width: 22px; height: 22px;
+      fill: none; stroke: #fff;
+      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+      transform: scaleX(-1);
+      position: relative; z-index: 1;
+    }
+
+    .lang-options {
+      display: flex; gap: 8px; padding: 10px 14px 14px;
+    }
+    .lang-option {
+      flex: 1;
+      background: rgba(168,85,247,0.1);
+      border: 1.5px solid var(--card-border);
+      color: var(--text-soft);
+      border-radius: 14px;
+      padding: 14px 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+    .lang-option:active { transform: scale(0.96); }
+    .lang-option.active {
+      background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #6d28d9 100%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 6px 18px rgba(236,72,153,0.4);
+    }
+
+    .fiqh-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 12px 14px 16px;
+    }
+    .fiqh-card {
+      position: relative;
+      background: var(--bg-1);
+      border: 2px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px 14px 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      overflow: hidden;
+      font-family: inherit;
+    }
+    .fiqh-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ec4899, #a855f7, #6d28d9);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .fiqh-card:active { transform: scale(0.96); }
+    .fiqh-card.active {
+      background: linear-gradient(135deg,
+        rgba(236,72,153,0.12) 0%,
+        rgba(168,85,247,0.15) 50%,
+        rgba(109,40,217,0.18) 100%);
+      border-color: rgba(236,72,153,0.6);
+      box-shadow:
+        0 8px 22px rgba(236,72,153,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    .fiqh-card.active::before { opacity: 1; }
+
+    .fiqh-card-icon {
+      width: 54px; height: 54px;
+      margin: 0 auto 10px;
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 16px rgba(109,40,217,0.25);
+      transition: transform 0.3s ease;
+    }
+    .fiqh-card.active .fiqh-card-icon {
+      transform: scale(1.08) rotate(-3deg);
+    }
+    .fiqh-card-icon svg {
+      width: 28px; height: 28px;
+      fill: none; stroke: #fff;
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .fiqh-card-name {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--text-card);
+      margin-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+    .fiqh-card.active .fiqh-card-name {
+      background: linear-gradient(135deg, #ec4899, #6d28d9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .fiqh-card-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .fiqh-check {
+      width: 24px; height: 24px;
+      margin: 0 auto;
+      border-radius: 50%;
+      border: 2px solid var(--card-border);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease;
+      background: var(--bg-1);
+    }
+    .fiqh-card.active .fiqh-check {
+      background: linear-gradient(135deg, #ec4899, #6d28d9);
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(236,72,153,0.5);
+    }
+    .fiqh-check svg {
+      width: 14px; height: 14px;
+      fill: none; stroke: #fff;
+      stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.3s ease;
+    }
+    .fiqh-card.active .fiqh-check svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ═══════════════════════════════════════════
+       DUA CARD — ساده و زیبا (بدون دست)
+       ═══════════════════════════════════════════ */
+    .dua-card {
+      background: linear-gradient(160deg,
+        rgba(30, 27, 75, 0.95) 0%,
+        rgba(76, 29, 149, 0.95) 50%,
+        rgba(109, 40, 217, 0.95) 100%);
+      backdrop-filter: blur(24px);
+      border: 1.5px solid rgba(253, 230, 138, 0.4);
+      border-radius: 26px;
+      padding: 36px 24px 32px;
+      margin-bottom: 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(109,40,217,0.4), inset 0 1px 0 rgba(253,230,138,0.15);
+    }
+    .dua-card::before {
+      content: ""; position: absolute;
+      top: -50%; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(253,230,138,0.15), transparent 60%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .dua-card::after {
+      content: ""; position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(253, 230, 138, 0.1);
+      border-radius: 20px;
+      pointer-events: none;
+    }
+    .dua-card > * { position: relative; z-index: 1; }
+
+    .dua-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: 'Traditional Arabic', 'Amiri', 'Noto Naskh Arabic', serif;
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: #fde68a;
+      margin-bottom: 22px;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 30px rgba(253, 230, 138, 0.7), 0 3px 12px rgba(0, 0, 0, 0.5);
+      line-height: 1.3;
+    }
+    .dua-title svg {
+      width: 22px;
+      height: 22px;
+      fill: #fde68a;
+      filter: drop-shadow(0 0 8px rgba(253, 230, 138, 0.8));
+      animation: heartBeat 1.8s ease-in-out infinite;
+    }
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .dua-text {
+      font-family: 'Traditional Arabic', 'Amiri', serif;
+      font-size: 1.15rem;
+      line-height: 2.1;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: 0.3px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+    .dua-text strong {
+      color: #fde68a;
+      font-weight: 900;
+      font-size: 1.25rem;
+      display: inline-block;
+      padding: 3px 8px;
+      text-shadow: 0 0 16px rgba(253, 230, 138, 0.5);
+      margin: 6px 0;
+    }
+
+    .dua-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px auto 0;
+      width: 70%;
+    }
+    .dua-divider::before,
+    .dua-divider::after {
+      content: ""; flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(253,230,138,0.7), transparent);
+    }
+    .dua-divider svg {
+      width: 18px; height: 18px;
+      fill: #fde68a;
+      filter: drop-shadow(0 0 8px rgba(253, 230, 138, 0.8));
+    }
+
+    .version-info {
+      text-align: center;
+      padding: 22px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 2;
+      font-weight: 700;
+    }
+    .version-info strong { color: var(--text-soft); font-weight: 900; }
+
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg); backdrop-filter: blur(24px);
+      border-top: 1px solid var(--nav-border);
+      display: flex; justify-content: space-around;
+      padding: 8px 4px calc(8px + env(safe-area-inset-bottom, 0px));
+      max-width: 520px; margin: 0 auto;
+      box-shadow: 0 -8px 30px rgba(109,40,217,0.15);
+    }
+    .nav-item {
+      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
+      color: var(--nav-color); padding: 8px 2px;
+      font-size: 0.65rem; font-weight: 800;
+      text-decoration: none; cursor: pointer;
+      border-radius: 12px; position: relative;
+    }
+    .nav-item.active { color: var(--nav-active); }
+    .nav-item.active::before {
+      content: ""; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 22px; height: 3px;
+      border-radius: 0 0 4px 4px;
+      background: linear-gradient(90deg, #ec4899, #a855f7, #fde68a);
+      box-shadow: 0 0 12px rgba(236,72,153,0.8);
+    }
+    .nav-item svg {
+      width: 22px; height: 22px; fill: none; stroke: currentColor;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .nav-item.active svg { stroke-width: 2.4; }
+
+    .modal {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      display: none; align-items: flex-end; justify-content: center;
+      z-index: 9999;
+      padding: 0;
+    }
+    .modal.show { display: flex; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal-box {
+      width: 100%; max-width: 520px;
+      max-height: 90vh; overflow-y: auto;
+      background: var(--bg-1);
+      border-radius: 28px 28px 0 0;
+      padding: 24px 22px calc(24px + env(safe-area-inset-bottom, 0px));
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1.5px solid var(--card-border);
+    }
+    .modal-head h3 {
+      font-size: 1.2rem; font-weight: 900;
+      color: var(--text);
+    }
+    .close-btn {
+      width: 42px; height: 42px; border-radius: 14px;
+      background: var(--card); border: 1px solid var(--card-border);
+      color: var(--text-soft);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .close-btn svg {
+      width: 20px; height: 20px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .modal-text {
+      font-size: 1rem; line-height: 2.2;
+      color: var(--text-card);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .modal-text strong { color: var(--text-soft); font-weight: 900; }
+    .modal-text p { margin-bottom: 14px; line-height: 2.1; }
+    .modal-text .dua-highlight {
+      font-family: 'Traditional Arabic', 'Amiri', serif;
+      font-size: 1.2rem;
+      color: #b45309;
+      font-weight: 900;
+      text-align: center;
+      padding: 16px;
+      background: rgba(253,230,138,0.15);
+      border-radius: 14px;
+      border: 1.5px dashed rgba(253,230,138,0.5);
+      margin-top: 18px;
+    }
+    body.dark .modal-text .dua-highlight { color: #fde68a; }
+
+    .input-group { margin-bottom: 16px; }
+    .input-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 900;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+    .input-field {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1.5px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .input-field:focus { border-color: rgba(236,72,153,0.7); }
+    .input-field::placeholder { color: var(--text-muted); font-weight: 600; }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #6d28d9 100%);
+      color: #fff;
+      border: 0;
+      padding: 16px;
+      border-radius: 16px;
+      font-family: inherit;
+      font-weight: 900;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(236,72,153,0.4);
+      transition: transform 0.15s;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-submit:active { transform: scale(0.97); }
+    .btn-submit svg {
+      width: 20px; height: 20px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .btn-submit.green {
+      background: linear-gradient(135deg, #10b981, #059669);
+      box-shadow: 0 10px 26px rgba(16,185,129,0.4);
+    }
+    .btn-submit.red {
+      background: linear-gradient(135deg, #ef4444, #b91c1c);
+      box-shadow: 0 10px 26px rgba(239,68,68,0.4);
+    }
+
+    .avatar-picker {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 12px;
+      margin-bottom: 22px;
+    }
+    .avatar-preview {
+      width: 116px; height: 116px; border-radius: 32px;
+      background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #6d28d9 100%);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(109,40,217,0.4);
+      border: 3px solid rgba(253,230,138,0.4);
+      cursor: pointer;
+    }
+    .avatar-preview img { width: 100%; height: 100%; object-fit: cover; }
+    .avatar-preview svg {
+      width: 50px; height: 50px;
+      fill: none; stroke: #fff;
+      stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .avatar-picker-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .avatar-picker-label svg {
+      width: 16px; height: 16px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+    #avatarInput { display: none; }
+
+    .info-box {
+      background: rgba(168,85,247,0.08);
+      border: 1.5px dashed var(--card-border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      font-weight: 700;
+      margin-top: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .info-box svg {
+      width: 20px; height: 20px;
+      flex: 0 0 20px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+      margin-top: 3px;
+    }
+
+    .toast {
+      position: fixed; bottom: 110px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: linear-gradient(135deg, #6d28d9, #a855f7);
+      color: #fff; padding: 14px 26px;
+      border-radius: 30px; font-size: 0.9rem;
+      font-weight: 900; z-index: 9999;
+      opacity: 0; transition: all 0.3s;
+      pointer-events: none;
+      box-shadow: 0 12px 30px rgba(139,92,246,0.5);
+      max-width: 90vw; text-align: center;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 380px) {
+      .app { padding: 0 12px; }
+      .profile-avatar { width: 56px; height: 56px; flex: 0 0 56px; }
+      .list-icon { width: 42px; height: 42px; flex: 0 0 42px; }
+      .list-icon svg { width: 20px; height: 20px; }
+      .page-header h1 { font-size: 1.15rem; }
+      .dua-title { font-size: 1.5rem; }
+      .dua-text { font-size: 1rem; }
+      .dua-text strong { font-size: 1.1rem; }
+      .fiqh-card-icon { width: 48px; height: 48px; }
+      .fiqh-card-icon svg { width: 24px; height: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('bn_theme') === 'dark') {
+          document.body.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <div class="app">
+
+    <header class="page-header">
+      <a class="back-btn" href="home.html" aria-label="بازگشت">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </a>
+      <h1>تنظیمات</h1>
+    </header>
+
+    <a class="profile-card" id="profileCard" href="#" onclick="event.preventDefault(); openProfile();">
+      <div class="profile-avatar" id="profileAvatar">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+      </div>
+      <div class="profile-info">
+        <div class="profile-name" id="profileName">ورود / ثبت نام</div>
+        <div class="profile-sub" id="profileSub">برای ساخت پروفایل کلیک کنید</div>
+      </div>
+      <svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+
+    <div class="section-card">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        <span>زبان برنامه</span>
+      </div>
+      <div class="lang-options">
+        <button class="lang-option active" data-lang="fa" type="button">فارسی</button>
+        <button class="lang-option" data-lang="ps" type="button">پښتو</button>
+        <button class="lang-option" data-lang="en" type="button">English</button>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <span>انتخاب فقه</span>
+      </div>
+
+      <div class="fiqh-grid">
+        <button class="fiqh-card active" data-fiqh="jafari" type="button">
+          <div class="fiqh-card-icon" style="background:linear-gradient(135deg,#a855f7,#6d28d9);">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="fiqh-card-name">جعفری</div>
+          <div class="fiqh-card-sub">فقه اهل بیت (ع)</div>
+          <div class="fiqh-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </button>
+
+        <button class="fiqh-card" data-fiqh="hanafi" type="button">
+          <div class="fiqh-card-icon" style="background:linear-gradient(135deg,#ec4899,#be185d);">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
+          </div>
+          <div class="fiqh-card-name">حنفی</div>
+          <div class="fiqh-card-sub">فقه اهل سنت</div>
+          <div class="fiqh-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </button>
+      </div>
+
+      <div style="padding:0 16px 16px;">
+        <div class="info-box" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>این انتخاب، فقه پیش‌فرض شما در بخش احکام خواهد بود.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>درباره ما</span>
+      </div>
+
+      <a class="list-item" href="about.html">
+        <div class="list-icon" style="background:linear-gradient(135deg,#a855f7,#6d28d9)">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="list-content">
+          <div class="list-title">درباره برنامه</div>
+          <div class="list-sub">هدف، سازنده و اطلاعات کلی</div>
+        </div>
+        <svg class="list-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a class="list-item" href="privacy.html">
+        <div class="list-icon" style="background:linear-gradient(135deg,#34d399,#059669)">
+          <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="list-content">
+          <div class="list-title">حریم خصوصی</div>
+          <div class="list-sub">اطلاعات و امنیت کاربران</div>
+        </div>
+        <svg class="list-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a class="list-item" href="guide.html">
+        <div class="list-icon" style="background:linear-gradient(135deg,#fbbf24,#d97706)">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="list-content">
+          <div class="list-title">راهنمای برنامه</div>
+          <div class="list-sub">آموزش استفاده از بخش‌های برنامه</div>
+        </div>
+        <svg class="list-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a class="list-item" href="contacts.html">
+        <div class="list-icon" style="background:linear-gradient(135deg,#38bdf8,#0284c7)">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="list-content">
+          <div class="list-title">ارتباط با ما</div>
+          <div class="list-sub">راه‌های تماس و ارسال پیام</div>
+        </div>
+        <svg class="list-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+
+    <div class="section-card">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        <span>برنامه‌های دیگر ما</span>
+      </div>
+
+      <a class="list-item" href="https://kabulbazarstore-ship-it.github.io/noor-applecation/" target="_blank" rel="noopener">
+        <div class="list-icon" style="background:transparent;width:52px;height:52px;flex:0 0 52px;padding:0;box-shadow:none;">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+            <defs>
+              <linearGradient id="noorBg" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#fdf9ef"/>
+                <stop offset="100%" stop-color="#f5e6c8"/>
+              </linearGradient>
+              <linearGradient id="goldBorder" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#e8c66a"/>
+                <stop offset="50%" stop-color="#c9a13d"/>
+                <stop offset="100%" stop-color="#8b6914"/>
+              </linearGradient>
+              <linearGradient id="goldText" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#c9a13d"/>
+                <stop offset="100%" stop-color="#8b6914"/>
+              </linearGradient>
+              <linearGradient id="domeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#f0d98a"/>
+                <stop offset="100%" stop-color="#c9a13d"/>
+              </linearGradient>
+            </defs>
+            <rect x="5" y="5" width="90" height="90" rx="26" ry="26" fill="url(#noorBg)"/>
+            <rect x="5" y="5" width="90" height="90" rx="26" ry="26" fill="none" stroke="url(#goldBorder)" stroke-width="2"/>
+            <rect x="10" y="10" width="80" height="80" rx="21" ry="21" fill="none" stroke="url(#goldBorder)" stroke-width="1" opacity="0.7"/>
+            <g transform="translate(50, 32)">
+              <path d="M-12 0 C-12 -10 0 -18 0 -18 C0 -18 12 -10 12 0 Z" fill="url(#domeGrad)"/>
+              <line x1="0" y1="-18" x2="0" y2="-23" stroke="#8b6914" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="0" cy="-24" r="1.3" fill="#c9a13d"/>
+            </g>
+            <text x="50" y="62" text-anchor="middle" font-family="'Amiri', serif" font-size="22" font-weight="900" fill="url(#goldText)">نور</text>
+            <text x="50" y="72" text-anchor="middle" font-family="Arial" font-size="6" letter-spacing="2" fill="#8b6914">NOOR</text>
+          </svg>
+        </div>
+        <div class="list-content">
+          <div class="list-title">برنامه نور | NOOR</div>
+          <div class="list-sub">تقویم و اوقات شرعی — دانلود</div>
+        </div>
+        <svg class="list-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a class="list-item" href="https://kabulbazarstore-ship-it.github.io/Contacts/" target="_blank" rel="noopener">
+        <div class="list-icon" style="background:transparent;width:52px;height:52px;flex:0 0 52px;padding:0;box-shadow:none;">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+            <defs>
+              <linearGradient id="contactsBg" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1a4d3e"/>
+                <stop offset="100%" stop-color="#0d2e23"/>
+              </linearGradient>
+              <linearGradient id="phoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f5c94a"/>
+                <stop offset="100%" stop-color="#d4a017"/>
+              </linearGradient>
+            </defs>
+            <rect x="5" y="5" width="90" height="90" rx="28" ry="28" fill="url(#contactsBg)"/>
+            <circle cx="50" cy="50" r="34" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.08"/>
+            <circle cx="50" cy="50" r="24" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.1"/>
+            <circle cx="50" cy="50" r="14" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.12"/>
+            <g transform="translate(50, 50) rotate(-15) translate(-50, -50)">
+              <path d="M38 32 C36 30 32 30 30 32 L26 36 C24 38 24 42 26 46 C32 58 42 68 54 74 C58 76 62 76 64 74 L68 70 C70 68 70 64 68 62 L62 56 C60 54 56 54 54 56 L51 59 C46 56 42 52 39 47 L42 44 C44 42 44 38 42 36 Z" fill="url(#phoneGrad)"/>
+            </g>
+          </svg>
+        </div>
+        <div class="list-content">
+          <div class="list-title">برنامه مخاطبین</div>
+          <div class="list-sub">دفترچه تلفن هوشمند — دانلود</div>
+        </div>
+        <svg class="list-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         کارت التماس دعا — ساده و زیبا
+         ═══════════════════════════════════════════ -->
+    <div class="dua-card">
+
+      <div class="dua-title">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        التماس دعا
+      </div>
+
+      <div class="dua-text">
+        از همه کاربران گرامی درخواست دارم که برای<br>
+        <strong>پدر و مادر این بندهٔ حقیر</strong><br>
+        طلب مغفرت و رحمت نمایند.
+      </div>
+
+      <div class="dua-divider">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"/></svg>
+      </div>
+
+    </div>
+
+    <div class="version-info">
+      <strong>بانوان نور</strong> — نسخه ۱.۰.۰<br>
+      طراحی شده با مهر و محبت برای بانوان مسلمان
+    </div>
+
+    <div style="height:20px"></div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a class="nav-item" href="home.html">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>خانه</span>
+    </a>
+    <a class="nav-item" href="search.html">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <span>جستجو</span>
+    </a>
+    <a class="nav-item" href="hamraz.html">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>همراز</span>
+    </a>
+    <a class="nav-item" href="ahkam.html">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span>احکام</span>
+    </a>
+    <a class="nav-item active" href="settings.html">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span>بیشتر</span>
+    </a>
+  </nav>
+
+  <div class="modal" id="profileModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="profileModalTitle">ورود به برنامه</h3>
+        <button class="close-btn" onclick="closeModal('profileModal')" type="button">
+          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="avatar-picker">
+        <div class="avatar-preview" id="avatarPreview" onclick="document.getElementById('avatarInput').click()">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </div>
+        <input type="file" id="avatarInput" accept="image/*" />
+        <div class="avatar-picker-label">
+          <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          برای انتخاب عکس کلیک کنید
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>نام شما</label>
+        <input type="text" class="input-field" id="userName" placeholder="مثال: فاطمه" />
+      </div>
+
+      <div class="input-group">
+        <label>شماره واتساپ</label>
+        <input type="tel" class="input-field" id="userPhone" placeholder="مثال: 93700000000" />
+      </div>
+
+      <div class="info-box">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>نام و شماره واتساپ شما فقط برای ارتباط با مدیریت استفاده می‌شود و در هیچ جای برنامه قابل مشاهده نیست.</span>
+      </div>
+
+      <button class="btn-submit" id="saveProfileBtn" type="button" style="margin-top:16px;">
+        <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        ذخیره پروفایل
+      </button>
+
+      <button class="btn-submit green" id="verifyCodeBtn" type="button" style="margin-top:8px;">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        دریافت کد تایید
+      </button>
+
+      <button class="btn-submit red" id="deleteProfileBtn" type="button" style="margin-top:8px;display:none;">
+        <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        حذف پروفایل
+      </button>
+    </div>
+  </div>
+
+  <div class="modal" id="verifyModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>دریافت کد تایید</h3>
+        <button class="close-btn" onclick="closeModal('verifyModal')" type="button">
+          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-text">
+        <div style="width:80px;height:80px;margin:10px auto 20px;background:linear-gradient(135deg,#10b981,#059669);border-radius:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(16,185,129,0.4);">
+          <svg viewBox="0 0 24 24" style="width:44px;height:44px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <p style="text-align:center;font-size:1.05rem;font-weight:900;color:var(--text-soft);margin-bottom:14px;">کد تایید شما</p>
+        <div style="background:linear-gradient(135deg,rgba(236,72,153,0.15),rgba(168,85,247,0.2));border:2px dashed rgba(168,85,247,0.5);border-radius:16px;padding:22px;text-align:center;margin:16px 0;">
+          <div style="font-family:'Courier New',monospace;font-size:2.2rem;font-weight:900;letter-spacing:12px;color:#6d28d9;direction:ltr;">
+            <span id="verifyCodeDisplay">123456</span>
+          </div>
+        </div>
+        <div class="info-box">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>این کد تایید برای شما صادر شد. لطفاً آن را در جای امنی نگه دارید.</span>
+        </div>
+        <button class="btn-submit" id="sendVerifyToManager" type="button" style="margin-top:16px;">
+          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          ارسال کد به مدیریت
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var MANAGER_PHONE = '93744002790';
+      var SUPPORTED = ['fa', 'ps', 'en'];
+      var DEFAULT_LANG = 'fa';
+
+      function getSavedLang() {
+        try {
+          var l = localStorage.getItem('bn_lang');
+          if (l && SUPPORTED.indexOf(l) > -1) return l;
+        } catch (e) {}
+        return DEFAULT_LANG;
+      }
+      function setSavedLang(l) { try { localStorage.setItem('bn_lang', l); } catch (e) {} }
+
+      function getSavedFiqh() {
+        try {
+          var f = localStorage.getItem('bn_fiqh');
+          if (f === 'jafari' || f === 'hanafi') return f;
+        } catch (e) {}
+        return 'jafari';
+      }
+      function setSavedFiqh(f) { try { localStorage.setItem('bn_fiqh', f); } catch (e) {} }
+
+      function getUser() {
+        try {
+          var u = localStorage.getItem('bn_user');
+          return u ? JSON.parse(u) : null;
+        } catch (e) { return null; }
+      }
+      function saveUser(user) { try { localStorage.setItem('bn_user', JSON.stringify(user)); } catch (e) {} }
+      function deleteUser() { try { localStorage.removeItem('bn_user'); } catch (e) {} }
+
+      function updateProfileUI() {
+        var user = getUser();
+        var nameEl = document.getElementById('profileName');
+        var subEl = document.getElementById('profileSub');
+        var avatarEl = document.getElementById('profileAvatar');
+        var deleteBtn = document.getElementById('deleteProfileBtn');
+
+        if (user && user.name) {
+          nameEl.textContent = user.name;
+          subEl.textContent = user.phone ? user.phone : 'پروفایل شما';
+          if (user.avatar) {
+            avatarEl.innerHTML = '<img src="' + user.avatar + '" alt="avatar" />';
+          } else {
+            avatarEl.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>';
+          }
+          if (deleteBtn) deleteBtn.style.display = 'flex';
+        } else {
+          nameEl.textContent = 'ورود / ثبت نام';
+          subEl.textContent = 'برای ساخت پروفایل کلیک کنید';
+          avatarEl.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>';
+          if (deleteBtn) deleteBtn.style.display = 'none';
+        }
+      }
+
+      var toastTimer = null;
+      function showToast(msg, duration) {
+        duration = duration || 2500;
+        var t = document.getElementById('toast');
+        if (!t) return;
+        t.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          t.classList.remove('show');
+        }, duration);
+      }
+
+      window.openModal = function (id) {
+        var m = document.getElementById(id);
+        if (m) m.classList.add('show');
+      };
+      window.closeModal = function (id) {
+        var m = document.getElementById(id);
+        if (m) m.classList.remove('show');
+      };
+      document.querySelectorAll('.modal').forEach(function (m) {
+        m.addEventListener('click', function (e) {
+          if (e.target === m) m.classList.remove('show');
+        });
+      });
+
+      window.openProfile = function () {
+        var user = getUser();
+        var title = document.getElementById('profileModalTitle');
+        var nameInput = document.getElementById('userName');
+        var phoneInput = document.getElementById('userPhone');
+
+        if (user && user.name) {
+          title.textContent = 'پروفایل شما';
+          nameInput.value = user.name || '';
+          phoneInput.value = user.phone || '';
+          if (user.avatar) {
+            document.getElementById('avatarPreview').innerHTML = '<img src="' + user.avatar + '" alt="avatar" />';
+          }
+        } else {
+          title.textContent = 'ورود به برنامه';
+          nameInput.value = '';
+          phoneInput.value = '';
+          document.getElementById('avatarPreview').innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>';
+        }
+
+        openModal('profileModal');
+      };
+
+      var avatarData = null;
+
+      document.getElementById('avatarInput').addEventListener('change', function (e) {
+        var file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        if (file.size > 500 * 1024) {
+          showToast('عکس باید کمتر از ۵۰۰ کیلوبایت باشد');
+          return;
+        }
+
+        var reader = new FileReader();
+        reader.onload = function (ev) {
+          avatarData = ev.target.result;
+          document.getElementById('avatarPreview').innerHTML = '<img src="' + avatarData + '" alt="avatar" />';
+        };
+        reader.readAsDataURL(file);
+      });
+
+      document.getElementById('saveProfileBtn').addEventListener('click', function () {
+        var name = document.getElementById('userName').value.trim();
+        var phone = document.getElementById('userPhone').value.trim();
+
+        if (!name) { showToast('لطفاً نام خود را وارد کنید'); return; }
+        if (!phone) { showToast('لطفاً شماره واتساپ خود را وارد کنید'); return; }
+
+        var phoneClean = phone.replace(/[^0-9]/g, '');
+        if (phoneClean.length < 10) { showToast('شماره واتساپ معتبر نیست'); return; }
+
+        var existing = getUser();
+        var user = {
+          name: name,
+          phone: phone,
+          avatar: avatarData || (existing ? existing.avatar : null) || null,
+          createdAt: (existing ? existing.createdAt : null) || Date.now()
+        };
+
+        saveUser(user);
+        updateProfileUI();
+        closeModal('profileModal');
+        showToast('پروفایل با موفقیت ذخیره شد');
+      });
+
+      document.getElementById('verifyCodeBtn').addEventListener('click', function () {
+        var user = getUser();
+        if (!user || !user.name) {
+          showToast('ابتدا پروفایل خود را ذخیره کنید');
+          return;
+        }
+
+        var code = '';
+        for (var i = 0; i < 6; i++) code += Math.floor(Math.random() * 10);
+
+        try {
+          localStorage.setItem('bn_verify_code', code);
+          localStorage.setItem('bn_verify_time', String(Date.now()));
+        } catch (e) {}
+
+        document.getElementById('verifyCodeDisplay').textContent = code;
+        openModal('verifyModal');
+        showToast('کد تایید صادر شد');
+      });
+
+      document.getElementById('sendVerifyToManager').addEventListener('click', function () {
+        var user = getUser();
+        var code = '';
+        try { code = localStorage.getItem('bn_verify_code') || ''; } catch (e) {}
+
+        if (!user || !user.name) { showToast('ابتدا پروفایل خود را ذخیره کنید'); return; }
+        if (!code) { showToast('ابتدا کد تایید را دریافت کنید'); return; }
+
+        var msg = 'سلام مدیریت بانوان نور\n\n' +
+                  'من ' + user.name + ' هستم\n' +
+                  'شماره واتساپ من: ' + user.phone + '\n' +
+                  'کد تایید من: ' + code + '\n\n' +
+                  'درخواست تایید برای استفاده از برنامه دارم.\n\n' +
+                  'با تشکر';
+
+        var url = 'https://wa.me/' + MANAGER_PHONE + '?text=' + encodeURIComponent(msg);
+        window.open(url, '_blank');
+        showToast('کد تایید ارسال شد');
+      });
+
+      document.getElementById('deleteProfileBtn').addEventListener('click', function () {
+        if (!confirm('آیا مطمئنید؟ پروفایل شما حذف می‌شود.')) return;
+        deleteUser();
+        try {
+          localStorage.removeItem('bn_verify_code');
+          localStorage.removeItem('bn_verify_time');
+        } catch (e) {}
+        avatarData = null;
+        updateProfileUI();
+        closeModal('profileModal');
+        showToast('پروفایل حذف شد');
+      });
+
+      function applyLangUI(lang) {
+        var opts = document.querySelectorAll('.lang-option');
+        for (var i = 0; i < opts.length; i++) {
+          if (opts[i].getAttribute('data-lang') === lang) opts[i].classList.add('active');
+          else opts[i].classList.remove('active');
+        }
+        if (lang === 'en') document.documentElement.setAttribute('dir', 'ltr');
+        else document.documentElement.setAttribute('dir', 'rtl');
+      }
+
+      document.querySelectorAll('.lang-option').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var lang = btn.getAttribute('data-lang');
+          setSavedLang(lang);
+          applyLangUI(lang);
+          showToast('زبان تغییر کرد');
+        });
+      });
+
+      function applyFiqhUI(fiqh) {
+        var cards = document.querySelectorAll('.fiqh-card');
+        for (var i = 0; i < cards.length; i++) {
+          if (cards[i].getAttribute('data-fiqh') === fiqh) cards[i].classList.add('active');
+          else cards[i].classList.remove('active');
+        }
+      }
+
+      document.querySelectorAll('.fiqh-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+          var f = card.getAttribute('data-fiqh');
+          setSavedFiqh(f);
+          applyFiqhUI(f);
+          showToast('فقه ' + (f === 'jafari' ? 'جعفری' : 'حنفی') + ' انتخاب شد');
+        });
+      });
+
+      function init() {
+        applyLangUI(getSavedLang());
+        applyFiqhUI(getSavedFiqh());
+        updateProfileUI();
+        console.log('settings.html آماده');
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+
+</body>
+</html>

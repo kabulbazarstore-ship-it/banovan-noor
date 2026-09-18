@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#6d28d9" />
+  <title>احکام | بانوان نور</title>
+  <link rel="icon" href="assets/icon-192.png" type="image/png" />
+
+  <style>
+    :root {
+      --bg-1: #f3e8ff; --bg-2: #e9d5ff; --bg-3: #ddd6fe; --bg-4: #c4b5fd;
+      --text: #2d1259; --text-soft: #4c1d95; --text-card: #1f1147;
+      --text-muted: #7c6f9a;
+      --card: rgba(255,255,255,0.78); --card-border: rgba(168,85,247,0.2);
+      --card-shadow: 0 8px 22px rgba(109,40,217,0.12);
+      --icon-bg: rgba(255,255,255,0.8); --icon-border: rgba(168,85,247,0.25);
+      --icon-color: #6d28d9;
+      --nav-bg: rgba(255,255,255,0.92); --nav-border: rgba(168,85,247,0.2);
+      --nav-color: #7c6f9a; --nav-active: #6d28d9;
+      --star: 0.2;
+      --tab-bg: rgba(168,85,247,0.1);
+    }
+    body.dark {
+      --bg-1: #3b0764; --bg-2: #4c1d95; --bg-3: #5b21b6; --bg-4: #2d1259;
+      --text: #ffffff; --text-soft: #e9d5ff; --text-card: #ffffff;
+      --text-muted: #c4b5fd;
+      --card: rgba(255,255,255,0.08); --card-border: rgba(244,114,182,0.25);
+      --card-shadow: 0 8px 22px rgba(0,0,0,0.3);
+      --icon-bg: rgba(255,255,255,0.08); --icon-border: rgba(244,114,182,0.3);
+      --icon-color: #fbcfe8;
+      --nav-bg: rgba(26,11,61,0.94); --nav-border: rgba(244,114,182,0.25);
+      --nav-color: #a78bfa; --nav-active: #fbcfe8;
+      --star: 0.7;
+      --tab-bg: rgba(255,255,255,0.08);
+    }
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { width: 100%; }
+body { min-height: 100vh; width: 100%; }
+  
+    body {
+      font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+      direction: rtl;
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 600;
+      color: var(--text);
+      background-color: var(--bg-1);
+      background-image:
+        radial-gradient(ellipse 500px 400px at 20% 5%, rgba(236,72,153,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 400px 350px at 85% 15%, rgba(168,85,247,0.18) 0%, transparent 65%),
+        linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 25%, var(--bg-3) 50%, var(--bg-2) 75%, var(--bg-4) 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 0 0 110px 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 12% 8%, rgba(253,230,138,var(--star)) 0%, transparent 1.2%),
+        radial-gradient(circle at 88% 6%, rgba(253,230,138,var(--star)) 0%, transparent 1%),
+        radial-gradient(circle at 78% 45%, rgba(253,230,138,var(--star)) 0%, transparent 1%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app { max-width: 520px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
+
+    .page-header { display: flex; align-items: center; gap: 12px; padding: 20px 0 16px; }
+    .back-btn {
+      width: 42px; height: 42px; border-radius: 14px;
+      background: var(--icon-bg); backdrop-filter: blur(16px);
+      border: 1px solid var(--icon-border);
+      color: var(--icon-color);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex: 0 0 42px; text-decoration: none;
+      box-shadow: 0 4px 12px rgba(109,40,217,0.15);
+    }
+    .back-btn:active { transform: scale(0.94); }
+    .back-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transform: scaleX(-1); }
+    .page-header h1 {
+      font-size: 1.3rem; font-weight: 900; color: var(--text);
+      flex: 1; text-align: center; padding-right: 42px;
+    }
+
+    .tabs {
+      display: flex; gap: 8px;
+      background: var(--tab-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: 18px; padding: 6px;
+      margin-bottom: 18px;
+    }
+    .tab-btn {
+      flex: 1; background: transparent; border: 0;
+      color: var(--text-soft);
+      border-radius: 14px; padding: 14px 10px;
+      font-family: inherit; font-size: 0.95rem;
+      font-weight: 900; cursor: pointer;
+      display: flex; align-items: center;
+      justify-content: center; gap: 6px;
+      transition: all 0.25s ease;
+    }
+    .tab-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+    .tab-btn.active {
+      background: linear-gradient(135deg, #ec4899, #6d28d9);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(236,72,153,0.4);
+    }
+    .tab-btn:active { transform: scale(0.97); }
+
+    .marja-section { margin-bottom: 18px; }
+    .marja-title {
+      font-size: 1.05rem; font-weight: 900; color: var(--text);
+      margin-bottom: 6px; text-align: center;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .marja-title svg { width: 22px; height: 22px; fill: none; stroke: #6d28d9; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    body.dark .marja-title svg { stroke: #c4b5fd; }
+    .marja-subtitle {
+      font-size: 0.82rem; color: var(--text-muted);
+      text-align: center; font-weight: 700;
+      margin-bottom: 18px; line-height: 1.8;
+    }
+
+    .marja-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+
+    .marja-card {
+      position: relative;
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--card-border);
+      border-radius: 22px;
+      padding: 20px 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: right;
+      font-family: inherit;
+      display: flex; align-items: center; gap: 14px;
+      box-shadow: var(--card-shadow);
+      width: 100%;
+    }
+    .marja-card::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #ec4899, #a855f7, #6d28d9);
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .marja-card:active { transform: scale(0.98); }
+    .marja-card.active {
+      background: linear-gradient(135deg, rgba(236,72,153,0.12) 0%, rgba(168,85,247,0.15) 50%, rgba(109,40,217,0.18) 100%);
+      border-color: rgba(236,72,153,0.6);
+    }
+    .marja-card.active::before { opacity: 1; }
+
+    .marja-icon {
+      width: 56px; height: 56px; border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      flex: 0 0 56px;
+      box-shadow: 0 6px 16px rgba(109,40,217,0.25);
+    }
+    .marja-icon svg { width: 34px; height: 34px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .marja-info { flex: 1; min-width: 0; }
+    .marja-name { font-size: 1.05rem; font-weight: 900; color: var(--text-card); margin-bottom: 3px; }
+    .marja-sub { font-size: 0.75rem; color: var(--text-muted); font-weight: 700; }
+
+    .marja-check {
+      width: 26px; height: 26px; border-radius: 50%;
+      border: 2px solid var(--card-border);
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg-1); flex: 0 0 26px;
+    }
+    .marja-card.active .marja-check { background: linear-gradient(135deg, #ec4899, #6d28d9); border-color: transparent; }
+    .marja-check svg { width: 14px; height: 14px; fill: none; stroke: #fff; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+    .marja-card.active .marja-check svg { opacity: 1; }
+
+    .info-bar {
+      background: var(--card); backdrop-filter: blur(16px);
+      border: 1.5px dashed var(--card-border);
+      border-radius: 16px;
+      padding: 14px 16px; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--text-muted); line-height: 1.8;
+    }
+    .info-bar svg { width: 22px; height: 22px; flex: 0 0 22px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .info-bar strong { color: var(--text-soft); font-weight: 900; }
+    .change-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(135deg, rgba(236,72,153,0.15), rgba(109,40,217,0.15));
+      border: 1.5px solid var(--card-border);
+      color: var(--text-soft);
+      padding: 8px 14px; border-radius: 20px;
+      font-family: inherit; font-size: 0.72rem;
+      font-weight: 900; cursor: pointer;
+      white-space: nowrap;
+    }
+    .change-btn:active { transform: scale(0.95); }
+
+    .section-card {
+      background: var(--card); backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 18px 18px; cursor: pointer;
+    }
+    .section-header:active { background: rgba(168,85,247,0.08); }
+
+    .section-icon {
+      width: 48px; height: 48px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      flex: 0 0 48px;
+      background: linear-gradient(135deg,#a855f7,#6d28d9);
+      box-shadow: 0 6px 16px rgba(109,40,217,0.25);
+    }
+    .section-icon svg { width: 24px; height: 24px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .section-title-text { flex: 1; font-size: 1.05rem; font-weight: 900; color: var(--text-card); }
+    .section-count {
+      font-size: 0.7rem; font-weight: 800;
+      padding: 4px 12px; border-radius: 20px;
+      background: rgba(168,85,247,0.15);
+      color: var(--text-soft);
+      margin-left: 6px;
+    }
+    body.dark .section-count { background: rgba(196,181,253,0.15); }
+    .section-arrow {
+      width: 20px; height: 20px;
+      fill: none; stroke: var(--text-muted);
+      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+      transform: scaleX(-1);
+      transition: transform 0.3s ease;
+    }
+    .section-card.open .section-arrow { transform: rotate(90deg) scaleX(-1); }
+
+    .section-items { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .section-card.open .section-items { max-height: 3000px; }
+
+    .item-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 18px 14px 24px;
+      cursor: pointer;
+      border-top: 1px solid var(--card-border);
+      transition: background 0.2s;
+    }
+    .item-row:active { background: rgba(168,85,247,0.08); }
+    .item-row::before {
+      content: "";
+      width: 6px; height: 6px; border-radius: 50%;
+      background: linear-gradient(135deg, #ec4899, #6d28d9);
+      flex: 0 0 6px;
+    }
+    .item-row-text { flex: 1; min-width: 0; }
+    .item-row-title { font-size: 0.92rem; font-weight: 800; color: var(--text-card); margin-bottom: 2px; }
+    .item-row-sub { font-size: 0.75rem; color: var(--text-muted); font-weight: 700; }
+    .item-row svg.arrow { width: 18px; height: 18px; fill: none; stroke: var(--text-muted); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transform: scaleX(-1); flex: 0 0 18px; }
+
+    .content-modal {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: flex-end; justify-content: center;
+      z-index: 9999;
+      padding: 0;
+    }
+    .content-modal.show { display: flex; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .content-box {
+      width: 100%; max-width: 520px;
+      max-height: 92vh; overflow-y: auto;
+      background: var(--bg-1);
+      border-radius: 28px 28px 0 0;
+      padding: 24px 22px calc(28px + env(safe-area-inset-bottom, 0px));
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .content-head {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1.5px solid var(--card-border);
+      gap: 12px;
+    }
+    .content-head-text { flex: 1; }
+    .content-badge {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 900;
+      padding: 4px 12px; border-radius: 20px;
+      background: rgba(168,85,247,0.15);
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+    body.dark .content-badge { background: rgba(196,181,253,0.15); }
+    .content-title { font-size: 1.15rem; font-weight: 900; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
+    .content-sub { font-size: 0.8rem; color: var(--text-muted); font-weight: 700; }
+    .content-close {
+      width: 42px; height: 42px; border-radius: 14px;
+      background: var(--card); border: 1px solid var(--card-border);
+      color: var(--text-soft);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex: 0 0 42px;
+    }
+    .content-close svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+    .content-body {
+      font-size: 0.98rem; line-height: 2.2;
+      color: var(--text-card); font-weight: 700;
+      white-space: pre-line; margin-bottom: 20px;
+    }
+
+    .loader {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; padding: 50px 20px;
+      color: var(--text-muted); font-size: 0.9rem; font-weight: 700;
+    }
+    .loader::before {
+      content: "";
+      width: 22px; height: 22px;
+      border: 2.5px solid rgba(168,85,247,0.3);
+      border-top-color: #ec4899;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .empty { text-align: center; padding: 50px 20px; color: var(--text-muted); font-size: 0.9rem; line-height: 2; font-weight: 700; }
+
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg); backdrop-filter: blur(24px);
+      border-top: 1px solid var(--nav-border);
+      display: flex; justify-content: space-around;
+      padding: 8px 4px calc(8px + env(safe-area-inset-bottom, 0px));
+      max-width: 520px; margin: 0 auto;
+      box-shadow: 0 -8px 30px rgba(109,40,217,0.15);
+    }
+    .nav-item {
+      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
+      color: var(--nav-color); padding: 8px 2px;
+      font-size: 0.65rem; font-weight: 800;
+      text-decoration: none; cursor: pointer;
+      border-radius: 12px; position: relative;
+    }
+    .nav-item.active { color: var(--nav-active); }
+    .nav-item.active::before {
+      content: ""; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 22px; height: 3px;
+      border-radius: 0 0 4px 4px;
+      background: linear-gradient(90deg, #ec4899, #a855f7, #fde68a);
+      box-shadow: 0 0 12px rgba(236,72,153,0.8);
+    }
+    .nav-item svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-item.active svg { stroke-width: 2.4; }
+
+    @media (max-width: 380px) {
+      .app { padding: 0 12px; }
+      .page-header h1 { font-size: 1.15rem; }
+      .tab-btn { font-size: 0.85rem; padding: 12px 8px; }
+      .section-title-text { font-size: 0.95rem; }
+      .section-icon { width: 44px; height: 44px; flex: 0 0 44px; }
+      .section-icon svg { width: 22px; height: 22px; }
+      .marja-icon { width: 50px; height: 50px; flex: 0 0 50px; }
+      .marja-icon svg { width: 30px; height: 30px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('bn_theme') === 'dark') {
+          document.body.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <div class="app">
+
+    <header class="page-header">
+      <a class="back-btn" href="home.html" aria-label="بازگشت">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </a>
+      <h1>مرکز احکام بانوان</h1>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-school="jafari" type="button">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        جعفری
+      </button>
+      <button class="tab-btn" data-school="hanafi" type="button">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
+        حنفی
+      </button>
+    </div>
+
+    <div class="info-bar" id="infoBar" style="display:none;">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <span id="infoBarText" style="flex:1;">منبع: <strong>—</strong></span>
+      <button class="change-btn" id="changeMarjaBtn" type="button" style="display:none;">
+        تغییر مرجع
+      </button>
+    </div>
+
+    <div id="ahkamContent">
+      <div class="loader">در حال بارگذاری...</div>
+    </div>
+
+    <div style="height:20px"></div>
+  </div>
+
+  <div class="content-modal" id="contentModal">
+    <div class="content-box">
+      <div class="content-head">
+        <div class="content-head-text">
+          <span class="content-badge" id="modalBadge">—</span>
+          <div class="content-title" id="modalTitle">—</div>
+          <div class="content-sub" id="modalSub">—</div>
+        </div>
+        <button class="content-close" id="closeModalBtn" type="button" aria-label="بستن">
+          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="content-body" id="modalBody">—</div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a class="nav-item" href="home.html">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>خانه</span>
+    </a>
+    <a class="nav-item" href="search.html">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <span>جستجو</span>
+    </a>
+    <a class="nav-item" href="hamraz.html">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>همراز</span>
+    </a>
+    <a class="nav-item active" href="ahkam.html">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span>احکام</span>
+    </a>
+    <a class="nav-item" href="settings.html">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span>بیشتر</span>
+    </a>
+  </nav>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var currentSchool = 'jafari';
+      var currentMarja = null;
+      var currentData = null;
+      var dataCache = {};
+
+      // ========== مسیرهای صحیح ==========
+      var PATH_JAFARI = 'data/fiqh/jafari/';
+      var PATH_HANAFI = 'data/fiqh/hanafi.json';
+      // ==================================
+
+      var BOOK_SVG = '<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/></svg>';
+
+      var MARJAS = [
+        { id: 'sistani', name: 'آیت‌الله سیستانی', sub: 'توضیح المسائل جامع', file: PATH_JAFARI + 'sistani.json', color: 'linear-gradient(135deg,#a855f7,#6d28d9)' },
+        { id: 'shirazi', name: 'آیت‌الله سید صادق شیرازی', sub: 'أحکام النساء', file: PATH_JAFARI + 'shirazi.json', color: 'linear-gradient(135deg,#ec4899,#be185d)' },
+        { id: 'fayyaz', name: 'آیت‌الله فیاض', sub: 'منهاج الصالحین', file: PATH_JAFARI + 'fayyaz.json', color: 'linear-gradient(135deg,#8b5cf6,#4c1d95)' }
+      ];
+
+      var sectionIcons = {
+        taharat: '<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
+        hayz: '<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><circle cx="12" cy="14" r="3" fill="#fff"/></svg>',
+        nifas: '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>',
+        istihaza: '<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><line x1="12" y1="8" x2="12" y2="18" stroke="#fff" stroke-width="1.5"/></svg>',
+        namaz: '<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>',
+        rooze: '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
+        ezdevaj: '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+        hejab: '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-10 10c0 5 4 9 10 9s10-4 10-9A10 10 0 0 0 12 2z"/><path d="M12 6a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0v-6a4 4 0 0 0-4-4z" fill="#fff" opacity="0.4"/></svg>',
+        talaq: '<svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>',
+        khums: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h6M9 14h6"/></svg>',
+        zakat: '<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/><circle cx="12" cy="12" r="3" fill="#fff" opacity="0.5"/></svg>',
+        hajj: '<svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg>',
+        etem: '<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>',
+        nazar: '<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>',
+        tohafoz: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+        bardari: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'
+      };
+
+      function $(id) { return document.getElementById(id); }
+
+      function escapeHtml(s) {
+        if (s == null) return '';
+        return String(s)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      }
+
+      async function loadJSON(path) {
+        if (dataCache[path]) return dataCache[path];
+        try {
+          var res = await fetch(path);
+          if (!res.ok) return null;
+          var data = await res.json();
+          dataCache[path] = data;
+          return data;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function renderMarjaCards() {
+        var container = $('ahkamContent');
+        $('infoBar').style.display = 'none';
+
+        var html = MARJAS.map(function (m) {
+          return '<button class="marja-card" data-marja="' + m.id + '" type="button">' +
+            '<div class="marja-icon" style="background:' + m.color + ';">' + BOOK_SVG + '</div>' +
+            '<div class="marja-info">' +
+              '<div class="marja-name">' + escapeHtml(m.name) + '</div>' +
+              '<div class="marja-sub">' + escapeHtml(m.sub) + '</div>' +
+            '</div>' +
+            '<div class="marja-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>' +
+          '</button>';
+        }).join('');
+
+        container.innerHTML =
+          '<div class="marja-section">' +
+            '<div class="marja-title">' +
+              '<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>' +
+              'انتخاب مرجع تقلید' +
+            '</div>' +
+            '<div class="marja-subtitle">لطفاً مرجع تقلید خود را انتخاب کنید<br>تا احکام مطابق فتوای ایشان نمایش داده شود</div>' +
+            '<div class="marja-grid">' + html + '</div>' +
+          '</div>';
+
+        container.querySelectorAll('.marja-card').forEach(function (card) {
+          card.addEventListener('click', function () {
+            selectMarja(card.getAttribute('data-marja'));
+          });
+        });
+      }
+
+      async function selectMarja(marjaId) {
+        currentMarja = marjaId;
+
+        var info = null;
+        for (var i = 0; i < MARJAS.length; i++) {
+          if (MARJAS[i].id === marjaId) { info = MARJAS[i]; break; }
+        }
+        if (!info) return;
+
+        $('ahkamContent').innerHTML = '<div class="loader">در حال بارگذاری احکام...</div>';
+
+        var data = await loadJSON(info.file);
+        if (!data) {
+          $('ahkamContent').innerHTML =
+            '<div class="empty">خطا در بارگذاری فایل احکام<br><br>' +
+            'فایل: <strong>' + info.file + '</strong></div>';
+          return;
+        }
+
+        currentData = data;
+
+        $('infoBarText').innerHTML = 'منبع: <strong>' + escapeHtml(info.name) + ' — ' + escapeHtml(info.sub) + '</strong>';
+        $('changeMarjaBtn').style.display = 'inline-flex';
+        $('infoBar').style.display = 'flex';
+
+        renderSections(data);
+      }
+
+      function renderSections(data) {
+        var container = $('ahkamContent');
+        if (!data || !data.sections || data.sections.length === 0) {
+          container.innerHTML = '<div class="empty">محتوایی یافت نشد</div>';
+          return;
+        }
+
+        var html = data.sections.map(function (sec) {
+          var icon = sectionIcons[sec.id] || sectionIcons.taharat;
+          var count = (sec.items || []).length;
+
+          var itemsHtml = (sec.items || []).map(function (item, idx) {
+            return '<div class="item-row" data-section="' + sec.id + '" data-item="' + idx + '">' +
+              '<div class="item-row-text">' +
+                '<div class="item-row-title">' + escapeHtml(item.title) + '</div>' +
+                (item.subtitle ? '<div class="item-row-sub">' + escapeHtml(item.subtitle) + '</div>' : '') +
+              '</div>' +
+              '<svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
+            '</div>';
+          }).join('');
+
+          return '<div class="section-card" data-section="' + sec.id + '">' +
+            '<div class="section-header">' +
+              '<div class="section-icon">' + icon + '</div>' +
+              '<div class="section-title-text">' + escapeHtml(sec.title) + '</div>' +
+              '<span class="section-count">' + count + '</span>' +
+              '<svg class="section-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
+            '</div>' +
+            '<div class="section-items">' + itemsHtml + '</div>' +
+          '</div>';
+        }).join('');
+
+        container.innerHTML = html;
+
+        container.querySelectorAll('.section-header').forEach(function (header) {
+          header.addEventListener('click', function () {
+            header.parentElement.classList.toggle('open');
+          });
+        });
+
+        container.querySelectorAll('.item-row').forEach(function (row) {
+          row.addEventListener('click', function (e) {
+            e.stopPropagation();
+            openContent(row.getAttribute('data-section'), parseInt(row.getAttribute('data-item'), 10));
+          });
+        });
+      }
+
+      function openContent(secId, itemIdx) {
+        if (!currentData || !currentData.sections) return;
+        var sec = null;
+        for (var i = 0; i < currentData.sections.length; i++) {
+          if (currentData.sections[i].id === secId) { sec = currentData.sections[i]; break; }
+        }
+        if (!sec || !sec.items || !sec.items[itemIdx]) return;
+
+        var item = sec.items[itemIdx];
+        $('modalBadge').textContent = sec.title;
+        $('modalTitle').textContent = item.title;
+        $('modalSub').textContent = item.subtitle || '';
+        $('modalBody').textContent = item.content || 'محتوایی موجود نیست.';
+        $('contentModal').classList.add('show');
+      }
+
+      function closeContent() {
+        $('contentModal').classList.remove('show');
+      }
+
+      async function switchSchool(school) {
+        currentSchool = school;
+        try { localStorage.setItem('bn_fiqh', school); } catch (e) {}
+
+        document.querySelectorAll('.tab-btn').forEach(function (btn) {
+          if (btn.getAttribute('data-school') === school) btn.classList.add('active');
+          else btn.classList.remove('active');
+        });
+
+        $('ahkamContent').innerHTML = '<div class="loader">در حال بارگذاری...</div>';
+
+        if (school === 'jafari') {
+          var savedMarja = null;
+          try { savedMarja = localStorage.getItem('bn_marja'); } catch (e) {}
+          if (savedMarja && (savedMarja === 'sistani' || savedMarja === 'shirazi' || savedMarja === 'fayyaz')) {
+            await selectMarja(savedMarja);
+          } else {
+            renderMarjaCards();
+          }
+        } else {
+          currentMarja = null;
+          var data = await loadJSON(PATH_HANAFI);
+          if (!data) {
+            $('ahkamContent').innerHTML =
+              '<div class="empty">خطا در بارگذاری فایل احکام<br><br>' +
+              'فایل: <strong>' + PATH_HANAFI + '</strong></div>';
+            return;
+          }
+          currentData = data;
+          $('infoBarText').innerHTML = 'منبع: <strong>فقه حنفی</strong>';
+          $('changeMarjaBtn').style.display = 'none';
+          $('infoBar').style.display = 'flex';
+          renderSections(data);
+        }
+      }
+
+      async function init() {
+        document.querySelectorAll('.tab-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var school = btn.getAttribute('data-school');
+            if (school !== currentSchool) switchSchool(school);
+          });
+        });
+
+        $('changeMarjaBtn').addEventListener('click', function () {
+          currentMarja = null;
+          try { localStorage.removeItem('bn_marja'); } catch (e) {}
+          renderMarjaCards();
+        });
+
+        $('closeModalBtn').addEventListener('click', closeContent);
+        $('contentModal').addEventListener('click', function (e) {
+          if (e.target === this) closeContent();
+        });
+
+        var savedSchool = 'jafari';
+        try {
+          var s = localStorage.getItem('bn_fiqh');
+          if (s === 'jafari' || s === 'hanafi') savedSchool = s;
+        } catch (e) {}
+
+        await switchSchool(savedSchool);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+
+</body>
+</html>

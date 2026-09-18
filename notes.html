@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0284c7" />
+<title>یادداشت‌های من | بانوان نور</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<style>
+:root{
+  --bg-1:#f0f9ff;--bg-2:#e0f2fe;--bg-3:#bae6fd;--bg-4:#7dd3fc;
+  --text:#0c4a6e;--text-soft:#075985;--text-card:#0c4a6e;--text-muted:#0369a1;
+  --card:rgba(255,255,255,.85);--card-border:rgba(14,165,233,.22);
+  --card-shadow:0 8px 22px rgba(3,105,161,.12);
+  --icon-bg:rgba(255,255,255,.85);--icon-border:rgba(14,165,233,.25);--icon-color:#0284c7;
+  --nav-bg:rgba(255,255,255,.94);--nav-border:rgba(14,165,233,.2);
+  --nav-color:#0369a1;--nav-active:#0284c7;
+  --star:.2;
+  --search-bg:rgba(255,255,255,.92);
+  --chip-bg:rgba(255,255,255,.7);
+  --chip-border:rgba(14,165,233,.25);
+  --accent:#0ea5e9;
+  --accent-dark:#0284c7;
+  --blue-soft:rgba(14,165,233,.1);
+}
+body.dark{
+  --bg-1:#082f49;--bg-2:#0c4a6e;--bg-3:#075985;--bg-4:#082f49;
+  --text:#fff;--text-soft:#bae6fd;--text-card:#fff;--text-muted:#7dd3fc;
+  --card:rgba(255,255,255,.08);--card-border:rgba(125,211,252,.3);
+  --card-shadow:0 8px 22px rgba(0,0,0,.3);
+  --icon-bg:rgba(255,255,255,.08);--icon-border:rgba(125,211,252,.3);--icon-color:#bae6fd;
+  --nav-bg:rgba(8,47,73,.94);--nav-border:rgba(125,211,252,.25);
+  --nav-color:#7dd3fc;--nav-active:#bae6fd;
+  --star:.7;
+  --search-bg:rgba(255,255,255,.08);
+  --chip-bg:rgba(255,255,255,.06);
+  --chip-border:rgba(125,211,252,.3);
+  --blue-soft:rgba(125,211,252,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%}
+body{
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;direction:rtl;font-size:17px;
+  line-height:1.8;font-weight:600;color:var(--text);background-color:var(--bg-1);
+  background-image:
+    radial-gradient(ellipse 500px 400px at 20% 5%,rgba(14,165,233,.15) 0,transparent 60%),
+    radial-gradient(ellipse 400px 350px at 85% 15%,rgba(125,211,252,.18) 0,transparent 65%),
+    linear-gradient(160deg,var(--bg-1) 0,var(--bg-2) 25%,var(--bg-3) 50%,var(--bg-2) 75%,var(--bg-4) 100%);
+  background-attachment:fixed;min-height:100vh;padding:0 0 110px;position:relative;overflow-x:hidden;
+  transition:background-color .4s,color .3s;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background-image:
+    radial-gradient(circle at 12% 8%,rgba(253,230,138,var(--star)) 0,transparent 1.2%),
+    radial-gradient(circle at 88% 6%,rgba(253,230,138,var(--star)) 0,transparent 1%);
+  pointer-events:none;z-index:0;
+}
+.app{max-width:520px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
+
+.page-header{display:flex;align-items:center;gap:12px;padding:20px 0 16px}
+.back-btn{
+  width:44px;height:44px;border-radius:14px;background:var(--icon-bg);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--icon-border);color:var(--icon-color);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  flex:0 0 44px;text-decoration:none;box-shadow:0 4px 12px rgba(3,105,161,.15);
+}
+.back-btn:active{transform:scale(.94)}
+.back-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
+.page-header h1{font-size:1.35rem;font-weight:900;color:var(--text);flex:1;text-align:center;padding-right:44px}
+
+.hero{
+  background:linear-gradient(135deg,#38bdf8 0,#0284c7 100%);
+  border-radius:20px;padding:22px;margin-bottom:16px;color:#fff;
+  position:relative;overflow:hidden;
+  box-shadow:0 12px 30px rgba(3,105,161,.35);
+  display:flex;align-items:center;gap:14px;
+}
+.hero::before{
+  content:"";position:absolute;top:-40px;right:-40px;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.2),transparent 70%);
+  pointer-events:none;
+}
+.hero-icon{
+  width:56px;height:56px;border-radius:16px;
+  background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.3);
+  display:flex;align-items:center;justify-content:center;flex:0 0 56px;
+  backdrop-filter:blur(10px);
+}
+.hero-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hero-text{flex:1}
+.hero-title{font-size:1.1rem;font-weight:900;margin-bottom:5px;text-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hero-sub{font-size:.85rem;opacity:.95;font-weight:700;line-height:1.7}
+
+/* ADD BUTTON */
+.add-note-btn{
+  width:100%;padding:16px;border-radius:16px;border:0;
+  background:linear-gradient(135deg,#0ea5e9,#0284c7);
+  color:#fff;font-family:inherit;font-size:1rem;font-weight:900;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 8px 20px rgba(2,132,199,.35);
+  margin-bottom:16px;
+}
+.add-note-btn:active{transform:scale(.97)}
+.add-note-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+.search-wrap{position:relative;margin-bottom:14px}
+.search-input{
+  width:100%;padding:14px 48px 14px 18px;border-radius:16px;
+  border:1.5px solid var(--card-border);background:var(--search-bg);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  color:var(--text);font-family:inherit;font-size:.95rem;font-weight:700;
+  outline:none;transition:border-color .25s;
+}
+.search-input:focus{border-color:rgba(14,165,233,.7)}
+.search-input::placeholder{color:var(--text-muted)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:20px;height:20px;fill:none;stroke:var(--text-muted);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+
+.filter-count{
+  font-size:.82rem;font-weight:800;color:var(--text-muted);
+  margin:0 4px 14px;
+}
+
+/* NOTES LIST */
+.notes-list{display:flex;flex-direction:column;gap:12px}
+.note-card{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:18px;
+  padding:18px;box-shadow:var(--card-shadow);
+  transition:all .22s;position:relative;overflow:hidden;
+}
+.note-card:active{transform:scale(.99)}
+.note-card::before{
+  content:"";position:absolute;top:0;right:0;
+  width:5px;height:100%;
+  background:linear-gradient(180deg,#0ea5e9,#0284c7);
+}
+.note-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:10px;margin-bottom:10px;
+}
+.note-title{
+  font-size:1.02rem;font-weight:900;color:var(--text-card);
+  line-height:1.5;flex:1;word-break:break-word;
+}
+.note-date{
+  font-size:.7rem;font-weight:800;color:var(--text-muted);
+  background:var(--blue-soft);padding:3px 10px;border-radius:12px;
+  white-space:nowrap;display:flex;align-items:center;gap:4px;
+}
+.note-date svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.note-body{
+  font-size:.92rem;font-weight:700;color:var(--text-card);
+  line-height:2;white-space:pre-line;word-break:break-word;
+  padding:12px 0;
+  border-top:1px dashed var(--card-border);
+  border-bottom:1px dashed var(--card-border);
+  margin-bottom:12px;
+}
+.note-actions{
+  display:flex;gap:6px;justify-content:flex-end;
+}
+.note-btn{
+  width:40px;height:40px;border-radius:11px;
+  background:transparent;border:1px solid transparent;
+  color:var(--text-muted);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;padding:0;transition:all .18s;
+  font-family:inherit;
+}
+.note-btn:hover{background:var(--icon-bg);border-color:var(--icon-border);color:var(--icon-color)}
+.note-btn:active{transform:scale(.88)}
+.note-btn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.note-btn.danger{color:#dc2626}
+.note-btn.danger:hover{background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.3)}
+
+/* EDITOR MODAL */
+.editor-modal{
+  position:fixed;inset:0;background:rgba(0,0,0,.65);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  display:none;align-items:flex-end;justify-content:center;
+  z-index:10000;padding:0;
+}
+.editor-modal.show{display:flex;animation:mFade .3s ease}
+@keyframes mFade{from{opacity:0}to{opacity:1}}
+.editor-box{
+  width:100%;max-width:520px;max-height:92vh;overflow-y:auto;
+  background:var(--bg-1);border-radius:28px 28px 0 0;
+  padding:24px 22px calc(28px + env(safe-area-inset-bottom,0px));
+  animation:mSlide .35s ease;
+}
+@keyframes mSlide{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
+.editor-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:18px;padding-bottom:14px;
+  border-bottom:1.5px solid var(--card-border);gap:12px;
+}
+.editor-title{
+  font-size:1.15rem;font-weight:900;color:var(--text);
+}
+.editor-close{
+  width:44px;height:44px;border-radius:14px;
+  background:var(--card);border:1px solid var(--card-border);
+  color:var(--text-soft);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex:0 0 44px;
+}
+.editor-close:active{transform:scale(.9)}
+.editor-close svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+
+.editor-field{margin-bottom:14px}
+.editor-label{
+  display:block;font-size:.85rem;font-weight:900;
+  color:var(--text-muted);margin-bottom:8px;
+  letter-spacing:.3px;
+}
+.editor-input,.editor-textarea{
+  width:100%;padding:14px 16px;border-radius:12px;
+  border:1.5px solid var(--card-border);
+  background:var(--search-bg);color:var(--text);
+  font-family:inherit;font-size:1rem;font-weight:700;
+  outline:none;transition:border-color .25s;
+}
+.editor-textarea{
+  min-height:200px;resize:vertical;line-height:1.9;
+}
+.editor-input:focus,.editor-textarea:focus{border-color:var(--accent)}
+
+.editor-save{
+  width:100%;padding:14px;border-radius:12px;border:0;
+  background:linear-gradient(135deg,#0ea5e9,#0284c7);
+  color:#fff;font-family:inherit;font-size:1rem;font-weight:900;
+  cursor:pointer;transition:all .2s;
+  box-shadow:0 6px 16px rgba(2,132,199,.35);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.editor-save:active{transform:scale(.97)}
+.editor-save svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+.loader,.empty{
+  text-align:center;padding:60px 20px;
+  color:var(--text-muted);font-size:.95rem;font-weight:700;line-height:2;
+}
+.loader::before{
+  content:"";display:block;width:32px;height:32px;
+  border:3px solid rgba(14,165,233,.2);border-top-color:#0ea5e9;
+  border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* EMPTY STATE */
+.empty-state{
+  text-align:center;padding:50px 20px;
+  color:var(--text-muted);
+}
+.empty-state-icon{
+  width:80px;height:80px;margin:0 auto 20px;
+  border-radius:50%;
+  background:var(--blue-soft);
+  display:flex;align-items:center;justify-content:center;
+}
+.empty-state-icon svg{
+  width:40px;height:40px;fill:none;stroke:var(--accent);
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  opacity:.7;
+}
+.empty-state-title{
+  font-size:1.05rem;font-weight:900;color:var(--text-card);
+  margin-bottom:8px;
+}
+.empty-state-text{
+  font-size:.88rem;font-weight:700;line-height:1.9;
+}
+
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:var(--nav-bg);backdrop-filter:blur(24px);
+  border-top:1px solid var(--nav-border);
+  display:flex;justify-content:space-around;
+  padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));
+  max-width:520px;margin:0 auto;
+  box-shadow:0 -8px 30px rgba(3,105,161,.15);
+}
+.nav-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  color:var(--nav-color);padding:8px 2px;font-size:.68rem;font-weight:800;
+  text-decoration:none;cursor:pointer;border-radius:12px;position:relative;
+}
+.nav-item.active{color:var(--nav-active)}
+.nav-item.active::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:22px;height:3px;border-radius:0 0 4px 4px;
+  background:linear-gradient(90deg,#38bdf8,#0284c7,#bae6fd);
+  box-shadow:0 0 12px rgba(14,165,233,.8);
+}
+.nav-item svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-item.active svg{stroke-width:2.4}
+
+.toast{
+  position:fixed;bottom:110px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:linear-gradient(135deg,#0284c7,#0ea5e9);color:#fff;
+  padding:14px 26px;border-radius:30px;font-size:.95rem;font-weight:900;
+  z-index:10002;opacity:0;transition:all .3s;pointer-events:none;
+  box-shadow:0 12px 30px rgba(14,165,233,.5);max-width:90vw;text-align:center;
+  white-space:pre-line;line-height:1.7;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:380px){
+  body{font-size:16px}
+  .app{padding:0 12px}
+  .page-header h1{font-size:1.2rem}
+  .hero{padding:18px}
+  .hero-icon{width:48px;height:48px;flex:0 0 48px}
+  .note-title{font-size:.95rem}
+  .note-body{font-size:.86rem}
+  .nav-item{font-size:.62rem}
+  .nav-item svg{width:21px;height:21px}
+}
+</style>
+</head>
+
+<body>
+
+<script>
+(function(){
+  try{ if(localStorage.getItem('bn_theme')==='dark') document.body.classList.add('dark'); }catch(e){}
+})();
+</script>
+
+<div class="app">
+
+  <header class="page-header">
+    <a class="back-btn" href="home.html" aria-label="بازگشت">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <h1>یادداشت‌های من</h1>
+  </header>
+
+  <div class="hero">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    </div>
+    <div class="hero-text">
+      <div class="hero-title">یادداشت‌های شخصی</div>
+      <div class="hero-sub">افکار، ایده‌ها و نکات مهم 💙</div>
+    </div>
+  </div>
+
+  <button class="add-note-btn" id="addNoteBtn" type="button">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    یادداشت جدید
+  </button>
+
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" class="search-input" id="searchInput" placeholder="جستجو در یادداشت‌ها..." />
+  </div>
+
+  <div class="filter-count" id="filterCount">—</div>
+
+  <div class="notes-list" id="notesList">
+    <div class="loader">در حال بارگذاری...</div>
+  </div>
+
+  <div style="height:20px"></div>
+</div>
+
+<!-- EDITOR MODAL -->
+<div class="editor-modal" id="editorModal">
+  <div class="editor-box">
+    <div class="editor-head">
+      <div class="editor-title" id="editorTitle">یادداشت جدید</div>
+      <button class="editor-close" id="editorClose" type="button" aria-label="بستن">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="editor-field">
+      <label class="editor-label">عنوان</label>
+      <input type="text" class="editor-input" id="noteTitleInput" placeholder="مثلاً: قرار ملاقات دکتر" maxlength="80" />
+    </div>
+
+    <div class="editor-field">
+      <label class="editor-label">متن یادداشت</label>
+      <textarea class="editor-textarea" id="noteBodyInput" placeholder="یادداشت خود را اینجا بنویسید..."></textarea>
+    </div>
+
+    <button class="editor-save" id="editorSave" type="button">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      ذخیره
+    </button>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-item" href="home.html">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>خانه</span>
+  </a>
+  <a class="nav-item" href="search.html">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <span>جستجو</span>
+  </a>
+  <a class="nav-item" href="hamraz.html">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>همراز</span>
+  </a>
+  <a class="nav-item" href="ahkam.html">
+    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <span>احکام</span>
+  </a>
+  <a class="nav-item" href="settings.html">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span>بیشتر</span>
+  </a>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+
+var NOTES_KEY = 'bn_notes_data';
+
+var notes = [];
+var currentEditId = null;
+var searchQuery = '';
+var toastTimer = null;
+
+/* ═══ HELPERS ═══ */
+function $(id){ return document.getElementById(id); }
+function escapeHtml(s){
+  if(s==null) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function faNum(n){ return String(n).replace(/\d/g,function(d){ return '۰۱۲۳۴۵۶۷۸۹'[d]; }); }
+function showMsg(msg,dur){
+  dur=dur||2200;
+  var t=$('toast'); if(!t) return;
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(function(){ t.classList.remove('show'); },dur);
+}
+function getTheme(){ try{ return localStorage.getItem('bn_theme')||'light'; }catch(e){ return 'light'; } }
+function applyTheme(){
+  if(getTheme()==='dark') document.body.classList.add('dark');
+  else document.body.classList.remove('dark');
+}
+
+function pad2(n){ return n<10?'0'+n:''+n; }
+function formatDate(ts){
+  if(!ts) return '';
+  var d = new Date(ts);
+  var months = ['ژانویه','فوریه','مارس','آپریل','مه','ژوئن','ژوئیه','اوت','سپتامبر','اکتبر','نوامبر','دسامبر'];
+  var h = d.getHours();
+  var m = d.getMinutes();
+  var hh = h < 12 ? (h === 0 ? 12 : h) : (h === 12 ? 12 : h - 12);
+  var ampm = h < 12 ? 'صبح' : 'عصر';
+  return faNum(d.getDate()) + ' ' + months[d.getMonth()] + ' • ' +
+         faNum(hh) + ':' + faNum(pad2(m)) + ' ' + ampm;
+}
+
+/* ═══ STORAGE ═══ */
+function loadNotes(){
+  try{
+    var raw = localStorage.getItem(NOTES_KEY);
+    if(!raw){ notes = []; return; }
+    var arr = JSON.parse(raw);
+    notes = Array.isArray(arr) ? arr : [];
+  }catch(e){ notes = []; }
+}
+
+function saveNotes(){
+  try{ localStorage.setItem(NOTES_KEY, JSON.stringify(notes)); }catch(e){}
+}
+
+function generateId(){
+  return 'note_' + Date.now() + '_' + Math.floor(Math.random()*1e6);
+}
+
+/* ═══ RENDER ═══ */
+function renderNotes(){
+  var list = $('notesList');
+  if(!list) return;
+
+  var filtered = notes.slice().sort(function(a,b){
+    return (b.updated || b.created || 0) - (a.updated || a.created || 0);
+  });
+
+  if(searchQuery){
+    var q = searchQuery.toLowerCase().trim();
+    filtered = filtered.filter(function(n){
+      var t = (n.title || '').toLowerCase();
+      var b = (n.body || '').toLowerCase();
+      return t.indexOf(q) > -1 || b.indexOf(q) > -1;
+    });
+  }
+
+  var cnt = $('filterCount');
+  if(cnt) cnt.textContent = faNum(filtered.length) + ' یادداشت';
+
+  if(filtered.length === 0){
+    list.innerHTML =
+      '<div class="empty-state">' +
+        '<div class="empty-state-icon">' +
+          '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>' +
+        '</div>' +
+        '<div class="empty-state-title">' +
+          (searchQuery ? 'یادداشتی یافت نشد' : 'هنوز یادداشتی نداری') +
+        '</div>' +
+        '<div class="empty-state-text">' +
+          (searchQuery ? 'کلمه دیگری امتحان کن' : 'روی دکمه «یادداشت جدید» بزن و اولین یادداشتت را بنویس 💙') +
+        '</div>' +
+      '</div>';
+    return;
+  }
+
+  var html = '';
+  filtered.forEach(function(n){
+    html += '<div class="note-card" data-id="' + escapeHtml(n.id) + '">' +
+      '<div class="note-head">' +
+        '<div class="note-title">' + escapeHtml(n.title || 'بدون عنوان') + '</div>' +
+        '<div class="note-date">' +
+          '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>' +
+          escapeHtml(formatDate(n.updated || n.created)) +
+        '</div>' +
+      '</div>' +
+      '<div class="note-body">' + escapeHtml(n.body || '') + '</div>' +
+      '<div class="note-actions">' +
+        '<button class="note-btn" data-act="copy" data-id="' + escapeHtml(n.id) + '" title="کپی">' +
+          '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' +
+        '</button>' +
+        '<button class="note-btn" data-act="edit" data-id="' + escapeHtml(n.id) + '" title="ویرایش">' +
+          '<svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>' +
+        '</button>' +
+        '<button class="note-btn danger" data-act="delete" data-id="' + escapeHtml(n.id) + '" title="حذف">' +
+          '<svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>' +
+        '</button>' +
+      '</div>' +
+    '</div>';
+  });
+
+  list.innerHTML = html;
+
+  list.querySelectorAll('[data-act]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var act = btn.getAttribute('data-act');
+      var id = btn.getAttribute('data-id');
+      if(act === 'edit') openEditor(id);
+      else if(act === 'delete') deleteNote(id);
+      else if(act === 'copy') copyNote(id);
+    });
+  });
+
+  list.querySelectorAll('.note-card').forEach(function(card){
+    card.addEventListener('click', function(e){
+      if(e.target.closest('[data-act]')) return;
+      openEditor(card.getAttribute('data-id'));
+    });
+  });
+}
+
+/* ═══ EDITOR ═══ */
+function openEditor(id){
+  currentEditId = id || null;
+  var titleEl = $('editorTitle');
+  var titleInput = $('noteTitleInput');
+  var bodyInput = $('noteBodyInput');
+
+  if(id){
+    var n = null;
+    for(var i=0; i<notes.length; i++){
+      if(notes[i].id === id){ n = notes[i]; break; }
+    }
+    if(n){
+      titleEl.textContent = 'ویرایش یادداشت';
+      titleInput.value = n.title || '';
+      bodyInput.value = n.body || '';
+    }
+  } else {
+    titleEl.textContent = 'یادداشت جدید';
+    titleInput.value = '';
+    bodyInput.value = '';
+  }
+
+  $('editorModal').classList.add('show');
+  setTimeout(function(){ titleInput.focus(); }, 300);
+}
+
+function closeEditor(){
+  $('editorModal').classList.remove('show');
+  currentEditId = null;
+}
+
+function saveCurrentNote(){
+  var title = ($('noteTitleInput').value || '').trim();
+  var body = ($('noteBodyInput').value || '').trim();
+
+  if(!title && !body){
+    showMsg('یادداشت خالی است');
+    return;
+  }
+
+  var now = Date.now();
+
+  if(currentEditId){
+    for(var i=0; i<notes.length; i++){
+      if(notes[i].id === currentEditId){
+        notes[i].title = title;
+        notes[i].body = body;
+        notes[i].updated = now;
+        break;
+      }
+    }
+    showMsg('یادداشت ویرایش شد ✓');
+  } else {
+    notes.push({
+      id: generateId(),
+      title: title,
+      body: body,
+      created: now,
+      updated: now
+    });
+    showMsg('یادداشت ذخیره شد ✓');
+  }
+
+  saveNotes();
+  renderNotes();
+  closeEditor();
+}
+
+/* ═══ DELETE ═══ */
+function deleteNote(id){
+  var idx = -1;
+  for(var i=0; i<notes.length; i++){
+    if(notes[i].id === id){ idx = i; break; }
+  }
+  if(idx === -1) return;
+
+  if(!confirm('مطمئنی می‌خواهی این یادداشت را حذف کنی؟')) return;
+
+  notes.splice(idx, 1);
+  saveNotes();
+  renderNotes();
+  showMsg('یادداشت حذف شد');
+}
+
+/* ═══ COPY ═══ */
+function copyNote(id){
+  var n = null;
+  for(var i=0; i<notes.length; i++){
+    if(notes[i].id === id){ n = notes[i]; break; }
+  }
+  if(!n) return;
+  var text = (n.title ? n.title + '\n\n' : '') + (n.body || '');
+  copyText(text);
+}
+
+function fallbackCopy(text){
+  var ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); showMsg('متن کپی شد ✓'); }
+  catch(e){ showMsg('...'); }
+  document.body.removeChild(ta);
+}
+function copyText(text){
+  if(!text) return;
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text)
+      .then(function(){ showMsg('متن کپی شد ✓'); })
+      .catch(function(){ fallbackCopy(text); });
+  } else fallbackCopy(text);
+}
+
+/* ═══ SEARCH ═══ */
+function setupSearch(){
+  var si = $('searchInput');
+  if(!si) return;
+  var timer = null;
+  si.addEventListener('input', function(){
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      searchQuery = si.value || '';
+      renderNotes();
+    }, 180);
+  });
+}
+
+/* ═══ EVENTS ═══ */
+function setupEvents(){
+  var addBtn = $('addNoteBtn');
+  if(addBtn) addBtn.addEventListener('click', function(){ openEditor(null); });
+
+  var closeBtn = $('editorClose');
+  if(closeBtn) closeBtn.addEventListener('click', closeEditor);
+
+  var saveBtn = $('editorSave');
+  if(saveBtn) saveBtn.addEventListener('click', saveCurrentNote);
+
+  var modal = $('editorModal');
+  if(modal) modal.addEventListener('click', function(e){
+    if(e.target === modal) closeEditor();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && $('editorModal').classList.contains('show')) closeEditor();
+    if(e.key === 'Enter' && (e.ctrlKey || e.metaKey) && $('editorModal').classList.contains('show')){
+      saveCurrentNote();
+    }
+  });
+}
+
+/* ═══ INIT ═══ */
+function init(){
+  applyTheme();
+  loadNotes();
+  renderNotes();
+  setupSearch();
+  setupEvents();
+
+  window.addEventListener('storage', function(e){
+    if(e.key === 'bn_theme') applyTheme();
+    if(e.key === NOTES_KEY){ loadNotes(); renderNotes(); }
+  });
+
+  console.log('💙 صفحه یادداشت‌ها آماده');
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else init();
+
+})();
+</script>
+
+</body>
+</html>

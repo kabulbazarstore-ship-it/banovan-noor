@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#6d28d9" />
+<title>درباره ما | بانوان نور</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<style>
+:root{
+  --bg-1:#f3e8ff;--bg-2:#e9d5ff;--bg-3:#ddd6fe;--bg-4:#c4b5fd;
+  --text:#2d1259;--text-soft:#4c1d95;--text-card:#1f1147;--text-muted:#7c6f9a;
+  --card:rgba(255,255,255,.85);--card-border:rgba(168,85,247,.2);
+  --card-shadow:0 8px 22px rgba(109,40,217,.12);
+  --icon-bg:rgba(255,255,255,.85);--icon-border:rgba(168,85,247,.25);--icon-color:#6d28d9;
+  --nav-bg:rgba(255,255,255,.94);--nav-border:rgba(168,85,247,.2);
+  --nav-color:#7c6f9a;--nav-active:#6d28d9;
+  --star:.2;
+  --accent:#6d28d9;
+  --accent-dark:#4c1d95;
+  --violet-soft:rgba(139,92,246,.1);
+}
+body.dark{
+  --bg-1:#3b0764;--bg-2:#4c1d95;--bg-3:#5b21b6;--bg-4:#2d1259;
+  --text:#fff;--text-soft:#e9d5ff;--text-card:#fff;--text-muted:#c4b5fd;
+  --card:rgba(255,255,255,.08);--card-border:rgba(244,114,182,.25);
+  --card-shadow:0 8px 22px rgba(0,0,0,.3);
+  --icon-bg:rgba(255,255,255,.08);--icon-border:rgba(244,114,182,.3);--icon-color:#fbcfe8;
+  --nav-bg:rgba(26,11,61,.94);--nav-border:rgba(244,114,182,.25);
+  --nav-color:#a78bfa;--nav-active:#fbcfe8;
+  --star:.7;
+  --violet-soft:rgba(196,181,253,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%}
+body{
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;direction:rtl;font-size:17px;
+  line-height:1.8;font-weight:600;color:var(--text);background-color:var(--bg-1);
+  background-image:
+    radial-gradient(ellipse 500px 400px at 20% 5%,rgba(236,72,153,.15) 0,transparent 60%),
+    radial-gradient(ellipse 400px 350px at 85% 15%,rgba(168,85,247,.18) 0,transparent 65%),
+    linear-gradient(160deg,var(--bg-1) 0,var(--bg-2) 25%,var(--bg-3) 50%,var(--bg-2) 75%,var(--bg-4) 100%);
+  background-attachment:fixed;min-height:100vh;padding:0 0 110px;position:relative;overflow-x:hidden;
+  transition:background-color .4s,color .3s;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background-image:
+    radial-gradient(circle at 12% 8%,rgba(253,230,138,var(--star)) 0,transparent 1.2%),
+    radial-gradient(circle at 88% 6%,rgba(253,230,138,var(--star)) 0,transparent 1%),
+    radial-gradient(circle at 78% 45%,rgba(253,230,138,var(--star)) 0,transparent 1%);
+  pointer-events:none;z-index:0;
+}
+.app{max-width:520px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
+
+.page-header{display:flex;align-items:center;gap:12px;padding:20px 0 16px}
+.back-btn{
+  width:44px;height:44px;border-radius:14px;background:var(--icon-bg);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--icon-border);color:var(--icon-color);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  flex:0 0 44px;text-decoration:none;box-shadow:0 4px 12px rgba(109,40,217,.15);
+}
+.back-btn:active{transform:scale(.94)}
+.back-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
+.page-header h1{font-size:1.35rem;font-weight:900;color:var(--text);flex:1;text-align:center;padding-right:44px}
+
+.hero{
+  background:linear-gradient(135deg,#ec4899 0,#a855f7 50%,#6d28d9 100%);
+  border-radius:24px;padding:28px 20px;margin-bottom:16px;
+  color:#fff;position:relative;overflow:hidden;
+  box-shadow:0 14px 34px rgba(109,40,217,.35);
+  text-align:center;
+}
+.hero::before{
+  content:"";position:absolute;top:-50px;left:-50px;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(253,230,138,.3),transparent 70%);
+  pointer-events:none;
+}
+.hero::after{
+  content:"";position:absolute;bottom:-60px;right:-40px;
+  width:160px;height:160px;border-radius:50%;
+  background:radial-gradient(circle,rgba(244,114,182,.3),transparent 70%);
+  pointer-events:none;
+}
+.hero > *{position:relative;z-index:1}
+.hero-logo{
+  width:96px;height:96px;margin:0 auto 16px;
+  border-radius:28px;overflow:hidden;
+  background:rgba(255,255,255,.2);
+  border:2px solid rgba(255,255,255,.4);
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+.hero-logo img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-logo svg{width:52px;height:52px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hero-title{
+  font-size:1.7rem;font-weight:900;margin-bottom:6px;
+  text-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+.hero-tagline{
+  font-size:.92rem;opacity:.95;font-weight:700;line-height:1.8;
+  margin-bottom:14px;
+}
+.hero-version{
+  display:inline-block;
+  font-size:.78rem;font-weight:900;
+  background:rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.35);
+  padding:5px 14px;border-radius:20px;
+  backdrop-filter:blur(6px);
+}
+
+.section{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:18px;
+  padding:20px;margin-bottom:12px;
+  box-shadow:var(--card-shadow);
+  position:relative;overflow:hidden;
+}
+.section::before{
+  content:"";position:absolute;top:0;right:0;
+  width:4px;height:100%;
+  background:linear-gradient(180deg,#a855f7,#6d28d9);
+}
+.section-head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:14px;
+}
+.section-icon{
+  width:44px;height:44px;border-radius:14px;flex:0 0 44px;
+  background:linear-gradient(135deg,#a855f7,#6d28d9);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 14px rgba(109,40,217,.3);
+}
+.section-icon svg{
+  width:24px;height:24px;fill:none;stroke:#fff;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+}
+.section-title{
+  font-size:1.1rem;font-weight:900;color:var(--text);
+}
+.section-body{
+  font-size:.92rem;font-weight:700;color:var(--text-card);
+  line-height:2.1;
+}
+.section-body p{margin-bottom:12px}
+.section-body p:last-child{margin-bottom:0}
+.section-body strong{color:var(--accent);font-weight:900}
+
+.features-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:10px;margin-top:6px;
+}
+.feature-item{
+  background:var(--violet-soft);
+  border:1px solid var(--card-border);
+  border-radius:14px;padding:12px 10px;
+  display:flex;flex-direction:column;align-items:center;
+  gap:8px;text-align:center;
+}
+.feature-item-icon{
+  width:38px;height:38px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 38px;
+}
+.feature-item-icon svg{
+  width:20px;height:20px;fill:none;stroke:#fff;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+}
+.feature-item-name{
+  font-size:.78rem;font-weight:900;
+  color:var(--text-card);line-height:1.4;
+}
+
+.apps-list{
+  display:flex;flex-direction:column;gap:10px;
+}
+.app-item{
+  display:flex;align-items:center;gap:14px;
+  padding:14px;border-radius:14px;
+  background:var(--violet-soft);
+  border:1px solid var(--card-border);
+  text-decoration:none;color:inherit;
+  transition:transform .2s;
+}
+.app-item:active{transform:scale(.97)}
+.app-item-icon{
+  width:52px;height:52px;border-radius:16px;
+  flex:0 0 52px;overflow:hidden;
+}
+.app-item-body{flex:1;min-width:0}
+.app-item-name{
+  font-size:.98rem;font-weight:900;
+  color:var(--text-card);margin-bottom:3px;
+}
+.app-item-sub{
+  font-size:.78rem;font-weight:700;
+  color:var(--text-muted);
+}
+.app-item-arrow{
+  width:20px;height:20px;flex:0 0 20px;
+  fill:none;stroke:var(--text-muted);
+  stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+  transform:scaleX(-1);
+}
+
+.contact-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:10px;margin-top:4px;
+}
+.contact-btn{
+  background:var(--violet-soft);
+  border:1.5px solid var(--card-border);
+  border-radius:16px;padding:14px 8px;
+  display:flex;flex-direction:column;align-items:center;
+  gap:8px;text-decoration:none;
+  font-size:.75rem;font-weight:900;
+  transition:transform .2s;
+  font-family:inherit;
+  cursor:pointer;
+}
+.contact-btn:active{transform:scale(.95)}
+.contact-btn svg{
+  width:24px;height:24px;
+  fill:none;stroke:currentColor;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+}
+.contact-btn.email{color:#ec4899}
+.contact-btn.facebook{color:#3b82f6}
+.contact-btn.instagram{color:#a855f7}
+
+/* ═══════════════════════════════════════════
+   DUA CARD — التماس دعا
+   ═══════════════════════════════════════════ */
+.dua-card {
+  background: linear-gradient(160deg,
+    rgba(30, 27, 75, 0.95) 0%,
+    rgba(76, 29, 149, 0.95) 50%,
+    rgba(109, 40, 217, 0.95) 100%);
+  backdrop-filter: blur(24px);
+  border: 1.5px solid rgba(253, 230, 138, 0.4);
+  border-radius: 26px;
+  padding: 36px 24px 32px;
+  margin-bottom: 16px;
+  margin-top: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(109,40,217,0.4), inset 0 1px 0 rgba(253,230,138,0.15);
+}
+.dua-card::before {
+  content: ""; position: absolute;
+  top: -50%; left: 50%;
+  transform: translateX(-50%);
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(253,230,138,0.15), transparent 60%);
+  border-radius: 50%; pointer-events: none;
+}
+.dua-card::after {
+  content: ""; position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(253, 230, 138, 0.1);
+  border-radius: 20px;
+  pointer-events: none;
+}
+.dua-card > * { position: relative; z-index: 1; }
+
+.dua-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Traditional Arabic', 'Amiri', 'Noto Naskh Arabic', serif;
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #fde68a;
+  margin-bottom: 22px;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 30px rgba(253, 230, 138, 0.7), 0 3px 12px rgba(0, 0, 0, 0.5);
+  line-height: 1.3;
+}
+.dua-title svg {
+  width: 22px;
+  height: 22px;
+  fill: #fde68a;
+  filter: drop-shadow(0 0 8px rgba(253, 230, 138, 0.8));
+  animation: heartBeat 1.8s ease-in-out infinite;
+}
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.dua-text {
+  font-family: 'Traditional Arabic', 'Amiri', serif;
+  font-size: 1.15rem;
+  line-height: 2.1;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.dua-text strong {
+  color: #fde68a;
+  font-weight: 900;
+  font-size: 1.25rem;
+  display: inline-block;
+  padding: 3px 8px;
+  text-shadow: 0 0 16px rgba(253, 230, 138, 0.5);
+  margin: 6px 0;
+}
+
+.dua-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto 0;
+  width: 70%;
+}
+.dua-divider::before,
+.dua-divider::after {
+  content: ""; flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(253,230,138,0.7), transparent);
+}
+.dua-divider svg {
+  width: 18px; height: 18px;
+  fill: #fde68a;
+  filter: drop-shadow(0 0 8px rgba(253, 230, 138, 0.8));
+}
+
+.version-info{
+  text-align:center;padding:20px;
+  font-size:.85rem;color:var(--text-muted);
+  line-height:2;font-weight:700;
+}
+.version-info strong{color:var(--text-soft);font-weight:900}
+
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:var(--nav-bg);backdrop-filter:blur(24px);
+  border-top:1px solid var(--nav-border);
+  display:flex;justify-content:space-around;
+  padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));
+  max-width:520px;margin:0 auto;
+  box-shadow:0 -8px 30px rgba(109,40,217,.15);
+}
+.nav-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  color:var(--nav-color);padding:8px 2px;
+  font-size:.68rem;font-weight:800;
+  text-decoration:none;cursor:pointer;
+  border-radius:12px;position:relative;
+}
+.nav-item.active{color:var(--nav-active)}
+.nav-item.active::before{
+  content:"";position:absolute;top:0;left:50%;
+  transform:translateX(-50%);
+  width:22px;height:3px;border-radius:0 0 4px 4px;
+  background:linear-gradient(90deg,#ec4899,#a855f7,#fde68a);
+  box-shadow:0 0 12px rgba(236,72,153,.8);
+}
+.nav-item svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-item.active svg{stroke-width:2.4}
+
+.toast{
+  position:fixed;bottom:110px;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:linear-gradient(135deg,#6d28d9,#a855f7);
+  color:#fff;padding:14px 26px;border-radius:30px;
+  font-size:.95rem;font-weight:900;z-index:10002;
+  opacity:0;transition:all .3s;pointer-events:none;
+  box-shadow:0 12px 30px rgba(139,92,246,.5);
+  max-width:90vw;text-align:center;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:380px){
+  body{font-size:16px}
+  .app{padding:0 12px}
+  .page-header h1{font-size:1.2rem}
+  .hero{padding:22px 16px}
+  .hero-logo{width:80px;height:80px;border-radius:24px}
+  .hero-title{font-size:1.4rem}
+  .features-grid{grid-template-columns:1fr 1fr}
+  .feature-item-name{font-size:.72rem}
+  .contact-grid{grid-template-columns:1fr 1fr}
+  .nav-item{font-size:.62rem}
+  .nav-item svg{width:21px;height:21px}
+  .dua-title{font-size:1.5rem}
+  .dua-text{font-size:1rem}
+  .dua-text strong{font-size:1.1rem}
+}
+</style>
+</head>
+
+<body>
+
+<script>
+(function(){
+  try{ if(localStorage.getItem('bn_theme')==='dark') document.body.classList.add('dark'); }catch(e){}
+})();
+</script>
+
+<div class="app">
+
+  <header class="page-header">
+    <a class="back-btn" href="settings.html" aria-label="بازگشت">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <h1>درباره ما</h1>
+  </header>
+
+  <div class="hero">
+    <div class="hero-logo">
+      <img src="assets/icon-192.png" alt="Banovan Noor" onerror="this.style.display='none'; this.parentNode.innerHTML='<svg viewBox=\'0 0 24 24\'><path d=\'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\'/></svg>';" />
+    </div>
+    <div class="hero-title">بانوان نور</div>
+    <div class="hero-tagline">
+      همراه هوشمند بانوان مسلمان<br>
+      در سلامت، احکام و زندگی
+    </div>
+    <span class="hero-version">نسخه ۱.۰.۰</span>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="section-title">درباره برنامه</div>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>بانوان نور</strong> یک اپلیکیشن جامع و کاملاً آفلاین است که برای آگاهی، آموزش و همراهی بانوان مسلمان طراحی شده است.
+      </p>
+      <p>
+        این برنامه تلاش می‌کند در تمام زمینه‌های مهم زندگی یک زن — از سلامت جسمی و روحی تا احکام شرعی و مسائل روزمره — همراه مطمئنی باشد.
+      </p>
+      <p>
+        همه اطلاعات <strong>فقط روی گوشی شما</strong> ذخیره می‌شود و هیچ‌گاه به سرور یا شخص دیگری ارسال نمی‌گردد.
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      </div>
+      <div class="section-title">هدف ما</div>
+    </div>
+    <div class="section-body">
+      <p>
+        هدف ما این است که هر بانوی مسلمان، بدون توجه به سن و دانش، به آسانی به اطلاعات مورد نیاز خود در زمینه‌های زیر دسترسی داشته باشد:
+      </p>
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-item-icon" style="background:linear-gradient(135deg,#fb7185,#e11d48)">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="feature-item-name">سؤالات شرعی</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-icon" style="background:linear-gradient(135deg,#ec4899,#be185d)">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div class="feature-item-name">سلامت بانوان</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-icon" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </div>
+          <div class="feature-item-name">بارداری و زایمان</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-icon" style="background:linear-gradient(135deg,#fbbf24,#d97706)">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
+          </div>
+          <div class="feature-item-name">دعا و اعمال</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-icon" style="background:linear-gradient(135deg,#34d399,#059669)">
+            <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          </div>
+          <div class="feature-item-name">آگاهی سلامت</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-icon" style="background:linear-gradient(135deg,#0ea5e9,#0284c7)">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="feature-item-name">یادداشت شخصی</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
+      </div>
+      <div class="section-title">قابلیت‌های کلیدی</div>
+    </div>
+    <div class="section-body">
+      <p><strong>🤖 همراز:</strong> گفتگوی آفلاین با دستیار هوشمند برای سؤالات رایج بانوان.</p>
+      <p><strong>📚 احکام شرعی:</strong> مطابق مرجع تقلید انتخابی شما (سیستانی، شیرازی، فیاض) و فقه حنفی.</p>
+      <p><strong>💚 سلامت بانوان:</strong> بیش از ۱۰۰ مقاله پزشکی در ۹ دسته‌بندی.</p>
+      <p><strong>🌸 چرخه قاعدگی:</strong> تقویم، محاسبه‌گر تخمک‌گذاری و پیش‌بینی قاعدگی.</p>
+      <p><strong>👶 بارداری و زایمان:</strong> راهنمای هفته به هفته، مراحل زایمان، کیف بیمارستان.</p>
+      <p><strong>🤲 دعا و اعمال:</strong> مجموعه‌ای از دعاها با ترجمه فارسی.</p>
+      <p><strong>💗 پزشکان:</strong> معرفی متخصصان بانوان در کابل با شماره تماس و آدرس.</p>
+      <p><strong>📝 یادداشت و علاقه‌مندی:</strong> ثبت یادداشت‌های شخصی و ذخیره مطالب موردعلاقه.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+      </div>
+      <div class="section-title">سازنده</div>
+    </div>
+    <div class="section-body">
+      <p><strong>سید مقدس حسینی</strong></p>
+      <p>این برنامه با هدف خدمت به بانوان مسلمان و تسهیل دسترسی آنان به اطلاعات دینی و سلامت طراحی شده است.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <div class="section-title">برنامه‌های دیگر ما</div>
+    </div>
+    <div class="apps-list">
+
+      <a class="app-item" href="https://kabulbazarstore-ship-it.github.io/noor-applecation/" target="_blank" rel="noopener">
+        <div class="app-item-icon">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+            <defs>
+              <linearGradient id="noorBg" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#fdf9ef"/>
+                <stop offset="100%" stop-color="#f5e6c8"/>
+              </linearGradient>
+              <linearGradient id="goldBorder" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#e8c66a"/>
+                <stop offset="100%" stop-color="#8b6914"/>
+              </linearGradient>
+              <linearGradient id="goldText" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#c9a13d"/>
+                <stop offset="100%" stop-color="#8b6914"/>
+              </linearGradient>
+              <linearGradient id="domeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#f0d98a"/>
+                <stop offset="100%" stop-color="#c9a13d"/>
+              </linearGradient>
+            </defs>
+            <rect x="5" y="5" width="90" height="90" rx="26" ry="26" fill="url(#noorBg)"/>
+            <rect x="5" y="5" width="90" height="90" rx="26" ry="26" fill="none" stroke="url(#goldBorder)" stroke-width="2"/>
+            <g transform="translate(50, 32)">
+              <path d="M-12 0 C-12 -10 0 -18 0 -18 C0 -18 12 -10 12 0 Z" fill="url(#domeGrad)"/>
+              <circle cx="0" cy="-24" r="1.3" fill="#c9a13d"/>
+            </g>
+            <text x="50" y="62" text-anchor="middle" font-family="'Amiri',serif" font-size="22" font-weight="900" fill="url(#goldText)">نور</text>
+            <text x="50" y="72" text-anchor="middle" font-family="Arial" font-size="6" letter-spacing="2" fill="#8b6914">NOOR</text>
+          </svg>
+        </div>
+        <div class="app-item-body">
+          <div class="app-item-name">برنامه نور | NOOR</div>
+          <div class="app-item-sub">تقویم و اوقات شرعی</div>
+        </div>
+        <svg class="app-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+      <a class="app-item" href="https://kabulbazarstore-ship-it.github.io/Contacts/" target="_blank" rel="noopener">
+        <div class="app-item-icon">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+            <defs>
+              <linearGradient id="contactsBg" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1a4d3e"/>
+                <stop offset="100%" stop-color="#0d2e23"/>
+              </linearGradient>
+              <linearGradient id="phoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f5c94a"/>
+                <stop offset="100%" stop-color="#d4a017"/>
+              </linearGradient>
+            </defs>
+            <rect x="5" y="5" width="90" height="90" rx="28" ry="28" fill="url(#contactsBg)"/>
+            <g transform="translate(50, 50) rotate(-15) translate(-50, -50)">
+              <path d="M38 32 C36 30 32 30 30 32 L26 36 C24 38 24 42 26 46 C32 58 42 68 54 74 C58 76 62 76 64 74 L68 70 C70 68 70 64 68 62 L62 56 C60 54 56 54 54 56 L51 59 C46 56 42 52 39 47 L42 44 C44 42 44 38 42 36 Z" fill="url(#phoneGrad)"/>
+            </g>
+          </svg>
+        </div>
+        <div class="app-item-body">
+          <div class="app-item-name">برنامه مخاطبین</div>
+          <div class="app-item-sub">دفترچه تلفن هوشمند</div>
+        </div>
+        <svg class="app-item-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="section-title">تماس با ما</div>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-btn email" href="mailto:hussaini11855@gmail.com">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        ایمیل
+      </a>
+      <a class="contact-btn facebook" href="https://www.facebook.com/share/1FAT39XK8u/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        فیسبوک
+      </a>
+      <a class="contact-btn instagram" href="https://www.instagram.com/_aqazada313" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        اینستاگرام
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       کارت التماس دعا
+       ═══════════════════════════════════════════ -->
+  <div class="dua-card">
+
+    <div class="dua-title">
+      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      التماس دعا
+    </div>
+
+    <div class="dua-text">
+      از همه کاربران گرامی درخواست دارم که برای<br>
+      <strong>پدر و مادر این بندهٔ حقیر</strong><br>
+      طلب مغفرت و رحمت نمایند.
+    </div>
+
+    <div class="dua-divider">
+      <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"/></svg>
+    </div>
+
+  </div>
+
+  <div class="version-info">
+    <strong>بانوان نور</strong> — نسخه ۱.۰.۰<br>
+    طراحی شده با مهر و محبت برای بانوان مسلمان 💜
+  </div>
+
+  <div style="height:20px"></div>
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-item" href="home.html">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>خانه</span>
+  </a>
+  <a class="nav-item" href="search.html">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <span>جستجو</span>
+  </a>
+  <a class="nav-item" href="hamraz.html">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>همراز</span>
+  </a>
+  <a class="nav-item" href="ahkam.html">
+    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <span>احکام</span>
+  </a>
+  <a class="nav-item active" href="settings.html">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span>بیشتر</span>
+  </a>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+
+var toastTimer = null;
+
+function $(id){ return document.getElementById(id); }
+function showMsg(msg,dur){
+  dur=dur||2200;
+  var t=$('toast'); if(!t) return;
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(function(){ t.classList.remove('show'); },dur);
+}
+function getTheme(){ try{ return localStorage.getItem('bn_theme')||'light'; }catch(e){ return 'light'; } }
+function applyTheme(){
+  if(getTheme()==='dark') document.body.classList.add('dark');
+  else document.body.classList.remove('dark');
+}
+
+function init(){
+  applyTheme();
+  window.addEventListener('storage', function(e){
+    if(e.key === 'bn_theme') applyTheme();
+  });
+  console.log('💜 صفحه درباره ما آماده');
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else init();
+
+})();
+</script>
+
+</body>
+</html>

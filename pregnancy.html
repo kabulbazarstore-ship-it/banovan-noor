@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#7c3aed" />
+<title>بارداری | بانوان نور</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<style>
+:root{
+  --bg-1:#f5f3ff;--bg-2:#ede9fe;--bg-3:#ddd6fe;--bg-4:#c4b5fd;
+  --text:#3b0764;--text-soft:#5b21b6;--text-card:#4c1d95;--text-muted:#7c6f9a;
+  --card:rgba(255,255,255,.85);--card-border:rgba(139,92,246,.22);
+  --card-shadow:0 8px 22px rgba(124,58,237,.12);
+  --icon-bg:rgba(255,255,255,.85);--icon-border:rgba(139,92,246,.25);--icon-color:#7c3aed;
+  --nav-bg:rgba(255,255,255,.94);--nav-border:rgba(139,92,246,.2);
+  --nav-color:#7c6f9a;--nav-active:#7c3aed;
+  --star:.2;
+  --search-bg:rgba(255,255,255,.92);
+  --chip-bg:rgba(255,255,255,.7);
+  --chip-border:rgba(139,92,246,.25);
+  --accent:#7c3aed;
+  --accent-dark:#5b21b6;
+  --violet-soft:rgba(139,92,246,.1);
+}
+body.dark{
+  --bg-1:#2e1065;--bg-2:#4c1d95;--bg-3:#5b21b6;--bg-4:#1e1b4b;
+  --text:#fff;--text-soft:#ddd6fe;--text-card:#fff;--text-muted:#c4b5fd;
+  --card:rgba(255,255,255,.08);--card-border:rgba(196,181,253,.3);
+  --card-shadow:0 8px 22px rgba(0,0,0,.3);
+  --icon-bg:rgba(255,255,255,.08);--icon-border:rgba(196,181,253,.3);--icon-color:#ddd6fe;
+  --nav-bg:rgba(30,27,75,.94);--nav-border:rgba(196,181,253,.25);
+  --nav-color:#a78bfa;--nav-active:#ddd6fe;
+  --star:.7;
+  --search-bg:rgba(255,255,255,.08);
+  --chip-bg:rgba(255,255,255,.06);
+  --chip-border:rgba(196,181,253,.3);
+  --violet-soft:rgba(196,181,253,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%}
+body{
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;direction:rtl;font-size:17px;
+  line-height:1.8;font-weight:600;color:var(--text);background-color:var(--bg-1);
+  background-image:
+    radial-gradient(ellipse 500px 400px at 20% 5%,rgba(139,92,246,.15) 0,transparent 60%),
+    radial-gradient(ellipse 400px 350px at 85% 15%,rgba(167,139,250,.18) 0,transparent 65%),
+    linear-gradient(160deg,var(--bg-1) 0,var(--bg-2) 25%,var(--bg-3) 50%,var(--bg-2) 75%,var(--bg-4) 100%);
+  background-attachment:fixed;min-height:100vh;padding:0 0 110px;position:relative;overflow-x:hidden;
+  transition:background-color .4s,color .3s;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background-image:
+    radial-gradient(circle at 12% 8%,rgba(253,230,138,var(--star)) 0,transparent 1.2%),
+    radial-gradient(circle at 88% 6%,rgba(253,230,138,var(--star)) 0,transparent 1%),
+    radial-gradient(circle at 78% 45%,rgba(253,230,138,var(--star)) 0,transparent 1%);
+  pointer-events:none;z-index:0;
+}
+.app{max-width:520px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
+
+.page-header{display:flex;align-items:center;gap:12px;padding:20px 0 16px}
+.back-btn{
+  width:44px;height:44px;border-radius:14px;background:var(--icon-bg);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--icon-border);color:var(--icon-color);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  flex:0 0 44px;text-decoration:none;box-shadow:0 4px 12px rgba(124,58,237,.15);
+}
+.back-btn:active{transform:scale(.94)}
+.back-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
+.page-header h1{font-size:1.35rem;font-weight:900;color:var(--text);flex:1;text-align:center;padding-right:44px}
+
+.hero{
+  background:linear-gradient(135deg,#a78bfa 0,#7c3aed 100%);
+  border-radius:20px;padding:22px;margin-bottom:16px;color:#fff;
+  position:relative;overflow:hidden;
+  box-shadow:0 12px 30px rgba(124,58,237,.35);
+  display:flex;align-items:center;gap:14px;
+}
+.hero::before{
+  content:"";position:absolute;top:-40px;right:-40px;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.2),transparent 70%);
+  pointer-events:none;
+}
+.hero-icon{
+  width:56px;height:56px;border-radius:16px;
+  background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.3);
+  display:flex;align-items:center;justify-content:center;flex:0 0 56px;
+  backdrop-filter:blur(10px);
+}
+.hero-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hero-text{flex:1}
+.hero-title{font-size:1.1rem;font-weight:900;margin-bottom:5px;text-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hero-sub{font-size:.85rem;opacity:.95;font-weight:700;line-height:1.7}
+
+.tabs{
+  display:flex;gap:6px;background:var(--chip-bg);
+  border:1.5px solid var(--chip-border);border-radius:16px;
+  padding:5px;margin-bottom:16px;
+  backdrop-filter:blur(12px);
+  overflow-x:auto;scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:1;min-width:fit-content;padding:11px 10px;border-radius:12px;border:0;
+  background:transparent;color:var(--text-soft);
+  font-family:inherit;font-size:.85rem;font-weight:800;
+  cursor:pointer;transition:all .22s;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  white-space:nowrap;
+}
+.tab:active{transform:scale(.96)}
+.tab.active{
+  background:linear-gradient(135deg,#a78bfa,#7c3aed);
+  color:#fff;box-shadow:0 4px 14px rgba(124,58,237,.4);
+}
+.tab svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;flex:0 0 15px}
+
+.tab-content{display:none;animation:fadeIn .3s ease}
+.tab-content.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.card{
+  background:var(--card);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:18px;
+  padding:20px;margin-bottom:12px;
+  box-shadow:var(--card-shadow);
+}
+.card-title{
+  font-size:1.08rem;font-weight:900;color:var(--text);
+  margin-bottom:16px;display:flex;align-items:center;gap:9px;
+}
+.card-title svg{width:20px;height:20px;fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 20px}
+
+/* PREGNANCY STATUS */
+.status-box{
+  text-align:center;padding:22px 14px;
+  background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(124,58,237,.08));
+  border-radius:14px;border:1px dashed var(--card-border);
+  margin-bottom:14px;
+}
+.status-icon{
+  width:70px;height:70px;border-radius:50%;
+  background:linear-gradient(135deg,#a78bfa,#7c3aed);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;
+  box-shadow:0 8px 20px rgba(124,58,237,.4);
+}
+.status-icon svg{width:36px;height:36px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.status-title{font-size:1.1rem;font-weight:900;color:var(--text);margin-bottom:8px;line-height:1.7}
+.status-sub{font-size:.94rem;font-weight:700;color:var(--text-muted);line-height:2}
+.status-sub strong{color:var(--accent);font-weight:900;font-size:1.05rem}
+
+/* PROGRESS */
+.progress-wrap{
+  margin:16px 0 4px;
+  background:var(--violet-soft);border-radius:20px;
+  padding:6px;position:relative;overflow:hidden;
+}
+.progress-bar{
+  height:14px;border-radius:20px;
+  background:linear-gradient(90deg,#a78bfa,#7c3aed);
+  width:0%;transition:width .6s ease;
+  box-shadow:0 0 12px rgba(124,58,237,.5);
+  position:relative;
+}
+.progress-labels{
+  display:flex;justify-content:space-between;
+  font-size:.7rem;font-weight:800;color:var(--text-muted);
+  margin-top:6px;
+}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
+  margin-top:14px;
+}
+.stat{
+  background:var(--violet-soft);border:1px solid var(--card-border);
+  border-radius:14px;padding:16px 10px;text-align:center;
+}
+.stat-value{
+  font-size:1.6rem;font-weight:900;color:var(--accent);
+  line-height:1.2;margin-bottom:6px;
+}
+.stat-value small{font-size:.8rem;font-weight:800;color:var(--text-muted)}
+.stat-label{
+  font-size:.78rem;font-weight:800;color:var(--text-muted);
+  letter-spacing:.3px;line-height:1.5;
+}
+
+/* FORM */
+.form-row{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.form-group{flex:1;min-width:130px}
+.form-label{
+  display:block;font-size:.85rem;font-weight:900;
+  color:var(--text-muted);margin-bottom:8px;
+  letter-spacing:.3px;
+}
+.form-input{
+  width:100%;padding:14px 16px;border-radius:12px;
+  border:1.5px solid var(--card-border);
+  background:var(--search-bg);color:var(--text);
+  font-family:inherit;font-size:1.02rem;font-weight:700;
+  outline:none;transition:border-color .25s;
+}
+.form-input:focus{border-color:var(--accent)}
+.form-input::placeholder{color:var(--text-muted);opacity:.7}
+
+.btn{
+  padding:14px 22px;border-radius:12px;border:0;
+  font-family:inherit;font-size:.95rem;font-weight:900;
+  cursor:pointer;transition:all .2s;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn:active{transform:scale(.96)}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;flex:0 0 18px}
+.btn-primary{
+  background:linear-gradient(135deg,#a78bfa,#7c3aed);color:#fff;
+  box-shadow:0 4px 14px rgba(124,58,237,.4);
+  width:100%;
+}
+.btn-secondary{
+  background:var(--chip-bg);color:var(--text-soft);
+  border:1.5px solid var(--chip-border);
+  width:100%;
+}
+
+/* WEEK LIST */
+.week-list{display:flex;flex-direction:column;gap:8px}
+.week-item{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:16px;
+  padding:16px;cursor:pointer;transition:all .22s;
+  display:flex;align-items:flex-start;gap:12px;
+  box-shadow:var(--card-shadow);width:100%;text-align:right;
+  font-family:inherit;position:relative;overflow:hidden;
+}
+.week-item:active{transform:scale(.98)}
+.week-item:hover{border-color:rgba(124,58,237,.45)}
+.week-item.current{
+  border-color:var(--accent);
+  box-shadow:0 0 0 2px var(--violet-soft),var(--card-shadow);
+}
+.week-badge{
+  width:52px;height:52px;border-radius:14px;flex:0 0 52px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#a78bfa,#7c3aed);
+  color:#fff;font-weight:900;
+  box-shadow:0 6px 14px rgba(124,58,237,.3);
+}
+.week-badge-num{font-size:1.15rem;line-height:1;font-weight:900}
+.week-badge-label{font-size:.6rem;line-height:1;margin-top:2px;font-weight:800;opacity:.9}
+.week-item-body{flex:1;min-width:0}
+.week-item-title{
+  font-size:1rem;font-weight:900;color:var(--text-card);
+  line-height:1.5;margin-bottom:5px;
+}
+.week-item-desc{
+  font-size:.85rem;font-weight:700;color:var(--text-muted);
+  line-height:1.7;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.week-item-tag{
+  position:absolute;top:12px;left:12px;
+  font-size:.65rem;font-weight:900;
+  padding:3px 9px;border-radius:12px;
+  background:linear-gradient(135deg,#fbbf24,#d97706);
+  color:#fff;
+}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:8px}
+.check-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;background:var(--card);
+  border:1.5px solid var(--card-border);border-radius:14px;
+  cursor:pointer;transition:all .2s;
+}
+.check-item:active{transform:scale(.98)}
+.check-item.done{opacity:.65;background:var(--violet-soft)}
+.check-box{
+  width:26px;height:26px;border-radius:8px;flex:0 0 26px;
+  border:2px solid var(--card-border);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;margin-top:1px;
+}
+.check-box svg{
+  width:15px;height:15px;fill:none;stroke:#fff;
+  stroke-width:3;stroke-linecap:round;stroke-linejoin:round;
+  opacity:0;transition:opacity .2s;
+}
+.check-item.done .check-box{
+  background:linear-gradient(135deg,#a78bfa,#7c3aed);
+  border-color:transparent;
+}
+.check-item.done .check-box svg{opacity:1}
+.check-text{flex:1;font-size:.95rem;font-weight:800;color:var(--text-card);line-height:1.7}
+.check-item.done .check-text{text-decoration:line-through}
+.check-week{
+  display:inline-block;font-size:.68rem;font-weight:900;
+  color:var(--accent);background:var(--violet-soft);
+  padding:2px 8px;border-radius:10px;margin-bottom:4px;
+}
+
+/* ARTICLES */
+.art-grid{display:flex;flex-direction:column;gap:10px}
+.art-card{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:18px;
+  padding:16px;cursor:pointer;transition:all .22s;
+  display:flex;align-items:flex-start;gap:12px;
+  box-shadow:var(--card-shadow);width:100%;text-align:right;
+  font-family:inherit;position:relative;overflow:hidden;
+}
+.art-card:active{transform:scale(.98)}
+.art-card:hover{border-color:rgba(124,58,237,.45)}
+.art-card-emoji{
+  width:38px;height:38px;border-radius:11px;flex:0 0 38px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(124,58,237,.15));
+  border:1px solid rgba(139,92,246,.2);
+}
+.art-card-svg{display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#7c3aed}
+.art-card-svg svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+body.dark .art-card-svg{color:#ddd6fe}
+.art-card-body{flex:1;min-width:0;padding-left:32px}
+.art-card-title{
+  font-size:1rem;font-weight:900;color:var(--text-card);
+  line-height:1.6;margin-bottom:6px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.art-card-excerpt{
+  font-size:.85rem;font-weight:700;color:var(--text-muted);
+  line-height:1.8;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.art-card-bookmark{
+  position:absolute;top:12px;left:12px;
+  width:30px;height:30px;border-radius:10px;
+  background:transparent;border:1px solid transparent;
+  color:var(--text-muted);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;padding:0;
+}
+.art-card-bookmark.active{color:#d97706}
+.art-card-bookmark.active svg{fill:currentColor}
+.art-card-bookmark svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+.loader,.empty{
+  text-align:center;padding:50px 20px;
+  color:var(--text-muted);font-size:.95rem;font-weight:700;line-height:2;
+}
+.loader::before{
+  content:"";display:block;width:32px;height:32px;
+  border:3px solid rgba(124,58,237,.2);border-top-color:#7c3aed;
+  border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* MODAL */
+.modal{
+  position:fixed;inset:0;background:rgba(0,0,0,.65);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  display:none;align-items:flex-end;justify-content:center;
+  z-index:10000;padding:0;
+}
+.modal.show{display:flex;animation:mFade .3s ease}
+@keyframes mFade{from{opacity:0}to{opacity:1}}
+.modal-box{
+  width:100%;max-width:520px;max-height:92vh;overflow-y:auto;
+  background:var(--bg-1);border-radius:28px 28px 0 0;
+  padding:24px 22px calc(28px + env(safe-area-inset-bottom,0px));
+  animation:mSlide .35s ease;
+}
+@keyframes mSlide{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  margin-bottom:18px;padding-bottom:14px;
+  border-bottom:1.5px solid var(--card-border);gap:12px;
+}
+.modal-head-text{flex:1;min-width:0}
+.modal-badge{
+  display:inline-block;font-size:.75rem;font-weight:900;
+  padding:4px 14px;border-radius:20px;
+  background:linear-gradient(135deg,#a78bfa,#7c3aed);
+  color:#fff;margin-bottom:10px;box-shadow:0 4px 12px rgba(124,58,237,.35);
+}
+.modal-q{font-size:1.15rem;font-weight:900;color:var(--text);line-height:1.7}
+.modal-close{
+  width:44px;height:44px;border-radius:14px;
+  background:var(--card);border:1px solid var(--card-border);
+  color:var(--text-soft);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex:0 0 44px;
+}
+.modal-close:active{transform:scale(.9)}
+.modal-close svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.modal-content{
+  background:linear-gradient(135deg,rgba(139,92,246,.06),rgba(124,58,237,.06));
+  border:1px solid var(--card-border);border-radius:18px;
+  padding:18px;margin-top:6px;
+}
+.answer-text{
+  font-size:1rem;line-height:2.2;color:var(--text-card);
+  font-weight:700;white-space:pre-line;
+}
+.modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.modal-tag{
+  font-size:.72rem;font-weight:800;padding:4px 12px;
+  border-radius:20px;background:rgba(139,92,246,.12);
+  color:var(--text-soft);border:1px solid var(--card-border);
+}
+.modal-source{
+  font-size:.82rem;font-weight:800;color:var(--text-muted);
+  margin-top:14px;padding-top:12px;
+  border-top:1px dashed var(--card-border);
+  display:flex;align-items:center;gap:6px;
+}
+.modal-source svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;flex:0 0 15px}
+
+.action-bar{
+  display:flex;gap:4px;margin-top:14px;padding-top:14px;
+  border-top:1px dashed var(--card-border);flex-wrap:wrap;
+}
+.act-btn{
+  width:40px;height:40px;border-radius:11px;
+  background:transparent;border:1px solid transparent;
+  color:var(--text-muted);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;padding:0;transition:all .18s;
+}
+.act-btn:hover{background:var(--icon-bg);border-color:var(--icon-border);color:var(--icon-color)}
+.act-btn:active{transform:scale(.88)}
+.act-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.act-btn.active{color:#d97706;background:rgba(251,191,36,.15)}
+.act-btn.active svg{fill:currentColor}
+.act-btn.speaking{color:#7c3aed;background:rgba(124,58,237,.12);animation:pulse 1.1s infinite}
+body.dark .act-btn.speaking{color:#ddd6fe;background:rgba(196,181,253,.15)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:var(--nav-bg);backdrop-filter:blur(24px);
+  border-top:1px solid var(--nav-border);
+  display:flex;justify-content:space-around;
+  padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));
+  max-width:520px;margin:0 auto;
+  box-shadow:0 -8px 30px rgba(124,58,237,.15);
+}
+.nav-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  color:var(--nav-color);padding:8px 2px;font-size:.68rem;font-weight:800;
+  text-decoration:none;cursor:pointer;border-radius:12px;position:relative;
+}
+.nav-item.active{color:var(--nav-active)}
+.nav-item.active::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:22px;height:3px;border-radius:0 0 4px 4px;
+  background:linear-gradient(90deg,#a78bfa,#7c3aed,#fde68a);
+  box-shadow:0 0 12px rgba(124,58,237,.8);
+}
+.nav-item svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-item.active svg{stroke-width:2.4}
+
+.toast{
+  position:fixed;bottom:110px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:linear-gradient(135deg,#5b21b6,#7c3aed);color:#fff;
+  padding:14px 26px;border-radius:30px;font-size:.95rem;font-weight:900;
+  z-index:10002;opacity:0;transition:all .3s;pointer-events:none;
+  box-shadow:0 12px 30px rgba(124,58,237,.5);max-width:90vw;text-align:center;
+  white-space:pre-line;line-height:1.7;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:380px){
+  body{font-size:16px}
+  .app{padding:0 12px}
+  .page-header h1{font-size:1.2rem}
+  .hero{padding:18px}
+  .hero-icon{width:48px;height:48px;flex:0 0 48px}
+  .hero-icon svg{width:24px;height:24px}
+  .stat-value{font-size:1.4rem}
+  .week-badge{width:46px;height:46px;flex:0 0 46px}
+  .week-badge-num{font-size:1rem}
+  .nav-item{font-size:.62rem}
+  .nav-item svg{width:21px;height:21px}
+  .tab{font-size:.78rem;padding:10px 8px}
+}
+</style>
+</head>
+
+<body>
+
+<script>
+(function(){
+  try{ if(localStorage.getItem('bn_theme')==='dark') document.body.classList.add('dark'); }catch(e){}
+})();
+</script>
+
+<div class="app">
+
+  <header class="page-header">
+    <a class="back-btn" href="home.html" aria-label="بازگشت">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <h1>بارداری</h1>
+  </header>
+
+  <div class="hero">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/><circle cx="12" cy="14" r="2" fill="#fff"/></svg>
+    </div>
+    <div class="hero-text">
+      <div class="hero-title">سفر ۹ ماهه مادر شدن</div>
+      <div class="hero-sub">هفته به هفته، همراه با تو 💜</div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="status">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      وضعیت من
+    </button>
+    <button class="tab" data-tab="weeks">
+      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
+      هفته‌ها
+    </button>
+    <button class="tab" data-tab="checklist">
+      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      چک‌لیست
+    </button>
+    <button class="tab" data-tab="articles">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      مقالات
+    </button>
+  </div>
+
+  <!-- ══════════ TAB: وضعیت ══════════ -->
+  <div class="tab-content active" id="tab-status">
+
+    <div class="card">
+      <div class="card-title">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        وضعیت بارداری
+      </div>
+
+      <div class="status-box" id="statusBox">
+        <div class="status-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </div>
+        <div class="status-title" id="statusTitle">هنوز اطلاعاتی ثبت نشده</div>
+        <div class="status-sub" id="statusSub">برای شروع، تاریخ آخرین قاعدگی یا تاریخ زایمان را وارد کن</div>
+      </div>
+
+      <div id="progressWrap" style="display:none">
+        <div class="progress-wrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-labels">
+          <span>شروع</span>
+          <span>میانه</span>
+          <span>پایان</span>
+        </div>
+      </div>
+
+      <div class="stats" id="statsGrid" style="display:none">
+        <div class="stat">
+          <div class="stat-value" id="weekNum">—</div>
+          <div class="stat-label">هفته بارداری</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="dayNum">—</div>
+          <div class="stat-label">روز باقی‌مانده</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="trimester">—</div>
+          <div class="stat-label">سه‌ماهه</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="weekTotal">—</div>
+          <div class="stat-label">هفته کل</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
+        تاریخ‌های مهم
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">تاریخ آخرین قاعدگی (LMP)</label>
+          <input type="date" class="form-input" id="lmpDate" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">یا تاریخ زایمان تخمینی (EDD)</label>
+          <input type="date" class="form-input" id="eddDate" />
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="savePregnancy" style="margin-bottom:10px">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        ذخیره اطلاعات
+      </button>
+
+      <div class="stats" id="datesGrid" style="display:none">
+        <div class="stat">
+          <div class="stat-value" style="font-size:1.05rem" id="lmpShow">—</div>
+          <div class="stat-label">آخرین قاعدگی</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="font-size:1.05rem" id="eddShow">—</div>
+          <div class="stat-label">تاریخ زایمان</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>
+        نکات این هفته
+      </div>
+      <div class="answer-text" id="weeklyTip" style="font-size:.95rem">
+        برای دیدن نکات اختصاصی، اطلاعات بارداری‌ات را ثبت کن.
+      </div>
+    </div>
+
+    <button class="btn btn-secondary" id="clearPregnancy">
+      <svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+      پاک کردن اطلاعات
+    </button>
+  </div>
+
+  <!-- ══════════ TAB: هفته‌ها ══════════ -->
+  <div class="tab-content" id="tab-weeks">
+    <div class="week-list" id="weekList"></div>
+  </div>
+
+  <!-- ══════════ TAB: چک‌لیست ══════════ -->
+  <div class="tab-content" id="tab-checklist">
+    <div class="card">
+      <div class="card-title">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        کارهای مهم بارداری
+      </div>
+      <div class="checklist" id="checklist"></div>
+    </div>
+    <button class="btn btn-secondary" id="resetChecklist">
+      <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
+      پاک کردن چک‌لیست
+    </button>
+  </div>
+
+  <!-- ══════════ TAB: مقالات ══════════ -->
+  <div class="tab-content" id="tab-articles">
+    <div class="art-grid" id="artGrid">
+      <div class="loader">در حال بارگذاری مقالات...</div>
+    </div>
+  </div>
+
+  <div style="height:20px"></div>
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-item" href="home.html">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>خانه</span>
+  </a>
+  <a class="nav-item" href="search.html">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <span>جستجو</span>
+  </a>
+  <a class="nav-item" href="hamraz.html">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>همراز</span>
+  </a>
+  <a class="nav-item" href="ahkam.html">
+    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <span>احکام</span>
+  </a>
+  <a class="nav-item" href="settings.html">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span>بیشتر</span>
+  </a>
+</nav>
+
+<div class="modal" id="artModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-text">
+        <span class="modal-badge" id="modalBadge">مقاله</span>
+        <div class="modal-q" id="modalTitle">—</div>
+      </div>
+      <button class="modal-close" id="modalClose" type="button" aria-label="بستن">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-content">
+      <div class="answer-text" id="modalContent">—</div>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-source" id="modalSource" style="display:none"></div>
+      <div class="action-bar">
+        <button class="act-btn" data-art-act="copy" title="کپی">
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+        <button class="act-btn" data-art-act="share" title="اشتراک‌گذاری">
+          <svg viewBox="0 0 24 24"><path d="M15 14l5-5-5-5"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>
+        </button>
+        <button class="act-btn" data-art-act="speak" title="خواندن صوتی">
+          <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        </button>
+        <button class="act-btn" data-art-act="bookmark" id="modalBookmarkBtn" title="نشان‌گذاری">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+
+var PREGNANCY_PATH = 'data/medical/pregnancy.json';
+var PREG_KEY = 'bn_pregnancy_data';
+var BM_KEY = 'bn_pregnancy_bookmarks';
+var CHECK_KEY = 'bn_pregnancy_checklist';
+
+var allArticles = [];
+var currentArticle = null;
+var speechBtn = null;
+var toastTimer = null;
+
+/* ═══ هفته‌های بارداری ═══ */
+var WEEK_DATA = [
+  { w:1, title:'شروع سفر', desc:'اولین روز آخرین قاعدگی. بدن برای تخمک‌گذاری آماده می‌شود.' },
+  { w:2, title:'تخمک‌گذاری', desc:'آزاد شدن تخمک از تخمدان و آماده‌سازی برای لقاح.' },
+  { w:3, title:'لقاح', desc:'تخمک و اسپرم ادغام می‌شوند. جنین در حال تشکیل است.' },
+  { w:4, title:'لانه‌گزینی', desc:'جنین در دیواره رحم جای می‌گیرد. تست بارداری می‌تواند مثبت شود.' },
+  { w:5, title:'قلب اولیه', desc:'لوله عصبی و قلب اولیه شکل می‌گیرد. اندازه: دانه کنجد.' },
+  { w:6, title:'شروع ضربان قلب', desc:'قلب شروع به تپیدن می‌کند. تهوع صبحگاهی ممکن است شروع شود.' },
+  { w:7, title:'رشد سریع', desc:'مغز و صورت در حال شکل‌گیری. اندازه: یک نخود.' },
+  { w:8, title:'اندام‌های اصلی', desc:'دست‌ها و پاها در حال رشد. همه اندام‌های اصلی شروع شده‌اند.' },
+  { w:9, title:'پایان اندام‌سازی', desc:'جنین شکل انسانی گرفته. اندازه: یک انگور.' },
+  { w:10, title:'پایان جنین‌شناسی', desc:'انگشتان جدا شده‌اند. جنین حالا «جنین» نام دارد نه «رویان».' },
+  { w:11, title:'رشد ناخن‌ها', desc:'ناخن‌ها و موها شروع به رشد می‌کنند. جنین می‌تواند حرکت کند.' },
+  { w:12, title:'پایان سه‌ماهه اول', desc:'همه اندام‌ها تشکیل شده. زمان سونوگرافی NT (شفافیت گردنی).' },
+  { w:13, title:'ورود به سه‌ماهه دوم', desc:'خطر سقط کاهش می‌یابد. تهوع معمولاً کم می‌شود.' },
+  { w:14, title:'شکل‌گیری صورت', desc:'چشم‌ها و گوش‌ها در جای خود. جنین حالا می‌تواند اخم کند.' },
+  { w:15, title:'شنیدن صدا', desc:'جنین صداهای خارجی را می‌شنود. اسکلت در حال سخت شدن.' },
+  { w:16, title:'حس حرکت', desc:'ممکن است برای اولین بار حرکت جنین را حس کنی (Quickening).' },
+  { w:17, title:'رشد چربی', desc:'لایه چربی زیر پوست شروع به تشکیل می‌شود.' },
+  { w:18, title:'سونوگرافی مهم', desc:'زمان سونوگرافی آنومالی (هفته ۱۸-۲۲). جنسیت قابل تشخیص.' },
+  { w:19, title:'ورنیکس', desc:'لایه محافظ روی پوست جنین شکل می‌گیرد.' },
+  { w:20, title:'نیمه راه!', desc:'به نیمه بارداری رسیدی 🎉 جنین حالا ۲۵ سانتی‌متر است.' },
+  { w:21, title:'حرکات قوی‌تر', desc:'حرکات جنین محسوس‌تر می‌شود. جنین شروع به بلعیدن می‌کند.' },
+  { w:22, title:'شنیدن صدای مادر', desc:'جنین صدای مادر را می‌شناسد و به آن واکنش می‌دهد.' },
+  { w:23, title:'رشد ریه', desc:'ریه‌ها در حال آماده شدن برای نفس کشیدن.' },
+  { w:24, title:'آزمایش دیابت', desc:'زمان آزمایش دیابت بارداری (هفته ۲۴-۲۸).' },
+  { w:25, title:'رشد مغز', desc:'مغز جنین سریع رشد می‌کند. پوست شروع به صاف شدن.' },
+  { w:26, title:'باز کردن چشم', desc:'جنین می‌تواند چشم‌هایش را باز کند. شروع به واکنش به نور.' },
+  { w:27, title:'پایان سه‌ماهه دوم', desc:'آماده ورود به سه‌ماهه سوم. جنین حالا می‌تواند نفس بکشد (تمرینی).' },
+  { w:28, title:'سه‌ماهه سوم', desc:'ورود به سه‌ماهه آخر. چکاپ هر ۲ هفته.' },
+  { w:29, title:'رشد سریع وزن', desc:'جنین روزانه حدود ۲۰۰ گرم اضافه می‌کند.' },
+  { w:30, title:'آگاهی بیشتر', desc:'جنین به صدا و نور واکنش نشان می‌دهد. مایع آمنیوتیک بیشتر می‌شود.' },
+  { w:31, title:'رشد سریع مغز', desc:'مغز بسیار سریع رشد می‌کند. حس بویایی قوی‌تر.' },
+  { w:32, title:'تمرین تنفس', desc:'جنین تمرین تنفس می‌کند (با مایع آمنیوتیک). ناخن‌ها کامل.' },
+  { w:33, title:'سیستم ایمنی', desc:'آنتی‌بادی‌های مادر به جنین منتقل می‌شوند.' },
+  { w:34, title:'آماده شدن ریه', desc:'ریه‌ها آماده‌تر می‌شوند. جنین ممکن است به سمت پایین برگردد.' },
+  { w:35, title:'اضافه وزن', desc:'وزن جنین حدود ۲.۵ کیلوگرم. مغز بیشتر رشد می‌کند.' },
+  { w:36, title:'آمادگی زایمان', desc:'کیف بیمارستان را آماده کن. چکاپ هفتگی.' },
+  { w:37, title:'نزدیک زایمان', desc:'جنین حالا «کامل» است. ممکن است در این هفته یا بعد متولد شود.' },
+  { w:38, title:'زایمان نزدیک', desc:'جنین در حال آماده شدن. علائم زایمان را بشناس.' },
+  { w:39, title:'تمام‌مدت', desc:'جنین کاملاً آماده. منتظر علائم زایمان باش.' },
+  { w:40, title:'زمان زایمان!', desc:'موعد رسید! 🎉 نوزاد آماده دیدن دنیاست.' }
+];
+
+/* ═══ چک‌لیست بارداری ═══ */
+var CHECKLIST = [
+  { id:'c1', week:'قبل بارداری', text:'شروع مصرف اسید فولیک' },
+  { id:'c2', week:'هفته ۴-۶', text:'اولین ویزیت پزشک زنان' },
+  { id:'c3', week:'هفته ۶-۸', text:'اولین سونوگرافی (تشخیص قلب)' },
+  { id:'c4', week:'هفته ۸-۱۰', text:'آزمایش‌های اولیه (CBC، تیروئید، قند)' },
+  { id:'c5', week:'هفته ۱۱-۱۳', text:'سونوگرافی NT (شفافیت گردنی)' },
+  { id:'c6', week:'هفته ۱۴-۱۶', text:'آزمایش غربالگری سه‌گانه/چهارگانه' },
+  { id:'c7', week:'هفته ۱۸-۲۲', text:'سونوگرافی آنومالی (تشخیص ناهنجاری)' },
+  { id:'c8', week:'هفته ۲۴-۲۸', text:'آزمایش دیابت بارداری (GCT)' },
+  { id:'c9', week:'هفته ۲۸', text:'شروع شمارش روزانه حرکت جنین' },
+  { id:'c10', week:'هفته ۲۸-۳۰', text:'آزمایش‌های سه‌ماهه سوم' },
+  { id:'c11', week:'هفته ۳۰-۳۲', text:'مشورت درباره نوع زایمان' },
+  { id:'c12', week:'هفته ۳۴-۳۶', text:'آماده‌سازی کیف بیمارستان' },
+  { id:'c13', week:'هفته ۳۶', text:'ویزیت هفتگی از این هفته' },
+  { id:'c14', week:'هفته ۳۶-۳۷', text:'آزمایش استرپتوکوک گروه B' },
+  { id:'c15', week:'هفته ۳۷-۴۰', text:'آماده‌سازی اتاق نوزاد' },
+  { id:'c16', week:'همیشه', text:'مصرف مکمل‌ها (اسید فولیک، آهن، D)' },
+  { id:'c17', week:'همیشه', text:'تغذیه سالم و آب کافی' },
+  { id:'c18', week:'همیشه', text:'ورزش سبک روزانه (با اجازه پزشک)' },
+  { id:'c19', week:'همیشه', text:'خواب کافی و استراحت' },
+  { id:'c20', week:'همیشه', text:'پرهیز از سیگار، الکل، قلیان' }
+];
+
+/* ═══ HELPERS ═══ */
+function $(id){ return document.getElementById(id); }
+function escapeHtml(s){
+  if(s==null) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function faNum(n){ return String(n).replace(/\d/g,function(d){ return '۰۱۲۳۴۵۶۷۸۹'[d]; }); }
+function showMsg(msg,dur){
+  dur=dur||2200;
+  var t=$('toast'); if(!t) return;
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(function(){ t.classList.remove('show'); },dur);
+}
+function getTheme(){ try{ return localStorage.getItem('bn_theme')||'light'; }catch(e){ return 'light'; } }
+function applyTheme(){
+  if(getTheme()==='dark') document.body.classList.add('dark');
+  else document.body.classList.remove('dark');
+}
+function pad2(n){ return n<10?'0'+n:''+n; }
+function formatDate(date){
+  if(!date) return '';
+  return date.getFullYear()+'-'+pad2(date.getMonth()+1)+'-'+pad2(date.getDate());
+}
+function formatDateFa(date){
+  if(!date) return '—';
+  var months = ['ژانویه','فوریه','مارس','آپریل','مه','ژوئن','ژوئیه','اوت','سپتامبر','اکتبر','نوامبر','دسامبر'];
+  return faNum(date.getDate()) + ' ' + months[date.getMonth()] + ' ' + faNum(date.getFullYear());
+}
+function parseDate(str){
+  if(!str) return null;
+  var parts = String(str).split('-');
+  if(parts.length !== 3) return null;
+  return new Date(parseInt(parts[0],10), parseInt(parts[1],10)-1, parseInt(parts[2],10));
+}
+function daysBetween(d1, d2){
+  var one = 24*60*60*1000;
+  var a = new Date(d1.getFullYear(), d1.getMonth(), d1.getDate());
+  var b = new Date(d2.getFullYear(), d2.getMonth(), d2.getDate());
+  return Math.round((b-a)/one);
+}
+function addDays(date, days){
+  var d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  d.setDate(d.getDate() + days);
+  return d;
+}
+
+/* ═══ PREGNANCY STORAGE ═══ */
+function getPregnancy(){
+  try{
+    var raw = localStorage.getItem(PREG_KEY);
+    if(!raw) return null;
+    var obj = JSON.parse(raw);
+    if(obj && (obj.lmp || obj.edd)) return obj;
+  }catch(e){}
+  return null;
+}
+function savePregnancy(obj){ try{ localStorage.setItem(PREG_KEY, JSON.stringify(obj)); }catch(e){} }
+function clearPregnancy(){ try{ localStorage.removeItem(PREG_KEY); }catch(e){} }
+
+/* ═══ CALCULATIONS ═══ */
+var TOTAL_DAYS = 280; // 40 هفته
+
+function getPregnancyInfo(){
+  var p = getPregnancy();
+  if(!p) return null;
+
+  var lmp = p.lmp ? parseDate(p.lmp) : null;
+  var edd = p.edd ? parseDate(p.edd) : null;
+
+  if(!lmp && edd){
+    // محاسبه LMP از EDD
+    lmp = addDays(edd, -TOTAL_DAYS);
+  }
+  if(!lmp) return null;
+  if(!edd){
+    edd = addDays(lmp, TOTAL_DAYS);
+  }
+
+  var today = new Date();
+  var today0 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+  var daysSince = daysBetween(lmp, today0);
+  if(daysSince < 0) daysSince = 0;
+  if(daysSince > TOTAL_DAYS) daysSince = TOTAL_DAYS;
+
+  var daysRemaining = Math.max(0, daysBetween(today0, edd));
+  var totalWeeks = Math.floor(daysSince / 7);
+  var totalDays = daysSince % 7;
+  // برای نمایش «هفته بارداری»: مثلاً 5 هفته و 3 روز
+  var currentWeek = Math.max(1, Math.min(40, totalWeeks + 1));
+
+  // سه‌ماهه
+  var trimester = 1;
+  var trimesterLabel = 'اول';
+  if(currentWeek >= 14 && currentWeek <= 27){
+    trimester = 2;
+    trimesterLabel = 'دوم';
+  } else if(currentWeek >= 28){
+    trimester = 3;
+    trimesterLabel = 'سوم';
+  }
+
+  // درصد پیشرفت
+  var progress = Math.min(100, Math.max(0, (daysSince / TOTAL_DAYS) * 100));
+
+  return {
+    lmp: lmp,
+    edd: edd,
+    daysSince: daysSince,
+    daysRemaining: daysRemaining,
+    weeks: totalWeeks,
+    extraDays: totalDays,
+    currentWeek: currentWeek,
+    trimester: trimester,
+    trimesterLabel: trimesterLabel,
+    progress: progress
+  };
+}
+
+/* ═══ TIPS بر اساس هفته ═══ */
+function getWeeklyTip(info){
+  if(!info) return 'برای دیدن نکات اختصاصی، اطلاعات بارداری‌ات را ثبت کن.';
+  var w = info.currentWeek;
+  var tips = [];
+  if(w <= 4) tips = '🌸 هفته‌های اولیه:\n• اسید فولیک را شروع کن\n• تغذیه سالم\n• استراحت کافی\n• پرهیز از دخانیات';
+  else if(w <= 8) tips = '🌸 هفته ' + faNum(w) + ':\n• تهوع صبحگاهی ممکن است شروع شود\n• وعده‌های کم و مکرر\n• بیسکویت خشک قبل از بلند شدن\n• آب کافی';
+  else if(w <= 12) tips = '🌸 هفته ' + faNum(w) + ':\n• نزدیک پایان سه‌ماهه اول\n• سونوگرافی NT را انجام بده\n• استراحت کافی\n• پرهیز از استرس';
+  else if(w <= 16) tips = '🌸 هفته ' + faNum(w) + ':\n• تهوع معمولاً کم می‌شود\n• انرژی بیشتر\n• ورزش سبک (با اجازه پزشک)\n• تغذیه مقوی';
+  else if(w <= 20) tips = '🌸 هفته ' + faNum(w) + ':\n• سونوگرافی آنومالی\n• احتمال حس حرکت جنین\n• آهن و کلسیم کافی\n• آب زیاد';
+  else if(w <= 24) tips = '🌸 هفته ' + faNum(w) + ':\n• رشد سریع جنین\n• آزمایش دیابت بارداری\n• ورزش ملایم\n• خواب کافی';
+  else if(w <= 28) tips = '🌸 هفته ' + faNum(w) + ':\n• پایان سه‌ماهه دوم\n• شروع سه‌ماهه سوم\n• ویزیت هر ۲ هفته\n• ورزش کگل';
+  else if(w <= 32) tips = '🌸 هفته ' + faNum(w) + ':\n• رشد سریع مغز جنین\n• شمارش حرکت جنین\n• آماده‌سازی برای زایمان\n• استراحت بیشتر';
+  else if(w <= 36) tips = '🌸 هفته ' + faNum(w) + ':\n• آماده‌سازی کیف بیمارستان\n• ویزیت هفتگی\n• علائم زایمان را بشناس\n• تغذیه و خواب خوب';
+  else tips = '🌸 هفته ' + faNum(w) + ':\n• نزدیک زایمان!\n• علائم زایمان را بشناس\n• استراحت کافی\n• آماده حرکت به بیمارستان';
+  return tips;
+}
+
+/* ═══ RENDER STATUS ═══ */
+function renderStatus(){
+  var info = getPregnancyInfo();
+  var titleEl = $('statusTitle');
+  var subEl = $('statusSub');
+  var progressWrap = $('progressWrap');
+  var progressBar = $('progressBar');
+  var statsGrid = $('statsGrid');
+  var datesGrid = $('datesGrid');
+
+  if(!info){
+    if(titleEl) titleEl.textContent = 'هنوز اطلاعاتی ثبت نشده';
+    if(subEl) subEl.textContent = 'برای شروع، تاریخ آخرین قاعدگی یا تاریخ زایمان را وارد کن';
+    if(progressWrap) progressWrap.style.display = 'none';
+    if(statsGrid) statsGrid.style.display = 'none';
+    if(datesGrid) datesGrid.style.display = 'none';
+    renderWeeklyTip(null);
+    return;
+  }
+
+  var weekNum = info.weeks;
+  var extraDays = info.extraDays;
+
+  if(titleEl) titleEl.innerHTML = 'هفته <strong>' + faNum(weekNum) + '</strong> و <strong>' + faNum(extraDays) + ' روز</strong>';
+  if(subEl) subEl.innerHTML = 'سه‌ماهه <strong>' + info.trimesterLabel + '</strong> • <strong>' + faNum(info.daysRemaining) + ' روز</strong> تا زایمان';
+
+  if(progressWrap) progressWrap.style.display = 'block';
+  if(progressBar) progressBar.style.width = info.progress.toFixed(1) + '%';
+  if(statsGrid) statsGrid.style.display = 'grid';
+
+  var weekNumEl = $('weekNum'); if(weekNumEl) weekNumEl.textContent = faNum(weekNum);
+  var dayNumEl = $('dayNum'); if(dayNumEl) dayNumEl.textContent = faNum(info.daysRemaining);
+  var trimEl = $('trimester'); if(trimEl) trimEl.textContent = info.trimesterLabel;
+  var weekTotalEl = $('weekTotal'); if(weekTotalEl) weekTotalEl.textContent = '۴۰';
+
+  // نمایش تاریخ‌ها
+  if(datesGrid) datesGrid.style.display = 'grid';
+  var lmpShow = $('lmpShow'); if(lmpShow) lmpShow.textContent = formatDateFa(info.lmp);
+  var eddShow = $('eddShow'); if(eddShow) eddShow.textContent = formatDateFa(info.edd);
+
+  renderWeeklyTip(info);
+}
+
+function renderWeeklyTip(info){
+  var el = $('weeklyTip');
+  if(!el) return;
+  el.textContent = getWeeklyTip(info);
+}
+
+/* ═══ RENDER WEEKS ═══ */
+function renderWeeks(){
+  var list = $('weekList');
+  if(!list) return;
+
+  var info = getPregnancyInfo();
+  var currentWeek = info ? info.currentWeek : 0;
+
+  var html = '';
+  WEEK_DATA.forEach(function(w){
+    var isCurrent = (w.w === currentWeek);
+    html += '<div class="week-item' + (isCurrent ? ' current' : '') + '" data-week="' + w.w + '" role="button" tabindex="0">' +
+      '<div class="week-badge">' +
+        '<div class="week-badge-num">' + faNum(w.w) + '</div>' +
+        '<div class="week-badge-label">هفته</div>' +
+      '</div>' +
+      '<div class="week-item-body">' +
+        '<div class="week-item-title">' + escapeHtml(w.title) + '</div>' +
+        '<div class="week-item-desc">' + escapeHtml(w.desc) + '</div>' +
+      '</div>' +
+      (isCurrent ? '<span class="week-item-tag">اکنون</span>' : '') +
+    '</div>';
+  });
+  list.innerHTML = html;
+
+  list.querySelectorAll('.week-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      var wNum = parseInt(item.getAttribute('data-week'), 10);
+      openWeekModal(wNum);
+    });
+  });
+}
+
+function openWeekModal(wNum){
+  var w = null;
+  for(var i=0; i<WEEK_DATA.length; i++){
+    if(WEEK_DATA[i].w === wNum){ w = WEEK_DATA[i]; break; }
+  }
+  if(!w) return;
+
+  var content = 'هفته ' + faNum(w.w) + ' بارداری\n\n' + w.desc;
+
+  // اطلاعات اضافی
+  var weeksInfo = {
+    4: '\n\n📌 کارهای این هفته:\n• تست بارداری\n• شروع اسید فولیک (اگه نکردی)\n• اولین ویزیت پزشک',
+    8: '\n\n📌 کارهای این هفته:\n• اولین سونوگرافی\n• آزمایش خون اولیه\n• شروع ویتامین‌های بارداری',
+    12: '\n\n📌 کارهای این هفته:\n• سونوگرافی NT\n• غربالگری سه‌ماهه اول\n• مشورت با پزشک',
+    20: '\n\n📌 کارهای این هفته:\n• سونوگرافی آنومالی\n• ممکن است جنسیت مشخص شود\n• شروع حس حرکت جنین',
+    24: '\n\n📌 کارهای این هفته:\n• آزمایش دیابت بارداری\n• کنترل فشار خون\n• شمارش حرکت جنین',
+    28: '\n\n📌 کارهای این هفته:\n• شروع ویزیت هر ۲ هفته\n• شمارش روزانه حرکت جنین\n• تمرین کگل',
+    36: '\n\n📌 کارهای این هفته:\n• آماده‌سازی کیف بیمارستان\n• ویزیت هفتگی از این هفته\n• آشنایی با علائم زایمان',
+    40: '\n\n📌 زمان زایمان!\n• علائم زایمان را بشناس\n• آماده حرکت به بیمارستان\n• آرامش و تنفس عمیق'
+  };
+  content += (weeksInfo[w.w] || '');
+
+  $('modalBadge').textContent = 'هفته ' + faNum(w.w);
+  $('modalTitle').textContent = w.title;
+  $('modalContent').textContent = content;
+  $('modalTags').innerHTML = '';
+  $('modalTags').style.display = 'none';
+  $('modalSource').style.display = 'none';
+  $('modalBookmarkBtn').style.display = 'none';
+
+  $('artModal').classList.add('show');
+}
+
+/* ═══ CHECKLIST ═══ */
+function getChecked(){
+  try{
+    var raw = localStorage.getItem(CHECK_KEY);
+    if(!raw) return [];
+    var arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  }catch(e){ return []; }
+}
+function setChecked(arr){ try{ localStorage.setItem(CHECK_KEY, JSON.stringify(arr)); }catch(e){} }
+function isChecked(id){ return getChecked().indexOf(id) > -1; }
+function toggleChecked(id){
+  var arr = getChecked();
+  var i = arr.indexOf(id);
+  if(i > -1){ arr.splice(i,1); setChecked(arr); return false; }
+  arr.push(id); setChecked(arr); return true;
+}
+
+function renderChecklist(){
+  var list = $('checklist');
+  if(!list) return;
+
+  var html = '';
+  CHECKLIST.forEach(function(item){
+    var done = isChecked(item.id);
+    html += '<div class="check-item' + (done ? ' done' : '') + '" data-id="' + item.id + '" role="button" tabindex="0">' +
+      '<div class="check-box">' +
+        '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>' +
+      '</div>' +
+      '<div class="check-text">' +
+        '<span class="check-week">' + escapeHtml(item.week) + '</span><br>' +
+        escapeHtml(item.text) +
+      '</div>' +
+    '</div>';
+  });
+  list.innerHTML = html;
+
+  list.querySelectorAll('.check-item').forEach(function(el){
+    el.addEventListener('click', function(){
+      var id = el.getAttribute('data-id');
+      var now = toggleChecked(id);
+      el.classList.toggle('done', now);
+      if(now) showMsg('انجام شد ✓');
+    });
+  });
+}
+
+/* ═══ ARTICLES ═══ */
+function normalizeArticle(a, idx){
+  if(!a) return null;
+  if(typeof a === 'string') a = { content: a };
+  var id = a.id || ('pg_'+(idx+1));
+  var title = a.title || a.q || a.question || '';
+  var excerpt = a.excerpt || a.short || a.summary || '';
+  var content = a.content || a.a || a.answer || a.text || '';
+  if(content && typeof content === 'object'){
+    content = content.jafari || content.sistani || content[Object.keys(content)[0]] || '';
+  }
+  var tags = Array.isArray(a.tags) ? a.tags : [];
+  var source = a.source || '';
+  var icon = a.icon || '';
+  if(!excerpt && content){
+    var flat = String(content).replace(/\n/g,' ').trim();
+    excerpt = flat.slice(0,120) + (flat.length>120?'…':'');
+  }
+  if(!title && !content) return null;
+  return { id:String(id), title:String(title), excerpt:String(excerpt), content:String(content), tags:tags, source:String(source), icon:icon };
+}
+
+function extractArticles(data){
+  if(!data) return [];
+  if(Array.isArray(data)) return data;
+  if(Array.isArray(data.articles)) return data.articles;
+  if(Array.isArray(data.items)) return data.items;
+  if(Array.isArray(data.questions)) return data.questions;
+  if(Array.isArray(data.list)) return data.list;
+  if(Array.isArray(data.data)) return data.data;
+  if(Array.isArray(data.categories)){
+    var out=[];
+    data.categories.forEach(function(c){
+      if(Array.isArray(c.articles)) out = out.concat(c.articles);
+      else if(Array.isArray(c.questions)) out = out.concat(c.questions);
+      else out = out.concat([c]);
+    });
+    return out;
+  }
+  if(data.q || data.title || data.content) return [data];
+  return [];
+}
+
+function renderArticles(){
+  var grid = $('artGrid');
+  if(!grid) return;
+
+  if(allArticles.length === 0){
+    grid.innerHTML = '<div class="empty">هنوز مقاله‌ای اضافه نشده<br><br><span style="font-size:.85rem;opacity:.8">فایل: <strong>data/medical/pregnancy.json</strong></span></div>';
+    return;
+  }
+
+  var html = '';
+  allArticles.forEach(function(a){
+    var bm = isBookmarked(a.id);
+    var iconHtml;
+    if(a.icon && a.icon.indexOf('<svg') === 0){
+      iconHtml = '<span class="art-card-svg">' + a.icon + '</span>';
+    } else {
+      iconHtml = '<span class="art-card-svg"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span>';
+    }
+    html += '<div class="art-card" data-id="' + escapeHtml(a.id) + '" role="button" tabindex="0">' +
+      '<div class="art-card-emoji">' + iconHtml + '</div>' +
+      '<div class="art-card-body">' +
+        '<div class="art-card-title">' + escapeHtml(a.title) + '</div>' +
+        '<div class="art-card-excerpt">' + escapeHtml(a.excerpt) + '</div>' +
+      '</div>' +
+      '<button class="art-card-bookmark ' + (bm ? 'active' : '') + '" data-bm="' + escapeHtml(a.id) + '" type="button" aria-label="نشان‌گذاری">' +
+        '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' +
+      '</button>' +
+    '</div>';
+  });
+  grid.innerHTML = html;
+
+  grid.querySelectorAll('.art-card').forEach(function(card){
+    card.addEventListener('click', function(e){
+      if(e.target.closest('[data-bm]')) return;
+      openArticle(card.getAttribute('data-id'));
+    });
+  });
+
+  grid.querySelectorAll('[data-bm]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var id = btn.getAttribute('data-bm');
+      var now = toggleBookmark(id);
+      btn.classList.toggle('active', now);
+      showMsg(now ? 'به نشان‌شده‌ها اضافه شد ⭐' : 'از نشان‌شده‌ها حذف شد');
+    });
+  });
+}
+
+function openArticle(id){
+  var art = null;
+  for(var i=0; i<allArticles.length; i++){
+    if(allArticles[i].id === id){ art = allArticles[i]; break; }
+  }
+  if(!art) return;
+  currentArticle = art;
+
+  $('modalBadge').textContent = 'بارداری';
+  $('modalTitle').textContent = art.title;
+  $('modalContent').textContent = art.content || art.excerpt || '';
+
+  var tagsEl = $('modalTags');
+  if(art.tags && art.tags.length){
+    tagsEl.innerHTML = art.tags.map(function(t){
+      return '<span class="modal-tag">' + escapeHtml(t) + '</span>';
+    }).join('');
+    tagsEl.style.display = 'flex';
+  } else { tagsEl.innerHTML = ''; tagsEl.style.display = 'none'; }
+
+  var srcEl = $('modalSource');
+  if(art.source){
+    srcEl.style.display = 'flex';
+    srcEl.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>' + escapeHtml(art.source) + '</span>';
+  } else { srcEl.style.display = 'none'; }
+
+  var bmBtn = $('modalBookmarkBtn');
+  bmBtn.style.display = '';
+  if(bmBtn) bmBtn.classList.toggle('active', isBookmarked(art.id));
+
+  $('artModal').classList.add('show');
+}
+
+function closeModal(){
+  stopSpeech();
+  $('artModal').classList.remove('show');
+  currentArticle = null;
+  var bmBtn = $('modalBookmarkBtn');
+  if(bmBtn) bmBtn.style.display = '';
+}
+
+/* ═══ BOOKMARKS ═══ */
+function getBookmarks(){
+  try{
+    var raw=localStorage.getItem(BM_KEY);
+    if(!raw) return [];
+    var arr=JSON.parse(raw);
+    return Array.isArray(arr)?arr:[];
+  }catch(e){ return []; }
+}
+function setBookmarks(arr){ try{ localStorage.setItem(BM_KEY,JSON.stringify(arr)); }catch(e){} }
+function isBookmarked(id){ return getBookmarks().indexOf(id)>-1; }
+function toggleBookmark(id){
+  var arr=getBookmarks();
+  var i=arr.indexOf(id);
+  if(i>-1){ arr.splice(i,1); setBookmarks(arr); return false; }
+  else { arr.push(id); setBookmarks(arr); return true; }
+}
+
+/* ═══ COPY / SHARE / SPEAK ═══ */
+function fallbackCopy(text){
+  var ta=document.createElement('textarea');
+  ta.value=text; ta.style.position='fixed'; ta.style.top='-1000px'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); showMsg('متن کپی شد ✓'); }
+  catch(e){ showMsg('...'); }
+  document.body.removeChild(ta);
+}
+function copyText(text){
+  if(!text) return;
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text)
+      .then(function(){ showMsg('متن کپی شد ✓'); })
+      .catch(function(){ fallbackCopy(text); });
+  } else fallbackCopy(text);
+}
+function shareText(text,title){
+  if(!text) return;
+  if(navigator.share){
+    navigator.share({title:title||'بانوان نور',text:text}).catch(function(){});
+  } else { copyText(text); showMsg('متن کپی شد'); }
+}
+function speakText(text,btn){
+  if(!text) return;
+  if(!('speechSynthesis' in window)){ showMsg('خواندن صوتی پشتیبانی نمی‌شود'); return; }
+  if(window.speechSynthesis.speaking || window.speechSynthesis.pending){
+    window.speechSynthesis.cancel();
+    if(speechBtn) speechBtn.classList.remove('speaking');
+    if(speechBtn === btn){ speechBtn = null; return; }
+  }
+  var utt = new SpeechSynthesisUtterance(text);
+  utt.lang='fa-IR'; utt.rate=0.95; utt.pitch=1;
+  try{
+    var voices = window.speechSynthesis.getVoices();
+    for(var i=0;i<voices.length;i++){
+      if(voices[i].lang && voices[i].lang.toLowerCase().indexOf('fa')===0){ utt.voice=voices[i]; break; }
+    }
+  }catch(e){}
+  if(btn){ btn.classList.add('speaking'); speechBtn = btn; }
+  utt.onend = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
+  utt.onerror = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
+  window.speechSynthesis.speak(utt);
+}
+function stopSpeech(){
+  try{
+    if('speechSynthesis' in window) window.speechSynthesis.cancel();
+    if(speechBtn) speechBtn.classList.remove('speaking');
+    speechBtn = null;
+  }catch(e){}
+}
+
+/* ═══ MODAL ACTIONS ═══ */
+function setupModalActions(){
+  var bar = document.querySelector('.action-bar');
+  if(bar){
+    bar.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-art-act]');
+      if(!btn || !currentArticle) return;
+      var act = btn.getAttribute('data-art-act');
+      var art = currentArticle;
+      var fullText = (art.title ? art.title + '\n\n' : '') + (art.content || '') + (art.source ? '\n\n— ' + art.source : '');
+      if(act === 'copy') copyText(fullText);
+      else if(act === 'share') shareText(fullText + '\n\n— بانوان نور', 'بانوان نور');
+      else if(act === 'speak') speakText((art.title ? art.title + '. ' : '') + (art.content || ''), btn);
+      else if(act === 'bookmark'){
+        var now = toggleBookmark(art.id);
+        btn.classList.toggle('active', now);
+        showMsg(now ? 'به نشان‌شده‌ها اضافه شد ⭐' : 'از نشان‌شده‌ها حذف شد');
+        renderArticles();
+      }
+    });
+  }
+  var closeBtn = $('modalClose');
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  var modal = $('artModal');
+  if(modal) modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && $('artModal').classList.contains('show')) closeModal();
+  });
+}
+
+/* ═══ TABS ═══ */
+function setupTabs(){
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      var name = tab.getAttribute('data-tab');
+      document.querySelectorAll('.tab-content').forEach(function(c){ c.classList.remove('active'); });
+      var target = $('tab-' + name);
+      if(target) target.classList.add('active');
+    });
+  });
+}
+
+/* ═══ FORM ═══ */
+function setupForm(){
+  var p = getPregnancy();
+  if(p){
+    if($('lmpDate') && p.lmp) $('lmpDate').value = p.lmp;
+    if($('eddDate') && p.edd) $('eddDate').value = p.edd;
+  }
+
+  var saveBtn = $('savePregnancy');
+  if(saveBtn){
+    saveBtn.addEventListener('click', function(){
+      var lmp = $('lmpDate').value;
+      var edd = $('eddDate').value;
+      if(!lmp && !edd){
+        showMsg('حداقل یکی از تاریخ‌ها را وارد کن');
+        return;
+      }
+      // اگه فقط LMP → EDD محاسبه می‌شود، و برعکس
+      savePregnancy({ lmp: lmp || '', edd: edd || '' });
+      showMsg('اطلاعات ذخیره شد ✓');
+      renderStatus();
+      renderWeeks();
+    });
+  }
+
+  var clearBtn = $('clearPregnancy');
+  if(clearBtn){
+    clearBtn.addEventListener('click', function(){
+      if(!getPregnancy()){ showMsg('اطلاعاتی برای پاک کردن نیست'); return; }
+      if(confirm('مطمئنی می‌خوای همه اطلاعات بارداری رو پاک کنی؟')){
+        clearPregnancy();
+        if($('lmpDate')) $('lmpDate').value = '';
+        if($('eddDate')) $('eddDate').value = '';
+        showMsg('اطلاعات پاک شد');
+        renderStatus();
+        renderWeeks();
+      }
+    });
+  }
+
+  var resetBtn = $('resetChecklist');
+  if(resetBtn){
+    resetBtn.addEventListener('click', function(){
+      if(confirm('همه چک‌لیست پاک بشه؟')){
+        setChecked([]);
+        renderChecklist();
+        showMsg('چک‌لیست پاک شد');
+      }
+    });
+  }
+}
+
+/* ═══ LOAD ARTICLES ═══ */
+function loadArticles(){
+  return fetch(PREGNANCY_PATH)
+    .then(function(res){
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      return res.json();
+    })
+    .then(function(data){
+      var arr = extractArticles(data);
+      allArticles = arr.map(function(a,i){ return normalizeArticle(a,i); }).filter(Boolean);
+      renderArticles();
+      return allArticles;
+    })
+    .catch(function(err){
+      console.warn('pregnancy.json:', err.message);
+      allArticles = [];
+      renderArticles();
+      return [];
+    });
+}
+
+/* ═══ INIT ═══ */
+function init(){
+  applyTheme();
+  setupTabs();
+  setupForm();
+  setupModalActions();
+  renderStatus();
+  renderWeeks();
+  renderChecklist();
+  loadArticles();
+
+  window.addEventListener('storage', function(e){
+    if(e.key === 'bn_theme') applyTheme();
+    if(e.key === PREG_KEY){ renderStatus(); renderWeeks(); }
+  });
+
+  try{
+    if('speechSynthesis' in window) window.speechSynthesis.getVoices();
+  }catch(e){}
+
+  console.log('🌸 صفحه بارداری آماده');
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else init();
+
+})();
+</script>
+
+</body>
+</html>

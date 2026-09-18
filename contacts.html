@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0284c7" />
+<title>تماس با ما | بانوان نور</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<style>
+:root{
+  --bg-1:#f0f9ff;--bg-2:#e0f2fe;--bg-3:#bae6fd;--bg-4:#7dd3fc;
+  --text:#0c4a6e;--text-soft:#075985;--text-card:#0c4a6e;--text-muted:#0369a1;
+  --card:rgba(255,255,255,.85);--card-border:rgba(14,165,233,.22);
+  --card-shadow:0 8px 22px rgba(3,105,161,.12);
+  --icon-bg:rgba(255,255,255,.85);--icon-border:rgba(14,165,233,.25);--icon-color:#0284c7;
+  --nav-bg:rgba(255,255,255,.94);--nav-border:rgba(14,165,233,.2);
+  --nav-color:#0369a1;--nav-active:#0284c7;
+  --star:.2;
+  --accent:#0ea5e9;
+  --accent-dark:#0284c7;
+  --blue-soft:rgba(14,165,233,.1);
+  --input-bg:rgba(255,255,255,.92);
+  --input-border:rgba(14,165,233,.3);
+}
+body.dark{
+  --bg-1:#082f49;--bg-2:#0c4a6e;--bg-3:#075985;--bg-4:#082f49;
+  --text:#fff;--text-soft:#bae6fd;--text-card:#fff;--text-muted:#7dd3fc;
+  --card:rgba(255,255,255,.08);--card-border:rgba(125,211,252,.3);
+  --card-shadow:0 8px 22px rgba(0,0,0,.3);
+  --icon-bg:rgba(255,255,255,.08);--icon-border:rgba(125,211,252,.3);--icon-color:#bae6fd;
+  --nav-bg:rgba(8,47,73,.94);--nav-border:rgba(125,211,252,.25);
+  --nav-color:#7dd3fc;--nav-active:#bae6fd;
+  --star:.7;
+  --blue-soft:rgba(125,211,252,.15);
+  --input-bg:rgba(255,255,255,.08);
+  --input-border:rgba(125,211,252,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%}
+body{
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;direction:rtl;font-size:17px;
+  line-height:1.8;font-weight:600;color:var(--text);background-color:var(--bg-1);
+  background-image:
+    radial-gradient(ellipse 500px 400px at 20% 5%,rgba(14,165,233,.15) 0,transparent 60%),
+    radial-gradient(ellipse 400px 350px at 85% 15%,rgba(125,211,252,.18) 0,transparent 65%),
+    linear-gradient(160deg,var(--bg-1) 0,var(--bg-2) 25%,var(--bg-3) 50%,var(--bg-2) 75%,var(--bg-4) 100%);
+  background-attachment:fixed;min-height:100vh;padding:0 0 110px;position:relative;overflow-x:hidden;
+  transition:background-color .4s,color .3s;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background-image:
+    radial-gradient(circle at 12% 8%,rgba(253,230,138,var(--star)) 0,transparent 1.2%),
+    radial-gradient(circle at 88% 6%,rgba(253,230,138,var(--star)) 0,transparent 1%),
+    radial-gradient(circle at 78% 45%,rgba(253,230,138,var(--star)) 0,transparent 1%);
+  pointer-events:none;z-index:0;
+}
+.app{max-width:520px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
+
+.page-header{display:flex;align-items:center;gap:12px;padding:20px 0 16px}
+.back-btn{
+  width:44px;height:44px;border-radius:14px;background:var(--icon-bg);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--icon-border);color:var(--icon-color);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  flex:0 0 44px;text-decoration:none;box-shadow:0 4px 12px rgba(3,105,161,.15);
+}
+.back-btn:active{transform:scale(.94)}
+.back-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
+.page-header h1{font-size:1.35rem;font-weight:900;color:var(--text);flex:1;text-align:center;padding-right:44px}
+
+.hero{
+  background:linear-gradient(135deg,#38bdf8 0,#0284c7 100%);
+  border-radius:20px;padding:22px;margin-bottom:16px;color:#fff;
+  position:relative;overflow:hidden;
+  box-shadow:0 12px 30px rgba(3,105,161,.35);
+  display:flex;align-items:center;gap:14px;
+}
+.hero::before{
+  content:"";position:absolute;top:-40px;right:-40px;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%);
+  pointer-events:none;
+}
+.hero-icon{
+  width:56px;height:56px;border-radius:16px;
+  background:rgba(255,255,255,.25);border:1.5px solid rgba(255,255,255,.35);
+  display:flex;align-items:center;justify-content:center;flex:0 0 56px;
+  backdrop-filter:blur(10px);
+}
+.hero-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hero-text{flex:1}
+.hero-title{font-size:1.1rem;font-weight:900;margin-bottom:5px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hero-sub{font-size:.85rem;color:#fff;opacity:.95;font-weight:700;line-height:1.7}
+
+.intro-box{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);
+  border-radius:18px;padding:20px;margin-bottom:12px;
+  box-shadow:var(--card-shadow);
+  text-align:center;
+}
+.intro-icon{
+  width:70px;height:70px;border-radius:22px;
+  margin:0 auto 14px;
+  background:linear-gradient(135deg,#38bdf8,#0284c7);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 20px rgba(3,105,161,.35);
+}
+.intro-icon svg{width:34px;height:34px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.intro-title{
+  font-size:1.1rem;font-weight:900;color:var(--text);
+  margin-bottom:8px;
+}
+.intro-text{
+  font-size:.92rem;font-weight:700;color:var(--text-card);
+  line-height:2;
+}
+
+.section-title{
+  display:flex;align-items:center;gap:10px;
+  margin:20px 4px 12px;font-size:1.05rem;font-weight:900;
+  color:var(--text);
+}
+.section-title::before{
+  content:"";width:4px;height:20px;border-radius:2px;
+  background:linear-gradient(180deg,#38bdf8,#0284c7);
+  box-shadow:0 0 12px rgba(14,165,233,.6);
+}
+
+.contact-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.contact-card{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);
+  border-radius:18px;padding:16px 18px;
+  display:flex;align-items:center;gap:14px;
+  text-decoration:none;color:inherit;
+  box-shadow:var(--card-shadow);
+  transition:all .22s ease;
+  cursor:pointer;
+  font-family:inherit;
+  width:100%;
+  text-align:right;
+}
+.contact-card:active{transform:scale(.98)}
+.contact-card:hover{transform:translateY(-2px);border-color:rgba(14,165,233,.5)}
+.contact-icon{
+  width:52px;height:52px;border-radius:16px;flex:0 0 52px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
+}
+.contact-icon svg{
+  width:26px;height:26px;fill:none;stroke:#fff;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+}
+.contact-icon.email{background:linear-gradient(135deg,#ec4899,#be185d)}
+.contact-icon.facebook{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+.contact-icon.instagram{background:linear-gradient(135deg,#f472b6,#a855f7,#f59e0b)}
+.contact-body{flex:1;min-width:0}
+.contact-name{
+  font-size:1rem;font-weight:900;color:var(--text-card);
+  margin-bottom:4px;
+}
+.contact-value{
+  font-size:.82rem;font-weight:700;color:var(--text-muted);
+  word-break:break-word;direction:ltr;text-align:right;
+  line-height:1.6;
+}
+.contact-arrow{
+  width:20px;height:20px;flex:0 0 20px;
+  fill:none;stroke:var(--text-muted);
+  stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+  transform:scaleX(-1);
+}
+
+.hours-box{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);
+  border-radius:16px;padding:18px;margin-bottom:12px;
+  box-shadow:var(--card-shadow);
+}
+.hours-head{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:14px;
+}
+.hours-icon{
+  width:42px;height:42px;border-radius:13px;flex:0 0 42px;
+  background:linear-gradient(135deg,#38bdf8,#0284c7);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 5px 12px rgba(3,105,161,.3);
+}
+.hours-icon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hours-title{
+  font-size:1rem;font-weight:900;color:var(--text);
+}
+.hours-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;
+  border-bottom:1px dashed var(--card-border);
+  font-size:.9rem;font-weight:700;
+  color:var(--text-card);
+}
+.hours-row:last-child{border-bottom:0;padding-bottom:0}
+.hours-day{color:var(--text-soft);font-weight:800}
+.hours-time{color:var(--accent);font-weight:900;direction:ltr}
+
+.form-box{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);
+  border-radius:18px;padding:20px;margin-bottom:12px;
+  box-shadow:var(--card-shadow);
+}
+.form-head{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:16px;
+}
+.form-icon{
+  width:42px;height:42px;border-radius:13px;flex:0 0 42px;
+  background:linear-gradient(135deg,#38bdf8,#0284c7);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 5px 12px rgba(3,105,161,.3);
+}
+.form-icon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.form-title{
+  font-size:1rem;font-weight:900;color:var(--text);
+}
+.input-group{margin-bottom:14px}
+.input-group label{
+  display:block;font-size:.85rem;font-weight:900;
+  color:var(--text-soft);margin-bottom:8px;
+}
+.input-field{
+  width:100%;padding:14px 18px;border-radius:14px;
+  border:1.5px solid var(--input-border);
+  background:var(--input-bg);color:var(--text);
+  font-family:inherit;font-size:.95rem;font-weight:700;
+  outline:none;transition:border-color .25s;
+  resize:vertical;
+}
+.input-field:focus{border-color:rgba(14,165,233,.7)}
+.input-field::placeholder{color:var(--text-muted);opacity:.7}
+textarea.input-field{
+  min-height:120px;line-height:1.9;
+}
+.btn-submit{
+  width:100%;padding:15px;border-radius:14px;border:0;
+  background:linear-gradient(135deg,#38bdf8,#0284c7);
+  color:#fff;font-family:inherit;font-size:1rem;font-weight:900;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 8px 20px rgba(3,105,161,.35);
+}
+.btn-submit:active{transform:scale(.97)}
+.btn-submit svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+.faq-list{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.faq-item{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);
+  border-radius:16px;
+  box-shadow:var(--card-shadow);
+  overflow:hidden;
+}
+.faq-q{
+  width:100%;padding:16px;border:0;background:transparent;
+  font-family:inherit;font-size:.95rem;font-weight:900;
+  color:var(--text-card);cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;text-align:right;
+}
+.faq-q-icon{
+  width:32px;height:32px;border-radius:10px;flex:0 0 32px;
+  background:var(--blue-soft);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent);
+  transition:transform .3s;
+}
+.faq-q-icon svg{
+  width:16px;height:16px;fill:none;stroke:currentColor;
+  stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;
+}
+.faq-item.open .faq-q-icon{transform:rotate(180deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s ease,padding .35s ease;
+  font-size:.88rem;font-weight:700;line-height:2;
+  color:var(--text-card);
+  padding:0 16px;
+  white-space:pre-line;
+}
+.faq-item.open .faq-a{
+  max-height:600px;
+  padding:14px 16px 16px;
+  border-top:1px dashed var(--card-border);
+}
+
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:var(--nav-bg);backdrop-filter:blur(24px);
+  border-top:1px solid var(--nav-border);
+  display:flex;justify-content:space-around;
+  padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));
+  max-width:520px;margin:0 auto;
+  box-shadow:0 -8px 30px rgba(3,105,161,.15);
+}
+.nav-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  color:var(--nav-color);padding:8px 2px;
+  font-size:.68rem;font-weight:800;
+  text-decoration:none;cursor:pointer;
+  border-radius:12px;position:relative;
+}
+.nav-item.active{color:var(--nav-active)}
+.nav-item.active::before{
+  content:"";position:absolute;top:0;left:50%;
+  transform:translateX(-50%);
+  width:22px;height:3px;border-radius:0 0 4px 4px;
+  background:linear-gradient(90deg,#38bdf8,#0284c7,#fde68a);
+  box-shadow:0 0 12px rgba(14,165,233,.8);
+}
+.nav-item svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-item.active svg{stroke-width:2.4}
+
+.toast{
+  position:fixed;bottom:110px;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:linear-gradient(135deg,#0284c7,#0ea5e9);
+  color:#fff;padding:14px 26px;border-radius:30px;
+  font-size:.95rem;font-weight:900;z-index:10002;
+  opacity:0;transition:all .3s;pointer-events:none;
+  box-shadow:0 12px 30px rgba(14,165,233,.5);
+  max-width:90vw;text-align:center;white-space:pre-line;line-height:1.7;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:380px){
+  body{font-size:16px}
+  .app{padding:0 12px}
+  .page-header h1{font-size:1.2rem}
+  .hero{padding:18px}
+  .hero-icon{width:48px;height:48px;flex:0 0 48px}
+  .contact-icon{width:46px;height:46px;flex:0 0 46px}
+  .contact-icon svg{width:22px;height:22px}
+  .contact-name{font-size:.94rem}
+  .contact-value{font-size:.76rem}
+  .nav-item{font-size:.62rem}
+  .nav-item svg{width:21px;height:21px}
+}
+</style>
+</head>
+
+<body>
+
+<script>
+(function(){
+  try{ if(localStorage.getItem('bn_theme')==='dark') document.body.classList.add('dark'); }catch(e){}
+})();
+</script>
+
+<div class="app">
+
+  <header class="page-header">
+    <a class="back-btn" href="settings.html" aria-label="بازگشت">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <h1>تماس با ما</h1>
+  </header>
+
+  <div class="hero">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </div>
+    <div class="hero-text">
+      <div class="hero-title">با ما در ارتباط باشید</div>
+      <div class="hero-sub">نظرات و پیشنهادات شما ارزشمند است 💙</div>
+    </div>
+  </div>
+
+  <div class="intro-box">
+    <div class="intro-icon">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+    </div>
+    <div class="intro-title">در خدمت شما هستیم</div>
+    <div class="intro-text">
+      اگه سؤال، پیشنهاد یا انتقادی دارید، از راه‌های زیر با ما در تماس باشید.
+      خوشحال می‌شیم نظرات شما را بشنویم 💐
+    </div>
+  </div>
+
+  <div class="section-title">راه‌های ارتباطی</div>
+
+  <div class="contact-list">
+
+    <a class="contact-card" href="mailto:hussaini11855@gmail.com">
+      <div class="contact-icon email">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+      </div>
+      <div class="contact-body">
+        <div class="contact-name">ایمیل</div>
+        <div class="contact-value">hussaini11855@gmail.com</div>
+      </div>
+      <svg class="contact-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+
+    <a class="contact-card" href="https://www.facebook.com/share/1FAT39XK8u/" target="_blank" rel="noopener">
+      <div class="contact-icon facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </div>
+      <div class="contact-body">
+        <div class="contact-name">فیس‌بوک</div>
+        <div class="contact-value">facebook.com/share</div>
+      </div>
+      <svg class="contact-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+
+    <a class="contact-card" href="https://www.instagram.com/_aqazada313" target="_blank" rel="noopener">
+      <div class="contact-icon instagram">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </div>
+      <div class="contact-body">
+        <div class="contact-name">اینستاگرام</div>
+        <div class="contact-value">@_aqazada313</div>
+      </div>
+      <svg class="contact-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+
+  </div>
+
+  <div class="hours-box">
+    <div class="hours-head">
+      <div class="hours-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      </div>
+      <div class="hours-title">ساعات پاسخ‌دهی</div>
+    </div>
+    <div class="hours-row">
+      <span class="hours-day">شنبه تا پنجشنبه</span>
+      <span class="hours-time">۹ صبح - ۵ عصر</span>
+    </div>
+    <div class="hours-row">
+      <span class="hours-day">جمعه</span>
+      <span class="hours-time">تعطیل</span>
+    </div>
+    <div class="hours-row">
+      <span class="hours-day">پاسخ به ایمیل</span>
+      <span class="hours-time">حداکثر ۲۴ ساعت</span>
+    </div>
+  </div>
+
+  <div class="section-title">ارسال پیام</div>
+
+  <div class="form-box">
+    <div class="form-head">
+      <div class="form-icon">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </div>
+      <div class="form-title">پیام خود را بنویسید</div>
+    </div>
+
+    <div class="input-group">
+      <label>نام شما</label>
+      <input type="text" class="input-field" id="contactName" placeholder="مثال: فاطمه" />
+    </div>
+
+    <div class="input-group">
+      <label>موضوع</label>
+      <input type="text" class="input-field" id="contactSubject" placeholder="مثال: پیشنهاد، انتقاد، سؤال" />
+    </div>
+
+    <div class="input-group">
+      <label>پیام شما</label>
+      <textarea class="input-field" id="contactMessage" placeholder="پیام خود را اینجا بنویسید..."></textarea>
+    </div>
+
+    <button class="btn-submit" id="sendMsgBtn" type="button">
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      ارسال پیام
+    </button>
+  </div>
+
+  <div class="section-title">سؤالات متداول</div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>چطور می‌تونم پیشنهاد یا انتقاد بدم؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">از فرم بالا استفاده کنید یا از طریق ایمیل و شبکه‌های اجتماعی پیام خود را بفرستید. همه نظرات خوانده می‌شود و در بهبود برنامه استفاده می‌گردد.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>چقدر طول می‌کشه پاسخ بگیرم؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">معمولاً در طول ۲۴ ساعت پاسخ می‌دهیم. اگر پیام در تعطیلات آخر هفته ارسال شود، ممکن است کمی بیشتر طول بکشد.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>می‌خوام پزشک معرفی کنم، چیکار کنم؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">از فرم بالا با موضوع «معرفی پزشک» استفاده کنید. لطفاً نام، تخصص، شهر، آدرس و شماره تماس پزشک را برای ما بفرستید.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>مشکلی در برنامه دارم، چطور گزارش بدم؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">با موضوع «گزارش مشکل» پیام بفرستید. لطفاً توضیح دهید مشکل کجاست و در چه قسمتی است. اگر امکان دارد اسکرین‌شات هم بفرستید.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>آیا اطلاعات من محرمانه می‌مونه؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">بله کاملاً. تمام اطلاعات فقط روی گوشی شما ذخیره می‌شود و هیچ چیز به سرور ارسال نمی‌گردد. برای جزئیات بیشتر به صفحه «حریم خصوصی» در تنظیمات مراجعه کنید.</div>
+    </div>
+  </div>
+
+  <div style="height:20px"></div>
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-item" href="home.html">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>خانه</span>
+  </a>
+  <a class="nav-item" href="search.html">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <span>جستجو</span>
+  </a>
+  <a class="nav-item" href="hamraz.html">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>همراز</span>
+  </a>
+  <a class="nav-item" href="ahkam.html">
+    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <span>احکام</span>
+  </a>
+  <a class="nav-item active" href="settings.html">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span>بیشتر</span>
+  </a>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+
+var SUPPORT_EMAIL = 'hussaini11855@gmail.com';
+var toastTimer = null;
+
+function $(id){ return document.getElementById(id); }
+
+function showMsg(msg,dur){
+  dur=dur||2500;
+  var t=$('toast'); if(!t) return;
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(function(){ t.classList.remove('show'); },dur);
+}
+
+function getTheme(){ try{ return localStorage.getItem('bn_theme')||'light'; }catch(e){ return 'light'; } }
+function applyTheme(){
+  if(getTheme()==='dark') document.body.classList.add('dark');
+  else document.body.classList.remove('dark');
+}
+
+function setupFaq(){
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    if(!q) return;
+    q.addEventListener('click', function(){
+      item.classList.toggle('open');
+    });
+  });
+}
+
+function setupForm(){
+  var btn = $('sendMsgBtn');
+  if(!btn) return;
+
+  btn.addEventListener('click', function(){
+    var name = ($('contactName').value || '').trim();
+    var subject = ($('contactSubject').value || '').trim();
+    var message = ($('contactMessage').value || '').trim();
+
+    if(!name){ showMsg('لطفاً نام خود را وارد کنید'); return; }
+    if(!subject){ showMsg('لطفاً موضوع را وارد کنید'); return; }
+    if(!message){ showMsg('لطفاً پیام خود را بنویسید'); return; }
+    if(message.length < 10){ showMsg('پیام باید حداقل ۱۰ حرف باشد'); return; }
+
+    var body = 'سلام مدیریت بانوان نور\n\n' +
+               'نام: ' + name + '\n' +
+               'موضوع: ' + subject + '\n\n' +
+               'پیام:\n' + message + '\n\n' +
+               '— ارسال شده از اپلیکیشن بانوان نور';
+
+    var mailtoUrl = 'mailto:' + SUPPORT_EMAIL +
+                    '?subject=' + encodeURIComponent('بانوان نور — ' + subject) +
+                    '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailtoUrl;
+    showMsg('در حال باز کردن ایمیل...');
+
+    setTimeout(function(){
+      $('contactName').value = '';
+      $('contactSubject').value = '';
+      $('contactMessage').value = '';
+    }, 1500);
+  });
+}
+
+function init(){
+  applyTheme();
+  setupFaq();
+  setupForm();
+
+  window.addEventListener('storage', function(e){
+    if(e.key === 'bn_theme') applyTheme();
+  });
+
+  console.log('💙 صفحه تماس با ما آماده');
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else init();
+
+})();
+</script>
+
+</body>
+</html>

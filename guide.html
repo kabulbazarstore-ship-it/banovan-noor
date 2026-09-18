@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#ea580c" />
+<title>راهنما | بانوان نور</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<style>
+:root{
+  --bg-1:#fff7ed;--bg-2:#ffedd5;--bg-3:#fed7aa;--bg-4:#fdba74;
+  /* ═══ همه متن‌ها یکنواخت نارنجی ═══ */
+  --text:#c2410c;
+  --text-soft:#c2410c;
+  --text-card:#c2410c;
+  --text-muted:#c2410c;
+  --orange:#c2410c;
+  --card:rgba(255,255,255,.85);--card-border:rgba(234,88,12,.22);
+  --card-shadow:0 8px 22px rgba(154,52,18,.12);
+  --icon-bg:rgba(255,255,255,.85);--icon-border:rgba(234,88,12,.25);--icon-color:#c2410c;
+  --nav-bg:rgba(255,255,255,.94);--nav-border:rgba(234,88,12,.2);
+  --nav-color:#c2410c;--nav-active:#c2410c;
+  --star:.2;
+  --search-bg:rgba(255,255,255,.92);
+  --chip-bg:rgba(255,255,255,.7);
+  --chip-border:rgba(234,88,12,.25);
+  --accent:#c2410c;
+  --accent-dark:#9a3412;
+  --orange-soft:rgba(194,65,12,.1);
+}
+body.dark{
+  --bg-1:#431407;--bg-2:#7c2d12;--bg-3:#9a3412;--bg-4:#431407;
+  /* ═══ همه متن‌ها یکنواخت نارنجی روشن ═══ */
+  --text:#fdba74;
+  --text-soft:#fdba74;
+  --text-card:#fdba74;
+  --text-muted:#fdba74;
+  --orange:#fdba74;
+  --card:rgba(255,255,255,.08);--card-border:rgba(253,186,116,.3);
+  --card-shadow:0 8px 22px rgba(0,0,0,.3);
+  --icon-bg:rgba(255,255,255,.08);--icon-border:rgba(253,186,116,.3);--icon-color:#fdba74;
+  --nav-bg:rgba(67,20,7,.94);--nav-border:rgba(253,186,116,.25);
+  --nav-color:#fdba74;--nav-active:#fdba74;
+  --star:.7;
+  --search-bg:rgba(255,255,255,.08);
+  --chip-bg:rgba(255,255,255,.06);
+  --chip-border:rgba(253,186,116,.3);
+  --orange-soft:rgba(253,186,116,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%}
+body{
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;direction:rtl;font-size:17px;
+  line-height:1.8;font-weight:600;color:var(--text);background-color:var(--bg-1);
+  background-image:
+    radial-gradient(ellipse 500px 400px at 20% 5%,rgba(251,146,60,.15) 0,transparent 60%),
+    radial-gradient(ellipse 400px 350px at 85% 15%,rgba(253,186,116,.18) 0,transparent 65%),
+    linear-gradient(160deg,var(--bg-1) 0,var(--bg-2) 25%,var(--bg-3) 50%,var(--bg-2) 75%,var(--bg-4) 100%);
+  background-attachment:fixed;min-height:100vh;padding:0 0 110px;position:relative;overflow-x:hidden;
+  transition:background-color .4s,color .3s;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background-image:
+    radial-gradient(circle at 12% 8%,rgba(253,230,138,var(--star)) 0,transparent 1.2%),
+    radial-gradient(circle at 88% 6%,rgba(253,230,138,var(--star)) 0,transparent 1%);
+  pointer-events:none;z-index:0;
+}
+.app{max-width:520px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
+
+.page-header{display:flex;align-items:center;gap:12px;padding:20px 0 16px}
+.back-btn{
+  width:44px;height:44px;border-radius:14px;background:var(--icon-bg);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--icon-border);color:var(--icon-color);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  flex:0 0 44px;text-decoration:none;box-shadow:0 4px 12px rgba(154,52,18,.15);
+}
+.back-btn:active{transform:scale(.94)}
+.back-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
+.page-header h1{font-size:1.35rem;font-weight:900;color:var(--text);flex:1;text-align:center;padding-right:44px}
+
+.hero{
+  background:linear-gradient(135deg,#fb923c 0,#c2410c 100%);
+  border-radius:20px;padding:22px;margin-bottom:16px;
+  color:#fff;
+  position:relative;overflow:hidden;
+  box-shadow:0 12px 30px rgba(154,52,18,.35);
+  display:flex;align-items:center;gap:14px;
+}
+.hero::before{
+  content:"";position:absolute;top:-40px;right:-40px;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.2),transparent 70%);
+  pointer-events:none;
+}
+.hero-icon{
+  width:56px;height:56px;border-radius:16px;
+  background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.3);
+  display:flex;align-items:center;justify-content:center;flex:0 0 56px;
+  backdrop-filter:blur(10px);
+}
+.hero-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hero-text{flex:1}
+.hero-title{font-size:1.1rem;font-weight:900;margin-bottom:5px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hero-sub{font-size:.85rem;color:#fff;opacity:.95;font-weight:700;line-height:1.7}
+
+/* SECTION TITLE */
+.section-title{
+  display:flex;align-items:center;gap:10px;
+  margin:22px 4px 14px;font-size:1.05rem;font-weight:900;
+  color:var(--orange);
+}
+.section-title::before{
+  content:"";width:4px;height:20px;border-radius:2px;
+  background:linear-gradient(180deg,#fb923c,#c2410c);
+  box-shadow:0 0 12px rgba(234,88,12,.6);
+}
+
+/* FEATURE CARDS */
+.feature-grid{display:flex;flex-direction:column;gap:10px}
+.feature-card{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:16px;
+  padding:16px;display:flex;align-items:flex-start;gap:14px;
+  box-shadow:var(--card-shadow);
+}
+.feature-icon{
+  width:46px;height:46px;border-radius:14px;flex:0 0 46px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#fb923c,#c2410c);
+  box-shadow:0 6px 14px rgba(154,52,18,.3);
+}
+.feature-icon svg{
+  width:24px;height:24px;fill:none;stroke:#fff;
+  stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;
+}
+.feature-body{flex:1;min-width:0}
+.feature-title{
+  font-size:1rem;font-weight:900;color:var(--orange);
+  margin-bottom:5px;line-height:1.5;
+}
+.feature-desc{
+  font-size:.85rem;font-weight:700;color:var(--orange);
+  line-height:1.9;
+}
+
+/* STEPS */
+.steps{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:16px;
+  padding:16px;box-shadow:var(--card-shadow);
+  margin-bottom:10px;
+}
+.step{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:10px 0;
+  position:relative;
+}
+.step:not(:last-child)::after{
+  content:"";position:absolute;
+  right:17px;top:46px;bottom:-4px;
+  width:2px;background:var(--orange-soft);
+  border-radius:2px;
+}
+.step-num{
+  width:36px;height:36px;border-radius:12px;flex:0 0 36px;
+  background:linear-gradient(135deg,#fb923c,#c2410c);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:900;font-size:.95rem;
+  box-shadow:0 4px 10px rgba(154,52,18,.3);
+  position:relative;z-index:1;
+}
+.step-text{
+  flex:1;font-size:.92rem;font-weight:700;
+  color:var(--orange);line-height:1.9;
+  padding-top:5px;
+}
+.step-text strong{color:var(--orange);font-weight:900}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
+.faq-item{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:16px;
+  box-shadow:var(--card-shadow);
+  overflow:hidden;
+}
+.faq-q{
+  width:100%;padding:16px;border:0;background:transparent;
+  font-family:inherit;font-size:.95rem;font-weight:900;
+  color:var(--orange);cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;text-align:right;
+}
+.faq-q:active{opacity:.8}
+.faq-q-icon{
+  width:32px;height:32px;border-radius:10px;flex:0 0 32px;
+  background:var(--orange-soft);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--orange);
+  transition:transform .3s;
+}
+.faq-q-icon svg{
+  width:16px;height:16px;fill:none;stroke:currentColor;
+  stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;
+}
+.faq-item.open .faq-q-icon{transform:rotate(180deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s ease,padding .35s ease;
+  font-size:.88rem;font-weight:700;line-height:2;
+  color:var(--orange);
+  padding:0 16px;
+  white-space:pre-line;
+}
+.faq-item.open .faq-a{
+  max-height:600px;
+  padding:14px 16px 16px;
+  border-top:1px dashed var(--card-border);
+}
+
+/* CONTACT */
+.contact-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:10px;margin-bottom:10px;
+}
+.contact-btn{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:16px;
+  padding:18px 12px;
+  text-decoration:none;color:var(--orange);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  box-shadow:var(--card-shadow);
+  cursor:pointer;font-family:inherit;
+}
+.contact-btn:active{transform:scale(.96)}
+.contact-icon{
+  width:46px;height:46px;border-radius:14px;flex:0 0 46px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#fb923c,#c2410c);
+  box-shadow:0 6px 14px rgba(154,52,18,.3);
+}
+.contact-icon svg{
+  width:24px;height:24px;fill:none;stroke:#fff;
+  stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;
+}
+.contact-text{
+  font-size:.85rem;font-weight:900;
+  color:var(--orange);
+  text-align:center;line-height:1.5;
+}
+
+/* ABOUT BOX */
+.about-box{
+  background:linear-gradient(135deg,rgba(251,146,60,.1),rgba(194,65,12,.06));
+  border:1.5px solid var(--card-border);
+  border-radius:16px;padding:20px;margin-bottom:10px;
+  box-shadow:var(--card-shadow);
+  text-align:center;
+}
+.about-logo{
+  width:70px;height:70px;border-radius:20px;margin:0 auto 12px;
+  background:linear-gradient(135deg,#fb923c,#c2410c);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 20px rgba(154,52,18,.35);
+}
+.about-logo svg{
+  width:36px;height:36px;fill:none;stroke:#fff;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+}
+.about-title{
+  font-size:1.05rem;font-weight:900;color:var(--orange);
+  margin-bottom:6px;
+}
+.about-version{
+  display:inline-block;font-size:.72rem;font-weight:800;
+  color:var(--orange);background:var(--orange-soft);
+  padding:3px 12px;border-radius:12px;margin-bottom:12px;
+}
+.about-text{
+  font-size:.88rem;font-weight:700;color:var(--orange);
+  line-height:2;
+}
+
+/* TIPS */
+.tips-list{display:flex;flex-direction:column;gap:10px}
+.tip-item{
+  background:var(--card);backdrop-filter:blur(20px);
+  border:1.5px solid var(--card-border);border-radius:14px;
+  padding:14px 16px;display:flex;align-items:flex-start;gap:10px;
+  box-shadow:var(--card-shadow);
+}
+.tip-item svg{
+  width:18px;height:18px;flex:0 0 18px;margin-top:3px;
+  fill:none;stroke:var(--orange);
+  stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+}
+.tip-text{
+  flex:1;font-size:.88rem;font-weight:700;
+  color:var(--orange);line-height:1.9;
+}
+.tip-text strong{color:var(--orange);font-weight:900}
+
+/* INSTALL */
+.install-btn{
+  width:100%;padding:16px;border-radius:16px;border:0;
+  background:linear-gradient(135deg,#0ea5e9,#0284c7);
+  color:#fff;font-family:inherit;font-size:1rem;font-weight:900;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 8px 20px rgba(2,132,199,.35);
+  margin-bottom:10px;
+}
+.install-btn:active{transform:scale(.97)}
+.install-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:var(--nav-bg);backdrop-filter:blur(24px);
+  border-top:1px solid var(--nav-border);
+  display:flex;justify-content:space-around;
+  padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));
+  max-width:520px;margin:0 auto;
+  box-shadow:0 -8px 30px rgba(154,52,18,.15);
+}
+.nav-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  color:var(--nav-color);padding:8px 2px;font-size:.68rem;font-weight:800;
+  text-decoration:none;cursor:pointer;border-radius:12px;position:relative;
+}
+.nav-item.active{color:var(--nav-active)}
+.nav-item.active::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:22px;height:3px;border-radius:0 0 4px 4px;
+  background:linear-gradient(90deg,#fb923c,#c2410c,#fed7aa);
+  box-shadow:0 0 12px rgba(234,88,12,.8);
+}
+.nav-item svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav-item.active svg{stroke-width:2.4}
+
+.toast{
+  position:fixed;bottom:110px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:linear-gradient(135deg,#c2410c,#ea580c);color:#fff;
+  padding:14px 26px;border-radius:30px;font-size:.95rem;font-weight:900;
+  z-index:10002;opacity:0;transition:all .3s;pointer-events:none;
+  box-shadow:0 12px 30px rgba(234,88,12,.5);max-width:90vw;text-align:center;
+  white-space:pre-line;line-height:1.7;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:380px){
+  body{font-size:16px}
+  .app{padding:0 12px}
+  .page-header h1{font-size:1.2rem}
+  .hero{padding:18px}
+  .hero-icon{width:48px;height:48px;flex:0 0 48px}
+  .feature-icon{width:42px;height:42px;flex:0 0 42px}
+  .feature-icon svg{width:22px;height:22px}
+  .contact-icon{width:42px;height:42px;flex:0 0 42px}
+  .contact-icon svg{width:22px;height:22px}
+  .nav-item{font-size:.62rem}
+  .nav-item svg{width:21px;height:21px}
+}
+</style>
+</head>
+
+<body>
+
+<script>
+(function(){
+  try{ if(localStorage.getItem('bn_theme')==='dark') document.body.classList.add('dark'); }catch(e){}
+})();
+</script>
+
+<div class="app">
+
+  <header class="page-header">
+    <a class="back-btn" href="home.html" aria-label="بازگشت">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <h1>راهنما</h1>
+  </header>
+
+  <div class="hero">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </div>
+    <div class="hero-text">
+      <div class="hero-title">راهنمای استفاده از اپ</div>
+      <div class="hero-sub">همه چیز درباره بانوان نور 🧡</div>
+    </div>
+  </div>
+
+  <div class="section-title">بخش‌های اپ</div>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="feature-body">
+        <div class="feature-title">همراز بانوان</div>
+        <div class="feature-desc">گفتگوی آفلاین با دستیار هوشمند. سؤالات شرعی و پزشکی خود را بپرسید و پاسخ فوری بگیرید.</div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </div>
+      <div class="feature-body">
+        <div class="feature-title">احکام شرعی</div>
+        <div class="feature-desc">مجموعه احکام بانوان مطابق مرجع تقلید شما (سیستانی، شیرازی، فیاض) و فقه حنفی.</div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="feature-body">
+        <div class="feature-title">سلامت بانوان</div>
+        <div class="feature-desc">۱۰۷ مقاله پزشکی در ۹ دسته: قاعدگی، بارداری، زایمان، بهداشت، تغذیه، سلامت عمومی و...</div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+      </div>
+      <div class="feature-body">
+        <div class="feature-title">قاعدگی</div>
+        <div class="feature-desc">تقویم چرخه قاعدگی، محاسبه‌گر روز تخمک‌گذاری، پیش‌بینی قاعدگی بعدی و نکات هر فاز.</div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+      </div>
+      <div class="feature-body">
+        <div class="feature-title">بارداری</div>
+        <div class="feature-desc">راهنمای هفته به هفته بارداری، چک‌لیست کارها، نکات هر هفته و آماده‌سازی برای زایمان.</div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      </div>
+      <div class="feature-body">
+        <div class="feature-title">زایمان</div>
+        <div class="feature-desc">شمارش معکوس زایمان، مراحل زایمان، انواع زایمان و کیف بیمارستان.</div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
+      </div>
+      <div class="feature-body">
+        <div class="feature-title">دعا و اعمال</div>
+        <div class="feature-desc">۱۰ دعای مهم (آیت‌الکرسی، فرج، کمیل و...) + ۱۰ عمل مناسبتی با ترجمه کامل.</div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5"/><circle cx="12" cy="12" r="3" fill="#fff" opacity="0.6"/></svg>
+      </div>
+      <div class="feature-body">
+        <div class="feature-title">پزشکان</div>
+        <div class="feature-desc">۲۱ پزشک متخصص خانم در کابل با شماره تماس، آدرس، واتساپ و اطلاعات کامل.</div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <div class="feature-body">
+        <div class="feature-title">یادداشت</div>
+        <div class="feature-desc">یادداشت‌های شخصی خود را بنویسید. همه چیز روی گوشی شما ذخیره می‌شود.</div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="feature-body">
+        <div class="feature-title">علاقه‌مندی‌ها</div>
+        <div class="feature-desc">همه نشان‌شده‌های شما از بخش‌های مختلف در یک جا.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">نحوه استفاده</div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">۱</div>
+      <div class="step-text">از <strong>صفحه اصلی</strong> یکی از بخش‌ها را انتخاب کن</div>
+    </div>
+    <div class="step">
+      <div class="step-num">۲</div>
+      <div class="step-text">در هر بخش می‌توانی <strong>مرجع تقلید</strong> یا <strong>فقه</strong> خود را انتخاب کنی</div>
+    </div>
+    <div class="step">
+      <div class="step-num">۳</div>
+      <div class="step-text">هر مقاله یا حکم را می‌توانی <strong>کپی، اشتراک‌گذاری یا با صوت گوش کنی</strong></div>
+    </div>
+    <div class="step">
+      <div class="step-num">۴</div>
+      <div class="step-text">با کلیک روی <strong>ستاره ⭐</strong> هر آیتم، آن را به علاقه‌مندی‌ها اضافه کن</div>
+    </div>
+    <div class="step">
+      <div class="step-num">۵</div>
+      <div class="step-text">از <strong>تم تاریک/روشن</strong> در صفحه اصلی استفاده کن</div>
+    </div>
+  </div>
+
+  <div class="section-title">نکات مفید</div>
+
+  <div class="tips-list">
+    <div class="tip-item">
+      <svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>
+      <div class="tip-text">در بخش <strong>همراز</strong> می‌تونی با کلمات عامیانه هم سؤالت رو بپرسی</div>
+    </div>
+    <div class="tip-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <div class="tip-text">همه اطلاعات <strong>فقط روی گوشی تو</strong> ذخیره می‌شه، هیچ چیز به اینترنت ارسال نمی‌شه</div>
+    </div>
+    <div class="tip-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5"/></svg>
+      <div class="tip-text">اگه داکتری رو می‌شناسی که خوبه، بگو تا اضافه کنیم</div>
+    </div>
+    <div class="tip-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+      <div class="tip-text">توی بخش <strong>قاعدگی</strong>، تقویم برای اطلاع شخصیه، نه برای پیشگیری از بارداری</div>
+    </div>
+  </div>
+
+  <div class="section-title">سوالات متداول</div>
+
+  <div class="faq" id="faq">
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>اپ به اینترنت نیاز داره؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">نه، بعد از اولین بار که اپ رو باز کردی، همه چیز آفلاین کار می‌کنه. فقط اطلاعات پزشکان و مقالات یک بار از سرور لود می‌شن و بعد از اون دیگه نیازی به اینترنت نیست.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>اطلاعات من محرمانه می‌مونه؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">بله کاملاً. تمام اطلاعات (چرخه قاعدگی، یادداشت‌ها، علاقه‌مندی‌ها) فقط روی حافظه گوشی خودت ذخیره می‌شن. هیچ اطلاعاتی به سرور یا شخص دیگه‌ای فرستاده نمی‌شه.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>چطور مرجع تقلیدم رو تغییر بدم؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">در بالای صفحه احکام و همراز، دکمه‌های انتخاب مذهب و مرجع رو می‌بینی. یکی رو انتخاب کن، همه پاسخ‌ها خودکار بر اساس اون مرجع نمایش داده می‌شن.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>آیا اطلاعات پزشکان واقعیه؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">اطلاعات پزشکان از منابع عمومی جمع‌آوری شده. اما ممکنه اطلاعات با گذشت زمان تغییر کنه. حتماً قبل از مراجعه، تماس بگیر و وقت قبلی بگیر. اگه اطلاعاتی اشتباهه، به ما اطلاع بده.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>می‌تونم اپ رو به اشتراک بذارم؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">بله، خوشحال می‌شیم. لینک اپ رو با دوستان و خانواده‌ات به اشتراک بذار. کمک کن این اپ به دست همه بانوانی که نیاز دارن برسه.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>چطور می‌تونم پیشنهاد یا انتقاد بدم؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">از بخش «تماس با ما» در همین صفحه استفاده کن. نظرات تو کمک می‌کنه اپ بهتر بشه.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>اپ روی گوشی من نصب می‌شه؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">بله! در مرورگر Chrome یا Safari، از منو گزینه «افزودن به صفحه اصلی» یا «Add to Home Screen» رو انتخاب کن. آیکون اپ روی صفحه‌ات اضافه می‌شه و می‌تونی مثل اپ معمولی استفاده کنی.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button">
+        <span>آیا اپ رایگانه؟</span>
+        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-a">بله کاملاً رایگانه. هدف ما کمک به بانوان و دسترسی آسان به اطلاعات سلامت و احکام دینیه.</div>
+    </div>
+  </div>
+
+  <div class="section-title">تماس با ما</div>
+
+  <div class="contact-grid">
+    <a class="contact-btn" href="mailto:info@banovannoor.com">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+      </div>
+      <div class="contact-text">ایمیل</div>
+    </a>
+
+    <a class="contact-btn" href="https://wa.me/93700000000" target="_blank" rel="noopener">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </div>
+      <div class="contact-text">واتساپ</div>
+    </a>
+
+    <a class="contact-btn" href="about.html">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      </div>
+      <div class="contact-text">درباره ما</div>
+    </a>
+
+    <a class="contact-btn" href="privacy.html">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div class="contact-text">حریم خصوصی</div>
+    </a>
+  </div>
+
+  <div class="section-title">نصب اپ روی گوشی</div>
+
+  <button class="install-btn" id="installBtn" type="button">
+    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    افزودن به صفحه اصلی
+  </button>
+
+  <div class="section-title">درباره اپ</div>
+
+  <div class="about-box">
+    <div class="about-logo">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="about-title">بانوان نور</div>
+    <div class="about-version">نسخه ۱.۰.۰</div>
+    <div class="about-text">
+      اپلیکیشن جامع سلامت، احکام و آگاهی برای بانوان.<br>
+      طراحی شده با 💜 برای همه خواهران مسلمان.
+    </div>
+  </div>
+
+  <div style="height:20px"></div>
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-item" href="home.html">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>خانه</span>
+  </a>
+  <a class="nav-item" href="search.html">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <span>جستجو</span>
+  </a>
+  <a class="nav-item" href="hamraz.html">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>همراز</span>
+  </a>
+  <a class="nav-item" href="ahkam.html">
+    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <span>احکام</span>
+  </a>
+  <a class="nav-item" href="settings.html">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span>بیشتر</span>
+  </a>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+
+var toastTimer = null;
+var deferredInstallPrompt = null;
+
+function $(id){ return document.getElementById(id); }
+function showMsg(msg,dur){
+  dur=dur||2200;
+  var t=$('toast'); if(!t) return;
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(function(){ t.classList.remove('show'); },dur);
+}
+function getTheme(){ try{ return localStorage.getItem('bn_theme')||'light'; }catch(e){ return 'light'; } }
+function applyTheme(){
+  if(getTheme()==='dark') document.body.classList.add('dark');
+  else document.body.classList.remove('dark');
+}
+
+function setupFaq(){
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    if(!q) return;
+    q.addEventListener('click', function(){
+      item.classList.toggle('open');
+    });
+  });
+}
+
+function setupInstall(){
+  var btn = $('installBtn');
+  if(!btn) return;
+
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    deferredInstallPrompt = e;
+  });
+
+  btn.addEventListener('click', function(){
+    if(deferredInstallPrompt){
+      deferredInstallPrompt.prompt();
+      deferredInstallPrompt.userChoice.then(function(choice){
+        if(choice.outcome === 'accepted'){
+          showMsg('اپ نصب شد ✓');
+        }
+        deferredInstallPrompt = null;
+      });
+    } else {
+      var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      var msg = isIOS
+        ? 'در Safari، روی دکمه اشتراک‌گذاری بزن و «افزودن به صفحه اصلی» را انتخاب کن'
+        : 'در منوی مرورگر (سه نقطه)، گزینه «افزودن به صفحه اصلی» یا «Install App» را انتخاب کن';
+      showMsg(msg, 4500);
+    }
+  });
+}
+
+function init(){
+  applyTheme();
+  setupFaq();
+  setupInstall();
+
+  window.addEventListener('storage', function(e){
+    if(e.key === 'bn_theme') applyTheme();
+  });
+
+  console.log('🧡 صفحه راهنما آماده');
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else init();
+
+})();
+</script>
+
+</body>
+</html>

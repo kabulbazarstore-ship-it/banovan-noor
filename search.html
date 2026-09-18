@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#6d28d9" />
+  <title data-i18n-page="search.title">جستجو | بانوان نور</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/icon-192.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/icon-192.png" />
+
+  <style>
+    /* ========== متغیرها ========== */
+    :root {
+      --bg-1: #f3e8ff; --bg-2: #e9d5ff; --bg-3: #ddd6fe; --bg-4: #c4b5fd;
+      --text: #2d1259; --text-soft: #4c1d95; --text-card: #1f1147;
+      --text-muted: #7c6f9a;
+      --card: rgba(255,255,255,0.78); --card-border: rgba(168,85,247,0.2);
+      --card-shadow: 0 8px 22px rgba(109,40,217,0.12);
+      --icon-bg: rgba(255,255,255,0.8); --icon-border: rgba(168,85,247,0.25);
+      --icon-color: #6d28d9;
+      --nav-bg: rgba(255,255,255,0.92); --nav-border: rgba(168,85,247,0.2);
+      --nav-color: #7c6f9a; --nav-active: #6d28d9;
+      --star: 0.2; --flower: 0.15;
+      --input-bg: rgba(255,255,255,0.85);
+      --input-border: rgba(168,85,247,0.3);
+      --input-focus: rgba(236,72,153,0.5);
+    }
+    body.dark {
+      --bg-1: #3b0764; --bg-2: #4c1d95; --bg-3: #5b21b6; --bg-4: #2d1259;
+      --text: #ffffff; --text-soft: #e9d5ff; --text-card: #ffffff;
+      --text-muted: #c4b5fd;
+      --card: rgba(255,255,255,0.08); --card-border: rgba(244,114,182,0.25);
+      --card-shadow: 0 8px 22px rgba(0,0,0,0.3);
+      --icon-bg: rgba(255,255,255,0.08); --icon-border: rgba(244,114,182,0.3);
+      --icon-color: #fbcfe8;
+      --nav-bg: rgba(26,11,61,0.94); --nav-border: rgba(244,114,182,0.25);
+      --nav-color: #a78bfa; --nav-active: #fbcfe8;
+      --star: 0.7; --flower: 0.12;
+      --input-bg: rgba(255,255,255,0.08);
+      --input-border: rgba(244,114,182,0.35);
+      --input-focus: rgba(253,230,138,0.6);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body { height: 100%; width: 100%; }
+
+    body {
+      font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
+      direction: rtl;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg-1);
+      background-image:
+        radial-gradient(ellipse 500px 400px at 20% 5%, rgba(236,72,153,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 400px 350px at 85% 15%, rgba(168,85,247,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 450px 400px at 15% 90%, rgba(139,92,246,0.18) 0%, transparent 60%),
+        linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 25%, var(--bg-3) 50%, var(--bg-2) 75%, var(--bg-4) 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 0 0 110px 0;
+      position: relative;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.3s ease;
+    }
+    body.lang-ltr { direction: ltr; }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 12% 8%, rgba(253,230,138,var(--star)) 0%, transparent 1.2%),
+        radial-gradient(circle at 88% 6%, rgba(253,230,138,var(--star)) 0%, transparent 1%),
+        radial-gradient(circle at 78% 45%, rgba(253,230,138,var(--star)) 0%, transparent 1%),
+        radial-gradient(circle at 8% 35%, rgba(253,230,138,var(--star)) 0%, transparent 0.9%),
+        radial-gradient(circle at 30% 20%, rgba(168,85,247,var(--star)) 0%, transparent 0.7%),
+        radial-gradient(circle at 70% 25%, rgba(168,85,247,var(--star)) 0%, transparent 0.6%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* APP */
+    .app { max-width: 520px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
+
+    /* HEADER */
+    .header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0 16px; gap: 10px;
+    }
+    .header-brand { display: flex; align-items: center; gap: 10px; }
+    .back-btn {
+      width: 42px; height: 42px; border-radius: 14px;
+      background: var(--icon-bg); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--icon-border);
+      color: var(--icon-color);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s ease;
+      flex: 0 0 42px; text-decoration: none;
+      box-shadow: 0 4px 12px rgba(109,40,217,0.15);
+    }
+    .back-btn:hover { transform: translateY(-2px); }
+    .back-btn:active { transform: scale(0.94); }
+    .back-btn svg {
+      width: 20px; height: 20px; fill: none; stroke: currentColor;
+      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+      transform: scaleX(-1);
+    }
+    .header-title {
+      flex: 1;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--text);
+      text-align: center;
+      padding-right: 42px;
+    }
+
+    /* SEARCH BOX */
+    .search-wrap {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--input-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid var(--input-border);
+      border-radius: 20px;
+      padding: 14px 16px;
+      box-shadow: 0 8px 22px rgba(109,40,217,0.12);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .search-input-wrap:focus-within {
+      border-color: var(--input-focus);
+      box-shadow: 0 8px 28px rgba(236,72,153,0.25);
+    }
+    .search-input-wrap svg.search-icon {
+      width: 20px; height: 20px;
+      fill: none; stroke: var(--text-soft);
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+      flex: 0 0 20px;
+    }
+    .search-input {
+      flex: 1;
+      border: 0;
+      background: transparent;
+      outline: none;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      padding: 0;
+    }
+    .search-input::placeholder {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .clear-btn {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(236,72,153,0.15);
+      border: 0;
+      color: var(--text-soft);
+      display: none;
+      align-items: center; justify-content: center;
+      cursor: pointer;
+      flex: 0 0 26px;
+    }
+    .clear-btn.show { display: flex; }
+    .clear-btn svg {
+      width: 14px; height: 14px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* FILTERS */
+    .filters {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .filters::-webkit-scrollbar { display: none; }
+    .filter-chip {
+      flex: 0 0 auto;
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      color: var(--text-soft);
+      border-radius: 30px;
+      padding: 8px 16px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .filter-chip:hover {
+      border-color: var(--input-focus);
+      color: var(--text);
+    }
+    .filter-chip.active {
+      background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #6d28d9 100%);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 6px 18px rgba(236,72,153,0.4);
+    }
+    .filter-chip svg {
+      width: 14px; height: 14px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* STATUS */
+    .status {
+      text-align: center;
+      padding: 8px 0 14px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* RESULTS */
+    .results { min-height: 200px; }
+
+    .result-item {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 10px;
+      box-shadow: var(--card-shadow);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .result-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--input-focus);
+    }
+    .result-item:active {
+      transform: scale(0.98);
+    }
+
+    .result-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(168,85,247,0.15);
+      color: #7c3aed;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    body.dark .result-badge {
+      background: rgba(196,181,253,0.15);
+      color: #e9d5ff;
+    }
+    .result-badge.health { background: rgba(236,72,153,0.15); color: #be185d; }
+    body.dark .result-badge.health { background: rgba(244,114,182,0.15); color: #fbcfe8; }
+    .result-badge.hamraz { background: rgba(251,191,36,0.15); color: #a16207; }
+    body.dark .result-badge.hamraz { background: rgba(251,191,36,0.15); color: #fde68a; }
+    .result-badge.duas { background: rgba(139,92,246,0.15); color: #6d28d9; }
+    body.dark .result-badge.duas { background: rgba(196,181,253,0.15); color: #c4b5fd; }
+
+    .result-badge svg {
+      width: 12px; height: 12px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .result-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-card);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .result-snippet {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .result-snippet mark {
+      background: linear-gradient(180deg, transparent 50%, rgba(253,230,138,0.6) 50%);
+      color: inherit;
+      font-weight: 800;
+      padding: 0 2px;
+    }
+
+    /* EMPTY / LOADING */
+    .empty {
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--text-muted);
+    }
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      opacity: 0.5;
+    }
+    .empty-text {
+      font-size: 0.88rem;
+      line-height: 1.9;
+    }
+
+    .loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .loader::before {
+      content: "";
+      width: 20px; height: 20px;
+      border: 2.5px solid rgba(168,85,247,0.3);
+      border-top-color: #ec4899;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* BOTTOM NAV */
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg); backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-top: 1px solid var(--nav-border);
+      display: flex; justify-content: space-around;
+      padding: 8px 4px calc(8px + env(safe-area-inset-bottom, 0px));
+      max-width: 520px; margin: 0 auto;
+      box-shadow: 0 -8px 30px rgba(109,40,217,0.15);
+    }
+    .nav-item {
+      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
+      color: var(--nav-color); padding: 8px 2px; transition: all 0.25s ease;
+      font-size: 0.62rem; font-weight: 800;
+      text-decoration: none; cursor: pointer;
+      border-radius: 12px; position: relative;
+    }
+    .nav-item.active { color: var(--nav-active); }
+    .nav-item.active::before {
+      content: ""; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 22px; height: 3px;
+      border-radius: 0 0 4px 4px;
+      background: linear-gradient(90deg, #ec4899, #a855f7, #fde68a);
+      box-shadow: 0 0 12px rgba(236,72,153,0.8);
+    }
+    .nav-item svg {
+      width: 22px; height: 22px; fill: none; stroke: currentColor;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .nav-item.active svg { stroke-width: 2.4; }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- HEADER -->
+    <header class="header">
+      <a class="back-btn" href="home.html" aria-label="بازگشت">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </a>
+      <div class="header-title" data-i18n="search.title">جستجوی هوشمند</div>
+    </header>
+
+    <!-- SEARCH BOX -->
+    <div class="search-wrap">
+      <div class="search-input-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="جستجو در همه بخش‌ها..."
+          data-i18n-placeholder="search.placeholder"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        />
+        <button class="clear-btn" id="clearBtn" type="button" aria-label="پاک کردن">
+          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filters" id="filters">
+      <button class="filter-chip active" data-filter="all" type="button">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        همه
+      </button>
+      <button class="filter-chip" data-filter="fiqh" type="button">
+        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        احکام
+      </button>
+      <button class="filter-chip" data-filter="health" type="button">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        سلامت
+      </button>
+      <button class="filter-chip" data-filter="hamraz" type="button">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        همراز
+      </button>
+      <button class="filter-chip" data-filter="duas" type="button">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
+        دعا
+      </button>
+      <button class="filter-chip" data-filter="education" type="button">
+        <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        آموزش
+      </button>
+    </div>
+
+    <!-- STATUS -->
+    <div class="status" id="status"></div>
+
+    <!-- RESULTS -->
+    <div class="results" id="results"></div>
+
+    <div style="height:30px"></div>
+
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <a class="nav-item" href="home.html">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span data-i18n="nav.home">خانه</span>
+    </a>
+    <a class="nav-item active" href="search.html">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <span data-i18n="search.title">جستجو</span>
+    </a>
+    <a class="nav-item" href="hamraz.html">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span data-i18n="nav.hamraz">همراز</span>
+    </a>
+    <a class="nav-item" href="ahkam.html">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span data-i18n="nav.ahkam">احکام</span>
+    </a>
+    <a class="nav-item" href="settings.html">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span data-i18n="nav.more">بیشتر</span>
+    </a>
+  </nav>
+
+  <script src="app.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      /* ============ STATE ============ */
+      var searchIndex = [];       // {id, title, text, type, category, url}
+      var currentFilter = 'all';
+      var isIndexReady = false;
+
+      var typeLabels = {
+        fiqh: 'احکام',
+        health: 'سلامت',
+        hamraz: 'همراز',
+        duas: 'دعا',
+        education: 'آموزش'
+      };
+
+      var typeIcons = {
+        fiqh: '<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+        health: '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+        hamraz: '<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+        duas: '<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>',
+        education: '<svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>'
+      };
+
+      var typeUrls = {
+        fiqh: 'ahkam.html',
+        health: 'health.html',
+        hamraz: 'hamraz.html',
+        duas: 'duas.html',
+        education: 'education.html'
+      };
+
+      /* ============ INDEX BUILDER ============ */
+      async function buildIndex() {
+        var sources = [
+          { path: 'data/fiqh/jafari.json', type: 'fiqh' },
+          { path: 'data/fiqh/hanafi.json', type: 'fiqh' },
+          { path: 'data/medical/general-health.json', type: 'health' },
+          { path: 'data/medical/menstruation.json', type: 'health' },
+          { path: 'data/medical/pregnancy.json', type: 'health' },
+          { path: 'data/medical/childbirth.json', type: 'health' },
+          { path: 'data/medical/personal-hygiene.json', type: 'health' },
+          { path: 'data/medical/nutrition.json', type: 'health' },
+          { path: 'data/medical/breast-health.json', type: 'health' },
+          { path: 'data/medical/vaginal-health.json', type: 'health' },
+          { path: 'data/medical/anal-health.json', type: 'health' },
+          { path: 'data/hamraz/questions.json', type: 'hamraz' },
+          { path: 'data/duas/duas.json', type: 'duas' },
+          { path: 'data/education/education.json', type: 'education' }
+        ];
+
+        var tasks = sources.map(async function (src) {
+          var data = await BN.loadJSON(src.path);
+          if (!data) return;
+          indexData(data, src.type);
+        });
+
+        await Promise.all(tasks);
+        isIndexReady = true;
+        updateStatus();
+      }
+
+      function indexData(data, type) {
+        // ساختار fiqh: { sections: [ { title, items: [{title, subtitle}] } ] }
+        if (data.sections && Array.isArray(data.sections)) {
+          data.sections.forEach(function (sec) {
+            if (sec.items && Array.isArray(sec.items)) {
+              sec.items.forEach(function (item) {
+                addToIndex({
+                  id: type + '_' + (item.id || item.title || Math.random()),
+                  title: item.title || '',
+                  text: (item.subtitle || '') + ' ' + (item.description || ''),
+                  type: type,
+                  category: sec.title || '',
+                  url: typeUrls[type]
+                });
+              });
+            }
+          });
+        }
+
+        // ساختار hamraz: { categories: [ { title, questions: [{q, a}] } ] }
+        if (data.categories && Array.isArray(data.categories)) {
+          data.categories.forEach(function (cat) {
+            if (cat.questions && Array.isArray(cat.questions)) {
+              cat.questions.forEach(function (q, idx) {
+                addToIndex({
+                  id: type + '_' + (cat.id || 'cat') + '_' + idx,
+                  title: q.q || '',
+                  text: q.a || '',
+                  type: type,
+                  category: cat.title || '',
+                  url: typeUrls[type]
+                });
+              });
+            }
+          });
+        }
+
+        // ساختار آرایه مستقیم: [ { title, description } ]
+        if (Array.isArray(data.items)) {
+          data.items.forEach(function (item, idx) {
+            addToIndex({
+              id: type + '_' + idx,
+              title: item.title || item.name || '',
+              text: (item.description || item.text || item.subtitle || ''),
+              type: type,
+              category: item.category || '',
+              url: typeUrls[type]
+            });
+          });
+        }
+
+        // ساختار آرایه ریشه: [ {title, description} ]
+        if (Array.isArray(data) && !Array.isArray(data.items)) {
+          data.forEach(function (item, idx) {
+            addToIndex({
+              id: type + '_root_' + idx,
+              title: item.title || item.name || item.q || '',
+              text: item.description || item.text || item.a || '',
+              type: type,
+              category: item.category || '',
+              url: typeUrls[type]
+            });
+          });
+        }
+      }
+
+      function addToIndex(entry) {
+        if (!entry || !entry.title) return;
+        searchIndex.push(entry);
+      }
+
+      /* ============ SEARCH ============ */
+      function normalize(str) {
+        if (!str) return '';
+        return String(str)
+          .toLowerCase()
+          .replace(/ي/g, 'ی')
+          .replace(/ك/g, 'ک')
+          .replace(/[\u064B-\u065F\u0670]/g, '')  // حذف اعراب
+          .trim();
+      }
+
+      function escapeHTML(s) {
+        if (s == null) return '';
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function highlight(text, query) {
+        if (!text || !query) return escapeHTML(text);
+        var safeText = escapeHTML(text);
+        var safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        var re = new RegExp('(' + safeQuery + ')', 'gi');
+        return safeText.replace(re, '<mark>$1</mark>');
+      }
+
+      function getSnippet(text, query, maxLen) {
+        maxLen = maxLen || 120;
+        if (!text) return '';
+        text = String(text);
+        var lowerText = normalize(text);
+        var lowerQuery = normalize(query);
+        var idx = lowerText.indexOf(lowerQuery);
+        if (idx === -1) {
+          return text.substring(0, maxLen) + (text.length > maxLen ? '...' : '');
+        }
+        var start = Math.max(0, idx - 40);
+        var end = Math.min(text.length, start + maxLen);
+        return (start > 0 ? '...' : '') + text.substring(start, end) + (end < text.length ? '...' : '');
+      }
+
+      function doSearch(query) {
+        var container = document.getElementById('results');
+        var status = document.getElementById('status');
+        query = (query || '').trim();
+
+        // فیلتر
+        var pool = searchIndex;
+        if (currentFilter !== 'all') {
+          pool = pool.filter(function (it) { return it.type === currentFilter; });
+        }
+
+        // اگه خالیه
+        if (!query) {
+          container.innerHTML =
+            '<div class="empty">' +
+              '<div class="empty-icon">🔍</div>' +
+              '<div class="empty-text">جستجو در احکام، سلامت، همراز، دعا و آموزش<br>تایپ کنید تا نتایج نمایش داده شود</div>' +
+            '</div>';
+          status.textContent = pool.length + ' محتوا در فهرست آماده است';
+          return;
+        }
+
+        // سرچ
+        var q = normalize(query);
+        var results = pool.filter(function (item) {
+          var titleMatch = normalize(item.title).indexOf(q) > -1;
+          var textMatch = normalize(item.text).indexOf(q) > -1;
+          var catMatch = normalize(item.category).indexOf(q) > -1;
+          return titleMatch || textMatch || catMatch;
+        });
+
+        // رتبه‌بندی
+        results.forEach(function (r) {
+          var score = 0;
+          if (normalize(r.title).indexOf(q) > -1) score += 100;
+          if (normalize(r.title).indexOf(q) === 0) score += 50;
+          if (normalize(r.category).indexOf(q) > -1) score += 30;
+          if (normalize(r.text).indexOf(q) > -1) score += 10;
+          r._score = score;
+        });
+        results.sort(function (a, b) { return b._score - a._score; });
+
+        status.textContent = results.length > 0
+          ? 'یافت شد: ' + results.length + ' نتیجه'
+          : 'نتیجه‌ای یافت نشد';
+
+        if (results.length === 0) {
+          container.innerHTML =
+            '<div class="empty">' +
+              '<div class="empty-icon">📭</div>' +
+              '<div class="empty-text">برای «' + escapeHTML(query) + '» نتیجه‌ای یافت نشد<br>کلمه دیگری را امتحان کنید</div>' +
+            '</div>';
+          return;
+        }
+
+        // نمایش
+        container.innerHTML = results.slice(0, 40).map(function (r) {
+          var badgeClass = r.type;
+          var badgeLabel = typeLabels[r.type] || r.type;
+          var badgeIcon = typeIcons[r.type] || '';
+          var snippet = getSnippet(r.text, query, 120);
+          var titleHL = highlight(r.title, query);
+          var snippetHL = highlight(snippet, query);
+          var cat = r.category ? ' • ' + escapeHTML(r.category) : '';
+          return '<a class="result-item" href="' + (r.url || '#') + '">' +
+            '<div class="result-head">' +
+              '<span class="result-badge ' + badgeClass + '">' + badgeIcon + ' ' + escapeHTML(badgeLabel) + '</span>' +
+              '<span style="font-size:0.7rem;color:var(--text-muted);font-weight:600">' + cat + '</span>' +
+            '</div>' +
+            '<div class="result-title">' + titleHL + '</div>' +
+            '<div class="result-snippet">' + snippetHL + '</div>' +
+          '</a>';
+        }).join('');
+      }
+
+      /* ============ FILTERS ============ */
+      function setupFilters() {
+        var chips = document.querySelectorAll('.filter-chip');
+        chips.forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            chips.forEach(function (c) { c.classList.remove('active'); });
+            chip.classList.add('active');
+            currentFilter = chip.dataset.filter;
+            doSearch(document.getElementById('searchInput').value);
+          });
+        });
+      }
+
+      /* ============ STATUS ============ */
+      function updateStatus() {
+        var status = document.getElementById('status');
+        if (isIndexReady) {
+          status.textContent = searchIndex.length + ' محتوا در فهرست آماده است';
+        } else {
+          status.textContent = 'در حال بارگذاری فهرست...';
+        }
+      }
+
+      /* ============ INPUT ============ */
+      function setupInput() {
+        var input = document.getElementById('searchInput');
+        var clearBtn = document.getElementById('clearBtn');
+
+        var timer = null;
+        input.addEventListener('input', function () {
+          clearBtn.classList.toggle('show', input.value.length > 0);
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            doSearch(input.value);
+          }, 150);
+        });
+
+        clearBtn.addEventListener('click', function () {
+          input.value = '';
+          clearBtn.classList.remove('show');
+          input.focus();
+          doSearch('');
+        });
+
+        // Enter → جستجوی فوری
+        input.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') {
+            clearTimeout(timer);
+            doSearch(input.value);
+            input.blur();
+          }
+        });
+      }
+
+      /* ============ INIT ============ */
+      async function init() {
+        // تم
+        BN.applySavedTheme();
+
+        // زبان
+        var lang = BN.getSavedLang();
+        await BN.switchLanguage(lang);
+
+        // input و filters
+        setupInput();
+        setupFilters();
+
+        // نمایش loader اولیه
+        document.getElementById('status').textContent = 'در حال بارگذاری فهرست...';
+        document.getElementById('results').innerHTML =
+          '<div class="loader">در حال بارگذاری محتوا...</div>';
+
+        // ساخت ایندکس
+        await buildIndex();
+
+        // نمایش اولیه
+        doSearch('');
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+
+</body>
+</html>
