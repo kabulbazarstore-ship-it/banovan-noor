@@ -12,4 +12,4 @@ function trackAhkam() { posthog.capture('ahkam_open', { section: 'احکام' })
 function trackHealth() { posthog.capture('health_open', { section: 'بانوان و سلامت' }); }
 function trackDuas() { posthog.capture('duas_open', { section: 'دعاها' }); }
 function trackHamraz() { posthog.capture('hamraz_open', { section: 'همراز' }); }
-function trackMenstruation() { posthog.capture('menstruation_open', { section: 'قاعدگی' }); }
+function trackMenstruation() { posthog.capture('menstruation_open', { section: 'قاعدگی' }); } // 👈 این خط اضافه شد
