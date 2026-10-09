@@ -14,6 +14,7 @@
 <link rel="icon" href="assets/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
 
 <script>
 (function(){
@@ -21,6 +22,7 @@
     var t = localStorage.getItem('bn_theme');
     if(!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme',t);
+    if (t === 'dark') document.body.classList.add('dark');
   }catch(e){}
 })();
 </script>
@@ -1236,6 +1238,10 @@ else init();
 
 <!-- ═══ ماژول اصلی BN ═══ -->
 <script src="js/bn-app.js"></script>
+
+<!-- ═══ Media Player + Downloader (برای دسترسی سراسری) ═══ -->
+<script src="js/bn-media-player.js"></script>
+<script src="js/bn-downloader.js"></script>
 
 <!-- ═══ Firebase ═══ -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
