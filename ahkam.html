@@ -1,733 +1,1261 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#6d28d9" />
-  <title>احکام | بانوان نور</title>
-  <link rel="icon" href="assets/icon-192.png" type="image/png" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#db2777" id="themeMeta">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="بانوان نور">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="احکام بانوان — مرکز احکام شرعی بر اساس مذهب و مرجع تقلید">
+<title>احکام | بانوان نور</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.json">
 
-  <style>
-    :root {
-      --bg-1: #f3e8ff; --bg-2: #e9d5ff; --bg-3: #ddd6fe; --bg-4: #c4b5fd;
-      --text: #2d1259; --text-soft: #4c1d95; --text-card: #1f1147;
-      --text-muted: #7c6f9a;
-      --card: rgba(255,255,255,0.78); --card-border: rgba(168,85,247,0.2);
-      --card-shadow: 0 8px 22px rgba(109,40,217,0.12);
-      --icon-bg: rgba(255,255,255,0.8); --icon-border: rgba(168,85,247,0.25);
-      --icon-color: #6d28d9;
-      --nav-bg: rgba(255,255,255,0.92); --nav-border: rgba(168,85,247,0.2);
-      --nav-color: #7c6f9a; --nav-active: #6d28d9;
-      --star: 0.2;
-      --tab-bg: rgba(168,85,247,0.1);
-    }
-    body.dark {
-      --bg-1: #3b0764; --bg-2: #4c1d95; --bg-3: #5b21b6; --bg-4: #2d1259;
-      --text: #ffffff; --text-soft: #e9d5ff; --text-card: #ffffff;
-      --text-muted: #c4b5fd;
-      --card: rgba(255,255,255,0.08); --card-border: rgba(244,114,182,0.25);
-      --card-shadow: 0 8px 22px rgba(0,0,0,0.3);
-      --icon-bg: rgba(255,255,255,0.08); --icon-border: rgba(244,114,182,0.3);
-      --icon-color: #fbcfe8;
-      --nav-bg: rgba(26,11,61,0.94); --nav-border: rgba(244,114,182,0.25);
-      --nav-color: #a78bfa; --nav-active: #fbcfe8;
-      --star: 0.7;
-      --tab-bg: rgba(255,255,255,0.08);
-    }
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('bn_theme');
+    if(!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme',t);
+  }catch(e){}
+})();
+</script>
 
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-html { width: 100%; }
-body { min-height: 100vh; width: 100%; }
-  
-    body {
-      font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
-      direction: rtl;
-      font-size: 16px;
-      line-height: 1.8;
-      font-weight: 600;
-      color: var(--text);
-      background-color: var(--bg-1);
-      background-image:
-        radial-gradient(ellipse 500px 400px at 20% 5%, rgba(236,72,153,0.15) 0%, transparent 60%),
-        radial-gradient(ellipse 400px 350px at 85% 15%, rgba(168,85,247,0.18) 0%, transparent 65%),
-        linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 25%, var(--bg-3) 50%, var(--bg-2) 75%, var(--bg-4) 100%);
-      background-attachment: fixed;
-      min-height: 100vh;
-      padding: 0 0 110px 0;
-      position: relative;
-      overflow-x: hidden;
-    }
+<style>
+:root{
+  --bg:#fdf5ff;--bg-soft:#f6e9ff;
+  --surface:rgba(255,255,255,.80);--surface-solid:#fff;
+  --text:#2a1740;--text-soft:#5f4a77;--text-muted:#9686a8;
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 12% 8%, rgba(253,230,138,var(--star)) 0%, transparent 1.2%),
-        radial-gradient(circle at 88% 6%, rgba(253,230,138,var(--star)) 0%, transparent 1%),
-        radial-gradient(circle at 78% 45%, rgba(253,230,138,var(--star)) 0%, transparent 1%);
-      pointer-events: none;
-      z-index: 0;
-    }
+  --primary:#a832d6;--primary-2:#c026d3;--pink:#ec4899;
 
-    .app { max-width: 520px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
+  --border:rgba(168,50,214,.14);
+  --shadow-sm:0 6px 20px rgba(168,50,214,.08);
+  --shadow-md:0 14px 34px rgba(168,50,214,.15);
+  --shadow-fab:0 14px 36px rgba(219,39,119,.50);
 
-    .page-header { display: flex; align-items: center; gap: 12px; padding: 20px 0 16px; }
-    .back-btn {
-      width: 42px; height: 42px; border-radius: 14px;
-      background: var(--icon-bg); backdrop-filter: blur(16px);
-      border: 1px solid var(--icon-border);
-      color: var(--icon-color);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; flex: 0 0 42px; text-decoration: none;
-      box-shadow: 0 4px 12px rgba(109,40,217,0.15);
-    }
-    .back-btn:active { transform: scale(0.94); }
-    .back-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transform: scaleX(-1); }
-    .page-header h1 {
-      font-size: 1.3rem; font-weight: 900; color: var(--text);
-      flex: 1; text-align: center; padding-right: 42px;
-    }
+  --nav-bg:rgba(255,255,255,.68);
 
-    .tabs {
-      display: flex; gap: 8px;
-      background: var(--tab-bg);
-      border: 1.5px solid var(--card-border);
-      border-radius: 18px; padding: 6px;
-      margin-bottom: 18px;
-    }
-    .tab-btn {
-      flex: 1; background: transparent; border: 0;
-      color: var(--text-soft);
-      border-radius: 14px; padding: 14px 10px;
-      font-family: inherit; font-size: 0.95rem;
-      font-weight: 900; cursor: pointer;
-      display: flex; align-items: center;
-      justify-content: center; gap: 6px;
-      transition: all 0.25s ease;
-    }
-    .tab-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
-    .tab-btn.active {
-      background: linear-gradient(135deg, #ec4899, #6d28d9);
-      color: #fff;
-      box-shadow: 0 6px 18px rgba(236,72,153,0.4);
-    }
-    .tab-btn:active { transform: scale(0.97); }
+  --brand-grad:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(225,29,72,.13),rgba(168,85,247,.10));
 
-    .marja-section { margin-bottom: 18px; }
-    .marja-title {
-      font-size: 1.05rem; font-weight: 900; color: var(--text);
-      margin-bottom: 6px; text-align: center;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .marja-title svg { width: 22px; height: 22px; fill: none; stroke: #6d28d9; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-    body.dark .marja-title svg { stroke: #c4b5fd; }
-    .marja-subtitle {
-      font-size: 0.82rem; color: var(--text-muted);
-      text-align: center; font-weight: 700;
-      margin-bottom: 18px; line-height: 1.8;
-    }
+  --ig-grad:var(--brand-grad);
+  --ig-grad-anim:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --gradient-soft:var(--brand-grad-soft);
 
-    .marja-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  --tab-bg:rgba(168,50,214,.10);
+}
 
-    .marja-card {
-      position: relative;
-      background: var(--card);
-      backdrop-filter: blur(20px);
-      border: 2px solid var(--card-border);
-      border-radius: 22px;
-      padding: 20px 18px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: right;
-      font-family: inherit;
-      display: flex; align-items: center; gap: 14px;
-      box-shadow: var(--card-shadow);
-      width: 100%;
-    }
-    .marja-card::before {
-      content: "";
-      position: absolute;
-      top: 0; right: 0; bottom: 0;
-      width: 4px;
-      background: linear-gradient(180deg, #ec4899, #a855f7, #6d28d9);
-      opacity: 0; transition: opacity 0.3s ease;
-    }
-    .marja-card:active { transform: scale(0.98); }
-    .marja-card.active {
-      background: linear-gradient(135deg, rgba(236,72,153,0.12) 0%, rgba(168,85,247,0.15) 50%, rgba(109,40,217,0.18) 100%);
-      border-color: rgba(236,72,153,0.6);
-    }
-    .marja-card.active::before { opacity: 1; }
+html[data-theme="dark"],
+body.dark{
+  --bg:#000;--bg-soft:#000;
+  --surface:rgba(28,28,30,.70);--surface-solid:#1c1c1e;
+  --text:#fff;--text-soft:#e4e6eb;--text-muted:#8e8e93;
+  --primary:#c084fc;--primary-2:#d8b4fe;--pink:#ec4899;
+  --border:rgba(192,132,252,.16);
+  --shadow-sm:0 6px 20px rgba(0,0,0,.45);
+  --shadow-md:0 14px 34px rgba(0,0,0,.55);
+  --shadow-fab:0 14px 36px rgba(219,39,119,.55);
+  --nav-bg:rgba(15,10,22,.68);
 
-    .marja-icon {
-      width: 56px; height: 56px; border-radius: 18px;
-      display: flex; align-items: center; justify-content: center;
-      flex: 0 0 56px;
-      box-shadow: 0 6px 16px rgba(109,40,217,0.25);
-    }
-    .marja-icon svg { width: 34px; height: 34px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  --brand-grad:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(225,29,72,.18),rgba(168,85,247,.14));
+  --ig-grad:var(--brand-grad);
+  --ig-grad-anim:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --gradient-soft:var(--brand-grad-soft);
 
-    .marja-info { flex: 1; min-width: 0; }
-    .marja-name { font-size: 1.05rem; font-weight: 900; color: var(--text-card); margin-bottom: 3px; }
-    .marja-sub { font-size: 0.75rem; color: var(--text-muted); font-weight: 700; }
+  --tab-bg:#1c1c1e;
+}
 
-    .marja-check {
-      width: 26px; height: 26px; border-radius: 50%;
-      border: 2px solid var(--card-border);
-      display: flex; align-items: center; justify-content: center;
-      background: var(--bg-1); flex: 0 0 26px;
-    }
-    .marja-card.active .marja-check { background: linear-gradient(135deg, #ec4899, #6d28d9); border-color: transparent; }
-    .marja-check svg { width: 14px; height: 14px; fill: none; stroke: #fff; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
-    .marja-card.active .marja-check svg { opacity: 1; }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;min-height:100%}
+body{
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;
+  direction:rtl;color:var(--text);
+  background:
+    radial-gradient(circle at 8% 0%,rgba(236,72,153,.15),transparent 30%),
+    radial-gradient(circle at 100% 10%,rgba(168,85,247,.17),transparent 32%),
+    linear-gradient(160deg,var(--bg),var(--bg-soft));
+  min-height:100vh;
+  padding-bottom:calc(120px + env(safe-area-inset-bottom));
+  overflow-x:hidden;
+  transition:background .35s ease,color .35s ease;
+  -webkit-font-smoothing:antialiased;
+}
+html[data-theme="dark"] body,
+body.dark{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(168,85,247,.13),transparent 30%),
+    radial-gradient(circle at 100% 20%,rgba(236,72,153,.08),transparent 30%),
+    #000;
+}
 
-    .info-bar {
-      background: var(--card); backdrop-filter: blur(16px);
-      border: 1.5px dashed var(--card-border);
-      border-radius: 16px;
-      padding: 14px 16px; margin-bottom: 14px;
-      display: flex; align-items: center; gap: 12px;
-      font-size: 0.85rem; font-weight: 700;
-      color: var(--text-muted); line-height: 1.8;
-    }
-    .info-bar svg { width: 22px; height: 22px; flex: 0 0 22px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-    .info-bar strong { color: var(--text-soft); font-weight: 900; }
-    .change-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: linear-gradient(135deg, rgba(236,72,153,0.15), rgba(109,40,217,0.15));
-      border: 1.5px solid var(--card-border);
-      color: var(--text-soft);
-      padding: 8px 14px; border-radius: 20px;
-      font-family: inherit; font-size: 0.72rem;
-      font-weight: 900; cursor: pointer;
-      white-space: nowrap;
-    }
-    .change-btn:active { transform: scale(0.95); }
+/* ✅ پشتیبانی از LTR */
+body.lang-ltr { direction: ltr; }
+body.lang-ltr .back-btn svg,
+body.lang-ltr .audio-cta-arrow,
+body.lang-ltr .section-arrow,
+body.lang-ltr .item-row .arrow { transform: none; }
+body.lang-ltr .audio-cta::before { right: auto; left: 0; border-radius: 20px 0 0 20px; }
+body.lang-ltr .item-row { padding: 12px 22px 12px 16px; }
+body.lang-ltr .item-row .arrow { transform: scaleX(-1); }
 
-    .section-card {
-      background: var(--card); backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: 22px;
-      box-shadow: var(--card-shadow);
-      margin-bottom: 14px;
-      overflow: hidden;
-    }
-    .section-header {
-      display: flex; align-items: center; gap: 12px;
-      padding: 18px 18px; cursor: pointer;
-    }
-    .section-header:active { background: rgba(168,85,247,0.08); }
+.app{width:100%;max-width:640px;margin:0 auto;padding:0 16px;position:relative;z-index:2}
 
-    .section-icon {
-      width: 48px; height: 48px; border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      flex: 0 0 48px;
-      background: linear-gradient(135deg,#a855f7,#6d28d9);
-      box-shadow: 0 6px 16px rgba(109,40,217,0.25);
-    }
-    .section-icon svg { width: 24px; height: 24px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-    .section-title-text { flex: 1; font-size: 1.05rem; font-weight: 900; color: var(--text-card); }
-    .section-count {
-      font-size: 0.7rem; font-weight: 800;
-      padding: 4px 12px; border-radius: 20px;
-      background: rgba(168,85,247,0.15);
-      color: var(--text-soft);
-      margin-left: 6px;
-    }
-    body.dark .section-count { background: rgba(196,181,253,0.15); }
-    .section-arrow {
-      width: 20px; height: 20px;
-      fill: none; stroke: var(--text-muted);
-      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
-      transform: scaleX(-1);
-      transition: transform 0.3s ease;
-    }
-    .section-card.open .section-arrow { transform: rotate(90deg) scaleX(-1); }
+.topbar{
+  display:flex;align-items:center;gap:10px;
+  padding:18px 0 14px;
+  position:sticky;top:0;
+  background:linear-gradient(to bottom,var(--bg) 70%,transparent);
+  z-index:50;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+html[data-theme="dark"] .topbar,
+body.dark .topbar{background:linear-gradient(to bottom,#000 70%,transparent)}
+.back-btn{
+  width:42px;height:42px;border-radius:14px;
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;text-decoration:none;flex:0 0 42px;
+}
+.back-btn:active{transform:scale(.9)}
+.back-btn svg{
+  width:20px;height:20px;fill:none;stroke:currentColor;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+  transform:scaleX(-1);
+}
+.page-title{flex:1;font-size:1.05rem;font-weight:900}
+.icon-btn-mini{
+  width:42px;height:42px;border-radius:14px;
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex:0 0 42px;text-decoration:none;
+}
+.icon-btn-mini:active{transform:scale(.9)}
+.icon-btn-mini svg{
+  width:19px;height:19px;fill:none;stroke:currentColor;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+}
 
-    .section-items { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-    .section-card.open .section-items { max-height: 3000px; }
+.hero-banner{
+  border-radius:22px;padding:18px 20px;
+  margin-bottom:16px;color:#fff;
+  background:var(--ig-grad-anim);
+  background-size:200% 100%;
+  box-shadow:
+    0 18px 42px rgba(219,39,119,.40),
+    0 8px 22px rgba(168,85,247,.30);
+  animation:heroGrad 7s ease infinite;
+  display:flex;align-items:center;gap:14px;
+  position:relative;overflow:hidden;
+}
+@keyframes heroGrad{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+.hero-banner::before{
+  content:"";position:absolute;
+  width:200px;height:200px;top:-110px;left:-70px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.3),transparent 70%);
+  pointer-events:none;
+}
+.hero-icon{
+  width:54px;height:54px;border-radius:17px;
+  background:rgba(255,255,255,.18);
+  border:1.5px solid rgba(255,255,255,.3);
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 54px;
+  position:relative;z-index:1;
+}
+.hero-icon svg{
+  width:28px;height:28px;fill:none;stroke:#fff;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+.hero-text-wrap{flex:1;min-width:0;position:relative;z-index:1}
+.hero-title{font-size:1.05rem;font-weight:900;line-height:1.4;margin-bottom:4px;color:#fff}
+.hero-sub{font-size:.7rem;line-height:1.7;opacity:.92;font-weight:600;color:rgba(255,255,255,.95)}
 
-    .item-row {
-      display: flex; align-items: center; gap: 12px;
-      padding: 14px 18px 14px 24px;
-      cursor: pointer;
-      border-top: 1px solid var(--card-border);
-      transition: background 0.2s;
-    }
-    .item-row:active { background: rgba(168,85,247,0.08); }
-    .item-row::before {
-      content: "";
-      width: 6px; height: 6px; border-radius: 50%;
-      background: linear-gradient(135deg, #ec4899, #6d28d9);
-      flex: 0 0 6px;
-    }
-    .item-row-text { flex: 1; min-width: 0; }
-    .item-row-title { font-size: 0.92rem; font-weight: 800; color: var(--text-card); margin-bottom: 2px; }
-    .item-row-sub { font-size: 0.75rem; color: var(--text-muted); font-weight: 700; }
-    .item-row svg.arrow { width: 18px; height: 18px; fill: none; stroke: var(--text-muted); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transform: scaleX(-1); flex: 0 0 18px; }
+.tabs{
+  display:flex;gap:6px;
+  background:var(--tab-bg);
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  padding:6px;margin-bottom:16px;
+}
+.tab-btn{
+  flex:1;background:transparent;border:0;
+  color:var(--text-soft);
+  border-radius:13px;padding:13px 10px;
+  font-family:inherit;font-size:.88rem;font-weight:900;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  transition:all .25s ease;
+}
+.tab-btn svg{
+  width:17px;height:17px;fill:none;stroke:currentColor;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+}
+.tab-btn.active{
+  background:var(--ig-grad);color:#fff;
+  box-shadow:0 6px 18px rgba(219,39,119,.35);
+}
+.tab-btn.active svg{stroke:#fff}
+.tab-btn:active{transform:scale(.97)}
 
-    .content-modal {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(8px);
-      display: none;
-      align-items: flex-end; justify-content: center;
-      z-index: 9999;
-      padding: 0;
-    }
-    .content-modal.show { display: flex; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.audio-cta{
+  display:flex;align-items:center;gap:13px;
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:20px;
+  padding:14px 16px;margin-bottom:14px;
+  cursor:pointer;text-align:right;
+  font-family:inherit;color:inherit;
+  width:100%;text-decoration:none;
+  box-shadow:var(--shadow-sm);
+  transition:all .25s;
+  position:relative;overflow:hidden;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.audio-cta:active{transform:scale(.98)}
+.audio-cta::before{
+  content:"";position:absolute;
+  top:0;right:0;width:5px;height:100%;
+  background:var(--ig-grad);
+  border-radius:0 20px 20px 0;
+}
+.audio-cta-icon{
+  width:50px;height:50px;border-radius:15px;
+  background:var(--ig-grad);
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 50px;
+  box-shadow:0 6px 16px rgba(219,39,119,.30);
+}
+.audio-cta-icon svg{
+  width:25px;height:25px;fill:none;stroke:#fff;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+}
+.audio-cta-info{flex:1;min-width:0}
+.audio-cta-title{font-size:.92rem;font-weight:900;color:var(--text);margin-bottom:3px}
+.audio-cta-sub{font-size:.7rem;color:var(--text-muted);font-weight:700}
+.audio-cta-arrow{
+  width:20px;height:20px;fill:none;stroke:var(--text-muted);
+  stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+  transform:scaleX(-1);flex:0 0 20px;
+}
 
-    .content-box {
-      width: 100%; max-width: 520px;
-      max-height: 92vh; overflow-y: auto;
-      background: var(--bg-1);
-      border-radius: 28px 28px 0 0;
-      padding: 24px 22px calc(28px + env(safe-area-inset-bottom, 0px));
-      animation: slideUp 0.3s ease;
-    }
-    @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.info-bar{
+  background:var(--surface);
+  border:1.5px dashed var(--border);
+  border-radius:16px;
+  padding:12px 14px;margin-bottom:14px;
+  display:none;align-items:center;gap:10px;
+  font-size:.78rem;font-weight:700;color:var(--text-muted);
+}
+.info-bar.show{display:flex}
+.info-bar svg{
+  width:20px;height:20px;flex:0 0 20px;
+  fill:none;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.info-bar strong{color:var(--text-soft);font-weight:900}
+.change-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--ig-grad);border:0;color:#fff;
+  padding:8px 14px;border-radius:18px;
+  font-family:inherit;font-size:.68rem;font-weight:900;
+  cursor:pointer;white-space:nowrap;flex-shrink:0;
+}
+.change-btn:active{transform:scale(.95)}
 
-    .content-head {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      margin-bottom: 20px; padding-bottom: 16px;
-      border-bottom: 1.5px solid var(--card-border);
-      gap: 12px;
-    }
-    .content-head-text { flex: 1; }
-    .content-badge {
-      display: inline-block;
-      font-size: 0.7rem; font-weight: 900;
-      padding: 4px 12px; border-radius: 20px;
-      background: rgba(168,85,247,0.15);
-      color: var(--text-soft);
-      margin-bottom: 8px;
-    }
-    body.dark .content-badge { background: rgba(196,181,253,0.15); }
-    .content-title { font-size: 1.15rem; font-weight: 900; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
-    .content-sub { font-size: 0.8rem; color: var(--text-muted); font-weight: 700; }
-    .content-close {
-      width: 42px; height: 42px; border-radius: 14px;
-      background: var(--card); border: 1px solid var(--card-border);
-      color: var(--text-soft);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; flex: 0 0 42px;
-    }
-    .content-close svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.marja-section{margin-bottom:16px}
+.marja-header{
+  display:flex;align-items:center;gap:11px;
+  margin-bottom:8px;padding:0 4px;
+}
+.marja-header-icon{
+  width:40px;height:40px;border-radius:13px;
+  background:var(--ig-grad);
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 40px;
+  box-shadow:0 6px 14px rgba(219,39,119,.25);
+}
+.marja-header-icon svg{
+  width:20px;height:20px;fill:none;stroke:#fff;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+}
+.marja-title{font-size:.95rem;font-weight:900;color:var(--text);line-height:1.4;margin-bottom:2px}
+.marja-subtitle{font-size:.7rem;color:var(--text-muted);font-weight:700;line-height:1.6}
+.marja-grid{display:grid;gap:10px;margin-top:14px}
+.marja-card{
+  position:relative;
+  background:var(--surface);
+  border:2px solid var(--border);
+  border-radius:20px;padding:15px 16px;
+  cursor:pointer;transition:all .3s ease;
+  text-align:right;font-family:inherit;
+  display:flex;align-items:center;gap:13px;
+  box-shadow:var(--shadow-sm);width:100%;color:inherit;
+}
+.marja-card:active{transform:scale(.98)}
+.marja-card.active{
+  background:var(--gradient-soft);
+  border-color:rgba(219,39,119,.5);
+}
+.marja-icon{
+  width:52px;height:52px;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 52px;
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
+}
+.marja-icon svg{
+  width:26px;height:26px;fill:none;stroke:#fff;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+.marja-info{flex:1;min-width:0}
+.marja-name{font-size:.92rem;font-weight:900;color:var(--text);margin-bottom:3px;line-height:1.4}
+.marja-sub{font-size:.7rem;color:var(--text-muted);font-weight:700}
 
-    .content-body {
-      font-size: 0.98rem; line-height: 2.2;
-      color: var(--text-card); font-weight: 700;
-      white-space: pre-line; margin-bottom: 20px;
-    }
+.section-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:20px;
+  box-shadow:var(--shadow-sm);
+  margin-bottom:10px;overflow:hidden;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.section-header{
+  display:flex;align-items:center;gap:11px;
+  padding:14px 15px;cursor:pointer;
+}
+.section-header:active{background:var(--gradient-soft)}
+.section-icon{
+  width:44px;height:44px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 44px;
+  box-shadow:0 6px 14px rgba(0,0,0,.15);
+  background:var(--sec-grad,linear-gradient(135deg,#a855f7,#6d28d9));
+  position:relative;
+}
+.section-icon::after{
+  content:"";position:absolute;inset:0;border-radius:14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.2),transparent 55%);
+  pointer-events:none;
+}
+.section-icon svg{
+  width:22px;height:22px;fill:none;stroke:#fff;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+  position:relative;z-index:1;
+}
+.section-title-wrap{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.section-title-text{font-size:.9rem;font-weight:900;color:var(--text);line-height:1.35}
+.section-subtitle{
+  font-size:.65rem;color:var(--text-muted);font-weight:700;
+  line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.section-count{
+  font-size:.6rem;font-weight:800;
+  padding:4px 10px;border-radius:20px;
+  background:var(--gradient-soft);
+  color:var(--primary);
+  border:1px solid var(--border);flex-shrink:0;
+}
+.section-arrow{
+  width:18px;height:18px;fill:none;
+  stroke:var(--text-muted);stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round;
+  transform:scaleX(-1);transition:transform .3s ease;
+  flex:0 0 18px;
+}
+.section-card.open .section-arrow{transform:rotate(-90deg) scaleX(-1)}
+.section-items{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.section-card.open .section-items{max-height:5000px}
 
-    .loader {
-      display: flex; align-items: center; justify-content: center;
-      gap: 10px; padding: 50px 20px;
-      color: var(--text-muted); font-size: 0.9rem; font-weight: 700;
-    }
-    .loader::before {
-      content: "";
-      width: 22px; height: 22px;
-      border: 2.5px solid rgba(168,85,247,0.3);
-      border-top-color: #ec4899;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+.item-row{
+  display:flex;align-items:center;gap:11px;
+  padding:12px 16px 12px 22px;cursor:pointer;
+  border-top:1px solid var(--border);
+  transition:background .2s;
+}
+.item-row:active{background:var(--gradient-soft)}
+.item-row::before{
+  content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--ig-grad);flex:0 0 6px;
+}
+.item-row-text{flex:1;min-width:0}
+.item-row-title{font-size:.84rem;font-weight:800;color:var(--text);margin-bottom:2px;line-height:1.55}
+.item-row-sub{font-size:.68rem;color:var(--text-muted);font-weight:700}
+.item-row svg.arrow{
+  width:16px;height:16px;flex:0 0 16px;
+  fill:none;stroke:var(--text-muted);stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;
+  transform:scaleX(-1);
+}
 
-    .empty { text-align: center; padding: 50px 20px; color: var(--text-muted); font-size: 0.9rem; line-height: 2; font-weight: 700; }
+.loader{
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;padding:50px 20px;
+  color:var(--text-muted);font-size:.85rem;font-weight:700;
+}
+.loader::before{
+  content:"";width:20px;height:20px;
+  border:2.5px solid var(--border);
+  border-top-color:var(--primary);
+  border-radius:50%;animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{
+  text-align:center;padding:50px 20px;
+  color:var(--text-muted);font-size:.85rem;line-height:2;font-weight:700;
+}
 
-    .bottom-nav {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
-      background: var(--nav-bg); backdrop-filter: blur(24px);
-      border-top: 1px solid var(--nav-border);
-      display: flex; justify-content: space-around;
-      padding: 8px 4px calc(8px + env(safe-area-inset-bottom, 0px));
-      max-width: 520px; margin: 0 auto;
-      box-shadow: 0 -8px 30px rgba(109,40,217,0.15);
-    }
-    .nav-item {
-      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
-      color: var(--nav-color); padding: 8px 2px;
-      font-size: 0.65rem; font-weight: 800;
-      text-decoration: none; cursor: pointer;
-      border-radius: 12px; position: relative;
-    }
-    .nav-item.active { color: var(--nav-active); }
-    .nav-item.active::before {
-      content: ""; position: absolute; top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 22px; height: 3px;
-      border-radius: 0 0 4px 4px;
-      background: linear-gradient(90deg, #ec4899, #a855f7, #fde68a);
-      box-shadow: 0 0 12px rgba(236,72,153,0.8);
-    }
-    .nav-item svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .nav-item.active svg { stroke-width: 2.4; }
+.content-modal{
+  position:fixed;inset:0;
+  background:rgba(15,8,20,.62);
+  backdrop-filter:blur(10px);
+  display:none;align-items:flex-end;justify-content:center;
+  z-index:5000;
+}
+.content-modal.show{display:flex}
+.content-box{
+  width:100%;max-width:560px;
+  max-height:90vh;overflow-y:auto;
+  background:var(--surface-solid);
+  border-radius:27px 27px 0 0;
+  padding:20px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+}
+html[data-theme="dark"] .content-box,
+body.dark .content-box{background:#1c1c1e}
+.modal-handle{
+  width:42px;height:4px;border-radius:10px;
+  margin:0 auto 16px;
+  background:var(--text-muted);opacity:.25;
+}
+.content-head{
+  display:flex;align-items:flex-start;gap:11px;
+  margin-bottom:16px;padding-bottom:14px;
+  border-bottom:1.5px solid var(--border);
+}
+.content-head-text{flex:1;min-width:0}
+.content-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:.6rem;font-weight:900;
+  padding:4px 10px;border-radius:20px;
+  background:var(--gradient-soft);
+  color:var(--primary);
+  border:1px solid var(--border);margin-bottom:8px;
+}
+.content-badge svg{
+  width:11px;height:11px;fill:none;stroke:currentColor;
+  stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+}
+.content-title{font-size:1rem;font-weight:900;color:var(--text);margin-bottom:4px;line-height:1.6}
+.content-sub{font-size:.72rem;color:var(--text-muted);font-weight:700}
+.content-close{
+  width:38px;height:38px;border-radius:12px;
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex:0 0 38px;
+}
+.content-close:active{transform:scale(.9)}
+.content-close svg{
+  width:18px;height:18px;fill:none;
+  stroke:currentColor;stroke-width:2.5;stroke-linecap:round;
+}
+.content-body{
+  font-size:.9rem;line-height:2.15;
+  color:var(--text);font-weight:650;
+  white-space:pre-line;margin-bottom:16px;
+}
+.content-actions{
+  display:flex;gap:7px;padding-top:14px;
+  border-top:1px dashed var(--border);
+}
+.act-btn{
+  width:40px;height:40px;border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--surface);color:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:.2s;
+}
+.act-btn:active{transform:scale(.9)}
+.act-btn svg{
+  width:18px;height:18px;fill:none;
+  stroke:currentColor;stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round;
+}
 
-    @media (max-width: 380px) {
-      .app { padding: 0 12px; }
-      .page-header h1 { font-size: 1.15rem; }
-      .tab-btn { font-size: 0.85rem; padding: 12px 8px; }
-      .section-title-text { font-size: 0.95rem; }
-      .section-icon { width: 44px; height: 44px; flex: 0 0 44px; }
-      .section-icon svg { width: 22px; height: 22px; }
-      .marja-icon { width: 50px; height: 50px; flex: 0 0 50px; }
-      .marja-icon svg { width: 30px; height: 30px; }
-    }
-  </style>
+.bottom-nav{
+  position:fixed;left:50%;bottom:0;
+  transform:translateX(-50%);
+  width:100%;max-width:640px;z-index:1000;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-columns:1fr 1fr 78px 1fr 1fr;
+  gap:4px;align-items:center;
+  background:var(--nav-bg);
+  border-top:1px solid rgba(255,255,255,.18);
+  border-radius:26px 26px 0 0;
+  box-shadow:
+    0 -10px 28px rgba(225,29,72,.14),
+    0 -24px 55px rgba(168,85,247,.10),
+    inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter:blur(55px) saturate(220%);
+  -webkit-backdrop-filter:blur(55px) saturate(220%);
+}
+html[data-theme="dark"] .bottom-nav,
+body.dark .bottom-nav{
+  border-top:1px solid rgba(255,255,255,.06);
+  box-shadow:
+    0 -10px 28px rgba(0,0,0,.55),
+    0 -24px 55px rgba(219,39,119,.14);
+}
+
+.nav-item{
+  min-height:56px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:4px;position:relative;
+  color:var(--text-muted);text-decoration:none;
+  border-radius:14px;font-size:.56rem;font-weight:850;
+  transition:color .2s ease,background .2s ease;
+  padding:6px 2px;
+}
+.nav-item svg{
+  width:21px;height:21px;fill:none;stroke:currentColor;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .2s ease;
+}
+.nav-item.active{color:var(--primary);background:var(--gradient-soft)}
+.nav-item.active svg{stroke-width:2.3}
+.nav-item.active::before{
+  content:"";position:absolute;top:-2px;left:50%;
+  transform:translateX(-50%);
+  width:22px;height:3px;border-radius:0 0 5px 5px;
+  background:var(--brand-grad);
+}
+
+.nav-fab-wrap{
+  position:relative;
+  height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.nav-fab{
+  position:absolute;
+  top:-30px;
+  width:60px;height:60px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--brand-grad);
+  box-shadow:
+    0 14px 32px rgba(225,29,72,.48),
+    0 6px 16px rgba(168,85,247,.35);
+  cursor:pointer;text-decoration:none;
+  border:4px solid var(--surface-solid);
+  transition:transform .25s ease,box-shadow .25s ease;
+  z-index:10;
+}
+.nav-fab:active{transform:scale(.92)}
+.nav-fab::before{
+  content:"";position:absolute;
+  width:100%;height:100%;border-radius:50%;
+  background:var(--brand-grad);
+  z-index:-1;
+  animation:fabRipple 3s ease infinite;
+  opacity:.45;
+}
+@keyframes fabRipple{
+  0%{transform:scale(1);opacity:.45}
+  100%{transform:scale(1.35);opacity:0}
+}
+.nav-fab svg{
+  width:26px;height:26px;fill:none;stroke:#fff;
+  stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;
+}
+
+.nav-fab-label{
+  position:absolute;
+  bottom:6px;left:50%;
+  transform:translateX(-50%);
+  font-size:.56rem;
+  font-weight:900;
+  color:var(--primary);
+  white-space:nowrap;
+}
+
+.toast{
+  position:fixed;left:50%;
+  bottom:calc(108px + env(safe-area-inset-bottom));
+  transform:translate(-50%,20px);
+  opacity:0;pointer-events:none;z-index:7000;
+  max-width:90%;padding:11px 20px;border-radius:30px;
+  background:#21142e;color:#fff;
+  font-size:.72rem;font-weight:850;
+  box-shadow:0 14px 38px rgba(219,39,119,.30);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  transition:opacity .25s ease,transform .25s ease;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
 </head>
 
 <body>
 
-  <script>
-    (function () {
-      try {
-        if (localStorage.getItem('bn_theme') === 'dark') {
-          document.body.classList.add('dark');
-        }
-      } catch (e) {}
-    })();
-  </script>
+<div class="app">
 
-  <div class="app">
+<header class="topbar">
+  <a class="back-btn" href="home.html" aria-label="بازگشت">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </a>
+  <div class="page-title" data-i18n="page_title">مرکز احکام</div>
+  <a class="icon-btn-mini" href="search.html" aria-label="جستجو">
+    <svg viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7.5"/>
+      <path d="m20 20-3.7-3.7"/>
+    </svg>
+  </a>
+</header>
 
-    <header class="page-header">
-      <a class="back-btn" href="home.html" aria-label="بازگشت">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </a>
-      <h1>مرکز احکام بانوان</h1>
-    </header>
-
-    <div class="tabs">
-      <button class="tab-btn active" data-school="jafari" type="button">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        جعفری
-      </button>
-      <button class="tab-btn" data-school="hanafi" type="button">
-        <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
-        حنفی
-      </button>
-    </div>
-
-    <div class="info-bar" id="infoBar" style="display:none;">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-      <span id="infoBarText" style="flex:1;">منبع: <strong>—</strong></span>
-      <button class="change-btn" id="changeMarjaBtn" type="button" style="display:none;">
-        تغییر مرجع
-      </button>
-    </div>
-
-    <div id="ahkamContent">
-      <div class="loader">در حال بارگذاری...</div>
-    </div>
-
-    <div style="height:20px"></div>
+<section class="hero-banner">
+  <div class="hero-icon">
+    <svg viewBox="0 0 24 24">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+      <line x1="9" y1="7" x2="16" y2="7"/>
+      <line x1="9" y1="11" x2="16" y2="11"/>
+      <line x1="9" y1="15" x2="13" y2="15"/>
+    </svg>
   </div>
+  <div class="hero-text-wrap">
+    <div class="hero-title" data-i18n="hero_title">احکام بانوان</div>
+    <div class="hero-sub" data-i18n="hero_sub">بر اساس مذهب و مرجع تقلید شما</div>
+  </div>
+</section>
 
-  <div class="content-modal" id="contentModal">
-    <div class="content-box">
-      <div class="content-head">
-        <div class="content-head-text">
-          <span class="content-badge" id="modalBadge">—</span>
-          <div class="content-title" id="modalTitle">—</div>
-          <div class="content-sub" id="modalSub">—</div>
-        </div>
-        <button class="content-close" id="closeModalBtn" type="button" aria-label="بستن">
-          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
+<div class="tabs">
+  <button class="tab-btn active" data-school="jafari" type="button">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+      <path d="M2 17l10 5 10-5"/>
+      <path d="M2 12l10 5 10-5"/>
+    </svg>
+    <span data-i18n="tab_jafari">جعفری</span>
+  </button>
+  <button class="tab-btn" data-school="hanafi" type="button">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2v20"/>
+      <path d="M5 7l7-5 7 5"/>
+      <path d="M5 17l7 5 7-5"/>
+    </svg>
+    <span data-i18n="tab_hanafi">حنفی</span>
+  </button>
+</div>
+
+<a href="audio.html" class="audio-cta">
+  <div class="audio-cta-icon">
+    <svg viewBox="0 0 24 24">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </svg>
+  </div>
+  <div class="audio-cta-info">
+    <div class="audio-cta-title" data-i18n="audio_title">احکام صوتی</div>
+    <div class="audio-cta-sub" data-i18n="audio_sub">گوش دادن به احکام با صوت</div>
+  </div>
+  <svg class="audio-cta-arrow" viewBox="0 0 24 24">
+    <polyline points="15 18 9 12 15 6"/>
+  </svg>
+</a>
+
+<div class="info-bar" id="infoBar">
+  <svg viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="12" y1="16" x2="12" y2="12"/>
+    <line x1="12" y1="8" x2="12.01" y2="8"/>
+  </svg>
+  <span id="infoBarText" style="flex:1;">—</span>
+  <button class="change-btn" id="changeMarjaBtn" type="button" style="display:none;">
+    <span data-i18n="change_marja">تغییر</span>
+  </button>
+</div>
+
+<div id="ahkamContent">
+  <div class="loader" data-i18n="loading">در حال بارگذاری...</div>
+</div>
+
+<div style="height:20px"></div>
+
+</div>
+
+<div class="content-modal" id="contentModal">
+  <div class="content-box">
+    <div class="modal-handle"></div>
+    <div class="content-head">
+      <div class="content-head-text">
+        <span class="content-badge" id="modalBadge">
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>—</span>
+        </span>
+        <div class="content-title" id="modalTitle">—</div>
+        <div class="content-sub" id="modalSub">—</div>
       </div>
-      <div class="content-body" id="modalBody">—</div>
+      <button class="content-close" id="closeModalBtn" type="button">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="content-body" id="modalBody">—</div>
+    <div class="content-actions">
+      <button class="act-btn" data-act="copy" title="کپی">
+        <svg viewBox="0 0 24 24">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
+      <button class="act-btn" data-act="share" title="اشتراک‌گذاری">
+        <svg viewBox="0 0 24 24">
+          <circle cx="18" cy="5" r="2.5"/>
+          <circle cx="6" cy="12" r="2.5"/>
+          <circle cx="18" cy="19" r="2.5"/>
+          <path d="m8.2 10.8 7.6-4.5"/>
+          <path d="m8.2 13.2 7.6 4.5"/>
+        </svg>
+      </button>
     </div>
   </div>
+</div>
 
-  <nav class="bottom-nav">
-    <a class="nav-item" href="home.html">
-      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      <span>خانه</span>
+<div class="toast" id="toast"></div>
+
+<nav class="bottom-nav">
+  <a class="nav-item" href="search.html">
+    <svg viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7.5"/>
+      <path d="m20 20-3.7-3.7"/>
+    </svg>
+    <span data-i18n="n_search">جستجو</span>
+  </a>
+
+  <a class="nav-item" href="hamraz.html">
+    <svg viewBox="0 0 24 24">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      <path d="M8 9h8M8 13h5"/>
+    </svg>
+    <span data-i18n="n_hamraz">همراز</span>
+  </a>
+
+  <div class="nav-fab-wrap">
+    <a class="nav-fab" href="home.html" aria-label="خانه">
+      <svg viewBox="0 0 24 24">
+        <path d="m3 10 9-7 9 7"/>
+        <path d="M5 9v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9"/>
+        <path d="M9 22v-8h6v8"/>
+      </svg>
     </a>
-    <a class="nav-item" href="search.html">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <span>جستجو</span>
-    </a>
-    <a class="nav-item" href="hamraz.html">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      <span>همراز</span>
-    </a>
-    <a class="nav-item active" href="ahkam.html">
-      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-      <span>احکام</span>
-    </a>
-    <a class="nav-item" href="settings.html">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-      <span>بیشتر</span>
-    </a>
-  </nav>
+    <span class="nav-fab-label" data-i18n="n_home">خانه</span>
+  </div>
 
-  <script>
-    (function () {
-      'use strict';
+  <a class="nav-item active" href="ahkam.html">
+    <svg viewBox="0 0 24 24">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+    </svg>
+    <span data-i18n="n_ahkam">احکام</span>
+  </a>
 
-      var currentSchool = 'jafari';
-      var currentMarja = null;
-      var currentData = null;
-      var dataCache = {};
+  <a class="nav-item" href="settings.html">
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5v.1a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1A2 2 0 0 1 7 3.3l.1.1a1.7 1.7 0 0 0 1.8.3h.1a1.7 1.7 0 0 0 1-1.5V2a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v.1a1.7 1.7 0 0 0 1.5 1h.1a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.4 1z"/>
+    </svg>
+    <span data-i18n="n_more">بیشتر</span>
+  </a>
+</nav>
 
-      // ========== مسیرهای صحیح ==========
-      var PATH_JAFARI = 'data/fiqh/jafari/';
-      var PATH_HANAFI = 'data/fiqh/hanafi.json';
-      // ==================================
+<script>
+(function(){
+"use strict";
 
-      var BOOK_SVG = '<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/></svg>';
+var THEME_KEY = "bn_theme";
+function getSystemTheme(){
+  try{ return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+  catch(e){ return "light"; }
+}
+function getSavedTheme(){
+  try{
+    var t = localStorage.getItem(THEME_KEY);
+    if(t === "dark" || t === "light") return t;
+  }catch(e){}
+  return getSystemTheme();
+}
+function applyTheme(theme){
+  if(theme !== "dark") theme = "light";
+  document.documentElement.setAttribute("data-theme", theme);
+  document.body.classList.toggle("dark", theme === "dark");
+  var meta = document.getElementById("themeMeta");
+  if(meta) meta.setAttribute("content", theme === "dark" ? "#000000" : "#db2777");
+}
+applyTheme(getSavedTheme());
 
-      var MARJAS = [
-        { id: 'sistani', name: 'آیت‌الله سیستانی', sub: 'توضیح المسائل جامع', file: PATH_JAFARI + 'sistani.json', color: 'linear-gradient(135deg,#a855f7,#6d28d9)' },
-        { id: 'shirazi', name: 'آیت‌الله سید صادق شیرازی', sub: 'أحکام النساء', file: PATH_JAFARI + 'shirazi.json', color: 'linear-gradient(135deg,#ec4899,#be185d)' },
-        { id: 'fayyaz', name: 'آیت‌الله فیاض', sub: 'منهاج الصالحین', file: PATH_JAFARI + 'fayyaz.json', color: 'linear-gradient(135deg,#8b5cf6,#4c1d95)' }
-      ];
+var T = {
+fa:{
+  page_title:"مرکز احکام", hero_title:"احکام بانوان", hero_sub:"بر اساس مذهب و مرجع تقلید شما",
+  tab_jafari:"جعفری", tab_hanafi:"حنفی", change_marja:"تغییر",
+  loading:"در حال بارگذاری...", load_error:"خطا در بارگذاری",
+  no_content:"محتوایی یافت نشد",
+  select_marja_title:"انتخاب مرجع تقلید",
+  select_marja_sub:"برای نمایش احکام مطابق فتوا، مرجع خود را انتخاب کنید",
+  source_label:"منبع:", hanafi_source:"فقه حنفی",
+  no_answer:"محتوایی موجود نیست.", copied:"متن کپی شد", share_fallback:"متن کپی شد",
+  audio_title:"احکام صوتی", audio_sub:"گوش دادن به احکام با صوت",
+  n_home:"خانه", n_search:"جستجو", n_hamraz:"همراز", n_ahkam:"احکام", n_more:"بیشتر",
+  dir:"rtl", lang:"fa"
+},
+ps:{
+  page_title:"د احکامو مرکز", hero_title:"د ښځو احکام", hero_sub:"ستاسو د مذهب او مرجع له مخې",
+  tab_jafari:"جعفري", tab_hanafi:"حنفي", change_marja:"بدلول",
+  loading:"بار کیږي...", load_error:"خطا",
+  no_content:"منځپانګه ونه موندل شوه",
+  select_marja_title:"د تقلید مرجع غوره کړه",
+  select_marja_sub:"خپل مرجع غوره کړه",
+  source_label:"سرچینه:", hanafi_source:"حنفي فقه",
+  no_answer:"منځپانګه نشته.", copied:"کاپي شو", share_fallback:"کاپي شو",
+  audio_title:"غږیز احکام", audio_sub:"احکامو ته غوږ نیول",
+  n_home:"کور", n_search:"لټون", n_hamraz:"همراز", n_ahkam:"احکام", n_more:"نور",
+  dir:"rtl", lang:"ps"
+},
+en:{
+  page_title:"Rulings", hero_title:"Women's Rulings", hero_sub:"By your fiqh & marja",
+  tab_jafari:"Jafari", tab_hanafi:"Hanafi", change_marja:"Change",
+  loading:"Loading...", load_error:"Load error",
+  no_content:"No content found",
+  select_marja_title:"Select your Marja",
+  select_marja_sub:"Choose your marja to view rulings",
+  source_label:"Source:", hanafi_source:"Hanafi Fiqh",
+  no_answer:"No content.", copied:"Copied", share_fallback:"Copied",
+  audio_title:"Audio Rulings", audio_sub:"Listen to rulings",
+  n_home:"Home", n_search:"Search", n_hamraz:"Companion", n_ahkam:"Rulings", n_more:"More",
+  dir:"ltr", lang:"en"
+}
+};
+var SUPPORTED = ["fa","ps","en"];
+var DEFAULT_LANG = "fa";
+var currentT = T.fa;
 
-      var sectionIcons = {
-        taharat: '<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
-        hayz: '<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><circle cx="12" cy="14" r="3" fill="#fff"/></svg>',
-        nifas: '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>',
-        istihaza: '<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><line x1="12" y1="8" x2="12" y2="18" stroke="#fff" stroke-width="1.5"/></svg>',
-        namaz: '<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>',
-        rooze: '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
-        ezdevaj: '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
-        hejab: '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-10 10c0 5 4 9 10 9s10-4 10-9A10 10 0 0 0 12 2z"/><path d="M12 6a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0v-6a4 4 0 0 0-4-4z" fill="#fff" opacity="0.4"/></svg>',
-        talaq: '<svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>',
-        khums: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h6M9 14h6"/></svg>',
-        zakat: '<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/><circle cx="12" cy="12" r="3" fill="#fff" opacity="0.5"/></svg>',
-        hajj: '<svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg>',
-        etem: '<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>',
-        nazar: '<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>',
-        tohafoz: '<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
-        bardari: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'
-      };
+function getLang(){
+  try{
+    var l = localStorage.getItem("bn_lang");
+    if(l && SUPPORTED.indexOf(l) > -1) return l;
+  }catch(e){}
+  return DEFAULT_LANG;
+}
+function applyLang(lang){
+  if(SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
+  var t = T[lang] || T.fa;
+  currentT = t;
+  document.documentElement.setAttribute("dir", t.dir);
+  document.documentElement.setAttribute("lang", lang);
+  document.body.style.direction = t.dir;
+  document.body.classList.toggle("lang-ltr", t.dir === "ltr");
+  document.body.classList.toggle("lang-rtl", t.dir === "rtl");
+  var els = document.querySelectorAll("[data-i18n]");
+  for(var i=0; i<els.length; i++){
+    var k = els[i].getAttribute("data-i18n");
+    if(t[k] !== undefined) els[i].textContent = t[k];
+  }
+  document.title = t.page_title + " | BANOVAN NOOR";
+  if(currentData){
+    if(currentSchool === "jafari" && !currentMarja) renderMarjaCards();
+    else { renderSections(currentData); updateInfoBar(); }
+  }
+}
+function $(id){ return document.getElementById(id); }
+function escapeHtml(s){
+  if(s == null) return "";
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+}
+var toastTimer = null;
+function showMsg(msg, dur){
+  dur = dur || 2200;
+  var t = $("toast");
+  if(!t) return;
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove("show"); }, dur);
+}
 
-      function $(id) { return document.getElementById(id); }
+var currentSchool = "jafari";
+var currentMarja = null;
+var currentMarjaInfo = null;
+var currentData = null;
+var currentItem = null;
+var dataCache = {};
 
-      function escapeHtml(s) {
-        if (s == null) return '';
-        return String(s)
-          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+var PATH_JAFARI = "data/fiqh/jafari/";
+var PATH_HANAFI = "data/fiqh/hanafi.json";
+var ICON_BOOK = '<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>';
+
+var MARJAS = [
+  { id:"sistani", name:"آیت‌الله سیستانی", sub:"توضیح المسائل جامع",
+    file:PATH_JAFARI+"sistani.json",
+    color:"linear-gradient(135deg,#a855f7,#6d28d9)" },
+  { id:"shirazi", name:"آیت‌الله سید صادق شیرازی", sub:"أحکام النساء",
+    file:PATH_JAFARI+"shirazi.json",
+    color:"linear-gradient(135deg,#e1306c,#bc1888)" },
+  { id:"fayyaz", name:"آیت‌الله فیاض", sub:"منهج الصالحین",
+    file:PATH_JAFARI+"fayyaz.json",
+    color:"linear-gradient(135deg,#4c68d7,#833ab4)" }
+];
+
+var sectionIcons = {
+  taqlid:{color:"linear-gradient(135deg,#f77737,#e1306c)",desc:"احکام تقلید و مرجع",svg:'<svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 4.5 3.4 8.5 8 10 4.6-1.5 8-5.5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>'},
+  taharat:{color:"linear-gradient(135deg,#4c68d7,#833ab4)",desc:"احکام وضو، غسل و تیمم",svg:'<svg viewBox="0 0 24 24"><path d="M12 2.5C12 2.5 5 10 5 14a7 7 0 0 0 14 0c0-4-7-11.5-7-11.5z"/><path d="M9 14l2 2 4-4"/></svg>'},
+  nejasat:{color:"linear-gradient(135deg,#6366f1,#4338ca)",desc:"احکام نجاسات و مطهرات",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l2 2 4-4"/></svg>'},
+  najasat:{color:"linear-gradient(135deg,#6366f1,#4338ca)",desc:"احکام نجاسات و مطهرات",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l2 2 4-4"/></svg>'},
+  hayz:{color:"linear-gradient(135deg,#e1306c,#bc1888)",desc:"احکام عادت ماهانه بانوان",svg:'<svg viewBox="0 0 24 24"><path d="M12 2.5C12 2.5 5 10 5 14a7 7 0 0 0 14 0c0-4-7-11.5-7-11.5z"/><circle cx="12" cy="15" r="2.5" fill="#fff" opacity=".9"/></svg>'},
+  nifas:{color:"linear-gradient(135deg,#e6683c,#cc2366)",desc:"احکام خون بعد از زایمان",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.5"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>'},
+  istihaza:{color:"linear-gradient(135deg,#8b5cf6,#6d28d9)",desc:"احکام خون استحاضه و اقسام آن",svg:'<svg viewBox="0 0 24 24"><path d="M12 2.5C12 2.5 5 10 5 14a7 7 0 0 0 14 0c0-4-7-11.5-7-11.5z"/><path d="M9 13h6M9 16h6"/></svg>'},
+  namaz:{color:"linear-gradient(135deg,#a855f7,#7c3aed)",desc:"احکام نماز، شرایط و مبطلات",svg:'<svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M5 7l7-5 7 5"/><path d="M5 17l7 5 7-5"/></svg>'},
+  jamaat:{color:"linear-gradient(135deg,#7c3aed,#5b21b6)",desc:"احکام نماز جماعت و مأموم",svg:'<svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 21v-2a4 4 0 0 1 4-4h4"/><path d="M14 21v-2a4 4 0 0 1 4-4a4 4 0 0 1 4 4v2"/></svg>'},
+  namaz_ayat:{color:"linear-gradient(135deg,#8b5cf6,#6d28d9)",desc:"احکام نماز آیات و نمازهای خاص",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/></svg>'},
+  rooze:{color:"linear-gradient(135deg,#fbbf24,#d97706)",desc:"احکام روزه، مبطلات و کفاره",svg:'<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'},
+  helal:{color:"linear-gradient(135deg,#f59e0b,#d97706)",desc:"احکام رؤیت هلال و آغاز ماه",svg:'<svg viewBox="0 0 24 24"><path d="M17 4a9 9 0 1 0 3 12A7 7 0 0 1 17 4z"/><circle cx="20" cy="6" r="1" fill="#fff" opacity=".8"/></svg>'},
+  khums:{color:"linear-gradient(135deg,#10b981,#059669)",desc:"احکام خمس و مصرف آن",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v12"/><path d="M8 10h8M8 14h8"/></svg>'},
+  zakat:{color:"linear-gradient(135deg,#059669,#047857)",desc:"احکام زکات و زکات فطره",svg:'<svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M5 7l7-5 7 5"/><path d="M5 17l7 5 7-5"/></svg>'},
+  hajj:{color:"linear-gradient(135deg,#4c68d7,#833ab4)",desc:"احکام حج، عمره و محرمات احرام",svg:'<svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg>'},
+  ezdevaj:{color:"linear-gradient(135deg,#e1306c,#833ab4)",desc:"احکام ازدواج، عقد و شرایط آن",svg:'<svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c0 6-8 11-8 11z"/></svg>'},
+  mehr:{color:"linear-gradient(135deg,#f472b6,#db2777)",desc:"احکام مهریه و حقوق مالی زوجین",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="14" r="6"/><path d="M9 4l3 4 3-4"/></svg>'},
+  mahram:{color:"linear-gradient(135deg,#a78bfa,#7c3aed)",desc:"احکام محارم و نامحرم",svg:'<svg viewBox="0 0 24 24"><circle cx="8" cy="7" r="3"/><circle cx="16" cy="7" r="3"/><path d="M3 21v-2a5 5 0 0 1 5-5h2"/><path d="M14 21v-2a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2"/></svg>'},
+  hejab:{color:"linear-gradient(135deg,#a855f7,#ec4899)",desc:"احکام حجاب و پوشش شرعی",svg:'<svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12c0 5 4 9 10 9s10-4 10-9c0-5.5-4.5-10-10-10z"/><circle cx="12" cy="11" r="3" fill="#fff" opacity=".5"/></svg>'},
+  negah_ertebat:{color:"linear-gradient(135deg,#ec4899,#e1306c)",desc:"احکام نگاه و ارتباط با نامحرم",svg:'<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'},
+  nazar:{color:"linear-gradient(135deg,#ec4899,#e1306c)",desc:"احکام نگاه به نامحرم",svg:'<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'},
+  arayesh:{color:"linear-gradient(135deg,#f9a8d4,#ec4899)",desc:"احکام آرایش و زینت بانوان",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg>'},
+  pezeshki:{color:"linear-gradient(135deg,#ef4444,#b91c1c)",desc:"احکام پزشکی و معالجه بانوان",svg:'<svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9" opacity=".3"/></svg>'},
+  bardari:{color:"linear-gradient(135deg,#f472b6,#db2777)",desc:"احکام بارداری و رابطه زناشویی",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'},
+  prevention:{color:"linear-gradient(135deg,#0891b2,#0e7490)",desc:"احکام جلوگیری از بارداری",svg:'<svg viewBox="0 0 24 24"><path d="M10.5 20.5a7 7 0 0 1-9.9-9.9l10-10a7 7 0 0 1 9.9 9.9z"/><path d="M8.5 8.5l7 7"/></svg>'},
+  segh_jenin:{color:"linear-gradient(135deg,#dc2626,#991b1b)",desc:"احکام سقط جنین و شرایط آن",svg:'<svg viewBox="0 0 24 24"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'},
+  tavalod:{color:"linear-gradient(135deg,#fbbf24,#f59e0b)",desc:"احکام تولد نوزاد و عقیقه",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>'},
+  shirdahi:{color:"linear-gradient(135deg,#fde68a,#f59e0b)",desc:"احکام شیردهی و رضاع",svg:'<svg viewBox="0 0 24 24"><path d="M8 2v6a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2"/><path d="M8 6H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2"/></svg>'},
+  talaq:{color:"linear-gradient(135deg,#dc2743,#cc2366)",desc:"احکام طلاق، عده و حضانت",svg:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/><path d="M3 3l18 18"/></svg>'},
+  eddah:{color:"linear-gradient(135deg,#7c3aed,#5b21b6)",desc:"احکام عده طلاق، وفات و فسخ",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'},
+  hezanat:{color:"linear-gradient(135deg,#a78bfa,#7c3aed)",desc:"احکام حضانت و خانواده",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="18" cy="14" r="2"/></svg>'},
+  ers:{color:"linear-gradient(135deg,#0891b2,#0e7490)",desc:"احکام ارث و سهم بانوان",svg:'<svg viewBox="0 0 24 24"><path d="M4 3h12l4 4v14H4z"/><path d="M15 3v5h5"/><path d="M8 13h8M8 17h5"/></svg>'},
+  vasiyat:{color:"linear-gradient(135deg,#059669,#065f46)",desc:"احکام وصیت و وصی",svg:'<svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>'},
+  nazr:{color:"linear-gradient(135deg,#7c3aed,#5b21b6)",desc:"احکام نذر، عهد و قسم",svg:'<svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>'},
+  vaqf:{color:"linear-gradient(135deg,#059669,#065f46)",desc:"احکام وقف و صدقات",svg:'<svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>'},
+  kasb:{color:"linear-gradient(135deg,#0891b2,#0e7490)",desc:"احکام کسب حلال و تجارت",svg:'<svg viewBox="0 0 24 24"><path d="M3 9l2-5h14l2 5"/><path d="M3 9v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9"/><path d="M9 13h6"/></svg>'},
+  kar:{color:"linear-gradient(135deg,#6366f1,#4338ca)",desc:"احکام اشتغال بانوان و کار",svg:'<svg viewBox="0 0 24 24"><path d="M14 6l-4 4-3-3 4-4z"/><path d="M7 10l7 7 4-4-7-7"/></svg>'},
+  safar:{color:"linear-gradient(135deg,#0891b2,#0e7490)",desc:"احکام سفر و نماز مسافر",svg:'<svg viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5c1-1 1-2.6 0-3.6s-2.6-1-3.6 0L12.4 7.4 4.2 5.6 3 7l7 4-2 2-3-.5-1 1 3.5 2 2 3.5 1-1-.5-3 2-2 4 7z"/></svg>'},
+  masjed:{color:"linear-gradient(135deg,#10b981,#059669)",desc:"احکام بانوان در مسجد",svg:'<svg viewBox="0 0 24 24"><path d="M12 2C9 5 4 8 4 12v9h16v-9c0-4-5-7-8-10z"/><path d="M9 21v-5a3 3 0 0 1 6 0v5"/></svg>'},
+  ziyarat:{color:"linear-gradient(135deg,#7c3aed,#5b21b6)",desc:"احکام زیارت و سفرهای زیارتی",svg:'<svg viewBox="0 0 24 24"><path d="M12 2C8 5 4 8 4 12v9h16v-9c0-4-4-7-8-10z"/><rect x="10" y="15" width="4" height="6"/></svg>'},
+  mali_khanevade:{color:"linear-gradient(135deg,#10b981,#047857)",desc:"احکام نفقه و مهریه",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v12"/><path d="M8 10h8M8 14h8"/></svg>'},
+  ravabet:{color:"linear-gradient(135deg,#ec4899,#e1306c)",desc:"احکام حقوق متقابل زوجین",svg:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>'},
+  farzandan:{color:"linear-gradient(135deg,#fbbf24,#f59e0b)",desc:"احکام فرزندان و تربیت",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.5"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/><circle cx="6" cy="10" r="2"/><circle cx="18" cy="10" r="2"/></svg>'},
+  marasem:{color:"linear-gradient(135deg,#dc2743,#cc2366)",desc:"احکام مراسم و مناسبت‌ها",svg:'<svg viewBox="0 0 24 24"><path d="M4 21V4"/><path d="M4 4h12l-2 4 2 4H4"/></svg>'},
+  mostahdese:{color:"linear-gradient(135deg,#6366f1,#4338ca)",desc:"مسائل جدید بانوان",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>'},
+  soalat_banovan:{color:"linear-gradient(135deg,#0891b2,#0e7490)",desc:"پرسش‌های متداول بانوان",svg:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>'},
+  khatemeh:{color:"linear-gradient(135deg,#7c3aed,#5b21b6)",desc:"توصیه‌های اخلاقی و دعا",svg:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/><path d="M9 11l2 2 4-4" stroke="#fff" stroke-width="1.8" fill="none"/></svg>'}
+};
+
+var DEFAULT_SECTION = {
+  color:"linear-gradient(135deg,#a855f7,#6d28d9)",
+  desc:"",
+  svg:'<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>'
+};
+function getSectionStyle(id){ return sectionIcons[id] || DEFAULT_SECTION; }
+
+function loadJSON(path){
+  if(dataCache[path]) return Promise.resolve(dataCache[path]);
+  return fetch(path)
+    .then(function(res){
+      if(!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    })
+    .then(function(data){ dataCache[path] = data; return data; })
+    .catch(function(){ return null; });
+}
+
+function renderMarjaCards(){
+  var container = $("ahkamContent");
+  $("infoBar").classList.remove("show");
+  var cardsHtml = MARJAS.map(function(m){
+    return '<button class="marja-card" data-marja="' + m.id + '" type="button">' +
+      '<div class="marja-icon" style="background:' + m.color + ';">' + ICON_BOOK + '</div>' +
+      '<div class="marja-info">' +
+        '<div class="marja-name">' + escapeHtml(m.name) + '</div>' +
+        '<div class="marja-sub">' + escapeHtml(m.sub) + '</div>' +
+      '</div>' +
+    '</button>';
+  }).join("");
+  container.innerHTML =
+    '<div class="marja-section">' +
+      '<div class="marja-header">' +
+        '<div class="marja-header-icon">' + ICON_BOOK + '</div>' +
+        '<div class="marja-header-text">' +
+          '<div class="marja-title">' + currentT.select_marja_title + '</div>' +
+          '<div class="marja-subtitle">' + currentT.select_marja_sub + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="marja-grid">' + cardsHtml + '</div>' +
+    '</div>';
+  container.querySelectorAll(".marja-card").forEach(function(card){
+    card.addEventListener("click", function(){
+      selectMarja(card.getAttribute("data-marja"));
+    });
+  });
+}
+
+function selectMarja(marjaId){
+  currentMarja = marjaId;
+  try{ localStorage.setItem("bn_marja", marjaId); }catch(e){}
+  var info = null;
+  for(var i=0; i<MARJAS.length; i++){
+    if(MARJAS[i].id === marjaId){ info = MARJAS[i]; break; }
+  }
+  if(!info) return;
+  $("ahkamContent").innerHTML = '<div class="loader">' + currentT.loading + '</div>';
+  loadJSON(info.file).then(function(data){
+    if(!data){
+      $("ahkamContent").innerHTML = '<div class="empty">' + currentT.load_error + '<br><span style="font-size:.7rem;opacity:.7;">' + info.file + '</span></div>';
+      return;
+    }
+    currentData = data;
+    currentMarjaInfo = info;
+    updateInfoBar();
+    renderSections(data);
+
+    if (window.bnAnalytics) window.bnAnalytics.track('marja_selected', { marja: marjaId });
+  });
+}
+
+function updateInfoBar(){
+  var txt = $("infoBarText");
+  var btn = $("changeMarjaBtn");
+  var bar = $("infoBar");
+  if(currentSchool === "hanafi"){
+    txt.innerHTML = currentT.source_label + ' <strong>' + currentT.hanafi_source + '</strong>';
+    btn.style.display = "none";
+    bar.classList.add("show");
+  } else if(currentMarjaInfo){
+    txt.innerHTML = currentT.source_label + ' <strong>' + escapeHtml(currentMarjaInfo.name) + '</strong>';
+    btn.style.display = "inline-flex";
+    bar.classList.add("show");
+  } else {
+    bar.classList.remove("show");
+  }
+}
+
+function renderSections(data){
+  var container = $("ahkamContent");
+  if(!data || !data.sections || data.sections.length === 0){
+    container.innerHTML = '<div class="empty">' + currentT.no_content + '</div>';
+    return;
+  }
+  var html = data.sections.map(function(sec){
+    var style = getSectionStyle(sec.id);
+    var count = (sec.items || []).length;
+    var description = sec.description || style.desc || "";
+    var itemsHtml = (sec.items || []).map(function(item, idx){
+      return '<div class="item-row" data-section="' + sec.id + '" data-item="' + idx + '">' +
+        '<div class="item-row-text">' +
+          '<div class="item-row-title">' + escapeHtml(item.title) + '</div>' +
+          (item.subtitle ? '<div class="item-row-sub">' + escapeHtml(item.subtitle) + '</div>' : '') +
+        '</div>' +
+        '<svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
+      '</div>';
+    }).join("");
+    return '<div class="section-card" data-section="' + sec.id + '">' +
+      '<div class="section-header">' +
+        '<div class="section-icon" style="--sec-grad:' + style.color + ';">' + style.svg + '</div>' +
+        '<div class="section-title-wrap">' +
+          '<div class="section-title-text">' + escapeHtml(sec.title) + '</div>' +
+          (description ? '<div class="section-subtitle">' + escapeHtml(description) + '</div>' : '') +
+        '</div>' +
+        '<span class="section-count">' + count + '</span>' +
+        '<svg class="section-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
+      '</div>' +
+      '<div class="section-items">' + itemsHtml + '</div>' +
+    '</div>';
+  }).join("");
+  container.innerHTML = html;
+  container.querySelectorAll(".section-header").forEach(function(h){
+    h.addEventListener("click", function(){
+      h.parentElement.classList.toggle("open");
+    });
+  });
+  container.querySelectorAll(".item-row").forEach(function(row){
+    row.addEventListener("click", function(e){
+      e.stopPropagation();
+      openContent(row.getAttribute("data-section"), parseInt(row.getAttribute("data-item"), 10));
+    });
+  });
+}
+
+function openContent(secId, itemIdx){
+  if(!currentData || !currentData.sections) return;
+  var sec = null;
+  for(var i=0; i<currentData.sections.length; i++){
+    if(currentData.sections[i].id === secId){ sec = currentData.sections[i]; break; }
+  }
+  if(!sec || !sec.items || !sec.items[itemIdx]) return;
+  var item = sec.items[itemIdx];
+  currentItem = item;
+  $("modalBadge").innerHTML = ICON_BOOK + '<span>' + escapeHtml(sec.title) + '</span>';
+  $("modalTitle").textContent = item.title;
+  $("modalSub").textContent = item.subtitle || "";
+  $("modalBody").textContent = item.content || currentT.no_answer;
+  $("contentModal").classList.add("show");
+
+  if (window.bnAnalytics) window.bnAnalytics.track('ahkam_open', { section: secId, title: item.title });
+}
+function closeContent(){
+  $("contentModal").classList.remove("show");
+  currentItem = null;
+}
+
+function fallbackCopy(text){
+  var ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.top = "-1000px";
+  document.body.appendChild(ta);
+  ta.select();
+  try{ document.execCommand("copy"); showMsg(currentT.copied); }catch(e){}
+  document.body.removeChild(ta);
+}
+function copyText(text){
+  if(!text) return;
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text)
+      .then(function(){ showMsg(currentT.copied); })
+      .catch(function(){ fallbackCopy(text); });
+  } else { fallbackCopy(text); }
+}
+
+function switchSchool(school){
+  currentSchool = school;
+  try{ localStorage.setItem("bn_fiqh", school); }catch(e){}
+  document.querySelectorAll(".tab-btn").forEach(function(btn){
+    btn.classList.toggle("active", btn.getAttribute("data-school") === school);
+  });
+  $("ahkamContent").innerHTML = '<div class="loader">' + currentT.loading + '</div>';
+  if(school === "jafari"){
+    var saved = null;
+    try{ saved = localStorage.getItem("bn_marja"); }catch(e){}
+    if(saved && (saved === "sistani" || saved === "shirazi" || saved === "fayyaz")){
+      selectMarja(saved);
+    } else {
+      currentData = null;
+      currentMarjaInfo = null;
+      renderMarjaCards();
+    }
+  } else {
+    currentMarja = null;
+    currentMarjaInfo = null;
+    loadJSON(PATH_HANAFI).then(function(data){
+      if(!data){
+        $("ahkamContent").innerHTML = '<div class="empty">' + currentT.load_error + '</div>';
+        return;
       }
+      currentData = data;
+      updateInfoBar();
+      renderSections(data);
+    });
+  }
+  if (window.bnAnalytics) window.bnAnalytics.track('fiqh_switched', { school: school });
+}
 
-      async function loadJSON(path) {
-        if (dataCache[path]) return dataCache[path];
-        try {
-          var res = await fetch(path);
-          if (!res.ok) return null;
-          var data = await res.json();
-          dataCache[path] = data;
-          return data;
-        } catch (e) {
-          return null;
-        }
-      }
+function init(){
+  applyLang(getLang());
+  document.querySelectorAll(".tab-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var s = btn.getAttribute("data-school");
+      if(s !== currentSchool) switchSchool(s);
+    });
+  });
+  $("changeMarjaBtn").addEventListener("click", function(){
+    currentMarja = null;
+    currentMarjaInfo = null;
+    currentData = null;
+    try{ localStorage.removeItem("bn_marja"); }catch(e){}
+    renderMarjaCards();
+  });
+  $("closeModalBtn").addEventListener("click", closeContent);
+  $("contentModal").addEventListener("click", function(e){
+    if(e.target === this) closeContent();
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape") closeContent();
+  });
+  document.querySelector(".content-actions").addEventListener("click", function(e){
+    var btn = e.target.closest("[data-act]");
+    if(!btn || !currentItem) return;
+    var act = btn.getAttribute("data-act");
+    var fullText = currentItem.title + "\n\n" + (currentItem.content || "");
+    if(act === "copy") copyText(fullText);
+    else if(act === "share"){
+      if(navigator.share) navigator.share({ title: "بانوان نور", text: fullText }).catch(function(){});
+      else copyText(fullText);
+    }
+  });
+  window.addEventListener("storage", function(e){
+    if(e.key === THEME_KEY) applyTheme(e.newValue || getSystemTheme());
+    if(e.key === "bn_lang") applyLang(e.newValue || DEFAULT_LANG);
+  });
+  window.addEventListener("pageshow", function(){
+    var s = getLang();
+    if(s !== document.documentElement.getAttribute("lang")) applyLang(s);
+  });
+  var savedSchool = "jafari";
+  try{
+    var s = localStorage.getItem("bn_fiqh");
+    if(s === "jafari" || s === "hanafi") savedSchool = s;
+  }catch(e){}
+  switchSchool(savedSchool);
+}
 
-      function renderMarjaCards() {
-        var container = $('ahkamContent');
-        $('infoBar').style.display = 'none';
+if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+else init();
+})();
+</script>
 
-        var html = MARJAS.map(function (m) {
-          return '<button class="marja-card" data-marja="' + m.id + '" type="button">' +
-            '<div class="marja-icon" style="background:' + m.color + ';">' + BOOK_SVG + '</div>' +
-            '<div class="marja-info">' +
-              '<div class="marja-name">' + escapeHtml(m.name) + '</div>' +
-              '<div class="marja-sub">' + escapeHtml(m.sub) + '</div>' +
-            '</div>' +
-            '<div class="marja-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>' +
-          '</button>';
-        }).join('');
+<!-- ═══ آنالیتیکس (اول لود بشه) ═══ -->
+<script src="js/bn-analytics.js"></script>
 
-        container.innerHTML =
-          '<div class="marja-section">' +
-            '<div class="marja-title">' +
-              '<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>' +
-              'انتخاب مرجع تقلید' +
-            '</div>' +
-            '<div class="marja-subtitle">لطفاً مرجع تقلید خود را انتخاب کنید<br>تا احکام مطابق فتوای ایشان نمایش داده شود</div>' +
-            '<div class="marja-grid">' + html + '</div>' +
-          '</div>';
+<!-- ═══ ماژول اصلی BN ═══ -->
+<script src="js/bn-app.js"></script>
 
-        container.querySelectorAll('.marja-card').forEach(function (card) {
-          card.addEventListener('click', function () {
-            selectMarja(card.getAttribute('data-marja'));
-          });
-        });
-      }
+<!-- ═══ Firebase ═══ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/bn-tracker.js"></script>
+<script src="js/bn-auth-gate.js"></script>
 
-      async function selectMarja(marjaId) {
-        currentMarja = marjaId;
+<!-- ═══ ثبت Service Worker ═══ -->
+<script>
+(function(){
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function(reg){
+        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
+      }).catch(function(e){ console.warn('SW register failed:', e.message); });
+    });
+  }
+})();
+</script>
 
-        var info = null;
-        for (var i = 0; i < MARJAS.length; i++) {
-          if (MARJAS[i].id === marjaId) { info = MARJAS[i]; break; }
-        }
-        if (!info) return;
-
-        $('ahkamContent').innerHTML = '<div class="loader">در حال بارگذاری احکام...</div>';
-
-        var data = await loadJSON(info.file);
-        if (!data) {
-          $('ahkamContent').innerHTML =
-            '<div class="empty">خطا در بارگذاری فایل احکام<br><br>' +
-            'فایل: <strong>' + info.file + '</strong></div>';
-          return;
-        }
-
-        currentData = data;
-
-        $('infoBarText').innerHTML = 'منبع: <strong>' + escapeHtml(info.name) + ' — ' + escapeHtml(info.sub) + '</strong>';
-        $('changeMarjaBtn').style.display = 'inline-flex';
-        $('infoBar').style.display = 'flex';
-
-        renderSections(data);
-      }
-
-      function renderSections(data) {
-        var container = $('ahkamContent');
-        if (!data || !data.sections || data.sections.length === 0) {
-          container.innerHTML = '<div class="empty">محتوایی یافت نشد</div>';
-          return;
-        }
-
-        var html = data.sections.map(function (sec) {
-          var icon = sectionIcons[sec.id] || sectionIcons.taharat;
-          var count = (sec.items || []).length;
-
-          var itemsHtml = (sec.items || []).map(function (item, idx) {
-            return '<div class="item-row" data-section="' + sec.id + '" data-item="' + idx + '">' +
-              '<div class="item-row-text">' +
-                '<div class="item-row-title">' + escapeHtml(item.title) + '</div>' +
-                (item.subtitle ? '<div class="item-row-sub">' + escapeHtml(item.subtitle) + '</div>' : '') +
-              '</div>' +
-              '<svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
-            '</div>';
-          }).join('');
-
-          return '<div class="section-card" data-section="' + sec.id + '">' +
-            '<div class="section-header">' +
-              '<div class="section-icon">' + icon + '</div>' +
-              '<div class="section-title-text">' + escapeHtml(sec.title) + '</div>' +
-              '<span class="section-count">' + count + '</span>' +
-              '<svg class="section-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
-            '</div>' +
-            '<div class="section-items">' + itemsHtml + '</div>' +
-          '</div>';
-        }).join('');
-
-        container.innerHTML = html;
-
-        container.querySelectorAll('.section-header').forEach(function (header) {
-          header.addEventListener('click', function () {
-            header.parentElement.classList.toggle('open');
-          });
-        });
-
-        container.querySelectorAll('.item-row').forEach(function (row) {
-          row.addEventListener('click', function (e) {
-            e.stopPropagation();
-            openContent(row.getAttribute('data-section'), parseInt(row.getAttribute('data-item'), 10));
-          });
-        });
-      }
-
-      function openContent(secId, itemIdx) {
-        if (!currentData || !currentData.sections) return;
-        var sec = null;
-        for (var i = 0; i < currentData.sections.length; i++) {
-          if (currentData.sections[i].id === secId) { sec = currentData.sections[i]; break; }
-        }
-        if (!sec || !sec.items || !sec.items[itemIdx]) return;
-
-        var item = sec.items[itemIdx];
-        $('modalBadge').textContent = sec.title;
-        $('modalTitle').textContent = item.title;
-        $('modalSub').textContent = item.subtitle || '';
-        $('modalBody').textContent = item.content || 'محتوایی موجود نیست.';
-        $('contentModal').classList.add('show');
-      }
-
-      function closeContent() {
-        $('contentModal').classList.remove('show');
-      }
-
-      async function switchSchool(school) {
-        currentSchool = school;
-        try { localStorage.setItem('bn_fiqh', school); } catch (e) {}
-
-        document.querySelectorAll('.tab-btn').forEach(function (btn) {
-          if (btn.getAttribute('data-school') === school) btn.classList.add('active');
-          else btn.classList.remove('active');
-        });
-
-        $('ahkamContent').innerHTML = '<div class="loader">در حال بارگذاری...</div>';
-
-        if (school === 'jafari') {
-          var savedMarja = null;
-          try { savedMarja = localStorage.getItem('bn_marja'); } catch (e) {}
-          if (savedMarja && (savedMarja === 'sistani' || savedMarja === 'shirazi' || savedMarja === 'fayyaz')) {
-            await selectMarja(savedMarja);
-          } else {
-            renderMarjaCards();
-          }
-        } else {
-          currentMarja = null;
-          var data = await loadJSON(PATH_HANAFI);
-          if (!data) {
-            $('ahkamContent').innerHTML =
-              '<div class="empty">خطا در بارگذاری فایل احکام<br><br>' +
-              'فایل: <strong>' + PATH_HANAFI + '</strong></div>';
-            return;
-          }
-          currentData = data;
-          $('infoBarText').innerHTML = 'منبع: <strong>فقه حنفی</strong>';
-          $('changeMarjaBtn').style.display = 'none';
-          $('infoBar').style.display = 'flex';
-          renderSections(data);
-        }
-      }
-
-      async function init() {
-        document.querySelectorAll('.tab-btn').forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            var school = btn.getAttribute('data-school');
-            if (school !== currentSchool) switchSchool(school);
-          });
-        });
-
-        $('changeMarjaBtn').addEventListener('click', function () {
-          currentMarja = null;
-          try { localStorage.removeItem('bn_marja'); } catch (e) {}
-          renderMarjaCards();
-        });
-
-        $('closeModalBtn').addEventListener('click', closeContent);
-        $('contentModal').addEventListener('click', function (e) {
-          if (e.target === this) closeContent();
-        });
-
-        var savedSchool = 'jafari';
-        try {
-          var s = localStorage.getItem('bn_fiqh');
-          if (s === 'jafari' || s === 'hanafi') savedSchool = s;
-        } catch (e) {}
-
-        await switchSchool(savedSchool);
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-    })();
-  </script>
-<script src="analytics.js"></script>
 </body>
 </html>
