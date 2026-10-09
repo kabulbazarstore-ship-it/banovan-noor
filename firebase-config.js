@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   BANOVAN NOOR — Firebase Connection v2
+   BANOVAN NOOR — Firebase Connection v3 (نسخه نهایی)
    مسیر فایل: js/firebase-config.js
    ═══════════════════════════════════════════════════════════ */
 
@@ -39,9 +39,23 @@
   };
 
   /* ═══ GET / CREATE USER ID ═══ */
+  /* اصلاح: اولویت با کاربر لاگین‌شده، سپس کاربر مهمان */
   window.bnGetUserId = function(){
+    try {
+      // ۱. بررسی کاربر لاگین‌شده
+      var rawUser = localStorage.getItem("bn_user");
+      if (rawUser) {
+        var u = JSON.parse(rawUser);
+        if (u && u.uid) return "auth_" + u.uid;
+        if (u && u.phone) return "phone_" + String(u.phone).replace(/\D/g, "");
+      }
+    } catch(e) {}
+
+    // ۲. بررسی کاربر مهمان
     var id = null;
     try{ id = localStorage.getItem("bn_user_id"); }catch(e){}
+
+    // ۳. تولید شناسه جدید
     if(!id){
       id = "u_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 10);
       try{ localStorage.setItem("bn_user_id", id); }catch(e){}
@@ -82,25 +96,35 @@
   };
 
   /* ═══ LOG ACTIVITY ═══ */
+  /* تابع واحد برای ثبت فعالیت — به جای bn-tracker */
+  /* ═══════════════════════════════════════════════════════════ */
+  /*  توجه: برای رفع تداخل، پیشنهاد می‌کنم فقط از یکی استفاده کنی:
+      یا window.bnTrack (در bn-tracker.js) یا این تابع.
+      در ادامه، bn-tracker.js رو طوری تنظیم می‌کنیم که از این تابع استفاده کنه.
+  */
   window.bnLogActivity = function(action, details){
-    try{
-      var db = window.initBNFirebase();
-      if(!db) return;
-      var uid = window.bnGetUserId();
-      var key = db.ref("activity/" + uid).push().key;
-      var upd = {};
-      upd["activity/" + uid + "/" + key] = {
-        action: String(action || "").slice(0, 40),
-        page: (location.pathname.split("/").pop() || "home").slice(0, 40),
-        details: String(details || "").slice(0, 200),
-        time: firebase.database.ServerValue.TIMESTAMP
-      };
-      db.ref().update(upd).catch(function(err){
-        console.warn("[BN Firebase] log activity failed:", err.message);
-      });
-    }catch(e){
-      console.warn("[BN Firebase] bnLogActivity exception:", e.message);
-    }
+    return new Promise(function(resolve){
+      try{
+        var db = window.initBNFirebase();
+        if(!db){ resolve({ ok:false }); return; }
+        var uid = window.bnGetUserId();
+        var ref = db.ref("activity/" + uid).push();
+        ref.set({
+          action: String(action || "").slice(0, 40),
+          page: (location.pathname.split("/").pop() || "home").replace(".html", "").slice(0, 40),
+          details: String(details || "").slice(0, 200),
+          time: firebase.database.ServerValue.TIMESTAMP
+        }).then(function(){
+          resolve({ ok:true });
+        }).catch(function(err){
+          console.warn("[BN Firebase] log activity failed:", err.message);
+          resolve({ ok:false, reason: err.message });
+        });
+      }catch(e){
+        console.warn("[BN Firebase] bnLogActivity exception:", e.message);
+        resolve({ ok:false, reason: e.message });
+      }
+    });
   };
 
   /* ═══ SEND VERIFY CODE ═══ */
@@ -112,7 +136,8 @@
       return db.ref("verify/" + uid).set({
         code: String(code || "").slice(0, 10),
         time: firebase.database.ServerValue.TIMESTAMP,
-        used: false
+        used: false,
+        attempts: 0
       }).then(function(){
         return { ok:true };
       }).catch(function(err){
@@ -125,7 +150,7 @@
     }
   };
 
-  /* ═══ READ VERIFY CODE (جدید) ═══ */
+  /* ═══ READ VERIFY CODE ═══ */
   window.bnReadVerifyCode = function(){
     try{
       var db = window.initBNFirebase();
@@ -142,22 +167,62 @@
     }
   };
 
-  /* ═══ UPDATE LAST SEEN (جدید) ═══ */
+  /* ═══ VERIFY & CONSUME CODE (جدید) ═══ */
+  /*  کد رو چک می‌کنه، اگه درست بود، used رو true می‌کنه و کد رو می‌سوزونه */
+  window.bnVerifyAndConsumeCode = function(inputCode){
+    return new Promise(function(resolve){
+      try{
+        var db = window.initBNFirebase();
+        if(!db){ resolve({ ok:false, reason:"no-firebase" }); return; }
+        var uid = window.bnGetUserId();
+        db.ref("verify/" + uid).once("value").then(function(snap){
+          var data = snap.val();
+          if(!data){ resolve({ ok:false, reason:"no-code" }); return; }
+          if(data.used){ resolve({ ok:false, reason:"code-used" }); return; }
+          if(String(data.code) !== String(inputCode)){
+            // افزایش تعداد تلاش ناموفق
+            db.ref("verify/" + uid + "/attempts").transaction(function(n){
+              return (n || 0) + 1;
+            }).catch(function(){});
+            resolve({ ok:false, reason:"wrong-code" });
+            return;
+          }
+          // کد درست است → علامت‌گذاری به عنوان استفاده‌شده
+          db.ref("verify/" + uid).update({
+            used: true,
+            usedAt: firebase.database.ServerValue.TIMESTAMP
+          }).then(function(){
+            resolve({ ok:true });
+          }).catch(function(err){
+            resolve({ ok:false, reason: err.message });
+          });
+        }).catch(function(err){
+          resolve({ ok:false, reason: err.message });
+        });
+      }catch(e){
+        resolve({ ok:false, reason: e.message });
+      }
+    });
+  };
+
+  /* ═══ UPDATE LAST SEEN ═══ */
   window.bnUpdateLastSeen = function(){
     try{
       var db = window.initBNFirebase();
-      if(!db) return;
+      if(!db) return Promise.resolve(false);
       var uid = window.bnGetUserId();
-      db.ref("users/" + uid + "/lastSeen").set(firebase.database.ServerValue.TIMESTAMP)
-        .catch(function(){});
-    }catch(e){}
+      return db.ref("users/" + uid + "/lastSeen")
+        .set(firebase.database.ServerValue.TIMESTAMP)
+        .then(function(){ return true; })
+        .catch(function(){ return false; });
+    }catch(e){ return Promise.resolve(false); }
   };
 
-  /* ═══ AUTO UPDATE LAST SEEN ═══ */
-  // هر ۵ دقیقه، آخرین بازدید کاربر به‌روزرسانی میشه
-  if(typeof window !== "undefined"){
-    setInterval(function(){
-      if(document.visibilityState === "visible"){
+  /* ═══ AUTO UPDATE LAST SEEN (به‌ینه‌شده) ═══ */
+  /*  فقط یک بار setInterval ساخته میشه، حتی اگر چند بار این فایل لود شه */
+  if(!window._bnLastSeenTimer){
+    window._bnLastSeenTimer = setInterval(function(){
+      if(document.visibilityState === "visible" && window.bnUpdateLastSeen){
         window.bnUpdateLastSeen();
       }
     }, 5 * 60 * 1000);
