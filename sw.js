@@ -1,14 +1,32 @@
 /* =========================================================
    BANOVAN NOOR | بانوان نور — Service Worker
-   نسخه: v1 — سازگار با http / https
+   نسخه: v3 — با پشتیبانی کامل از آفلاین، کش رسانه و آپدیت هوشمند
    ========================================================= */
 
-var CACHE_NAME = 'banovan-noor-v1';
-var RUNTIME_CACHE = 'banovan-noor-runtime-v1';
+/* ---------- Polyfill برای Promise.allSettled (گوشی‌های قدیمی) ---------- */
+if (!Promise.allSettled) {
+  Promise.allSettled = function (promises) {
+    return Promise.all(promises.map(function (p) {
+      return Promise.resolve(p).then(
+        function (v) { return { status: 'fulfilled', value: v }; },
+        function (r) { return { status: 'rejected', reason: r }; }
+      );
+    }));
+  };
+}
 
-/* ---------- فایل‌های اصلی پروژه (بر اساس ساختار واقعی) ---------- */
+/* ---------- نسخه و نام کش‌ها ---------- */
+var SW_VERSION = 'v3';
+var STATIC_CACHE  = 'banovan-noor-static-'  + SW_VERSION;
+var RUNTIME_CACHE = 'banovan-noor-runtime-' + SW_VERSION;
+var MEDIA_CACHE   = 'banovan-noor-media-'   + SW_VERSION;
+
+/* ---------- محدودیت حجم کش رسانه (به بایت) ---------- */
+var MEDIA_CACHE_LIMIT = 50 * 1024 * 1024; // ۵۰ مگابایت
+
+/* ---------- فایل‌های اصلی پروژه (کش آپ‌فرانت) ---------- */
 var APP_FILES = [
-  // صفحات اصلی
+  // ===== صفحات اصلی =====
   './',
   './index.html',
   './home.html',
@@ -18,86 +36,161 @@ var APP_FILES = [
   './privacy.html',
   './settings.html',
   './search.html',
-  './favorites.html',
+  './guide.html',
+  './admin.html',
+  './notes.html',
 
-  // صفحات بخش‌ها
+  // ===== صفحات بخش‌ها =====
   './ahkam.html',
+  './audio.html',
   './childbirth.html',
   './doctors.html',
   './duas.html',
   './education.html',
-  './guide.html',
   './hamraz.html',
   './health.html',
   './menstruation.html',
-  './notes.html',
   './pregnancy.html',
+  './women.html',
 
-  // استایل و اسکریپت
+  // ===== استایل و اسکریپت =====
   './styles.css',
-  './app.js',
+  './assets/theme.css',
+  './assets/theme.js',
+  './js/bn-app.js',
+  './js/bn-analytics.js',
+  './js/bn-tracker.js',
+  './js/bn-auth-gate.js',
+  './js/firebase-config.js',
   './manifest.json',
 
-  // i18n
+  // ===== i18n =====
   './i18n/fa.json',
   './i18n/ps.json',
   './i18n/en.json',
 
-  // آیکون‌ها و لوگو
-  './assets/icon-72.png',
+  // ===== آیکون‌ها و لوگو (شامل فایل‌های جدید) =====
+  './assets/icon-144.png',
   './assets/icon-192.png',
   './assets/icon-512.png',
   './assets/logo.png',
+  './assets/owner.jpg',
+  './assets/icons/sprite.svg',
+  './assets/screenshot-home.png',
+  './assets/screenshot-health.png',
 
-  // فونت‌ها
+  // ===== فونت‌ها =====
   './assets/fonts/Vazirmatn-Regular.woff2',
   './assets/fonts/Vazirmatn-Bold.woff2',
   './assets/fonts/Vazirmatn-Black.woff2',
 
-  // آیکون‌های SVG
-  './assets/icons/arrow.svg',
-  './assets/icons/back.svg',
-  './assets/icons/bell.svg',
-  './assets/icons/birth.svg',
-  './assets/icons/dua.svg',
-  './assets/icons/education.svg',
-  './assets/icons/fiqh.svg',
-  './assets/icons/hamraz.svg',
-  './assets/icons/health.svg',
-  './assets/icons/heart.svg',
-  './assets/icons/home.svg',
-  './assets/icons/info.svg',
-
-  // دیتای اصلی
+  // ===== داده‌های اصلی =====
   './data/articles/articles.json',
+  './data/audio/ahkam-audio.json',
   './data/daily/daily.json',
   './data/doctors/doctors.json',
+
+  // ===== دعاها =====
   './data/duas/amal.json',
   './data/duas/duas.json',
+  './data/duas/lectures.json',
+  './data/duas/mahdaviat.json',
+  './data/duas/ziyarat.json',
+
+  // ===== آموزش =====
   './data/education/education.json',
   './data/education/videos.json',
+
+  // ===== فقه =====
   './data/fiqh/hanafi.json',
   './data/fiqh/jafari/fayyaz.json',
   './data/fiqh/jafari/shirazi.json',
   './data/fiqh/jafari/sistani.json',
+
+  // ===== همراز =====
   './data/hamraz/categories.json',
   './data/hamraz/questions.json',
+
+  // ===== پزشکی (کامل) =====
   './data/medical/anal-health.json',
+  './data/medical/anemia.json',
   './data/medical/breast-health.json',
+  './data/medical/breastfeeding.json',
+  './data/medical/cancer-screening.json',
   './data/medical/childbirth.json',
+  './data/medical/contraception.json',
+  './data/medical/fitness.json',
   './data/medical/general-health.json',
+  './data/medical/gynecological.json',
+  './data/medical/menopause.json',
   './data/medical/menstruation.json',
+  './data/medical/mental-health.json',
   './data/medical/nutrition.json',
   './data/medical/personal-hygiene.json',
   './data/medical/pregnancy.json',
-  './data/medical/vaginal-health.json'
+  './data/medical/skin-hair.json',
+  './data/medical/sleep.json',
+  './data/medical/vaginal-health.json',
+
+  // ===== بانوان =====
+  './data/women/women.json'
 ];
 
-/* ---------- نصب: کش کردن فایل‌ها (بدون fail کل نصب) ---------- */
+/* ---------- الگوی فایل‌های رسانه (کش در Runtime) ---------- */
+/*  نکته: SVG و فونت‌ها عمداً حذف شدن چون در APP_FILES کش میشن */
+var MEDIA_PATTERN = /\.(mp3|mp4|m4a|ogg|wav|webm|jpg|jpeg|png|gif|webp)(\?.*)?$/i;
+
+/* =========================================================
+   کمکی: محدود کردن حجم کش رسانه
+   ========================================================= */
+function trimCache(cacheName, maxBytes) {
+  return caches.open(cacheName).then(function (cache) {
+    return cache.keys().then(function (keys) {
+      var totalSize = 0;
+      var entries = [];
+
+      return Promise.all(keys.map(function (req) {
+        return cache.match(req).then(function (res) {
+          if (!res) return null;
+          return res.clone().blob().then(function (blob) {
+            return { req: req, size: blob.size };
+          });
+        });
+      })).then(function (results) {
+        results.forEach(function (r) {
+          if (r) {
+            entries.push(r);
+            totalSize += r.size;
+          }
+        });
+
+        if (totalSize <= maxBytes) return;
+
+        // حذف قدیمی‌ترین‌ها (اولین‌ها در keys)
+        var toDelete = [];
+        var sizeToFree = totalSize - maxBytes;
+        var freed = 0;
+
+        for (var i = 0; i < entries.length && freed < sizeToFree; i++) {
+          toDelete.push(entries[i].req);
+          freed += entries[i].size;
+        }
+
+        return Promise.all(toDelete.map(function (req) {
+          return cache.delete(req);
+        }));
+      });
+    });
+  });
+}
+
+/* =========================================================
+   نصب: کش کردن فایل‌های اصلی (Best-Effort)
+   ========================================================= */
 self.addEventListener('install', function (event) {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      return Promise.all(
+    caches.open(STATIC_CACHE).then(function (cache) {
+      return Promise.allSettled(
         APP_FILES.map(function (url) {
           return fetch(new Request(url, { cache: 'no-store' }))
             .then(function (res) {
@@ -107,90 +200,222 @@ self.addEventListener('install', function (event) {
             .catch(function () { return null; });
         })
       );
-    }).then(function () { return self.skipWaiting(); })
+    }).then(function () {
+      // فعال‌سازی فوری نسخه جدید (اجباری برای آپدیت)
+      return self.skipWaiting();
+    })
   );
 });
 
-/* ---------- فعال‌سازی: پاک‌کردن کش‌های قدیمی ---------- */
+/* =========================================================
+   فعال‌سازی: پاک‌کردن کش‌های قدیمی + اطلاع به کلاینت‌ها
+   ========================================================= */
 self.addEventListener('activate', function (event) {
   event.waitUntil(
     caches.keys().then(function (keys) {
       return Promise.all(
         keys.map(function (k) {
-          if (k !== CACHE_NAME && k !== RUNTIME_CACHE) return caches.delete(k);
+          var isCurrent = (k === STATIC_CACHE || k === RUNTIME_CACHE || k === MEDIA_CACHE);
+          if (!isCurrent) return caches.delete(k);
           return null;
         })
       );
-    }).then(function () { return self.clients.claim(); })
+    }).then(function () {
+      return self.clients.claim();
+    }).then(function () {
+      // به همه کلاینت‌ها اطلاع بده که SW جدید فعال شد
+      return self.clients.matchAll({ type: 'window' }).then(function (clients) {
+        clients.forEach(function (client) {
+          try {
+            client.postMessage({ type: 'SW_ACTIVATED', version: SW_VERSION });
+          } catch (e) {}
+        });
+      });
+    })
   );
 });
 
-/* ---------- fetch: Cache-first با به‌روزرسانی پس‌زمینه ---------- */
+/* =========================================================
+   fetch: استراتژی‌های مختلف بر اساس نوع فایل
+   ========================================================= */
 self.addEventListener('fetch', function (event) {
   var req = event.request;
 
+  // فقط GET
   if (req.method !== 'GET') return;
+
+  // نادیده گرفتن درخواست‌های weird
+  if (req.cache === 'only-if-cached' && req.mode !== 'same-origin') return;
 
   var url;
   try { url = new URL(req.url); } catch (e) { return; }
 
-  // فقط همون دامنه (نه فایل‌های خارجی)
+  // فقط همون دامنه (نه گوگل، فیسبوک، PostHog و...)
   if (url.origin !== self.location.origin) return;
 
-  // روی file:// یا chrome-extension:// کاری نکن
+  // فقط http/https
   if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
 
-  event.respondWith((async function () {
-    var cache = await caches.open(CACHE_NAME);
-    var cached = await cache.match(req, { ignoreSearch: false });
+  /* ====== ۱. فایل‌های رسانه (mp3, mp4, تصویر): Cache-First ====== */
+  if (MEDIA_PATTERN.test(url.pathname)) {
+    event.respondWith(
+      caches.match(req).then(function (cached) {
+        // اگر در هر کدام از کش‌ها بود، فوراً بده
+        if (cached) return cached;
 
-    if (cached) {
-      // در پس‌زمینه آپدیت کن
+        // وگرنه از شبکه بگیر و در MEDIA_CACHE کش کن
+        return fetch(req).then(function (fresh) {
+          if (fresh && fresh.ok && fresh.status === 200) {
+            caches.open(MEDIA_CACHE).then(function (cache) {
+              cache.put(req, fresh.clone())
+                .then(function () { trimCache(MEDIA_CACHE, MEDIA_CACHE_LIMIT); })
+                .catch(function () {});
+            });
+          }
+          return fresh;
+        }).catch(function () {
+          return new Response('', {
+            status: 503,
+            statusText: 'Media Offline'
+          });
+        });
+      })
+    );
+    return;
+  }
+
+  /* ====== ۲. صفحات ناوبری: Network-First با fallback ====== */
+  if (req.mode === 'navigate') {
+    event.respondWith(
       fetch(req).then(function (fresh) {
-        if (fresh && fresh.ok) cache.put(req, fresh.clone()).catch(function () {});
-      }).catch(function () {});
-      return cached;
-    }
+        if (fresh && fresh.ok) {
+          caches.open(STATIC_CACHE).then(function (cache) {
+            cache.put(req, fresh.clone()).catch(function () {});
+          });
+        }
+        return fresh;
+      }).catch(function () {
+        // آفلاین: از کش بده یا index.html
+        return caches.match(req).then(function (cached) {
+          if (cached) return cached;
+          return caches.match('./index.html');
+        });
+      })
+    );
+    return;
+  }
 
-    try {
-      var fresh = await fetch(req);
-      if (fresh && fresh.ok) {
-        cache.put(req, fresh.clone()).catch(function () {});
-      }
-      return fresh;
-    } catch (e) {
-      // اگه ناوبری بود، index.html رو بده
-      if (req.mode === 'navigate') {
-        var idx = await cache.match('./index.html');
-        if (idx) return idx;
-      }
-      return new Response('BANOVAN NOOR offline: فایل در دسترس نیست', {
-        status: 503,
-        headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+  /* ====== ۳. بقیه فایل‌ها (CSS, JS, JSON, SVG, فونت): Stale-While-Revalidate ====== */
+  event.respondWith(
+    caches.match(req).then(function (cached) {
+      // در پس‌زمینه از شبکه آپدیت کن
+      var fetchPromise = fetch(req).then(function (fresh) {
+        if (fresh && fresh.ok) {
+          caches.open(RUNTIME_CACHE).then(function (cache) {
+            cache.put(req, fresh.clone()).catch(function () {});
+          });
+        }
+        return fresh;
+      }).catch(function () { return null; });
+
+      // اگر کش داریم (در هر کدام از کش‌ها)، فوراً بده
+      if (cached) return cached;
+
+      // وگرنه منتظر شبکه بمون
+      return fetchPromise.then(function (fresh) {
+        if (fresh) return fresh;
+        return new Response('BANOVAN NOOR offline: فایل در دسترس نیست', {
+          status: 503,
+          headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+        });
       });
-    }
-  })());
+    })
+  );
 });
 
-/* ---------- پیام‌ها (برای نوتیفیکیشن یا skipWaiting) ---------- */
+/* =========================================================
+   پیام‌ها از کلاینت
+   ========================================================= */
 self.addEventListener('message', function (event) {
   if (!event.data) return;
 
+  // فعال‌سازی فوری نسخه جدید
   if (event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
 
-  if (event.data.type === 'SHOW_NOTIFICATION') {
-    var d = event.data;
+  // پاک کردن دستی کش‌ها (مثلاً از پنل ادمین)
+  if (event.data.type === 'CLEAR_CACHES') {
     event.waitUntil(
-      self.registration.showNotification(d.title || 'بانوان نور | BANOVAN NOOR', {
-        body: d.body || '',
-        icon: './assets/icon-192.png',
-        badge: './assets/icon-72.png',
-        dir: 'rtl',
-        lang: 'fa',
-        tag: d.tag || 'banovan-noor'
+      caches.keys().then(function (keys) {
+        return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+      }).then(function () {
+        return self.clients.matchAll({ type: 'window' });
+      }).then(function (clients) {
+        clients.forEach(function (client) {
+          try { client.postMessage({ type: 'CACHES_CLEARED' }); } catch (e) {}
+        });
       })
     );
   }
+
+  // نمایش نوتیفیکیشن
+  if (event.data.type === 'SHOW_NOTIFICATION') {
+    var d = event.data;
+    event.waitUntil(
+      self.registration.showNotification(d.title || 'بانوان نور', {
+        body: d.body || '',
+        icon: './assets/icon-192.png',
+        badge: './assets/icon-144.png',
+        dir: 'rtl',
+        lang: 'fa',
+        tag: d.tag || 'banovan-noor',
+        vibrate: [200, 100, 200],
+        data: { url: d.url || './' }
+      })
+    );
+  }
+});
+
+/* =========================================================
+   کلیک روی نوتیفیکیشن
+   ========================================================= */
+self.addEventListener('notificationclick', function (event) {
+  event.notification.close();
+  var targetUrl = (event.notification.data && event.notification.data.url) || './';
+
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (clients) {
+      // اگر پنجره‌ای باز بود، فوکوس کن
+      for (var i = 0; i < clients.length; i++) {
+        if (clients[i].url.indexOf(self.location.origin) === 0 && 'focus' in clients[i]) {
+          return clients[i].focus();
+        }
+      }
+      // وگرنه پنجره جدید باز کن
+      if (self.clients.openWindow) {
+        return self.clients.openWindow(targetUrl);
+      }
+    })
+  );
+});
+
+/* =========================================================
+   Push Notifications (آماده برای آینده)
+   ========================================================= */
+self.addEventListener('push', function (event) {
+  if (!event.data) return;
+  var data = {};
+  try { data = event.data.json(); } catch (e) {}
+  event.waitUntil(
+    self.registration.showNotification(data.title || 'بانوان نور', {
+      body: data.body || '',
+      icon: './assets/icon-192.png',
+      badge: './assets/icon-144.png',
+      dir: 'rtl',
+      lang: 'fa',
+      tag: data.tag || 'banovan-noor',
+      data: { url: data.url || './' }
+    })
+  );
 });
