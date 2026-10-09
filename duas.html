@@ -14,6 +14,7 @@
 <link rel="icon" href="assets/icon-192.png">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
 <style>
 :root{
   --bg:#fbf8ff;--bg2:#f5ecfb;
@@ -1068,10 +1069,54 @@ function buildAudioPlayer(a){
     if(isFinite(audio.currentTime)&&audio.currentTime>0){ positions[id]=Math.floor(audio.currentTime); saveObject(POSITION_KEY,positions); }
   };
 
-  playBtn.addEventListener("click",async()=>{
-    if(audio.paused){ try{await audio.play()}catch(e){showErr("فایل صوتی در دسترس نیست")} }
-    else audio.pause();
+  /* ═══ دکمه پخش با سیستم دانلود هوشمند ═══ */
+  playBtn.addEventListener("click", async () => {
+    // ۱. اگر در حال پخشه، فقط متوقف کن
+    if (!audio.paused) {
+      audio.pause();
+      return;
+    }
+
+    // ۲. اگر قبلاً آماده شده، مستقیم پخش کن
+    if (audio._bnReady) {
+      try { await audio.play(); } catch(e) { showErr("خطا در پخش"); }
+      return;
+    }
+
+    // ۳. اگر Media Player موجود نیست، مستقیم پخش کن (fallback)
+    if (!window.bnMedia) {
+      try { await audio.play(); } catch(e) { showErr("فایل صوتی در دسترس نیست"); }
+      return;
+    }
+
+    // ۴. چک از طریق Media Player (کش یا دانلود)
+    status.textContent = "در حال آماده‌سازی...";
+
+    await new Promise(resolve => {
+      window.bnMedia.play(a.audioUrl, {
+        onPlay: (res) => {
+          if (res.blob) {
+            try { audio.src = URL.createObjectURL(res.blob); } catch(e) {}
+          }
+          audio._bnReady = true;
+          status.textContent = res.offline ? "آماده (آفلاین)" : "آماده";
+          resolve();
+        },
+        onError: (err) => {
+          showErr("خطا: " + (err.message || "فایل در دسترس نیست"));
+          status.textContent = "خطا";
+          resolve();
+        }
+      });
+    });
+
+    // ۵. پخش نهایی
+    try { await audio.play(); } catch(e) {
+      showErr("خطا در پخش فایل");
+      status.textContent = "خطا";
+    }
   });
+
   w.querySelector(".skip-back").addEventListener("click",()=>{audio.currentTime=Math.max(0,audio.currentTime-15);updProg()});
   w.querySelector(".skip-forward").addEventListener("click",()=>{
     audio.currentTime=isFinite(audio.duration)?Math.min(audio.duration,audio.currentTime+15):audio.currentTime+15;
@@ -1376,6 +1421,9 @@ else loadAllData();
 
 <!-- ═══ ماژول اصلی BN ═══ -->
 <script src="js/bn-app.js"></script>
+
+<!-- ═══ Media Player (پخش هوشمند) ═══ -->
+<script src="js/bn-media-player.js"></script>
 
 <!-- ═══ Firebase ═══ -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
