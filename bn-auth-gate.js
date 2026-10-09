@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   BANOVAN NOOR — Auth Gate v2
+   BANOVAN NOOR — Auth Gate v2 (نسخه نهایی و اصلاح‌شده)
    ═══════════════════════════════════════════════════════════
    • روز ۱۰-۱۱: هشدار ملایم آبی
    • روز ۱۲-۱۳: هشدار قوی نارنجی
@@ -25,15 +25,27 @@
   function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
   function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
 
+  /* تابع ترجمه (با fallback فارسی در صورت آماده نبودن bn-app) */
+  function getText(key, fallback) {
+    if (window.BN && typeof window.BN.t === 'function') {
+      return window.BN.t(key, fallback);
+    }
+    return fallback;
+  }
+
   function getFirstRun(){
     var v = lsGet(FIRST_RUN_KEY);
+    var now = Date.now();
     if(!v){
-      var now = Date.now();
       lsSet(FIRST_RUN_KEY, String(now));
       return now;
     }
     var n = parseInt(v, 10);
-    return (isFinite(n) && n > 0) ? n : Date.now();
+    if (!isFinite(n) || n <= 0) {
+      lsSet(FIRST_RUN_KEY, String(now));
+      return now;
+    }
+    return n;
   }
 
   function getUser(){
@@ -420,18 +432,17 @@ html[data-theme="dark"] .bn-auth-footer{
   function showBanner(level){
     if(document.getElementById(BANNER_ID)) return;
 
-    var days = daysSinceInstall();
     var remaining = daysRemaining();
-
     var icon, text, btnText;
+
     if(level === 1){
       icon = '📅';
-      text = 'مهلت شما رو به پایان است. <strong>' + remaining + ' روز</strong> برای ثبت‌نام فرصت دارید.';
-      btnText = 'ثبت‌نام';
+      text = getText('auth.warn_soft', 'مهلت شما رو به پایان است. <strong>' + remaining + ' روز</strong> برای ثبت‌نام فرصت دارید.');
+      btnText = getText('auth.register_now', 'ثبت‌نام');
     } else {
       icon = '⚠️';
-      text = 'توجه! فقط <strong>' + remaining + ' روز</strong> تا قفل شدن برنامه باقی مانده.';
-      btnText = 'همین حالا';
+      text = getText('auth.warn_hard', 'توجه! فقط <strong>' + remaining + ' روز</strong> تا قفل شدن برنامه باقی مانده.');
+      btnText = getText('auth.register_now_urgent', 'همین حالا');
     }
 
     var banner = document.createElement('div');
@@ -491,6 +502,13 @@ html[data-theme="dark"] .bn-auth-footer{
     var days = daysSinceInstall();
     var progress = Math.min(100, Math.round((days / GRACE_DAYS) * 100));
 
+    var title = getText('auth.modal_title', 'ثبت‌نام الزامی است');
+    var subtitle = getText('auth.modal_subtitle', 'برای ادامه استفاده، لطفاً پروفایل خود را تکمیل کنید');
+    var message = getText('auth.modal_message', 'مهلت <strong>۱۴ روزه</strong> شما به پایان رسیده است. برای دسترسی به تمام بخش‌های برنامه، ثبت‌نام کنید.');
+    var btnPrimary = getText('auth.modal_btn_primary', 'ثبت‌نام / ورود');
+    var btnGhost = getText('auth.modal_btn_ghost', 'بعداً یادآوری کن');
+    var footer = getText('auth.modal_footer', 'اطلاعات شما فقط روی گوشی خودتان ذخیره می‌شود');
+
     var modal = document.createElement('div');
     modal.id = MODAL_ID;
     modal.className = 'bn-auth-gate';
@@ -500,14 +518,11 @@ html[data-theme="dark"] .bn-auth-footer{
       '<div class="bn-auth-box" id="bnAuthBox">' +
         '<div class="bn-auth-header">' +
           '<div class="bn-auth-lock">🔐</div>' +
-          '<div class="bn-auth-title">ثبت‌نام الزامی است</div>' +
-          '<div class="bn-auth-subtitle">برای ادامه استفاده، لطفاً پروفایل خود را تکمیل کنید</div>' +
+          '<div class="bn-auth-title">' + title + '</div>' +
+          '<div class="bn-auth-subtitle">' + subtitle + '</div>' +
         '</div>' +
         '<div class="bn-auth-body">' +
-          '<div class="bn-auth-message">' +
-            'مهلت <strong>۱۴ روزه</strong> شما به پایان رسیده است. ' +
-            'برای دسترسی به تمام بخش‌های برنامه، ثبت‌نام کنید.' +
-          '</div>' +
+          '<div class="bn-auth-message">' + message + '</div>' +
           '<div class="bn-auth-progress">' +
             '<div class="bn-auth-progress-label">' +
               '<span>مهلت استفاده</span>' +
@@ -519,15 +534,15 @@ html[data-theme="dark"] .bn-auth-footer{
           '</div>' +
           '<button class="bn-auth-btn" id="bnAuthGoBtn" type="button">' +
             '<svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-            'ثبت‌نام / ورود' +
+            btnPrimary +
           '</button>' +
           '<button class="bn-auth-btn-ghost" id="bnAuthCancelBtn" type="button">' +
-            'بعداً یادآوری کن' +
+            btnGhost +
           '</button>' +
         '</div>' +
         '<div class="bn-auth-footer">' +
           '<svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>' +
-          'اطلاعات شما فقط روی گوشی خودتان ذخیره می‌شود' +
+          footer +
         '</div>' +
       '</div>';
 
@@ -583,7 +598,9 @@ html[data-theme="dark"] .bn-auth-footer{
     }, true);
 
     document.addEventListener('keydown', function(e){
-      if(e.key === 'Tab' || e.key === 'Escape') return;
+      /* اجازه دادن به کلیدهای رفرش، تب و اسکیپ برای جلوگیری از آزار کاربر */
+      if(e.key === 'Tab' || e.key === 'Escape' || e.key === 'F5' || (e.ctrlKey && e.key === 'r')) return;
+      
       if(e.target && e.target.closest && e.target.closest('.bn-auth-gate')) return;
       if(document.getElementById(MODAL_ID)){
         e.preventDefault();
