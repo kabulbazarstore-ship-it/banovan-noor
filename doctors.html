@@ -1,890 +1,1117 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-theme="light">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#ec4899" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#db2777" id="themeMeta">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="بانوان نور">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="پزشکان — لیست پزشکان متخصص بانوان در کابل با اطلاعات تماس">
 <title>پزشکان | بانوان نور</title>
-<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<link rel="icon" href="assets/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.json">
 <style>
 :root{
-  --bg-1:#fdf2f8;--bg-2:#fce7f3;--bg-3:#fbcfe8;--bg-4:#f9a8d4;
-  --text:#831843;--text-soft:#9d174d;--text-card:#831843;--text-muted:#9d174d;
-  --card:rgba(255,255,255,.85);--card-border:rgba(236,72,153,.2);
-  --card-shadow:0 8px 22px rgba(190,24,93,.12);
-  --icon-bg:rgba(255,255,255,.85);--icon-border:rgba(236,72,153,.25);--icon-color:#be185d;
-  --nav-bg:rgba(255,255,255,.94);--nav-border:rgba(236,72,153,.2);
-  --nav-color:#9d174d;--nav-active:#be185d;
-  --star:.2;
-  --search-bg:rgba(255,255,255,.92);
-  --chip-bg:rgba(255,255,255,.7);
-  --chip-border:rgba(236,72,153,.25);
-  --accent:#ec4899;
-  --accent-dark:#be185d;
-  --pink-soft:rgba(236,72,153,.1);
+  --bg:#fbf8ff;--bg2:#f5ecfb;
+  --card:rgba(255,255,255,.84);--card-solid:#fff;
+  --text:#25152d;--muted:#776b80;
+  --line:rgba(112,55,140,.12);
+  --primary:#a832d6;--pink:#ec4899;--rose:#e11d48;
+  --green:#25d366;--green-dark:#128c7e;
+  --brand:linear-gradient(110deg,#e11d48 0%,#db2777 43%,#a855f7 100%);
+  --soft:rgba(168,50,214,.09);
+  --shadow2:0 8px 25px rgba(88,37,111,.10);
+  --nav-h:78px;
 }
+html[data-theme="dark"],
 body.dark{
-  --bg-1:#500724;--bg-2:#831843;--bg-3:#9d174d;--bg-4:#4c0519;
-  --text:#fff;--text-soft:#fbcfe8;--text-card:#fff;--text-muted:#f9a8d4;
-  --card:rgba(255,255,255,.08);--card-border:rgba(244,114,182,.3);
-  --card-shadow:0 8px 22px rgba(0,0,0,.3);
-  --icon-bg:rgba(255,255,255,.08);--icon-border:rgba(244,114,182,.3);--icon-color:#fbcfe8;
-  --nav-bg:rgba(58,7,29,.94);--nav-border:rgba(244,114,182,.25);
-  --nav-color:#f9a8d4;--nav-active:#fbcfe8;
-  --star:.7;
-  --search-bg:rgba(255,255,255,.08);
-  --chip-bg:rgba(255,255,255,.06);
-  --chip-border:rgba(244,114,182,.3);
-  --pink-soft:rgba(244,114,182,.15);
+  --bg:#000;--bg2:#000;
+  --card:rgba(28,28,30,.72);--card-solid:#1c1c1e;
+  --text:#f9effd;--muted:#8e8e93;
+  --line:rgba(192,132,252,.16);
+  --soft:rgba(192,132,252,.12);
+  --shadow2:0 10px 30px rgba(0,0,0,.32);
 }
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{width:100%}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{
-  font-family:Tahoma,'Segoe UI',Arial,sans-serif;direction:rtl;font-size:17px;
-  line-height:1.8;font-weight:600;color:var(--text);background-color:var(--bg-1);
-  background-image:
-    radial-gradient(ellipse 500px 400px at 20% 5%,rgba(236,72,153,.15) 0,transparent 60%),
-    radial-gradient(ellipse 400px 350px at 85% 15%,rgba(244,114,182,.18) 0,transparent 65%),
-    linear-gradient(160deg,var(--bg-1) 0,var(--bg-2) 25%,var(--bg-3) 50%,var(--bg-2) 75%,var(--bg-4) 100%);
-  background-attachment:fixed;min-height:100vh;padding:0 0 110px;position:relative;overflow-x:hidden;
-  transition:background-color .4s,color .3s;
+  margin:0;min-height:100vh;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(236,72,153,.08),transparent 30%),
+    radial-gradient(circle at 0% 30%,rgba(139,92,246,.08),transparent 28%),
+    linear-gradient(180deg,var(--bg),var(--bg2));
+  color:var(--text);
+  font-family:"Vazirmatn","Noto Naskh Arabic",Tahoma,Arial,sans-serif;
+  transition:background .25s,color .25s;
 }
-body::before{
-  content:"";position:fixed;inset:0;
-  background-image:
-    radial-gradient(circle at 12% 8%,rgba(253,230,138,var(--star)) 0,transparent 1.2%),
-    radial-gradient(circle at 88% 6%,rgba(253,230,138,var(--star)) 0,transparent 1%),
-    radial-gradient(circle at 78% 45%,rgba(253,230,138,var(--star)) 0,transparent 1%);
-  pointer-events:none;z-index:0;
+html[data-theme="dark"] body,
+body.dark{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(168,85,247,.13),transparent 30%),
+    radial-gradient(circle at 100% 20%,rgba(236,72,153,.08),transparent 30%),
+    #000;
 }
-.app{max-width:520px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
+/* ✅ LTR */
+body.lang-ltr { direction: ltr; }
+body.lang-ltr #backBtn svg { transform: none; }
+body.lang-ltr .doc-card:before { right: auto; left: 0; }
+body.lang-ltr .back-cat-btn svg { transform: none; }
+body.lang-ltr .doc-about { border-right: 0; border-left: 3px solid var(--pink); }
+body.lang-ltr .search-box svg { right: auto; left: 14px; }
+body.lang-ltr .search-box input { padding: 0 14px 0 42px; }
 
-.page-header{display:flex;align-items:center;gap:12px;padding:20px 0 16px}
-.back-btn{
-  width:44px;height:44px;border-radius:14px;background:var(--icon-bg);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border:1px solid var(--icon-border);color:var(--icon-color);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
-  flex:0 0 44px;text-decoration:none;box-shadow:0 4px 12px rgba(236,72,153,.15);
+button,input{font:inherit}
+button{border:0;cursor:pointer;background:transparent;color:inherit}
+a{color:inherit;text-decoration:none}
+svg{width:21px;height:21px;display:block}
+.hidden{display:none!important}
+
+.topbar{
+  position:sticky;top:0;z-index:60;min-height:64px;
+  padding:calc(8px + env(safe-area-inset-top)) 12px 8px;
+  display:flex;align-items:center;gap:8px;
+  background:rgba(251,248,255,.76);
+  backdrop-filter:blur(22px) saturate(180%);
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  border-bottom:1px solid var(--line);
 }
-.back-btn:active{transform:scale(.94)}
-.back-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
-.page-header h1{font-size:1.35rem;font-weight:900;color:var(--text);flex:1;text-align:center;padding-right:44px}
+html[data-theme="dark"] .topbar,
+body.dark .topbar{background:rgba(0,0,0,.78)}
+.top-side{
+  width:40px;height:40px;flex:0 0 40px;
+  border-radius:13px;display:grid;place-items:center;
+  color:var(--text);background:var(--card);border:1px solid var(--line);
+  transition:transform .15s;
+}
+.top-side:active{transform:scale(.93)}
+.top-side svg{width:19px;height:19px}
+.brand-title{flex:1;min-width:0;text-align:center}
+.brand-title strong{display:block;font-size:15px;font-weight:900}
+.brand-title span{display:block;margin-top:1px;font-size:10px;color:var(--muted)}
+
+main{
+  width:min(720px,100%);margin:auto;
+  padding:14px 12px calc(var(--nav-h) + 30px + env(safe-area-inset-bottom));
+}
 
 .hero{
-  background:linear-gradient(135deg,#f9a8d4 0,#be185d 100%);
-  border-radius:20px;padding:22px;margin-bottom:16px;color:#fff;
-  position:relative;overflow:hidden;
-  box-shadow:0 12px 30px rgba(190,24,93,.35);
-  display:flex;align-items:center;gap:14px;
+  position:relative;overflow:hidden;min-height:150px;padding:18px;
+  border-radius:24px;color:#fff;background:var(--brand);
+  box-shadow:0 14px 32px rgba(178,43,130,.22);
 }
-.hero::before{
-  content:"";position:absolute;top:-40px;right:-40px;
-  width:120px;height:120px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.2),transparent 70%);
-  pointer-events:none;
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero:before{width:150px;height:150px;left:-60px;bottom:-80px;background:rgba(255,255,255,.12)}
+.hero:after{width:200px;height:200px;right:-100px;top:-110px;border:1px solid rgba(255,255,255,.15);box-shadow:0 0 0 25px rgba(255,255,255,.035),0 0 0 50px rgba(255,255,255,.025)}
+.hero-content{position:relative;z-index:2}
+.hero-badge{
+  width:max-content;display:flex;align-items:center;gap:6px;
+  padding:5px 10px;border-radius:100px;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.18);
+  font-size:10px;font-weight:800;
 }
-.hero-icon{
-  width:56px;height:56px;border-radius:16px;
-  background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.3);
-  display:flex;align-items:center;justify-content:center;flex:0 0 56px;
-  backdrop-filter:blur(10px);
-}
-.hero-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.hero-text{flex:1}
-.hero-title{font-size:1.1rem;font-weight:900;margin-bottom:5px;text-shadow:0 2px 8px rgba(0,0,0,.15)}
-.hero-sub{font-size:.85rem;opacity:.95;font-weight:700;line-height:1.7}
+.hero-badge svg{width:14px;height:14px}
+.hero h1{margin:11px 0 5px;font-size:20px;line-height:1.3;font-weight:950}
+.hero p{margin:0;max-width:400px;font-size:11px;line-height:1.9;opacity:.92}
 
-.search-wrap{position:relative;margin-bottom:12px}
-.search-input{
-  width:100%;padding:14px 48px 14px 18px;border-radius:16px;
-  border:1.5px solid var(--card-border);background:var(--search-bg);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  color:var(--text);font-family:inherit;font-size:.95rem;font-weight:700;
-  outline:none;transition:border-color .25s;
+.search-box{position:relative;margin-top:12px}
+.search-box svg{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;width:18px;height:18px}
+.search-box input{
+  width:100%;height:46px;padding:0 42px 0 14px;
+  border:1px solid var(--line);border-radius:15px;outline:0;
+  color:var(--text);background:var(--card);
+  box-shadow:var(--shadow2);transition:.2s;font-size:13px;
 }
-.search-input:focus{border-color:rgba(236,72,153,.7)}
-.search-input::placeholder{color:var(--text-muted)}
-.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:20px;height:20px;fill:none;stroke:var(--text-muted);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.search-box input:focus{border-color:rgba(168,50,214,.4);box-shadow:0 0 0 4px rgba(168,50,214,.08)}
+.search-box input::placeholder{color:var(--muted)}
 
-.chips{
-  display:flex;gap:8px;overflow-x:auto;padding:4px 0 14px;
-  scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth;
+.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.cat-card{
+  position:relative;overflow:hidden;padding:14px;
+  border-radius:20px;background:var(--card);
+  border:1px solid var(--line);box-shadow:var(--shadow2);
+  text-align:right;transition:transform .18s;cursor:pointer;
 }
-.chips::-webkit-scrollbar{display:none}
-.chip{
-  flex:0 0 auto;padding:9px 16px;border-radius:20px;
-  background:var(--chip-bg);border:1.5px solid var(--chip-border);
-  color:var(--text-soft);font-family:inherit;font-size:.8rem;
-  font-weight:800;cursor:pointer;transition:all .22s;white-space:nowrap;
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  display:flex;align-items:center;gap:6px;
+.cat-card:active{transform:scale(.97)}
+.cat-icon{
+  width:44px;height:44px;border-radius:14px;
+  display:grid;place-items:center;color:#fff;background:var(--brand);
+  box-shadow:0 6px 16px rgba(185,40,130,.22);margin-bottom:10px;
 }
-.chip:active{transform:scale(.96)}
-.chip.active{
-  background:linear-gradient(135deg,#ec4899,#be185d);
-  color:#fff;border-color:transparent;
-  box-shadow:0 4px 14px rgba(236,72,153,.4);
-}
-.chip .chip-count{
-  font-size:.68rem;background:rgba(255,255,255,.25);
-  padding:1px 7px;border-radius:10px;font-weight:900;
-}
+.cat-icon svg{width:22px;height:22px}
+.cat-title{font-size:14px;font-weight:900;line-height:1.4}
+.cat-count{display:block;margin-top:3px;font-size:10.5px;color:var(--muted);font-weight:700}
 
-.filter-count{
-  font-size:.82rem;font-weight:800;color:var(--text-muted);
-  margin:0 4px 14px;
+.list-header{display:flex;align-items:center;justify-content:space-between;margin:14px 2px 10px;gap:8px}
+.list-title{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:900}
+.list-title svg{width:20px;height:20px;color:var(--primary)}
+.back-cat-btn{
+  height:34px;padding:0 12px;display:flex;align-items:center;gap:5px;
+  border-radius:11px;color:var(--primary);background:var(--soft);
+  font-size:11px;font-weight:800;
 }
+.back-cat-btn svg{width:14px;height:14px;transform:scaleX(-1)}
+.list-meta{display:flex;align-items:center;justify-content:space-between;margin:0 2px 10px;gap:8px}
+.result-count{color:var(--muted);font-size:11px;font-weight:700}
 
-.doc-list{display:flex;flex-direction:column;gap:12px}
+.doc-list{display:grid;gap:10px}
 .doc-card{
-  background:var(--card);backdrop-filter:blur(20px);
-  border:1.5px solid var(--card-border);border-radius:18px;
-  padding:16px;box-shadow:var(--card-shadow);
-  transition:all .22s;position:relative;overflow:hidden;
+  position:relative;overflow:hidden;padding:13px;
+  border-radius:20px;background:var(--card);
+  border:1px solid var(--line);box-shadow:var(--shadow2);
+  transition:transform .18s;cursor:pointer;
 }
-.doc-card:active{transform:scale(.99)}
-.doc-head{
-  display:flex;align-items:center;gap:12px;
-  margin-bottom:12px;
-}
+.doc-card:before{content:"";position:absolute;top:0;right:0;width:3.5px;height:100%;background:var(--brand);opacity:.85}
+.doc-card:active{transform:scale(.988)}
+
+.doc-head{display:flex;align-items:center;gap:11px;margin-bottom:10px}
 .doc-avatar{
-  width:56px;height:56px;border-radius:16px;flex:0 0 56px;
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,#f9a8d4,#be185d);
-  color:#fff;font-weight:900;
-  font-size:1.5rem;
-  box-shadow:0 6px 14px rgba(190,24,93,.3);
+  width:54px;height:54px;flex:0 0 54px;
+  border-radius:16px;display:grid;place-items:center;
+  background:var(--brand);color:#fff;
+  font-size:1.5rem;font-weight:900;
+  box-shadow:0 6px 16px rgba(185,40,130,.25);
   overflow:hidden;position:relative;
 }
 .doc-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .doc-info{flex:1;min-width:0}
-.doc-name{
-  font-size:1.02rem;font-weight:900;color:var(--text-card);
-  line-height:1.4;margin-bottom:4px;
-}
+.doc-name{font-size:14px;font-weight:950;line-height:1.5;margin-bottom:4px}
 .doc-specialty{
-  font-size:.78rem;font-weight:800;color:var(--accent);
-  display:inline-flex;align-items:center;gap:5px;
-  background:var(--pink-soft);padding:3px 10px;border-radius:12px;
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10px;font-weight:800;
+  padding:3px 9px;border-radius:9px;
+  background:var(--soft);color:var(--primary);
 }
-.doc-specialty svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.doc-specialty svg{width:11px;height:11px}
 
 .doc-meta{
-  display:flex;flex-direction:column;gap:8px;
-  padding-top:12px;border-top:1px dashed var(--card-border);
-  margin-bottom:12px;
+  display:flex;flex-direction:column;gap:5px;
+  padding-top:10px;border-top:1px dashed var(--line);
+  margin-bottom:10px;
 }
 .doc-meta-item{
-  display:flex;align-items:flex-start;gap:8px;
-  font-size:.84rem;font-weight:700;color:var(--text-card);
-  line-height:1.7;
+  display:flex;align-items:flex-start;gap:7px;
+  font-size:10.5px;font-weight:700;color:var(--muted);
+  line-height:1.8;
 }
 .doc-meta-item svg{
-  width:16px;height:16px;flex:0 0 16px;margin-top:3px;
-  fill:none;stroke:var(--accent);stroke-width:2.2;
-  stroke-linecap:round;stroke-linejoin:round;
+  width:14px;height:14px;flex:0 0 14px;margin-top:3px;
+  color:var(--primary);
 }
 .doc-meta-item strong{color:var(--text);font-weight:900}
 
-.doc-actions{
-  display:flex;gap:8px;
-}
+.doc-actions{display:flex;gap:6px}
 .doc-btn{
-  flex:1;padding:11px 12px;border-radius:12px;border:0;
-  font-family:inherit;font-size:.82rem;font-weight:900;
-  cursor:pointer;transition:all .2s;
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  text-decoration:none;
+  flex:1;padding:9px 10px;border-radius:11px;
+  font-size:10.5px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  transition:transform .18s;
+  cursor:pointer;text-decoration:none;
 }
 .doc-btn:active{transform:scale(.96)}
-.doc-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;flex:0 0 15px}
-.doc-btn-call{
-  background:linear-gradient(135deg,#ec4899,#be185d);color:#fff;
-  box-shadow:0 4px 12px rgba(190,24,93,.3);
-}
-.doc-btn-whats{
-  background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;
-  box-shadow:0 4px 12px rgba(18,140,126,.3);
-}
-.doc-btn-map{
-  background:var(--chip-bg);color:var(--text-soft);
-  border:1.5px solid var(--chip-border);
-}
+.doc-btn svg{width:14px;height:14px;flex:0 0 14px}
+.doc-btn-call{background:var(--brand);color:#fff;box-shadow:0 5px 14px rgba(185,40,130,.28)}
+.doc-btn-whats{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;box-shadow:0 5px 14px rgba(18,140,126,.3)}
+.doc-btn-map{background:var(--soft);color:var(--primary);border:1px solid var(--line)}
 
-.loader,.empty{
-  text-align:center;padding:50px 20px;
-  color:var(--text-muted);font-size:.95rem;font-weight:700;line-height:2;
-}
-.loader::before{
-  content:"";display:block;width:32px;height:32px;
-  border:3px solid rgba(236,72,153,.2);border-top-color:#ec4899;
-  border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite;
-}
+.state{padding:36px 16px;text-align:center;color:var(--muted);font-size:12px}
+.loader{width:30px;height:30px;margin:0 auto 12px;border-radius:50%;border:3px solid rgba(168,50,214,.15);border-top-color:var(--primary);animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+.empty-icon{width:52px;height:52px;margin:0 auto 10px;display:grid;place-items:center;border-radius:17px;color:var(--muted);background:var(--soft)}
+.empty-icon svg{width:24px;height:24px}
 
 .modal{
-  position:fixed;inset:0;background:rgba(0,0,0,.65);
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  display:none;align-items:flex-end;justify-content:center;
-  z-index:10000;padding:0;
+  position:fixed;inset:0;z-index:100;
+  display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(16,6,20,.58);
+  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .25s,visibility .25s;
 }
-.modal.show{display:flex;animation:mFade .3s ease}
-@keyframes mFade{from{opacity:0}to{opacity:1}}
-.modal-box{
-  width:100%;max-width:520px;max-height:92vh;overflow-y:auto;
-  background:var(--bg-1);border-radius:28px 28px 0 0;
-  padding:24px 22px calc(28px + env(safe-area-inset-bottom,0px));
-  animation:mSlide .35s ease;
+.modal.show{opacity:1;visibility:visible;pointer-events:auto}
+.sheet{
+  width:min(760px,100%);max-height:94vh;overflow:hidden;
+  border-radius:26px 26px 0 0;background:var(--card-solid);
+  box-shadow:0 -20px 70px rgba(0,0,0,.28);
+  transform:translateY(35px);
+  transition:transform .3s cubic-bezier(.2,.8,.2,1);
+  display:flex;flex-direction:column;
+  padding-bottom:env(safe-area-inset-bottom);
 }
-@keyframes mSlide{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
-.modal-head{
-  display:flex;align-items:flex-start;justify-content:space-between;
-  margin-bottom:18px;padding-bottom:14px;
-  border-bottom:1.5px solid var(--card-border);gap:12px;
+.modal.show .sheet{transform:translateY(0)}
+.sheet-handle{width:40px;height:4px;flex:0 0 4px;margin:8px auto 4px;border-radius:20px;background:rgba(120,100,130,.25)}
+.sheet-head{
+  min-height:60px;padding:8px 13px 9px;display:flex;align-items:center;gap:9px;
+  background:var(--card-solid);border-bottom:1px solid var(--line);
 }
-.modal-head-text{flex:1;min-width:0}
-.modal-badge{
-  display:inline-block;font-size:.75rem;font-weight:900;
-  padding:4px 14px;border-radius:20px;
-  background:linear-gradient(135deg,#ec4899,#be185d);
-  color:#fff;margin-bottom:10px;box-shadow:0 4px 12px rgba(190,24,93,.35);
+.sheet-close{
+  width:38px;height:38px;flex:0 0 38px;
+  display:grid;place-items:center;border-radius:12px;
+  color:var(--text);background:var(--soft);
 }
-.modal-q{font-size:1.15rem;font-weight:900;color:var(--text);line-height:1.7}
-.modal-close{
-  width:44px;height:44px;border-radius:14px;
-  background:var(--card);border:1px solid var(--card-border);
-  color:var(--text-soft);display:flex;align-items:center;justify-content:center;
-  cursor:pointer;flex:0 0 44px;
+.sheet-close svg{width:18px;height:18px}
+.sheet-title{flex:1;min-width:0}
+.sheet-title strong{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:14px}
+.sheet-title span{display:block;margin-top:2px;color:var(--muted);font-size:10px}
+.sheet-scroll{
+  overflow-y:auto;overscroll-behavior:contain;
+  padding:14px 14px 26px;-webkit-overflow-scrolling:touch;
 }
-.modal-close:active{transform:scale(.9)}
-.modal-close svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.modal-content{
-  background:var(--pink-soft);
-  border:1px solid var(--card-border);border-radius:18px;
-  padding:18px;margin-top:6px;
-}
-.answer-text{
-  font-size:.95rem;line-height:2.1;color:var(--text-card);
-  font-weight:700;white-space:pre-line;
-}
-.answer-text strong{color:var(--accent);font-weight:900}
-.modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.modal-tag{
-  font-size:.72rem;font-weight:800;padding:4px 12px;
-  border-radius:20px;background:rgba(236,72,153,.12);
-  color:var(--text-soft);border:1px solid var(--card-border);
-}
-.modal-actions{
-  display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;
-}
-.modal-actions .doc-btn{flex:1;min-width:100px}
 
-.action-bar{
-  display:flex;gap:4px;margin-top:14px;padding-top:14px;
-  border-top:1px dashed var(--card-border);flex-wrap:wrap;
+.doc-profile{
+  display:flex;align-items:center;gap:14px;
+  padding:14px;border-radius:18px;
+  background:var(--brand);color:#fff;
+  margin-bottom:14px;position:relative;overflow:hidden;
 }
-.act-btn{
-  width:40px;height:40px;border-radius:11px;
-  background:transparent;border:1px solid transparent;
-  color:var(--text-muted);display:flex;align-items:center;justify-content:center;
-  cursor:pointer;padding:0;transition:all .18s;
+.doc-profile:before{content:"";position:absolute;width:180px;height:180px;right:-80px;top:-100px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%);pointer-events:none}
+.doc-profile .doc-avatar{
+  width:70px;height:70px;flex:0 0 70px;
+  border-radius:20px;
+  background:rgba(255,255,255,.22);
+  border:1.5px solid rgba(255,255,255,.3);
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+  font-size:1.8rem;
 }
-.act-btn:hover{background:var(--icon-bg);border-color:var(--icon-border);color:var(--icon-color)}
-.act-btn:active{transform:scale(.88)}
-.act-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.act-btn.speaking{color:#be185d;background:rgba(190,24,93,.12);animation:pulse 1.1s infinite}
-body.dark .act-btn.speaking{color:#fbcfe8;background:rgba(251,207,232,.15)}
+.doc-profile-info{flex:1;min-width:0;position:relative;z-index:1}
+.doc-profile-name{font-size:16px;font-weight:950;line-height:1.4;margin-bottom:5px;text-shadow:0 2px 8px rgba(0,0,0,.18)}
+.doc-profile-spec{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10.5px;font-weight:800;
+  padding:4px 10px;border-radius:20px;
+  background:rgba(255,255,255,.22);
+  border:1px solid rgba(255,255,255,.25);
+  backdrop-filter:blur(8px);
+}
+.doc-profile-spec svg{width:12px;height:12px}
+
+.info-block{
+  padding:12px 14px;border-radius:14px;
+  background:var(--soft);border:1px solid var(--line);
+  margin-bottom:10px;
+}
+.info-block-title{
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:900;color:var(--primary);
+  margin-bottom:8px;
+}
+.info-block-title svg{width:15px;height:15px}
+.info-row{
+  display:flex;align-items:flex-start;gap:8px;
+  padding:6px 0;font-size:12px;line-height:1.9;
+  font-weight:700;color:var(--text);
+}
+.info-row + .info-row{border-top:1px solid var(--line)}
+.info-row-icon{width:16px;height:16px;flex:0 0 16px;color:var(--primary);margin-top:3px}
+.info-row-text{flex:1;min-width:0}
+.info-row-text strong{color:var(--primary);font-weight:900}
+
+.doc-about{
+  padding:12px 14px;border-radius:14px;
+  background:rgba(236,72,153,.06);
+  border-right:3px solid var(--pink);
+  font-size:12.5px;line-height:2;font-weight:700;color:var(--text);
+  margin-bottom:10px;
+}
+
+.modal-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.modal-tag{
+  padding:5px 10px;border-radius:8px;
+  color:var(--primary);background:var(--soft);
+  font-size:10px;font-weight:700;
+}
+
+.modal-actions{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+.modal-actions .doc-btn{min-width:100px}
+
+.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:11px}
+.action{
+  min-height:40px;display:flex;align-items:center;justify-content:center;gap:5px;
+  border-radius:12px;color:var(--muted);background:var(--card);
+  border:1px solid var(--line);font-size:10px;font-weight:800;
+  transition:transform .18s;
+}
+.action:active{transform:scale(.95)}
+.action svg{width:15px;height:15px}
+.action.speaking{color:var(--primary);background:var(--soft);animation:pulse 1.1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
 
-.bottom-nav{
-  position:fixed;bottom:0;left:0;right:0;z-index:100;
-  background:var(--nav-bg);backdrop-filter:blur(24px);
-  border-top:1px solid var(--nav-border);
-  display:flex;justify-content:space-around;
-  padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));
-  max-width:520px;margin:0 auto;
-  box-shadow:0 -8px 30px rgba(190,24,93,.15);
-}
-.nav-item{
-  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
-  color:var(--nav-color);padding:8px 2px;font-size:.68rem;font-weight:800;
-  text-decoration:none;cursor:pointer;border-radius:12px;position:relative;
-}
-.nav-item.active{color:var(--nav-active)}
-.nav-item.active::before{
-  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:22px;height:3px;border-radius:0 0 4px 4px;
-  background:linear-gradient(90deg,#ec4899,#a855f7,#fde68a);
-  box-shadow:0 0 12px rgba(236,72,153,.8);
-}
-.nav-item svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.nav-item.active svg{stroke-width:2.4}
-
 .toast{
-  position:fixed;bottom:110px;left:50%;transform:translateX(-50%) translateY(20px);
-  background:linear-gradient(135deg,#be185d,#ec4899);color:#fff;
-  padding:14px 26px;border-radius:30px;font-size:.95rem;font-weight:900;
-  z-index:10002;opacity:0;transition:all .3s;pointer-events:none;
-  box-shadow:0 12px 30px rgba(236,72,153,.5);max-width:90vw;text-align:center;
-  white-space:pre-line;line-height:1.7;
+  position:fixed;z-index:300;right:50%;
+  bottom:calc(88px + env(safe-area-inset-bottom));
+  transform:translate(50%,20px);max-width:calc(100% - 30px);
+  padding:10px 14px;border-radius:12px;
+  color:#fff;background:#24162a;
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
+  font-size:11px;font-weight:800;
+  opacity:0;pointer-events:none;transition:.25s;
 }
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.show{opacity:1;transform:translate(50%,0)}
 
-@media (max-width:380px){
-  body{font-size:16px}
-  .app{padding:0 12px}
-  .page-header h1{font-size:1.2rem}
-  .hero{padding:18px}
-  .hero-icon{width:48px;height:48px;flex:0 0 48px}
-  .hero-icon svg{width:24px;height:24px}
-  .doc-avatar{width:48px;height:48px;flex:0 0 48px;font-size:1.3rem}
-  .doc-name{font-size:.95rem}
-  .doc-btn{font-size:.75rem;padding:10px 8px}
-  .nav-item{font-size:.62rem}
-  .nav-item svg{width:21px;height:21px}
+.bottom-nav{
+  position:fixed;z-index:70;right:0;bottom:0;left:0;
+  min-height:var(--nav-h);
+  padding:6px max(10px,env(safe-area-inset-left))
+          calc(6px + env(safe-area-inset-bottom))
+          max(10px,env(safe-area-inset-right));
+  display:grid;grid-template-columns:1fr 1fr 68px 1fr 1fr;
+  align-items:end;gap:2px;
+  background:rgba(251,248,255,.86);
+  backdrop-filter:blur(22px) saturate(180%);
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  border-top:1px solid var(--line);
+}
+html[data-theme="dark"] .bottom-nav,
+body.dark .bottom-nav{background:rgba(0,0,0,.88)}
+.nav-item{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;color:var(--muted);border-radius:13px;background:transparent;
+  font-size:9px;font-weight:800;padding:6px 2px;
+  transition:color .18s;
+}
+.nav-item svg{width:20px;height:20px}
+.nav-item.active{color:var(--primary)}
+.nav-item:active{transform:scale(.92)}
+.nav-fab-slot{position:relative;display:flex;justify-content:center;align-items:flex-end}
+.nav-home{
+  position:absolute;bottom:0;width:54px;height:54px;border-radius:18px;
+  display:grid;place-items:center;color:#fff;background:var(--brand);
+  box-shadow:0 10px 24px rgba(185,40,130,.3);
+  border:4px solid var(--bg);
+}
+.nav-home svg{width:23px;height:23px}
+
+button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);outline-offset:2px}
+@media (min-width:700px){
+  .bottom-nav{width:500px;right:50%;left:auto;transform:translateX(50%);border:1px solid var(--line);border-bottom:0;border-radius:22px 22px 0 0}
+  .modal{align-items:center}
+  .sheet{max-height:90vh;border-radius:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important}
 }
 </style>
 </head>
-
 <body>
 
-<script>
-(function(){
-  try{ if(localStorage.getItem('bn_theme')==='dark') document.body.classList.add('dark'); }catch(e){}
-})();
-</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.2 16.2L21 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.8L12 3l9 7.8v9a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 19.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4.5A2.5 2.5 0 017.5 2H20v17H7.5A2.5 2.5 0 015 16.5z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 16.5A2.5 2.5 0 017.5 14H20M8 6h8M8 9h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H11l-5.5 4v-4.7A2.5 2.5 0 014 13.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 8h8M8 11h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5zM19 16l.6 2.4L22 19l-2.4.6L19 22l-.6-2.4L16 19l2.4-.6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-medal" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-hospital" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M12 9v.01M12 12v.01M12 15v.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 16v-4M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3a15 15 0 010 18 15 15 0 010-18z" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V5a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2h2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="19" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 10.8l7.5-4.3M8.2 13.2l7.5 4.3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-speak" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4zM17 9a4 4 0 010 6M19.5 7a7 7 0 010 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5v.1a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V2a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1h.1a2 2 0 110 4h-.1a1.7 1.7 0 00-1.4 1z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-stethoscope" viewBox="0 0 24 24"><path d="M6 3v6a4 4 0 008 0V3M4 3h4M12 3h4M17 13a4 4 0 100 8 4 4 0 000-8zM17 13v-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
-<div class="app">
-
-  <header class="page-header">
-    <a class="back-btn" href="home.html" aria-label="بازگشت">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    </a>
-    <h1>پزشکان</h1>
-  </header>
-
-  <div class="hero">
-    <div class="hero-icon">
-      <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5"/><circle cx="12" cy="12" r="3" fill="#fff" opacity="0.6"/></svg>
-    </div>
-    <div class="hero-text">
-      <div class="hero-title">پزشکان متخصص بانوان</div>
-      <div class="hero-sub">۲۰ پزشک در کابل 💗</div>
-    </div>
+<header class="topbar">
+  <button class="top-side" id="backBtn" aria-label="بازگشت">
+    <svg><use href="#i-arrow-right"></use></svg>
+  </button>
+  <div class="brand-title">
+    <strong id="pageTitle">پزشکان</strong>
+    <span>بانوان نور</span>
   </div>
+  <button class="top-side" id="topSearchBtn" aria-label="جستجو">
+    <svg><use href="#i-search"></use></svg>
+  </button>
+</header>
 
-  <div class="search-wrap">
-    <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="text" class="search-input" id="searchInput" placeholder="جستجوی نام، تخصص یا کلینیک..." />
-  </div>
-
-  <div class="chips" id="chips"></div>
-
-  <div class="filter-count" id="filterCount">—</div>
-
-  <div class="doc-list" id="docList">
-    <div class="loader">در حال بارگذاری...</div>
-  </div>
-
-  <div style="height:20px"></div>
-</div>
-
-<nav class="bottom-nav">
-  <a class="nav-item" href="home.html">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span>خانه</span>
-  </a>
-  <a class="nav-item" href="search.html">
-    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <span>جستجو</span>
-  </a>
-  <a class="nav-item" href="hamraz.html">
-    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <span>همراز</span>
-  </a>
-  <a class="nav-item" href="ahkam.html">
-    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-    <span>احکام</span>
-  </a>
-  <a class="nav-item" href="settings.html">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-    <span>بیشتر</span>
-  </a>
-</nav>
-
-<div class="modal" id="docModal">
-  <div class="modal-box">
-    <div class="modal-head">
-      <div class="modal-head-text">
-        <span class="modal-badge" id="modalBadge">پزشک</span>
-        <div class="modal-q" id="modalTitle">—</div>
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg><use href="#i-stethoscope"></use></svg>
+        <span>پزشکان متخصص بانوان</span>
       </div>
-      <button class="modal-close" id="modalClose" type="button" aria-label="بستن">
-        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      <h1>پزشکان مورد اعتماد</h1>
+      <p>لیست پزشکان متخصص بانوان در کابل با شماره تماس و آدرس.</p>
+    </div>
+  </section>
+
+  <div class="search-box">
+    <svg><use href="#i-search"></use></svg>
+    <input id="searchInput" type="search" autocomplete="off"
+      placeholder="جستجوی نام، تخصص یا کلینیک..." aria-label="جستجو">
+  </div>
+
+  <div id="categoriesView">
+    <section class="cat-grid" id="catGrid"></section>
+  </div>
+
+  <div id="listView" class="hidden">
+    <div class="list-header">
+      <div class="list-title" id="listTitle">
+        <svg><use href="#i-stethoscope"></use></svg>
+        <span>همه پزشکان</span>
+      </div>
+      <button class="back-cat-btn" id="backCatBtn" type="button">
+        <svg><use href="#i-arrow-right"></use></svg>
+        دسته‌ها
       </button>
     </div>
-    <div class="modal-content">
-      <div class="answer-text" id="modalContent">—</div>
+    <div class="list-meta">
+      <span class="result-count" id="resultCount">۰ پزشک</span>
+    </div>
+    <section class="doc-list" id="docList" aria-live="polite"></section>
+  </div>
+</main>
+
+<nav class="bottom-nav">
+  <button class="nav-item" id="navSearch" type="button">
+    <svg><use href="#i-search"></use></svg>
+    جستجو
+  </button>
+  <button class="nav-item" id="navHamraz" type="button">
+    <svg><use href="#i-chat"></use></svg>
+    همراز
+  </button>
+  <div class="nav-fab-slot">
+    <button class="nav-home" id="navHome" aria-label="خانه" type="button">
+      <svg><use href="#i-home"></use></svg>
+    </button>
+  </div>
+  <button class="nav-item" id="navAhkam" type="button">
+    <svg><use href="#i-book"></use></svg>
+    احکام
+  </button>
+  <button class="nav-item" id="navMore" type="button">
+    <svg><use href="#i-settings"></use></svg>
+    بیشتر
+  </button>
+</nav>
+
+<div class="modal" id="docModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <header class="sheet-head">
+      <button class="sheet-close" id="closeModal" aria-label="بستن">
+        <svg><use href="#i-x"></use></svg>
+      </button>
+      <div class="sheet-title">
+        <strong id="modalTitle">پزشک</strong>
+        <span id="modalSubtitle">بانوان نور</span>
+      </div>
+      <div style="width:38px;flex:0 0 38px"></div>
+    </header>
+    <div class="sheet-scroll" id="modalScroll">
+      <div id="profileArea"></div>
+      <div id="infoArea"></div>
+      <div id="aboutArea"></div>
       <div class="modal-tags" id="modalTags"></div>
       <div class="modal-actions" id="modalActions"></div>
-      <div class="action-bar">
-        <button class="act-btn" data-doc-act="copy" title="کپی">
-          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        </button>
-        <button class="act-btn" data-doc-act="share" title="اشتراک‌گذاری">
-          <svg viewBox="0 0 24 24"><path d="M15 14l5-5-5-5"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>
-        </button>
-        <button class="act-btn" data-doc-act="speak" title="خواندن صوتی">
-          <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-        </button>
+      <div class="actions">
+        <button class="action" id="copyBtn" type="button"><svg><use href="#i-copy"></use></svg>کپی</button>
+        <button class="action" id="shareBtn" type="button"><svg><use href="#i-share"></use></svg>اشتراک</button>
+        <button class="action" id="speakBtn" type="button"><svg><use href="#i-speak"></use></svg>خواندن</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-(function(){
-'use strict';
+"use strict";
 
-var DOCTORS_PATH = 'data/doctors/doctors.json';
+const DOCTORS_PATH = "data/doctors/doctors.json";
+const CACHE_VERSION = "v1";
+const THEME_KEY = "bn_theme";
 
-var allDoctors = [];
-var currentDoc = null;
-var currentSpecialty = 'all';
-var searchQuery = '';
-var speechBtn = null;
-var toastTimer = null;
+let allDoctors = [];
+let currentDoc = null;
+let currentSpecialty = null;
+let currentView = "categories";
+let searchQuery = "";
+let speechActive = false;
+let toastTimer = null;
 
-/* ═══ HELPERS ═══ */
-function $(id){ return document.getElementById(id); }
-function escapeHtml(s){
-  if(s==null) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const $ = id => document.getElementById(id);
+const docList = $("docList");
+const searchInput = $("searchInput");
+const resultCount = $("resultCount");
+const catGrid = $("catGrid");
+const categoriesView = $("categoriesView");
+const listView = $("listView");
+const listTitle = $("listTitle");
+const pageTitle = $("pageTitle");
+const modal = $("docModal");
+const modalTitle = $("modalTitle");
+const modalSubtitle = $("modalSubtitle");
+const modalScroll = $("modalScroll");
+const profileArea = $("profileArea");
+const infoArea = $("infoArea");
+const aboutArea = $("aboutArea");
+const modalTags = $("modalTags");
+const modalActions = $("modalActions");
+const toastEl = $("toast");
+
+/* THEME */
+function getSystemTheme(){
+  try{ return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+  catch(e){ return "light"; }
 }
-function faNum(n){ return String(n).replace(/\d/g,function(d){ return '۰۱۲۳۴۵۶۷۸۹'[d]; }); }
-function showMsg(msg,dur){
-  dur=dur||2200;
-  var t=$('toast'); if(!t) return;
-  t.textContent=msg; t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(function(){ t.classList.remove('show'); },dur);
+function getSavedTheme(){
+  try{
+    const t = localStorage.getItem(THEME_KEY);
+    if(t === "dark" || t === "light") return t;
+  }catch(e){}
+  return getSystemTheme();
 }
-function getTheme(){ try{ return localStorage.getItem('bn_theme')||'light'; }catch(e){ return 'light'; } }
 function applyTheme(){
-  if(getTheme()==='dark') document.body.classList.add('dark');
-  else document.body.classList.remove('dark');
+  const t = getSavedTheme();
+  document.documentElement.setAttribute("data-theme", t);
+  document.body.classList.toggle("dark", t === "dark");
+  const m = $("themeMeta");
+  if(m) m.setAttribute("content", t === "dark" ? "#000000" : "#db2777");
 }
+applyTheme();
 
-function firstLetter(name){
-  if(!name) return '؟';
-  var n = String(name).trim();
-  n = n.replace(/^دکتر\s+/, '').replace(/^استاد\s+/, '').replace(/^خانم\s+/, '');
-  return n.charAt(0) || '؟';
+/* HELPERS */
+function escapeHTML(v){
+  return String(v == null ? "" : v)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;").replace(/'/g,"&#039;");
 }
-
+function faNum(n){ return String(n).replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]); }
+function normalizeSearch(v){
+  return String(v || "").toLowerCase()
+    .replace(/ي/g,"ی").replace(/ى/g,"ی").replace(/ك/g,"ک")
+    .replace(/ۀ/g,"ه").replace(/ة/g,"ه").replace(/ؤ/g,"و")
+    .replace(/إ/g,"ا").replace(/أ/g,"ا").replace(/ـ/g,"")
+    .replace(/[\u064B-\u065F\u0670]/g,"").replace(/\s+/g," ").trim();
+}
+function showToast(msg){
+  clearTimeout(toastTimer);
+  toastEl.textContent = msg;
+  toastEl.classList.add("show");
+  toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2200);
+}
 function cleanPhone(p){
-  if(!p) return '';
-  var s = String(p).replace(/[^\d+]/g, '');
-  if(s.indexOf('+') === 0) return s;
-  if(s.indexOf('00') === 0) return '+' + s.slice(2);
-  if(s.charAt(0) === '0') return '+93' + s.slice(1);
+  if(!p) return "";
+  let s = String(p).replace(/[^\d+]/g, "");
+  if(s.indexOf("+") === 0) return s;
+  if(s.indexOf("00") === 0) return "+" + s.slice(2);
+  if(s.charAt(0) === "0") return "+93" + s.slice(1);
   return s;
 }
-
-/* ═══ LOAD ═══ */
-function fetchJSON(path){
-  return fetch(path).then(function(res){
-    if(!res.ok) throw new Error('HTTP '+res.status);
-    return res.json();
-  });
+function firstLetter(name){
+  if(!name) return "؟";
+  let n = String(name).trim();
+  n = n.replace(/^دکتر\s+/,"").replace(/^استاد\s+/,"").replace(/^خانم\s+/,"").replace(/^آیت\s+الله\s+/,"");
+  return n.charAt(0) || "؟";
 }
 
+/* NORMALIZE */
 function normalizeDoctor(d, idx){
-  if(!d) return null;
+  if(!d || typeof d !== "object") return null;
   return {
-    id: String(d.id || ('dr_'+(idx+1))),
-    name: d.name || 'پزشک',
-    gender: d.gender || '',
-    specialty: d.specialty || 'عمومی',
-    clinic: d.clinic || '',
-    city: d.city || '',
-    address: d.address || '',
-    phone: d.phone || '',
-    whatsapp: d.whatsapp || '',
-    hours: d.hours || '',
-    experience: d.experience || '',
-    education: d.education || '',
-    about: d.about || '',
+    id: String(d.id || ("dr_" + (idx + 1))),
+    name: d.name || "پزشک",
+    gender: d.gender || "",
+    specialty: d.specialty || "عمومی",
+    clinic: d.clinic || d.hospital || "",
+    city: d.city || "",
+    address: d.address || "",
+    phone: d.phone || d.tel || "",
+    whatsapp: d.whatsapp || d.wa || "",
+    hours: d.hours || d.schedule || "",
+    experience: d.experience || "",
+    education: d.education || "",
+    about: d.about || d.bio || "",
     tags: Array.isArray(d.tags) ? d.tags : [],
-    photo: d.photo || '',
-    website: d.website || '',
-    instagram: d.instagram || ''
+    photo: d.photo || d.image || "",
+    website: d.website || ""
   };
 }
-
 function extractDoctors(data){
   if(!data) return [];
   if(Array.isArray(data)) return data;
   if(Array.isArray(data.doctors)) return data.doctors;
   if(Array.isArray(data.items)) return data.items;
   if(Array.isArray(data.list)) return data.list;
-  if(Array.isArray(data.data)) return data.data;
   if(data.doctors) return [data.doctors];
   if(data.name) return [data];
   return [];
 }
 
-function loadDoctors(){
-  return fetchJSON(DOCTORS_PATH)
-    .then(function(data){
-      var arr = extractDoctors(data);
-      allDoctors = arr.map(function(d,i){ return normalizeDoctor(d,i); }).filter(Boolean);
-      renderChips();
-      renderDoctors();
-      return allDoctors;
-    })
-    .catch(function(err){
-      console.warn('doctors.json:', err.message);
-      allDoctors = [];
-      $('docList').innerHTML = '<div class="empty">هنوز پزشکی اضافه نشده<br><br><span style="font-size:.85rem;opacity:.8">فایل: <strong>data/doctors/doctors.json</strong></span></div>';
-      return [];
-    });
+/* LOAD */
+async function loadDoctors(){
+  catGrid.innerHTML = '<div class="state" style="grid-column:span 2"><div class="loader"></div>در حال بارگذاری...</div>';
+  try{
+    const r = await fetch(DOCTORS_PATH + "?v=" + CACHE_VERSION, {cache:"no-cache"});
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    const data = await r.json();
+    const arr = extractDoctors(data);
+    allDoctors = arr.map(normalizeDoctor).filter(Boolean);
+    renderCategories();
+    if (window.bnAnalytics) window.bnAnalytics.track("doctors_loaded", { count: allDoctors.length });
+  }catch(err){
+    console.warn("doctors.json:", err.message);
+    allDoctors = [];
+    catGrid.innerHTML =
+      '<div class="state" style="grid-column:span 2">' +
+        '<div class="empty-icon"><svg><use href="#i-stethoscope"></use></svg></div>' +
+        '<strong>هنوز پزشکی اضافه نشده</strong>' +
+        '<div style="margin-top:6px;font-size:10px">' +
+          'فایل: <b>data/doctors/doctors.json</b>' +
+        '</div>' +
+      '</div>';
+  }
 }
 
-/* ═══ CHIPS ═══ */
-function renderChips(){
-  var wrap = $('chips');
-  if(!wrap) return;
-  var specialties = {};
-  allDoctors.forEach(function(d){
-    specialties[d.specialty] = (specialties[d.specialty] || 0) + 1;
+/* CATEGORIES */
+function renderCategories(){
+  const counts = {};
+  allDoctors.forEach(d => {
+    counts[d.specialty] = (counts[d.specialty] || 0) + 1;
   });
 
-  var html = '<button class="chip active" data-spec="all">' +
-    '<span>همه</span>' +
-    '<span class="chip-count">' + faNum(allDoctors.length) + '</span>' +
-  '</button>';
+  let html = `
+    <button class="cat-card" data-cat="__all__" type="button">
+      <div class="cat-icon"><svg><use href="#i-stethoscope"></use></svg></div>
+      <div class="cat-title">همه پزشکان</div>
+      <span class="cat-count">${faNum(allDoctors.length)} پزشک</span>
+    </button>
+  `;
 
-  Object.keys(specialties).sort().forEach(function(sp){
-    html += '<button class="chip" data-spec="' + escapeHtml(sp) + '">' +
-      '<span>' + escapeHtml(sp) + '</span>' +
-      '<span class="chip-count">' + faNum(specialties[sp]) + '</span>' +
-    '</button>';
+  Object.keys(counts).sort().forEach(sp => {
+    html += `
+      <button class="cat-card" data-cat="${escapeHTML(sp)}" type="button">
+        <div class="cat-icon"><svg><use href="#i-medal"></use></svg></div>
+        <div class="cat-title">${escapeHTML(sp)}</div>
+        <span class="cat-count">${faNum(counts[sp])} پزشک</span>
+      </button>
+    `;
   });
 
-  wrap.innerHTML = html;
-  wrap.querySelectorAll('.chip').forEach(function(chip){
-    chip.addEventListener('click', function(){
-      wrap.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('active'); });
-      chip.classList.add('active');
-      currentSpecialty = chip.getAttribute('data-spec');
-      renderDoctors();
-    });
-  });
+  catGrid.innerHTML = html;
 }
 
-/* ═══ RENDER DOCTORS ═══ */
-function renderDoctors(){
-  var list = $('docList');
-  if(!list) return;
-  var filtered = allDoctors.slice();
+/* VIEW */
+function openSpecialty(catId){
+  currentSpecialty = catId === "__all__" ? null : catId;
+  currentView = "list";
+  categoriesView.classList.add("hidden");
+  listView.classList.remove("hidden");
+  const title = catId === "__all__" ? "همه پزشکان" : catId;
+  pageTitle.textContent = title;
+  listTitle.innerHTML = '<svg><use href="#i-stethoscope"></use></svg><span>' + escapeHTML(title) + '</span>';
+  applyFilters();
+  window.scrollTo({top:0,behavior:"smooth"});
 
-  if(currentSpecialty !== 'all'){
-    filtered = filtered.filter(function(d){ return d.specialty === currentSpecialty; });
+  if (window.bnAnalytics) window.bnAnalytics.track("doctors_specialty", { specialty: title });
+}
+
+function backToCategories(){
+  currentSpecialty = null;
+  currentView = "categories";
+  listView.classList.add("hidden");
+  categoriesView.classList.remove("hidden");
+  pageTitle.textContent = "پزشکان";
+  searchInput.value = "";
+  searchQuery = "";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* FILTER */
+function applyFilters(){
+  const q = normalizeSearch(searchQuery);
+  let filtered = allDoctors.slice();
+
+  if(currentSpecialty){
+    filtered = filtered.filter(d => d.specialty === currentSpecialty);
   }
-  if(searchQuery){
-    var q = searchQuery.toLowerCase().trim();
-    filtered = filtered.filter(function(d){
-      return d.name.toLowerCase().indexOf(q) > -1 ||
-             d.specialty.toLowerCase().indexOf(q) > -1 ||
-             d.clinic.toLowerCase().indexOf(q) > -1 ||
-             d.city.toLowerCase().indexOf(q) > -1 ||
-             d.address.toLowerCase().indexOf(q) > -1 ||
-             d.tags.some(function(t){ return String(t).toLowerCase().indexOf(q) > -1; });
+  if(q){
+    filtered = filtered.filter(d => {
+      const hay = normalizeSearch([
+        d.name, d.specialty, d.clinic, d.city, d.address,
+        d.experience, d.education, d.about, (d.tags || []).join(" ")
+      ].join(" "));
+      return hay.includes(q);
     });
   }
+  renderDoctors(filtered);
+}
 
-  var cnt = $('filterCount');
-  if(cnt) cnt.textContent = faNum(filtered.length) + ' پزشک یافت شد';
-
-  if(filtered.length === 0){
-    list.innerHTML = '<div class="empty">' +
-      (searchQuery ? 'برای «' + escapeHtml(searchQuery) + '» پزشکی یافت نشد' : 'پزشکی در این تخصص یافت نشد') +
-    '</div>';
+function renderDoctors(list){
+  if(!list.length){
+    docList.innerHTML =
+      '<div class="state">' +
+        '<div class="empty-icon"><svg><use href="#i-search"></use></svg></div>' +
+        '<strong>موردی پیدا نشد</strong>' +
+      '</div>';
+    resultCount.textContent = "۰ پزشک";
     return;
   }
+  resultCount.textContent = faNum(list.length) + " پزشک";
 
-  var html = '';
-  filtered.forEach(function(d){
-    var phone = cleanPhone(d.phone);
-    var whats = cleanPhone(d.whatsapp || d.phone);
-    var avatarContent = d.photo
-      ? '<img src="' + escapeHtml(d.photo) + '" alt="' + escapeHtml(d.name) + '" onerror="this.style.display=\'none\';this.parentNode.textContent=\'' + escapeHtml(firstLetter(d.name)) + '\'" />'
-      : escapeHtml(firstLetter(d.name));
+  docList.innerHTML = list.map(d => {
+    const phone = cleanPhone(d.phone);
+    const whats = cleanPhone(d.whatsapp || d.phone);
+    const avatarContent = d.photo
+      ? '<img src="' + escapeHTML(d.photo) + '" alt="' + escapeHTML(d.name) + '" onerror="this.style.display=\'none\';this.parentNode.textContent=\'' + escapeHTML(firstLetter(d.name)) + '\'">'
+      : escapeHTML(firstLetter(d.name));
 
-    html += '<div class="doc-card" data-id="' + escapeHtml(d.id) + '">' +
-      '<div class="doc-head">' +
-        '<div class="doc-avatar">' + avatarContent + '</div>' +
-        '<div class="doc-info">' +
-          '<div class="doc-name">' + escapeHtml(d.name) + '</div>' +
-          '<span class="doc-specialty">' +
-            '<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5"/></svg>' +
-            escapeHtml(d.specialty) +
-          '</span>' +
-        '</div>' +
-      '</div>' +
+    const metaBits = [];
+    if(d.clinic || d.city) metaBits.push(
+      '<div class="doc-meta-item">' +
+        '<svg><use href="#i-hospital"></use></svg>' +
+        '<div><strong>' + escapeHTML(d.clinic || "") + '</strong>' +
+        (d.city ? (d.clinic ? ' — ' : '') + escapeHTML(d.city) : "") + '</div>' +
+      '</div>'
+    );
+    if(d.address) metaBits.push(
+      '<div class="doc-meta-item">' +
+        '<svg><use href="#i-map"></use></svg>' +
+        '<div>' + escapeHTML(d.address) + '</div>' +
+      '</div>'
+    );
+    if(d.hours) metaBits.push(
+      '<div class="doc-meta-item">' +
+        '<svg><use href="#i-clock"></use></svg>' +
+        '<div>' + escapeHTML(d.hours) + '</div>' +
+      '</div>'
+    );
 
-      '<div class="doc-meta">' +
-        (d.clinic ? '<div class="doc-meta-item">' +
-          '<svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>' +
-          '<div><strong>' + escapeHtml(d.clinic) + '</strong>' +
-          (d.city ? ' — ' + escapeHtml(d.city) : '') + '</div>' +
-        '</div>' : '') +
-        (d.address ? '<div class="doc-meta-item">' +
-          '<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>' +
-          '<div>' + escapeHtml(d.address) + '</div>' +
-        '</div>' : '') +
-        (d.hours ? '<div class="doc-meta-item">' +
-          '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>' +
-          '<div>' + escapeHtml(d.hours) + '</div>' +
-        '</div>' : '') +
-        (d.experience ? '<div class="doc-meta-item">' +
-          '<svg viewBox="0 0 24 24"><path d="M12 2l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>' +
-          '<div>سابقه: <strong>' + escapeHtml(d.experience) + '</strong></div>' +
-        '</div>' : '') +
-      '</div>' +
-
-      '<div class="doc-actions">' +
-        (phone ? '<a class="doc-btn doc-btn-call" href="tel:' + escapeHtml(phone) + '">' +
-          '<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>' +
-          'تماس' +
-        '</a>' : '') +
-        (whats ? '<a class="doc-btn doc-btn-whats" href="https://wa.me/' + escapeHtml(whats.replace('+','')) + '" target="_blank" rel="noopener">' +
-          '<svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>' +
-          'واتساپ' +
-        '</a>' : '') +
-        '<button class="doc-btn doc-btn-map" data-detail="' + escapeHtml(d.id) + '" type="button">' +
-          '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>' +
-          'جزئیات' +
-        '</button>' +
-      '</div>' +
-    '</div>';
-  });
-
-  list.innerHTML = html;
-
-  list.querySelectorAll('[data-detail]').forEach(function(btn){
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      openDoctor(btn.getAttribute('data-detail'));
-    });
-  });
-
-  list.querySelectorAll('.doc-card').forEach(function(card){
-    card.addEventListener('click', function(e){
-      if(e.target.closest('a')) return;
-      if(e.target.closest('[data-detail]')) return;
-      openDoctor(card.getAttribute('data-id'));
-    });
-  });
+    return `
+      <article class="doc-card" data-id="${escapeHTML(d.id)}" role="button" tabindex="0">
+        <div class="doc-head">
+          <div class="doc-avatar">${avatarContent}</div>
+          <div class="doc-info">
+            <div class="doc-name">${escapeHTML(d.name)}</div>
+            <span class="doc-specialty">
+              <svg><use href="#i-stethoscope"></use></svg>
+              ${escapeHTML(d.specialty)}
+            </span>
+          </div>
+        </div>
+        ${metaBits.length ? '<div class="doc-meta">' + metaBits.join("") + '</div>' : ''}
+        <div class="doc-actions">
+          ${phone ? '<a class="doc-btn doc-btn-call" href="tel:' + escapeHTML(phone) + '" data-stop="1"><svg><use href="#i-phone"></use></svg>تماس</a>' : ''}
+          ${whats ? '<a class="doc-btn doc-btn-whats" href="https://wa.me/' + escapeHTML(whats.replace("+","")) + '" target="_blank" rel="noopener" data-stop="1"><svg><use href="#i-whatsapp"></use></svg>واتساپ</a>' : ''}
+          <button class="doc-btn doc-btn-map" data-open="${escapeHTML(d.id)}" type="button"><svg><use href="#i-info"></use></svg>جزئیات</button>
+        </div>
+      </article>
+    `;
+  }).join("");
 }
 
-/* ═══ OPEN MODAL ═══ */
+/* OPEN DOCTOR */
+function findDoctor(id){ return allDoctors.find(d => d.id === String(id)); }
+
 function openDoctor(id){
-  var d = null;
-  for(var i=0; i<allDoctors.length; i++){
-    if(allDoctors[i].id === id){ d = allDoctors[i]; break; }
-  }
+  const d = findDoctor(id);
   if(!d) return;
   currentDoc = d;
 
-  $('modalBadge').textContent = d.specialty || 'پزشک';
-  $('modalTitle').textContent = d.name;
+  modalTitle.textContent = d.name;
+  modalSubtitle.textContent = d.specialty || "پزشک";
 
-  var lines = [];
-  if(d.clinic) lines.push('<strong>کلینیک:</strong> ' + escapeHtml(d.clinic));
-  if(d.city) lines.push('<strong>شهر:</strong> ' + escapeHtml(d.city));
-  if(d.address) lines.push('<strong>آدرس:</strong> ' + escapeHtml(d.address));
-  if(d.hours) lines.push('<strong>ساعات کاری:</strong> ' + escapeHtml(d.hours));
-  if(d.experience) lines.push('<strong>سابقه:</strong> ' + escapeHtml(d.experience));
-  if(d.education) lines.push('<strong>تحصیلات:</strong> ' + escapeHtml(d.education));
-  if(d.phone) lines.push('<strong>تلفن:</strong> ' + escapeHtml(d.phone));
-  if(d.whatsapp) lines.push('<strong>واتساپ:</strong> ' + escapeHtml(d.whatsapp));
-  if(d.about) lines.push('\n<strong>درباره:</strong>\n' + escapeHtml(d.about));
-  $('modalContent').innerHTML = lines.join('<br>');
+  const phone = cleanPhone(d.phone);
+  const whats = cleanPhone(d.whatsapp || d.phone);
 
-  var tagsEl = $('modalTags');
+  const avatarContent = d.photo
+    ? '<img src="' + escapeHTML(d.photo) + '" alt="' + escapeHTML(d.name) + '" onerror="this.style.display=\'none\';this.parentNode.textContent=\'' + escapeHTML(firstLetter(d.name)) + '\'">'
+    : escapeHTML(firstLetter(d.name));
+
+  profileArea.innerHTML = `
+    <div class="doc-profile">
+      <div class="doc-avatar">${avatarContent}</div>
+      <div class="doc-profile-info">
+        <div class="doc-profile-name">${escapeHTML(d.name)}</div>
+        <span class="doc-profile-spec">
+          <svg><use href="#i-stethoscope"></use></svg>
+          ${escapeHTML(d.specialty)}
+        </span>
+      </div>
+    </div>
+  `;
+
+  const rows = [];
+  if(d.clinic) rows.push(`
+    <div class="info-row">
+      <svg class="info-row-icon"><use href="#i-hospital"></use></svg>
+      <div class="info-row-text"><strong>کلینیک:</strong> ${escapeHTML(d.clinic)}</div>
+    </div>
+  `);
+  if(d.city) rows.push(`
+    <div class="info-row">
+      <svg class="info-row-icon"><use href="#i-map"></use></svg>
+      <div class="info-row-text"><strong>شهر:</strong> ${escapeHTML(d.city)}</div>
+    </div>
+  `);
+  if(d.address) rows.push(`
+    <div class="info-row">
+      <svg class="info-row-icon"><use href="#i-map"></use></svg>
+      <div class="info-row-text"><strong>آدرس:</strong> ${escapeHTML(d.address)}</div>
+    </div>
+  `);
+  if(d.hours) rows.push(`
+    <div class="info-row">
+      <svg class="info-row-icon"><use href="#i-clock"></use></svg>
+      <div class="info-row-text"><strong>ساعات کاری:</strong> ${escapeHTML(d.hours)}</div>
+    </div>
+  `);
+  if(d.experience) rows.push(`
+    <div class="info-row">
+      <svg class="info-row-icon"><use href="#i-medal"></use></svg>
+      <div class="info-row-text"><strong>سابقه:</strong> ${escapeHTML(d.experience)}</div>
+    </div>
+  `);
+  if(d.education) rows.push(`
+    <div class="info-row">
+      <svg class="info-row-icon"><use href="#i-medal"></use></svg>
+      <div class="info-row-text"><strong>تحصیلات:</strong> ${escapeHTML(d.education)}</div>
+    </div>
+  `);
+  if(d.phone) rows.push(`
+    <div class="info-row">
+      <svg class="info-row-icon"><use href="#i-phone"></use></svg>
+      <div class="info-row-text"><strong>تلفن:</strong> ${escapeHTML(d.phone)}</div>
+    </div>
+  `);
+  if(d.whatsapp) rows.push(`
+    <div class="info-row">
+      <svg class="info-row-icon"><use href="#i-whatsapp"></use></svg>
+      <div class="info-row-text"><strong>واتساپ:</strong> ${escapeHTML(d.whatsapp)}</div>
+    </div>
+  `);
+
+  if(rows.length){
+    infoArea.innerHTML = `
+      <div class="info-block">
+        <div class="info-block-title"><svg><use href="#i-info"></use></svg>اطلاعات تماس</div>
+        ${rows.join("")}
+      </div>
+    `;
+  } else {
+    infoArea.innerHTML = "";
+  }
+
+  aboutArea.innerHTML = d.about
+    ? '<div class="doc-about">' + escapeHTML(d.about).replace(/\n/g, "<br>") + '</div>'
+    : '';
+
   if(d.tags && d.tags.length){
-    tagsEl.innerHTML = d.tags.map(function(t){
-      return '<span class="modal-tag">' + escapeHtml(t) + '</span>';
-    }).join('');
-    tagsEl.style.display = 'flex';
-  } else { tagsEl.innerHTML = ''; tagsEl.style.display = 'none'; }
+    modalTags.innerHTML = d.tags.map(t => '<span class="modal-tag">' + escapeHTML(t) + '</span>').join("");
+    modalTags.style.display = "flex";
+  } else {
+    modalTags.innerHTML = "";
+    modalTags.style.display = "none";
+  }
 
-  var phone = cleanPhone(d.phone);
-  var whats = cleanPhone(d.whatsapp || d.phone);
-  var actionsHtml = '';
-  if(phone){
-    actionsHtml += '<a class="doc-btn doc-btn-call" href="tel:' + escapeHtml(phone) + '">' +
-      '<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>' +
-      'تماس' +
-    '</a>';
-  }
-  if(whats){
-    actionsHtml += '<a class="doc-btn doc-btn-whats" href="https://wa.me/' + escapeHtml(whats.replace('+','')) + '" target="_blank" rel="noopener">' +
-      '<svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>' +
-      'واتساپ' +
-    '</a>';
-  }
-  if(d.address){
-    actionsHtml += '<a class="doc-btn doc-btn-map" href="https://www.google.com/maps/search/' + encodeURIComponent(d.address) + '" target="_blank" rel="noopener">' +
-      '<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>' +
-      'نقشه' +
-    '</a>';
-  }
-  if(d.website){
-    actionsHtml += '<a class="doc-btn doc-btn-map" href="' + escapeHtml(d.website) + '" target="_blank" rel="noopener">' +
-      '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>' +
-      'وب‌سایت' +
-    '</a>';
-  }
-  $('modalActions').innerHTML = actionsHtml;
+  let actions = "";
+  if(phone) actions += '<a class="doc-btn doc-btn-call" href="tel:' + escapeHTML(phone) + '"><svg><use href="#i-phone"></use></svg>تماس</a>';
+  if(whats) actions += '<a class="doc-btn doc-btn-whats" href="https://wa.me/' + escapeHTML(whats.replace("+","")) + '" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"></use></svg>واتساپ</a>';
+  if(d.address) actions += '<a class="doc-btn doc-btn-map" href="https://www.google.com/maps/search/' + encodeURIComponent(d.address) + '" target="_blank" rel="noopener"><svg><use href="#i-map"></use></svg>نقشه</a>';
+  if(d.website) actions += '<a class="doc-btn doc-btn-map" href="' + escapeHTML(d.website) + '" target="_blank" rel="noopener"><svg><use href="#i-globe"></use></svg>وب‌سایت</a>';
+  modalActions.innerHTML = actions;
 
-  $('docModal').classList.add('show');
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+  modalScroll.scrollTop = 0;
+
+  if (window.bnAnalytics) window.bnAnalytics.track("doctor_open", { id: d.id, specialty: d.specialty });
 }
 
 function closeModal(){
   stopSpeech();
-  $('docModal').classList.remove('show');
+  modal.classList.remove("show");
+  document.body.style.overflow = "";
   currentDoc = null;
+  profileArea.innerHTML = "";
+  infoArea.innerHTML = "";
+  aboutArea.innerHTML = "";
+  modalTags.innerHTML = "";
+  modalActions.innerHTML = "";
 }
 
-/* ═══ COPY / SHARE / SPEAK ═══ */
-function fallbackCopy(text){
-  var ta=document.createElement('textarea');
-  ta.value=text; ta.style.position='fixed'; ta.style.top='-1000px'; ta.style.opacity='0';
-  document.body.appendChild(ta); ta.select();
-  try{ document.execCommand('copy'); showMsg('متن کپی شد ✓'); }
-  catch(e){ showMsg('...'); }
-  document.body.removeChild(ta);
+/* COPY / SHARE / SPEAK */
+function doctorText(d){
+  const lines = [d.name];
+  if(d.specialty) lines.push("تخصص: " + d.specialty);
+  if(d.clinic) lines.push("کلینیک: " + d.clinic);
+  if(d.city) lines.push("شهر: " + d.city);
+  if(d.address) lines.push("آدرس: " + d.address);
+  if(d.hours) lines.push("ساعات کاری: " + d.hours);
+  if(d.experience) lines.push("سابقه: " + d.experience);
+  if(d.education) lines.push("تحصیلات: " + d.education);
+  if(d.phone) lines.push("تلفن: " + d.phone);
+  if(d.whatsapp) lines.push("واتساپ: " + d.whatsapp);
+  if(d.about) lines.push("", d.about);
+  return lines.join("\n");
 }
-function copyText(text){
-  if(!text) return;
-  if(navigator.clipboard && window.isSecureContext){
-    navigator.clipboard.writeText(text)
-      .then(function(){ showMsg('متن کپی شد ✓'); })
-      .catch(function(){ fallbackCopy(text); });
-  } else fallbackCopy(text);
-}
-function shareText(text,title){
-  if(!text) return;
-  if(navigator.share){
-    navigator.share({title:title||'بانوان نور',text:text}).catch(function(){});
-  } else { copyText(text); showMsg('متن کپی شد'); }
-}
-function speakText(text,btn){
-  if(!text) return;
-  if(!('speechSynthesis' in window)){ showMsg('خواندن صوتی پشتیبانی نمی‌شود'); return; }
-  if(window.speechSynthesis.speaking || window.speechSynthesis.pending){
-    window.speechSynthesis.cancel();
-    if(speechBtn) speechBtn.classList.remove('speaking');
-    if(speechBtn === btn){ speechBtn = null; return; }
+async function copyDoctor(){
+  if(!currentDoc) return;
+  const text = doctorText(currentDoc);
+  try{ await navigator.clipboard.writeText(text); showToast("متن کپی شد"); }
+  catch(e){
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand("copy"); showToast("متن کپی شد"); }
+    catch(x){ showToast("کپی نشد"); }
+    ta.remove();
   }
-  var utt = new SpeechSynthesisUtterance(text);
-  utt.lang='fa-IR'; utt.rate=0.95; utt.pitch=1;
+}
+async function shareDoctor(){
+  if(!currentDoc) return;
+  const text = doctorText(currentDoc) + "\n\n— بانوان نور";
   try{
-    var voices = window.speechSynthesis.getVoices();
-    for(var i=0;i<voices.length;i++){
-      if(voices[i].lang && voices[i].lang.toLowerCase().indexOf('fa')===0){ utt.voice=voices[i]; break; }
-    }
+    if(navigator.share) await navigator.share({title: currentDoc.name, text});
+    else { await navigator.clipboard.writeText(text); showToast("متن کپی شد"); }
   }catch(e){}
-  if(btn){ btn.classList.add('speaking'); speechBtn = btn; }
-  utt.onend = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
-  utt.onerror = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
-  window.speechSynthesis.speak(utt);
+}
+function speakDoctor(){
+  if(!currentDoc) return;
+  if(!("speechSynthesis" in window)){ showToast("پشتیبانی نمی‌شود"); return; }
+  const btn = $("speakBtn");
+  if(speechActive){
+    speechSynthesis.cancel();
+    speechActive = false;
+    btn.classList.remove("speaking");
+    btn.innerHTML = '<svg><use href="#i-speak"></use></svg>خواندن';
+    return;
+  }
+  const text = doctorText(currentDoc);
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "fa-IR"; u.rate = .95; u.pitch = 1;
+  u.onstart = () => {
+    speechActive = true;
+    btn.classList.add("speaking");
+    btn.innerHTML = '<svg><use href="#i-speak"></use></svg>توقف';
+  };
+  u.onend = u.onerror = () => {
+    speechActive = false;
+    btn.classList.remove("speaking");
+    btn.innerHTML = '<svg><use href="#i-speak"></use></svg>خواندن';
+  };
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
 }
 function stopSpeech(){
-  try{
-    if('speechSynthesis' in window) window.speechSynthesis.cancel();
-    if(speechBtn) speechBtn.classList.remove('speaking');
-    speechBtn = null;
-  }catch(e){}
+  if("speechSynthesis" in window) speechSynthesis.cancel();
+  speechActive = false;
+  const btn = $("speakBtn");
+  if(btn){
+    btn.classList.remove("speaking");
+    btn.innerHTML = '<svg><use href="#i-speak"></use></svg>خواندن';
+  }
 }
 
-/* ═══ MODAL ACTIONS ═══ */
-function setupModalActions(){
-  var bar = document.querySelector('.action-bar');
-  if(bar){
-    bar.addEventListener('click', function(e){
-      var btn = e.target.closest('[data-doc-act]');
-      if(!btn || !currentDoc) return;
-      var act = btn.getAttribute('data-doc-act');
-      var d = currentDoc;
-      var fullText = d.name + '\n' +
-        (d.specialty ? 'تخصص: ' + d.specialty + '\n' : '') +
-        (d.clinic ? 'کلینیک: ' + d.clinic + '\n' : '') +
-        (d.city ? 'شهر: ' + d.city + '\n' : '') +
-        (d.address ? 'آدرس: ' + d.address + '\n' : '') +
-        (d.hours ? 'ساعات کاری: ' + d.hours + '\n' : '') +
-        (d.phone ? 'تلفن: ' + d.phone + '\n' : '') +
-        (d.whatsapp ? 'واتساپ: ' + d.whatsapp + '\n' : '') +
-        (d.about ? '\n' + d.about : '');
-      if(act === 'copy') copyText(fullText);
-      else if(act === 'share') shareText(fullText + '\n\n— بانوان نور', 'بانوان نور');
-      else if(act === 'speak') speakText(d.name + '. ' + (d.specialty ? d.specialty + '. ' : '') + (d.about || ''), btn);
+/* EVENTS */
+catGrid.addEventListener("click", e => {
+  const c = e.target.closest("[data-cat]");
+  if(c) openSpecialty(c.dataset.cat);
+});
+
+docList.addEventListener("click", e => {
+  if(e.target.closest("[data-stop]")) return;
+  const openBtn = e.target.closest("[data-open]");
+  if(openBtn){ e.stopPropagation(); openDoctor(openBtn.dataset.open); return; }
+  const card = e.target.closest("[data-id]");
+  if(card) openDoctor(card.dataset.id);
+});
+
+$("backCatBtn").addEventListener("click", backToCategories);
+$("backBtn").addEventListener("click", () => {
+  if(modal.classList.contains("show")){ closeModal(); return; }
+  if(currentView === "list"){ backToCategories(); return; }
+  if(document.referrer && document.referrer.indexOf(location.origin) === 0){
+    history.back();
+  } else {
+    location.href = "home.html";
+  }
+});
+
+let searchTimer = null;
+searchInput.addEventListener("input", () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    searchQuery = searchInput.value || "";
+    if(searchQuery.trim() && currentView === "categories"){
+      currentView = "list";
+      currentSpecialty = null;
+      categoriesView.classList.add("hidden");
+      listView.classList.remove("hidden");
+      pageTitle.textContent = "نتایج جستجو";
+      listTitle.innerHTML = '<svg><use href="#i-search"></use></svg><span>نتایج جستجو</span>';
+    } else if(!searchQuery.trim() && currentView === "list" && !currentSpecialty){
+      backToCategories();
+      return;
+    }
+    applyFilters();
+  }, 180);
+});
+
+$("topSearchBtn").addEventListener("click", () => { searchInput.focus(); window.scrollTo({top:0,behavior:"smooth"}); });
+$("navSearch").addEventListener("click", () => { searchInput.focus(); window.scrollTo({top:0,behavior:"smooth"}); });
+$("navHome").addEventListener("click", () => { location.href = "home.html"; });
+$("navHamraz").addEventListener("click", () => { location.href = "hamraz.html"; });
+$("navAhkam").addEventListener("click", () => { location.href = "ahkam.html"; });
+$("navMore").addEventListener("click", () => { location.href = "settings.html"; });
+
+$("closeModal").addEventListener("click", closeModal);
+modal.addEventListener("click", e => { if(e.target === modal) closeModal(); });
+$("copyBtn").addEventListener("click", copyDoctor);
+$("shareBtn").addEventListener("click", shareDoctor);
+$("speakBtn").addEventListener("click", speakDoctor);
+
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape" && modal.classList.contains("show")) closeModal();
+});
+
+window.addEventListener("storage", e => {
+  if(e.key === THEME_KEY) applyTheme();
+  if(e.key === "bn_lang") location.reload();
+});
+
+/* START */
+if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", loadDoctors);
+else loadDoctors();
+</script>
+
+<!-- ═══ آنالیتیکس (اول لود بشه) ═══ -->
+<script src="js/bn-analytics.js"></script>
+
+<!-- ═══ ماژول اصلی BN ═══ -->
+<script src="js/bn-app.js"></script>
+
+<!-- ═══ Firebase ═══ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/bn-tracker.js"></script>
+<script src="js/bn-auth-gate.js"></script>
+
+<!-- ═══ ثبت Service Worker ═══ -->
+<script>
+(function(){
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function(reg){
+        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
+      }).catch(function(e){ console.warn('SW register failed:', e.message); });
     });
   }
-  var closeBtn = $('modalClose');
-  if(closeBtn) closeBtn.addEventListener('click', closeModal);
-  var modal = $('docModal');
-  if(modal) modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && $('docModal').classList.contains('show')) closeModal();
-  });
-}
-
-/* ═══ SEARCH ═══ */
-function setupSearch(){
-  var si = $('searchInput');
-  if(!si) return;
-  var timer = null;
-  si.addEventListener('input', function(){
-    clearTimeout(timer);
-    timer = setTimeout(function(){
-      searchQuery = si.value || '';
-      renderDoctors();
-    }, 180);
-  });
-}
-
-/* ═══ INIT ═══ */
-function init(){
-  applyTheme();
-  setupSearch();
-  setupModalActions();
-  loadDoctors();
-
-  window.addEventListener('storage', function(e){
-    if(e.key === 'bn_theme') applyTheme();
-  });
-
-  try{
-    if('speechSynthesis' in window) window.speechSynthesis.getVoices();
-  }catch(e){}
-
-  console.log('💗 صفحه پزشکان آماده');
-}
-
-if(document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', init);
-} else init();
-
 })();
 </script>
-<script src="analytics.js"></script>
+
 </body>
 </html>
