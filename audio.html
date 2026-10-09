@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#db2777" id="themeMeta">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="بانوان نور">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="احکام صوتی بانوان — گوش دادن به دروس احکام">
+<title>احکام صوتی | بانوان نور</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.json">
+
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('bn_theme');
+    if(!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme',t);
+  }catch(e){}
+})();
+</script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   BANOVAN NOOR — AUDIO AHKAM
+   ═══════════════════════════════════════════════════════════ */
+
+:root{
+  --bg:#fdf5ff;--bg-soft:#f6e9ff;
+  --surface:rgba(255,255,255,.85);--surface-solid:#fff;
+  --text:#2a1740;--text-soft:#5f4a77;--text-muted:#9686a8;
+  --primary:#a832d6;--primary-2:#c026d3;--pink:#ec4899;--red:#ed4956;
+  --border:rgba(168,50,214,.14);
+  --shadow-sm:0 6px 20px rgba(168,50,214,.08);
+  --shadow-lg:0 14px 34px rgba(168,50,214,.15);
+  --nav-bg:rgba(255,255,255,.68);
+
+  --brand-grad:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(225,29,72,.13),rgba(168,85,247,.10));
+  --ig-grad:var(--brand-grad);
+  --ig-grad-anim:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --gradient-soft:var(--brand-grad-soft);
+
+  --player-bg:rgba(255,255,255,.96);
+  --track-active:rgba(219,39,119,.12);
+  --toast-bg:#21142e;--toast-text:#fff;
+}
+
+html[data-theme="dark"],
+body.dark{
+  --bg:#000;--bg-soft:#000;--surface:rgba(28,28,30,.85);--surface-solid:#1c1c1e;
+  --text:#fff;--text-soft:#e4e6eb;--text-muted:#8e8e93;
+  --primary:#c084fc;--primary-2:#d8b4fe;--pink:#ec4899;--red:#ed4956;
+  --border:rgba(192,132,252,.16);
+  --shadow-sm:0 6px 20px rgba(0,0,0,.45);
+  --shadow-lg:0 14px 34px rgba(0,0,0,.55);
+  --nav-bg:rgba(15,10,22,.68);
+
+  --brand-grad:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(225,29,72,.18),rgba(168,85,247,.14));
+  --ig-grad:var(--brand-grad);
+  --ig-grad-anim:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --gradient-soft:var(--brand-grad-soft);
+
+  --player-bg:rgba(20,20,22,.98);
+  --track-active:rgba(219,39,119,.15);
+  --toast-bg:#db2777;--toast-text:#fff;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;min-height:100%}
+
+body{
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;
+  direction:rtl;color:var(--text);
+  background:
+    radial-gradient(circle at 8% 0%,rgba(236,72,153,.15),transparent 30%),
+    radial-gradient(circle at 100% 10%,rgba(168,85,247,.17),transparent 32%),
+    linear-gradient(160deg,var(--bg),var(--bg-soft));
+  min-height:100vh;
+  padding-bottom:calc(210px + env(safe-area-inset-bottom));
+  overflow-x:hidden;
+  transition:background .35s ease,color .35s ease;
+  -webkit-font-smoothing:antialiased;
+}
+html[data-theme="dark"] body,
+body.dark{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(168,85,247,.13),transparent 30%),
+    radial-gradient(circle at 100% 20%,rgba(236,72,153,.08),transparent 30%),
+    #000;
+}
+
+/* ✅ پشتیبانی از LTR */
+body.lang-ltr { direction: ltr; }
+body.lang-ltr .back-btn svg { transform: none; }
+body.lang-ltr .track-item::before { right: auto; left: 0; border-radius: 18px 0 0 18px; }
+body.lang-ltr .track-num svg { transform: scaleX(-1); }
+
+.app{width:100%;max-width:640px;margin:0 auto;padding:0 16px;position:relative;z-index:2}
+
+/* TOPBAR */
+.topbar{
+  display:flex;align-items:center;gap:10px;
+  padding:18px 0 14px;
+  position:sticky;top:0;
+  background:linear-gradient(to bottom,var(--bg) 70%,transparent);
+  z-index:50;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+html[data-theme="dark"] .topbar,
+body.dark .topbar{background:linear-gradient(to bottom,#000 70%,transparent)}
+.back-btn{
+  width:42px;height:42px;border-radius:14px;
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;text-decoration:none;flex:0 0 42px;
+  transition:transform .2s;
+}
+.back-btn:active{transform:scale(.9)}
+.back-btn svg{
+  width:20px;height:20px;fill:none;stroke:currentColor;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+  transform:scaleX(-1);
+}
+.page-title{flex:1;font-size:1.05rem;font-weight:900}
+
+/* HERO */
+.hero{
+  border-radius:22px;padding:20px 18px;margin-bottom:16px;
+  color:#fff;background:var(--ig-grad-anim);
+  background-size:200% 100%;
+  box-shadow:0 14px 35px rgba(219,39,119,.25);
+  animation:heroGrad 7s ease infinite;
+  display:flex;align-items:center;gap:14px;
+  position:relative;overflow:hidden;
+}
+@keyframes heroGrad{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+.hero::before{
+  content:"";position:absolute;
+  width:200px;height:200px;top:-110px;left:-70px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.3),transparent 70%);
+  pointer-events:none;
+}
+.hero-icon{
+  width:54px;height:54px;border-radius:17px;
+  background:rgba(255,255,255,.18);
+  border:1.5px solid rgba(255,255,255,.3);
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 54px;
+  position:relative;z-index:1;
+}
+.hero-icon svg{
+  width:28px;height:28px;fill:none;stroke:#fff;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+.hero-text{flex:1;min-width:0;position:relative;z-index:1}
+.hero-title{font-size:1.05rem;font-weight:900;line-height:1.4;margin-bottom:4px;color:#fff}
+.hero-sub{font-size:.7rem;line-height:1.7;opacity:.92;font-weight:600;color:rgba(255,255,255,.95)}
+
+/* TABS */
+.list-tabs{
+  display:flex;gap:6px;
+  background:var(--gradient-soft);
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  padding:5px;margin-bottom:14px;
+}
+.list-tab{
+  flex:1;background:transparent;border:0;
+  color:var(--text-soft);
+  border-radius:12px;
+  padding:10px 8px;
+  font-family:inherit;font-size:.78rem;font-weight:900;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:all .25s;
+}
+.list-tab svg{
+  width:15px;height:15px;fill:none;stroke:currentColor;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+}
+.list-tab.active{
+  background:var(--ig-grad);color:#fff;
+  box-shadow:0 6px 16px rgba(219,39,119,.3);
+}
+.list-tab.active svg{stroke:#fff}
+.list-tab.active svg.filled{fill:#fff;stroke:#fff}
+.list-tab:active{transform:scale(.96)}
+.list-tab .count{
+  font-size:.6rem;
+  background:rgba(255,255,255,.3);
+  padding:1px 6px;border-radius:10px;
+  margin-right:2px;
+}
+.list-tab:not(.active) .count{
+  background:rgba(0,0,0,.08);
+}
+html[data-theme="dark"] .list-tab:not(.active) .count,
+body.dark .list-tab:not(.active) .count{
+  background:rgba(255,255,255,.1);
+}
+
+/* TRACK LIST */
+.track-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+
+.track-item{
+  display:flex;align-items:center;gap:12px;
+  background:var(--surface);
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  padding:12px 14px;
+  cursor:pointer;
+  box-shadow:var(--shadow-sm);
+  transition:all .3s cubic-bezier(.16,1,.3,1);
+  text-align:right;font-family:inherit;color:inherit;width:100%;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  position:relative;
+  overflow:hidden;
+}
+.track-item::before{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;right:0;
+  width:4px;
+  background:var(--ig-grad);
+  border-radius:0 18px 18px 0;
+  opacity:0;
+  transition:opacity .3s;
+}
+.track-item.playing::before{opacity:1}
+.track-item.playing{
+  background:var(--track-active);
+  border-color:rgba(219,39,119,.5);
+  box-shadow:0 8px 24px rgba(219,39,119,.15);
+}
+.track-item:active{transform:scale(.98)}
+
+.track-num{
+  width:42px;height:42px;border-radius:13px;
+  background:var(--gradient-soft);
+  border:1px solid var(--border);
+  color:var(--primary);
+  font-size:.85rem;font-weight:900;
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 42px;
+  transition:all .3s;
+  position:relative;
+}
+.track-item.playing .track-num{
+  background:var(--ig-grad);color:#fff;
+  border-color:transparent;
+  box-shadow:0 6px 16px rgba(219,39,119,.35);
+  animation:playingPulse 1.5s ease-in-out infinite;
+}
+@keyframes playingPulse{
+  0%,100%{box-shadow:0 6px 16px rgba(219,39,119,.35)}
+  50%{box-shadow:0 6px 20px rgba(219,39,119,.6)}
+}
+.track-item.playing .track-num span{display:none}
+.track-num svg{display:none;width:18px;height:18px;fill:currentColor;stroke:none}
+.track-item.playing .track-num svg{display:block}
+
+.track-info{flex:1;min-width:0}
+.track-name{
+  font-size:.85rem;font-weight:850;
+  color:var(--text);line-height:1.4;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.track-meta{
+  font-size:.65rem;color:var(--text-muted);
+  font-weight:700;margin-top:2px;
+  display:flex;align-items:center;gap:6px;
+}
+.track-meta .dot{
+  width:3px;height:3px;border-radius:50%;
+  background:currentColor;opacity:.5;
+}
+
+/* ACTIONS */
+.track-actions{
+  display:flex;gap:4px;
+  flex-shrink:0;
+}
+
+.icon-act{
+  width:38px;height:38px;
+  border-radius:12px;
+  background:transparent;
+  border:1px solid transparent;
+  color:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:all .25s cubic-bezier(.16,1,.3,1);
+  padding:0;
+  flex-shrink:0;
+  position:relative;
+}
+.icon-act:hover{
+  background:var(--surface);
+  border-color:var(--border);
+}
+.icon-act:active{transform:scale(.85)}
+.icon-act svg{
+  width:19px;height:19px;
+  fill:none;stroke:currentColor;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  transition:all .25s;
+}
+.icon-act.liked{
+  color:var(--red);
+}
+.icon-act.liked svg{
+  fill:var(--red);
+  stroke:var(--red);
+  animation:heartPop .45s cubic-bezier(.16,1.4,.3,1);
+}
+@keyframes heartPop{
+  0%{transform:scale(1)}
+  40%{transform:scale(1.35)}
+  70%{transform:scale(.9)}
+  100%{transform:scale(1)}
+}
+.icon-act.liked::after{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  border-radius:16px;
+  background:radial-gradient(circle,rgba(237,73,86,.3),transparent 70%);
+  animation:heartRing .6s ease-out forwards;
+  pointer-events:none;
+}
+@keyframes heartRing{
+  0%{opacity:1;transform:scale(.6)}
+  100%{opacity:0;transform:scale(1.8)}
+}
+
+/* LOADER / EMPTY */
+.loader{
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;padding:50px 20px;
+  color:var(--text-muted);font-size:.85rem;font-weight:700;
+}
+.loader::before{
+  content:"";width:20px;height:20px;
+  border:2.5px solid var(--border);
+  border-top-color:var(--primary);
+  border-radius:50%;animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{
+  text-align:center;padding:50px 20px;
+  color:var(--text-muted);font-size:.85rem;line-height:2;font-weight:700;
+}
+.empty svg{
+  width:64px;height:64px;
+  fill:none;stroke:var(--text-muted);
+  stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;
+  margin-bottom:14px;opacity:.4;
+}
+
+/* PLAYER */
+.player{
+  position:fixed;bottom:0;left:0;right:0;
+  z-index:9000;
+  background:var(--player-bg);
+  backdrop-filter:blur(28px) saturate(180%);
+  -webkit-backdrop-filter:blur(28px) saturate(180%);
+  border-top:1px solid var(--border);
+  box-shadow:0 -12px 40px rgba(219,39,119,.15);
+  padding:14px 16px calc(14px + env(safe-area-inset-bottom));
+  max-width:640px;margin:0 auto;
+}
+html[data-theme="dark"] .player,
+body.dark .player{box-shadow:0 -12px 40px rgba(0,0,0,.6)}
+
+.player-progress{
+  position:relative;width:100%;height:6px;
+  background:var(--border);border-radius:10px;
+  cursor:pointer;margin-bottom:8px;
+  touch-action:none;
+}
+.player-fill{
+  position:absolute;top:0;right:0;height:100%;
+  background:var(--ig-grad);border-radius:10px;
+  width:0%;transition:width .15s linear;
+  box-shadow:0 0 12px rgba(219,39,119,.4);
+}
+.player-thumb{
+  position:absolute;top:50%;
+  width:16px;height:16px;border-radius:50%;
+  background:#fff;border:2.5px solid var(--pink);
+  transform:translate(50%,-50%);right:0%;
+  box-shadow:0 2px 10px rgba(0,0,0,.25);
+  pointer-events:none;transition:right .15s linear, transform .2s;
+}
+.player-progress:hover .player-thumb,
+.player-progress.dragging .player-thumb{
+  transform:translate(50%,-50%) scale(1.25);
+}
+
+.player-times{
+  display:flex;justify-content:space-between;
+  font-size:.62rem;color:var(--text-muted);
+  font-weight:800;direction:ltr;margin-bottom:10px;
+}
+
+.player-info{
+  display:flex;align-items:center;gap:11px;
+  margin-bottom:12px;
+}
+.player-cover{
+  width:44px;height:44px;border-radius:13px;
+  background:var(--ig-grad);
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 44px;
+  box-shadow:0 5px 14px rgba(219,39,119,.35);
+  position:relative;
+  overflow:hidden;
+}
+.player-cover::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.2),transparent);
+  pointer-events:none;
+}
+.player-cover svg{
+  width:22px;height:22px;fill:none;stroke:#fff;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  position:relative;z-index:1;
+}
+.player-text{flex:1;min-width:0}
+.player-name{
+  font-size:.85rem;font-weight:900;color:var(--text);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  margin-bottom:2px;
+}
+.player-sub{
+  font-size:.62rem;color:var(--text-muted);
+  font-weight:700;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+.player-like{
+  width:40px;height:40px;
+  border-radius:12px;
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:all .25s;
+  flex-shrink:0;
+}
+.player-like:active{transform:scale(.88)}
+.player-like svg{
+  width:20px;height:20px;
+  fill:none;stroke:currentColor;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  transition:all .25s;
+}
+.player-like.liked{
+  color:#fff;
+  background:var(--red);
+  border-color:var(--red);
+  box-shadow:0 6px 16px rgba(237,73,86,.4);
+}
+.player-like.liked svg{
+  fill:#fff;stroke:#fff;
+  animation:heartPop .45s cubic-bezier(.16,1.4,.3,1);
+}
+
+.player-share{
+  width:40px;height:40px;
+  border-radius:12px;
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:all .25s;
+  flex-shrink:0;
+}
+.player-share:hover{
+  background:var(--gradient-soft);
+  color:var(--primary);
+  border-color:var(--primary);
+}
+.player-share:active{transform:scale(.88)}
+.player-share svg{
+  width:19px;height:19px;
+  fill:none;stroke:currentColor;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+}
+
+.player-controls{
+  display:flex;align-items:center;justify-content:center;gap:16px;
+}
+.ctrl-btn{
+  width:48px;height:48px;border-radius:50%;
+  background:transparent;border:0;color:var(--text);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;padding:0;
+}
+.ctrl-btn:active{transform:scale(.9)}
+.ctrl-btn svg{
+  width:24px;height:24px;fill:currentColor;stroke:none;
+}
+.ctrl-btn.play-main{
+  width:62px;height:62px;
+  background:var(--ig-grad);color:#fff;
+  box-shadow:0 8px 22px rgba(219,39,119,.4);
+}
+.ctrl-btn.play-main:active{transform:scale(.94)}
+.ctrl-btn.play-main svg{width:26px;height:26px}
+
+/* TOAST */
+.toast{
+  position:fixed;left:50%;
+  bottom:calc(230px + env(safe-area-inset-bottom));
+  transform:translate(-50%,20px);
+  opacity:0;pointer-events:none;z-index:7000;
+  max-width:90%;padding:11px 20px;border-radius:30px;
+  background:var(--toast-bg);color:var(--toast-text);
+  font-size:.72rem;font-weight:850;
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
+  transition:opacity .25s ease,transform .25s ease;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:390px){
+  .app{padding:0 12px}
+  .page-title{font-size:.95rem}
+  .hero{padding:16px 14px;gap:11px}
+  .hero-icon{width:46px;height:46px;flex-basis:46px}
+  .hero-icon svg{width:24px;height:24px}
+  .hero-title{font-size:.95rem}
+  .track-num{width:38px;height:38px;flex-basis:38px;font-size:.78rem}
+  .track-name{font-size:.8rem}
+  .icon-act{width:34px;height:34px}
+  .icon-act svg{width:17px;height:17px}
+  .ctrl-btn.play-main{width:56px;height:56px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="topbar">
+  <a class="back-btn" href="ahkam.html" aria-label="بازگشت">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </a>
+  <div class="page-title">احکام صوتی</div>
+</header>
+
+<section class="hero">
+  <div class="hero-icon">
+    <svg viewBox="0 0 24 24">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </svg>
+  </div>
+  <div class="hero-text">
+    <div class="hero-title">احکام صوتی بانوان</div>
+    <div class="hero-sub">گوش دادن به احکام در هر زمان</div>
+  </div>
+</section>
+
+<div class="list-tabs">
+  <button class="list-tab active" data-tab="all" type="button">
+    <svg viewBox="0 0 24 24">
+      <path d="M4 6h16M4 12h16M4 18h10"/>
+    </svg>
+    <span>همه</span>
+    <span class="count" id="allCount">0</span>
+  </button>
+  <button class="list-tab" data-tab="fav" type="button">
+    <svg class="filled" viewBox="0 0 24 24">
+      <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/>
+    </svg>
+    <span>علاقه‌مندی‌ها</span>
+    <span class="count" id="favCount">0</span>
+  </button>
+</div>
+
+<div id="trackList" class="track-list">
+  <div class="loader">در حال بارگذاری...</div>
+</div>
+
+</div>
+
+<div class="player">
+  <div class="player-progress" id="progress">
+    <div class="player-fill" id="fill"></div>
+    <div class="player-thumb" id="thumb"></div>
+  </div>
+
+  <div class="player-times">
+    <span id="curTime">0:00</span>
+    <span id="totTime">0:00</span>
+  </div>
+
+  <div class="player-info">
+    <div class="player-cover">
+      <svg viewBox="0 0 24 24">
+        <path d="M9 18V5l12-2v13"/>
+        <circle cx="6" cy="18" r="3"/>
+        <circle cx="18" cy="16" r="3"/>
+      </svg>
+    </div>
+    <div class="player-text">
+      <div class="player-name" id="playerName">—</div>
+      <div class="player-sub" id="playerSub">آماده پخش</div>
+    </div>
+    <button class="player-like" id="playerLikeBtn" type="button" aria-label="علاقه‌مندی">
+      <svg viewBox="0 0 24 24">
+        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/>
+      </svg>
+    </button>
+    <button class="player-share" id="playerShareBtn" type="button" aria-label="اشتراک‌گذاری">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+        <polyline points="16 6 12 2 8 6"/>
+        <line x1="12" y1="2" x2="12" y2="15"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="player-controls">
+    <button class="ctrl-btn" id="prevBtn" type="button" aria-label="قبلی">
+      <svg viewBox="0 0 24 24">
+        <polygon points="19 20 9 12 19 4"/>
+        <rect x="5" y="4" width="2.5" height="16" rx="0.5"/>
+      </svg>
+    </button>
+    <button class="ctrl-btn play-main" id="playBtn" type="button" aria-label="پخش">
+      <svg id="playIcon" viewBox="0 0 24 24">
+        <polygon points="6 4 20 12 6 20"/>
+      </svg>
+    </button>
+    <button class="ctrl-btn" id="nextBtn" type="button" aria-label="بعدی">
+      <svg viewBox="0 0 24 24">
+        <polygon points="5 4 15 12 5 20"/>
+        <rect x="16.5" y="4" width="2.5" height="16" rx="0.5"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<audio id="audioEl" preload="metadata"></audio>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* THEME */
+var THEME_KEY = "bn_theme";
+function getSystemTheme(){
+  try{ return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+  catch(e){ return "light"; }
+}
+function getSavedTheme(){
+  try{
+    var t = localStorage.getItem(THEME_KEY);
+    if(t === "dark" || t === "light") return t;
+  }catch(e){}
+  return getSystemTheme();
+}
+function applyTheme(theme){
+  if(theme !== "dark") theme = "light";
+  document.documentElement.setAttribute("data-theme", theme);
+  document.body.classList.toggle("dark", theme === "dark");
+  var meta = document.getElementById("themeMeta");
+  if(meta) meta.setAttribute("content", theme === "dark" ? "#000000" : "#db2777");
+}
+applyTheme(getSavedTheme());
+
+var audioEl = document.getElementById("audioEl");
+var audioTracks = [];
+var audioIdx = -1;
+var currentTab = "all";
+
+var AUDIO_JSON = "data/audio/ahkam-audio.json";
+var AUDIO_BASE = "media/audio/ahkam/";
+var AUDIO_LAST = "bn_audio_last";
+var AUDIO_POS = "bn_audio_positions";
+var AUDIO_FAV = "bn_audio_favorites";
+
+function $(id){ return document.getElementById(id); }
+function escapeHtml(s){
+  if(s == null) return "";
+  return String(s)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#39;");
+}
+
+/* FAVORITES */
+function getFavs(){
+  try{
+    var raw = localStorage.getItem(AUDIO_FAV);
+    var arr = raw ? JSON.parse(raw) : [];
+    return Array.isArray(arr) ? arr : [];
+  }catch(e){ return []; }
+}
+function isFav(id){ return getFavs().indexOf(id) > -1; }
+function toggleFav(id){
+  var favs = getFavs();
+  var i = favs.indexOf(id);
+  var added;
+  if(i > -1){ favs.splice(i, 1); added = false; }
+  else { favs.push(id); added = true; }
+  try{ localStorage.setItem(AUDIO_FAV, JSON.stringify(favs)); }catch(e){}
+  return added;
+}
+function updateFavCounts(){
+  var favs = getFavs();
+  var fc = $("favCount");
+  var ac = $("allCount");
+  if(fc) fc.textContent = favs.length;
+  if(ac) ac.textContent = audioTracks.length;
+}
+
+/* POSITIONS */
+function getPositions(){
+  try{ return JSON.parse(localStorage.getItem(AUDIO_POS) || "{}"); }
+  catch(e){ return {}; }
+}
+function savePosition(id, pos){
+  try{
+    var p = getPositions();
+    p[id] = pos;
+    localStorage.setItem(AUDIO_POS, JSON.stringify(p));
+  }catch(e){}
+}
+function getPosition(id){
+  var p = getPositions();
+  return p[id] || 0;
+}
+
+/* TIME */
+function fmt(s){
+  if(!s || isNaN(s) || !isFinite(s)) return "0:00";
+  var m = Math.floor(s/60), sec = Math.floor(s%60);
+  return m + ":" + (sec<10?"0":"") + sec;
+}
+
+/* TOAST */
+var toastTimer = null;
+function showMsg(msg, dur){
+  dur = dur || 2000;
+  var t = $("toast");
+  if(!t) return;
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove("show"); }, dur);
+}
+
+/* LOAD TRACKS */
+function loadTracks(){
+  return fetch(AUDIO_JSON)
+    .then(function(r){
+      if(!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then(function(d){
+      audioTracks = (d && d.tracks) || [];
+      return audioTracks;
+    })
+    .catch(function(err){
+      console.warn("⚠️", err.message);
+      audioTracks = [];
+      return [];
+    });
+}
+
+/* RENDER LIST */
+function renderList(){
+  var list = $("trackList");
+
+  if(!audioTracks.length){
+    list.innerHTML =
+      '<div class="empty">' +
+        '<svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>' +
+        '<div>فایل صوتی یافت نشد</div>' +
+        '<div style="margin-top:6px;font-size:.7rem;opacity:.7;">data/audio/ahkam-audio.json</div>' +
+      '</div>';
+    updateFavCounts();
+    return;
+  }
+
+  var favs = getFavs();
+  var filtered = currentTab === "fav"
+    ? audioTracks.filter(function(t){ return favs.indexOf(t.id) > -1; })
+    : audioTracks;
+
+  if(!filtered.length){
+    list.innerHTML =
+      '<div class="empty">' +
+        '<svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>' +
+        '<div>هنوز ترک موردعلاقه‌ای اضافه نکردی</div>' +
+        '<div style="margin-top:6px;font-size:.7rem;opacity:.7;">روی آیکن قلب بزن</div>' +
+      '</div>';
+    updateFavCounts();
+    return;
+  }
+
+  var html = filtered.map(function(t){
+    var realIdx = audioTracks.indexOf(t);
+    var playing = (realIdx === audioIdx);
+    var liked = favs.indexOf(t.id) > -1;
+    var pos = getPosition(t.id);
+    var meta = "";
+    if(pos > 3){
+      meta = '<div class="track-meta"><span>ادامه از ' + fmt(pos) + '</span></div>';
+    } else {
+      meta = '<div class="track-meta"><span>درس ' + (realIdx+1) + '</span></div>';
+    }
+
+    return '<div class="track-item' + (playing ? ' playing' : '') + '" data-i="' + realIdx + '">' +
+      '<div class="track-num">' +
+        '<span>' + (realIdx+1) + '</span>' +
+        '<svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20"/></svg>' +
+      '</div>' +
+      '<div class="track-info">' +
+        '<div class="track-name">' + escapeHtml(t.name) + '</div>' +
+        meta +
+      '</div>' +
+      '<div class="track-actions">' +
+        '<button class="icon-act like-btn' + (liked ? ' liked' : '') +
+          '" data-like="' + realIdx + '" type="button" aria-label="علاقه‌مندی">' +
+          '<svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>' +
+        '</button>' +
+        '<button class="icon-act share-btn" data-share="' + realIdx + '" type="button" aria-label="اشتراک‌گذاری">' +
+          '<svg viewBox="0 0 24 24">' +
+            '<circle cx="18" cy="5" r="2.5"/>' +
+            '<circle cx="6" cy="12" r="2.5"/>' +
+            '<circle cx="18" cy="19" r="2.5"/>' +
+            '<path d="m8.2 10.8 7.6-4.5"/>' +
+            '<path d="m8.2 13.2 7.6 4.5"/>' +
+          '</svg>' +
+        '</button>' +
+      '</div>' +
+    '</div>';
+  }).join("");
+
+  list.innerHTML = html;
+
+  list.querySelectorAll(".track-item").forEach(function(el){
+    el.addEventListener("click", function(e){
+      if(e.target.closest(".icon-act")) return;
+      var i = parseInt(el.getAttribute("data-i"), 10);
+      if(i === audioIdx){
+        if(!audioEl.paused) audioEl.pause();
+        else audioEl.play();
+      } else {
+        playAudio(i);
+      }
+    });
+  });
+
+  list.querySelectorAll(".like-btn").forEach(function(btn){
+    btn.addEventListener("click", function(e){
+      e.stopPropagation();
+      var i = parseInt(btn.getAttribute("data-like"), 10);
+      var t = audioTracks[i];
+      if(!t) return;
+      var added = toggleFav(t.id);
+      btn.classList.toggle("liked", added);
+      if(added) showMsg("به علاقه‌مندی‌ها اضافه شد ❤️");
+      else showMsg("از علاقه‌مندی‌ها حذف شد");
+      updateFavCounts();
+      if(currentTab === "fav"){
+        setTimeout(renderList, 400);
+      } else {
+        updatePlayerLike();
+      }
+      if (window.bnAnalytics) window.bnAnalytics.track('audio_favorite', { id: t.id, added: added });
+    });
+  });
+
+  list.querySelectorAll(".share-btn").forEach(function(btn){
+    btn.addEventListener("click", function(e){
+      e.stopPropagation();
+      var i = parseInt(btn.getAttribute("data-share"), 10);
+      var t = audioTracks[i];
+      if(!t) return;
+      shareTrack(t);
+    });
+  });
+
+  updateFavCounts();
+}
+
+/* SHARE */
+function shareTrack(t){
+  if(!t) return;
+  var text = t.name + "\n\n— از برنامه بانوان نور\n" + window.location.origin + "/audio.html";
+  if(navigator.share){
+    navigator.share({
+      title: "بانوان نور | احکام صوتی",
+      text: text
+    }).catch(function(err){
+      if(err && err.name !== "AbortError"){
+        copyShare(text);
+      }
+    });
+  } else {
+    copyShare(text);
+  }
+  if (window.bnAnalytics) window.bnAnalytics.track('audio_share', { id: t.id });
+}
+
+function copyShare(text){
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text)
+      .then(function(){ showMsg("لینک کپی شد ✓"); })
+      .catch(function(){ fallbackCopy(text); });
+  } else {
+    fallbackCopy(text);
+  }
+}
+function fallbackCopy(text){
+  var ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.top = "-1000px";
+  document.body.appendChild(ta);
+  ta.select();
+  try{ document.execCommand("copy"); showMsg("لینک کپی شد ✓"); }catch(e){}
+  document.body.removeChild(ta);
+}
+
+/* PLAY */
+function playAudio(i){
+  if(i < 0 || i >= audioTracks.length) return;
+  var t = audioTracks[i];
+  audioIdx = i;
+
+  audioEl.src = AUDIO_BASE + t.id + ".mp3";
+  audioEl.load();
+
+  var pos = getPosition(t.id);
+  var onLoaded = function(){
+    if(pos > 0 && pos < audioEl.duration - 3){
+      audioEl.currentTime = pos;
+    }
+    audioEl.removeEventListener("loadedmetadata", onLoaded);
+  };
+  audioEl.addEventListener("loadedmetadata", onLoaded);
+
+  audioEl.play().catch(function(err){ console.warn(err); });
+
+  $("playerName").textContent = t.name;
+  $("playerSub").textContent = "درس " + (i+1);
+  try{ localStorage.setItem(AUDIO_LAST, t.id); }catch(e){}
+
+  renderList();
+  updateIcon();
+  updatePlayerLike();
+
+  if (window.bnAnalytics) window.bnAnalytics.track('audio_play', { id: t.id, name: t.name });
+}
+
+function updatePlayerLike(){
+  var btn = $("playerLikeBtn");
+  if(!btn) return;
+  if(audioIdx < 0 || audioIdx >= audioTracks.length){
+    btn.classList.remove("liked");
+    return;
+  }
+  var t = audioTracks[audioIdx];
+  btn.classList.toggle("liked", isFav(t.id));
+}
+
+/* ICON */
+function updateIcon(){
+  var icon = $("playIcon");
+  if(audioEl.paused){
+    icon.innerHTML = '<polygon points="6 4 20 12 6 20"/>';
+  } else {
+    icon.innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
+  }
+}
+
+/* PROGRESS */
+function updateProgress(){
+  if(!audioEl.duration || isNaN(audioEl.duration)) return;
+  var p = (audioEl.currentTime / audioEl.duration) * 100;
+  $("fill").style.width = p + "%";
+  $("thumb").style.right = p + "%";
+  $("curTime").textContent = fmt(audioEl.currentTime);
+  $("totTime").textContent = fmt(audioEl.duration);
+}
+
+/* EVENTS */
+audioEl.addEventListener("play", updateIcon);
+audioEl.addEventListener("pause", function(){
+  updateIcon();
+  if(audioIdx >= 0 && audioEl.currentTime > 3){
+    savePosition(audioTracks[audioIdx].id, audioEl.currentTime);
+    renderList();
+  }
+});
+audioEl.addEventListener("timeupdate", updateProgress);
+audioEl.addEventListener("loadedmetadata", updateProgress);
+audioEl.addEventListener("ended", function(){
+  updateIcon();
+  if(audioIdx < audioTracks.length - 1) playAudio(audioIdx + 1);
+});
+
+$("playBtn").addEventListener("click", function(){
+  if(audioIdx < 0){
+    if(audioTracks.length) playAudio(0);
+    return;
+  }
+  if(audioEl.paused) audioEl.play();
+  else audioEl.pause();
+});
+
+$("prevBtn").addEventListener("click", function(){
+  if(audioIdx <= 0){
+    if(audioIdx === 0) audioEl.currentTime = 0;
+    return;
+  }
+  playAudio(audioIdx - 1);
+});
+
+$("nextBtn").addEventListener("click", function(){
+  if(audioIdx < audioTracks.length - 1) playAudio(audioIdx + 1);
+});
+
+$("playerLikeBtn").addEventListener("click", function(){
+  if(audioIdx < 0){
+    showMsg("اول یه ترک پخش کن");
+    return;
+  }
+  var t = audioTracks[audioIdx];
+  var added = toggleFav(t.id);
+  this.classList.toggle("liked", added);
+  if(added) showMsg("به علاقه‌مندی‌ها اضافه شد ❤️");
+  else showMsg("از علاقه‌مندی‌ها حذف شد");
+  renderList();
+  if(currentTab === "fav"){
+    setTimeout(renderList, 400);
+  }
+});
+
+$("playerShareBtn").addEventListener("click", function(){
+  if(audioIdx < 0){
+    showMsg("اول یه ترک پخش کن");
+    return;
+  }
+  shareTrack(audioTracks[audioIdx]);
+});
+
+/* Progress drag */
+var progress = $("progress");
+var dragging = false;
+function seek(e){
+  if(!audioEl.duration) return;
+  var rect = progress.getBoundingClientRect();
+  var x = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+  var ratio = (rect.right - x) / rect.width;
+  ratio = Math.max(0, Math.min(1, ratio));
+  audioEl.currentTime = ratio * audioEl.duration;
+  updateProgress();
+}
+progress.addEventListener("mousedown", function(e){ dragging=true; progress.classList.add("dragging"); seek(e); });
+progress.addEventListener("touchstart", function(e){ dragging=true; progress.classList.add("dragging"); seek(e); }, {passive:true});
+document.addEventListener("mousemove", function(e){ if(dragging) seek(e); });
+document.addEventListener("touchmove", function(e){ if(dragging) seek(e); }, {passive:true});
+document.addEventListener("mouseup", function(){ dragging=false; progress.classList.remove("dragging"); });
+document.addEventListener("touchend", function(){ dragging=false; progress.classList.remove("dragging"); });
+
+/* ذخیره موقعیت */
+setInterval(function(){
+  if(audioIdx >= 0 && !audioEl.paused && audioEl.currentTime > 3){
+    savePosition(audioTracks[audioIdx].id, audioEl.currentTime);
+  }
+}, 5000);
+window.addEventListener("beforeunload", function(){
+  if(audioIdx >= 0 && audioEl.currentTime > 3){
+    savePosition(audioTracks[audioIdx].id, audioEl.currentTime);
+  }
+});
+
+/* Tabs */
+document.querySelectorAll(".list-tab").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    document.querySelectorAll(".list-tab").forEach(function(b){ b.classList.remove("active"); });
+    btn.classList.add("active");
+    currentTab = btn.getAttribute("data-tab");
+    renderList();
+    if (window.bnAnalytics) window.bnAnalytics.track('audio_tab', { tab: currentTab });
+  });
+});
+
+/* Storage sync */
+window.addEventListener("storage", function(e){
+  if(e.key === THEME_KEY) applyTheme(e.newValue || getSystemTheme());
+  if(e.key === AUDIO_FAV) renderList();
+});
+
+/* INIT */
+function init(){
+  updateIcon();
+
+  loadTracks().then(function(){
+    renderList();
+
+    var last = null;
+    try{ last = localStorage.getItem(AUDIO_LAST); }catch(e){}
+    if(last){
+      var i = audioTracks.findIndex(function(t){ return t.id === last; });
+      if(i > -1){
+        $("playerName").textContent = audioTracks[i].name;
+        $("playerSub").textContent = "درس " + (i+1);
+      }
+    }
+  });
+}
+
+if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+else init();
+})();
+</script>
+
+<!-- ═══ آنالیتیکس (اول لود بشه) ═══ -->
+<script src="js/bn-analytics.js"></script>
+
+<!-- ═══ ماژول اصلی BN ═══ -->
+<script src="js/bn-app.js"></script>
+
+<!-- ═══ Firebase ═══ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/bn-tracker.js"></script>
+<script src="js/bn-auth-gate.js"></script>
+
+<!-- ═══ ثبت Service Worker ═══ -->
+<script>
+(function(){
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function(reg){
+        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
+      }).catch(function(e){ console.warn('SW register failed:', e.message); });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
