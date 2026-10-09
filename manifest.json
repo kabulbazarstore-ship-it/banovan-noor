@@ -1,20 +1,23 @@
 {
-  "name": "بانوان نور | BANOVAN NOOR",
+  "id": "banovan-noor-pwa",
+  "name": "بانوان نور — همراه بانوان مسلمان",
   "short_name": "بانوان نور",
-  "description": "همراه هوشمند بانوان مسلمان؛ احکام، سلامت، آموزش و زندگی",
+  "description": "اپلیکیشن جامع بانوان مسلمان: احکام، سلامت، دعاها، آموزش و همراه معنوی",
+  "lang": "fa",
+  "dir": "rtl",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait",
-  "background_color": "#faf5ff",
-  "theme_color": "#6d28d9",
-  "dir": "rtl",
-  "lang": "fa",
-  "categories": ["health", "education", "lifestyle"],
+  "background_color": "#fdf5ff",
+  "theme_color": "#db2777",
+  "categories": ["education", "health", "lifestyle", "books"],
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "assets/icon-72.png",
-      "sizes": "72x72",
+      "src": "assets/icon-144.png",
+      "sizes": "144x144",
       "type": "image/png",
       "purpose": "any"
     },
@@ -23,6 +26,12 @@
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "assets/icon-512.png",
@@ -35,6 +44,52 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshot-home.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "صفحه اصلی بانوان نور"
+    },
+    {
+      "src": "assets/screenshot-health.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "بخش سلامت بانوان"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "احکام بانوان",
+      "short_name": "احکام",
+      "description": "مرکز احکام شرعی",
+      "url": "./ahkam.html",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "سلامت بانوان",
+      "short_name": "سلامت",
+      "description": "اطلاعات پزشکی و سلامت",
+      "url": "./health.html",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "دعاها و زیارات",
+      "short_name": "دعاها",
+      "description": "دعاهای روزانه و زیارات",
+      "url": "./duas.html",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "همراز",
+      "short_name": "همراز",
+      "description": "همراز معنوی و سوالات",
+      "url": "./hamraz.html",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]
 }
