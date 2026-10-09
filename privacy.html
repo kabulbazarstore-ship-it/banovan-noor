@@ -1,570 +1,777 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-theme="light">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#10b981" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#db2777" id="themeMeta">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="بانوان نور">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="حریم خصوصی — سیاست حفظ امنیت و محرمانگی اطلاعات در بانوان نور">
 <title>حریم خصوصی | بانوان نور</title>
-<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<link rel="icon" href="assets/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.json">
 <style>
 :root{
-  --bg-1:#ecfdf5;--bg-2:#d1fae5;--bg-3:#a7f3d0;--bg-4:#6ee7b7;
-  --text:#064e3b;--text-soft:#065f46;--text-card:#064e3b;--text-muted:#047857;
-  --card:rgba(255,255,255,.85);--card-border:rgba(16,185,129,.22);
-  --card-shadow:0 8px 22px rgba(5,150,105,.12);
-  --icon-bg:rgba(255,255,255,.85);--icon-border:rgba(16,185,129,.25);--icon-color:#059669;
-  --nav-bg:rgba(255,255,255,.94);--nav-border:rgba(16,185,129,.2);
-  --nav-color:#047857;--nav-active:#059669;
-  --star:.2;
-  --search-bg:rgba(255,255,255,.92);
-  --chip-bg:rgba(255,255,255,.7);
-  --chip-border:rgba(16,185,129,.25);
-  --accent:#10b981;
-  --accent-dark:#059669;
-  --mint-soft:rgba(16,185,129,.1);
+  --bg:#fbf8ff;--bg2:#f5ecfb;
+  --card:rgba(255,255,255,.80);--card-solid:#fff;
+  --text:#25152d;--muted:#776b80;
+  --line:rgba(112,55,140,.12);
+  --primary:#a832d6;--pink:#ec4899;
+  --brand:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --soft:rgba(168,50,214,.09);
+  --soft-green:rgba(16,185,129,.10);
+  --shadow-sm:0 6px 20px rgba(168,50,214,.08);
+  --shadow-md:0 14px 34px rgba(168,50,214,.15);
+  --nav-h:78px;
 }
+html[data-theme="dark"],
 body.dark{
-  --bg-1:#022c22;--bg-2:#064e3b;--bg-3:#065f46;--bg-4:#022c22;
-  --text:#fff;--text-soft:#a7f3d0;--text-card:#fff;--text-muted:#6ee7b7;
-  --card:rgba(255,255,255,.08);--card-border:rgba(110,231,183,.3);
-  --card-shadow:0 8px 22px rgba(0,0,0,.3);
-  --icon-bg:rgba(255,255,255,.08);--icon-border:rgba(110,231,183,.3);--icon-color:#a7f3d0;
-  --nav-bg:rgba(6,78,59,.94);--nav-border:rgba(110,231,183,.25);
-  --nav-color:#6ee7b7;--nav-active:#a7f3d0;
-  --star:.7;
-  --search-bg:rgba(255,255,255,.08);
-  --chip-bg:rgba(255,255,255,.06);
-  --chip-border:rgba(110,231,183,.3);
-  --mint-soft:rgba(110,231,183,.15);
+  --bg:#000;--bg2:#000;
+  --card:rgba(28,28,30,.70);--card-solid:#1c1c1e;
+  --text:#fff;--muted:#8e8e93;
+  --line:rgba(192,132,252,.16);
+  --soft:rgba(192,132,252,.14);
+  --soft-green:rgba(52,211,153,.14);
+  --shadow-sm:0 6px 20px rgba(0,0,0,.45);
+  --shadow-md:0 14px 34px rgba(0,0,0,.55);
 }
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{width:100%}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{
-  font-family:Tahoma,'Segoe UI',Arial,sans-serif;direction:rtl;font-size:17px;
-  line-height:1.8;font-weight:600;color:var(--text);background-color:var(--bg-1);
-  background-image:
-    radial-gradient(ellipse 500px 400px at 20% 5%,rgba(16,185,129,.15) 0,transparent 60%),
-    radial-gradient(ellipse 400px 350px at 85% 15%,rgba(52,211,153,.18) 0,transparent 65%),
-    linear-gradient(160deg,var(--bg-1) 0,var(--bg-2) 25%,var(--bg-3) 50%,var(--bg-2) 75%,var(--bg-4) 100%);
-  background-attachment:fixed;min-height:100vh;padding:0 0 110px;position:relative;overflow-x:hidden;
-  transition:background-color .4s,color .3s;
+  margin:0;min-height:100vh;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(236,72,153,.15),transparent 30%),
+    radial-gradient(circle at 100% 10%,rgba(168,85,247,.17),transparent 32%),
+    linear-gradient(160deg,var(--bg),var(--bg2));
+  color:var(--text);
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;
+  direction:rtl;
+  padding-bottom:calc(120px + env(safe-area-inset-bottom));
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  transition:background .35s ease,color .35s ease;
 }
-body::before{
-  content:"";position:fixed;inset:0;
-  background-image:
-    radial-gradient(circle at 12% 8%,rgba(253,230,138,var(--star)) 0,transparent 1.2%),
-    radial-gradient(circle at 88% 6%,rgba(253,230,138,var(--star)) 0,transparent 1%);
-  pointer-events:none;z-index:0;
+html[data-theme="dark"] body,
+body.dark{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(168,85,247,.13),transparent 30%),
+    radial-gradient(circle at 100% 20%,rgba(236,72,153,.08),transparent 30%),
+    #000;
 }
-.app{max-width:520px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
+/* ✅ LTR */
+body.lang-ltr { direction: ltr; }
+body.lang-ltr #backBtn svg { transform: none; }
+body.lang-ltr .acc-content li { padding: 5px 0 5px 22px; }
+body.lang-ltr .acc-content li::before { right: auto; left: 4px; }
+body.lang-ltr .acc-arrow { transform: rotate(180deg); }
+body.lang-ltr .accordion.open .acc-arrow { transform: rotate(-90deg); }
 
-.page-header{display:flex;align-items:center;gap:12px;padding:20px 0 16px}
-.back-btn{
-  width:44px;height:44px;border-radius:14px;background:var(--icon-bg);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border:1px solid var(--icon-border);color:var(--icon-color);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
-  flex:0 0 44px;text-decoration:none;box-shadow:0 4px 12px rgba(5,150,105,.15);
+button{font:inherit;border:0;cursor:pointer;background:transparent;color:inherit}
+a{color:inherit;text-decoration:none}
+svg{width:21px;height:21px;display:block}
+
+.app{width:100%;max-width:560px;margin:0 auto;padding:0 16px;position:relative;z-index:2}
+
+.topbar{
+  display:flex;align-items:center;gap:10px;
+  padding:16px 0 14px;
+  position:sticky;top:0;z-index:50;
+  background:linear-gradient(to bottom,var(--bg) 70%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
 }
-.back-btn:active{transform:scale(.94)}
-.back-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
-.page-header h1{font-size:1.35rem;font-weight:900;color:var(--text);flex:1;text-align:center;padding-right:44px}
+html[data-theme="dark"] .topbar,
+body.dark .topbar{background:linear-gradient(to bottom,#000 70%,transparent)}
+.top-side{
+  width:42px;height:42px;flex:0 0 42px;
+  border-radius:14px;display:flex;align-items:center;justify-content:center;
+  background:var(--card);border:1px solid var(--line);
+  color:var(--primary);box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(22px) saturate(180%);
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  transition:transform .2s;
+}
+.top-side:active{transform:scale(.91)}
+.top-side svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.page-title-box{flex:1;text-align:center;min-width:0}
+.page-title-box strong{display:block;font-size:.95rem;font-weight:950}
+.page-title-box span{display:block;margin-top:1px;font-size:.6rem;color:var(--muted);font-weight:700}
 
 .hero{
-  background:linear-gradient(135deg,#34d399 0,#059669 100%);
-  border-radius:20px;padding:22px;margin-bottom:16px;
-  color:#fff;position:relative;overflow:hidden;
-  box-shadow:0 12px 30px rgba(5,150,105,.35);
-  display:flex;align-items:center;gap:14px;
+  position:relative;overflow:hidden;
+  border-radius:26px;padding:22px 20px;
+  color:#fff;background:var(--brand);background-size:180% 180%;
+  box-shadow:
+    0 18px 42px rgba(219,39,119,.40),
+    0 8px 22px rgba(168,85,247,.30),
+    inset 0 1px 0 rgba(255,255,255,.20);
+  animation:heroShift 14s ease infinite;
+  isolation:isolate;
 }
-.hero::before{
-  content:"";position:absolute;top:-40px;right:-40px;
-  width:120px;height:120px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.2),transparent 70%);
-  pointer-events:none;
+@keyframes heroShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero::before{content:"";position:absolute;width:200px;height:200px;top:-110px;left:-70px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.28),transparent 68%);pointer-events:none}
+.hero::after{content:"";position:absolute;width:170px;height:170px;right:-90px;bottom:-100px;border-radius:50%;border:1px solid rgba(255,255,255,.14);pointer-events:none}
+.hero-content{position:relative;z-index:2}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:100px;
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.24);
+  font-size:.6rem;font-weight:800;
+  backdrop-filter:blur(8px);
 }
-.hero-icon{
-  width:56px;height:56px;border-radius:16px;
-  background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.3);
-  display:flex;align-items:center;justify-content:center;flex:0 0 56px;
-  backdrop-filter:blur(10px);
-}
-.hero-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.hero-text{flex:1}
-.hero-title{font-size:1.1rem;font-weight:900;margin-bottom:5px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.15)}
-.hero-sub{font-size:.85rem;color:#fff;opacity:.95;font-weight:700;line-height:1.7}
+.hero-badge svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2.4}
+.hero h1{margin:12px 0 6px;font-size:1.15rem;line-height:1.35;font-weight:950;text-shadow:0 2px 12px rgba(0,0,0,.2)}
+.hero p{margin:0;font-size:.72rem;line-height:2;opacity:.95;font-weight:700}
 
-/* STATUS BADGE */
 .status-badge{
   display:flex;align-items:center;gap:12px;
-  background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(5,150,105,.1));
-  border:1.5px solid rgba(16,185,129,.4);
-  border-radius:16px;padding:16px;margin-bottom:16px;
-  box-shadow:0 4px 12px rgba(5,150,105,.12);
+  padding:14px 16px;border-radius:18px;
+  background:var(--soft-green);
+  border:1.5px solid rgba(16,185,129,.3);
+  margin-top:14px;
+  box-shadow:var(--shadow-sm);
 }
 .status-icon{
-  width:48px;height:48px;border-radius:14px;flex:0 0 48px;
+  width:44px;height:44px;flex:0 0 44px;
+  border-radius:14px;
   background:linear-gradient(135deg,#34d399,#059669);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 6px 14px rgba(5,150,105,.3);
+  display:grid;place-items:center;
+  color:#fff;
+  box-shadow:0 6px 16px rgba(16,185,129,.30);
 }
-.status-icon svg{
-  width:26px;height:26px;fill:none;stroke:#fff;
-  stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;
-}
-.status-body{flex:1}
-.status-title{
-  font-size:1rem;font-weight:900;color:#047857;
-  margin-bottom:4px;
-}
-body.dark .status-title{color:#6ee7b7}
-.status-text{
-  font-size:.85rem;font-weight:700;color:var(--text-card);
-  line-height:1.7;
-}
+.status-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.status-info{flex:1;min-width:0}
+.status-title{font-size:.88rem;font-weight:950;color:#047857;margin-bottom:3px}
+html[data-theme="dark"] .status-title,
+body.dark .status-title{color:#34d399}
+.status-text{font-size:.65rem;font-weight:700;color:var(--muted);line-height:1.7}
 
-/* SECTIONS */
-.section{
-  background:var(--card);backdrop-filter:blur(20px);
-  border:1.5px solid var(--card-border);border-radius:16px;
-  padding:18px;margin-bottom:12px;
-  box-shadow:var(--card-shadow);
-  position:relative;overflow:hidden;
+.summary{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+  margin-top:14px;
 }
-.section::before{
-  content:"";position:absolute;top:0;right:0;
-  width:4px;height:100%;
-  background:linear-gradient(180deg,#34d399,#059669);
-}
-.section-head{
-  display:flex;align-items:center;gap:12px;
-  margin-bottom:12px;
-}
-.section-icon{
-  width:42px;height:42px;border-radius:13px;flex:0 0 42px;
-  background:linear-gradient(135deg,#34d399,#059669);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 5px 12px rgba(5,150,105,.25);
-}
-.section-icon svg{
-  width:22px;height:22px;fill:none;stroke:#fff;
-  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
-}
-.section-title{
-  font-size:1rem;font-weight:900;color:var(--text);
-  line-height:1.5;
-}
-.section-body{
-  font-size:.9rem;font-weight:700;
-  color:var(--text-card);line-height:2;
-}
-.section-body strong{
-  color:var(--accent);font-weight:900;
-}
-.section-body ul{
-  list-style:none;padding:0;margin:10px 0 0;
-}
-.section-body li{
-  display:flex;align-items:flex-start;gap:8px;
-  padding:6px 0;line-height:1.9;
-}
-.section-body li svg{
-  width:16px;height:16px;flex:0 0 16px;margin-top:5px;
-  fill:none;stroke:var(--accent);
-  stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;
-}
-.section-body li svg.no{
-  stroke:#dc2626;
-}
-body.dark .section-body li svg.no{stroke:#fca5a5}
-
-/* CONTACT BOX */
-.contact-box{
-  background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(5,150,105,.06));
-  border:1.5px solid var(--card-border);
-  border-radius:16px;padding:18px;margin-bottom:12px;
+.summary-item{
+  padding:12px 8px;border-radius:14px;
+  background:var(--card);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);
   text-align:center;
-  box-shadow:var(--card-shadow);
+  transition:transform .2s;
+  cursor:pointer;
 }
-.contact-box-title{
-  font-size:.95rem;font-weight:900;color:var(--text);
-  margin-bottom:8px;
+.summary-item:active{transform:scale(.96)}
+.summary-icon{
+  width:36px;height:36px;margin:0 auto 6px;
+  border-radius:12px;
+  display:grid;place-items:center;
+  color:#fff;
 }
-.contact-box-text{
-  font-size:.85rem;font-weight:700;color:var(--text-muted);
-  line-height:1.9;margin-bottom:14px;
-}
-.contact-box-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:12px 22px;border-radius:12px;border:0;
-  background:linear-gradient(135deg,#34d399,#059669);
-  color:#fff;font-family:inherit;font-size:.9rem;font-weight:900;
-  cursor:pointer;transition:all .2s;
-  text-decoration:none;
-  box-shadow:0 6px 16px rgba(5,150,105,.35);
-}
-.contact-box-btn:active{transform:scale(.96)}
-.contact-box-btn svg{
-  width:16px;height:16px;fill:none;stroke:currentColor;
-  stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
-}
+.summary-icon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.summary-label{font-size:.6rem;font-weight:900;color:var(--text);line-height:1.4}
 
-/* UPDATE DATE */
-.update-date{
-  text-align:center;font-size:.78rem;font-weight:800;
-  color:var(--text-muted);
-  padding:14px 0;
-  display:flex;align-items:center;justify-content:center;gap:6px;
+.section-title{
+  display:flex;align-items:center;gap:9px;
+  margin:22px 4px 12px;
 }
-.update-date svg{
-  width:14px;height:14px;fill:none;stroke:currentColor;
-  stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;
+.section-line{width:4px;height:18px;border-radius:8px;background:var(--brand);box-shadow:0 0 12px rgba(219,39,119,.5)}
+.section-title h2{font-size:.9rem;font-weight:950;color:var(--text)}
+
+.accordion{
+  background:var(--card);
+  border:1.5px solid var(--line);
+  border-radius:18px;
+  box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  overflow:hidden;
+  margin-bottom:10px;
 }
+.acc-header{
+  width:100%;
+  display:flex;align-items:center;gap:11px;
+  padding:14px 15px;
+  cursor:pointer;
+  transition:background .18s;
+  text-align:right;
+  font-family:inherit;
+  color:inherit;
+}
+.acc-header:active{background:var(--soft)}
+.acc-icon{
+  width:38px;height:38px;flex:0 0 38px;
+  border-radius:12px;
+  display:grid;place-items:center;
+  color:#fff;
+  box-shadow:0 4px 12px rgba(168,50,214,.22);
+}
+.acc-icon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.acc-title{flex:1;font-size:.82rem;font-weight:950;color:var(--text);line-height:1.4}
+.acc-arrow{
+  width:18px;height:18px;flex:0 0 18px;
+  fill:none;stroke:var(--muted);stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .25s;
+}
+.accordion.open .acc-arrow{transform:rotate(90deg)}
+.acc-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s ease,padding .3s ease;
+  padding:0 15px;
+}
+.accordion.open .acc-body{
+  max-height:3000px;
+  padding:0 15px 15px;
+}
+.acc-content{
+  padding-top:10px;
+  border-top:1px solid var(--line);
+  font-size:.75rem;line-height:2;font-weight:700;color:var(--text);
+}
+.acc-content p{margin:0 0 10px}
+.acc-content p:last-child{margin-bottom:0}
+.acc-content ul{margin:0 0 10px;padding:0;list-style:none}
+.acc-content ul:last-child{margin-bottom:0}
+.acc-content li{
+  position:relative;
+  padding:5px 22px 5px 0;
+  line-height:1.9;
+}
+.acc-content li::before{
+  content:"";position:absolute;
+  right:4px;top:13px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--brand);
+  box-shadow:0 0 0 3px rgba(219,39,119,.14);
+}
+.acc-content li.no::before{
+  background:linear-gradient(135deg,#ef4444,#b91c1c);
+  box-shadow:0 0 0 3px rgba(225,29,72,.14);
+}
+.acc-content strong{color:var(--primary);font-weight:950}
+
+.contact-box{
+  padding:22px 18px 18px;
+  border-radius:20px;
+  background:var(--brand);
+  background-size:180% 180%;
+  color:#fff;
+  box-shadow:0 14px 36px rgba(219,39,119,.35);
+  margin-top:14px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  animation:heroShift 14s ease infinite;
+}
+.contact-box::before{content:"";position:absolute;width:160px;height:160px;top:-80px;right:-60px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%);pointer-events:none}
+.contact-box-inner{position:relative;z-index:1}
+.contact-box-title{font-size:.92rem;font-weight:950;margin-bottom:6px;text-shadow:0 2px 8px rgba(0,0,0,.18)}
+.contact-box-text{font-size:.68rem;font-weight:700;opacity:.95;line-height:1.9;margin-bottom:14px}
+.contact-actions{
+  display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
+}
+.contact-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:10px 18px;border-radius:12px;
+  background:rgba(255,255,255,.22);
+  border:1px solid rgba(255,255,255,.3);
+  color:#fff;
+  font-size:.72rem;font-weight:900;
+  backdrop-filter:blur(8px);
+  transition:transform .15s;
+  text-decoration:none;
+}
+.contact-btn:active{transform:scale(.95)}
+.contact-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+.update-info{
+  text-align:center;
+  padding:22px 16px 10px;
+  font-size:.62rem;
+  font-weight:700;
+  color:var(--muted);
+  line-height:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.update-info svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 
 .bottom-nav{
-  position:fixed;bottom:0;left:0;right:0;z-index:100;
-  background:var(--nav-bg);backdrop-filter:blur(24px);
-  border-top:1px solid var(--nav-border);
-  display:flex;justify-content:space-around;
-  padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));
-  max-width:520px;margin:0 auto;
-  box-shadow:0 -8px 30px rgba(5,150,105,.15);
+  position:fixed;left:50%;bottom:0;transform:translateX(-50%);
+  width:100%;max-width:560px;z-index:1000;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+  display:grid;grid-template-columns:1fr 1fr 78px 1fr 1fr;
+  gap:4px;align-items:center;
+  background:var(--card);
+  border-top:1px solid rgba(255,255,255,.18);
+  border-radius:26px 26px 0 0;
+  box-shadow:0 -10px 28px rgba(225,29,72,.14),0 -24px 55px rgba(168,85,247,.10),inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter:blur(55px) saturate(220%);
+  -webkit-backdrop-filter:blur(55px) saturate(220%);
 }
+html[data-theme="dark"] .bottom-nav,
+body.dark .bottom-nav{border-top:1px solid rgba(255,255,255,.06);box-shadow:0 -10px 28px rgba(0,0,0,.55),0 -24px 55px rgba(219,39,119,.14)}
 .nav-item{
-  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
-  color:var(--nav-color);padding:8px 2px;font-size:.68rem;font-weight:800;
-  text-decoration:none;cursor:pointer;border-radius:12px;position:relative;
+  min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:4px;position:relative;color:var(--muted);border-radius:14px;
+  font-size:.56rem;font-weight:850;transition:color .2s;padding:6px 2px;
 }
-.nav-item.active{color:var(--nav-active)}
-.nav-item.active::before{
-  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:22px;height:3px;border-radius:0 0 4px 4px;
-  background:linear-gradient(90deg,#34d399,#059669,#fde68a);
-  box-shadow:0 0 12px rgba(5,150,105,.8);
+.nav-item svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.nav-item.active{color:var(--primary)}
+.nav-item:active{transform:scale(.92)}
+.nav-fab-wrap{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+.nav-fab{
+  position:absolute;top:-30px;width:60px;height:60px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--brand);
+  box-shadow:0 14px 32px rgba(225,29,72,.48),0 6px 16px rgba(168,85,247,.35);
+  border:4px solid var(--card-solid);
+  transition:transform .25s;z-index:10;
 }
-.nav-item svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.nav-item.active svg{stroke-width:2.4}
+.nav-fab:active{transform:scale(.92)}
+.nav-fab::before{content:"";position:absolute;width:100%;height:100%;border-radius:50%;background:var(--brand);z-index:-1;animation:fabRipple 3s ease infinite;opacity:.45}
+@keyframes fabRipple{0%{transform:scale(1);opacity:.45}100%{transform:scale(1.35);opacity:0}}
+.nav-fab svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.nav-fab-label{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:.56rem;font-weight:900;color:var(--primary);white-space:nowrap}
 
-.toast{
-  position:fixed;bottom:110px;left:50%;transform:translateX(-50%) translateY(20px);
-  background:linear-gradient(135deg,#059669,#10b981);color:#fff;
-  padding:14px 26px;border-radius:30px;font-size:.95rem;font-weight:900;
-  z-index:10002;opacity:0;transition:all .3s;pointer-events:none;
-  box-shadow:0 12px 30px rgba(5,150,105,.5);max-width:90vw;text-align:center;
-  white-space:pre-line;line-height:1.7;
-}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-@media (max-width:380px){
-  body{font-size:16px}
+button:focus-visible,a:focus-visible{outline:3px solid rgba(168,50,214,.25);outline-offset:2px}
+@media(max-width:390px){
   .app{padding:0 12px}
-  .page-header h1{font-size:1.2rem}
-  .hero{padding:18px}
-  .hero-icon{width:48px;height:48px;flex:0 0 48px}
-  .section-icon{width:38px;height:38px;flex:0 0 38px}
-  .section-icon svg{width:20px;height:20px}
-  .nav-item{font-size:.62rem}
-  .nav-item svg{width:21px;height:21px}
+  .hero{padding:18px 16px;border-radius:24px}
+  .hero h1{font-size:1.02rem}
+  .nav-fab{width:56px;height:56px;top:-28px}
+  .nav-fab svg{width:24px;height:24px}
+  .bottom-nav{grid-template-columns:1fr 1fr 70px 1fr 1fr}
+  .page-title-box span{display:none}
+  .summary-item{padding:10px 6px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
-
 <body>
-
-<script>
-(function(){
-  try{ if(localStorage.getItem('bn_theme')==='dark') document.body.classList.add('dark'); }catch(e){}
-})();
-</script>
 
 <div class="app">
 
-  <header class="page-header">
-    <a class="back-btn" href="home.html" aria-label="بازگشت">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    </a>
-    <h1>حریم خصوصی</h1>
-  </header>
+<header class="topbar">
+  <button class="top-side" id="backBtn" aria-label="بازگشت">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="page-title-box">
+    <strong>حریم خصوصی</strong>
+    <span>بانوان نور</span>
+  </div>
+  <div style="width:42px;flex:0 0 42px"></div>
+</header>
 
-  <div class="hero">
-    <div class="hero-icon">
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
       <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      <span>امنیت اطلاعات</span>
     </div>
-    <div class="hero-text">
-      <div class="hero-title">حریم خصوصی شما</div>
-      <div class="hero-sub">امنیت و محرمانگی اطلاعات 💚</div>
+    <h1>حریم خصوصی شما</h1>
+    <p>تمام اطلاعات شما فقط روی دستگاه خودتان ذخیره می‌شود</p>
+  </div>
+</section>
+
+<div class="status-badge">
+  <div class="status-icon">
+    <svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+  </div>
+  <div class="status-info">
+    <div class="status-title">۱۰۰٪ محرمانه</div>
+    <div class="status-text">هیچ اطلاعاتی از شما به هیچ سروری ارسال نمی‌شود</div>
+  </div>
+</div>
+
+<div class="summary">
+  <div class="summary-item" data-jump="no-account">
+    <div class="summary-icon" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+    </div>
+    <div class="summary-label">بدون حساب</div>
+  </div>
+  <div class="summary-item" data-jump="local-storage">
+    <div class="summary-icon" style="background:linear-gradient(135deg,#a855f7,#6d28d9)">
+      <svg viewBox="0 0 24 24"><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9"/><path d="M21 3v6h-6"/></svg>
+    </div>
+    <div class="summary-label">ذخیره محلی</div>
+  </div>
+  <div class="summary-item" data-jump="no-tracking">
+    <div class="summary-icon" style="background:linear-gradient(135deg,#10b981,#059669)">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/></svg>
+    </div>
+    <div class="summary-label">بدون ردیابی</div>
+  </div>
+</div>
+
+<div class="section-title">
+  <div class="section-line"></div>
+  <h2>اطلاعات کامل</h2>
+</div>
+
+<div class="accordion open" id="no-account">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#a855f7,#6d28d9)">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+    </div>
+    <div class="acc-title">مقدمه</div>
+    <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>اپلیکیشن <strong>بانوان نور</strong> با احترام کامل به حریم خصوصی کاربران طراحی شده است. این سند سیاست‌های ما را درباره چگونگی برخورد با اطلاعات شما توضیح می‌دهد.</p>
+      <p>اصل ما ساده است: <strong>اطلاعات شما متعلق به خودتان است</strong> و هیچ‌کس به آن دسترسی ندارد.</p>
     </div>
   </div>
+</div>
 
-  <!-- STATUS BADGE -->
-  <div class="status-badge">
-    <div class="status-icon">
-      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+<div class="accordion">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#ef4444,#b91c1c)">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
     </div>
-    <div class="status-body">
-      <div class="status-title">۱۰۰٪ محرمانه</div>
-      <div class="status-text">هیچ اطلاعاتی از شما جمع‌آوری یا ارسال نمی‌شود</div>
-    </div>
-  </div>
-
-  <!-- INTRO -->
-  <div class="section">
-    <div class="section-head">
-      <div class="section-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      </div>
-      <div class="section-title">مقدمه</div>
-    </div>
-    <div class="section-body">
-      اپلیکیشن <strong>بانوان نور</strong> با احترام کامل به حریم خصوصی کاربران طراحی شده است.
-      این سند، سیاست‌های ما را درباره چگونگی برخورد با اطلاعات شما توضیح می‌دهد.
-      <br><br>
-      اصل ما ساده است: <strong>اطلاعات شما متعلق به خودتان است</strong> و ما هیچ‌گاه به آن دسترسی نداریم.
-    </div>
-  </div>
-
-  <!-- COLLECT -->
-  <div class="section">
-    <div class="section-head">
-      <div class="section-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-      </div>
-      <div class="section-title">جمع‌آوری اطلاعات</div>
-    </div>
-    <div class="section-body">
-      این اپلیکیشن <strong>هیچ‌گونه اطلاعات شخصی</strong> از شما جمع‌آوری نمی‌کند.
+    <div class="acc-title">جمع‌آوری اطلاعات</div>
+    <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>این اپلیکیشن <strong>هیچ‌گونه اطلاعات شخصی</strong> از شما جمع‌آوری نمی‌کند:</p>
       <ul>
-        <li><svg class="no" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>نیازی به ثبت‌نام یا حساب کاربری نیست</li>
-        <li><svg class="no" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>نام، ایمیل، شماره تلفن یا آدرس شما را نمی‌گیریم</li>
-        <li><svg class="no" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>موقعیت مکانی شما را ردیابی نمی‌کنیم</li>
-        <li><svg class="no" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>به مخاطبین، پیامک‌ها یا گالری شما دسترسی نداریم</li>
+        <li class="no">نیازی به ثبت‌نام یا حساب کاربری نیست</li>
+        <li class="no">نام، ایمیل، شماره تلفن یا آدرس شما را نمی‌گیریم</li>
+        <li class="no">موقعیت مکانی شما را ردیابی نمی‌کنیم</li>
+        <li class="no">به مخاطبین، پیامک‌ها یا گالری شما دسترسی نداریم</li>
       </ul>
     </div>
   </div>
+</div>
 
-  <!-- STORAGE -->
-  <div class="section">
-    <div class="section-head">
-      <div class="section-icon">
-        <svg viewBox="0 0 24 24"><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9"/><path d="M21 3v6h-6"/></svg>
-      </div>
-      <div class="section-title">ذخیره‌سازی اطلاعات</div>
+<div class="accordion" id="local-storage">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#a855f7,#6d28d9)">
+      <svg viewBox="0 0 24 24"><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9"/><path d="M21 3v6h-6"/></svg>
     </div>
-    <div class="section-body">
-      تمام اطلاعاتی که شما در اپ وارد می‌کنید، <strong>فقط روی گوشی خودتان</strong> ذخیره می‌شود:
+    <div class="acc-title">ذخیره‌سازی اطلاعات</div>
+    <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>تمام اطلاعاتی که شما در اپ وارد می‌کنید، <strong>فقط روی گوشی خودتان</strong> ذخیره می‌شود:</p>
       <ul>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>یادداشت‌های شخصی</li>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>اطلاعات چرخه قاعدگی</li>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>علاقه‌مندی‌ها و نشان‌شده‌ها</li>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>اطلاعات بارداری و زایمان</li>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>تنظیمات شخصی (تم، مرجع تقلید و...)</li>
+        <li>یادداشت‌های شخصی</li>
+        <li>اطلاعات چرخه قاعدگی</li>
+        <li>علاقه‌مندی‌ها و نشان‌شده‌ها</li>
+        <li>اطلاعات بارداری و زایمان</li>
+        <li>تنظیمات شخصی (تم، زبان و...)</li>
       </ul>
-      <br>
-      این اطلاعات در حافظه محلی مرورگر (<strong>LocalStorage</strong>) ذخیره می‌شود و هیچ‌گاه به سروری ارسال نمی‌گردد.
+      <p>این اطلاعات در حافظه محلی مرورگر (<strong>LocalStorage</strong>) ذخیره می‌شود و <strong>هیچ‌گاه به هیچ سروری ارسال نمی‌گردد</strong>.</p>
     </div>
   </div>
+</div>
 
-  <!-- INTERNET -->
-  <div class="section">
-    <div class="section-head">
-      <div class="section-icon">
-        <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-      </div>
-      <div class="section-title">استفاده از اینترنت</div>
+<div class="accordion">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#0ea5e9,#0284c7)">
+      <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
     </div>
-    <div class="section-body">
-      این اپلیکیشن برای کارکرد کامل، <strong>به اینترنت نیاز ندارد</strong>.
-      <br><br>
-      اینترنت فقط در موارد زیر استفاده می‌شود:
+    <div class="acc-title">استفاده از اینترنت</div>
+    <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>این اپلیکیشن برای کارکرد کامل، <strong>به اینترنت نیاز ندارد</strong>.</p>
+      <p>اینترنت فقط در موارد زیر استفاده می‌شود:</p>
       <ul>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>بارگذاری اولیه مقالات آموزشی و اطلاعات پزشکان</li>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>مشاهده ویدیوهای آموزشی در یوتیوب (با انتخاب خود شما)</li>
+        <li>بارگذاری اولیه مقالات آموزشی و اطلاعات پزشکان</li>
+        <li>مشاهده ویدیوهای آموزشی در یوتیوب (با انتخاب خود شما)</li>
       </ul>
-      <br>
-      پس از بارگذاری اولیه، تمام مطالب به صورت <strong>آفلاین</strong> در دسترس هستند.
+      <p>پس از بارگذاری اولیه، تمام مطالب به صورت <strong>آفلاین</strong> در دسترس هستند.</p>
     </div>
   </div>
+</div>
 
-  <!-- SHARING -->
-  <div class="section">
-    <div class="section-head">
-      <div class="section-icon">
-        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-      </div>
-      <div class="section-title">اشتراک‌گذاری با دیگران</div>
+<div class="accordion">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#f59e0b,#b45309)">
+      <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
     </div>
-    <div class="section-body">
-      <strong>هیچ اطلاعاتی</strong> با هیچ شخص، شرکت یا سازمان ثالثی به اشتراک گذاشته نمی‌شود.
-      <br><br>
-      حتی ما (توسعه‌دهندگان اپ) هم به اطلاعات شخصی شما <strong>دسترسی نداریم</strong>.
-      تمام داده‌ها روی دستگاه شما باقی می‌ماند.
+    <div class="acc-title">اشتراک‌گذاری با دیگران</div>
+    <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p><strong>هیچ اطلاعاتی</strong> با هیچ شخص، شرکت یا سازمان ثالثی به اشتراک گذاشته نمی‌شود.</p>
+      <p>هیچ‌کس به اطلاعات شخصی شما <strong>دسترسی ندارد</strong>. تمام داده‌ها روی دستگاه شما باقی می‌ماند.</p>
     </div>
   </div>
+</div>
 
-  <!-- SECURITY -->
-  <div class="section">
-    <div class="section-head">
-      <div class="section-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <div class="section-title">امنیت اطلاعات</div>
+<div class="accordion">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#10b981,#059669)">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     </div>
-    <div class="section-body">
-      اطلاعات شما در حافظه امن دستگاه ذخیره می‌شود و از طریق:
+    <div class="acc-title">امنیت اطلاعات</div>
+    <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>اطلاعات شما در حافظه امن دستگاه ذخیره می‌شود و از طریق:</p>
       <ul>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>رمزنگاری مرورگر محافظت می‌شود</li>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>فقط با دسترسی شما قابل مشاهده است</li>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>با پاک کردن حافظه مرورگر، همه چیز پاک می‌شود</li>
+        <li>رمزنگاری مرورگر محافظت می‌شود</li>
+        <li>فقط با دسترسی شما قابل مشاهده است</li>
+        <li>با پاک کردن حافظه مرورگر، همه چیز پاک می‌شود</li>
       </ul>
+      <p>هیچ نسخه پشتیبان ابری از اطلاعات شما گرفته نمی‌شود. تنها شما به داده‌های خود دسترسی دارید.</p>
     </div>
   </div>
+</div>
 
-  <!-- PRIVACY RIGHTS -->
-  <div class="section">
-    <div class="section-head">
-      <div class="section-icon">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-      </div>
-      <div class="section-title">حقوق شما</div>
+<div class="accordion">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
     </div>
-    <div class="section-body">
-      شما این حقوق را دارید:
+    <div class="acc-title">حقوق شما</div>
+    <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>شما این حقوق را دارید:</p>
       <ul>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>دسترسی کامل به همه اطلاعات خودتان</li>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>ویرایش یا حذف هر بخش از اطلاعات</li>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>پاک کردن کامل اپ و تمام داده‌های آن</li>
-        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>استفاده بدون نگرانی از ردیابی</li>
+        <li>دسترسی کامل به همه اطلاعات خودتان</li>
+        <li>ویرایش یا حذف هر بخش از اطلاعات</li>
+        <li>پاک کردن کامل اپ و تمام داده‌های آن</li>
+        <li>استفاده بدون نگرانی از ردیابی</li>
       </ul>
     </div>
   </div>
+</div>
 
-  <!-- CHILDREN -->
-  <div class="section">
-    <div class="section-head">
-      <div class="section-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-      </div>
-      <div class="section-title">کاربران زیر سن قانونی</div>
+<div class="accordion">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#ec4899,#be185d)">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
     </div>
-    <div class="section-body">
-      این اپ برای <strong>بانوان بالای ۱۳ سال</strong> طراحی شده است.
-      <br><br>
-      ما به‌طور آگاهانه اطلاعاتی از کودکان زیر ۱۳ سال جمع‌آوری نمی‌کنیم. اگر والدین متوجه شوند که فرزندشان از اپ استفاده می‌کند، می‌توانند اطلاعات را از دستگاه پاک کنند.
+    <div class="acc-title">کاربران زیر سن قانونی</div>
+    <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>این اپ برای <strong>بانوان بالای ۱۳ سال</strong> طراحی شده است.</p>
+      <p>ما به‌طور آگاهانه اطلاعاتی از کودکان زیر ۱۳ سال جمع‌آوری نمی‌کنیم. اگر والدین متوجه شوند که فرزندشان از اپ استفاده می‌کند، می‌توانند اطلاعات را از دستگاه پاک کنند.</p>
     </div>
   </div>
+</div>
 
-  <!-- THIRD PARTY -->
-  <div class="section">
-    <div class="section-head">
-      <div class="section-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-      </div>
-      <div class="section-title">سرویس‌های ثالث</div>
+<div class="accordion" id="no-tracking">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#6366f1,#4338ca)">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
     </div>
-    <div class="section-body">
-      این اپ از هیچ سرویس ردیابی، تبلیغات یا تحلیل رفتار کاربر استفاده نمی‌کند.
-      <br><br>
-      تنها سرویس خارجی مورد استفاده <strong>یوتیوب</strong> است (برای دیدن ویدیوهای آموزشی) که با کلیک خود شما باز می‌شود و تابع قوانین حریم خصوصی خود یوتیوب است.
+    <div class="acc-title">سرویس‌های ثالث</div>
+    <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>این اپ از هیچ سرویس ردیابی، تبلیغات یا تحلیل رفتار کاربر استفاده نمی‌کند.</p>
+      <p>تنها سرویس خارجی مورد استفاده <strong>یوتیوب</strong> است (برای دیدن ویدیوهای آموزشی) که با کلیک خود شما باز می‌شود و تابع قوانین حریم خصوصی خود یوتیوب است.</p>
+      <p>هیچ‌گونه اطلاعات دیگری از شما به هیچ سرویس خارجی ارسال نمی‌شود.</p>
     </div>
   </div>
+</div>
 
-  <!-- CHANGES -->
-  <div class="section">
-    <div class="section-head">
-      <div class="section-icon">
-        <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
-      </div>
-      <div class="section-title">تغییرات در سیاست حریم خصوصی</div>
+<div class="accordion">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#0ea5e9,#0369a1)">
+      <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
     </div>
-    <div class="section-body">
-      در صورت تغییر این سیاست، اطلاع‌رسانی از طریق <strong>خود اپ</strong> انجام می‌شود.
-      <br><br>
-      ادامه استفاده شما از اپ پس از تغییرات، به معنای پذیرش سیاست جدید است. توصیه می‌کنیم هر چند وقت یک بار این صفحه را مطالعه کنید.
+    <div class="acc-title">تغییرات در سیاست حریم خصوصی</div>
+    <svg class="acc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>در صورت تغییر این سیاست، اطلاع‌رسانی از طریق <strong>خود اپ</strong> انجام می‌شود.</p>
+      <p>ادامه استفاده شما از اپ پس از تغییرات، به معنای پذیرش سیاست جدید است. توصیه می‌کنیم هر چند وقت یک بار این صفحه را مطالعه کنید.</p>
     </div>
   </div>
+</div>
 
-  <!-- CONTACT -->
-  <div class="contact-box">
+<div class="contact-box">
+  <div class="contact-box-inner">
     <div class="contact-box-title">📧 سؤالی دارید؟</div>
     <div class="contact-box-text">
       اگه سؤالی درباره حریم خصوصی یا نحوه کار اپ دارید، با ما در تماس باشید.
     </div>
-    <a class="contact-box-btn" href="mailto:info@banovannoor.com">
-      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
-      تماس با ما
-    </a>
+    <div class="contact-actions">
+      <a class="contact-btn" href="contacts.html">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        ارتباط با ما
+      </a>
+      <a class="contact-btn" href="guide.html">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.1 9a3 3 0 015.8 1c0 2-3 3-3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 17h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        راهنما
+      </a>
+    </div>
   </div>
+</div>
 
-  <!-- UPDATE DATE -->
-  <div class="update-date">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-    آخرین بروزرسانی: نسخه ۱.۰.۰
-  </div>
+<div class="update-info">
+  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  آخرین بروزرسانی: نسخه ۱.۰.۰
+</div>
 
-  <div style="height:20px"></div>
 </div>
 
 <nav class="bottom-nav">
-  <a class="nav-item" href="home.html">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span>خانه</span>
-  </a>
   <a class="nav-item" href="search.html">
-    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.7-3.7"/></svg>
     <span>جستجو</span>
   </a>
   <a class="nav-item" href="hamraz.html">
-    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
     <span>همراز</span>
   </a>
+  <div class="nav-fab-wrap">
+    <a class="nav-fab" href="home.html" aria-label="خانه">
+      <svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7"/><path d="M5 9v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9"/><path d="M9 22v-8h6v8"/></svg>
+    </a>
+    <span class="nav-fab-label">خانه</span>
+  </div>
   <a class="nav-item" href="ahkam.html">
     <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
     <span>احکام</span>
   </a>
-  <a class="nav-item" href="settings.html">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+  <a class="nav-item active" href="settings.html">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5v.1a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1A2 2 0 0 1 7 3.3l.1.1a1.7 1.7 0 0 0 1.8.3h.1a1.7 1.7 0 0 0 1-1.5V2a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v.1a1.7 1.7 0 0 0 1.5 1h.1a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.4 1z"/></svg>
     <span>بیشتر</span>
   </a>
 </nav>
 
-<div class="toast" id="toast"></div>
-
 <script>
 (function(){
-'use strict';
+"use strict";
 
-var toastTimer = null;
+var THEME_KEY = "bn_theme";
 
-function $(id){ return document.getElementById(id); }
-function showMsg(msg,dur){
-  dur=dur||2200;
-  var t=$('toast'); if(!t) return;
-  t.textContent=msg; t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(function(){ t.classList.remove('show'); },dur);
+function getSystemTheme(){
+  try{ return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+  catch(e){ return "light"; }
 }
-function getTheme(){ try{ return localStorage.getItem('bn_theme')||'light'; }catch(e){ return 'light'; } }
+function getSavedTheme(){
+  try{
+    var t = localStorage.getItem(THEME_KEY);
+    if(t === "dark" || t === "light") return t;
+  }catch(e){}
+  return getSystemTheme();
+}
 function applyTheme(){
-  if(getTheme()==='dark') document.body.classList.add('dark');
-  else document.body.classList.remove('dark');
+  var t = getSavedTheme();
+  document.documentElement.setAttribute("data-theme", t);
+  document.body.classList.toggle("dark", t === "dark");
+  var meta = document.getElementById("themeMeta");
+  if(meta) meta.setAttribute("content", t === "dark" ? "#000000" : "#db2777");
 }
+applyTheme();
+
+function setupAccordion(){
+  var all = document.querySelectorAll(".accordion");
+  all.forEach(function(acc){
+    var header = acc.querySelector(".acc-header");
+    if(!header) return;
+    header.addEventListener("click", function(){
+      var isOpen = acc.classList.contains("open");
+      all.forEach(function(a){
+        if(a !== acc) a.classList.remove("open");
+      });
+      acc.classList.toggle("open", !isOpen);
+    });
+  });
+}
+
+function setupSummaryJump(){
+  document.querySelectorAll("[data-jump]").forEach(function(item){
+    item.addEventListener("click", function(){
+      var targetId = item.getAttribute("data-jump");
+      var target = document.getElementById(targetId);
+      if(!target) return;
+      var all = document.querySelectorAll(".accordion");
+      all.forEach(function(a){ a.classList.remove("open"); });
+      target.classList.add("open");
+      setTimeout(function(){
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 200);
+    });
+  });
+}
+
+function setupBack(){
+  var back = document.getElementById("backBtn");
+  if(back){
+    back.addEventListener("click", function(){
+      if(document.referrer && document.referrer.indexOf(location.origin) === 0){
+        history.back();
+      } else {
+        location.href = "settings.html";
+      }
+    });
+  }
+}
+
+window.addEventListener("storage", function(e){
+  if(e.key === THEME_KEY) applyTheme();
+  if(e.key === "bn_lang") location.reload();
+});
 
 function init(){
-  applyTheme();
-
-  window.addEventListener('storage', function(e){
-    if(e.key === 'bn_theme') applyTheme();
-  });
-
-  console.log('💚 صفحه حریم خصوصی آماده');
+  setupAccordion();
+  setupSummaryJump();
+  setupBack();
+  if (window.bnAnalytics) {
+    window.bnAnalytics.track("page_view", { page: "privacy" });
+  }
 }
 
-if(document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', init);
-} else init();
+if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+else init();
 
 })();
 </script>
-<script src="analytics.js"></script>
+
+<!-- ═══ آنالیتیکس (اول لود بشه) ═══ -->
+<script src="js/bn-analytics.js"></script>
+
+<!-- ═══ ماژول اصلی BN ═══ -->
+<script src="js/bn-app.js"></script>
+
+<!-- ═══ Firebase ═══ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/bn-tracker.js"></script>
+<script src="js/bn-auth-gate.js"></script>
+
+<!-- ═══ ثبت Service Worker ═══ -->
+<script>
+(function(){
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function(reg){
+        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
+      }).catch(function(e){ console.warn('SW register failed:', e.message); });
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
