@@ -1,309 +1,816 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-theme="light">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#6d28d9" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#db2777" id="themeMeta">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="بانوان نور">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="همراز بانوان — دستیار آفلاین پاسخ به سؤالات شرعی و پزشکی">
 <title>همراز | بانوان نور</title>
-<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<link rel="icon" href="assets/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.json">
+
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('bn_theme');
+    if(!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  }catch(e){}
+})();
+</script>
 <style>
 :root{
-  --bg-1:#f3e8ff;--bg-2:#e9d5ff;--bg-3:#ddd6fe;--bg-4:#c4b5fd;
-  --text:#2d1259;--text-soft:#4c1d95;--text-card:#1f1147;--text-muted:#7c6f9a;
-  --card:rgba(255,255,255,.78);--card-border:rgba(168,85,247,.2);
-  --card-shadow:0 8px 22px rgba(109,40,217,.12);
-  --bg-card:rgba(255,255,255,.85);
-  --icon-bg:rgba(255,255,255,.8);--icon-border:rgba(168,85,247,.25);--icon-color:#6d28d9;
-  --nav-bg:rgba(255,255,255,.92);--nav-border:rgba(168,85,247,.2);
-  --nav-color:#7c6f9a;--nav-active:#6d28d9;
-  --star:.2;
-  --notice-bg:linear-gradient(135deg,rgba(16,185,129,.12),rgba(59,130,246,.12));
-  --notice-border:rgba(16,185,129,.4);
-  --search-bg:rgba(255,255,255,.9);
-  --chat-user-bg:linear-gradient(135deg,#a855f7,#6d28d9);--chat-user-text:#fff;
-  --chat-bot-bg:#fff;--chat-bot-text:#1f1147;--chat-bot-border:rgba(168,85,247,.2);
-  --qs-bg:rgba(255,255,255,.6);--qs-inner:rgba(168,85,247,.08);
+  --bg:#fdf5ff;--bg-soft:#f6e9ff;
+  --surface:rgba(255,255,255,.78);--surface-solid:#ffffff;
+  --text:#2a1740;--text-soft:#5f4a77;--text-muted:#9686a8;
+  --primary:#a832d6;--primary-2:#c026d3;--magenta:#d946ef;--pink:#ec4899;
+  --red:#e11d48;--green:#10b981;--amber:#f59e0b;
+  --border:rgba(168,50,214,.14);
+  --shadow-sm:0 6px 20px rgba(168,50,214,.08);
+  --shadow-md:0 14px 34px rgba(168,50,214,.15);
+  --shadow-lg:0 22px 50px rgba(168,50,214,.20);
+  --nav-bg:rgba(255,255,255,.68);
+  --brand-grad:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(225,29,72,.13),rgba(168,85,247,.10));
+  --violet-soft:rgba(168,50,214,.10);
+  --warn-grad:linear-gradient(135deg,#f59e0b,#dc2626);
+  --warn-soft:linear-gradient(135deg,rgba(245,158,11,.10),rgba(220,38,38,.08));
 }
+html[data-theme="dark"],
 body.dark{
-  --bg-1:#3b0764;--bg-2:#4c1d95;--bg-3:#5b21b6;--bg-4:#2d1259;
-  --text:#fff;--text-soft:#e9d5ff;--text-card:#fff;--text-muted:#c4b5fd;
-  --card:rgba(255,255,255,.08);--card-border:rgba(244,114,182,.25);
-  --card-shadow:0 8px 22px rgba(0,0,0,.3);
-  --bg-card:rgba(26,11,61,.85);
-  --icon-bg:rgba(255,255,255,.08);--icon-border:rgba(244,114,182,.3);--icon-color:#fbcfe8;
-  --nav-bg:rgba(26,11,61,.94);--nav-border:rgba(244,114,182,.25);
-  --nav-color:#a78bfa;--nav-active:#fbcfe8;
-  --star:.7;
-  --notice-bg:linear-gradient(135deg,rgba(16,185,129,.15),rgba(59,130,246,.15));
-  --notice-border:rgba(16,185,129,.5);
-  --search-bg:rgba(255,255,255,.08);
-  --chat-user-bg:linear-gradient(135deg,#a855f7,#6d28d9);--chat-user-text:#fff;
-  --chat-bot-bg:rgba(255,255,255,.08);--chat-bot-text:#fff;--chat-bot-border:rgba(244,114,182,.25);
-  --qs-bg:rgba(255,255,255,.06);--qs-inner:rgba(255,255,255,.08);
+  --bg:#000000;--bg-soft:#000000;
+  --surface:rgba(28,28,30,.72);--surface-solid:#1c1c1e;
+  --text:#ffffff;--text-soft:#e4e6eb;--text-muted:#8e8e93;
+  --primary:#c084fc;--primary-2:#d8b4fe;--magenta:#e879f9;--pink:#ec4899;
+  --red:#e11d48;--green:#34d399;--amber:#fbbf24;
+  --border:rgba(192,132,252,.16);
+  --shadow-sm:0 6px 20px rgba(0,0,0,.45);
+  --shadow-md:0 14px 34px rgba(0,0,0,.55);
+  --shadow-lg:0 22px 50px rgba(0,0,0,.65);
+  --nav-bg:rgba(15,10,22,.68);
+  --brand-grad-soft:linear-gradient(135deg,rgba(225,29,72,.18),rgba(168,85,247,.14));
+  --violet-soft:rgba(192,132,252,.14);
+  --warn-soft:linear-gradient(135deg,rgba(245,158,11,.15),rgba(220,38,38,.12));
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{width:100%}
-body{min-height:100vh;width:100%}
-body{font-family:Tahoma,'Segoe UI',Arial,sans-serif;direction:rtl;font-size:16px;line-height:1.8;font-weight:600;color:var(--text);background-color:var(--bg-1);
-background-image:radial-gradient(ellipse 500px 400px at 20% 5%,rgba(236,72,153,.15) 0,transparent 60%),radial-gradient(ellipse 400px 350px at 85% 15%,rgba(168,85,247,.18) 0,transparent 65%),linear-gradient(160deg,var(--bg-1) 0,var(--bg-2) 25%,var(--bg-3) 50%,var(--bg-2) 75%,var(--bg-4) 100%);
-background-attachment:fixed;padding:0 0 110px;position:relative;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(circle at 12% 8%,rgba(253,230,138,var(--star)) 0,transparent 1.2%),radial-gradient(circle at 88% 6%,rgba(253,230,138,var(--star)) 0,transparent 1%),radial-gradient(circle at 78% 45%,rgba(253,230,138,var(--star)) 0,transparent 1%);pointer-events:none;z-index:0}
-.app{max-width:520px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
-.page-header{display:flex;align-items:center;gap:12px;padding:20px 0 16px}
-.back-btn{width:42px;height:42px;border-radius:14px;background:var(--icon-bg);backdrop-filter:blur(16px);border:1px solid var(--icon-border);color:var(--icon-color);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 42px;text-decoration:none;box-shadow:0 4px 12px rgba(109,40,217,.15)}
-.back-btn:active{transform:scale(.94)}
-.back-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
-.page-header h1{font-size:1.3rem;font-weight:900;color:var(--text);flex:1;text-align:center;padding-right:42px}
-.quick-selector{background:var(--qs-bg);backdrop-filter:blur(20px);border:1.5px solid var(--card-border);border-radius:16px;padding:10px 12px;margin-bottom:16px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--card-shadow)}
+html,body{width:100%;min-height:100%}
+body{
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;direction:rtl;color:var(--text);
+  background:
+    radial-gradient(circle at 8% 0%,rgba(236,72,153,.15),transparent 30%),
+    radial-gradient(circle at 100% 10%,rgba(168,85,247,.17),transparent 32%),
+    linear-gradient(160deg,var(--bg),var(--bg-soft));
+  min-height:100vh;padding-bottom:calc(120px + env(safe-area-inset-bottom));
+  overflow-x:hidden;transition:background .35s ease,color .35s ease;
+  -webkit-font-smoothing:antialiased;
+}
+html[data-theme="dark"] body,
+body.dark{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(168,85,247,.13),transparent 30%),
+    radial-gradient(circle at 100% 20%,rgba(236,72,153,.08),transparent 30%),
+    #000;
+}
+/* ✅ LTR */
+body.lang-ltr { direction: ltr; }
+body.lang-ltr .back-btn svg { transform: none; }
+body.lang-ltr .q-item::before { right: auto; left: 0; border-radius: 12px 0 0 12px; }
+body.lang-ltr .q-item svg.arrow { transform: none; }
+body.lang-ltr .chat-send svg { transform: none; }
+body.lang-ltr .msg.user { flex-direction: row; }
+body.lang-ltr .msg.bot { flex-direction: row-reverse; }
+body.lang-ltr .msg.user .msg-time { justify-content: flex-start; }
+body.lang-ltr .chat-cta-arrow { transform: none; }
+body.lang-ltr .acc-card::before { right: auto; left: 0; }
+
+.app{width:100%;max-width:640px;margin:0 auto;padding:0 16px;position:relative;z-index:2}
+.topbar{
+  display:flex;align-items:center;gap:10px;padding:18px 0 14px;
+  position:sticky;top:0;background:linear-gradient(to bottom,var(--bg) 70%,transparent);
+  z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+html[data-theme="dark"] .topbar,
+body.dark .topbar{background:linear-gradient(to bottom,#000 70%,transparent)}
+.back-btn,.icon-btn-mini{
+  width:42px;height:42px;border-radius:14px;background:var(--surface);
+  border:1px solid var(--border);color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex:0 0 42px;text-decoration:none;
+  backdrop-filter:blur(22px) saturate(180%);
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  box-shadow:var(--shadow-sm);transition:transform .2s;
+}
+.back-btn:active,.icon-btn-mini:active{transform:scale(.9)}
+.back-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
+.icon-btn-mini svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.page-title{flex:1;font-size:1.05rem;font-weight:900;text-align:center}
+.hero{
+  border-radius:24px;padding:20px;margin-bottom:14px;color:#fff;
+  background:var(--brand-grad);background-size:180% 180%;
+  box-shadow:0 18px 42px rgba(219,39,119,.40),0 8px 22px rgba(168,85,247,.30),inset 0 1px 0 rgba(255,255,255,.22);
+  animation:heroShift 14s ease infinite;
+  display:flex;align-items:center;gap:14px;position:relative;overflow:hidden;
+}
+@keyframes heroShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero::before{
+  content:"";position:absolute;width:220px;height:220px;top:-120px;left:-80px;
+  border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.30),transparent 70%);
+  pointer-events:none;
+}
+.hero-icon{
+  width:54px;height:54px;border-radius:17px;background:rgba(255,255,255,.22);
+  border:1.5px solid rgba(255,255,255,.32);
+  display:flex;align-items:center;justify-content:center;flex:0 0 54px;
+  backdrop-filter:blur(10px);position:relative;z-index:1;
+}
+.hero-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.hero-text{flex:1;min-width:0;position:relative;z-index:1}
+.hero-title{font-size:1rem;font-weight:900;line-height:1.4;margin-bottom:4px}
+.hero-sub{font-size:.7rem;line-height:1.75;opacity:.95;font-weight:600}
+.qs-card{
+  background:var(--surface);backdrop-filter:blur(22px);
+  border:1.5px solid var(--border);border-radius:16px;
+  padding:10px 12px;margin-bottom:12px;
+  box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:8px;
+}
 .qs-row{display:flex;align-items:center;gap:8px}
-.qs-label{font-size:.7rem;font-weight:900;color:var(--text-muted);min-width:44px;text-align:center;letter-spacing:.3px}
-.qs-options{display:flex;gap:3px;flex:1;background:var(--qs-inner);border-radius:12px;padding:3px}
-.qs-btn{flex:1;padding:7px 6px;border-radius:9px;border:0;background:transparent;color:var(--text-soft);font-family:inherit;font-size:.72rem;font-weight:800;cursor:pointer;transition:all .25s;white-space:nowrap;display:flex;align-items:center;justify-content:center;gap:4px}
-.qs-btn:active{transform:scale(.96)}
-.qs-btn.active{background:linear-gradient(135deg,#ec4899,#6d28d9);color:#fff;box-shadow:0 3px 10px rgba(236,72,153,.4)}
-.qs-btn.active svg{stroke:#fff}
-.qs-btn svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.qs-hint{font-size:.62rem;color:var(--text-muted);text-align:center;font-weight:700;opacity:.85;padding-top:2px}
-.notice-box{background:var(--notice-bg);backdrop-filter:blur(20px);border:1.5px solid var(--notice-border);border-radius:20px;padding:18px;margin-bottom:18px;position:relative;overflow:hidden;animation:fadeIn .5s ease-out}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.notice-box::before{content:"";position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(16,185,129,.2),transparent 70%);border-radius:50%;pointer-events:none}
-.notice-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;position:relative;z-index:1}
-.notice-icon{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(16,185,129,.35);flex:0 0 40px}
-.notice-icon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
-.notice-title{font-size:.98rem;font-weight:900;color:#059669}
-body.dark .notice-title{color:#34d399}
-.notice-text{font-size:.85rem;line-height:2;color:var(--text-card);font-weight:700;position:relative;z-index:1}
-.notice-text strong{color:#059669;font-weight:900}
-body.dark .notice-text strong{color:#34d399}
-.notice-list{list-style:none;padding:0;margin:8px 0 0;position:relative;z-index:1}
-.notice-list li{display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--text-card);margin-bottom:6px;line-height:1.9;font-weight:700}
-.notice-list li svg{width:16px;height:16px;flex:0 0 16px;margin-top:4px;fill:none;stroke:#10b981;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.chat-cta{background:linear-gradient(135deg,#ec4899,#6d28d9);border-radius:20px;padding:18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;color:#fff;box-shadow:0 12px 30px rgba(109,40,217,.4);cursor:pointer;transition:transform .2s;border:1px solid rgba(253,230,138,.4)}
-.chat-cta:active{transform:scale(.97)}
-.chat-cta-icon{width:54px;height:54px;border-radius:16px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;flex:0 0 54px;backdrop-filter:blur(10px)}
-.chat-cta-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.chat-cta-text{flex:1}
-.chat-cta-title{font-size:1rem;font-weight:900;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.15)}
-.chat-cta-sub{font-size:.75rem;opacity:.95;font-weight:700;line-height:1.7}
-.chat-cta svg.arrow{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
-.search-wrap{margin-bottom:18px;position:relative}
-.search-input{width:100%;padding:14px 48px 14px 18px;border-radius:16px;border:1.5px solid var(--card-border);background:var(--search-bg);backdrop-filter:blur(16px);color:var(--text);font-family:inherit;font-size:.95rem;font-weight:700;outline:none;transition:border-color .25s}
-.search-input:focus{border-color:rgba(236,72,153,.7)}
+.qs-label{font-size:.66rem;font-weight:900;color:var(--text-muted);min-width:40px;text-align:center}
+.qs-options{
+  display:flex;gap:3px;flex:1;background:var(--violet-soft);
+  border-radius:11px;padding:3px;border:1px solid var(--border);
+}
+.qs-btn{
+  flex:1;padding:7px 6px;border-radius:8px;border:0;background:transparent;
+  color:var(--text-soft);font-family:inherit;font-size:.7rem;font-weight:800;
+  cursor:pointer;transition:all .25s;
+  display:flex;align-items:center;justify-content:center;gap:4px;
+}
+.qs-btn.active{background:var(--brand-grad);color:#fff;box-shadow:0 4px 12px rgba(219,39,119,.35)}
+.qs-btn svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.notice-card{
+  background:var(--warn-soft);border:1.5px solid rgba(245,158,11,.35);
+  border-radius:16px;padding:12px 14px;margin-bottom:12px;
+  box-shadow:var(--shadow-sm);display:flex;gap:10px;align-items:flex-start;
+}
+.notice-icon{
+  width:36px;height:36px;border-radius:12px;background:var(--warn-grad);
+  display:flex;align-items:center;justify-content:center;flex:0 0 36px;
+  box-shadow:0 6px 16px rgba(245,158,11,.35);margin-top:2px;
+  animation:warnPulse 2.5s ease-in-out infinite;
+}
+@keyframes warnPulse{
+  0%,100%{transform:scale(1);box-shadow:0 6px 16px rgba(245,158,11,.35)}
+  50%{transform:scale(1.05);box-shadow:0 8px 22px rgba(245,158,11,.50)}
+}
+.notice-icon svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.notice-body{flex:1;min-width:0}
+.notice-title{font-size:.78rem;font-weight:900;color:var(--text);margin-bottom:4px}
+.notice-text{font-size:.7rem;line-height:1.75;color:var(--text-soft);font-weight:700}
+.notice-text strong{color:var(--text);font-weight:900}
+.notice-hint{
+  display:flex;align-items:flex-start;gap:6px;
+  margin-top:8px;padding-top:8px;
+  border-top:1px dashed var(--border);
+  font-size:.68rem;font-weight:700;color:var(--text-soft);
+  line-height:1.65;
+}
+.notice-hint svg{
+  width:13px;height:13px;flex:0 0 13px;margin-top:3px;
+  fill:none;stroke:var(--amber);stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.chat-cta{
+  background:var(--brand-grad);background-size:200% 200%;
+  border-radius:18px;padding:16px;margin-bottom:12px;
+  display:flex;align-items:center;gap:12px;color:#fff;
+  box-shadow:0 14px 34px rgba(219,39,119,.40),0 6px 18px rgba(168,85,247,.28);
+  cursor:pointer;transition:transform .2s;
+  animation:ctaShift 8s ease infinite;position:relative;overflow:hidden;
+  border:0;width:100%;font-family:inherit;text-align:right;
+}
+@keyframes ctaShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.chat-cta::before{
+  content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:skewX(-22deg);animation:shine 4s ease-in-out infinite;pointer-events:none;
+}
+@keyframes shine{0%,55%{left:-60%}80%,100%{left:130%}}
+.chat-cta:active{transform:scale(.98)}
+.chat-cta-icon{
+  width:48px;height:48px;border-radius:15px;background:rgba(255,255,255,.20);
+  border:1.5px solid rgba(255,255,255,.35);
+  display:flex;align-items:center;justify-content:center;flex:0 0 48px;
+  position:relative;z-index:1;
+}
+.chat-cta-icon svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.chat-cta-text{flex:1;position:relative;z-index:1}
+.chat-cta-title{font-size:.94rem;font-weight:900;margin-bottom:3px}
+.chat-cta-sub{font-size:.68rem;opacity:.95;font-weight:700;line-height:1.6}
+.chat-cta-arrow{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1);position:relative;z-index:1}
+.search-wrap{margin-bottom:12px;position:relative}
+.search-input{
+  width:100%;padding:13px 46px 13px 16px;border-radius:14px;
+  border:1.5px solid var(--border);background:var(--surface);
+  color:var(--text);font-family:inherit;font-size:.88rem;font-weight:700;
+  outline:none;transition:border-color .25s;box-shadow:var(--shadow-sm);
+}
+.search-input:focus{border-color:var(--primary);box-shadow:0 0 0 4px var(--brand-grad-soft)}
 .search-input::placeholder{color:var(--text-muted)}
-.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:20px;height:20px;fill:none;stroke:var(--text-muted);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
-.section-title{display:flex;align-items:center;gap:10px;margin:8px 4px 14px;font-size:1rem;font-weight:900;color:var(--text)}
-.section-title::before{content:"";width:4px;height:20px;border-radius:2px;background:linear-gradient(180deg,#ec4899,#6d28d9);box-shadow:0 0 12px rgba(236,72,153,.6)}
-.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
-.cat-card{background:var(--card);backdrop-filter:blur(20px);border:1.5px solid var(--card-border);border-radius:18px;padding:16px 12px;cursor:pointer;transition:all .25s;text-align:center;font-family:inherit;box-shadow:var(--card-shadow);width:100%;min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
-.cat-card:active{transform:scale(.96)}
-.cat-card:hover{border-color:rgba(253,230,138,.6);transform:translateY(-2px)}
-.cat-icon{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(109,40,217,.25);flex:0 0 46px}
-.cat-icon svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.cat-name{font-size:.82rem;font-weight:900;color:var(--text-card);line-height:1.4}
-.cat-count{font-size:.68rem;color:var(--text-muted);font-weight:800;background:rgba(168,85,247,.1);padding:2px 10px;border-radius:12px}
-.q-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
-.q-item{background:var(--card);backdrop-filter:blur(20px);border:1px solid var(--card-border);border-radius:16px;padding:14px 16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px;text-align:right;font-family:inherit;width:100%}
-.q-item:active{transform:scale(.98)}
-.q-item:hover{border-color:rgba(253,230,138,.6)}
-.q-num{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,#a855f7,#6d28d9);color:#fff;font-size:.75rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex:0 0 30px}
-.q-text{flex:1;min-width:0;font-size:.88rem;font-weight:800;color:var(--text-card);line-height:1.6}
-.q-item svg.arrow{width:18px;height:18px;flex:0 0 18px;fill:none;stroke:var(--text-muted);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);display:none;align-items:flex-end;justify-content:center;z-index:9999;padding:0}
-.modal.show{display:flex;animation:modalFade .3s ease}
-@keyframes modalFade{from{opacity:0}to{opacity:1}}
-.modal-box{width:100%;max-width:520px;max-height:92vh;overflow-y:auto;background:var(--bg-1);border-radius:28px 28px 0 0;padding:24px 22px calc(28px + env(safe-area-inset-bottom,0px));animation:modalSlide .35s ease}
-@keyframes modalSlide{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}
-.modal-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1.5px solid var(--card-border);gap:12px}
-.modal-head-text{flex:1}
-.modal-badge{display:inline-block;font-size:.68rem;font-weight:900;padding:4px 12px;border-radius:20px;background:linear-gradient(135deg,#ec4899,#6d28d9);color:#fff;margin-bottom:10px;box-shadow:0 4px 12px rgba(236,72,153,.35)}
-.modal-q{font-size:1rem;font-weight:900;color:var(--text);line-height:1.8}
-.modal-close{width:42px;height:42px;border-radius:14px;background:var(--card);border:1px solid var(--card-border);color:var(--text-soft);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 42px}
+.search-icon{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  width:20px;height:20px;fill:none;stroke:var(--text-muted);
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;
+}
+.section-title{
+  display:flex;align-items:center;gap:10px;margin:6px 4px 12px;
+  font-size:.94rem;font-weight:900;color:var(--text);
+}
+.section-title::before{
+  content:"";width:4px;height:18px;border-radius:2px;
+  background:var(--brand-grad);box-shadow:0 0 12px rgba(219,39,119,.55);
+}
+.acc-card{
+  background:var(--surface);backdrop-filter:blur(22px);
+  border:1.5px solid var(--border);border-radius:18px;
+  box-shadow:var(--shadow-md);margin-bottom:16px;overflow:hidden;
+  position:relative;
+}
+.acc-card::before{
+  content:"";position:absolute;top:0;right:0;width:100%;height:3px;
+  background:var(--brand-grad);
+}
+.acc-item{border-bottom:1px solid var(--border);transition:background .2s}
+.acc-item:last-child{border-bottom:none}
+.acc-item.open{background:var(--brand-grad-soft)}
+.acc-item.open .acc-chevron{transform:rotate(180deg)}
+.acc-header{
+  display:flex;align-items:center;gap:12px;padding:13px 15px;
+  cursor:pointer;user-select:none;transition:background .2s;
+}
+.acc-header:active{background:var(--brand-grad-soft)}
+.acc-icon{
+  width:44px;height:44px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;flex:0 0 44px;
+  box-shadow:0 6px 16px rgba(219,39,119,.28);
+  transition:transform .3s;position:relative;
+}
+.acc-icon::after{
+  content:"";position:absolute;inset:0;border-radius:14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.22),transparent 60%);
+  pointer-events:none;
+}
+.acc-icon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:1}
+.acc-info{flex:1;min-width:0}
+.acc-title{font-size:.9rem;font-weight:900;color:var(--text);line-height:1.4;margin-bottom:3px}
+.acc-count{
+  display:inline-block;font-size:.62rem;font-weight:800;
+  background:var(--brand-grad-soft);color:var(--primary);
+  padding:2px 8px;border-radius:10px;border:1px solid var(--border);
+}
+.acc-chevron{
+  width:18px;height:18px;flex:0 0 18px;fill:none;stroke:var(--text-muted);
+  stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1)}
+.acc-item.open .acc-body{max-height:2000px}
+.acc-body-inner{padding:4px 10px 12px;display:flex;flex-direction:column;gap:6px}
+.q-item{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:11px 13px;cursor:pointer;transition:all .22s;
+  display:flex;align-items:center;gap:10px;text-align:right;
+  font-family:inherit;width:100%;position:relative;overflow:hidden;
+}
+.q-item::before{
+  content:"";position:absolute;top:0;right:0;width:3px;height:100%;
+  background:var(--brand-grad);border-radius:0 12px 12px 0;opacity:.75;
+}
+.q-item:active{transform:scale(.985)}
+.q-item:hover{border-color:rgba(219,39,119,.4);background:var(--brand-grad-soft)}
+.q-num{
+  width:28px;height:28px;border-radius:9px;background:var(--brand-grad);
+  color:#fff;font-size:.7rem;font-weight:900;
+  display:flex;align-items:center;justify-content:center;flex:0 0 28px;
+  box-shadow:0 4px 12px rgba(219,39,119,.28);
+}
+.q-text{flex:1;min-width:0;font-size:.8rem;font-weight:800;color:var(--text);line-height:1.55}
+.q-item svg.arrow{
+  width:16px;height:16px;flex:0 0 16px;fill:none;
+  stroke:var(--text-muted);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+  transform:scaleX(-1);
+}
+.modal{
+  position:fixed;inset:0;background:rgba(15,8,20,.65);
+  backdrop-filter:blur(12px);display:none;align-items:flex-end;
+  justify-content:center;z-index:5000;padding:15px;
+}
+.modal.show{display:flex;animation:mFade .25s ease}
+@keyframes mFade{from{opacity:0}to{opacity:1}}
+.modal-box{
+  width:100%;max-width:560px;max-height:90vh;overflow-y:auto;
+  background:var(--surface-solid);border:1px solid var(--border);
+  border-radius:26px 26px 20px 20px;
+  padding:20px 20px calc(24px + env(safe-area-inset-bottom,0px));
+  animation:mSlide .3s ease;box-shadow:0 -10px 55px rgba(219,39,119,.28);
+}
+@keyframes mSlide{from{transform:translateY(45px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-handle{width:44px;height:4px;border-radius:10px;margin:0 auto 14px;background:var(--text-muted);opacity:.25}
+.modal-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  margin-bottom:14px;padding-bottom:12px;border-bottom:1.5px solid var(--border);gap:10px;
+}
+.modal-head-text{flex:1;min-width:0}
+.modal-badge{
+  display:inline-block;font-size:.64rem;font-weight:900;
+  padding:4px 12px;border-radius:20px;background:var(--brand-grad);
+  color:#fff;margin-bottom:8px;box-shadow:0 4px 12px rgba(219,39,119,.32);
+}
+.modal-q{font-size:.96rem;font-weight:900;color:var(--text);line-height:1.7}
+.modal-close{
+  width:38px;height:38px;border-radius:13px;background:var(--surface);
+  border:1px solid var(--border);color:var(--text-soft);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 38px;
+}
+.modal-close:active{transform:scale(.9)}
 .modal-close svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.modal-answer{background:linear-gradient(135deg,rgba(168,85,247,.08),rgba(236,72,153,.08));border:1px solid var(--card-border);border-radius:18px;padding:18px;margin-top:6px}
-.answer-label{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:900;color:#059669;margin-bottom:10px}
-body.dark .answer-label{color:#34d399}
-.answer-label svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.answer-text{font-size:.92rem;line-height:2.1;color:var(--text-card);font-weight:700;white-space:pre-line}
-.action-bar{display:flex;gap:2px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--card-border);flex-wrap:wrap;align-items:center}
-.action-bar.compact{margin-top:6px;padding-top:8px;border-top:1px dashed var(--card-border)}
-.act-btn{width:34px;height:34px;border-radius:10px;background:transparent;border:1px solid transparent;color:var(--text-muted);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:all .18s;font-family:inherit;position:relative}
-.act-btn:hover{background:var(--icon-bg);border-color:var(--icon-border);color:var(--icon-color)}
-.act-btn:active{transform:scale(.88)}
-.act-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.act-btn.liked{color:#10b981;background:rgba(16,185,129,.1)}
-.act-btn.disliked{color:#ef4444;background:rgba(239,68,68,.1)}
-.act-btn.speaking{color:#6d28d9;background:rgba(109,40,217,.12);animation:pulseAnim 1.1s infinite}
-body.dark .act-btn.speaking{color:#fbcfe8;background:rgba(251,207,232,.15)}
-@keyframes pulseAnim{0%,100%{opacity:1}50%{opacity:.55}}
-.act-btn.spinning svg{animation:spinAnim .8s linear infinite}
-@keyframes spinAnim{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.inline-copy{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;margin:0 4px;background:rgba(168,85,247,.12);border:1px solid var(--card-border);color:var(--icon-color);cursor:pointer;vertical-align:middle;transition:all .18s;padding:0}
-.inline-copy:hover{background:rgba(168,85,247,.25);transform:scale(1.08)}
-.inline-copy:active{transform:scale(.9)}
-.inline-copy svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
-.chat-fab{position:fixed;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#a855f7,#6d28d9);border:2px solid rgba(253,230,138,.5);box-shadow:0 10px 30px rgba(109,40,217,.55),0 4px 12px rgba(0,0,0,.2);cursor:grab;display:flex;align-items:center;justify-content:center;z-index:9998;touch-action:none;user-select:none;transition:transform .15s,box-shadow .2s;animation:fabPulse 2.5s ease-in-out infinite}
-.chat-fab:active{cursor:grabbing}
-.chat-fab svg{width:30px;height:30px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
-.chat-fab::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(236,72,153,.5);animation:fabRing 2s ease-out infinite;pointer-events:none}
-@keyframes fabPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-@keyframes fabRing{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.4);opacity:0}}
-.chat-panel{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);display:none;align-items:flex-end;justify-content:center;z-index:10000;padding:0}
-.chat-panel.show{display:flex;animation:modalFade .3s ease}
-.chat-box{width:100%;max-width:520px;height:88vh;max-height:88vh;background:var(--bg-1);border-radius:28px 28px 0 0;display:flex;flex-direction:column;animation:modalSlide .35s ease;overflow:hidden}
-.chat-header{display:flex;align-items:center;gap:12px;padding:16px 18px;background:linear-gradient(135deg,#ec4899,#6d28d9);color:#fff;flex:0 0 auto;box-shadow:0 4px 14px rgba(0,0,0,.15)}
-.chat-header-icon{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;flex:0 0 42px}
-.chat-header-icon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
-.chat-header-info{flex:1}
-.chat-header-title{font-size:1rem;font-weight:900;margin-bottom:2px}
-.chat-header-sub{font-size:.7rem;opacity:.95;font-weight:700;display:flex;align-items:center;gap:5px}
+.modal-answer{
+  background:var(--brand-grad-soft);border:1px solid var(--border);
+  border-radius:16px;padding:16px;margin-top:6px;
+}
+.answer-label{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.68rem;font-weight:900;color:var(--primary);margin-bottom:10px;
+}
+.answer-label svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.answer-text{font-size:.86rem;line-height:2.1;color:var(--text);font-weight:650;white-space:pre-line}
+.ahkam-link-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;margin-top:12px;padding:11px 16px;
+  border:0;border-radius:13px;
+  background:var(--brand-grad);color:#fff;
+  font-family:inherit;font-size:.82rem;font-weight:900;
+  cursor:pointer;box-shadow:0 8px 22px rgba(219,39,119,.35);
+  transition:transform .2s;
+}
+.ahkam-link-btn:active{transform:scale(.97)}
+.ahkam-link-btn svg{
+  width:16px;height:16px;fill:none;stroke:currentColor;
+  stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+}
+.msg .ahkam-link-btn{margin-top:8px;font-size:.74rem;padding:9px 12px}
+.msg .ahkam-link-btn svg{width:14px;height:14px}
+.coming-soon{
+  position:fixed;inset:0;background:rgba(15,8,20,.70);
+  backdrop-filter:blur(14px);display:none;align-items:center;
+  justify-content:center;z-index:9000;padding:20px;
+}
+.coming-soon.show{display:flex;animation:mFade .3s ease}
+.cs-box{
+  width:100%;max-width:480px;
+  background:var(--surface-solid);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:28px 24px 24px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(219,39,119,.35);
+  animation:mSlide .4s ease;
+  position:relative;
+  overflow:hidden;
+}
+.cs-box::before{
+  content:"";position:absolute;
+  top:0;left:0;right:0;height:5px;
+  background:var(--brand-grad);
+}
+.cs-icon-wrap{
+  width:90px;height:90px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  background:var(--brand-grad);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 32px rgba(219,39,119,.45);
+  animation:csPulse 2.5s ease-in-out infinite;
+  position:relative;
+}
+@keyframes csPulse{
+  0%,100%{transform:scale(1);box-shadow:0 12px 32px rgba(219,39,119,.45)}
+  50%{transform:scale(1.05);box-shadow:0 16px 40px rgba(219,39,119,.60)}
+}
+.cs-icon-wrap::before{
+  content:"";position:absolute;inset:-8px;border-radius:50%;
+  border:2px solid rgba(219,39,119,.35);
+  animation:csRing 2s ease-out infinite;
+}
+@keyframes csRing{
+  0%{transform:scale(1);opacity:.8}
+  100%{transform:scale(1.35);opacity:0}
+}
+.cs-icon-wrap svg{width:44px;height:44px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:1}
+.cs-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 14px;border-radius:20px;
+  background:var(--brand-grad-soft);
+  border:1px solid var(--border);
+  color:var(--primary);
+  font-size:.68rem;font-weight:900;
+  margin-bottom:14px;
+}
+.cs-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.cs-title{
+  font-size:1.2rem;font-weight:900;
+  color:var(--text);line-height:1.5;
+  margin-bottom:10px;
+}
+.cs-desc{
+  font-size:.84rem;line-height:1.95;
+  color:var(--text-soft);font-weight:700;
+  margin-bottom:20px;
+}
+.cs-features{
+  display:flex;flex-direction:column;gap:8px;
+  margin-bottom:22px;text-align:right;
+}
+.cs-feature{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;
+  background:var(--brand-grad-soft);
+  border:1px solid var(--border);
+  border-radius:12px;
+}
+.cs-feature-icon{
+  width:32px;height:32px;border-radius:10px;
+  background:var(--brand-grad);
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 32px;
+}
+.cs-feature-icon svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.cs-feature-text{
+  font-size:.76rem;font-weight:800;
+  color:var(--text);line-height:1.5;
+}
+.cs-close{
+  padding:13px 24px;border-radius:14px;border:0;
+  background:var(--brand-grad);color:#fff;
+  font-family:inherit;font-size:.9rem;font-weight:900;
+  cursor:pointer;width:100%;
+  box-shadow:0 8px 22px rgba(219,39,119,.42);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:transform .2s;
+}
+.cs-close:active{transform:scale(.97)}
+.cs-close svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.chat-panel{
+  position:fixed;inset:0;background:rgba(15,8,20,.65);
+  backdrop-filter:blur(12px);display:none;align-items:flex-end;
+  justify-content:center;z-index:10000;
+}
+.chat-panel.show{display:flex;animation:mFade .3s ease}
+.chat-box{
+  width:100%;max-width:560px;height:92vh;max-height:92vh;
+  background:var(--surface-solid);border-radius:26px 26px 0 0;
+  display:flex;flex-direction:column;animation:mSlide .35s ease;overflow:hidden;
+}
+.chat-header{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;
+  background:var(--brand-grad);color:#fff;flex:0 0 auto;
+  position:relative;overflow:hidden;
+}
+.chat-header::before{
+  content:"";position:absolute;top:-30px;right:-30px;width:120px;height:120px;
+  border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.20),transparent 70%);
+  pointer-events:none;
+}
+.chat-header-icon{
+  width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.20);
+  border:1.5px solid rgba(255,255,255,.32);
+  display:flex;align-items:center;justify-content:center;flex:0 0 40px;position:relative;z-index:1;
+}
+.chat-header-icon svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.chat-header-info{flex:1;position:relative;z-index:1}
+.chat-header-title{font-size:.94rem;font-weight:900;margin-bottom:2px}
+.chat-header-sub{font-size:.64rem;opacity:.95;font-weight:700;display:flex;align-items:center;gap:5px}
 .online-dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 8px rgba(52,211,153,.9);animation:onlinePulse 2s ease-in-out infinite}
 @keyframes onlinePulse{0%,100%{opacity:1}50%{opacity:.5}}
-.chat-header-close{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.25);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 38px}
+.chat-header-close{
+  width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.18);
+  border:1.5px solid rgba(255,255,255,.28);color:#fff;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 36px;position:relative;z-index:1;
+}
 .chat-header-close svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.chat-messages{flex:1;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:12px;background:var(--bg-1)}
+.chat-messages{
+  flex:1;overflow-y:auto;padding:16px 12px;
+  display:flex;flex-direction:column;gap:14px;background:var(--bg);
+}
 .chat-messages::-webkit-scrollbar{width:6px}
-.chat-messages::-webkit-scrollbar-thumb{background:rgba(168,85,247,.3);border-radius:3px}
-.msg{display:flex;gap:8px;max-width:92%;animation:msgIn .3s ease-out}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(168,50,214,.3);border-radius:3px}
+.msg{display:flex;gap:8px;max-width:94%;animation:msgIn .3s ease-out}
 @keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .msg.bot{align-self:flex-start}
 .msg.user{align-self:flex-end;flex-direction:row-reverse}
-.msg-avatar{width:34px;height:34px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:0 0 34px;box-shadow:0 4px 10px rgba(0,0,0,.1)}
-.msg.bot .msg-avatar{background:linear-gradient(135deg,#a855f7,#6d28d9)}
-.msg.user .msg-avatar{background:linear-gradient(135deg,#ec4899,#be185d)}
+.msg-avatar{
+  width:34px;height:34px;border-radius:11px;display:flex;
+  align-items:center;justify-content:center;flex:0 0 34px;
+  box-shadow:0 4px 10px rgba(0,0,0,.12);background:var(--brand-grad);
+}
 .msg-avatar svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
 .msg-content{min-width:0;flex:1}
-.msg-bubble{padding:12px 16px;border-radius:18px;font-size:.88rem;line-height:1.9;font-weight:700;word-wrap:break-word;white-space:pre-line;max-width:100%}
-.msg.bot .msg-bubble{background:var(--chat-bot-bg);color:var(--chat-bot-text);border:1px solid var(--chat-bot-border);border-top-right-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
-.msg.user .msg-bubble{background:var(--chat-user-bg);color:var(--chat-user-text);border-top-left-radius:4px;box-shadow:0 4px 12px rgba(236,72,153,.25)}
-.msg-time{font-size:.62rem;color:var(--text-muted);margin-top:4px;font-weight:800;display:flex;align-items:center;gap:4px;opacity:.85}
-.msg.user .msg-time{color:rgba(255,255,255,.8);justify-content:flex-end}
+.msg-bubble{
+  padding:12px 16px;border-radius:18px;font-size:.85rem;
+  line-height:1.95;font-weight:700;word-wrap:break-word;
+  white-space:pre-line;max-width:100%;
+}
+.msg.bot .msg-bubble{
+  background:var(--surface);color:var(--text);border:1px solid var(--border);
+  border-top-right-radius:4px;box-shadow:var(--shadow-sm);
+}
+.msg.user .msg-bubble{
+  background:var(--brand-grad);color:#fff;
+  border-top-left-radius:4px;box-shadow:0 4px 12px rgba(219,39,119,.28);
+}
+.msg-actions{
+  display:inline-flex;
+  gap:2px;
+  margin-top:6px;
+  padding:3px 4px;
+  background:rgba(168,50,214,.05);
+  border-radius:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  animation:actionsIn .3s ease-out;
+}
+html[data-theme="dark"] .msg-actions,
+body.dark .msg-actions{background:rgba(192,132,252,.08)}
+@keyframes actionsIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.msg-actions .act-btn{
+  width:28px;height:28px;border-radius:8px;background:transparent;border:0;
+  color:var(--text-muted);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;padding:0;transition:all .2s;flex:0 0 28px;
+}
+.msg-actions .act-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.msg-actions .act-btn:hover{background:var(--brand-grad-soft);color:var(--primary);transform:scale(1.12)}
+.msg-actions .act-btn:active{transform:scale(.9)}
+.msg-actions .act-btn.liked{color:var(--green)}
+.msg-actions .act-btn.liked svg{stroke:var(--green)}
+.msg-actions .act-btn.disliked{color:#ef4444}
+.msg-actions .act-btn.disliked svg{stroke:#ef4444}
+.msg-actions .act-btn.speaking{color:var(--primary);background:var(--brand-grad-soft);animation:pulseBtn 1.1s infinite}
+@keyframes pulseBtn{0%,100%{opacity:1}50%{opacity:.55}}
+.msg-actions .act-btn.spinning svg{animation:spinAnim .8s linear infinite}
+@keyframes spinAnim{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.msg-time{
+  font-size:.58rem;color:var(--text-muted);
+  margin-top:4px;font-weight:800;
+  display:flex;align-items:center;gap:4px;opacity:.85;
+}
+.msg.user .msg-time{color:rgba(255,255,255,.85);justify-content:flex-end}
 .typing-dots{display:flex;gap:4px;align-items:center;padding:4px}
-.typing-dots span{width:8px;height:8px;border-radius:50%;background:#a855f7;animation:dotBounce 1.3s ease-in-out infinite}
+.typing-dots span{width:8px;height:8px;border-radius:50%;background:var(--primary);animation:dotBounce 1.3s ease-in-out infinite}
 .typing-dots span:nth-child(2){animation-delay:.15s}
 .typing-dots span:nth-child(3){animation-delay:.3s}
 @keyframes dotBounce{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-8px);opacity:1}}
-.chat-suggestions{padding:10px 14px;display:flex;gap:8px;overflow-x:auto;background:var(--bg-card);border-top:1px solid var(--card-border);flex:0 0 auto;scrollbar-width:none}
+.chat-suggestions{
+  padding:8px 12px;display:flex;gap:6px;overflow-x:auto;
+  background:var(--surface);border-top:1px solid var(--border);
+  flex:0 0 auto;scrollbar-width:none;
+}
 .chat-suggestions::-webkit-scrollbar{display:none}
-.sug-btn{flex:0 0 auto;background:var(--card);border:1.5px solid var(--card-border);color:var(--text-soft);border-radius:20px;padding:8px 14px;font-family:inherit;font-size:.75rem;font-weight:800;cursor:pointer;transition:all .2s;white-space:nowrap}
+.sug-btn{
+  flex:0 0 auto;background:var(--surface);border:1.5px solid var(--border);
+  color:var(--text-soft);border-radius:18px;padding:7px 12px;
+  font-family:inherit;font-size:.7rem;font-weight:800;
+  cursor:pointer;transition:all .2s;white-space:nowrap;
+}
 .sug-btn:active{transform:scale(.95)}
-.sug-btn:hover{border-color:rgba(253,230,138,.6);color:var(--text)}
-.chat-input-area{display:flex;gap:8px;padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));background:var(--bg-card);border-top:1.5px solid var(--card-border);flex:0 0 auto}
-.chat-input{flex:1;padding:12px 16px;border-radius:24px;border:1.5px solid var(--card-border);background:var(--bg-1);color:var(--text);font-family:inherit;font-size:.9rem;font-weight:700;outline:none;transition:border-color .25s;resize:none;max-height:100px;min-height:48px}
-.chat-input:focus{border-color:rgba(236,72,153,.7)}
+.sug-btn:hover{border-color:rgba(219,39,119,.5);color:var(--text);background:var(--brand-grad-soft)}
+.chat-input-area{
+  display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));
+  background:var(--surface);border-top:1.5px solid var(--border);
+  flex:0 0 auto;align-items:flex-end;
+}
+.chat-input{
+  flex:1;padding:11px 15px;border-radius:22px;
+  border:1.5px solid var(--border);background:var(--bg);
+  color:var(--text);font-family:inherit;font-size:.86rem;font-weight:700;
+  outline:none;transition:border-color .25s;
+  resize:none;max-height:100px;min-height:46px;line-height:1.5;
+}
+.chat-input:focus{border-color:var(--primary);box-shadow:0 0 0 4px var(--brand-grad-soft)}
 .chat-input::placeholder{color:var(--text-muted)}
-.chat-send{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#6d28d9);border:0;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 48px;box-shadow:0 6px 18px rgba(236,72,153,.4);transition:transform .15s}
-.chat-send:active{transform:scale(.9)}
-.chat-send svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
-.loader{text-align:center;padding:50px 20px;color:var(--text-muted);font-size:.9rem;font-weight:700}
-.empty{text-align:center;padding:40px 20px;color:var(--text-muted);font-size:.9rem;line-height:2;font-weight:700}
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(24px);border-top:1px solid var(--nav-border);display:flex;justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));max-width:520px;margin:0 auto;box-shadow:0 -8px 30px rgba(109,40,217,.15)}
-.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--nav-color);padding:8px 2px;font-size:.65rem;font-weight:800;text-decoration:none;cursor:pointer;border-radius:12px;position:relative}
-.nav-item.active{color:var(--nav-active)}
-.nav-item.active::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:22px;height:3px;border-radius:0 0 4px 4px;background:linear-gradient(90deg,#ec4899,#a855f7,#fde68a);box-shadow:0 0 12px rgba(236,72,153,.8)}
-.nav-item svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.nav-item.active svg{stroke-width:2.4}
-.toast{position:fixed;bottom:110px;left:50%;transform:translateX(-50%) translateY(20px);background:linear-gradient(135deg,#6d28d9,#a855f7);color:#fff;padding:14px 26px;border-radius:30px;font-size:.9rem;font-weight:900;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;box-shadow:0 12px 30px rgba(139,92,246,.5);max-width:90vw;text-align:center}
+.chat-mic,.chat-send{
+  width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex:0 0 46px;transition:transform .15s;padding:0;
+  border:1.5px solid var(--border);background:var(--surface);color:var(--primary);
+}
+.chat-send{background:var(--brand-grad);border:0;color:#fff;box-shadow:0 6px 18px rgba(219,39,119,.40)}
+.chat-mic svg,.chat-send svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.chat-send svg{transform:scaleX(-1)}
+.chat-mic.recording{background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff;border-color:transparent;animation:micPulse 1s ease-in-out infinite}
+@keyframes micPulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.6)}50%{box-shadow:0 0 0 12px rgba(239,68,68,0)}}
+.chat-mic:active,.chat-send:active{transform:scale(.9)}
+.loader,.empty{
+  text-align:center;padding:50px 20px;color:var(--text-muted);
+  font-size:.86rem;font-weight:700;line-height:2;
+}
+.loader::before{
+  content:"";display:block;width:32px;height:32px;
+  border:3px solid var(--border);border-top-color:var(--primary);
+  border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bottom-nav{
+  position:fixed;left:50%;bottom:0;transform:translateX(-50%);
+  width:100%;max-width:640px;z-index:1000;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+  display:grid;grid-template-columns:1fr 1fr 78px 1fr 1fr;
+  gap:4px;align-items:center;background:var(--nav-bg);
+  border-top:1px solid rgba(255,255,255,.18);border-radius:26px 26px 0 0;
+  box-shadow:0 -10px 28px rgba(225,29,72,.14),0 -24px 55px rgba(168,85,247,.10),inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter:blur(55px) saturate(220%);
+  -webkit-backdrop-filter:blur(55px) saturate(220%);
+}
+html[data-theme="dark"] .bottom-nav,
+body.dark .bottom-nav{
+  border-top:1px solid rgba(255,255,255,.06);
+  box-shadow:0 -10px 28px rgba(0,0,0,.55),0 -24px 55px rgba(219,39,119,.14);
+}
+.nav-item{
+  min-height:56px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:4px;position:relative;
+  color:var(--text-muted);text-decoration:none;
+  border-radius:14px;font-size:.56rem;font-weight:850;
+  transition:color .2s ease,background .2s ease;padding:6px 2px;
+}
+.nav-item svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.nav-item:active{transform:scale(.92)}
+.nav-item.active{color:var(--primary)}
+.nav-fab-wrap{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+.nav-fab{
+  position:absolute;top:-30px;width:60px;height:60px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--brand-grad);
+  box-shadow:0 14px 32px rgba(225,29,72,.48),0 6px 16px rgba(168,85,247,.35);
+  cursor:pointer;text-decoration:none;
+  border:4px solid var(--surface-solid);
+  transition:transform .25s ease;z-index:10;
+}
+.nav-fab:active{transform:scale(.92)}
+.nav-fab svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.nav-fab-label{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:.56rem;font-weight:900;color:var(--primary);white-space:nowrap}
+.toast{
+  position:fixed;bottom:calc(108px + env(safe-area-inset-bottom));
+  left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--brand-grad);color:#fff;padding:12px 22px;border-radius:30px;
+  font-size:.82rem;font-weight:900;z-index:7000;opacity:0;
+  transition:all .3s;pointer-events:none;
+  box-shadow:0 14px 38px rgba(219,39,119,.42);
+  max-width:90vw;text-align:center;white-space:pre-line;line-height:1.7;
+}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-@media (max-width:380px){
+@media(max-width:380px){
   .app{padding:0 12px}
-  .page-header h1{font-size:1.15rem}
-  .cat-icon{width:42px;height:42px;flex:0 0 42px}
-  .cat-icon svg{width:22px;height:22px}
-  .cat-name{font-size:.76rem}
-  .modal-q{font-size:.95rem}
-  .chat-fab{width:56px;height:56px}
-  .chat-fab svg{width:26px;height:26px}
-  .chat-box{height:92vh;max-height:92vh}
-  .qs-btn{font-size:.68rem;padding:6px 4px}
-  .act-btn{width:30px;height:30px}
-  .act-btn svg{width:16px;height:16px}
+  .page-title{font-size:.95rem}
+  .hero{padding:16px;border-radius:22px}
+  .hero-icon{width:48px;height:48px;flex:0 0 48px}
+  .hero-icon svg{width:24px;height:24px}
+  .hero-title{font-size:.92rem}
+  .hero-sub{font-size:.66rem}
+  .acc-icon{width:40px;height:40px;flex:0 0 40px}
+  .acc-icon svg{width:20px;height:20px}
+  .acc-title{font-size:.86rem}
+  .q-text{font-size:.76rem}
+  .modal-q{font-size:.9rem}
+  .chat-box{height:96vh;max-height:96vh}
+  .qs-btn{font-size:.66rem;padding:6px 5px}
+  .msg-actions .act-btn{width:26px;height:26px;flex:0 0 26px}
+  .msg-actions .act-btn svg{width:14px;height:14px}
+  .nav-item{min-height:52px;font-size:.53rem}
+  .nav-fab{width:56px;height:56px;top:-28px}
+  .nav-fab svg{width:24px;height:24px}
+  .bottom-nav{grid-template-columns:1fr 1fr 70px 1fr 1fr}
+  .cs-box{padding:22px 18px 20px}
+  .cs-icon-wrap{width:76px;height:76px}
+  .cs-icon-wrap svg{width:36px;height:36px}
+  .cs-title{font-size:1.05rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
 }
 </style>
 </head>
 <body>
-
-<script>
-(function(){
-  try{ if(localStorage.getItem('bn_theme')==='dark') document.body.classList.add('dark'); }catch(e){}
-})();
-</script>
-
 <div class="app">
-  <header class="page-header">
-    <a class="back-btn" href="home.html" aria-label="بازگشت">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    </a>
-    <h1>همراز بانوان</h1>
-  </header>
-
-  <div class="quick-selector">
-    <div class="qs-row">
-      <span class="qs-label">مذهب</span>
-      <div class="qs-options" id="fiqhOptions">
-        <button class="qs-btn active" data-fiqh="jafari" type="button">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          جعفری
-        </button>
-        <button class="qs-btn" data-fiqh="hanafi" type="button">
-          <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
-          حنفی
-        </button>
-      </div>
-    </div>
-    <div class="qs-row" id="marjaRow">
-      <span class="qs-label">مرجع</span>
-      <div class="qs-options" id="marjaOptions">
-        <button class="qs-btn active" data-marja="sistani" type="button">سیستانی</button>
-        <button class="qs-btn" data-marja="shirazi" type="button">شیرازی</button>
-        <button class="qs-btn" data-marja="fayyaz" type="button">فیاض</button>
-      </div>
-    </div>
-    <div class="qs-hint">انتخاب شما ذخیره می‌شود و بر پاسخ‌ها اعمال می‌گردد</div>
+<header class="topbar">
+  <a class="back-btn" href="home.html" aria-label="بازگشت">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </a>
+  <div class="page-title">همراز</div>
+  <a class="icon-btn-mini" href="search.html" aria-label="جستجو">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.7-3.7"/></svg>
+  </a>
+</header>
+<section class="hero">
+  <div class="hero-icon">
+    <svg viewBox="0 0 24 24">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      <path d="M8 9h8M8 13h5"/>
+    </svg>
   </div>
-
-  <div class="notice-box">
-    <div class="notice-header">
-      <div class="notice-icon">
-        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-      </div>
-      <div class="notice-title">توجه مهم</div>
-    </div>
-    <div class="notice-text">
-      پاسخ‌های این بخش <strong>کاملاً آفلاین</strong> است و از <strong>سؤالات ادبی و محترمانه</strong> و همچنین <strong>زبان عامیانه</strong> پشتیبانی می‌کند.
-    </div>
-    <ul class="notice-list">
-      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>پاسخ‌ها بدون نیاز به اینترنت نمایش داده می‌شود</span></li>
-      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>همه اطلاعات محرمانه و روی گوشی شما باقی می‌ماند</span></li>
-      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>پاسخ‌ها مطابق مرجع انتخاب‌شده ارائه می‌شود</span></li>
-      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>امکان کپی، اشتراک‌گذاری و پخش صوتی هر پاسخ</span></li>
-    </ul>
+  <div class="hero-text">
+    <div class="hero-title">همراز بانوان</div>
+    <div class="hero-sub">همراه دلسوز برای سؤالات شما</div>
   </div>
-
-  <div class="chat-cta" id="chatCta">
-    <div class="chat-cta-icon">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</section>
+<div class="qs-card">
+  <div class="qs-row">
+    <span class="qs-label">مذهب</span>
+    <div class="qs-options" id="fiqhOptions">
+      <button class="qs-btn active" data-fiqh="jafari" type="button">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        جعفری
+      </button>
+      <button class="qs-btn" data-fiqh="hanafi" type="button">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
+        حنفی
+      </button>
     </div>
-    <div class="chat-cta-text">
-      <div class="chat-cta-title">گفتگو با همراز</div>
-      <div class="chat-cta-sub">سؤالت رو بنویس، پاسخ فوری بگیر</div>
+  </div>
+  <div class="qs-row" id="marjaRow">
+    <span class="qs-label">مرجع</span>
+    <div class="qs-options" id="marjaOptions">
+      <button class="qs-btn active" data-marja="sistani" type="button">سیستانی</button>
+      <button class="qs-btn" data-marja="shirazi" type="button">شیرازی</button>
+      <button class="qs-btn" data-marja="fayyaz" type="button">فیاض</button>
     </div>
-    <svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
   </div>
-
-  <div class="search-wrap">
-    <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="text" class="search-input" id="searchInput" placeholder="جستجو در سؤالات..." />
-  </div>
-
-  <div id="hamrazContent">
-    <div class="loader">در حال بارگذاری سؤالات...</div>
-  </div>
-
-  <div style="height:20px"></div>
 </div>
-
+<div class="notice-card">
+  <div class="notice-icon">
+    <svg viewBox="0 0 24 24">
+      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+      <line x1="12" y1="9" x2="12" y2="13"/>
+      <line x1="12" y1="17" x2="12.01" y2="17"/>
+    </svg>
+  </div>
+  <div class="notice-body">
+    <div class="notice-title">حالت آفلاین</div>
+    <div class="notice-text">
+      پاسخ فوری از بانک اطلاعاتی داخلی — <strong>بدون نیاز به اینترنت</strong>
+    </div>
+    <div class="notice-hint">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <span>سؤالت رو با <strong>زبان ادبی و محترمانه</strong> بپرس — هم برای تایپ و هم برای دکمه میکروفون</span>
+    </div>
+  </div>
+</div>
+<button class="chat-cta" id="chatCta" type="button">
+  <div class="chat-cta-icon">
+    <svg viewBox="0 0 24 24">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      <circle cx="9" cy="10" r="1" fill="#fff"/>
+      <circle cx="12" cy="10" r="1" fill="#fff"/>
+      <circle cx="15" cy="10" r="1" fill="#fff"/>
+    </svg>
+  </div>
+  <div class="chat-cta-text">
+    <div class="chat-cta-title">گفتگو با همراز</div>
+    <div class="chat-cta-sub">سؤالت رو بنویس، پاسخ فوری بگیر</div>
+  </div>
+  <svg class="chat-cta-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+</button>
+<button class="chat-cta" id="aiCta" type="button" style="background:linear-gradient(105deg,#7c3aed 0%,#a855f7 45%,#d946ef 100%)">
+  <div class="chat-cta-icon">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+    </svg>
+  </div>
+  <div class="chat-cta-text">
+    <div class="chat-cta-title">دستیار هوشمند همراز</div>
+    <div class="chat-cta-sub">به‌زودی در نسخه v3</div>
+  </div>
+  <svg class="chat-cta-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+</button>
+<div class="search-wrap">
+  <svg class="search-icon" viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="8"/>
+    <path d="m21 21-4.35-4.35"/>
+  </svg>
+  <input type="text" class="search-input" id="searchInput" placeholder="جستجو در سؤالات..." autocomplete="off" />
+</div>
+<div id="hamrazContent">
+  <div class="loader">در حال بارگذاری سؤالات...</div>
+</div>
+<div style="height:20px"></div>
+</div>
 <div class="modal" id="answerModal">
   <div class="modal-box">
+    <div class="modal-handle"></div>
     <div class="modal-head">
       <div class="modal-head-text">
         <span class="modal-badge" id="modalBadge">پاسخ</span>
@@ -319,15 +826,64 @@ body.dark .act-btn.speaking{color:#fbcfe8;background:rgba(251,207,232,.15)}
         پاسخ شرعی
       </div>
       <div class="answer-text" id="modalAnswer">—</div>
-      <div class="action-bar" id="modalActions"></div>
+      <button class="ahkam-link-btn" id="openAhkamBtn" type="button">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        <span>مشاهده در بخش احکام</span>
+      </button>
+      <div class="msg-actions" id="modalActions" style="margin-top:14px"></div>
     </div>
   </div>
 </div>
-
-<button class="chat-fab" id="chatFab" type="button" aria-label="چت">
-  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-</button>
-
+<div class="coming-soon" id="comingSoon">
+  <div class="cs-box">
+    <div class="cs-icon-wrap">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+    <div class="cs-badge">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span>به‌زودی در v3</span>
+    </div>
+    <h2 class="cs-title">دستیار هوشمند همراز</h2>
+    <p class="cs-desc">
+      ما در حال آماده‌سازی یک دستیار هوشمند واقعی هستیم که با هوش مصنوعی پیشرفته، به تمام سؤالات شما پاسخ می‌دهد.
+    </p>
+    <div class="cs-features">
+      <div class="cs-feature">
+        <div class="cs-feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="cs-feature-text">گفتگوی هوشمند و طبیعی با درک احساسات</div>
+      </div>
+      <div class="cs-feature">
+        <div class="cs-feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5"/></svg>
+        </div>
+        <div class="cs-feature-text">پاسخ دقیق در تمام حوزه‌های احکام و سلامت</div>
+      </div>
+      <div class="cs-feature">
+        <div class="cs-feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+        </div>
+        <div class="cs-feature-text">پشتیبانی کامل از ورودی و خروجی صوتی</div>
+      </div>
+      <div class="cs-feature">
+        <div class="cs-feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="cs-feature-text">حافظه مکالمه و درک متنی پیشرفته</div>
+      </div>
+    </div>
+    <button class="cs-close" id="csCloseBtn" type="button">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      <span>متوجه شدم</span>
+    </button>
+  </div>
+</div>
 <div class="chat-panel" id="chatPanel">
   <div class="chat-box">
     <div class="chat-header">
@@ -336,164 +892,279 @@ body.dark .act-btn.speaking{color:#fbcfe8;background:rgba(251,207,232,.15)}
       </div>
       <div class="chat-header-info">
         <div class="chat-header-title">همراز بانوان</div>
-        <div class="chat-header-sub"><span class="online-dot"></span><span>آماده پاسخ‌گویی آفلاین</span></div>
+        <div class="chat-header-sub">
+          <span class="online-dot"></span>
+          <span>آماده پاسخ‌گویی آفلاین</span>
+        </div>
       </div>
-      <button class="chat-header-close" id="chatCloseBtn" type="button">
+      <button class="chat-header-close" id="chatCloseBtn" type="button" aria-label="بستن">
         <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
     </div>
     <div class="chat-messages" id="chatMessages"></div>
     <div class="chat-suggestions" id="chatSuggestions">
-      <button class="sug-btn" type="button" data-q="حکم استمناء چیست؟">حکم استمناء</button>
-      <button class="sug-btn" type="button" data-q="نفاس چند روز است؟">نفاس چند روز است؟</button>
-      <button class="sug-btn" type="button" data-q="حدود حجاب شرعی چقدر است؟">حدود حجاب</button>
-      <button class="sug-btn" type="button" data-q="وضو برای چه کارهایی واجب است؟">وضو</button>
-      <button class="sug-btn" type="button" data-q="حکم سقط جنین چیست؟">حکم سقط جنین</button>
-      <button class="sug-btn" type="button" data-q="غسل حیض چگونه انجام می‌شود؟">غسل حیض</button>
+      <button class="sug-btn" type="button" data-q="سلام، چطوری؟">سلام</button>
+      <button class="sug-btn" type="button" data-q="نفاس چند روز است؟">نفاس چند روز</button>
+      <button class="sug-btn" type="button" data-q="حکم سقط جنین چیه؟">سقط جنین</button>
+      <button class="sug-btn" type="button" data-q="حدود حجاب شرعی چقدره؟">حدود حجاب</button>
+      <button class="sug-btn" type="button" data-q="حیض چند روزه؟">حیض چند روزه</button>
     </div>
     <div class="chat-input-area">
-      <input type="text" class="chat-input" id="chatInput" placeholder="سؤال خود را بنویسید..." autocomplete="off" enterkeyhint="send" />
+      <button class="chat-mic" id="chatMic" type="button" aria-label="ورودی صوتی">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="23"/>
+          <line x1="8" y1="23" x2="16" y2="23"/>
+        </svg>
+      </button>
+      <textarea class="chat-input" id="chatInput" placeholder="سؤال خود را بنویسید..." autocomplete="off" rows="1"></textarea>
       <button class="chat-send" id="chatSendBtn" type="button" aria-label="ارسال">
-        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <svg viewBox="0 0 24 24">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
       </button>
     </div>
   </div>
 </div>
-
 <nav class="bottom-nav">
-  <a class="nav-item" href="home.html">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span>خانه</span>
-  </a>
   <a class="nav-item" href="search.html">
-    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.7-3.7"/></svg>
     <span>جستجو</span>
   </a>
   <a class="nav-item active" href="hamraz.html">
-    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg viewBox="0 0 24 24">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      <path d="M8 9h8M8 13h5"/>
+    </svg>
     <span>همراز</span>
   </a>
+  <div class="nav-fab-wrap">
+    <a class="nav-fab" href="home.html" aria-label="خانه">
+      <svg viewBox="0 0 24 24">
+        <path d="m3 10 9-7 9 7"/>
+        <path d="M5 9v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9"/>
+        <path d="M9 22v-8h6v8"/>
+      </svg>
+    </a>
+    <span class="nav-fab-label">خانه</span>
+  </div>
   <a class="nav-item" href="ahkam.html">
-    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <svg viewBox="0 0 24 24">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+    </svg>
     <span>احکام</span>
   </a>
   <a class="nav-item" href="settings.html">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5v.1a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1A2 2 0 0 1 7 3.3l.1.1a1.7 1.7 0 0 0 1.8.3h.1a1.7 1.7 0 0 0 1-1.5V2a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v.1a1.7 1.7 0 0 0 1.5 1h.1a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.4 1z"/>
+    </svg>
     <span>بیشتر</span>
   </a>
 </nav>
-
 <div class="toast" id="toast"></div>
-
 <script>
 (function(){
 'use strict';
-
-/* ═══════════════════════════════════════════════════════════
-   CONFIG
-   ═══════════════════════════════════════════════════════════ */
-var CATS_PATH = 'data/hamraz/categories.json';
-var QUESTIONS_PATH = 'data/hamraz/questions.json';
-
+var CONFIG = {
+  CATS_PATH: 'data/hamraz/categories.json',
+  QUESTIONS_PATH: 'data/hamraz/questions.json'
+};
+var CHAT_HISTORY_KEY = 'bn_chat_history_v14';
+var FEEDBACK_KEY = 'bn_hamraz_feedback_v14';
 var allData = null;
-var currentView = 'categories';
-var currentCategory = null;
 var currentModalQuestion = null;
-var lastUserQuery = '';
 var cache = {};
+var chatHistory = [];
+var isRecording = false;
+var recognition = null;
+var lastUserQuery = '';
+var feedbackStore = {};
+var lastWasVoice = false;
 
-/* ═══════════════════════════════════════════════════════════
-   ICON MAPS
-   ═══════════════════════════════════════════════════════════ */
+/* THEME */
+var THEME_KEY = 'bn_theme';
+function getSystemTheme(){
+  try{ return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  catch(e){ return 'light'; }
+}
+function getSavedTheme(){
+  try{
+    var t = localStorage.getItem(THEME_KEY);
+    if(t === 'dark' || t === 'light') return t;
+  }catch(e){}
+  return getSystemTheme();
+}
+function applyTheme(){
+  var t = getSavedTheme();
+  document.documentElement.setAttribute('data-theme', t);
+  document.body.classList.toggle('dark', t === 'dark');
+  var meta = document.getElementById('themeMeta');
+  if(meta) meta.setAttribute('content', t === 'dark' ? '#000000' : '#db2777');
+}
+applyTheme();
+
+var CAT_MAP = {
+  'hejab_poshesh': 'hejab',
+  'negah_erabt': 'mahram_namahram',
+  'ezdevaj_khastegari': 'ezdevaj',
+  'aqd_nikah': 'ezdevaj',
+  'mahr_nafaqah': 'ezdevaj',
+  'talaq_iddah': 'ezdevaj',
+  'hoqooq_hamsar_khanevadeh': 'ezdevaj',
+  'children_hadanah': 'ezdevaj',
+  'namaz_banovan': 'namaz',
+  'wuzu_ghosl_tayammum': 'taharat',
+  'hayez_estehaze_nefas': 'hayz',
+  'roozeh_banovan': 'rooze',
+  'zakat_sadaqah': 'ers_wasiyyat',
+  'nazar_qasam': 'ers_wasiyyat',
+  'hajj_umrah_banovan': 'hajj_umrah',
+  'kasb_moamelat_banovan': 'kasb_moamelat',
+  'adab_akhlaq_banovan': 'adab_akhlaq'
+};
+function mapCat(oldCat){
+  if(!oldCat) return 'moteferrege';
+  return CAT_MAP[oldCat] || oldCat;
+}
 var catIcons = {
   taharat:'<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
+  najasa:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
   hayz:'<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><circle cx="12" cy="14" r="3" fill="#fff"/></svg>',
   nifas:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>',
   istihaza:'<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><line x1="12" y1="8" x2="12" y2="18" stroke="#fff" stroke-width="1.5"/></svg>',
+  janabat:'<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
   namaz:'<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>',
   rooze:'<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
   ezdevaj:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  zenaashooei:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  estemna:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
+  porn_mustehan:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
   hejab:'<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-10 10c0 5 4 9 10 9s10-4 10-9A10 10 0 0 0 12 2z"/></svg>',
-  pezeshki:'<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5"/><circle cx="12" cy="12" r="3" fill="#fff" opacity="0.5"/></svg>',
+  mahram_namahram:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
+  female_anatomy:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
+  breast:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  anal_health:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
+  urinary:'<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
+  vaginal_health:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
+  pregnancy:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>',
+  childbirth:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>',
+  breastfeeding:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>',
+  abortion:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
+  contraception:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
+  fertility:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  medical:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  cancer_screening:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
+  mental_health:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  personal_hygiene:'<svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"/></svg>',
+  skin_hair:'<svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"/></svg>',
+  nutrition:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  anemia:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
+  adab_akhlaq:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  amr_nahy:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
+  ers_wasiyyat:'<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  hajj_umrah:'<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  kasb_moamelat:'<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
   moteferrege:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'
 };
 var defaultIcon = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>';
-
 var iconAliases = {
   droplet:'<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
-  drop:'<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
-  water:'<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
   chat:'<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
-  message:'<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
   heart:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
   book:'<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
   moon:'<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
   eye:'<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>',
-  money:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h6M9 14h6"/></svg>',
-  wallet:'<svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M16 14h2"/></svg>',
   pill:'<svg viewBox="0 0 24 24"><path d="M10.5 20.5a7 7 0 0 1-9.9-9.9l10-10a7 7 0 0 1 9.9 9.9z"/><path d="M8.5 8.5l7 7"/></svg>',
   baby:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>',
-  question:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
-  help:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
-  info:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
-  user:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>',
-  scale:'<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>',
-  star:'<svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"/></svg>',
   shield:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
   clock:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
-  time:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
-  home:'<svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
-  search:'<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>',
-  flask:'<svg viewBox="0 0 24 24"><path d="M9 2v6L4 20a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2L15 8V2"/><line x1="8" y1="2" x2="16" y2="2"/></svg>',
-  lab:'<svg viewBox="0 0 24 24"><path d="M9 2v6L4 20a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2L15 8V2"/><line x1="8" y1="2" x2="16" y2="2"/></svg>',
-  fire:'<svg viewBox="0 0 24 24"><path d="M12 2s4 4 4 8a4 4 0 0 1-8 0c0-1 .5-2 .5-2S6 10 6 14a6 6 0 0 0 12 0c0-6-6-12-6-12z"/></svg>',
-  lock:'<svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
-  calendar:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>',
-  bell:'<svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>',
-  gift:'<svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/></svg>',
-  medical:'<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5"/><circle cx="12" cy="12" r="3" fill="#fff" opacity="0.5"/></svg>',
-  cross:'<svg viewBox="0 0 24 24"><path d="M12 2v20M6 8h12"/></svg>',
-  warning:'<svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
-  check:'<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>',
-  x:'<svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>',
-  plus:'<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
-  sparkle:'<svg viewBox="0 0 24 24"><path d="M12 2l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>'
+  user:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>',
+  star:'<svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9"/></svg>',
+  users:'<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  body:'<svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M9 22l1-8-3-3 2-5h6l2 5-3 3 1 8"/></svg>',
+  activity:'<svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
+  sparkles:'<svg viewBox="0 0 24 24"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/><path d="M19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7z"/><path d="M5 3l.7 2.3L8 6l-2.3.7L5 9l-.7-2.3L2 6l2.3-.7z"/></svg>'
 };
-
 var catColors = {
   taharat:'linear-gradient(135deg,#a855f7,#6d28d9)',
+  najasa:'linear-gradient(135deg,#6366f1,#4338ca)',
   hayz:'linear-gradient(135deg,#ec4899,#be185d)',
   nifas:'linear-gradient(135deg,#f472b6,#db2777)',
   istihaza:'linear-gradient(135deg,#8b5cf6,#6d28d9)',
+  janabat:'linear-gradient(135deg,#a78bfa,#7c3aed)',
   namaz:'linear-gradient(135deg,#6366f1,#4338ca)',
   rooze:'linear-gradient(135deg,#fbbf24,#d97706)',
   ezdevaj:'linear-gradient(135deg,#ec4899,#6d28d9)',
+  zenaashooei:'linear-gradient(135deg,#f472b6,#be185d)',
+  estemna:'linear-gradient(135deg,#ef4444,#b91c1c)',
+  porn_mustehan:'linear-gradient(135deg,#dc2626,#991b1b)',
   hejab:'linear-gradient(135deg,#a78bfa,#7c3aed)',
-  pezeshki:'linear-gradient(135deg,#ef4444,#b91c1c)',
+  mahram_namahram:'linear-gradient(135deg,#8b5cf6,#6d28d9)',
+  female_anatomy:'linear-gradient(135deg,#a855f7,#6d28d9)',
+  breast:'linear-gradient(135deg,#ec4899,#be185d)',
+  anal_health:'linear-gradient(135deg,#64748b,#334155)',
+  urinary:'linear-gradient(135deg,#06b6d4,#0e7490)',
+  vaginal_health:'linear-gradient(135deg,#8b5cf6,#6d28d9)',
+  pregnancy:'linear-gradient(135deg,#f472b6,#db2777)',
+  childbirth:'linear-gradient(135deg,#f472b6,#be185d)',
+  breastfeeding:'linear-gradient(135deg,#fbbf24,#d97706)',
+  abortion:'linear-gradient(135deg,#ef4444,#b91c1c)',
+  contraception:'linear-gradient(135deg,#6366f1,#4338ca)',
+  fertility:'linear-gradient(135deg,#ec4899,#6d28d9)',
+  medical:'linear-gradient(135deg,#ef4444,#b91c1c)',
+  cancer_screening:'linear-gradient(135deg,#ef4444,#991b1b)',
+  mental_health:'linear-gradient(135deg,#a78bfa,#7c3aed)',
+  personal_hygiene:'linear-gradient(135deg,#06b6d4,#0891b2)',
+  skin_hair:'linear-gradient(135deg,#f472b6,#db2777)',
+  nutrition:'linear-gradient(135deg,#10b981,#059669)',
+  anemia:'linear-gradient(135deg,#ef4444,#dc2626)',
+  adab_akhlaq:'linear-gradient(135deg,#a855f7,#6d28d9)',
+  amr_nahy:'linear-gradient(135deg,#8b5cf6,#6d28d9)',
+  ers_wasiyyat:'linear-gradient(135deg,#64748b,#334155)',
+  hajj_umrah:'linear-gradient(135deg,#fbbf24,#d97706)',
+  kasb_moamelat:'linear-gradient(135deg,#10b981,#059669)',
   moteferrege:'linear-gradient(135deg,#64748b,#334155)'
 };
-var defaultColor = 'linear-gradient(135deg,#a855f7,#6d28d9)';
-
-/* ═══════════════════════════════════════════════════════════
-   ACTION ICONS
-   ═══════════════════════════════════════════════════════════ */
+var fallbackColors = [
+  'linear-gradient(135deg,#a855f7,#6d28d9)','linear-gradient(135deg,#ec4899,#be185d)',
+  'linear-gradient(135deg,#f472b6,#db2777)','linear-gradient(135deg,#8b5cf6,#6d28d9)',
+  'linear-gradient(135deg,#6366f1,#4338ca)','linear-gradient(135deg,#fbbf24,#d97706)',
+  'linear-gradient(135deg,#06b6d4,#0891b2)','linear-gradient(135deg,#10b981,#059669)',
+  'linear-gradient(135deg,#ef4444,#b91c1c)','linear-gradient(135deg,#64748b,#334155)'
+];
+var fallbackIcons = ['heart','book','shield','star','droplet','chat','moon','eye'];
+function hashString(str){
+  var h = 0, i;
+  for(i = 0; i < str.length; i++) h = ((h << 5) - h + str.charCodeAt(i)) | 0;
+  return Math.abs(h);
+}
+function autoIconFor(id){
+  var h = hashString(id);
+  var name = fallbackIcons[h % fallbackIcons.length];
+  return iconAliases[name] || defaultIcon;
+}
+function autoColorFor(id){
+  var h = hashString(id);
+  return fallbackColors[h % fallbackColors.length];
+}
 var ICON_COPY = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
 var ICON_LIKE = '<svg viewBox="0 0 24 24"><path d="M7 10v12"/><path d="M15 5.88L14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88z"/></svg>';
 var ICON_DISLIKE = '<svg viewBox="0 0 24 24"><path d="M17 14V2"/><path d="M9 18.12L10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22h0a3.13 3.13 0 0 1-3-3.88z"/></svg>';
 var ICON_SPEAK = '<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
 var ICON_SHARE = '<svg viewBox="0 0 24 24"><path d="M15 14l5-5-5-5"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>';
 var ICON_RETRY = '<svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>';
-var ICON_COPY_SMALL = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
-
-/* ═══════════════════════════════════════════════════════════
-   HELPERS
-   ═══════════════════════════════════════════════════════════ */
 function $(id){ return document.getElementById(id); }
 function escapeHtml(s){
   if(s==null) return '';
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 function faNum(n){ return String(n).replace(/\d/g,function(d){ return '۰۱۲۳۴۵۶۷۸۹'[d]; }); }
+function pad2(n){ return n<10?'0'+n:''+n; }
+function pickRandom(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
 function getSavedFiqh(){
   try{ var f = localStorage.getItem('bn_fiqh'); if(f==='jafari'||f==='hanafi') return f; }catch(e){}
   return 'jafari';
@@ -512,89 +1183,84 @@ function showToast(msg, duration){
   toastTimer = setTimeout(function(){ t.classList.remove('show'); }, duration);
 }
 function resolveIcon(cat){
+  if(!cat) return defaultIcon;
   if(cat.id && catIcons[cat.id]) return catIcons[cat.id];
   if(cat.icon && iconAliases[cat.icon]) return iconAliases[cat.icon];
   if(cat.icon && typeof cat.icon==='string' && cat.icon.indexOf('<svg')===0) return cat.icon;
-  return defaultIcon;
+  return autoIconFor(cat.id || 'default');
 }
-function resolveColor(cat){ return catColors[cat.id] || defaultColor; }
-
-/* ═══════════════════════════════════════════════════════════
-   TEXT NORMALIZATION + SLANG ENGINE
-   ═══════════════════════════════════════════════════════════ */
+function resolveColor(cat){
+  if(!cat) return fallbackColors[0];
+  if(cat.id && catColors[cat.id]) return catColors[cat.id];
+  return autoColorFor(cat.id || 'default');
+}
 function normalizeText(s){
   if(!s) return '';
   return String(s).toLowerCase()
-    .replace(/[يىئ]/g,'ی')
-    .replace(/[كک]/g,'ک')
-    .replace(/[ۀهة]/g,'ه')
-    .replace(/[أإآا]/g,'ا')
-    .replace(/[ؤو]/g,'و')
+    .replace(/[يىئ]/g,'ی').replace(/[كک]/g,'ک').replace(/[ۀهة]/g,'ه')
+    .replace(/[أإآا]/g,'ا').replace(/[ؤو]/g,'و')
     .replace(/[\u064B-\u065F\u0670\u200c\u200f\u200e]/g,'')
     .replace(/[؟?!.,،؛:"'«»()\[\]{}]/g,' ')
     .replace(/\s+/g,' ').trim();
 }
-
 function stemWord(w){
   if(!w || w.length < 3) return w;
   var suffixes = ['هایمان','هایتان','هایشان','هایم','هایت','هایش','های','هایی','مان','تان','شان','ها','ترین','تر','م','ت','ش','ی'];
   for(var i=0;i<suffixes.length;i++){
     var suf = suffixes[i];
-    if(w.length > suf.length + 1 && w.slice(-suf.length) === suf){
-      return w.slice(0,-suf.length);
-    }
+    if(w.length > suf.length + 1 && w.slice(-suf.length) === suf) return w.slice(0,-suf.length);
   }
   return w;
 }
-
 var slangSynonyms = {
-  'کون':'مقعد','کونم':'مقعد','کونت':'مقعد','کونش':'مقعد','باسن':'مقعد','باسنم':'مقعد',
-  'کوس':'فرج','کوسم':'فرج','کوست':'فرج','کوسش':'فرج',
-  'کس':'فرج','کسم':'فرج','واژن':'فرج','مهبل':'فرج','فرج':'فرج',
-  'کیر':'آلت','کیرم':'آلت','کیرت':'آلت','دودول':'آلت','دودولم':'آلت','آلت':'آلت',
-  'تخم':'بیضه','تخمم':'بیضه','تخمهام':'بیضه','خایه':'بیضه','خایهام':'بیضه','بیضه':'بیضه',
-  'سینه':'پستان','سینهام':'پستان','سینه‌هام':'پستان','ممه':'پستان','ممم':'پستان','پستان':'پستان',
-  'جلق':'استمناء','دستکی':'استمناء','دستمال':'استمناء','لاپا':'استمناء',
-  'خودارضایی':'استمناء','استمنا':'استمناء','استمناء':'استمناء','خودتحریکی':'استمناء',
-  'سکس':'رابطه جنسی','نزدیکی':'رابطه جنسی','مقاربت':'رابطه جنسی','جماع':'رابطه جنسی','همبستری':'رابطه جنسی','رابطه':'رابطه جنسی',
-  'بوس':'بوسه','بوسیدن':'بوسه','ماچ':'بوسه','بوسه':'بوسه',
-  'لمس':'لمس','دستمالی':'لمس','دست زدن':'لمس',
-  'ارضا':'ارضاء','ارضاء':'ارضاء','اوج لذت':'ارضاء',
-  'انزال':'انزال','منی':'منی','شهوت':'شهوت','شهوانی':'شهوت','تحریک':'تحریک',
-  'پورن':'فیلم مستهجن','فیلم سوپر':'فیلم مستهجن','لخت':'برهنه','برهنه':'برهنه',
-  'میخاره':'خارش','میخارم':'خارش','خارش':'خارش','خاریدن':'خارش',
-  'خیسه':'خیس','خیس':'خیس','خیس شده':'ترشح','نم':'ترشح',
-  'ترشح':'ترشح','رطوبت':'ترشح','آب':'ترشح',
-  'بوی بد':'بوی','بو':'بوی','گند':'بوی',
-  'خون':'خون','خونریزی':'خونریزی',
-  'شاش':'ادرار','پیپی':'ادرار','ادرار':'ادرار',
-  'گوز':'باد','باد':'باد','دل پیچه':'دل درد',
-  'مدفوع':'مدفوع',
-  'التهاب':'التهاب','جوش':'جوش','قارچ':'قارچ','سوزش':'سوزش','درد':'درد','ورم':'ورم',
-  'پریود':'حیض','پریودم':'حیض','قاعدگی':'حیض','عادت ماهانه':'حیض','خون ماهانه':'حیض',
-  'لکه بینی':'استحاضه','استحاضه':'استحاضه',
-  'نفاس':'نفاس','زایمان':'زایمان','وضع حمل':'زایمان',
-  'حامله':'باردار','حاملگی':'بارداری','بارداری':'بارداری','آبستن':'باردار',
-  'سقط':'سقط','کورتاژ':'سقط','بچه':'جنین','جنین':'جنین',
-  'شوهر':'زوج','شوهرم':'زوج','مردم':'زوج','مرد':'زوج',
-  'زن':'همسر','زوج':'زوج',
-  'طلاق':'طلاق','جدا':'طلاق','جدایی':'طلاق',
-  'عقد':'عقد','ازدواج':'ازدواج','محرم':'محرم','نامحرم':'نامحرم',
-  'خواستگار':'خواستگاری','خواستگاری':'خواستگاری',
-  'جنب':'جنابت','جنابت':'جنابت','غسل':'غسل','وضو':'وضو','تیمم':'تیمم','طهارت':'طهارت','پاک':'طهارت',
-  'نجس':'نجاست','نجاست':'نجاست','پاکی':'طهارت',
-  'دستشویی':'توالت','توالت':'توالت','حمام':'حمام',
-  'حجاب':'حجاب','روسری':'حجاب','مانتو':'حجاب','چادر':'حجاب',
-  'نگاه':'نگاه','دید':'نگاه','چشم':'نگاه','نگاه کردن':'نگاه',
-  'فیلم':'فیلم','عکس':'عکس','اینترنت':'اینترنت','چت':'چت','گفتگو':'گفتگو'
+  'کوس':'فرج','کس':'فرج','کص':'فرج','کث':'فرج','واژن':'فرج','مهبل':'فرج',
+  'جای زنانه':'فرج','جای خصوصی':'فرج','قسمت خصوصی':'فرج','ناحیه تناسلی':'فرج',
+  'لب واژن':'لب های واژن','لب کوس':'لب های واژن','آلت زن':'فرج',
+  'جی جی':'پستان','جی‌جی':'پستان','جیجی':'پستان','ممه':'پستان','ممه ها':'پستان',
+  'سینم':'پستان','نوک سینه':'نوک پستان',
+  'کیر':'آلت','دودول':'آلت','دول':'آلت','آلت مرد':'آلت','آلت تناسلی':'آلت',
+  'تخم':'بیضه','خایه':'بیضه','تخم ها':'بیضه',
+  'کون':'مقعد','باسن':'مقعد','مخرج':'مقعد','الک':'مقعد','جای مدفوع':'مقعد',
+  'جلق':'استمناء','جق':'استمناء','جقی':'استمناء','جق زدن':'استمناء','جلق زدن':'استمناء',
+  'دستکی':'استمناء','دستک زدن':'استمناء','دست کشیدن':'استمناء',
+  'خودارضایی':'استمناء','خود ارضایی':'استمناء','خودارضای':'استمناء',
+  'استمنا':'استمناء','مالیدن آلت':'استمناء','خودشکنی':'استمناء',
+  'سکس':'رابطه جنسی','سکسی':'رابطه جنسی','نزدیکی':'رابطه جنسی',
+  'مقاربت':'رابطه جنسی','جماع':'رابطه جنسی','همبستری':'رابطه جنسی',
+  'همخوابی':'رابطه جنسی','بستر':'رابطه جنسی','دخول':'رابطه جنسی',
+  'فرو کردن':'رابطه جنسی','کردن':'رابطه جنسی','گاییدن':'رابطه جنسی',
+  'لیس زدن':'لیسیدن','لیسی':'لیسیدن','لیس':'لیسیدن',
+  'چوشیدن':'مکیدن','چوسیدن':'مکیدن','مک زدن':'مکیدن','ساک زدن':'مکیدن',
+  'گاز گرفتن':'گاز گرفتن',
+  'بوسیدن کوس':'بوسیدن آلت','بوسیدن آلت':'بوسیدن آلت','بوس آلت':'بوسیدن آلت',
+  'ماچ':'بوسه','بوس':'بوسه','بوسیدن':'بوسه',
+  'لمس':'لمس','دستمالی':'لمس','دست مالی':'لمس',
+  'ارضا':'ارضاء','ارگاسم':'ارضاء','اوج لذت':'ارضاء',
+  'آب منی':'منی',
+  'شاش':'ادرار','پیپی':'ادرار','میز':'ادرار','جیش':'ادرار',
+  'گه':'مدفوع','خر':'مدفوع','پیپی بزرگ':'مدفوع',
+  'دستشویی':'توالت','توال':'توالت',
+  'پریود':'حیض','قاعدگی':'حیض','عادت ماهانه':'حیض','خون ماهانه':'حیض',
+  'خون پریود':'حیض','پریود شدن':'حیض','قاعده':'حیض','قاعده شدن':'حیض',
+  'لکه بینی':'لکه بینی','لکه':'لکه بینی',
+  'حامله':'باردار','حاملگی':'بارداری','آبستن':'باردار','بچه دار':'باردار',
+  'شوهر':'زوج','همسر':'زوج','مرد':'زوج','شوی':'زوج',
+  'زن':'زوجه','خانم':'زوجه',
+  'جدا':'طلاق','جدایی':'طلاق',
+  'چشم':'نگاه','دیدن':'نگاه','چشم چرانی':'نگاه','چشم زدن':'نگاه',
+  'روسری':'حجاب','چادر':'حجاب','مانتو':'حجاب','پوشش':'حجاب',
+  'مو':'موهای زن','موها':'موهای زن',
+  'جنب':'جنابت','جنب شدن':'جنابت','نجس':'نجاست','نجس شده':'نجاست',
+  'شیری':'شیردهی','شیر دادن':'شیردهی','شیر مادر':'شیردهی','سینه دادن':'شیردهی',
+  'قرص':'دارو','دوا':'دارو','دکتر':'پزشک','مریضی':'بیماری','مریض':'بیمار',
+  'پورن':'فیلم مستهجن','پورنو':'فیلم مستهجن','فیلم سکس':'فیلم مستهجن',
+  'فیلم سکسی':'فیلم مستهجن','فیلم آبی':'فیلم مستهجن','فیلم سوپر':'فیلم مستهجن',
+  'فیلم زشت':'فیلم مستهجن','فیلم بزرگسال':'فیلم مستهجن','سایت پورن':'فیلم مستهجن',
+  'عکس سکسی':'تصویر مستهجن','عکس مستهجن':'تصویر مستهجن'
 };
-
 var slangKeys = Object.keys(slangSynonyms).sort(function(a,b){ return b.length - a.length; });
-
 function levenshtein(a,b){
-  if(a===b) return 0;
-  if(!a.length) return b.length;
-  if(!b.length) return a.length;
+  if(a===b) return 0; if(!a.length) return b.length; if(!b.length) return a.length;
   var prev = [], curr = [];
   for(var j=0;j<=a.length;j++) prev[j] = j;
   for(var i=1;i<=b.length;i++){
@@ -607,7 +1273,6 @@ function levenshtein(a,b){
   }
   return prev[a.length];
 }
-
 function expandSlang(text){
   if(!text) return '';
   var result = text;
@@ -626,262 +1291,114 @@ function expandSlang(text){
   }).join(' ');
   return result.replace(/\s+/g,' ').trim();
 }
-
-/* ═══════════════════════════════════════════════════════════
-   GREETING ENGINE — احوال‌پرسی دوستانه
-   ═══════════════════════════════════════════════════════════ */
-var greetingPatterns = [
-  {
-    keywords: ['سلام','سلام علیکم','سلام‌علیکم','علیکم السلام','درود','های','هی','hi','hello','سلم'],
-    responses: [
-      'سلام عزیزم 🌸\nخوش اومدی!\n\nچطور می‌تونم کمکت کنم؟ هر سؤالی داری بپرس 💜',
-      'سلام گل من 🌷\nچقدر خوب که اومدی پیشم!\n\nچیزی هست که بخوای درباره‌ش بدونی؟',
-      'سلام دوست خوبم 💐\nامیدوارم حالت خوب باشه.\n\nسؤالت رو بپرس، با کمال میل کمکت می‌کنم 🌸',
-      'سلام به روی ماهت 🌸\nمن اینجام تا کمکت کنم.\n\nبگو چی تو ذهنته 💜'
-    ]
-  },
-  {
-    keywords: ['چطوری','چطوري','حالت چطوره','حالت چطور','خوبی','خوب هستی','خوبی تو','چه طوری','چطور هستی','چطورید','حالتون'],
-    responses: [
-      'ممنون که پرسیدی عزیزم 💜\nمن خوبم، همیشه اینجام برای تو!\n\nتو چطوری؟ حالت خوبه؟ 🌸',
-      'قربونت برم، من خوبم 🌷\nدلم می‌خواد بدونم تو چطوری؟\n\nحالت خوبه؟ چیزی ناراحتت کرده؟',
-      'سلامت باشی 💐\nمن خوبم، مخصوصاً حالا که تو اینجایی!\n\nبگو ببینم حال دلت چطوره؟',
-      'خوبم عزیزم، خدا رو شکر 🌸\nتو چطوری؟\n\nامیدوارم حالت خوب باشه و دلت آروم 💜'
-    ]
-  },
-  {
-    keywords: ['خوبم','خوب هستم','من خوبم','بد نیستم','بهترم','خوب شدم','حالم خوبه'],
-    responses: [
-      'خدا رو شکر 🌸\nخوشحالم که خوبی!\n\nحالا بگو چی تو ذهنت هست، بپرس 💜',
-      'چه خوب! خدا رو شکر 💐\nپس بگو ببینم چیزی هست که بخوای بدونی؟',
-      'الهی شکر 🌷\nخوشحالم!\n\nهر سؤالی داری بپرس عزیزم، من اینجام 💜',
-      'الحمدلله 🌸\nچه خبر خوبی!\n\nحالا سؤالت رو بپرس دوست خوبم'
-    ]
-  },
-  {
-    keywords: ['چی خبر','چه خبر','خبری هست','خبری نداری','چه خبرا','خبر جدید','تازه چی'],
-    responses: [
-      'خبری نیست عزیزم، فقط منتظر تو بودم 🌸\nتو چه خبر؟ چی تازه داری؟\n\nچیزی هست که بخوای بپرسی؟',
-      'سلامتی مهم‌ترین خبره 💜\nبگو ببینم چی تو دلته، بپرس 🌷',
-      'خبر خوب اینه که اومدی پیشم 🌸\nحالا بگو چی می‌خوای بدونی عزیزم',
-      'خبر خاصی نیست گلم 💐\nولی حالا که اینجایی، بگو چی تو ذهنته 🌷'
-    ]
-  },
-  {
-    keywords: ['کی هستی','تو کی هستی','تو چی هستی','اسمت چیه','اسمت چی هست','نامت چیست','تو کی ای','شما کی هستید'],
-    responses: [
-      'من همراز هستم 🌸\nیه همراه دلسوز که برای سؤالات شرعی و احکام بانوان کنارت هستم.\n\nمی‌تونی هر چی می‌خوای بپرسی، بدون خجالت 💜',
-      'اسم من همرازه 💐\nیعنی همراهِ رازها.\n\nیه دوست آفلاین که همیشه در دسترسه تا به سؤالاتت با آرامش جواب بده 🌷',
-      'همراز هستم عزیزم 🌸\nکنارت هستم تا هر سؤال شرعی و دینی که داری رو جواب بدم.\n\nخیالت راحت، همه چیز محرمانه می‌مونه 💜'
-    ]
-  },
-  {
-    keywords: ['خداحافظ','خداحافز','بای','خدانگهدار','خدافظ','فعلا','فعلاً','می‌رم','میرم','خدا نگهدار'],
-    responses: [
-      'خداحافظ عزیزم 🌸\nهر وقت سؤالی داشتی برگرد، من همیشه اینجام 💜\n\nمراقب خودت باش',
-      'خدانگهدار گلم 💐\nامیدوارم روز خوبی داشته باشی.\n\nهر وقت خواستی، منتظرتم 🌷',
-      'به سلامت 🌸\nخوشحال شدم که اومدی.\n\nباز هم بیا پیشم 💜',
-      'خدا نگهدارت 💐\nموفق باشی عزیزم.\n\nدر پناه خدا 🌷'
-    ]
-  },
-  {
-    keywords: ['ممنون','مرسی','متشکرم','سپاس','دستت درد نکنه','دستت درد نکن','خدا خیرت بده','لطف کردی','لطف داری'],
-    responses: [
-      'خواهش می‌کنم عزیزم 🌸\nکاری نکردم، وظیفه‌ست 💜\n\nهر وقت سؤال داشتی بپرس',
-      'قربونت 💐\nخوشحالم که به کارت اومدم.\n\nباز هم اگه چیزی بود، بپرس 🌷',
-      'لطف داری گلم 🌸\nموفق باشی.\n\nهر وقت نیاز داشتی، همینجام 💜',
-      'خواهش می‌کنم 💐\nهمیشه خوشحال می‌شم کمکت کنم.\n\nباز هم بیا 🌷'
-    ]
-  },
-  {
-    keywords: ['ببخشید','معذرت','شرمنده','متأسفم','عذر می‌خوام','ببخشین','معذرت می‌خوام'],
-    responses: [
-      'خواهش می‌کنم عزیزم 🌸\nاصلاً نیازی به عذرخواهی نیست.\n\nبگو چی می‌خوای بپرسی؟ 💜',
-      'قربونت 💐\nنگران نباش، اینجا راحت باش.\n\nهر سؤالی داری بپرس 🌷',
-      'خواهش می‌کنم گلم 🌸\nهمه چیز راحته پیش من.\n\nبفرما بپرس 💜'
-    ]
-  },
-  {
-    keywords: ['دعا کن','التماس دعا','دعام کن','دعا کن برام','برام دعا کن'],
-    responses: [
-      'چشم عزیزم 🌸\nخدا خودش حواسش بهت هست 💜\n\nامیدوارم همیشه حالت خوب باشه و دلت آروم',
-      'انشاالله که همیشه سلامت باشی 🌷\nخدا هوات رو داره.\n\nهر سؤالی داشتی بپرس عزیزم',
-      'چشم گلم 💐\nامیدوارم خدا بهترین‌ها رو برات بخواد.\n\nحالا بگو چی می‌خوای بپرسی؟ 🌸'
-    ]
-  },
-  {
-    keywords: ['خسته نباشی','خسته نباشيد','خسته نباشین','خسته نباشید'],
-    responses: [
-      'سلامت باشی گلم 🌸\nممنون که به فکرمی 💜\n\nتو هم خسته نباشی. بگو چی می‌خوای بپرسی؟',
-      'ممنون عزیزم 💐\nلطف داری.\n\nحالا بگو سؤالت چیه؟ 🌷',
-      'قربونت 🌸\nخدا قوت.\n\nهر سؤالی داری بپرس 💜'
-    ]
-  },
-  {
-    keywords: ['شب بخیر','روز بخیر','صبح بخیر','شبت بخیر','روزت بخیر','صبحت بخیر','شب خوش','روز خوش'],
-    responses: [
-      'همچنین عزیزم 🌸\nامیدوارم وقت خوبی داشته باشی 💜',
-      'بر تو هم گلم 💐\nخدا بهت آرامش بده.\n\nهر وقت سؤالی داشتی بپرس 🌷',
-      'ممنون، تو هم همینطور 🌸\nمراقب خودت باش 💜'
-    ]
-  },
-  {
-    keywords: ['کمکم کن','کمک کن','راهنمایی کن','راهنما','نمی‌دونم چیکار کنم','مشکل دارم'],
-    responses: [
-      'حتماً عزیزم 🌸\nمن اینجام تا کمکت کنم.\n\nسؤالت رو دقیق‌تر بپرس تا راهنماییت کنم 💜',
-      'قربونت 💐\nبگو مشکلت چیه؟\n\nسؤالت رو بنویس، با دقت جواب می‌دم 🌷',
-      'خیالت راحت 🌸\nهر چی هست بگو، بدون خجالت.\n\nکمکت می‌کنم 💜'
-    ]
-  }
-];
-
-var greetingStopWords = ['سلام','علیکم','السلام','درود','های','هی','hi','hello','سلم',
-  'چطوری','چطوري','حالت','چطوره','چطور','خوبی','خوب','هستی','چه','طوری','چطورید','حالتون',
-  'مرسی','ممنون','متشکرم','سپاس','خدا','رو','شکر','الهی','لطف','داری','کردی','دستت','درد','نکنه','نکن','خیرت','بده',
-  'ببخشید','معذرت','شرمنده','متأسفم','عذر','می‌خوام','میخوام','ببخشین',
-  'دعا','کن','التماس','برام','دعام',
-  'خسته','نباشی','نباشيد','نباشین','نباشید','قوت',
-  'شب','بخیر','روز','صبح','شبت','روزت','صبحت','خوش',
-  'کمک','کمکم','راهنمایی','راهنما','نمی‌دونم','نمیدونم','چیکار','چی‌کار','مشکل','دارم',
-  'کی','تو','چی','اسمت','چیه','نامت','چیست','شما','هستید','ای','هستم',
-  'خداحافظ','خداحافز','بای','خدانگهدار','خدافظ','فعلا','فعلاً','می‌رم','میرم','نگهدار','نگهدارت',
-  'چخبر','خبر','خبری','خبرا','تازه','جدید','نداری','هست',
-  'خوبم','بد','نیستم','بهترم','شدم','حالم','حال',
-  'و','با','به','از','که','این','آن','برای','در','تا','من','ما'];
-
-function detectGreeting(text){
-  if(!text) return null;
-  var n = normalizeText(text);
-  if(!n) return null;
-  var words = n.split(/\s+/);
-
-  for(var i = 0; i < greetingPatterns.length; i++){
-    var g = greetingPatterns[i];
-    for(var j = 0; j < g.keywords.length; j++){
-      var kw = normalizeText(g.keywords[j]);
-      if(!kw) continue;
-      if(kw.indexOf(' ') === -1){
-        if(words.indexOf(kw) > -1) return g;
-        for(var k = 0; k < words.length; k++){
-          if(words[k].length > 3 && stemWord(words[k]) === kw) return g;
-        }
-      } else {
-        if(n.indexOf(kw) > -1) return g;
-      }
-    }
-  }
-  return null;
-}
-
-function stripGreetingWords(text){
-  if(!text) return '';
-  var n = normalizeText(text);
-  var words = n.split(/\s+/);
-  var remaining = words.filter(function(w){
-    if(w.length < 2) return false;
-    if(greetingStopWords.indexOf(w) > -1) return false;
-    var st = stemWord(w);
-    if(greetingStopWords.indexOf(st) > -1) return false;
-    if(['و','با','به','از','که','این','آن','تو','من','ما','شما','برای','در','تا','ای'].indexOf(w) > -1) return false;
-    return true;
-  });
-  return remaining.join(' ').trim();
-}
-
-function pickRandom(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
-
-/* ═══════════════════════════════════════════════════════════
-   LOAD DATA  (پشتیبانی از ۵ فرمت مختلف)
-   ═══════════════════════════════════════════════════════════ */
 function fetchJSON(path){
   if(cache[path]) return Promise.resolve(cache[path]);
   return fetch(path).then(function(res){
     if(!res.ok) throw new Error('HTTP '+res.status);
     return res.json();
-  }).then(function(data){
-    cache[path] = data;
-    return data;
-  });
+  }).then(function(data){ cache[path] = data; return data; });
 }
-
-function normalizeCats(arr){
-  if(!Array.isArray(arr)) return [];
-  return arr.map(function(c){
-    return {
-      id: c.id || ('cat_'+Math.random().toString(36).slice(2)),
-      title: c.title || 'بدون عنوان',
-      icon: c.icon || null,
-      questions: Array.isArray(c.questions) ? c.questions : []
-    };
-  });
+function extractCatsArray(data){
+  if(!data) return [];
+  if(Array.isArray(data)) return data;
+  if(Array.isArray(data.categories)) return data.categories;
+  return [];
 }
-
+function extractQArray(data){
+  if(!data) return [];
+  if(Array.isArray(data.questions)) return data.questions;
+  if(Array.isArray(data)){
+    if(data.length && (data[0].q || data[0].question)) return data;
+  }
+  if(Array.isArray(data.categories)){
+    var out = [];
+    data.categories.forEach(function(c){
+      if(Array.isArray(c.questions)){
+        c.questions.forEach(function(q){
+          var qq = Object.assign({}, q);
+          if(!qq.cat) qq.cat = c.id;
+          out.push(qq);
+        });
+      }
+    });
+    if(out.length) return out;
+  }
+  return [];
+}
 function loadData(){
   if(allData) return Promise.resolve(allData);
   var catData = null, qData = null;
   return Promise.resolve()
-    .then(function(){ return fetchJSON(CATS_PATH).catch(function(e){ console.warn('categories.json:',e.message); return null; }); })
-    .then(function(d){ catData = d; return fetchJSON(QUESTIONS_PATH).catch(function(e){ console.warn('questions.json:',e.message); return null; }); })
+    .then(function(){
+      return fetchJSON(CONFIG.CATS_PATH).catch(function(){
+        return fetchJSON('categories.json').catch(function(){ return null; });
+      });
+    })
+    .then(function(d){
+      catData = d;
+      return fetchJSON(CONFIG.QUESTIONS_PATH).catch(function(){
+        return fetchJSON('questions.json').catch(function(){ return null; });
+      });
+    })
     .then(function(d){
       qData = d;
-
-      // حالت ۱: questions.json = { meta, categories:[...] }
-      if(qData && Array.isArray(qData.categories)){
-        allData = { categories: normalizeCats(qData.categories) };
-        return allData;
-      }
-
-      // حالت ۲: آرایه دسته‌های کامل
-      if(Array.isArray(qData) && qData.length && qData[0] && qData[0].questions){
-        allData = { categories: normalizeCats(qData) };
-        return allData;
-      }
-
-      // حالت ۳: جدا
-      if(catData && qData && Array.isArray(qData.questions)){
-        var cats = Array.isArray(catData) ? catData : (catData.categories || []);
-        var qs = qData.questions;
-        var catsOut = normalizeCats(cats);
-        var catMap = {};
-        catsOut.forEach(function(c){ catMap[c.id] = c; });
-        qs.forEach(function(q){
-          var cid = q.cat || q.category || q.catId;
-          if(cid && catMap[cid]) catMap[cid].questions.push(q);
-          else if(catMap['moteferrege']) catMap['moteferrege'].questions.push(q);
-        });
-        allData = { categories: catsOut };
-        return allData;
-      }
-
-      // حالت ۴: فقط categories.json
-      if(catData){
-        var cats2 = Array.isArray(catData) ? catData : (catData.categories || []);
-        allData = { categories: normalizeCats(cats2) };
-        return allData;
-      }
-
-      // حالت ۵: فقط لیست سؤال
-      if(Array.isArray(qData) && qData.length && qData[0] && qData[0].q){
-        allData = { categories: [ { id:'all', title:'همه سؤالات', icon:'book', questions:qData } ] };
-        return allData;
-      }
-
-      return null;
+      var catsRaw = extractCatsArray(catData);
+      var qsRaw = extractQArray(qData);
+      if(!qsRaw.length && !catsRaw.length) return null;
+      var catMap = {}, order = [];
+      catsRaw.forEach(function(c){
+        var id = c.id || c.key || c.slug;
+        if(!id) return;
+        if(catMap[id]) return;
+        catMap[id] = {
+          id: id,
+          title: c.title || c.name || id,
+          icon: c.icon || null,
+          keywords: c.keywords || c.aliases || [],
+          questions: []
+        };
+        order.push(id);
+      });
+      var usedCats = {};
+      qsRaw.forEach(function(q){
+        var oldCid = q.cat || q.category || q.catId || q.cat_id || 'moteferrege';
+        var cid = mapCat(oldCid);
+        if(!catMap[cid]){
+          catMap[cid] = {
+            id: cid,
+            title: cid.replace(/_/g,' '),
+            icon: null,
+            keywords: [],
+            questions: []
+          };
+          order.push(cid);
+        }
+        catMap[cid].questions.push(q);
+        usedCats[cid] = true;
+      });
+      var finalCats = order.map(function(id){ return catMap[id]; });
+      finalCats.sort(function(a, b){
+        var aHas = a.questions.length > 0 ? 1 : 0;
+        var bHas = b.questions.length > 0 ? 1 : 0;
+        if(aHas !== bHas) return bHas - aHas;
+        return 0;
+      });
+      allData = { categories: finalCats };
+      return allData;
     });
 }
-
 function getAnswer(item){
   if(!item || !item.a) return 'پاسخی موجود نیست.';
   if(typeof item.a === 'string') return item.a;
-  var fiqh = getSavedFiqh();
-  var marja = getSavedMarja();
+  var fiqh = getSavedFiqh(), marja = getSavedMarja();
   if(fiqh === 'hanafi' && item.a.hanafi) return item.a.hanafi;
   if(fiqh === 'jafari' && item.a[marja]) return item.a[marja];
   if(item.a.jafari) return item.a.jafari;
   if(item.a.hanafi) return item.a.hanafi;
+  var keys = Object.keys(item.a);
+  if(keys.length) return item.a[keys[0]];
   return 'پاسخی برای این مرجع موجود نیست.';
 }
-
 function findCategory(catId){
   if(!allData || !allData.categories) return null;
   for(var i=0;i<allData.categories.length;i++){
@@ -897,71 +1414,194 @@ function findQuestion(catId, qid){
   }
   return null;
 }
-
-/* ═══════════════════════════════════════════════════════════
-   ACTION BAR BUILDER
-   ═══════════════════════════════════════════════════════════ */
-function buildActionBarHTML(){
-  return '' +
-    '<button class="act-btn" data-act="copy" title="کپی">'+ICON_COPY+'</button>' +
-    '<button class="act-btn" data-act="like" title="پسندیدم">'+ICON_LIKE+'</button>' +
-    '<button class="act-btn" data-act="dislike" title="نپسندیدم">'+ICON_DISLIKE+'</button>' +
-    '<button class="act-btn" data-act="speak" title="خواندن صوتی">'+ICON_SPEAK+'</button>' +
-    '<button class="act-btn" data-act="share" title="اشتراک‌گذاری">'+ICON_SHARE+'</button>' +
-    '<button class="act-btn" data-act="retry" title="بازخوانی">'+ICON_RETRY+'</button>';
+function renderAccordion(){
+  var container = $('hamrazContent');
+  if(!allData || !allData.categories || allData.categories.length === 0){
+    container.innerHTML = '<div class="empty">محتوایی یافت نشد</div>';
+    return;
+  }
+  var html = '<div class="section-title">دسته‌بندی سؤالات</div><div class="acc-card">';
+  var shown = 0;
+  allData.categories.forEach(function(cat){
+    var count = (cat.questions||[]).length;
+    if(count === 0) return;
+    shown++;
+    var icon = resolveIcon(cat);
+    var color = resolveColor(cat);
+    html += '<div class="acc-item" data-cat="'+escapeHtml(cat.id)+'">' +
+      '<div class="acc-header">' +
+        '<div class="acc-icon" style="background:'+color+';">'+icon+'</div>' +
+        '<div class="acc-info">' +
+          '<div class="acc-title">'+escapeHtml(cat.title)+'</div>' +
+          '<span class="acc-count">'+faNum(count)+' سؤال</span>' +
+        '</div>' +
+        '<svg class="acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>' +
+      '</div>' +
+      '<div class="acc-body"><div class="acc-body-inner">';
+    cat.questions.forEach(function(q, qidx){
+      html += '<button class="q-item" data-cat="'+escapeHtml(cat.id)+'" data-qid="'+escapeHtml(q.id)+'" type="button">' +
+        '<div class="q-num">'+faNum(qidx+1)+'</div>' +
+        '<div class="q-text">'+escapeHtml(q.q || q.question || 'بدون متن')+'</div>' +
+        '<svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
+      '</button>';
+    });
+    html += '</div></div></div>';
+  });
+  html += '</div>';
+  if(shown === 0) html += '<div class="empty">هیچ دسته‌بندی سؤال ندارد</div>';
+  container.innerHTML = html;
+  container.querySelectorAll('.acc-header').forEach(function(header){
+    header.addEventListener('click', function(){
+      var item = header.parentElement;
+      var wasOpen = item.classList.contains('open');
+      container.querySelectorAll('.acc-item').forEach(function(el){ el.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+  container.querySelectorAll('.q-item').forEach(function(item){
+    item.addEventListener('click', function(e){
+      e.stopPropagation();
+      openAnswer(item.getAttribute('data-cat'), item.getAttribute('data-qid'));
+    });
+  });
 }
+function openAnswer(catId, qid){
+  var cat = findCategory(catId);
+  var question = findQuestion(catId, qid);
+  if(!cat || !question) return;
+  currentModalQuestion = { catId: catId, qid: qid, id: question.id };
+  $('modalBadge').textContent = cat.title;
+  $('modalQuestion').textContent = question.q || question.question || '—';
+  $('modalAnswer').textContent = getAnswer(question);
+  var actions = $('modalActions');
+  actions.innerHTML = buildActionsHTML(question.id || qid, 'full');
+  applyFeedbackToActions(actions, question.id || qid);
+  var ahkamBtn = $('openAhkamBtn');
+  if(ahkamBtn){
+    ahkamBtn.onclick = function(){
+      window.location.href = 'ahkam.html?cat=' + encodeURIComponent(catId);
+    };
+    ahkamBtn.style.display = 'flex';
+  }
+  $('answerModal').classList.add('show');
 
-/* ═══════════════════════════════════════════════════════════
-   COPY / SHARE / SPEAK
-   ═══════════════════════════════════════════════════════════ */
+  if (window.bnAnalytics) {
+    window.bnAnalytics.track('hamraz_answer_open', { cat: catId, qid: qid });
+  }
+}
+function closeModal(){
+  stopSpeech();
+  $('answerModal').classList.remove('show');
+  currentModalQuestion = null;
+}
+function buildActionsHTML(msgId, mode){
+  msgId = msgId || '';
+  var copy = '<button class="act-btn" data-act="copy" data-msgid="'+escapeHtml(msgId)+'" title="کپی">'+ICON_COPY+'</button>';
+  var share = '<button class="act-btn" data-act="share" data-msgid="'+escapeHtml(msgId)+'" title="اشتراک">'+ICON_SHARE+'</button>';
+  var like = '<button class="act-btn" data-act="like" data-msgid="'+escapeHtml(msgId)+'" title="پسندیدم">'+ICON_LIKE+'</button>';
+  var dislike = '<button class="act-btn" data-act="dislike" data-msgid="'+escapeHtml(msgId)+'" title="نپسندیدم">'+ICON_DISLIKE+'</button>';
+  var speak = '<button class="act-btn" data-act="speak" data-msgid="'+escapeHtml(msgId)+'" title="خواندن صوتی">'+ICON_SPEAK+'</button>';
+  var retry = '<button class="act-btn" data-act="retry" data-msgid="'+escapeHtml(msgId)+'" title="بازخوانی">'+ICON_RETRY+'</button>';
+  if(mode === 'user') return copy + share;
+  return copy + like + dislike + speak + share + retry;
+}
+function applyFeedbackToActions(container, msgId){
+  var fb = feedbackStore[msgId];
+  container.querySelectorAll('.act-btn').forEach(function(b){
+    b.classList.remove('liked','disliked');
+    var act = b.getAttribute('data-act');
+    if(fb === 'like' && act === 'like') b.classList.add('liked');
+    if(fb === 'dislike' && act === 'dislike') b.classList.add('disliked');
+  });
+}
+function loadFeedback(){
+  try{
+    var raw = localStorage.getItem(FEEDBACK_KEY);
+    feedbackStore = raw ? JSON.parse(raw) : {};
+    if(typeof feedbackStore !== 'object' || feedbackStore === null) feedbackStore = {};
+  }catch(e){ feedbackStore = {}; }
+}
+function saveFeedback(msgId, val){
+  if(val === null) delete feedbackStore[msgId];
+  else feedbackStore[msgId] = val;
+  try{ localStorage.setItem(FEEDBACK_KEY, JSON.stringify(feedbackStore)); }catch(e){}
+}
 function fallbackCopy(text){
   var ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.position = 'fixed';
-  ta.style.top = '-1000px';
-  ta.style.opacity = '0';
-  document.body.appendChild(ta);
-  ta.select();
-  try{ document.execCommand('copy'); showToast('متن کپی شد ✓'); }
-  catch(e){ showToast('کپی نشد، دستی انتخاب کنید'); }
+  ta.value = text; ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); showToast('کپی شد ✓'); }catch(e){ showToast('کپی نشد'); }
   document.body.removeChild(ta);
 }
 function copyText(text){
   if(!text) return;
   if(navigator.clipboard && window.isSecureContext){
-    navigator.clipboard.writeText(text)
-      .then(function(){ showToast('متن کپی شد ✓'); })
-      .catch(function(){ fallbackCopy(text); });
-  } else {
-    fallbackCopy(text);
-  }
+    navigator.clipboard.writeText(text).then(function(){ showToast('کپی شد ✓'); }).catch(function(){ fallbackCopy(text); });
+  } else fallbackCopy(text);
 }
 function shareText(text, title){
   if(!text) return;
-  if(navigator.share){
-    navigator.share({ title: title||'همراز بانوان', text: text }).catch(function(){});
-  } else {
-    copyText(text);
-    showToast('متن کپی شد (اشتراک‌گذاری در این مرورگر نیست)');
-  }
+  if(navigator.share){ navigator.share({ title: title||'همراز بانوان', text: text }).catch(function(){}); }
+  else { copyText(text); showToast('کپی شد'); }
 }
 var speechBtn = null;
+var cachedFaVoice = null;
+function findPersianVoice(){
+  if(cachedFaVoice) return cachedFaVoice;
+  if(!('speechSynthesis' in window)) return null;
+  try{
+    var voices = window.speechSynthesis.getVoices() || [];
+    var i, l, n;
+    for(i=0;i<voices.length;i++){
+      l = (voices[i].lang || '').toLowerCase();
+      if(l === 'fa-ir' || l === 'fa_ir'){ cachedFaVoice = voices[i]; return cachedFaVoice; }
+    }
+    for(i=0;i<voices.length;i++){
+      l = (voices[i].lang || '').toLowerCase();
+      if(l.indexOf('fa') === 0){ cachedFaVoice = voices[i]; return cachedFaVoice; }
+    }
+    for(i=0;i<voices.length;i++){
+      n = (voices[i].name || '').toLowerCase();
+      if(n.indexOf('persian') > -1 || n.indexOf('farsi') > -1){ cachedFaVoice = voices[i]; return cachedFaVoice; }
+    }
+  }catch(e){}
+  return null;
+}
+function preloadVoices(){
+  if(!('speechSynthesis' in window)) return;
+  var load = function(){
+    try{ window.speechSynthesis.getVoices(); findPersianVoice(); }catch(e){}
+  };
+  load();
+  window.speechSynthesis.onvoiceschanged = load;
+  setTimeout(load, 500);
+  setTimeout(load, 1500);
+}
+function stripEmoji(text){
+  return String(text)
+    .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}]/gu,'')
+    .replace(/\s+/g,' ').trim();
+}
 function speakText(text, btn){
   if(!text) return;
-  if(!('speechSynthesis' in window)){ showToast('خواندن صوتی در این مرورگر پشتیبانی نمی‌شود'); return; }
+  if(!('speechSynthesis' in window)){ showToast('خواندن صوتی پشتیبانی نمی‌شود'); return; }
   if(window.speechSynthesis.speaking || window.speechSynthesis.pending){
     window.speechSynthesis.cancel();
     if(speechBtn) speechBtn.classList.remove('speaking');
     if(speechBtn === btn){ speechBtn = null; return; }
   }
-  var utt = new SpeechSynthesisUtterance(text);
-  utt.lang = 'fa-IR'; utt.rate = 0.95; utt.pitch = 1;
-  try{
-    var voices = window.speechSynthesis.getVoices();
-    for(var i=0;i<voices.length;i++){
-      if(voices[i].lang && voices[i].lang.toLowerCase().indexOf('fa')===0){ utt.voice = voices[i]; break; }
-    }
-  }catch(e){}
+  var faVoice = findPersianVoice();
+  if(!faVoice){
+    showToast('🔇 صدای فارسی روی این دستگاه نصب نیست\nتنظیمات گوشی → Text-to-speech → نصب فارسی', 4500);
+    return;
+  }
+  var cleanText = stripEmoji(text);
+  if(!cleanText) return;
+  var utt = new SpeechSynthesisUtterance(cleanText);
+  utt.lang = 'fa-IR';
+  utt.voice = faVoice;
+  utt.rate = 1.0;
+  utt.pitch = 1;
   if(btn){ btn.classList.add('speaking'); speechBtn = btn; }
   utt.onend = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
   utt.onerror = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
@@ -974,404 +1614,121 @@ function stopSpeech(){
     speechBtn = null;
   }catch(e){}
 }
-
-/* ═══════════════════════════════════════════════════════════
-   FEEDBACK STORAGE
-   ═══════════════════════════════════════════════════════════ */
-function feedbackKey(id){ return 'bn_fb_'+id; }
-function saveFeedback(id, type){
-  try{
-    if(type === null) localStorage.removeItem(feedbackKey(id));
-    else localStorage.setItem(feedbackKey(id), type);
-  }catch(e){}
-}
-function getFeedback(id){
-  try{ return localStorage.getItem(feedbackKey(id)); }catch(e){ return null; }
-}
-
-/* ═══════════════════════════════════════════════════════════
-   QUICK SELECTOR
-   ═══════════════════════════════════════════════════════════ */
-function setupQuickSelector(){
-  var fiqh = getSavedFiqh();
-  var marja = getSavedMarja();
-
-  document.querySelectorAll('#fiqhOptions .qs-btn').forEach(function(btn){
-    if(btn.getAttribute('data-fiqh') === fiqh) btn.classList.add('active');
-    else btn.classList.remove('active');
-  });
-  document.querySelectorAll('#marjaOptions .qs-btn').forEach(function(btn){
-    if(btn.getAttribute('data-marja') === marja) btn.classList.add('active');
-    else btn.classList.remove('active');
-  });
-
-  var marjaRow = $('marjaRow');
-  if(marjaRow) marjaRow.style.display = (fiqh === 'hanafi') ? 'none' : 'flex';
-
-  document.querySelectorAll('#fiqhOptions .qs-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var newFiqh = btn.getAttribute('data-fiqh');
-      try{ localStorage.setItem('bn_fiqh', newFiqh); }catch(e){}
-      document.querySelectorAll('#fiqhOptions .qs-btn').forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      if(marjaRow){
-        if(newFiqh === 'hanafi'){ marjaRow.style.display = 'none'; showToast('فقه حنفی انتخاب شد'); }
-        else { marjaRow.style.display = 'flex'; showToast('فقه جعفری انتخاب شد'); }
-      }
-      rerenderCurrentView();
-      refreshModalIfOpen();
-    });
-  });
-
-  document.querySelectorAll('#marjaOptions .qs-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var newMarja = btn.getAttribute('data-marja');
-      try{ localStorage.setItem('bn_marja', newMarja); }catch(e){}
-      document.querySelectorAll('#marjaOptions .qs-btn').forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      var names = { sistani:'سیستانی', shirazi:'شیرازی', fayyaz:'فیاض' };
-      showToast('مرجع: آیت‌الله '+names[newMarja]);
-      rerenderCurrentView();
-      refreshModalIfOpen();
-    });
-  });
-}
-
-function rerenderCurrentView(){
-  if(currentView === 'questions' && currentCategory) openCategory(currentCategory);
-  else renderCategories();
-}
-function refreshModalIfOpen(){
-  if(!$('answerModal').classList.contains('show')) return;
-  if(!currentModalQuestion) return;
-  var q = findQuestion(currentModalQuestion.catId, currentModalQuestion.qid);
-  if(!q) return;
-  $('modalAnswer').textContent = getAnswer(q);
-  attachFeedbackStateToModal(q.id);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   RENDER
-   ═══════════════════════════════════════════════════════════ */
-function renderCategories(){
-  currentView = 'categories';
-  var container = $('hamrazContent');
-  var data = allData;
-  if(!data || !data.categories || data.categories.length === 0){
-    container.innerHTML = '<div class="empty">محتوایی یافت نشد</div>';
-    return;
-  }
-  var html = '<div class="section-title">دسته‌بندی سؤالات</div><div class="cat-grid">';
-  var shown = 0;
-  data.categories.forEach(function(cat){
-    var count = (cat.questions||[]).length;
-    if(count === 0) return;
-    shown++;
-    var icon = resolveIcon(cat);
-    var color = resolveColor(cat);
-    html += '<button class="cat-card" data-cat="'+escapeHtml(cat.id)+'" type="button">' +
-      '<div class="cat-icon" style="background:'+color+';">'+icon+'</div>' +
-      '<div class="cat-name">'+escapeHtml(cat.title)+'</div>' +
-      '<div class="cat-count">'+faNum(count)+' سؤال</div>' +
-    '</button>';
-  });
-  html += '</div>';
-  if(shown === 0) html = '<div class="empty">هیچ دسته‌بندی‌ای سؤال ندارد</div>';
-  container.innerHTML = html;
-  container.querySelectorAll('.cat-card').forEach(function(card){
-    card.addEventListener('click', function(){ openCategory(card.getAttribute('data-cat')); });
-  });
-}
-
-function openCategory(catId){
-  currentView = 'questions';
-  currentCategory = catId;
-  var container = $('hamrazContent');
-  var cat = findCategory(catId);
-  if(!cat) return;
-  var questions = cat.questions || [];
-  var html = '<div class="section-title" style="display:flex;align-items:center;justify-content:space-between;">' +
-    '<span>'+escapeHtml(cat.title)+'</span>' +
-    '<button id="backToCats" type="button" style="background:var(--card);border:1px solid var(--card-border);color:var(--text-soft);padding:6px 14px;border-radius:20px;font-family:inherit;font-size:0.72rem;font-weight:900;cursor:pointer;">بازگشت</button>' +
-  '</div>';
-  if(questions.length === 0){
-    html += '<div class="empty">سؤالی در این دسته‌بندی وجود ندارد</div>';
+function handleActionClick(btn){
+  var act = btn.getAttribute('data-act');
+  var msgId = btn.getAttribute('data-msgid');
+  var isModal = !!btn.closest('#modalActions');
+  var text = '', qText = '';
+  if(isModal){
+    text = $('modalAnswer').textContent || '';
+    qText = $('modalQuestion').textContent || '';
   } else {
-    html += '<div class="q-list">';
-    questions.forEach(function(q, idx){
-      html += '<button class="q-item" data-qid="'+escapeHtml(q.id)+'" type="button">' +
-        '<div class="q-num">'+faNum(idx+1)+'</div>' +
-        '<div class="q-text">'+escapeHtml(q.q)+'</div>' +
-        '<svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
-      '</button>';
-    });
-    html += '</div>';
-  }
-  container.innerHTML = html;
-  container.querySelectorAll('.q-item').forEach(function(item){
-    item.addEventListener('click', function(){
-      openAnswer(catId, item.getAttribute('data-qid'));
-    });
-  });
-  var backBtn = $('backToCats');
-  if(backBtn) backBtn.addEventListener('click', function(){
-    $('searchInput').value = '';
-    renderCategories();
-  });
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function attachFeedbackStateToModal(id){
-  var fb = getFeedback(id);
-  var bar = $('modalActions');
-  if(!bar) return;
-  bar.querySelectorAll('.act-btn').forEach(function(b){ b.classList.remove('liked','disliked'); });
-  if(fb === 'like'){
-    var l = bar.querySelector('[data-act="like"]'); if(l) l.classList.add('liked');
-  } else if(fb === 'dislike'){
-    var d = bar.querySelector('[data-act="dislike"]'); if(d) d.classList.add('disliked');
-  }
-}
-
-function openAnswer(catId, qid){
-  var cat = findCategory(catId);
-  if(!cat) return;
-  var question = findQuestion(catId, qid);
-  if(!question) return;
-  currentModalQuestion = { catId: catId, qid: qid, id: question.id };
-  $('modalBadge').textContent = cat.title;
-  $('modalQuestion').textContent = question.q;
-  $('modalAnswer').textContent = getAnswer(question);
-
-  var bar = $('modalActions');
-  bar.innerHTML = buildActionBarHTML();
-  bar.dataset.msgid = question.id;
-  bar.dataset.source = 'modal';
-  attachFeedbackStateToModal(question.id);
-  $('answerModal').classList.add('show');
-}
-
-function closeModal(){
-  stopSpeech();
-  $('answerModal').classList.remove('show');
-  currentModalQuestion = null;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   SEARCH
-   ═══════════════════════════════════════════════════════════ */
-function doSearch(query){
-  query = (query||'').trim().toLowerCase();
-  var container = $('hamrazContent');
-  if(!query){
-    if(currentCategory && currentView === 'questions') openCategory(currentCategory);
-    else renderCategories();
-    return;
-  }
-  if(!allData || !allData.categories) return;
-
-  var normQuery = normalizeText(query);
-  var expQuery = expandSlang(normQuery);
-  var qWords = normQuery.split(' ').filter(function(w){ return w.length > 1; });
-  var qStems = qWords.map(stemWord);
-  var eWords = expQuery.split(' ').filter(function(w){ return w.length > 1; });
-  var eStems = eWords.map(stemWord);
-
-  function matchesText(text){
-    if(!text) return 0;
-    var nt = normalizeText(text);
-    var ntWords = nt.split(' ').filter(function(w){ return w.length > 1; });
-    var ntStems = ntWords.map(stemWord);
-    var sc = 0;
-
-    if(nt === normQuery) return 1000;
-    if(nt.indexOf(normQuery) > -1) sc += 200;
-    if(normQuery.indexOf(nt) > -1 && nt.length > 3) sc += 150;
-
-    qWords.forEach(function(w, i){
-      var ws = qStems[i];
-      var ew = eWords[i];
-      var ews = ew ? eStems[i] : '';
-      if(ntWords.indexOf(w) > -1 || ntStems.indexOf(ws) > -1){ sc += 80; return; }
-      if(ew && (ntWords.indexOf(ew) > -1 || ntStems.indexOf(ews) > -1)){ sc += 60; return; }
-      for(var k=0;k<ntStems.length;k++){
-        if(ntStems[k].length < 3) continue;
-        if(levenshtein(ws, ntStems[k]) <= 1 && Math.max(ws.length, ntStems[k].length) >= 4){ sc += 40; break; }
-      }
-    });
-    return sc;
-  }
-
-  var results = [];
-  allData.categories.forEach(function(cat){
-    (cat.questions || []).forEach(function(q){
-      var qScore = matchesText(q.q) * 2;
-      var tScore = 0;
-      if(q.tags && Array.isArray(q.tags)){
-        q.tags.forEach(function(t){ tScore += matchesText(t); });
-        tScore *= 1.5;
-      }
-      var aText = '';
-      if(q.a){
-        if(typeof q.a === 'string') aText = q.a;
-        else aText = String(q.a.jafari || q.a.hanafi || q.a.sistani || '');
-      }
-      var aScore = matchesText(aText) * 0.5;
-      var total = qScore + tScore + aScore;
-      if(total > 50) results.push({ cat: cat, q: q, score: total });
-    });
-  });
-
-  results.sort(function(a,b){ return b.score - a.score; });
-
-  if(results.length === 0){
-    container.innerHTML = '<div class="empty">برای «'+escapeHtml(query)+'» نتیجه‌ای یافت نشد</div>';
-    return;
-  }
-  var html = '<div class="section-title" style="display:flex;align-items:center;justify-content:space-between;">' +
-    '<span>'+faNum(results.length)+' نتیجه</span>' +
-    '<button id="clearSearchBtn" type="button" style="background:var(--card);border:1px solid var(--card-border);color:var(--text-soft);padding:6px 14px;border-radius:20px;font-family:inherit;font-size:0.72rem;font-weight:900;cursor:pointer;">پاک کردن</button>' +
-  '</div><div class="q-list">';
-  results.slice(0, 50).forEach(function(r, idx){
-    html += '<button class="q-item" data-cat="'+escapeHtml(r.cat.id)+'" data-qid="'+escapeHtml(r.q.id)+'" type="button">' +
-      '<div class="q-num">'+faNum(idx+1)+'</div>' +
-      '<div class="q-text"><div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:2px;">'+escapeHtml(r.cat.title)+'</div>'+escapeHtml(r.q.q)+'</div>' +
-      '<svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
-    '</button>';
-  });
-  html += '</div>';
-  container.innerHTML = html;
-  container.querySelectorAll('.q-item').forEach(function(item){
-    item.addEventListener('click', function(){
-      openAnswer(item.getAttribute('data-cat'), item.getAttribute('data-qid'));
-    });
-  });
-  var clearBtn = $('clearSearchBtn');
-  if(clearBtn) clearBtn.addEventListener('click', function(){
-    $('searchInput').value = '';
-    renderCategories();
-  });
-}
-
-/* ═══════════════════════════════════════════════════════════
-   FAB
-   ═══════════════════════════════════════════════════════════ */
-function setupChatFab(){
-  var fab = $('chatFab');
-  if(!fab) return;
-  var savedX = null, savedY = null;
-  try{
-    savedX = localStorage.getItem('bn_chat_fab_x');
-    savedY = localStorage.getItem('bn_chat_fab_y');
-  }catch(e){}
-  var defaultRight = 18, defaultBottom = 100;
-  if(savedX !== null && savedY !== null){
-    var x = parseFloat(savedX), y = parseFloat(savedY);
-    if(Number.isFinite(x) && Number.isFinite(y)){
-      var maxX = window.innerWidth - fab.offsetWidth - 4;
-      var maxY = window.innerHeight - fab.offsetHeight - 4;
-      x = Math.max(4, Math.min(x, maxX));
-      y = Math.max(4, Math.min(y, maxY));
-      fab.style.left = x+'px'; fab.style.top = y+'px';
-      fab.style.right = 'auto'; fab.style.bottom = 'auto';
-    } else { fab.style.right = defaultRight+'px'; fab.style.bottom = defaultBottom+'px'; }
-  } else { fab.style.right = defaultRight+'px'; fab.style.bottom = defaultBottom+'px'; }
-
-  var isDragging = false, hasMoved = false;
-  var startX = 0, startY = 0, startLeft = 0, startTop = 0;
-  function getPointer(e){
-    if(e.touches && e.touches.length > 0) return { x:e.touches[0].clientX, y:e.touches[0].clientY };
-    if(e.changedTouches && e.changedTouches.length > 0) return { x:e.changedTouches[0].clientX, y:e.changedTouches[0].clientY };
-    return { x:e.clientX, y:e.clientY };
-  }
-  function onDown(e){
-    isDragging = true; hasMoved = false;
-    var rect = fab.getBoundingClientRect();
-    startX = getPointer(e).x; startY = getPointer(e).y;
-    startLeft = rect.left; startTop = rect.top;
-    fab.style.right = 'auto'; fab.style.bottom = 'auto';
-    fab.style.left = startLeft+'px'; fab.style.top = startTop+'px';
-    fab.style.animation = 'none';
-  }
-  function onMove(e){
-    if(!isDragging) return;
-    var p = getPointer(e);
-    var dx = p.x - startX, dy = p.y - startY;
-    if(Math.abs(dx) > 4 || Math.abs(dy) > 4) hasMoved = true;
-    var newLeft = startLeft + dx, newTop = startTop + dy;
-    var maxX = window.innerWidth - fab.offsetWidth;
-    var maxY = window.innerHeight - fab.offsetHeight;
-    newLeft = Math.max(4, Math.min(newLeft, maxX - 4));
-    newTop = Math.max(4, Math.min(newTop, maxY - 4));
-    fab.style.left = newLeft+'px'; fab.style.top = newTop+'px';
-    if(e.cancelable) e.preventDefault();
-  }
-  function onUp(){
-    if(!isDragging) return;
-    isDragging = false;
-    if(hasMoved){
-      var rect = fab.getBoundingClientRect();
-      var centerX = rect.left + rect.width / 2;
-      var newLeft;
-      if(centerX < window.innerWidth / 2) newLeft = 14;
-      else newLeft = window.innerWidth - fab.offsetWidth - 14;
-      fab.style.transition = 'left 0.3s ease, top 0.3s ease';
-      fab.style.left = newLeft+'px';
-      setTimeout(function(){ fab.style.transition = ''; }, 320);
-      try{
-        localStorage.setItem('bn_chat_fab_x', String(newLeft));
-        localStorage.setItem('bn_chat_fab_y', String(rect.top));
-      }catch(err){}
-    } else {
-      openChat();
+    var msgEl = btn.closest('.msg');
+    if(msgEl){
+      var bubble = msgEl.querySelector('.msg-bubble');
+      if(bubble) text = bubble.textContent || '';
     }
   }
-  fab.addEventListener('mousedown', onDown);
-  document.addEventListener('mousemove', onMove);
-  document.addEventListener('mouseup', onUp);
-  fab.addEventListener('touchstart', onDown, { passive:true });
-  document.addEventListener('touchmove', onMove, { passive:false });
-  document.addEventListener('touchend', onUp);
+  if(act === 'copy'){ copyText(text); return; }
+  if(act === 'share'){
+    var body = (isModal && qText) ? (qText + '\n\n' + text + '\n\n— همراز بانوان') : (text + '\n\n— همراز بانوان');
+    shareText(body, 'همراز بانوان');
+    return;
+  }
+  if(act === 'speak'){ speakText(text, btn); return; }
+  if(act === 'like' || act === 'dislike'){
+    var target = act;
+    var current = feedbackStore[msgId];
+    var newVal = (current === target) ? null : target;
+    saveFeedback(msgId, newVal);
+    if(isModal){ applyFeedbackToActions($('modalActions'), msgId); }
+    else {
+      var parentContainer = btn.closest('.msg-actions');
+      if(parentContainer) applyFeedbackToActions(parentContainer, msgId);
+    }
+    if(newVal === 'like') showToast('ممنون از بازخورد شما');
+    else if(newVal === 'dislike') showToast('بازخورد ثبت شد');
+    else showToast('بازخورد حذف شد');
+    return;
+  }
+  if(act === 'retry'){
+    btn.classList.add('spinning');
+    setTimeout(function(){ btn.classList.remove('spinning'); }, 800);
+    if(isModal){
+      if(currentModalQuestion){
+        var q = findQuestion(currentModalQuestion.catId, currentModalQuestion.qid);
+        if(q){ $('modalAnswer').textContent = getAnswer(q); showToast('پاسخ بازخوانی شد'); }
+      }
+      return;
+    }
+    if(!lastUserQuery){ showToast('سؤالی برای بازخوانی نیست'); return; }
+    var msgEl2 = btn.closest('.msg');
+    if(msgEl2){
+      var prevUserMsg = msgEl2.previousElementSibling;
+      msgEl2.remove();
+      if(prevUserMsg && prevUserMsg.classList.contains('user')) prevUserMsg.remove();
+      if(chatHistory.length >= 2){ chatHistory.pop(); chatHistory.pop(); saveChatHistory(); }
+      handleChatSend(lastUserQuery);
+    }
+  }
 }
-
-/* ═══════════════════════════════════════════════════════════
-   CHAT
-   ═══════════════════════════════════════════════════════════ */
-var chatHistory = [];
-
+function loadChatHistory(){
+  try{
+    var raw = localStorage.getItem(CHAT_HISTORY_KEY);
+    if(!raw) return [];
+    var arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr.slice(-30) : [];
+  }catch(e){ return []; }
+}
+function saveChatHistory(){
+  try{ localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(chatHistory.slice(-30))); }catch(e){}
+}
 function openChat(){
   $('chatPanel').classList.add('show');
-  if(chatHistory.length === 0){
-    addBotMessage('سلام عزیزم 🌸\nمن همراز هستم، همراه دلسوزت.\n\nاینجام تا هر سؤالی درباره احکام و مسائل بانوان داری رو با آرامش جواب بدم.\n\nبدون خجالت بپرس، همه چیز محرمانه می‌مونه 💜\n\nمی‌تونی از پیشنهادهای زیر هم استفاده کنی 👇', { skipActions:true });
+  var container = $('chatMessages');
+  if(!container.hasChildNodes() && chatHistory.length === 0){
+    addBotMessage('سلام 🌸\nخوش آمدید به همراز بانوان\nمن همراه شما هستم تا بتونم به سؤالات شرعی و پزشکی‌تون پاسخ بدم\n\nهر وقت آماده بودید، سوالتون رو بپرسید\nبدون خجالت، راحت باشید 💜', { skipActions:true });
+  } else if(!container.hasChildNodes()){
+    chatHistory.forEach(function(h){
+      if(h.role === 'user') addUserMessage(h.text, { silent:true });
+      else addBotMessage(h.text, { silent:true, id: h.id, skipActions: h.skipActions, catId: h.catId });
+    });
   }
   setTimeout(function(){ var inp = $('chatInput'); if(inp) inp.focus(); }, 400);
+
+  if (window.bnAnalytics) window.bnAnalytics.track('hamraz_chat_open');
 }
 function closeChat(){
   stopSpeech();
   $('chatPanel').classList.remove('show');
 }
 function getTimeString(){
-  var d = new Date();
-  var h = d.getHours();
-  var m = d.getMinutes();
+  var d = new Date(); var h = d.getHours(); var m = d.getMinutes();
   var hh = h < 12 ? (h === 0 ? 12 : h) : (h === 12 ? 12 : h - 12);
   var ampm = h < 12 ? 'ق.ظ' : 'ب.ظ';
-  return faNum(String(hh).padStart(2,'0'))+':'+faNum(String(m).padStart(2,'0'))+' '+ampm;
+  return faNum(pad2(hh))+':'+faNum(pad2(m))+' '+ampm;
 }
 function makeMsgId(){ return 'm_'+Date.now()+'_'+Math.floor(Math.random()*1e6); }
-
-function addUserMessage(text){
+function addUserMessage(text, opts){
+  opts = opts || {};
   var container = $('chatMessages');
   var msg = document.createElement('div');
   msg.className = 'msg user';
+  msg.dataset.text = text;
+  var msgId = 'u_'+Date.now()+'_'+Math.floor(Math.random()*1e6);
+  msg.dataset.msgid = msgId;
+  var actionsHTML = '<div class="msg-actions" data-msgid="'+escapeHtml(msgId)+'">' + buildActionsHTML(msgId, 'user') + '</div>';
   msg.innerHTML =
     '<div class="msg-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>' +
-    '<div class="msg-content"><div class="msg-bubble">'+escapeHtml(text)+'</div><span class="msg-time">'+getTimeString()+'</span></div>';
+    '<div class="msg-content">' +
+      '<div class="msg-bubble">'+escapeHtml(text)+'</div>' +
+      '<span class="msg-time">'+getTimeString()+'</span>' +
+      actionsHTML +
+    '</div>';
   container.appendChild(msg);
   scrollChatToBottom();
-  chatHistory.push({ role:'user', text:text });
+  if(!opts.silent){ chatHistory.push({ role:'user', text:text }); saveChatHistory(); }
 }
-
 function addBotMessage(text, opts){
   opts = opts || {};
   var container = $('chatMessages');
@@ -1380,36 +1737,37 @@ function addBotMessage(text, opts){
   var msgId = opts.id || makeMsgId();
   msg.dataset.msgid = msgId;
   msg.dataset.text = text;
-
   var actionsHTML = '';
-  var inlineCopy = '';
   if(!opts.skipActions){
-    actionsHTML = '<div class="action-bar compact" data-source="chat" data-msgid="'+escapeHtml(msgId)+'">'+buildActionBarHTML()+'</div>';
-    inlineCopy = '<button class="inline-copy" data-inline-copy="1" title="کپی">'+ICON_COPY_SMALL+'</button>';
+    actionsHTML = '<div class="msg-actions" data-msgid="'+escapeHtml(msgId)+'">'+buildActionsHTML(msgId)+'</div>';
+  }
+  var ahkamHTML = '';
+  if(opts.catId){
+    ahkamHTML = '<button class="ahkam-link-btn" data-ahkam-cat="'+escapeHtml(opts.catId)+'" type="button">' +
+      '<svg viewBox="0 0 24 24">' +
+        '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>' +
+        '<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>' +
+      '</svg>' +
+      '<span>مشاهده در بخش احکام</span>' +
+    '</button>';
   }
   msg.innerHTML =
     '<div class="msg-avatar"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>' +
     '<div class="msg-content">' +
       '<div class="msg-bubble">'+escapeHtml(text)+'</div>' +
-      '<span class="msg-time">'+getTimeString()+inlineCopy+'</span>' +
-      (actionsHTML ? actionsHTML : '') +
+      '<span class="msg-time">'+getTimeString()+'</span>' +
+      actionsHTML +
+      ahkamHTML +
     '</div>';
   container.appendChild(msg);
-
-  var fb = getFeedback(msgId);
-  if(fb){
-    var bar = msg.querySelector('.action-bar');
-    if(bar){
-      var likeBtn = bar.querySelector('[data-act="like"]');
-      var disBtn = bar.querySelector('[data-act="dislike"]');
-      if(fb === 'like' && likeBtn) likeBtn.classList.add('liked');
-      if(fb === 'dislike' && disBtn) disBtn.classList.add('disliked');
-    }
-  }
+  var actions = msg.querySelector('.msg-actions');
+  if(actions) applyFeedbackToActions(actions, msgId);
   scrollChatToBottom();
-  chatHistory.push({ role:'bot', text:text, id:msgId, skipActions:!!opts.skipActions });
+  if(!opts.silent){
+    chatHistory.push({ role:'bot', text:text, id:msgId, skipActions:!!opts.skipActions, catId: opts.catId || null });
+    saveChatHistory();
+  }
 }
-
 function showTyping(){
   var container = $('chatMessages');
   var msg = document.createElement('div');
@@ -1425,155 +1783,386 @@ function hideTyping(){ var t = $('typingIndicator'); if(t) t.remove(); }
 function scrollChatToBottom(){
   setTimeout(function(){ var c = $('chatMessages'); if(c) c.scrollTop = c.scrollHeight; }, 60);
 }
-
-/* ═══════════════════════════════════════════════════════════
-   FIND BEST ANSWER
-   ═══════════════════════════════════════════════════════════ */
-function findBestAnswer(userQuery){
-  if(!allData || !allData.categories) return null;
-  var normQuery = normalizeText(userQuery);
-  if(!normQuery) return null;
-
-  var expandedQuery = expandSlang(normQuery);
-  var queryWords = normQuery.split(' ').filter(function(w){ return w.length > 1; });
-  var expWords = expandedQuery.split(' ').filter(function(w){ return w.length > 1; });
-  var queryStems = queryWords.map(stemWord);
-  var expStems = expWords.map(stemWord);
-
-  var bestMatch = null, bestScore = 0;
-
-  allData.categories.forEach(function(cat){
-    (cat.questions || []).forEach(function(q){
-      var score = 0;
-      var normQ = normalizeText(q.q);
-      var qWords = normQ.split(' ').filter(function(w){ return w.length > 1; });
-      var qStems = qWords.map(stemWord);
-
-      if(normQ === normQuery) score += 3000;
-      else if(normQuery.length > 4 && normQ.indexOf(normQuery) > -1) score += 1500;
-      else if(normQ.length > 4 && normQuery.indexOf(normQ) > -1) score += 1200;
-
-      if(queryWords.length > 0){
-        var hit = 0;
-        queryWords.forEach(function(qw, i){
-          var qwStem = queryStems[i];
-          var expWord = expWords[i];
-          var expStem = expStems[i];
-          var matched = false;
-
-          if(qWords.indexOf(qw) > -1) matched = true;
-          else if(qStems.indexOf(qwStem) > -1) matched = true;
-          if(!matched && expWord){
-            if(qWords.indexOf(expWord) > -1 || qStems.indexOf(expStem) > -1) matched = true;
-          }
-          if(!matched && qwStem.length > 2){
-            for(var k=0;k<qStems.length;k++){
-              var qs = qStems[k];
-              if(qs.length < 3) continue;
-              var d = levenshtein(qwStem, qs);
-              var maxLen = Math.max(qwStem.length, qs.length);
-              if(d === 0){ matched = true; break; }
-              if(d === 1 && maxLen >= 4){ matched = true; break; }
-            }
-          }
-          if(matched) hit++;
-        });
-        score += (hit / queryWords.length) * 800;
-      }
-
-      if(q.tags && Array.isArray(q.tags)){
-        q.tags.forEach(function(tag){
-          var normTag = normalizeText(tag);
-          if(!normTag) return;
-
-          if(normQuery === normTag) score += 600;
-          else if(normQuery.indexOf(normTag) > -1 && normTag.length > 2) score += 400;
-          else if(normTag.indexOf(normQuery) > -1 && normQuery.length > 2) score += 300;
-
-          var tagWords = normTag.split(' ').filter(function(w){ return w.length > 1; });
-          tagWords.forEach(function(tw){
-            var twStem = stemWord(tw);
-            if(queryWords.indexOf(tw) > -1) score += 250;
-            else if(queryStems.indexOf(twStem) > -1) score += 200;
-            else if(expWords.indexOf(tw) > -1) score += 180;
-            else if(expStems.indexOf(twStem) > -1) score += 150;
-            else {
-              for(var i=0;i<queryStems.length;i++){
-                var qwS = queryStems[i];
-                if(qwS.length < 3) continue;
-                var dist = levenshtein(twStem, qwS);
-                if(dist <= 1 && Math.max(twStem.length, qwS.length) >= 4){ score += 100; break; }
-              }
-            }
-          });
-        });
-      }
-
-      var normCatTitle = normalizeText(cat.title);
-      if(normCatTitle && normQuery.indexOf(normCatTitle) > -1) score += 40;
-
-      if(score > bestScore){
-        bestScore = score;
-        bestMatch = { cat:cat, q:q, score:score };
-      }
-    });
-  });
-
-  if(bestScore >= 200) return bestMatch;
-  return null;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   CHAT SEND — با موتور احوال‌پرسی
-   ═══════════════════════════════════════════════════════════ */
-function handleChatSend(overrideText){
+function handleChatSend(overrideText, wasVoice){
   var input = $('chatInput');
-  if(!input) return;
+  if(!input && overrideText === undefined) return;
   var text = (overrideText !== undefined ? overrideText : input.value).trim();
   if(!text) return;
   if(overrideText === undefined) input.value = '';
   lastUserQuery = text;
+  lastWasVoice = !!wasVoice;
   addUserMessage(text);
   showTyping();
-
   setTimeout(function(){
     hideTyping();
-
-    // ۱. تشخیص احوال‌پرسی
     var greeting = detectGreeting(text);
     if(greeting){
       var remaining = stripGreetingWords(text);
-      // پیام فقط سلام بود → پاسخ دوستانه
       if(remaining.length < 3){
-        addBotMessage(pickRandom(greeting.responses), { skipActions:true });
+        var resp = pickRandom(greeting.responses);
+        addBotMessage(resp, { skipActions:false });
+        autoSpeakIfVoice();
         return;
       }
-      // ترکیب سلام + سؤال → اول سلام، بعد سؤال
     }
-
-    // ۲. جستجوی پاسخ سؤال
     var match = findBestAnswer(text);
     if(match){
-      var answerText = getAnswer(match.q);
-      var prefix = '';
-      if(greeting){
-        prefix = pickRandom([
-          'سلام عزیزم 🌸\n\n',
-          'سلام گلم 💐\n\n',
-          'سلام به روی ماهت 🌷\n\n'
-        ]);
-      }
-      addBotMessage(prefix + 'پاسخ (از بخش ' + match.cat.title + '):\n\n' + answerText, { id: match.q.id });
+      var prefix = greeting ? pickRandom(['سلام 🌸\n\n','سلام و درود 💜\n\n']) : '';
+      addBotMessage(
+        prefix + 'پاسخ از بخش ' + match.cat.title + ':\n\n' + (match.q.q || match.q.question) + '\n\n' + getAnswer(match.q),
+        { skipActions:false, catId: match.cat.id }
+      );
+      autoSpeakIfVoice();
+      if (window.bnAnalytics) window.bnAnalytics.track('hamraz_chat_answer', { cat: match.cat.id });
+    } else if(greeting){
+      addBotMessage(pickRandom(greeting.responses), { skipActions:false });
+      autoSpeakIfVoice();
     } else {
-      if(greeting){
-        addBotMessage(pickRandom(greeting.responses), { skipActions:true });
-      } else {
-        addBotMessage('متأسفانه پاسخ دقیقی برای این سؤال در بانک اطلاعاتی پیدا نکردم 🌸\n\nپیشنهاد می‌کنم:\n• کلمات کلیدی دیگر امتحان کنید\n• از بخش «دسته‌بندی سؤالات» جستجو کنید\n• سؤال را با کلمات محترمانه و دقیق‌تر بنویسید\n\nولی خیالت راحت، همیشه اینجام تا کمکت کنم 💜');
-      }
+      addBotMessage('متأسفانه پاسخ این سؤال در بانک اطلاعاتی من نیست 🌸\n\nمی‌تونید:\n• سؤالتون رو با کلمه دیگه‌ای بپرسید\n• از دسته‌بندی سؤالات استفاده کنید\n• یا از دکمه میکروفون استفاده کنید\n\nامیدوارم بتونم کمکتون کنم 💜', { skipActions:false });
+      autoSpeakIfVoice();
     }
-  }, 700);
+  }, 600);
 }
+function autoSpeakIfVoice(){
+  if(!lastWasVoice) return;
+  lastWasVoice = false;
+  if(!findPersianVoice()) return;
+  setTimeout(function(){
+    var bubbles = document.querySelectorAll('.chat-messages .msg.bot .msg-bubble');
+    var last = bubbles[bubbles.length - 1];
+    if(!last) return;
+    var speakBtn = last.parentElement.querySelector('[data-act="speak"]');
+    speakText(last.textContent, speakBtn);
+  }, 400);
+}
+var greetingPatterns = [
+  { keywords:['سلام','سلام علیکم','درود','hi','hello'],
+    responses:['سلام 🌸\nخوش آمدید\nچطور می‌تونم کمکتون کنم؟','سلام و درود 💜\nدر خدمتم'] },
+  { keywords:['چطوری','حالت چطوره','خوبی'],
+    responses:['ممنون که پرسیدید 🌸\nمن خوبم\nشما چطورید؟','خدا رو شکر، خوبم 💜'] },
+  { keywords:['خوبم','خوب هستم','بهترم'],
+    responses:['خدا رو شکر 🌸\nخوشحالم\nبفرمایید چه سؤالی دارید؟','چه خوب 💜\nسؤالتون رو بپرسید'] },
+  { keywords:['خداحافظ','بای','خدانگهدار'],
+    responses:['خداحافظ 🌸\nهر وقت سؤالی داشتید در خدمتم','به سلامت 💜'] },
+  { keywords:['ممنون','مرسی','متشکرم','سپاس'],
+    responses:['خواهش می‌کنم 🌸\nوظیفه‌ست','خوشحالم که مفید بودم 💜'] },
+  { keywords:['ببخشید','معذرت','شرمنده'],
+    responses:['خواهش می‌کنم 🌸\nنیازی به عذرخواهی نیست','راحت باشید 💜'] }
+];
+var greetingStopWords = ['سلام','علیکم','درود','hi','hello','چطوری','حالت','چطوره','خوبی','خوب','هستی','چه','طوری',
+  'مرسی','ممنون','متشکرم','سپاس','خدا','شکر','لطف','داری','کردی',
+  'ببخشید','معذرت','شرمنده','بای','خداحافظ','خدانگهدار','نگهدار',
+  'خوبم','بد','نیستم','بهترم','حالم','حال',
+  'و','با','به','از','که','این','آن','من','ما','تو','شما','برای','در','تا'];
+function detectGreeting(text){
+  if(!text) return null;
+  var n = normalizeText(text);
+  var words = n.split(/\s+/);
+  for(var i=0;i<greetingPatterns.length;i++){
+    var g = greetingPatterns[i];
+    for(var j=0;j<g.keywords.length;j++){
+      var kw = normalizeText(g.keywords[j]);
+      if(words.indexOf(kw) > -1) return g;
+    }
+  }
+  return null;
+}
+function stripGreetingWords(text){
+  var n = normalizeText(text);
+  return n.split(/\s+/).filter(function(w){
+    return w.length >= 2 && greetingStopWords.indexOf(w) === -1;
+  }).join(' ').trim();
+}
+var COMMON_WORDS = [
+  'حکم','شرعی','چیه','چیست','چی','است','هست','ایا','آیا','چگونه','چطور','کدام','چه',
+  'چند','چقدر','چندم','چندمین','وقت','زمان','سال','ماه','هفته','روز','ساعت','مدت',
+  'کجا','کی','چه وقت','چه‌وقت','کی وقت','کی‌وقت',
+  'میشه','می‌شه','دارد','دارم','باشد','بشه','کنم','کنه','باید','لطفا','لطفاً',
+  'سوال','سؤال','پرسش','موضوع','مسئله','باره','مورد','درمورد','در مورد','درباره','بگو',
+  'میخوام','می‌خوام','بدانم','بدونم','بپرسم','میخواستم','می‌خواستم','کنید',
+  'و','با','به','از','که','این','آن','من','ما','تو','شما','برای','در','تا','بر','را'
+];
+function findBestAnswer(userQuery){
+  if(!allData || !allData.categories) return null;
+  var nq = normalizeText(userQuery);
+  if(!nq) return null;
+  var eq = expandSlang(nq);
+  var qw = eq.split(/\s+/).filter(function(w){ return w.length > 1; });
+  var qs = qw.map(stemWord);
+  var contentIdx = [];
+  for(var i = 0; i < qw.length; i++){
+    if(COMMON_WORDS.indexOf(qw[i]) === -1 && qs[i].length >= 2){
+      contentIdx.push(i);
+    }
+  }
+  if(contentIdx.length === 0) return null;
 
+  var best = null, bestScore = -Infinity, bestContentRatio = 0;
+
+  allData.categories.forEach(function(cat){
+    var catBonus = 0;
+    var catKeywordHits = 0;
+    var catKeywords = (cat.keywords || []).concat(cat.aliases || []);
+    catKeywords.forEach(function(kw){
+      var nk = normalizeText(kw);
+      if(!nk || nk.length < 2) return;
+      for(var ci = 0; ci < contentIdx.length; ci++){
+        var w = qw[contentIdx[ci]], s = qs[contentIdx[ci]];
+        var nks = stemWord(nk);
+        if(nk === w || nks === s || nk.indexOf(w) > -1 || w.indexOf(nk) > -1 ||
+           nks.indexOf(s) > -1 || s.indexOf(nks) > -1){
+          catKeywordHits++;
+          catBonus += 900;
+          break;
+        }
+      }
+    });
+
+    (cat.questions || []).forEach(function(q){
+      var qtext = q.q || q.question || '';
+      var nqT = normalizeText(qtext);
+      if(!nqT) return;
+      var expandedQ = expandSlang(nqT);
+      var qwT = expandedQ.split(/\s+/).filter(function(w){ return w.length > 1; });
+      var qsT = qwT.map(stemWord);
+      var score = 0;
+
+      if(expandedQ === eq) score += 10000;
+      if(nqT === nq) score += 8000;
+
+      var contentHit = 0;
+      for(var ci = 0; ci < contentIdx.length; ci++){
+        var w = qw[contentIdx[ci]];
+        var s = qs[contentIdx[ci]];
+        var matched = false;
+
+        if(qwT.indexOf(w) > -1 || qsT.indexOf(s) > -1) matched = true;
+        if(!matched){
+          for(var k = 0; k < qsT.length; k++){
+            var qst = qsT[k];
+            if(qst.length < 2) continue;
+            if(qst === s || qst.indexOf(s) > -1 || s.indexOf(qst) > -1){
+              matched = true; break;
+            }
+            if(qst.length >= 4 && s.length >= 4 && levenshtein(s, qst) <= 1){
+              matched = true; break;
+            }
+          }
+        }
+        if(matched) contentHit++;
+      }
+
+      var contentRatio = contentHit / contentIdx.length;
+      if(contentRatio < 0.6) return;
+
+      score += contentRatio * 3000;
+      score += catBonus;
+      if(catKeywordHits > 0) score += 1200;
+
+      var allHit = 0;
+      qw.forEach(function(w, i){
+        if(qwT.indexOf(w) > -1 || qsT.indexOf(qs[i]) > -1) allHit++;
+      });
+      score += (allHit / Math.max(qw.length,1)) * 300;
+
+      if(q.tags && Array.isArray(q.tags)){
+        q.tags.forEach(function(tag){
+          var nt = normalizeText(tag);
+          var nts = stemWord(nt);
+          for(var ci = 0; ci < contentIdx.length; ci++){
+            var s = qs[contentIdx[ci]];
+            var w = qw[contentIdx[ci]];
+            if(!s || s.length < 2) continue;
+            if(nt === w || nts === s || nt === s) score += 700;
+            else if(nt.length >= 3 && (nt.indexOf(w) > -1 || w.indexOf(nt) > -1)) score += 300;
+          }
+        });
+      }
+
+      if(score > bestScore){
+        bestScore = score;
+        best = { cat: cat, q: q };
+        bestContentRatio = contentRatio;
+      }
+    });
+  });
+
+  if(!best || bestContentRatio < 0.6) return null;
+  return bestScore > 1000 ? best : null;
+}
+function isInWebView(){
+  var ua = navigator.userAgent || '';
+  if(ua.indexOf('; wv)') > -1) return true;
+  if(ua.indexOf('WebView') > -1) return true;
+  if(/iPhone|iPad|iPod/.test(ua) && !/Safari/.test(ua)) return true;
+  return false;
+}
+function requestMicPermission(){
+  if(typeof window.isSecureContext !== 'undefined' && !window.isSecureContext){
+    return Promise.resolve({ ok:false, reason:'insecure' });
+  }
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    return Promise.resolve({ ok:true });
+  }
+  return navigator.mediaDevices.getUserMedia({ audio:true })
+    .then(function(stream){
+      stream.getTracks().forEach(function(t){ t.stop(); });
+      return { ok:true };
+    })
+    .catch(function(err){
+      var name = (err && err.name) ? err.name : 'Error';
+      return { ok:false, reason:'denied', errorName:name };
+    });
+}
+function setupVoiceInput(){
+  var micBtn = $('chatMic');
+  if(!micBtn) return;
+  var webView = isInWebView();
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){
+    micBtn.addEventListener('click', function(){
+      var msg;
+      if(webView) msg = '⚠️ در Acode و WebView میکروفون کار نمی‌کند\nلطفاً فایل را در Chrome باز کنید';
+      else msg = '⚠️ مرورگر شما از ورودی صوتی پشتیبانی نمی‌کند\nاز Chrome استفاده کنید';
+      showToast(msg, 5500);
+    });
+    return;
+  }
+  recognition = new SR();
+  recognition.lang = 'fa-IR';
+  recognition.continuous = false;
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 1;
+  var finalText = '';
+  var sendTimer = null;
+  recognition.onresult = function(e){
+    var interim = '', final = '';
+    for(var i = e.resultIndex; i < e.results.length; i++){
+      var t = e.results[i][0].transcript;
+      if(e.results[i].isFinal) final += t;
+      else interim += t;
+    }
+    var inp = $('chatInput');
+    if(inp) inp.value = (final || interim).trim();
+    if(final.trim()){
+      finalText = final.trim();
+      clearTimeout(sendTimer);
+      sendTimer = setTimeout(function(){
+        try{ recognition.stop(); }catch(err){}
+        if(inp) inp.value = finalText;
+        handleChatSend(undefined, true);
+      }, 400);
+    }
+  };
+  recognition.onerror = function(e){
+    isRecording = false;
+    micBtn.classList.remove('recording');
+    var err = (e && e.error) ? e.error : 'unknown';
+    var msgs = {
+      'not-allowed':'🎤 دسترسی میکروفون رد شد\nاز تنظیمات مرورگر اجازه بده',
+      'service-not-allowed':'🎤 سرویس تشخیص گفتار در دسترس نیست',
+      'no-speech':'🤫 صدایی شنیده نشد، دوباره تلاش کن',
+      'audio-capture':'🎙️ میکروفونی پیدا نشد',
+      'network':'🌐 برای تشخیص گفتار، اینترنت لازم است',
+      'aborted':null,
+      'bad-grammar':'⚠️ خطای گرامر گفتار',
+      'language-not-supported':'⚠️ زبان فارسی پشتیبانی نمی‌شود'
+    };
+    if(msgs[err] !== null && msgs[err] !== undefined){
+      showToast(msgs[err] || ('خطا: ' + err), 3500);
+    }
+  };
+  recognition.onend = function(){
+    isRecording = false;
+    micBtn.classList.remove('recording');
+  };
+  recognition.onaudiostart = function(){
+    showToast('🎤 صحبت کن...', 1200);
+  };
+  micBtn.addEventListener('click', function(){
+    if(webView && !isRecording){
+      showToast('ℹ️ در WebView ممکن است میکروفون کار نکند', 2500);
+    }
+    if(isRecording){
+      try{ recognition.stop(); }catch(e){}
+      isRecording = false;
+      micBtn.classList.remove('recording');
+      return;
+    }
+    if(!window.isSecureContext){
+      showToast('⚠️ برای میکروفون باید صفحه HTTPS باشد\nآدرس با https:// باز شود', 4500);
+      return;
+    }
+    requestMicPermission().then(function(res){
+      if(!res.ok && res.reason === 'insecure'){
+        showToast('⚠️ برای میکروفون باید HTTPS باشد', 4500);
+        return;
+      }
+      if(!res.ok && res.reason === 'denied'){
+        var msg = '🎤 دسترسی میکروفون رد شد';
+        if(res.errorName === 'NotAllowedError') msg += '\nاز تنظیمات مرورگر اجازه بده';
+        else if(res.errorName === 'NotFoundError') msg += '\nمیکروفونی پیدا نشد';
+        else if(res.errorName === 'NotReadableError') msg += '\nمیکروفون در حال استفاده است';
+        showToast(msg, 4500);
+        return;
+      }
+      try{
+        recognition.start();
+        isRecording = true;
+        micBtn.classList.add('recording');
+      }catch(err){
+        if(err && err.name === 'InvalidStateError'){
+          try{ recognition.stop(); }catch(e2){}
+          setTimeout(function(){
+            try{
+              recognition.start();
+              isRecording = true;
+              micBtn.classList.add('recording');
+            }catch(e3){
+              showToast('شروع ضبط ممکن نشد', 3000);
+              isRecording = false;
+              micBtn.classList.remove('recording');
+            }
+          }, 300);
+        } else {
+          showToast('شروع ضبط ممکن نشد', 3000);
+          isRecording = false;
+          micBtn.classList.remove('recording');
+        }
+      }
+    });
+  });
+}
+function setupQuickSelector(){
+  var fiqh = getSavedFiqh(), marja = getSavedMarja();
+  document.querySelectorAll('#fiqhOptions .qs-btn').forEach(function(btn){
+    btn.classList.toggle('active', btn.getAttribute('data-fiqh') === fiqh);
+  });
+  document.querySelectorAll('#marjaOptions .qs-btn').forEach(function(btn){
+    btn.classList.toggle('active', btn.getAttribute('data-marja') === marja);
+  });
+  var marjaRow = $('marjaRow');
+  if(marjaRow) marjaRow.style.display = (fiqh === 'hanafi') ? 'none' : 'flex';
+  document.querySelectorAll('#fiqhOptions .qs-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var nf = btn.getAttribute('data-fiqh');
+      try{ localStorage.setItem('bn_fiqh', nf); }catch(e){}
+      document.querySelectorAll('#fiqhOptions .qs-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      if(marjaRow) marjaRow.style.display = (nf === 'hanafi') ? 'none' : 'flex';
+      renderAccordion();
+    });
+  });
+  document.querySelectorAll('#marjaOptions .qs-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var nm = btn.getAttribute('data-marja');
+      try{ localStorage.setItem('bn_marja', nm); }catch(e){}
+      document.querySelectorAll('#marjaOptions .qs-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderAccordion();
+    });
+  });
+}
 function setupChat(){
   var cta = $('chatCta');
   var sendBtn = $('chatSendBtn');
@@ -1582,9 +2171,15 @@ function setupChat(){
   var panel = $('chatPanel');
   if(cta) cta.addEventListener('click', openChat);
   if(sendBtn) sendBtn.addEventListener('click', function(){ handleChatSend(); });
-  if(input) input.addEventListener('keydown', function(e){
-    if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); handleChatSend(); }
-  });
+  if(input){
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); handleChatSend(); }
+    });
+    input.addEventListener('input', function(){
+      input.style.height = 'auto';
+      input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+    });
+  }
   if(closeBtn) closeBtn.addEventListener('click', closeChat);
   if(panel) panel.addEventListener('click', function(e){ if(e.target === panel) closeChat(); });
   document.querySelectorAll('.sug-btn').forEach(function(btn){
@@ -1594,165 +2189,178 @@ function setupChat(){
       if(inp){ inp.value = q; handleChatSend(); }
     });
   });
+  setupVoiceInput();
 }
-
-/* ═══════════════════════════════════════════════════════════
-   ACTION HANDLER
-   ═══════════════════════════════════════════════════════════ */
-function stripPrefix(text){
-  var m = text.match(/^پاسخ \(از بخش [^)]+\):\n\n([\s\S]*)$/);
-  return m ? m[1] : text;
+function setupComingSoon(){
+  var aiCta = $('aiCta');
+  var csPanel = $('comingSoon');
+  var csClose = $('csCloseBtn');
+  if(aiCta) aiCta.addEventListener('click', function(){ csPanel.classList.add('show'); });
+  if(csClose) csClose.addEventListener('click', function(){ csPanel.classList.remove('show'); });
+  if(csPanel) csPanel.addEventListener('click', function(e){ if(e.target === csPanel) csPanel.classList.remove('show'); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && csPanel.classList.contains('show')) csPanel.classList.remove('show');
+  });
 }
-
-function handleActionClick(actBtn, container){
-  var act = actBtn.getAttribute('data-act');
-  var source = container.getAttribute('data-source') || 'chat';
-  var msgId = container.getAttribute('data-msgid');
-
-  var text = '';
-  var questionText = '';
-
-  if(source === 'modal'){
-    text = $('modalAnswer').textContent || '';
-    questionText = $('modalQuestion').textContent || '';
-  } else {
-    var msgEl = actBtn.closest('.msg');
-    if(msgEl) text = stripPrefix(msgEl.dataset.text || '');
-  }
-
-  if(act === 'copy'){ copyText(text); return; }
-
-  if(act === 'share'){
-    var body = (source === 'modal' && questionText)
-      ? questionText + '\n\n' + text + '\n\n— همراز بانوان'
-      : text + '\n\n— همراز بانوان';
-    shareText(body, 'همراز بانوان');
-    return;
-  }
-
-  if(act === 'speak'){ speakText(text, actBtn); return; }
-
-  if(act === 'like' || act === 'dislike'){
-    if(!msgId){ msgId = 'm_'+Date.now(); container.setAttribute('data-msgid', msgId); }
-    var cur = getFeedback(msgId);
-    var target = act === 'like' ? 'like' : 'dislike';
-    var newVal = (cur === target) ? null : target;
-    saveFeedback(msgId, newVal);
-    container.querySelectorAll('.act-btn').forEach(function(b){ b.classList.remove('liked','disliked'); });
-    if(newVal === 'like'){
-      var l = container.querySelector('[data-act="like"]'); if(l) l.classList.add('liked');
-      showToast('ممنون از بازخورد شما 💜');
-    } else if(newVal === 'dislike'){
-      var d = container.querySelector('[data-act="dislike"]'); if(d) d.classList.add('disliked');
-      showToast('بازخورد ثبت شد');
-    } else {
-      showToast('بازخورد حذف شد');
-    }
-    return;
-  }
-
-  if(act === 'retry'){
-    actBtn.classList.add('spinning');
-    setTimeout(function(){ actBtn.classList.remove('spinning'); }, 800);
-
-    if(source === 'modal'){
-      if(currentModalQuestion){
-        var q = findQuestion(currentModalQuestion.catId, currentModalQuestion.qid);
-        if(q){
-          $('modalAnswer').textContent = getAnswer(q);
-          showToast('پاسخ بازخوانی شد');
-        }
-      }
-    } else {
-      if(lastUserQuery){
-        var msgEl2 = actBtn.closest('.msg');
-        if(msgEl2) msgEl2.remove();
-        if(chatHistory.length >= 2){ chatHistory.pop(); chatHistory.pop(); }
-        handleChatSend(lastUserQuery);
-      } else {
-        showToast('سؤالی برای بازخوانی موجود نیست');
-      }
-    }
-    return;
-  }
-}
-
 function setupActionDelegation(){
-  var modalBar = $('modalActions');
-  if(modalBar){
-    modalBar.addEventListener('click', function(e){
-      var btn = e.target.closest('.act-btn');
-      if(!btn) return;
-      handleActionClick(btn, modalBar);
-    });
-  }
-  var chatMessages = $('chatMessages');
-  if(chatMessages){
-    chatMessages.addEventListener('click', function(e){
-      var inlineCopy = e.target.closest('.inline-copy');
-      if(inlineCopy){
-        var msgEl = inlineCopy.closest('.msg');
-        if(msgEl) copyText(stripPrefix(msgEl.dataset.text || ''));
+  document.addEventListener('click', function(e){
+    var ahkamBtn = e.target.closest('.ahkam-link-btn');
+    if(ahkamBtn && ahkamBtn.id !== 'openAhkamBtn'){
+      var catId = ahkamBtn.getAttribute('data-ahkam-cat');
+      if(catId){
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = 'ahkam.html?cat=' + encodeURIComponent(catId);
         return;
       }
-      var btn = e.target.closest('.act-btn');
-      if(!btn) return;
-      var bar = btn.closest('.action-bar');
-      if(!bar) return;
-      handleActionClick(btn, bar);
-    });
-  }
+    }
+    var btn = e.target.closest('.act-btn');
+    if(!btn) return;
+    if(!btn.closest('.msg-actions') && !btn.closest('#modalActions')) return;
+    e.preventDefault();
+    e.stopPropagation();
+    handleActionClick(btn);
+  });
 }
-
-/* ═══════════════════════════════════════════════════════════
-   INIT
-   ═══════════════════════════════════════════════════════════ */
 function init(){
+  loadFeedback();
+  chatHistory = loadChatHistory();
+  preloadVoices();
   setupQuickSelector();
-
+  setupComingSoon();
   loadData().then(function(data){
-    if(!data){
-      $('hamrazContent').innerHTML =
-        '<div class="empty">خطا در بارگذاری سؤالات<br><br>' +
-        'مسیرها: <strong>data/hamraz/categories.json</strong> و <strong>data/hamraz/questions.json</strong><br><br>' +
-        '<span style="font-size:0.75rem;opacity:0.8;">توجه: برای بارگذاری فایل JSON باید صفحه را از طریق سرور (http) باز کنید، نه file://</span>' +
-        '</div>';
+    if(!data || !data.categories || data.categories.length === 0){
+      $('hamrazContent').innerHTML = '<div class="empty">خطا در بارگذاری سؤالات<br><br>مسیرها:<br><strong>data/hamraz/categories.json</strong><br><strong>data/hamraz/questions.json</strong></div>';
       return;
     }
-    renderCategories();
-
+    renderAccordion();
     var searchTimer = null;
-    var input = $('searchInput');
-    if(input) input.addEventListener('input', function(){
+    var si = $('searchInput');
+    if(si) si.addEventListener('input', function(){
       clearTimeout(searchTimer);
-      searchTimer = setTimeout(function(){ doSearch(input.value); }, 200);
+      searchTimer = setTimeout(function(){ doSearch(si.value); }, 200);
     });
-
     var closeBtn = $('modalCloseBtn');
     if(closeBtn) closeBtn.addEventListener('click', closeModal);
     var modal = $('answerModal');
     if(modal) modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
-
-    setupChatFab();
     setupChat();
     setupActionDelegation();
-
-    try{
-      if('speechSynthesis' in window) window.speechSynthesis.getVoices();
-    }catch(e){}
-
-    console.log('همراز آماده شد ✅ - تعداد دسته‌ها:', data.categories.length);
+    var withQ = allData.categories.filter(function(c){ return c.questions.length > 0; }).length;
+    var totalQ = allData.categories.reduce(function(s,c){ return s + c.questions.length; }, 0);
+    console.log('همراز v14 آماده ✅');
+    console.log('دسته‌ها:', allData.categories.length, '— دارای سؤال:', withQ, '— مجموع سؤالات:', totalQ);
   });
 }
-
+function doSearch(query){
+  query = (query||'').trim();
+  if(!query){ renderAccordion(); return; }
+  if(!allData) return;
+  var nq = normalizeText(query);
+  var eq = expandSlang(nq);
+  var qw = nq.split(' ').filter(function(w){ return w.length > 1; });
+  var qs = qw.map(stemWord);
+  var ew = eq.split(' ').filter(function(w){ return w.length > 1; });
+  var es = ew.map(stemWord);
+  function match(text){
+    if(!text) return 0;
+    var nt = normalizeText(text);
+    var ntw = nt.split(' ').filter(function(w){ return w.length > 1; });
+    var nts = ntw.map(stemWord);
+    var sc = 0;
+    if(nt === nq) return 1000;
+    if(nt.indexOf(nq) > -1) sc += 200;
+    qw.forEach(function(w, i){
+      if(ntw.indexOf(w) > -1 || nts.indexOf(qs[i]) > -1) sc += 80;
+      else if(ew[i] && (ntw.indexOf(ew[i]) > -1 || nts.indexOf(es[i]) > -1)) sc += 60;
+      else {
+        for(var k=0;k<nts.length;k++){
+          if(nts[k].length < 3) continue;
+          if(levenshtein(qs[i], nts[k]) <= 1 && Math.max(qs[i].length, nts[k].length) >= 4){ sc += 40; break; }
+        }
+      }
+    });
+    return sc;
+  }
+  var results = [];
+  allData.categories.forEach(function(cat){
+    if(cat.keywords && cat.keywords.length){
+      cat.keywords.forEach(function(kw){
+        var s = match(kw);
+        if(s > 100){
+          (cat.questions||[]).forEach(function(q){
+            results.push({ cat:cat, q:q, score:s * 0.5 });
+          });
+        }
+      });
+    }
+    (cat.questions || []).forEach(function(q){
+      var score = match(q.q || q.question) * 2;
+      if(q.tags) q.tags.forEach(function(t){ score += match(t) * 1.5; });
+      if(score > 50) results.push({ cat:cat, q:q, score:score });
+    });
+  });
+  var seen = {};
+  results = results.filter(function(r){
+    var key = r.cat.id + '_' + (r.q.id || r.q.q);
+    if(seen[key]) return false;
+    seen[key] = true;
+    return true;
+  });
+  results.sort(function(a,b){ return b.score - a.score; });
+  var container = $('hamrazContent');
+  if(results.length === 0){
+    container.innerHTML = '<div class="empty">برای «'+escapeHtml(query)+'» نتیجه‌ای یافت نشد</div>';
+    return;
+  }
+  var html = '<div class="section-title">'+faNum(results.length)+' نتیجه</div>' +
+    '<div class="acc-card" style="padding:10px;display:flex;flex-direction:column;gap:6px;">';
+  results.slice(0, 40).forEach(function(r, idx){
+    html += '<button class="q-item" data-cat="'+escapeHtml(r.cat.id)+'" data-qid="'+escapeHtml(r.q.id)+'" type="button">' +
+      '<div class="q-num">'+faNum(idx+1)+'</div>' +
+      '<div class="q-text"><div style="font-size:0.66rem;color:var(--text-muted);margin-bottom:2px;">'+escapeHtml(r.cat.title)+'</div>'+escapeHtml(r.q.q || r.q.question || '')+'</div>' +
+      '<svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
+    '</button>';
+  });
+  html += '</div>';
+  container.innerHTML = html;
+  container.querySelectorAll('.q-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      openAnswer(item.getAttribute('data-cat'), item.getAttribute('data-qid'));
+    });
+  });
+}
 if(document.readyState === 'loading'){
   document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
-}
-
+} else init();
 })();
 </script>
-<script src="analytics.js"></script>
+
+<!-- ═══ آنالیتیکس (اول لود بشه) ═══ -->
+<script src="js/bn-analytics.js"></script>
+
+<!-- ═══ ماژول اصلی BN ═══ -->
+<script src="js/bn-app.js"></script>
+
+<!-- ═══ Firebase ═══ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/bn-tracker.js"></script>
+<script src="js/bn-auth-gate.js"></script>
+
+<!-- ═══ ثبت Service Worker ═══ -->
+<script>
+(function(){
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function(reg){
+        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
+      }).catch(function(e){ console.warn('SW register failed:', e.message); });
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
