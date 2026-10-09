@@ -19,7 +19,7 @@ if (!Promise.allSettled) {
 var SW_VERSION = 'v5';
 var STATIC_CACHE  = 'banovan-noor-static-'  + SW_VERSION;
 var RUNTIME_CACHE = 'banovan-noor-runtime-' + SW_VERSION;
-var MEDIA_CACHE   = 'banovan-noor-media-'   + SW_VERSION;
+var MEDIA_CACHE   = 'banovan-noor-media-v1';
 
 /* ---------- محدودیت حجم کش رسانه (به بایت) ---------- */
 var MEDIA_CACHE_LIMIT = 50 * 1024 * 1024; // ۵۰ مگابایت
@@ -61,6 +61,7 @@ var APP_FILES = [
   './js/bn-analytics.js',
   './js/bn-tracker.js',
   './js/bn-auth-gate.js',
+   './js/bn-media-player.js',
   './js/firebase-config.js',
   './manifest.json',
 
