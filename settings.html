@@ -14,6 +14,7 @@
 <link rel="icon" href="assets/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
 <style>
 :root{
   --bg:#fbf8ff;--bg2:#f5ecfb;
@@ -247,6 +248,102 @@ body.dark .topbar{background:linear-gradient(to bottom,#000 70%,transparent)}
   width:18px;height:18px;flex:0 0 18px;
   fill:none;stroke:var(--muted);stroke-width:2.4;
   stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1);
+}
+
+/* ═══ آفلاین (جدید) ═══ */
+.offline-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  padding:12px 14px;
+}
+.offline-stat{
+  padding:12px;
+  border-radius:14px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  text-align:center;
+}
+.offline-stat-value{
+  font-size:1.3rem;
+  font-weight:950;
+  color:var(--primary);
+  font-variant-numeric:tabular-nums;
+  direction:ltr;
+  line-height:1.2;
+}
+.offline-stat-label{
+  font-size:.6rem;
+  color:var(--muted);
+  font-weight:800;
+  margin-top:4px;
+}
+.offline-btns{
+  padding:0 14px 14px;
+  display:grid;
+  gap:8px;
+}
+.offline-btn{
+  width:100%;
+  min-height:46px;
+  border-radius:14px;
+  font-family:inherit;
+  font-size:.78rem;
+  font-weight:900;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  transition:transform .15s;
+  border:0;
+}
+.offline-btn:active{transform:scale(.97)}
+.offline-btn svg{
+  width:17px;height:17px;
+  fill:none;stroke:currentColor;
+  stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;
+}
+.offline-btn.download{
+  background:var(--brand);
+  color:#fff;
+  box-shadow:0 10px 24px rgba(219,39,119,.35);
+}
+.offline-btn.download:disabled{opacity:.55;cursor:not-allowed}
+.offline-btn.clear{
+  background:rgba(239,68,68,.1);
+  color:#dc2626;
+  border:1.5px solid rgba(239,68,68,.25);
+}
+html[data-theme="dark"] .offline-btn.clear,
+body.dark .offline-btn.clear{color:#fca5a5}
+
+.offline-progress{
+  padding:0 14px 14px;
+  display:none;
+}
+.offline-progress.show{display:block}
+.offline-progress-label{
+  display:flex;
+  justify-content:space-between;
+  font-size:.68rem;
+  font-weight:850;
+  color:var(--muted);
+  margin-bottom:7px;
+}
+.offline-progress-bar{
+  height:8px;
+  border-radius:10px;
+  background:rgba(168,50,214,.10);
+  overflow:hidden;
+}
+.offline-progress-fill{
+  height:100%;
+  width:0;
+  border-radius:10px;
+  background:var(--brand);
+  transition:width .3s ease;
+  box-shadow:0 0 12px rgba(219,39,119,.45);
 }
 
 .dua-card{
@@ -662,6 +759,8 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V5a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2h2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
   <symbol id="i-chevron-down" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-cloud-check" viewBox="0 0 24 24"><path d="M18 17a4 4 0 000-8h-1.26A8 8 0 104 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9 15 12 18 20 10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
 </svg>
 
 <div class="app">
@@ -724,6 +823,55 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
       <div class="pill-group">
         <button class="pill active" data-fiqh="jafari" type="button">جعفری</button>
         <button class="pill" data-fiqh="hanafi" type="button">حنفی</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ آفلاین (جدید) ═══ -->
+<section class="section">
+  <div class="section-title">
+    <div class="section-line"></div>
+    <h2>مدیریت فایل‌های آفلاین</h2>
+  </div>
+
+  <div class="card-group">
+    <div class="offline-stats">
+      <div class="offline-stat">
+        <div class="offline-stat-value" id="cacheCount">۰</div>
+        <div class="offline-stat-label">فایل ذخیره‌شده</div>
+      </div>
+      <div class="offline-stat">
+        <div class="offline-stat-value" id="cacheSize">۰ MB</div>
+        <div class="offline-stat-label">حجم مصرفی</div>
+      </div>
+    </div>
+
+    <div class="offline-progress" id="offlineProgress">
+      <div class="offline-progress-label">
+        <span id="offlineProgressLabel">در حال دانلود...</span>
+        <span id="offlineProgressPercent">۰٪</span>
+      </div>
+      <div class="offline-progress-bar">
+        <div class="offline-progress-fill" id="offlineProgressFill"></div>
+      </div>
+    </div>
+
+    <div class="offline-btns">
+      <button class="offline-btn download" id="downloadAllBtn" type="button">
+        <svg><use href="#i-download"></use></svg>
+        دانلود همه فایل‌ها برای استفاده آفلاین
+      </button>
+      <button class="offline-btn clear" id="clearCacheBtn" type="button">
+        <svg><use href="#i-trash"></use></svg>
+        پاک کردن فایل‌های ذخیره‌شده
+      </button>
+    </div>
+
+    <div style="padding: 0 14px 14px;">
+      <div class="info-note" style="margin:0;">
+        <svg><use href="#i-info"></use></svg>
+        <span>فایل‌هایی که یک‌بار پخش کردید، خودکار ذخیره می‌شوند. با دکمه بالا می‌توانید همه را یکجا دانلود کنید.</span>
       </div>
     </div>
   </div>
@@ -1012,6 +1160,7 @@ let avatarData = null;
 let toastTimer = null;
 let selectedCountry = COUNTRIES[0];
 let isSaving = false;
+let isDownloading = false;
 
 const $ = id => document.getElementById(id);
 
@@ -1067,6 +1216,7 @@ function safeSave(key, val){
 function safeRemove(key){
   try{ localStorage.removeItem(key); }catch(e){}
 }
+function toFa(n){ return String(n).replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]); }
 
 /* LANGUAGE */
 function getSavedLang(){
@@ -1137,6 +1287,23 @@ function updateProfileUI(){
     avatarEl.innerHTML = '<svg><use href="#i-user"></use></svg>';
     if(deleteBtn) deleteBtn.style.display = "none";
     if(heroBadge) heroBadge.style.display = "none";
+  }
+}
+
+/* OFFLINE STATS */
+async function updateOfflineStats(){
+  if(!window.bnMedia || typeof window.bnMedia.getCacheSize !== "function"){
+    $("cacheCount").textContent = "۰";
+    $("cacheSize").textContent = "۰ MB";
+    return;
+  }
+  try{
+    const info = await window.bnMedia.getCacheSize();
+    $("cacheCount").textContent = toFa(info.count || 0);
+    $("cacheSize").textContent = window.bnMedia.formatBytes(info.size || 0);
+  }catch(e){
+    $("cacheCount").textContent = "۰";
+    $("cacheSize").textContent = "۰ MB";
   }
 }
 
@@ -1233,6 +1400,75 @@ function openProfile(){
 
   openModal("profileModal");
   setTimeout(() => nameInput.focus(), 300);
+}
+
+/* DOWNLOAD ALL */
+async function downloadAll(){
+  if(isDownloading) return;
+  if(!window.bnDownloader || typeof window.bnDownloader.startFullDownload !== "function"){
+    showToast("سیستم دانلود در دسترس نیست", "error");
+    return;
+  }
+
+  if(!confirm("دانلود همه فایل‌ها ممکن است حجم زیادی از اینترنت شما مصرف کند. ادامه می‌دهید؟")) return;
+
+  isDownloading = true;
+  const btn = $("downloadAllBtn");
+  const progressEl = $("offlineProgress");
+  const fillEl = $("offlineProgressFill");
+  const labelEl = $("offlineProgressLabel");
+  const percentEl = $("offlineProgressPercent");
+
+  btn.disabled = true;
+  btn.innerHTML = '<svg class="spin"><use href="#i-download"></use></svg> در حال دانلود...';
+  progressEl.classList.add("show");
+
+  try{
+    await window.bnDownloader.startFullDownload(function(p){
+      if(p.done){
+        fillEl.style.width = "100%";
+        percentEl.textContent = "۱۰۰٪";
+        labelEl.textContent = "✓ دانلود کامل شد";
+        showToast("همه فایل‌ها ذخیره شدند", "success");
+        updateOfflineStats();
+        return;
+      }
+      if(p.error){
+        labelEl.textContent = p.error;
+        showToast(p.error, "error");
+        return;
+      }
+      if(p.percent !== undefined){
+        fillEl.style.width = p.percent + "%";
+        percentEl.textContent = toFa(p.percent) + "٪";
+        labelEl.textContent = "در حال دانلود (" + toFa(p.downloadedFiles || 0) + " از " + toFa(p.totalFiles || 0) + ")";
+      }
+    });
+  }catch(e){
+    showToast("خطا در دانلود: " + e.message, "error");
+  }finally{
+    isDownloading = false;
+    btn.disabled = false;
+    btn.innerHTML = '<svg><use href="#i-download"></use></svg> دانلود همه فایل‌ها برای استفاده آفلاین';
+    setTimeout(() => progressEl.classList.remove("show"), 2500);
+  }
+}
+
+/* CLEAR CACHE */
+async function clearOfflineCache(){
+  if(!window.bnMedia || typeof window.bnMedia.clearCache !== "function"){
+    showToast("سیستم آفلاین در دسترس نیست", "error");
+    return;
+  }
+  if(!confirm("آیا مطمئنید؟ تمام فایل‌های ذخیره‌شده پاک می‌شوند.")) return;
+
+  try{
+    await window.bnMedia.clearCache();
+    await updateOfflineStats();
+    showToast("همه فایل‌ها پاک شدند", "success");
+  }catch(e){
+    showToast("خطا در پاک کردن", "error");
+  }
 }
 
 /* EVENTS */
@@ -1452,6 +1688,9 @@ document.querySelectorAll(".pill[data-fiqh]").forEach(card => {
   });
 });
 
+$("downloadAllBtn").addEventListener("click", downloadAll);
+$("clearCacheBtn").addEventListener("click", clearOfflineCache);
+
 $("navSearch").addEventListener("click", () => { location.href = "search.html"; });
 $("navHamraz").addEventListener("click", () => { location.href = "hamraz.html"; });
 $("navHome").addEventListener("click", () => { location.href = "home.html"; });
@@ -1482,6 +1721,9 @@ function init(){
   const savedIdx = Number(safeLoad("bn_country_idx", "0"));
   if(savedIdx > 0 && COUNTRIES[savedIdx]) selectCountry(savedIdx);
 
+  // آپدیت وضعیت آفلاین بعد از لود کامل
+  setTimeout(updateOfflineStats, 800);
+
   setTimeout(() => {
     if(typeof window.bnLogActivity === "function"){
       window.bnLogActivity("page_view", "settings");
@@ -1498,6 +1740,10 @@ else init();
 
 <!-- ═══ ماژول اصلی BN ═══ -->
 <script src="js/bn-app.js"></script>
+
+<!-- ═══ Media Player + Downloader ═══ -->
+<script src="js/bn-media-player.js"></script>
+<script src="js/bn-downloader.js"></script>
 
 <!-- ═══ Firebase ═══ -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
