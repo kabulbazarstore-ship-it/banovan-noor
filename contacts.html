@@ -1,641 +1,851 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-theme="light">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#0284c7" />
-<title>تماس با ما | بانوان نور</title>
-<link rel="icon" href="assets/icon-192.png" type="image/png" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#db2777" id="themeMeta">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="بانوان نور">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="ارتباط با ما — راه‌های تماس با سازنده برنامه بانوان نور">
+<title>ارتباط با ما | بانوان نور</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.json">
 <style>
 :root{
-  --bg-1:#f0f9ff;--bg-2:#e0f2fe;--bg-3:#bae6fd;--bg-4:#7dd3fc;
-  --text:#0c4a6e;--text-soft:#075985;--text-card:#0c4a6e;--text-muted:#0369a1;
-  --card:rgba(255,255,255,.85);--card-border:rgba(14,165,233,.22);
-  --card-shadow:0 8px 22px rgba(3,105,161,.12);
-  --icon-bg:rgba(255,255,255,.85);--icon-border:rgba(14,165,233,.25);--icon-color:#0284c7;
-  --nav-bg:rgba(255,255,255,.94);--nav-border:rgba(14,165,233,.2);
-  --nav-color:#0369a1;--nav-active:#0284c7;
-  --star:.2;
-  --accent:#0ea5e9;
-  --accent-dark:#0284c7;
-  --blue-soft:rgba(14,165,233,.1);
-  --input-bg:rgba(255,255,255,.92);
-  --input-border:rgba(14,165,233,.3);
+  --bg:#fbf8ff;--bg2:#f5ecfb;
+  --card:rgba(255,255,255,.82);--card-solid:#fff;
+  --text:#25152d;--muted:#776b80;
+  --line:rgba(112,55,140,.12);
+  --primary:#a832d6;--pink:#ec4899;
+  --brand:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --instagram:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  --soft:rgba(168,50,214,.09);
+  --shadow-sm:0 6px 20px rgba(168,50,214,.08);
+  --shadow-md:0 14px 34px rgba(168,50,214,.15);
+  --nav-h:78px;
 }
+html[data-theme="dark"],
 body.dark{
-  --bg-1:#082f49;--bg-2:#0c4a6e;--bg-3:#075985;--bg-4:#082f49;
-  --text:#fff;--text-soft:#bae6fd;--text-card:#fff;--text-muted:#7dd3fc;
-  --card:rgba(255,255,255,.08);--card-border:rgba(125,211,252,.3);
-  --card-shadow:0 8px 22px rgba(0,0,0,.3);
-  --icon-bg:rgba(255,255,255,.08);--icon-border:rgba(125,211,252,.3);--icon-color:#bae6fd;
-  --nav-bg:rgba(8,47,73,.94);--nav-border:rgba(125,211,252,.25);
-  --nav-color:#7dd3fc;--nav-active:#bae6fd;
-  --star:.7;
-  --blue-soft:rgba(125,211,252,.15);
-  --input-bg:rgba(255,255,255,.08);
-  --input-border:rgba(125,211,252,.35);
+  --bg:#000;--bg2:#000;
+  --card:rgba(28,28,30,.72);--card-solid:#1c1c1e;
+  --text:#fff;--muted:#8e8e93;
+  --line:rgba(192,132,252,.16);
+  --soft:rgba(192,132,252,.14);
+  --shadow-sm:0 6px 20px rgba(0,0,0,.45);
+  --shadow-md:0 14px 34px rgba(0,0,0,.55);
 }
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{width:100%}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{
-  font-family:Tahoma,'Segoe UI',Arial,sans-serif;direction:rtl;font-size:17px;
-  line-height:1.8;font-weight:600;color:var(--text);background-color:var(--bg-1);
-  background-image:
-    radial-gradient(ellipse 500px 400px at 20% 5%,rgba(14,165,233,.15) 0,transparent 60%),
-    radial-gradient(ellipse 400px 350px at 85% 15%,rgba(125,211,252,.18) 0,transparent 65%),
-    linear-gradient(160deg,var(--bg-1) 0,var(--bg-2) 25%,var(--bg-3) 50%,var(--bg-2) 75%,var(--bg-4) 100%);
-  background-attachment:fixed;min-height:100vh;padding:0 0 110px;position:relative;overflow-x:hidden;
-  transition:background-color .4s,color .3s;
+  margin:0;min-height:100vh;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(236,72,153,.15),transparent 30%),
+    radial-gradient(circle at 100% 10%,rgba(168,85,247,.17),transparent 32%),
+    linear-gradient(160deg,var(--bg),var(--bg2));
+  color:var(--text);
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;
+  direction:rtl;
+  padding-bottom:calc(120px + env(safe-area-inset-bottom));
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  transition:background .35s ease,color .35s ease;
 }
-body::before{
-  content:"";position:fixed;inset:0;
-  background-image:
-    radial-gradient(circle at 12% 8%,rgba(253,230,138,var(--star)) 0,transparent 1.2%),
-    radial-gradient(circle at 88% 6%,rgba(253,230,138,var(--star)) 0,transparent 1%),
-    radial-gradient(circle at 78% 45%,rgba(253,230,138,var(--star)) 0,transparent 1%);
-  pointer-events:none;z-index:0;
+html[data-theme="dark"] body,
+body.dark{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(168,85,247,.13),transparent 30%),
+    radial-gradient(circle at 100% 20%,rgba(236,72,153,.08),transparent 30%),
+    #000;
 }
-.app{max-width:520px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
+/* ✅ LTR */
+body.lang-ltr { direction: ltr; }
+body.lang-ltr #backBtn svg { transform: none; }
+body.lang-ltr .social-item::before { right: auto; left: 0; }
+body.lang-ltr .social-arrow { transform: none; }
+body.lang-ltr .social-handle { text-align: left; }
 
-.page-header{display:flex;align-items:center;gap:12px;padding:20px 0 16px}
-.back-btn{
-  width:44px;height:44px;border-radius:14px;background:var(--icon-bg);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border:1px solid var(--icon-border);color:var(--icon-color);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
-  flex:0 0 44px;text-decoration:none;box-shadow:0 4px 12px rgba(3,105,161,.15);
-}
-.back-btn:active{transform:scale(.94)}
-.back-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
-.page-header h1{font-size:1.35rem;font-weight:900;color:var(--text);flex:1;text-align:center;padding-right:44px}
+button{font:inherit;border:0;cursor:pointer;background:transparent;color:inherit}
+a{color:inherit;text-decoration:none}
+svg{display:block}
 
-.hero{
-  background:linear-gradient(135deg,#38bdf8 0,#0284c7 100%);
-  border-radius:20px;padding:22px;margin-bottom:16px;color:#fff;
-  position:relative;overflow:hidden;
-  box-shadow:0 12px 30px rgba(3,105,161,.35);
-  display:flex;align-items:center;gap:14px;
-}
-.hero::before{
-  content:"";position:absolute;top:-40px;right:-40px;
-  width:120px;height:120px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%);
-  pointer-events:none;
-}
-.hero-icon{
-  width:56px;height:56px;border-radius:16px;
-  background:rgba(255,255,255,.25);border:1.5px solid rgba(255,255,255,.35);
-  display:flex;align-items:center;justify-content:center;flex:0 0 56px;
-  backdrop-filter:blur(10px);
-}
-.hero-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.hero-text{flex:1}
-.hero-title{font-size:1.1rem;font-weight:900;margin-bottom:5px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.15)}
-.hero-sub{font-size:.85rem;color:#fff;opacity:.95;font-weight:700;line-height:1.7}
+.app{width:100%;max-width:560px;margin:0 auto;padding:0 16px;position:relative;z-index:2}
 
-.intro-box{
-  background:var(--card);backdrop-filter:blur(20px);
-  border:1.5px solid var(--card-border);
-  border-radius:18px;padding:20px;margin-bottom:12px;
-  box-shadow:var(--card-shadow);
-  text-align:center;
+.topbar{
+  display:flex;align-items:center;gap:10px;
+  padding:16px 0 14px;
+  position:sticky;top:0;z-index:50;
+  background:linear-gradient(to bottom,var(--bg) 70%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
 }
-.intro-icon{
-  width:70px;height:70px;border-radius:22px;
-  margin:0 auto 14px;
-  background:linear-gradient(135deg,#38bdf8,#0284c7);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 8px 20px rgba(3,105,161,.35);
+html[data-theme="dark"] .topbar,
+body.dark .topbar{background:linear-gradient(to bottom,#000 70%,transparent)}
+.top-side{
+  width:42px;height:42px;flex:0 0 42px;
+  border-radius:14px;display:flex;align-items:center;justify-content:center;
+  background:var(--card);border:1px solid var(--line);
+  color:var(--primary);box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(22px) saturate(180%);
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  transition:transform .2s;
 }
-.intro-icon svg{width:34px;height:34px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.intro-title{
-  font-size:1.1rem;font-weight:900;color:var(--text);
+.top-side:active{transform:scale(.91)}
+.top-side svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.page-title-box{flex:1;text-align:center;min-width:0}
+.page-title-box strong{display:block;font-size:.95rem;font-weight:950}
+.page-title-box span{display:block;margin-top:1px;font-size:.6rem;color:var(--muted);font-weight:700}
+
+/* ═══ PROFILE HERO ═══ */
+.profile-hero{
+  position:relative;
+  background:var(--card);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border:1.5px solid var(--line);
+  border-radius:24px;
+  padding:22px 18px 18px;
+  box-shadow:var(--shadow-md);
+  overflow:hidden;
+}
+.profile-hero::before{
+  content:"";position:absolute;
+  top:0;right:0;left:0;height:4px;
+  background:var(--instagram);
+  background-size:300% 100%;
+  animation:instaGrad 6s ease infinite;
+}
+@keyframes instaGrad{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+.profile-row{
+  display:flex;align-items:center;gap:18px;
+  margin-bottom:16px;
+}
+
+.avatar-ring{
+  position:relative;
+  width:96px;height:96px;
+  flex:0 0 96px;
+  animation:avatarFloat 3.5s ease-in-out infinite;
+}
+@keyframes avatarFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+.avatar-ring-outer{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:var(--instagram);
+  box-shadow:0 8px 24px rgba(220,39,67,.35);
+}
+.avatar-ring-inner{
+  position:absolute;
+  inset:4px;
+  border-radius:50%;
+  background:#fff;
+}
+html[data-theme="dark"] .avatar-ring-inner,
+body.dark .avatar-ring-inner{background:#000}
+.avatar-photo{
+  position:absolute;
+  inset:6px;
+  border-radius:50%;
+  overflow:hidden;
+  background:var(--brand);
+  display:grid;place-items:center;
+  box-shadow:inset 0 2px 8px rgba(0,0,0,.15);
+}
+.avatar-photo img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+}
+.avatar-photo svg{
+  width:46px;height:46px;
+  fill:none;stroke:#fff;stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+
+.profile-info{flex:1;min-width:0}
+.profile-name{
+  font-size:1.15rem;font-weight:950;
+  color:var(--text);line-height:1.3;
+  margin-bottom:5px;
+  letter-spacing:-.2px;
+}
+.profile-role{
+  font-size:.7rem;font-weight:800;
+  color:var(--muted);line-height:1.6;
   margin-bottom:8px;
 }
-.intro-text{
-  font-size:.92rem;font-weight:700;color:var(--text-card);
-  line-height:2;
+.profile-status{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.6rem;font-weight:900;
+  padding:5px 11px;border-radius:20px;
+  background:var(--soft);
+  color:var(--primary);
+  border:1px solid var(--line);
+}
+.profile-status .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#34d399;
+  box-shadow:0 0 10px #34d399;
+  animation:onlinePulse 1.6s ease-in-out infinite;
+}
+@keyframes onlinePulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.6;transform:scale(1.3)}
 }
 
+.profile-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  padding:14px 0 4px;
+  border-top:1px solid var(--line);
+}
+.profile-stat{
+  text-align:center;
+  padding:6px 4px;
+}
+.profile-stat-value{
+  font-size:1rem;font-weight:950;
+  background:var(--brand);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  line-height:1.2;margin-bottom:3px;
+}
+.profile-stat-label{
+  font-size:.58rem;font-weight:800;
+  color:var(--muted);
+}
+
+.profile-bio{
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:14px;
+  background:linear-gradient(135deg,rgba(236,72,153,.06),rgba(168,85,247,.05));
+  border:1px solid var(--line);
+  font-size:.72rem;font-weight:700;
+  line-height:2;color:var(--text);
+  text-align:center;
+  position:relative;
+}
+.profile-bio::before{
+  content:"";position:absolute;
+  top:0;right:0;left:0;height:2px;
+  background:var(--brand);
+  border-radius:14px 14px 0 0;
+  opacity:.6;
+}
+.profile-bio strong{
+  color:var(--primary);font-weight:950;
+}
+
+.section{
+  position:relative;
+  background:var(--card);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border:1.5px solid var(--line);
+  border-radius:20px;
+  padding:0;
+  margin-top:14px;
+  box-shadow:var(--shadow-sm);
+  overflow:hidden;
+}
+.section-head{
+  display:flex;align-items:center;gap:11px;
+  padding:14px 15px 11px;
+  position:relative;
+}
+.section-head::after{
+  content:"";position:absolute;
+  bottom:0;left:15px;right:15px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(168,50,214,.15) 20%,rgba(168,50,214,.15) 80%,transparent);
+}
+.section-icon{
+  width:40px;height:40px;flex:0 0 40px;
+  border-radius:13px;
+  display:grid;place-items:center;
+  color:#fff;
+  box-shadow:0 6px 16px rgba(219,39,119,.26);
+  position:relative;
+}
+.section-icon::after{
+  content:"";position:absolute;inset:0;
+  border-radius:13px;
+  background:linear-gradient(180deg,rgba(255,255,255,.25),transparent 60%);
+  pointer-events:none;
+}
+.section-icon svg{
+  width:19px;height:19px;
+  fill:none;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;
+  position:relative;z-index:1;
+}
+.section-title-box{flex:1;min-width:0}
 .section-title{
-  display:flex;align-items:center;gap:10px;
-  margin:20px 4px 12px;font-size:1.05rem;font-weight:900;
-  color:var(--text);
+  font-size:.86rem;font-weight:950;
+  color:var(--text);line-height:1.3;
 }
-.section-title::before{
-  content:"";width:4px;height:20px;border-radius:2px;
-  background:linear-gradient(180deg,#38bdf8,#0284c7);
-  box-shadow:0 0 12px rgba(14,165,233,.6);
+.section-sub{
+  font-size:.58rem;font-weight:800;
+  color:var(--muted);letter-spacing:.1px;
+  margin-top:2px;
 }
 
-.contact-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
-.contact-card{
-  background:var(--card);backdrop-filter:blur(20px);
-  border:1.5px solid var(--card-border);
-  border-radius:18px;padding:16px 18px;
-  display:flex;align-items:center;gap:14px;
-  text-decoration:none;color:inherit;
-  box-shadow:var(--card-shadow);
-  transition:all .22s ease;
+.social-list{
+  display:flex;flex-direction:column;gap:10px;
+  padding:12px 14px 14px;
+}
+.social-item{
+  display:flex;align-items:center;gap:13px;
+  padding:13px 14px;
+  border-radius:16px;
+  background:var(--soft);
+  border:1.5px solid var(--line);
+  transition:transform .2s;
   cursor:pointer;
-  font-family:inherit;
-  width:100%;
-  text-align:right;
+  position:relative;
+  overflow:hidden;
 }
-.contact-card:active{transform:scale(.98)}
-.contact-card:hover{transform:translateY(-2px);border-color:rgba(14,165,233,.5)}
-.contact-icon{
-  width:52px;height:52px;border-radius:16px;flex:0 0 52px;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 6px 16px rgba(0,0,0,.15);
+.social-item::before{
+  content:"";position:absolute;
+  top:0;right:0;bottom:0;
+  width:4px;
+  background:currentColor;
+  opacity:.85;
 }
-.contact-icon svg{
-  width:26px;height:26px;fill:none;stroke:#fff;
-  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+.social-item:active{transform:scale(.97)}
+.social-icon{
+  width:48px;height:48px;flex:0 0 48px;
+  border-radius:15px;
+  display:grid;place-items:center;
+  color:#fff;
+  position:relative;
+  box-shadow:0 6px 16px rgba(0,0,0,.18);
 }
-.contact-icon.email{background:linear-gradient(135deg,#ec4899,#be185d)}
-.contact-icon.facebook{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
-.contact-icon.instagram{background:linear-gradient(135deg,#f472b6,#a855f7,#f59e0b)}
-.contact-body{flex:1;min-width:0}
-.contact-name{
-  font-size:1rem;font-weight:900;color:var(--text-card);
-  margin-bottom:4px;
+.social-icon::after{
+  content:"";position:absolute;inset:0;
+  border-radius:15px;
+  background:linear-gradient(180deg,rgba(255,255,255,.25),transparent 60%);
+  pointer-events:none;
 }
-.contact-value{
-  font-size:.82rem;font-weight:700;color:var(--text-muted);
-  word-break:break-word;direction:ltr;text-align:right;
-  line-height:1.6;
+.social-icon svg{
+  width:24px;height:24px;
+  fill:none;stroke:#fff;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;
+  position:relative;z-index:1;
 }
-.contact-arrow{
-  width:20px;height:20px;flex:0 0 20px;
-  fill:none;stroke:var(--text-muted);
+.social-body{flex:1;min-width:0}
+.social-name{
+  font-size:.85rem;font-weight:950;
+  color:var(--text);line-height:1.3;
+  margin-bottom:3px;
+}
+.social-handle{
+  font-size:.65rem;font-weight:700;
+  color:var(--muted);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  direction:ltr;text-align:right;
+}
+.social-arrow{
+  width:18px;height:18px;flex:0 0 18px;
+  fill:none;stroke:var(--muted);
   stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
   transform:scaleX(-1);
 }
+.social-item.email{color:#e11d48}
+.social-item.facebook{color:#3b82f6}
+.social-item.instagram{color:#dc2743}
+html[data-theme="dark"] .social-item.email,
+body.dark .social-item.email{color:#fb7185}
+html[data-theme="dark"] .social-item.facebook,
+body.dark .social-item.facebook{color:#60a5fa}
+html[data-theme="dark"] .social-item.instagram,
+body.dark .social-item.instagram{color:#fb7185}
 
-.hours-box{
-  background:var(--card);backdrop-filter:blur(20px);
-  border:1.5px solid var(--card-border);
-  border-radius:16px;padding:18px;margin-bottom:12px;
-  box-shadow:var(--card-shadow);
-}
-.hours-head{
-  display:flex;align-items:center;gap:10px;
-  margin-bottom:14px;
-}
-.hours-icon{
-  width:42px;height:42px;border-radius:13px;flex:0 0 42px;
-  background:linear-gradient(135deg,#38bdf8,#0284c7);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 5px 12px rgba(3,105,161,.3);
-}
-.hours-icon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.hours-title{
-  font-size:1rem;font-weight:900;color:var(--text);
-}
-.hours-row{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:10px 0;
-  border-bottom:1px dashed var(--card-border);
-  font-size:.9rem;font-weight:700;
-  color:var(--text-card);
-}
-.hours-row:last-child{border-bottom:0;padding-bottom:0}
-.hours-day{color:var(--text-soft);font-weight:800}
-.hours-time{color:var(--accent);font-weight:900;direction:ltr}
-
-.form-box{
-  background:var(--card);backdrop-filter:blur(20px);
-  border:1.5px solid var(--card-border);
-  border-radius:18px;padding:20px;margin-bottom:12px;
-  box-shadow:var(--card-shadow);
-}
-.form-head{
-  display:flex;align-items:center;gap:10px;
-  margin-bottom:16px;
-}
-.form-icon{
-  width:42px;height:42px;border-radius:13px;flex:0 0 42px;
-  background:linear-gradient(135deg,#38bdf8,#0284c7);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 5px 12px rgba(3,105,161,.3);
-}
-.form-icon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.form-title{
-  font-size:1rem;font-weight:900;color:var(--text);
-}
-.input-group{margin-bottom:14px}
-.input-group label{
-  display:block;font-size:.85rem;font-weight:900;
-  color:var(--text-soft);margin-bottom:8px;
-}
-.input-field{
-  width:100%;padding:14px 18px;border-radius:14px;
-  border:1.5px solid var(--input-border);
-  background:var(--input-bg);color:var(--text);
-  font-family:inherit;font-size:.95rem;font-weight:700;
-  outline:none;transition:border-color .25s;
-  resize:vertical;
-}
-.input-field:focus{border-color:rgba(14,165,233,.7)}
-.input-field::placeholder{color:var(--text-muted);opacity:.7}
-textarea.input-field{
-  min-height:120px;line-height:1.9;
-}
-.btn-submit{
-  width:100%;padding:15px;border-radius:14px;border:0;
-  background:linear-gradient(135deg,#38bdf8,#0284c7);
-  color:#fff;font-family:inherit;font-size:1rem;font-weight:900;
-  cursor:pointer;transition:all .2s;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  box-shadow:0 8px 20px rgba(3,105,161,.35);
-}
-.btn-submit:active{transform:scale(.97)}
-.btn-submit svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-
-.faq-list{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
-.faq-item{
-  background:var(--card);backdrop-filter:blur(20px);
-  border:1.5px solid var(--card-border);
-  border-radius:16px;
-  box-shadow:var(--card-shadow);
+.message-card{
+  position:relative;
+  padding:24px 20px 20px;
+  border-radius:22px;
+  background:var(--brand);
+  background-size:180% 180%;
+  color:#fff;
+  box-shadow:0 14px 36px rgba(219,39,119,.35);
+  margin-top:14px;
+  text-align:center;
   overflow:hidden;
+  isolation:isolate;
+  animation:heroShift 14s ease infinite;
 }
-.faq-q{
-  width:100%;padding:16px;border:0;background:transparent;
-  font-family:inherit;font-size:.95rem;font-weight:900;
-  color:var(--text-card);cursor:pointer;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:12px;text-align:right;
+@keyframes heroShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.message-card::before{
+  content:"";position:absolute;
+  width:180px;height:180px;
+  top:-90px;right:-70px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.22),transparent 70%);
+  pointer-events:none;
 }
-.faq-q-icon{
-  width:32px;height:32px;border-radius:10px;flex:0 0 32px;
-  background:var(--blue-soft);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--accent);
-  transition:transform .3s;
+.message-card::after{
+  content:"";position:absolute;
+  width:140px;height:140px;
+  bottom:-70px;left:-50px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.14);
+  pointer-events:none;
 }
-.faq-q-icon svg{
-  width:16px;height:16px;fill:none;stroke:currentColor;
-  stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;
+.message-inner{position:relative;z-index:1}
+.message-icon{
+  width:52px;height:52px;
+  margin:0 auto 14px;
+  border-radius:16px;
+  background:rgba(255,255,255,.22);
+  border:1px solid rgba(255,255,255,.35);
+  display:grid;place-items:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.18);
+  animation:iconPulse 2.5s ease-in-out infinite;
 }
-.faq-item.open .faq-q-icon{transform:rotate(180deg)}
-.faq-a{
-  max-height:0;overflow:hidden;
-  transition:max-height .35s ease,padding .35s ease;
-  font-size:.88rem;font-weight:700;line-height:2;
-  color:var(--text-card);
-  padding:0 16px;
-  white-space:pre-line;
+@keyframes iconPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.06)}
 }
-.faq-item.open .faq-a{
-  max-height:600px;
-  padding:14px 16px 16px;
-  border-top:1px dashed var(--card-border);
+.message-icon svg{
+  width:24px;height:24px;
+  fill:none;stroke:#fff;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;
 }
+.message-title{
+  font-size:.95rem;font-weight:950;
+  margin-bottom:8px;
+  text-shadow:0 2px 8px rgba(0,0,0,.18);
+}
+.message-text{
+  font-size:.7rem;font-weight:700;
+  opacity:.96;line-height:2;
+  margin-bottom:16px;
+  max-width:340px;margin-left:auto;margin-right:auto;
+}
+.message-text strong{
+  font-weight:950;
+  color:#fff;
+  background:rgba(255,255,255,.2);
+  padding:1px 6px;border-radius:6px;
+}
+.message-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 26px;border-radius:14px;
+  background:rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.4);
+  color:#fff;
+  font-size:.78rem;font-weight:950;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  transition:transform .15s,background .2s;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+.message-btn:hover{background:rgba(255,255,255,.35)}
+.message-btn:active{transform:scale(.95)}
+.message-btn svg{
+  width:17px;height:17px;
+  fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+
+.thanks-card{
+  margin-top:14px;
+  padding:18px 18px 16px;
+  border-radius:20px;
+  background:var(--card);
+  border:1.5px solid var(--line);
+  box-shadow:var(--shadow-sm);
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+.thanks-card::before{
+  content:"";position:absolute;
+  top:0;right:0;left:0;height:4px;
+  background:var(--brand);
+  border-radius:20px 20px 0 0;
+}
+.thanks-icon{
+  width:44px;height:44px;
+  margin:0 auto 12px;
+  border-radius:14px;
+  background:var(--brand);
+  display:grid;place-items:center;
+  color:#fff;
+  box-shadow:0 6px 16px rgba(219,39,119,.28);
+  animation:iconPulse 2.5s ease-in-out infinite;
+}
+.thanks-icon svg{
+  width:22px;height:22px;
+  fill:#fff;stroke:none;
+}
+.thanks-title{
+  font-size:.9rem;font-weight:950;
+  color:var(--text);
+  margin-bottom:8px;
+}
+.thanks-text{
+  font-size:.72rem;font-weight:700;
+  color:var(--muted);
+  line-height:2;
+  max-width:340px;margin:0 auto;
+}
+.thanks-text strong{
+  color:var(--primary);font-weight:950;
+}
+
+.version{
+  text-align:center;
+  padding:22px 16px 10px;
+  font-size:.6rem;
+  font-weight:700;
+  color:var(--muted);
+  line-height:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+.version svg{
+  width:13px;height:13px;
+  fill:none;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.version strong{color:var(--primary);font-weight:950}
 
 .bottom-nav{
-  position:fixed;bottom:0;left:0;right:0;z-index:100;
-  background:var(--nav-bg);backdrop-filter:blur(24px);
-  border-top:1px solid var(--nav-border);
-  display:flex;justify-content:space-around;
-  padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));
-  max-width:520px;margin:0 auto;
-  box-shadow:0 -8px 30px rgba(3,105,161,.15);
+  position:fixed;left:50%;bottom:0;transform:translateX(-50%);
+  width:100%;max-width:560px;z-index:1000;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+  display:grid;grid-template-columns:1fr 1fr 78px 1fr 1fr;
+  gap:4px;align-items:center;
+  background:var(--card);
+  border-top:1px solid rgba(255,255,255,.18);
+  border-radius:26px 26px 0 0;
+  box-shadow:0 -10px 28px rgba(225,29,72,.14),0 -24px 55px rgba(168,85,247,.10),inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter:blur(55px) saturate(220%);
+  -webkit-backdrop-filter:blur(55px) saturate(220%);
 }
+html[data-theme="dark"] .bottom-nav,
+body.dark .bottom-nav{border-top:1px solid rgba(255,255,255,.06);box-shadow:0 -10px 28px rgba(0,0,0,.55),0 -24px 55px rgba(219,39,119,.14)}
 .nav-item{
-  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
-  color:var(--nav-color);padding:8px 2px;
-  font-size:.68rem;font-weight:800;
-  text-decoration:none;cursor:pointer;
-  border-radius:12px;position:relative;
+  min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:4px;position:relative;color:var(--muted);border-radius:14px;
+  font-size:.56rem;font-weight:850;transition:color .2s;padding:6px 2px;
 }
-.nav-item.active{color:var(--nav-active)}
-.nav-item.active::before{
-  content:"";position:absolute;top:0;left:50%;
-  transform:translateX(-50%);
-  width:22px;height:3px;border-radius:0 0 4px 4px;
-  background:linear-gradient(90deg,#38bdf8,#0284c7,#fde68a);
-  box-shadow:0 0 12px rgba(14,165,233,.8);
+.nav-item svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.nav-item.active{color:var(--primary)}
+.nav-item:active{transform:scale(.92)}
+.nav-fab-wrap{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+.nav-fab{
+  position:absolute;top:-30px;width:60px;height:60px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--brand);
+  box-shadow:0 14px 32px rgba(225,29,72,.48),0 6px 16px rgba(168,85,247,.35);
+  border:4px solid var(--card-solid);
+  transition:transform .25s;z-index:10;
 }
-.nav-item svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.nav-item.active svg{stroke-width:2.4}
+.nav-fab:active{transform:scale(.92)}
+.nav-fab::before{content:"";position:absolute;width:100%;height:100%;border-radius:50%;background:var(--brand);z-index:-1;animation:fabRipple 3s ease infinite;opacity:.45}
+@keyframes fabRipple{0%{transform:scale(1);opacity:.45}100%{transform:scale(1.35);opacity:0}}
+.nav-fab svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.nav-fab-label{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:.56rem;font-weight:900;color:var(--primary);white-space:nowrap}
 
-.toast{
-  position:fixed;bottom:110px;left:50%;
-  transform:translateX(-50%) translateY(20px);
-  background:linear-gradient(135deg,#0284c7,#0ea5e9);
-  color:#fff;padding:14px 26px;border-radius:30px;
-  font-size:.95rem;font-weight:900;z-index:10002;
-  opacity:0;transition:all .3s;pointer-events:none;
-  box-shadow:0 12px 30px rgba(14,165,233,.5);
-  max-width:90vw;text-align:center;white-space:pre-line;line-height:1.7;
-}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-@media (max-width:380px){
-  body{font-size:16px}
+button:focus-visible,a:focus-visible{outline:3px solid rgba(168,50,214,.25);outline-offset:2px}
+@media(max-width:390px){
   .app{padding:0 12px}
-  .page-header h1{font-size:1.2rem}
-  .hero{padding:18px}
-  .hero-icon{width:48px;height:48px;flex:0 0 48px}
-  .contact-icon{width:46px;height:46px;flex:0 0 46px}
-  .contact-icon svg{width:22px;height:22px}
-  .contact-name{font-size:.94rem}
-  .contact-value{font-size:.76rem}
-  .nav-item{font-size:.62rem}
-  .nav-item svg{width:21px;height:21px}
+  .profile-hero{padding:18px 15px 15px}
+  .avatar-ring{width:80px;height:80px;flex-basis:80px}
+  .profile-row{gap:14px}
+  .profile-name{font-size:1rem}
+  .nav-fab{width:56px;height:56px;top:-28px}
+  .nav-fab svg{width:24px;height:24px}
+  .bottom-nav{grid-template-columns:1fr 1fr 70px 1fr 1fr}
+  .page-title-box span{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
-
 <body>
 
-<script>
-(function(){
-  try{ if(localStorage.getItem('bn_theme')==='dark') document.body.classList.add('dark'); }catch(e){}
-})();
-</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M5 9v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 22v-8h6v8" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.7-3.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5v.1a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1A2 2 0 0 1 7 3.3l.1.1a1.7 1.7 0 0 0 1.8.3h.1a1.7 1.7 0 0 0 1-1.5V2a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v.1a1.7 1.7 0 0 0 1.5 1h.1a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.4 1z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-email" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m2 7 10 6 10-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
 <div class="app">
 
-  <header class="page-header">
-    <a class="back-btn" href="settings.html" aria-label="بازگشت">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+<header class="topbar">
+  <button class="top-side" id="backBtn" aria-label="بازگشت">
+    <svg><use href="#i-arrow"></use></svg>
+  </button>
+  <div class="page-title-box">
+    <strong>ارتباط با ما</strong>
+    <span>بانوان نور</span>
+  </div>
+  <div style="width:42px;flex:0 0 42px"></div>
+</header>
+
+<section class="profile-hero">
+
+  <div class="profile-row">
+
+    <div class="avatar-ring">
+      <div class="avatar-ring-outer"></div>
+      <div class="avatar-ring-inner"></div>
+      <div class="avatar-photo">
+        <img src="assets/owner.jpg" alt="سید مقدس حسینی"
+             onerror="this.style.display='none';this.parentNode.innerHTML='<svg><use href=&quot;#i-user&quot;></use></svg>'">
+      </div>
+    </div>
+
+    <div class="profile-info">
+      <h1 class="profile-name">سید مقدس حسینی</h1>
+      <div class="profile-role">سازنده و مدیر برنامه بانوان نور</div>
+      <span class="profile-status">
+        <span class="dot"></span>
+        پاسخگو هستم
+      </span>
+    </div>
+
+  </div>
+
+  <div class="profile-stats">
+    <div class="profile-stat">
+      <div class="profile-stat-value">۹</div>
+      <div class="profile-stat-label">بخش اصلی</div>
+    </div>
+    <div class="profile-stat">
+      <div class="profile-stat-value">۱۰۰+</div>
+      <div class="profile-stat-label">مقاله</div>
+    </div>
+    <div class="profile-stat">
+      <div class="profile-stat-value">۲۴/۷</div>
+      <div class="profile-stat-label">پاسخگو</div>
+    </div>
+  </div>
+
+  <div class="profile-bio">
+    از طریق راه‌های زیر می‌تونید با من در ارتباط باشید 💜<br>
+    منتظر <strong>نظرات، انتقادات و پیشنهادات</strong> شما هستم
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div class="section-icon" style="background:var(--brand)">
+      <svg><use href="#i-chat"></use></svg>
+    </div>
+    <div class="section-title-box">
+      <div class="section-title">راه‌های ارتباطی</div>
+      <div class="section-sub">از هر جا راحت‌تری تماس بگیر</div>
+    </div>
+  </div>
+  <div class="social-list">
+
+    <a class="social-item email" href="mailto:hussaini11855@gmail.com">
+      <div class="social-icon" style="background:linear-gradient(135deg,#e11d48,#be123c)">
+        <svg><use href="#i-email"></use></svg>
+      </div>
+      <div class="social-body">
+        <div class="social-name">ایمیل</div>
+        <div class="social-handle">hussaini11855@gmail.com</div>
+      </div>
+      <svg class="social-arrow"><use href="#i-chevron"></use></svg>
     </a>
-    <h1>تماس با ما</h1>
-  </header>
 
-  <div class="hero">
-    <div class="hero-icon">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    </div>
-    <div class="hero-text">
-      <div class="hero-title">با ما در ارتباط باشید</div>
-      <div class="hero-sub">نظرات و پیشنهادات شما ارزشمند است 💙</div>
-    </div>
-  </div>
-
-  <div class="intro-box">
-    <div class="intro-icon">
-      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
-    </div>
-    <div class="intro-title">در خدمت شما هستیم</div>
-    <div class="intro-text">
-      اگه سؤال، پیشنهاد یا انتقادی دارید، از راه‌های زیر با ما در تماس باشید.
-      خوشحال می‌شیم نظرات شما را بشنویم 💐
-    </div>
-  </div>
-
-  <div class="section-title">راه‌های ارتباطی</div>
-
-  <div class="contact-list">
-
-    <a class="contact-card" href="mailto:hussaini11855@gmail.com">
-      <div class="contact-icon email">
-        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+    <a class="social-item facebook" href="https://www.facebook.com/share/1EVPQo7frh/" target="_blank" rel="noopener">
+      <div class="social-icon" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">
+        <svg><use href="#i-facebook"></use></svg>
       </div>
-      <div class="contact-body">
-        <div class="contact-name">ایمیل</div>
-        <div class="contact-value">hussaini11855@gmail.com</div>
+      <div class="social-body">
+        <div class="social-name">فیسبوک</div>
+        <div class="social-handle">بانوان نور</div>
       </div>
-      <svg class="contact-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      <svg class="social-arrow"><use href="#i-chevron"></use></svg>
     </a>
 
-    <a class="contact-card" href="https://www.facebook.com/share/1FAT39XK8u/" target="_blank" rel="noopener">
-      <div class="contact-icon facebook">
-        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    <a class="social-item instagram" href="https://www.instagram.com/_aqazada313" target="_blank" rel="noopener">
+      <div class="social-icon" style="background:var(--instagram)">
+        <svg><use href="#i-instagram"></use></svg>
       </div>
-      <div class="contact-body">
-        <div class="contact-name">فیس‌بوک</div>
-        <div class="contact-value">facebook.com/share</div>
+      <div class="social-body">
+        <div class="social-name">اینستاگرام</div>
+        <div class="social-handle">_aqazada313</div>
       </div>
-      <svg class="contact-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    </a>
-
-    <a class="contact-card" href="https://www.instagram.com/_aqazada313" target="_blank" rel="noopener">
-      <div class="contact-icon instagram">
-        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      </div>
-      <div class="contact-body">
-        <div class="contact-name">اینستاگرام</div>
-        <div class="contact-value">@_aqazada313</div>
-      </div>
-      <svg class="contact-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      <svg class="social-arrow"><use href="#i-chevron"></use></svg>
     </a>
 
   </div>
+</section>
 
-  <div class="hours-box">
-    <div class="hours-head">
-      <div class="hours-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-      </div>
-      <div class="hours-title">ساعات پاسخ‌دهی</div>
+<div class="message-card">
+  <div class="message-inner">
+    <div class="message-icon">
+      <svg><use href="#i-send"></use></svg>
     </div>
-    <div class="hours-row">
-      <span class="hours-day">شنبه تا پنجشنبه</span>
-      <span class="hours-time">۹ صبح - ۵ عصر</span>
+    <div class="message-title">💌 پیامت رو بفرست</div>
+    <div class="message-text">
+      منتظر <strong>نظرات، انتقادات و پیشنهادات</strong> شما هستم.<br>
+      برای بهتر شدن برنامه، نظرتون برام ارزشمنده.
     </div>
-    <div class="hours-row">
-      <span class="hours-day">جمعه</span>
-      <span class="hours-time">تعطیل</span>
-    </div>
-    <div class="hours-row">
-      <span class="hours-day">پاسخ به ایمیل</span>
-      <span class="hours-time">حداکثر ۲۴ ساعت</span>
-    </div>
+    <a class="message-btn" href="mailto:hussaini11855@gmail.com?subject=%D9%86%D8%B8%D8%B1%20%DB%8C%D8%A7%20%D9%BE%DB%8C%D8%B4%D9%86%D9%87%D8%A7%D8%AF%20%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%20%D8%A8%D8%A7%D9%86%D9%88%D8%A7%D9%86%20%D9%86%D9%88%D8%B1&body=%D8%B3%D9%84%D8%A7%D9%85%0A%0A%D9%86%D8%B8%D8%B1%20%DB%8C%D8%A7%20%D9%BE%DB%8C%D8%B4%D9%86%D9%87%D8%A7%D8%AF%20%D9%85%D9%86%3A%0A">
+      <svg><use href="#i-email"></use></svg>
+      ارسال ایمیل
+    </a>
   </div>
+</div>
 
-  <div class="section-title">ارسال پیام</div>
-
-  <div class="form-box">
-    <div class="form-head">
-      <div class="form-icon">
-        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </div>
-      <div class="form-title">پیام خود را بنویسید</div>
-    </div>
-
-    <div class="input-group">
-      <label>نام شما</label>
-      <input type="text" class="input-field" id="contactName" placeholder="مثال: فاطمه" />
-    </div>
-
-    <div class="input-group">
-      <label>موضوع</label>
-      <input type="text" class="input-field" id="contactSubject" placeholder="مثال: پیشنهاد، انتقاد، سؤال" />
-    </div>
-
-    <div class="input-group">
-      <label>پیام شما</label>
-      <textarea class="input-field" id="contactMessage" placeholder="پیام خود را اینجا بنویسید..."></textarea>
-    </div>
-
-    <button class="btn-submit" id="sendMsgBtn" type="button">
-      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      ارسال پیام
-    </button>
+<div class="thanks-card">
+  <div class="thanks-icon">
+    <svg><use href="#i-heart"></use></svg>
   </div>
-
-  <div class="section-title">سؤالات متداول</div>
-
-  <div class="faq-list">
-    <div class="faq-item">
-      <button class="faq-q" type="button">
-        <span>چطور می‌تونم پیشنهاد یا انتقاد بدم؟</span>
-        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
-      </button>
-      <div class="faq-a">از فرم بالا استفاده کنید یا از طریق ایمیل و شبکه‌های اجتماعی پیام خود را بفرستید. همه نظرات خوانده می‌شود و در بهبود برنامه استفاده می‌گردد.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" type="button">
-        <span>چقدر طول می‌کشه پاسخ بگیرم؟</span>
-        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
-      </button>
-      <div class="faq-a">معمولاً در طول ۲۴ ساعت پاسخ می‌دهیم. اگر پیام در تعطیلات آخر هفته ارسال شود، ممکن است کمی بیشتر طول بکشد.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" type="button">
-        <span>می‌خوام پزشک معرفی کنم، چیکار کنم؟</span>
-        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
-      </button>
-      <div class="faq-a">از فرم بالا با موضوع «معرفی پزشک» استفاده کنید. لطفاً نام، تخصص، شهر، آدرس و شماره تماس پزشک را برای ما بفرستید.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" type="button">
-        <span>مشکلی در برنامه دارم، چطور گزارش بدم؟</span>
-        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
-      </button>
-      <div class="faq-a">با موضوع «گزارش مشکل» پیام بفرستید. لطفاً توضیح دهید مشکل کجاست و در چه قسمتی است. اگر امکان دارد اسکرین‌شات هم بفرستید.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" type="button">
-        <span>آیا اطلاعات من محرمانه می‌مونه؟</span>
-        <span class="faq-q-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
-      </button>
-      <div class="faq-a">بله کاملاً. تمام اطلاعات فقط روی گوشی شما ذخیره می‌شود و هیچ چیز به سرور ارسال نمی‌گردد. برای جزئیات بیشتر به صفحه «حریم خصوصی» در تنظیمات مراجعه کنید.</div>
-    </div>
+  <div class="thanks-title">التماست دعا</div>
+  <div class="thanks-text">
+    از همه شما همراهان عزیز التماس دعا دارم 🌸<br>
+    در دعاهای خودتان، <strong>این بنده حقیر</strong> را هم یاد کنید.
   </div>
+</div>
 
-  <div style="height:20px"></div>
+<div class="version">
+  <svg><use href="#i-clock"></use></svg>
+  <strong>بانوان نور</strong> — نسخه ۱.۰.۰
+</div>
+
 </div>
 
 <nav class="bottom-nav">
-  <a class="nav-item" href="home.html">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span>خانه</span>
-  </a>
   <a class="nav-item" href="search.html">
-    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <svg><use href="#i-search"></use></svg>
     <span>جستجو</span>
   </a>
   <a class="nav-item" href="hamraz.html">
-    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg><use href="#i-chat"></use></svg>
     <span>همراز</span>
   </a>
+  <div class="nav-fab-wrap">
+    <a class="nav-fab" href="home.html" aria-label="خانه">
+      <svg><use href="#i-home"></use></svg>
+    </a>
+    <span class="nav-fab-label">خانه</span>
+  </div>
   <a class="nav-item" href="ahkam.html">
-    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <svg><use href="#i-book"></use></svg>
     <span>احکام</span>
   </a>
   <a class="nav-item active" href="settings.html">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <svg><use href="#i-settings"></use></svg>
     <span>بیشتر</span>
   </a>
 </nav>
 
-<div class="toast" id="toast"></div>
-
 <script>
 (function(){
-'use strict';
+"use strict";
 
-var SUPPORT_EMAIL = 'hussaini11855@gmail.com';
-var toastTimer = null;
+var THEME_KEY = "bn_theme";
 
-function $(id){ return document.getElementById(id); }
-
-function showMsg(msg,dur){
-  dur=dur||2500;
-  var t=$('toast'); if(!t) return;
-  t.textContent=msg; t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(function(){ t.classList.remove('show'); },dur);
+function getSystemTheme(){
+  try{ return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+  catch(e){ return "light"; }
 }
-
-function getTheme(){ try{ return localStorage.getItem('bn_theme')||'light'; }catch(e){ return 'light'; } }
+function getSavedTheme(){
+  try{
+    var t = localStorage.getItem(THEME_KEY);
+    if(t === "dark" || t === "light") return t;
+  }catch(e){}
+  return getSystemTheme();
+}
 function applyTheme(){
-  if(getTheme()==='dark') document.body.classList.add('dark');
-  else document.body.classList.remove('dark');
+  var t = getSavedTheme();
+  document.documentElement.setAttribute("data-theme", t);
+  document.body.classList.toggle("dark", t === "dark");
+  var meta = document.getElementById("themeMeta");
+  if(meta) meta.setAttribute("content", t === "dark" ? "#000000" : "#db2777");
 }
+applyTheme();
 
-function setupFaq(){
-  document.querySelectorAll('.faq-item').forEach(function(item){
-    var q = item.querySelector('.faq-q');
-    if(!q) return;
-    q.addEventListener('click', function(){
-      item.classList.toggle('open');
+function setupBack(){
+  var back = document.getElementById("backBtn");
+  if(back){
+    back.addEventListener("click", function(){
+      if(document.referrer && document.referrer.indexOf(location.origin) === 0){
+        history.back();
+      } else {
+        location.href = "settings.html";
+      }
     });
-  });
+  }
 }
 
-function setupForm(){
-  var btn = $('sendMsgBtn');
-  if(!btn) return;
-
-  btn.addEventListener('click', function(){
-    var name = ($('contactName').value || '').trim();
-    var subject = ($('contactSubject').value || '').trim();
-    var message = ($('contactMessage').value || '').trim();
-
-    if(!name){ showMsg('لطفاً نام خود را وارد کنید'); return; }
-    if(!subject){ showMsg('لطفاً موضوع را وارد کنید'); return; }
-    if(!message){ showMsg('لطفاً پیام خود را بنویسید'); return; }
-    if(message.length < 10){ showMsg('پیام باید حداقل ۱۰ حرف باشد'); return; }
-
-    var body = 'سلام مدیریت بانوان نور\n\n' +
-               'نام: ' + name + '\n' +
-               'موضوع: ' + subject + '\n\n' +
-               'پیام:\n' + message + '\n\n' +
-               '— ارسال شده از اپلیکیشن بانوان نور';
-
-    var mailtoUrl = 'mailto:' + SUPPORT_EMAIL +
-                    '?subject=' + encodeURIComponent('بانوان نور — ' + subject) +
-                    '&body=' + encodeURIComponent(body);
-
-    window.location.href = mailtoUrl;
-    showMsg('در حال باز کردن ایمیل...');
-
-    setTimeout(function(){
-      $('contactName').value = '';
-      $('contactSubject').value = '';
-      $('contactMessage').value = '';
-    }, 1500);
-  });
-}
+window.addEventListener("storage", function(e){
+  if(e.key === THEME_KEY) applyTheme();
+  if(e.key === "bn_lang") location.reload();
+});
 
 function init(){
-  applyTheme();
-  setupFaq();
-  setupForm();
-
-  window.addEventListener('storage', function(e){
-    if(e.key === 'bn_theme') applyTheme();
-  });
-
-  console.log('💙 صفحه تماس با ما آماده');
+  setupBack();
+  if (window.bnAnalytics) {
+    window.bnAnalytics.track("page_view", { page: "contacts" });
+  }
 }
 
-if(document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', init);
-} else init();
+if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+else init();
 
 })();
 </script>
-<script src="analytics.js"></script>
+
+<!-- ═══ آنالیتیکس (اول لود بشه) ═══ -->
+<script src="js/bn-analytics.js"></script>
+
+<!-- ═══ ماژول اصلی BN ═══ -->
+<script src="js/bn-app.js"></script>
+
+<!-- ═══ Firebase ═══ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/bn-tracker.js"></script>
+<script src="js/bn-auth-gate.js"></script>
+
+<!-- ═══ ثبت Service Worker ═══ -->
+<script>
+(function(){
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function(reg){
+        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
+      }).catch(function(e){ console.warn('SW register failed:', e.message); });
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
