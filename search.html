@@ -1,828 +1,1890 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#6d28d9" />
-  <title data-i18n-page="search.title">جستجو | بانوان نور</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#db2777" id="themeMeta">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="بانوان نور">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="جستجو در بانوان نور — احکام، سلامت، دعاها و آموزش‌ها">
+<title>جستجو | بانوان نور</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.json">
 
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="assets/icon-192.png" type="image/png" />
-  <link rel="apple-touch-icon" href="assets/icon-192.png" />
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('bn_theme');
+    if(!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme',t);
+  }catch(e){}
+})();
+</script>
 
-  <style>
-    /* ========== متغیرها ========== */
-    :root {
-      --bg-1: #f3e8ff; --bg-2: #e9d5ff; --bg-3: #ddd6fe; --bg-4: #c4b5fd;
-      --text: #2d1259; --text-soft: #4c1d95; --text-card: #1f1147;
-      --text-muted: #7c6f9a;
-      --card: rgba(255,255,255,0.78); --card-border: rgba(168,85,247,0.2);
-      --card-shadow: 0 8px 22px rgba(109,40,217,0.12);
-      --icon-bg: rgba(255,255,255,0.8); --icon-border: rgba(168,85,247,0.25);
-      --icon-color: #6d28d9;
-      --nav-bg: rgba(255,255,255,0.92); --nav-border: rgba(168,85,247,0.2);
-      --nav-color: #7c6f9a; --nav-active: #6d28d9;
-      --star: 0.2; --flower: 0.15;
-      --input-bg: rgba(255,255,255,0.85);
-      --input-border: rgba(168,85,247,0.3);
-      --input-focus: rgba(236,72,153,0.5);
-    }
-    body.dark {
-      --bg-1: #3b0764; --bg-2: #4c1d95; --bg-3: #5b21b6; --bg-4: #2d1259;
-      --text: #ffffff; --text-soft: #e9d5ff; --text-card: #ffffff;
-      --text-muted: #c4b5fd;
-      --card: rgba(255,255,255,0.08); --card-border: rgba(244,114,182,0.25);
-      --card-shadow: 0 8px 22px rgba(0,0,0,0.3);
-      --icon-bg: rgba(255,255,255,0.08); --icon-border: rgba(244,114,182,0.3);
-      --icon-color: #fbcfe8;
-      --nav-bg: rgba(26,11,61,0.94); --nav-border: rgba(244,114,182,0.25);
-      --nav-color: #a78bfa; --nav-active: #fbcfe8;
-      --star: 0.7; --flower: 0.12;
-      --input-bg: rgba(255,255,255,0.08);
-      --input-border: rgba(244,114,182,0.35);
-      --input-focus: rgba(253,230,138,0.6);
-    }
+<style>
+:root{
+  --bg:#fdf5ff;
+  --bg-soft:#f6e9ff;
+  --surface:rgba(255,255,255,.80);
+  --surface-solid:#ffffff;
+  --text:#2a1740;
+  --text-soft:#5f4a77;
+  --text-muted:#9686a8;
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    html, body { height: 100%; width: 100%; }
+  --primary:#a832d6;
+  --primary-2:#c026d3;
+  --pink:#ec4899;
 
-    body {
-      font-family: Tahoma, 'Segoe UI', Arial, sans-serif;
-      direction: rtl;
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--text);
-      background-color: var(--bg-1);
-      background-image:
-        radial-gradient(ellipse 500px 400px at 20% 5%, rgba(236,72,153,0.15) 0%, transparent 60%),
-        radial-gradient(ellipse 400px 350px at 85% 15%, rgba(168,85,247,0.18) 0%, transparent 65%),
-        radial-gradient(ellipse 450px 400px at 15% 90%, rgba(139,92,246,0.18) 0%, transparent 60%),
-        linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 25%, var(--bg-3) 50%, var(--bg-2) 75%, var(--bg-4) 100%);
-      background-attachment: fixed;
-      min-height: 100vh;
-      padding: 0 0 110px 0;
-      position: relative;
-      overflow-x: hidden;
-      transition: background-color 0.4s ease, color 0.3s ease;
-    }
-    body.lang-ltr { direction: ltr; }
+  --border:rgba(168,50,214,.14);
+  --shadow-sm:0 6px 20px rgba(168,50,214,.08);
+  --shadow-md:0 14px 34px rgba(168,50,214,.15);
+  --shadow-fab:0 14px 36px rgba(219,39,119,.50);
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 12% 8%, rgba(253,230,138,var(--star)) 0%, transparent 1.2%),
-        radial-gradient(circle at 88% 6%, rgba(253,230,138,var(--star)) 0%, transparent 1%),
-        radial-gradient(circle at 78% 45%, rgba(253,230,138,var(--star)) 0%, transparent 1%),
-        radial-gradient(circle at 8% 35%, rgba(253,230,138,var(--star)) 0%, transparent 0.9%),
-        radial-gradient(circle at 30% 20%, rgba(168,85,247,var(--star)) 0%, transparent 0.7%),
-        radial-gradient(circle at 70% 25%, rgba(168,85,247,var(--star)) 0%, transparent 0.6%);
-      pointer-events: none;
-      z-index: 0;
-    }
+  --nav-bg:rgba(255,255,255,.68);
 
-    /* APP */
-    .app { max-width: 520px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 1; }
+  --brand-grad:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(225,29,72,.13),rgba(168,85,247,.10));
 
-    /* HEADER */
-    .header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 0 16px; gap: 10px;
-    }
-    .header-brand { display: flex; align-items: center; gap: 10px; }
-    .back-btn {
-      width: 42px; height: 42px; border-radius: 14px;
-      background: var(--icon-bg); backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--icon-border);
-      color: var(--icon-color);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: all 0.3s ease;
-      flex: 0 0 42px; text-decoration: none;
-      box-shadow: 0 4px 12px rgba(109,40,217,0.15);
-    }
-    .back-btn:hover { transform: translateY(-2px); }
-    .back-btn:active { transform: scale(0.94); }
-    .back-btn svg {
-      width: 20px; height: 20px; fill: none; stroke: currentColor;
-      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
-      transform: scaleX(-1);
-    }
-    .header-title {
-      flex: 1;
-      font-size: 1.1rem;
-      font-weight: 900;
-      color: var(--text);
-      text-align: center;
-      padding-right: 42px;
-    }
+  --ig-grad:var(--brand-grad);
+  --ig-grad-anim:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --gradient-soft:var(--brand-grad-soft);
 
-    /* SEARCH BOX */
-    .search-wrap {
-      margin-bottom: 20px;
-      position: relative;
-    }
-    .search-input-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--input-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1.5px solid var(--input-border);
-      border-radius: 20px;
-      padding: 14px 16px;
-      box-shadow: 0 8px 22px rgba(109,40,217,0.12);
-      transition: border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-    .search-input-wrap:focus-within {
-      border-color: var(--input-focus);
-      box-shadow: 0 8px 28px rgba(236,72,153,0.25);
-    }
-    .search-input-wrap svg.search-icon {
-      width: 20px; height: 20px;
-      fill: none; stroke: var(--text-soft);
-      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
-      flex: 0 0 20px;
-    }
-    .search-input {
-      flex: 1;
-      border: 0;
-      background: transparent;
-      outline: none;
-      font-family: inherit;
-      font-size: 0.95rem;
-      color: var(--text);
-      padding: 0;
-    }
-    .search-input::placeholder {
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .clear-btn {
-      width: 26px; height: 26px; border-radius: 50%;
-      background: rgba(236,72,153,0.15);
-      border: 0;
-      color: var(--text-soft);
-      display: none;
-      align-items: center; justify-content: center;
-      cursor: pointer;
-      flex: 0 0 26px;
-    }
-    .clear-btn.show { display: flex; }
-    .clear-btn svg {
-      width: 14px; height: 14px;
-      fill: none; stroke: currentColor;
-      stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
-    }
+  --highlight-bg:rgba(251,191,36,.35);
+  --highlight-text:#7c2d12;
+}
 
-    /* FILTERS */
-    .filters {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 18px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      scrollbar-width: none;
-    }
-    .filters::-webkit-scrollbar { display: none; }
-    .filter-chip {
-      flex: 0 0 auto;
-      background: var(--card);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--card-border);
-      color: var(--text-soft);
-      border-radius: 30px;
-      padding: 8px 16px;
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .filter-chip:hover {
-      border-color: var(--input-focus);
-      color: var(--text);
-    }
-    .filter-chip.active {
-      background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #6d28d9 100%);
-      color: #fff;
-      border-color: transparent;
-      box-shadow: 0 6px 18px rgba(236,72,153,0.4);
-    }
-    .filter-chip svg {
-      width: 14px; height: 14px;
-      fill: none; stroke: currentColor;
-      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
-    }
+html[data-theme="dark"],
+body.dark{
+  --bg:#000000;
+  --bg-soft:#000000;
+  --surface:rgba(28,28,30,.70);
+  --surface-solid:#1c1c1e;
+  --text:#ffffff;
+  --text-soft:#e4e6eb;
+  --text-muted:#8e8e93;
+  --primary:#c084fc;
+  --primary-2:#d8b4fe;
+  --pink:#ec4899;
+  --border:rgba(192,132,252,.16);
+  --shadow-sm:0 6px 20px rgba(0,0,0,.45);
+  --shadow-md:0 14px 34px rgba(0,0,0,.55);
+  --shadow-fab:0 14px 36px rgba(219,39,119,.55);
+  --nav-bg:rgba(15,10,22,.68);
 
-    /* STATUS */
-    .status {
-      text-align: center;
-      padding: 8px 0 14px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
+  --brand-grad:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(225,29,72,.18),rgba(168,85,247,.14));
+  --ig-grad:var(--brand-grad);
+  --ig-grad-anim:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --gradient-soft:var(--brand-grad-soft);
 
-    /* RESULTS */
-    .results { min-height: 200px; }
+  --highlight-bg:rgba(219,39,119,.35);
+  --highlight-text:#ffffff;
+}
 
-    .result-item {
-      background: var(--card);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 16px;
-      margin-bottom: 10px;
-      box-shadow: var(--card-shadow);
-      cursor: pointer;
-      transition: all 0.25s ease;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-    .result-item:hover {
-      transform: translateY(-2px);
-      border-color: var(--input-focus);
-    }
-    .result-item:active {
-      transform: scale(0.98);
-    }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;min-height:100%}
 
-    .result-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    .result-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.65rem;
-      font-weight: 800;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: rgba(168,85,247,0.15);
-      color: #7c3aed;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    body.dark .result-badge {
-      background: rgba(196,181,253,0.15);
-      color: #e9d5ff;
-    }
-    .result-badge.health { background: rgba(236,72,153,0.15); color: #be185d; }
-    body.dark .result-badge.health { background: rgba(244,114,182,0.15); color: #fbcfe8; }
-    .result-badge.hamraz { background: rgba(251,191,36,0.15); color: #a16207; }
-    body.dark .result-badge.hamraz { background: rgba(251,191,36,0.15); color: #fde68a; }
-    .result-badge.duas { background: rgba(139,92,246,0.15); color: #6d28d9; }
-    body.dark .result-badge.duas { background: rgba(196,181,253,0.15); color: #c4b5fd; }
+body{
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;
+  direction:rtl;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 8% 0%,rgba(236,72,153,.15),transparent 30%),
+    radial-gradient(circle at 100% 10%,rgba(168,85,247,.17),transparent 32%),
+    linear-gradient(160deg,var(--bg),var(--bg-soft));
+  min-height:100vh;
+  padding-bottom:calc(120px + env(safe-area-inset-bottom));
+  overflow-x:hidden;
+  transition:background .35s ease,color .35s ease;
+  -webkit-font-smoothing:antialiased;
+}
 
-    .result-badge svg {
-      width: 12px; height: 12px;
-      fill: none; stroke: currentColor;
-      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
-    }
+html[data-theme="dark"] body,
+body.dark{
+  background:
+    radial-gradient(circle at 10% 0%,rgba(168,85,247,.13),transparent 30%),
+    radial-gradient(circle at 100% 20%,rgba(236,72,153,.08),transparent 30%),
+    #000;
+}
 
-    .result-title {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: var(--text-card);
-      margin-bottom: 6px;
-      line-height: 1.5;
-    }
+/* ✅ پشتیبانی از LTR */
+body.lang-ltr { direction: ltr; }
+body.lang-ltr .back-btn svg { transform: none; }
+body.lang-ltr .search-input { padding: 15px 52px 15px 48px; }
+body.lang-ltr .search-icon { left: auto; right: 16px; }
+body.lang-ltr .clear-btn { right: auto; left: 14px; }
+body.lang-ltr .result-card::before { right: auto; left: 0; border-radius: 18px 0 0 18px; }
 
-    .result-snippet {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+.app{
+  width:100%;max-width:640px;margin:0 auto;
+  padding:0 16px;position:relative;z-index:2;
+}
 
-    .result-snippet mark {
-      background: linear-gradient(180deg, transparent 50%, rgba(253,230,138,0.6) 50%);
-      color: inherit;
-      font-weight: 800;
-      padding: 0 2px;
-    }
+/* HEADER */
+.topbar{
+  display:flex;align-items:center;gap:10px;
+  padding:18px 0 14px;
+  position:sticky;top:0;
+  background:linear-gradient(to bottom,var(--bg) 70%,transparent);
+  z-index:50;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+html[data-theme="dark"] .topbar,
+body.dark .topbar{
+  background:linear-gradient(to bottom,#000 70%,transparent);
+}
 
-    /* EMPTY / LOADING */
-    .empty {
-      text-align: center;
-      padding: 50px 20px;
-      color: var(--text-muted);
-    }
-    .empty-icon {
-      font-size: 3rem;
-      margin-bottom: 12px;
-      opacity: 0.5;
-    }
-    .empty-text {
-      font-size: 0.88rem;
-      line-height: 1.9;
-    }
+.back-btn{
+  width:42px;height:42px;border-radius:14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;text-decoration:none;flex:0 0 42px;
+  transition:transform .2s;
+}
+.back-btn:active{transform:scale(.9)}
+.back-btn svg{
+  width:20px;height:20px;fill:none;stroke:currentColor;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+  transform:scaleX(-1);
+}
 
-    .loader {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 40px 20px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-    .loader::before {
-      content: "";
-      width: 20px; height: 20px;
-      border: 2.5px solid rgba(168,85,247,0.3);
-      border-top-color: #ec4899;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+.page-title{
+  flex:1;font-size:1.05rem;font-weight:900;
+  color:var(--text);
+}
 
-    /* BOTTOM NAV */
-    .bottom-nav {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
-      background: var(--nav-bg); backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-top: 1px solid var(--nav-border);
-      display: flex; justify-content: space-around;
-      padding: 8px 4px calc(8px + env(safe-area-inset-bottom, 0px));
-      max-width: 520px; margin: 0 auto;
-      box-shadow: 0 -8px 30px rgba(109,40,217,0.15);
-    }
-    .nav-item {
-      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
-      color: var(--nav-color); padding: 8px 2px; transition: all 0.25s ease;
-      font-size: 0.62rem; font-weight: 800;
-      text-decoration: none; cursor: pointer;
-      border-radius: 12px; position: relative;
-    }
-    .nav-item.active { color: var(--nav-active); }
-    .nav-item.active::before {
-      content: ""; position: absolute; top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 22px; height: 3px;
-      border-radius: 0 0 4px 4px;
-      background: linear-gradient(90deg, #ec4899, #a855f7, #fde68a);
-      box-shadow: 0 0 12px rgba(236,72,153,0.8);
-    }
-    .nav-item svg {
-      width: 22px; height: 22px; fill: none; stroke: currentColor;
-      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-    }
-    .nav-item.active svg { stroke-width: 2.4; }
-  </style>
+.count-badge{
+  font-size:.62rem;
+  color:var(--primary);
+  font-weight:800;
+  padding:5px 10px;
+  border-radius:20px;
+  background:var(--gradient-soft);
+  border:1px solid var(--border);
+  white-space:nowrap;
+}
+
+/* SEARCH BAR */
+.search-wrap{
+  position:relative;margin-bottom:14px;
+}
+.search-input{
+  width:100%;
+  padding:15px 48px 15px 52px;
+  border-radius:18px;
+  border:1.5px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  font-family:inherit;
+  font-size:.92rem;
+  font-weight:650;
+  outline:none;
+  transition:border-color .25s,box-shadow .25s;
+  box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.search-input:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 4px var(--gradient-soft);
+}
+.search-input::placeholder{color:var(--text-muted);font-weight:600}
+
+.search-icon{
+  position:absolute;
+  left:16px;top:50%;
+  transform:translateY(-50%);
+  width:20px;height:20px;
+  fill:none;stroke:var(--text-muted);
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+  pointer-events:none;
+  transition:stroke .25s;
+}
+.search-input:focus + .search-icon{stroke:var(--primary)}
+
+.clear-btn{
+  position:absolute;
+  right:14px;top:50%;
+  transform:translateY(-50%);
+  width:30px;height:30px;border-radius:50%;
+  background:var(--surface);
+  border:1px solid var(--border);
+  color:var(--text-muted);
+  display:none;align-items:center;justify-content:center;
+  cursor:pointer;padding:0;
+  transition:transform .2s;
+}
+.clear-btn.show{display:flex}
+.clear-btn:active{transform:translateY(-50%) scale(.85)}
+.clear-btn svg{
+  width:14px;height:14px;fill:none;stroke:currentColor;
+  stroke-width:2.6;stroke-linecap:round;
+}
+
+/* FILTERS */
+.filters{
+  display:flex;gap:7px;
+  overflow-x:auto;
+  padding-bottom:14px;
+  margin-bottom:8px;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.filters::-webkit-scrollbar{display:none}
+
+.filter-chip{
+  flex:0 0 auto;
+  display:inline-flex;align-items:center;gap:5px;
+  padding:8px 14px;
+  border-radius:20px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  color:var(--text-soft);
+  font-family:inherit;
+  font-size:.72rem;
+  font-weight:800;
+  cursor:pointer;
+  transition:all .25s;
+  white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+.filter-chip svg{
+  width:14px;height:14px;fill:none;stroke:currentColor;
+  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+}
+.filter-chip:active{transform:scale(.94)}
+.filter-chip.active{
+  background:var(--ig-grad);
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 6px 18px rgba(219,39,119,.35);
+}
+.filter-chip.active svg{stroke:#fff}
+
+/* RESULT STATS */
+.result-stats{
+  font-size:.72rem;
+  color:var(--text-muted);
+  font-weight:800;
+  padding:6px 4px 14px;
+  display:none;
+}
+.result-stats.show{display:block}
+.result-stats b{color:var(--primary);font-weight:900}
+
+/* RESULTS */
+.results{
+  display:flex;flex-direction:column;gap:10px;
+}
+
+.result-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:14px 14px 13px;
+  cursor:pointer;
+  transition:transform .2s,border-color .2s;
+  box-shadow:var(--shadow-sm);
+  position:relative;
+  overflow:hidden;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.result-card::before{
+  content:"";
+  position:absolute;
+  top:0;right:0;
+  width:4px;height:100%;
+  background:var(--result-color,#8b5cf6);
+  border-radius:0 18px 18px 0;
+  opacity:.7;
+}
+.result-card:active{transform:scale(.985)}
+.result-card:hover{border-color:var(--primary)}
+
+.result-head{
+  display:flex;align-items:center;gap:9px;
+  margin-bottom:8px;
+}
+.result-icon{
+  width:34px;height:34px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  flex:0 0 34px;
+}
+.result-icon svg{
+  width:17px;height:17px;fill:none;stroke:#fff;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+.result-cat{
+  font-size:.62rem;
+  color:var(--text-muted);
+  font-weight:800;
+  padding:3px 9px;
+  border-radius:20px;
+  background:var(--gradient-soft);
+  border:1px solid var(--border);
+}
+.result-title{
+  font-size:.86rem;
+  font-weight:850;
+  color:var(--text);
+  line-height:1.65;
+  margin-bottom:5px;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.result-snippet{
+  font-size:.72rem;
+  color:var(--text-soft);
+  line-height:1.85;
+  font-weight:600;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.result-snippet mark{
+  background:var(--highlight-bg);
+  color:var(--highlight-text);
+  padding:0 3px;
+  border-radius:3px;
+  font-weight:800;
+}
+.result-title mark{
+  background:var(--highlight-bg);
+  color:var(--highlight-text);
+  padding:1px 3px;
+  border-radius:3px;
+  font-weight:900;
+}
+
+/* EMPTY / LOADING */
+.empty-state{
+  text-align:center;
+  padding:50px 20px;
+  display:none;
+}
+.empty-state.show{display:block}
+.empty-state svg{
+  width:80px;height:80px;
+  fill:none;stroke:var(--text-muted);
+  stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;
+  margin-bottom:18px;
+  opacity:.4;
+}
+.empty-title{
+  font-size:1rem;
+  font-weight:900;
+  color:var(--text);
+  margin-bottom:8px;
+}
+.empty-text{
+  font-size:.78rem;
+  color:var(--text-muted);
+  line-height:1.9;
+  font-weight:650;
+  max-width:300px;
+  margin:0 auto;
+}
+
+.loading-state{
+  text-align:center;
+  padding:50px 20px;
+  display:none;
+}
+.loading-state.show{display:block}
+
+.spinner{
+  width:44px;height:44px;
+  border:3px solid var(--border);
+  border-top-color:var(--primary);
+  border-radius:50%;
+  margin:0 auto 18px;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.loading-text{
+  font-size:.82rem;
+  color:var(--text-muted);
+  font-weight:700;
+}
+
+/* SUGGESTIONS */
+.suggestions{
+  padding:10px 4px 20px;
+}
+.suggestions-title{
+  font-size:.75rem;
+  color:var(--text-muted);
+  font-weight:800;
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:6px;
+}
+.suggestions-title svg{
+  width:14px;height:14px;fill:none;stroke:currentColor;
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+}
+.suggestion-chips{
+  display:flex;flex-wrap:wrap;gap:7px;
+}
+.suggestion-chip{
+  padding:8px 14px;
+  border-radius:20px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  color:var(--text-soft);
+  font-family:inherit;
+  font-size:.72rem;
+  font-weight:800;
+  cursor:pointer;
+  transition:all .25s;
+  -webkit-tap-highlight-color:transparent;
+}
+.suggestion-chip:active{transform:scale(.94)}
+.suggestion-chip:hover{
+  border-color:var(--primary);
+  color:var(--primary);
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;left:50%;bottom:0;
+  transform:translateX(-50%);
+  width:100%;max-width:640px;z-index:1000;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-columns:1fr 1fr 78px 1fr 1fr;
+  gap:4px;align-items:center;
+  background:var(--nav-bg);
+  border-top:1px solid rgba(255,255,255,.18);
+  border-radius:26px 26px 0 0;
+  box-shadow:
+    0 -10px 28px rgba(225,29,72,.14),
+    0 -24px 55px rgba(168,85,247,.10),
+    inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter:blur(55px) saturate(220%);
+  -webkit-backdrop-filter:blur(55px) saturate(220%);
+}
+html[data-theme="dark"] .bottom-nav,
+body.dark .bottom-nav{
+  border-top:1px solid rgba(255,255,255,.06);
+  box-shadow:
+    0 -10px 28px rgba(0,0,0,.55),
+    0 -24px 55px rgba(219,39,119,.14);
+}
+
+.nav-item{
+  min-height:56px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:4px;position:relative;
+  color:var(--text-muted);text-decoration:none;
+  border-radius:14px;font-size:.56rem;font-weight:850;
+  transition:color .2s ease,background .2s ease;
+  padding:6px 2px;
+}
+.nav-item svg{
+  width:21px;height:21px;fill:none;stroke:currentColor;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .2s ease;
+}
+.nav-item.active{color:var(--primary);background:var(--gradient-soft)}
+.nav-item.active svg{stroke-width:2.3}
+.nav-item.active::before{
+  content:"";position:absolute;top:-2px;left:50%;
+  transform:translateX(-50%);
+  width:22px;height:3px;border-radius:0 0 5px 5px;
+  background:var(--brand-grad);
+}
+
+.nav-fab-wrap{
+  position:relative;
+  height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.nav-fab{
+  position:absolute;
+  top:-30px;
+  width:60px;height:60px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--brand-grad);
+  box-shadow:
+    0 14px 32px rgba(225,29,72,.48),
+    0 6px 16px rgba(168,85,247,.35);
+  cursor:pointer;text-decoration:none;
+  border:4px solid var(--surface-solid);
+  transition:transform .25s ease,box-shadow .25s ease;
+  z-index:10;
+}
+.nav-fab:active{transform:scale(.92)}
+.nav-fab::before{
+  content:"";position:absolute;
+  width:100%;height:100%;border-radius:50%;
+  background:var(--brand-grad);
+  z-index:-1;
+  animation:fabRipple 3s ease infinite;
+  opacity:.45;
+}
+@keyframes fabRipple{
+  0%{transform:scale(1);opacity:.45}
+  100%{transform:scale(1.35);opacity:0}
+}
+.nav-fab svg{
+  width:26px;height:26px;fill:none;stroke:#fff;
+  stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;
+}
+
+.nav-fab-label{
+  position:absolute;
+  bottom:6px;left:50%;
+  transform:translateX(-50%);
+  font-size:.56rem;
+  font-weight:900;
+  color:var(--primary);
+  white-space:nowrap;
+}
+
+/* MODAL */
+.detail-modal{
+  position:fixed;inset:0;z-index:5000;
+  display:none;align-items:flex-end;justify-content:center;
+  padding:15px;
+  background:rgba(15,8,20,.62);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.detail-modal.show{display:flex;animation:modalFade .25s ease}
+@keyframes modalFade{from{opacity:0}to{opacity:1}}
+
+.detail-box{
+  width:100%;max-width:560px;max-height:88vh;
+  overflow-y:auto;padding:20px;
+  border-radius:27px 27px 21px 21px;
+  background:var(--surface-solid);
+  border:1px solid var(--border);
+  box-shadow:0 -10px 50px rgba(219,39,119,.28);
+  animation:modalUp .3s ease;
+  -webkit-overflow-scrolling:touch;
+}
+@keyframes modalUp{
+  from{transform:translateY(35px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+
+.modal-handle{
+  width:42px;height:4px;border-radius:10px;
+  margin:0 auto 17px;
+  background:var(--text-muted);opacity:.25;
+}
+
+.detail-head{
+  display:flex;align-items:center;gap:11px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:4px;
+}
+.detail-icon{
+  width:47px;height:47px;flex:0 0 47px;
+  border-radius:15px;
+  display:flex;align-items:center;justify-content:center;
+}
+.detail-icon svg{
+  width:24px;height:24px;fill:none;stroke:#fff;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+.detail-title-wrap{flex:1;min-width:0}
+.detail-cat{
+  font-size:.62rem;
+  color:var(--text-muted);
+  font-weight:800;
+  margin-bottom:2px;
+}
+.detail-title{
+  font-size:1rem;
+  font-weight:950;
+  color:var(--text);
+  line-height:1.6;
+}
+.detail-close{
+  width:37px;height:37px;border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex:0 0 37px;
+}
+.detail-close:active{transform:scale(.9)}
+.detail-close svg{
+  width:18px;height:18px;fill:none;stroke:currentColor;
+  stroke-width:2.4;stroke-linecap:round;
+}
+.detail-text{
+  padding:17px 3px 13px;
+  color:var(--text);
+  font-size:.88rem;
+  line-height:2.2;
+  font-weight:650;
+  white-space:pre-line;
+}
+.detail-source{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:6px 10px;border-radius:20px;
+  background:var(--gradient-soft);
+  border:1px solid var(--border);
+  color:var(--text-muted);
+  font-size:.62rem;font-weight:800;
+}
+.detail-source svg{
+  width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;
+}
+.detail-actions{
+  display:flex;gap:7px;
+  margin-top:17px;padding-top:13px;
+  border-top:1px dashed var(--border);
+}
+.act-btn{
+  width:39px;height:39px;border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:.2s;
+}
+.act-btn:active{transform:scale(.9)}
+.act-btn svg{
+  width:18px;height:18px;fill:none;stroke:currentColor;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+.act-btn.speaking{
+  color:var(--primary);
+  background:var(--gradient-soft);
+  animation:pulse .9s infinite;
+}
+@keyframes pulse{50%{opacity:.5}}
+
+/* TOAST */
+.toast{
+  position:fixed;left:50%;
+  bottom:calc(108px + env(safe-area-inset-bottom));
+  transform:translate(-50%,20px);
+  opacity:0;pointer-events:none;z-index:7000;
+  max-width:90%;padding:11px 20px;border-radius:30px;
+  background:rgba(33,20,46,.94);color:#fff;
+  font-size:.72rem;font-weight:850;
+  box-shadow:0 14px 38px rgba(219,39,119,.30);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  transition:opacity .25s ease,transform .25s ease;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* RESPONSIVE */
+@media(max-width:390px){
+  .app{padding:0 12px}
+  .page-title{font-size:.95rem}
+  .search-input{font-size:.86rem;padding:13px 44px 13px 46px}
+  .filter-chip{padding:7px 12px;font-size:.68rem}
+  .result-title{font-size:.8rem}
+  .result-snippet{font-size:.68rem}
+  .detail-title{font-size:.92rem}
+  .detail-text{font-size:.82rem}
+  .nav-item{min-height:52px;font-size:.53rem}
+  .nav-fab{width:56px;height:56px;top:-28px}
+  .nav-fab svg{width:24px;height:24px}
+  .bottom-nav{grid-template-columns:1fr 1fr 70px 1fr 1fr}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation:none !important;
+    transition:none !important;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <!-- HEADER -->
-    <header class="header">
-      <a class="back-btn" href="home.html" aria-label="بازگشت">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </a>
-      <div class="header-title" data-i18n="search.title">جستجوی هوشمند</div>
-    </header>
+<!-- HEADER -->
+<header class="topbar">
+  <a class="back-btn" href="home.html" aria-label="بازگشت">
+    <svg viewBox="0 0 24 24">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </a>
+  <div class="page-title" data-i18n="search_title">جستجو</div>
+  <div class="count-badge" id="countBadge">—</div>
+</header>
 
-    <!-- SEARCH BOX -->
-    <div class="search-wrap">
-      <div class="search-input-wrap">
-        <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input
-          type="text"
-          class="search-input"
-          id="searchInput"
-          placeholder="جستجو در همه بخش‌ها..."
-          data-i18n-placeholder="search.placeholder"
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
-        />
-        <button class="clear-btn" id="clearBtn" type="button" aria-label="پاک کردن">
-          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-      </div>
-    </div>
+<!-- SEARCH BAR -->
+<div class="search-wrap">
+  <input type="text"
+         class="search-input"
+         id="searchInput"
+         placeholder="جستجو در همه بخش‌ها..."
+         autocomplete="off"
+         enterkeyhint="search"
+         data-i18n-placeholder="search_placeholder">
+  <svg class="search-icon" viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="7.5"/>
+    <path d="m20 20-3.7-3.7"/>
+  </svg>
+  <button class="clear-btn" id="clearBtn" type="button" aria-label="پاک کردن">
+    <svg viewBox="0 0 24 24">
+      <path d="M18 6 6 18M6 6l12 12"/>
+    </svg>
+  </button>
+</div>
 
-    <!-- FILTERS -->
-    <div class="filters" id="filters">
-      <button class="filter-chip active" data-filter="all" type="button">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
-        همه
-      </button>
-      <button class="filter-chip" data-filter="fiqh" type="button">
-        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        احکام
-      </button>
-      <button class="filter-chip" data-filter="health" type="button">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        سلامت
-      </button>
-      <button class="filter-chip" data-filter="hamraz" type="button">
-        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        همراز
-      </button>
-      <button class="filter-chip" data-filter="duas" type="button">
-        <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
-        دعا
-      </button>
-      <button class="filter-chip" data-filter="education" type="button">
-        <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        آموزش
-      </button>
-    </div>
+<!-- FILTERS -->
+<div class="filters" id="filters">
+  <button class="filter-chip active" data-filter="all">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+    <span data-i18n="f_all">همه</span>
+  </button>
+  <button class="filter-chip" data-filter="ahkam">
+    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <span data-i18n="f_ahkam">احکام</span>
+  </button>
+  <button class="filter-chip" data-filter="health">
+    <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>
+    <span data-i18n="f_health">سلامت</span>
+  </button>
+  <button class="filter-chip" data-filter="hamraz">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span data-i18n="f_hamraz">همراز</span>
+  </button>
+  <button class="filter-chip" data-filter="duas">
+    <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>
+    <span data-i18n="f_duas">دعا</span>
+  </button>
+  <button class="filter-chip" data-filter="education">
+    <svg viewBox="0 0 24 24"><path d="M22 10l-10-5-10 5 10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+    <span data-i18n="f_education">آموزش</span>
+  </button>
+  <button class="filter-chip" data-filter="articles">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+    <span data-i18n="f_articles">مقالات</span>
+  </button>
+  <button class="filter-chip" data-filter="doctors">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+    <span data-i18n="f_doctors">پزشکان</span>
+  </button>
+  <button class="filter-chip" data-filter="daily">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    <span data-i18n="f_daily">روزانه</span>
+  </button>
+</div>
 
-    <!-- STATUS -->
-    <div class="status" id="status"></div>
+<!-- STATS -->
+<div class="result-stats" id="resultStats"></div>
 
-    <!-- RESULTS -->
-    <div class="results" id="results"></div>
+<!-- RECENT SEARCHES -->
+<div class="suggestions" id="recentBlock" style="display:none;">
+  <div class="suggestions-title">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <span data-i18n="recent_title">جستجوهای اخیر</span>
+    <button id="clearRecentBtn" type="button" style="background:none;border:0;color:var(--primary);font-family:inherit;font-size:.65rem;font-weight:900;cursor:pointer;margin-right:auto;text-decoration:underline;" data-i18n="clear_recent">پاک کردن</button>
+  </div>
+  <div class="suggestion-chips" id="recentChips"></div>
+</div>
 
-    <div style="height:30px"></div>
+<!-- SUGGESTIONS -->
+<div class="suggestions" id="suggestions">
+  <div class="suggestions-title">
+    <svg viewBox="0 0 24 24"><path d="M12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9z"/></svg>
+    <span data-i18n="suggestions_title">پیشنهادهای محبوب</span>
+  </div>
+  <div class="suggestion-chips" id="suggestionChips"></div>
+</div>
 
+<!-- RESULTS -->
+<div class="results" id="results"></div>
+
+<!-- LOADING -->
+<div class="loading-state" id="loadingState">
+  <div class="spinner"></div>
+  <div class="loading-text" data-i18n="loading_text">در حال بارگذاری محتوا...</div>
+  <div class="loading-text" id="loadingProgress" style="font-size:.7rem;margin-top:8px;opacity:.7;"></div>
+</div>
+
+<!-- EMPTY -->
+<div class="empty-state" id="emptyState">
+  <svg viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="8"/>
+    <path d="m21 21-4.35-4.35"/>
+  </svg>
+  <div class="empty-title" data-i18n="empty_title">نتیجه‌ای یافت نشد</div>
+  <div class="empty-text" data-i18n="empty_text">لطفاً کلمات دیگری امتحان کنید یا فیلتر را تغییر دهید.</div>
+</div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a class="nav-item active" href="search.html">
+    <svg viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7.5"/>
+      <path d="m20 20-3.7-3.7"/>
+    </svg>
+    <span data-i18n="n_search">جستجو</span>
+  </a>
+
+  <a class="nav-item" href="hamraz.html">
+    <svg viewBox="0 0 24 24">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      <path d="M8 9h8M8 13h5"/>
+    </svg>
+    <span data-i18n="n_hamraz">همراز</span>
+  </a>
+
+  <div class="nav-fab-wrap">
+    <a class="nav-fab" href="home.html" aria-label="خانه">
+      <svg viewBox="0 0 24 24">
+        <path d="m3 10 9-7 9 7"/>
+        <path d="M5 9v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9"/>
+        <path d="M9 22v-8h6v8"/>
+      </svg>
+    </a>
+    <span class="nav-fab-label" data-i18n="n_home">خانه</span>
   </div>
 
-  <!-- BOTTOM NAV -->
-  <nav class="bottom-nav">
-    <a class="nav-item" href="home.html">
-      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      <span data-i18n="nav.home">خانه</span>
-    </a>
-    <a class="nav-item active" href="search.html">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <span data-i18n="search.title">جستجو</span>
-    </a>
-    <a class="nav-item" href="hamraz.html">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      <span data-i18n="nav.hamraz">همراز</span>
-    </a>
-    <a class="nav-item" href="ahkam.html">
-      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-      <span data-i18n="nav.ahkam">احکام</span>
-    </a>
-    <a class="nav-item" href="settings.html">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-      <span data-i18n="nav.more">بیشتر</span>
-    </a>
-  </nav>
+  <a class="nav-item" href="ahkam.html">
+    <svg viewBox="0 0 24 24">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+    </svg>
+    <span data-i18n="n_ahkam">احکام</span>
+  </a>
 
-  <script src="app.js"></script>
-  <script>
-    (function () {
-      'use strict';
+  <a class="nav-item" href="settings.html">
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5v.1a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1A2 2 0 0 1 7 3.3l.1.1a1.7 1.7 0 0 0 1.8.3h.1a1.7 1.7 0 0 0 1-1.5V2a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v.1a1.7 1.7 0 0 0 1.5 1h.1a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.4 1z"/>
+    </svg>
+    <span data-i18n="n_more">بیشتر</span>
+  </a>
+</nav>
 
-      /* ============ STATE ============ */
-      var searchIndex = [];       // {id, title, text, type, category, url}
-      var currentFilter = 'all';
-      var isIndexReady = false;
+<!-- DETAIL MODAL -->
+<div class="detail-modal" id="detailModal" role="dialog" aria-modal="true">
+  <div class="detail-box">
+    <div class="modal-handle"></div>
 
-      var typeLabels = {
-        fiqh: 'احکام',
-        health: 'سلامت',
-        hamraz: 'همراز',
-        duas: 'دعا',
-        education: 'آموزش'
+    <div class="detail-head">
+      <div class="detail-icon" id="detailIcon"></div>
+      <div class="detail-title-wrap">
+        <div class="detail-cat" id="detailCat">—</div>
+        <div class="detail-title" id="detailTitle">—</div>
+      </div>
+      <button class="detail-close" id="detailClose" type="button" aria-label="بستن">
+        <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="detail-text" id="detailText">—</div>
+    <div class="detail-source" id="detailSource" style="display:none;"></div>
+
+    <div class="detail-actions">
+      <button class="act-btn" data-act="copy" title="کپی">
+        <svg viewBox="0 0 24 24">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
+      <button class="act-btn" data-act="share" title="اشتراک‌گذاری">
+        <svg viewBox="0 0 24 24">
+          <circle cx="18" cy="5" r="2.5"/>
+          <circle cx="6" cy="12" r="2.5"/>
+          <circle cx="18" cy="19" r="2.5"/>
+          <path d="m8.2 10.8 7.6-4.5"/>
+          <path d="m8.2 13.2 7.6 4.5"/>
+        </svg>
+      </button>
+      <button class="act-btn" data-act="speak" title="خواندن صوتی">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 10v4h4l5 4V6l-5 4z"/>
+          <path d="M16 9a4 4 0 0 1 0 6"/>
+          <path d="M19 6a8 8 0 0 1 0 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+var THEME_KEY = "bn_theme";
+function getSystemTheme(){
+  try{ return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+  catch(e){ return "light"; }
+}
+function getSavedTheme(){
+  try{
+    var t = localStorage.getItem(THEME_KEY);
+    if(t === "dark" || t === "light") return t;
+  }catch(e){}
+  return getSystemTheme();
+}
+function applyTheme(theme){
+  if(theme !== "dark") theme = "light";
+  document.documentElement.setAttribute("data-theme", theme);
+  document.body.classList.toggle("dark", theme === "dark");
+  var meta = document.getElementById("themeMeta");
+  if(meta) meta.setAttribute("content", theme === "dark" ? "#000000" : "#db2777");
+}
+applyTheme(getSavedTheme());
+
+var T = {
+fa:{
+  search_title:"جستجو", search_placeholder:"جستجو در همه بخش‌ها...",
+  f_all:"همه", f_ahkam:"احکام", f_health:"سلامت",
+  f_hamraz:"همراز", f_duas:"دعا", f_education:"آموزش",
+  f_articles:"مقالات", f_doctors:"پزشکان", f_daily:"روزانه",
+  n_home:"خانه", n_search:"جستجو", n_hamraz:"همراز",
+  n_ahkam:"احکام", n_more:"بیشتر",
+  suggestions_title:"پیشنهادهای محبوب",
+  recent_title:"جستجوهای اخیر", clear_recent:"پاک کردن",
+  loading_text:"در حال بارگذاری محتوا...", loading_progress:"در حال آماده‌سازی...",
+  empty_title:"نتیجه‌ای یافت نشد",
+  empty_text:"لطفاً کلمات دیگری امتحان کنید یا فیلتر را تغییر دهید.",
+  result_count:"نتیجه",
+  copied:"متن کپی شد", share_fallback:"متن کپی شد",
+  speech_unsupported:"خواندن صوتی پشتیبانی نمی‌شود",
+  cat_ahkam:"احکام", cat_health:"سلامت", cat_hamraz:"همراز",
+  cat_duas:"دعا و اعمال", cat_education:"آموزش",
+  cat_articles:"مقالات", cat_doctors:"پزشکان", cat_daily:"حکم و نکته روز",
+  dir:"rtl", lang:"fa"
+},
+ps:{
+  search_title:"لټون", search_placeholder:"په ټولو برخو کې لټون...",
+  f_all:"ټول", f_ahkam:"احکام", f_health:"روغتیا",
+  f_hamraz:"همراز", f_duas:"دعا", f_education:"زده کړه",
+  f_articles:"مقالات", f_doctors:"ډاکټران", f_daily:"ورځنی",
+  n_home:"کور", n_search:"لټون", n_hamraz:"همراز",
+  n_ahkam:"احکام", n_more:"نور",
+  suggestions_title:"مشهور وړاندیزونه",
+  recent_title:"وروستي لټونونه", clear_recent:"پاکول",
+  loading_text:"منځپانګه بار کیږي...", loading_progress:"چمتو کیږي...",
+  empty_title:"هیڅ پایله ونه موندل شوه",
+  empty_text:"مهرباني وکړئ نور کلمې هڅه وکړئ یا فلټر بدل کړئ.",
+  result_count:"پایلې",
+  copied:"متن کاپي شو", share_fallback:"متن کاپي شو",
+  speech_unsupported:"غږیز لوستل نشي",
+  cat_ahkam:"احکام", cat_health:"روغتیا", cat_hamraz:"همراز",
+  cat_duas:"دعا او اعمال", cat_education:"زده کړه",
+  cat_articles:"مقالات", cat_doctors:"ډاکټران", cat_daily:"ورځنی حکم",
+  dir:"rtl", lang:"ps"
+},
+en:{
+  search_title:"Search", search_placeholder:"Search all sections...",
+  f_all:"All", f_ahkam:"Rulings", f_health:"Health",
+  f_hamraz:"Companion", f_duas:"Prayers", f_education:"Education",
+  f_articles:"Articles", f_doctors:"Doctors", f_daily:"Daily",
+  n_home:"Home", n_search:"Search", n_hamraz:"Companion",
+  n_ahkam:"Rulings", n_more:"More",
+  suggestions_title:"Popular suggestions",
+  recent_title:"Recent searches", clear_recent:"Clear",
+  loading_text:"Loading content...", loading_progress:"Preparing...",
+  empty_title:"No results found",
+  empty_text:"Please try other words or change the filter.",
+  result_count:"Results",
+  copied:"Text copied", share_fallback:"Text copied",
+  speech_unsupported:"Speech not supported",
+  cat_ahkam:"Rulings", cat_health:"Health", cat_hamraz:"Companion",
+  cat_duas:"Prayers", cat_education:"Education",
+  cat_articles:"Articles", cat_doctors:"Doctors", cat_daily:"Daily",
+  dir:"ltr", lang:"en"
+}
+};
+
+var SUPPORTED = ["fa","ps","en"];
+var DEFAULT_LANG = "fa";
+var currentT = T.fa;
+
+function getLang(){
+  try{
+    var l = localStorage.getItem("bn_lang");
+    if(l && SUPPORTED.indexOf(l) > -1) return l;
+  }catch(e){}
+  return DEFAULT_LANG;
+}
+function applyLang(lang){
+  if(SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
+  var t = T[lang] || T.fa;
+  currentT = t;
+  document.documentElement.setAttribute("dir", t.dir);
+  document.documentElement.setAttribute("lang", lang);
+  document.body.style.direction = t.dir;
+  document.body.classList.toggle("lang-ltr", t.dir === "ltr");
+  document.body.classList.toggle("lang-rtl", t.dir === "rtl");
+  var els = document.querySelectorAll("[data-i18n]");
+  for(var i=0; i<els.length; i++){
+    var key = els[i].getAttribute("data-i18n");
+    if(t[key] !== undefined) els[i].textContent = t[key];
+  }
+  var ph = document.querySelectorAll("[data-i18n-placeholder]");
+  for(var j=0; j<ph.length; j++){
+    var pk = ph[j].getAttribute("data-i18n-placeholder");
+    if(t[pk] !== undefined) ph[j].setAttribute("placeholder", t[pk]);
+  }
+  document.title = t.search_title + " | BANOVAN NOOR";
+  renderSuggestions();
+  renderRecent();
+}
+
+function $(id){ return document.getElementById(id); }
+
+var toastTimer = null;
+function showMsg(msg, dur){
+  dur = dur || 2200;
+  var t = $("toast");
+  if(!t) return;
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove("show"); }, dur);
+}
+
+function escapeHtml(s){
+  if(s == null) return "";
+  return String(s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+}
+
+function normalizeText(s){
+  if(!s) return "";
+  return String(s)
+    .toLowerCase()
+    .replace(/[يى]/g,"ی")
+    .replace(/ك/g,"ک")
+    .replace(/[ۀة]/g,"ه")
+    .replace(/[أإآٱ]/g,"ا")
+    .replace(/ئ/g,"ی")
+    .replace(/ؤ/g,"و")
+    .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g,"")
+    .replace(/\u200c/g," ")
+    .replace(/[؟?!.,،؛:"'«»()\[\]{}ـ]/g," ")
+    .replace(/[۰-۹]/g, function(d){ return String("۰۱۲۳۴۵۶۷۸۹".indexOf(d)); })
+    .replace(/\s+/g," ")
+    .trim();
+}
+
+var SUFFIXES = [
+  "هایمان","هایتان","هایشان",
+  "هایم","هایت","هایش","های",
+  "هایی","ها",
+  "مان","تان","شان",
+  "ترین","تر",
+  "ان","ات",
+  "م","ت","ش","ی"
+];
+function stemWord(w){
+  if(!w || w.length < 3) return w;
+  for(var i=0; i<SUFFIXES.length; i++){
+    var suf = SUFFIXES[i];
+    if(w.length > suf.length + 1 && w.slice(-suf.length) === suf){
+      return w.slice(0, -suf.length);
+    }
+  }
+  return w;
+}
+
+function levenshtein(a, b){
+  if(a === b) return 0;
+  var la = a.length, lb = b.length;
+  if(la === 0) return lb;
+  if(lb === 0) return la;
+  if(Math.abs(la - lb) > 2) return 99;
+  var prev = new Array(la+1), curr = new Array(la+1);
+  for(var j=0; j<=la; j++) prev[j] = j;
+  for(var i=1; i<=lb; i++){
+    curr[0] = i;
+    for(j=1; j<=la; j++){
+      var cost = (b.charAt(i-1) === a.charAt(j-1)) ? 0 : 1;
+      curr[j] = Math.min(curr[j-1]+1, prev[j]+1, prev[j-1]+cost);
+    }
+    var tmp = prev; prev = curr; curr = tmp;
+  }
+  return prev[la];
+}
+
+var CATS = {
+  ahkam:{ color:"linear-gradient(135deg,#a855f7,#6d28d9)", featureColor:"#8b5cf6",
+    icon:'<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>' },
+  health:{ color:"linear-gradient(135deg,#ec4899,#be185d)", featureColor:"#ec4899",
+    icon:'<svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>' },
+  hamraz:{ color:"linear-gradient(135deg,#fb7185,#e11d48)", featureColor:"#e11d48",
+    icon:'<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>' },
+  duas:{ color:"linear-gradient(135deg,#fbbf24,#d97706)", featureColor:"#d97706",
+    icon:'<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>' },
+  education:{ color:"linear-gradient(135deg,#8b5cf6,#6d28d9)", featureColor:"#6d28d9",
+    icon:'<svg viewBox="0 0 24 24"><path d="M22 10l-10-5-10 5 10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>' },
+  articles:{ color:"linear-gradient(135deg,#38bdf8,#0284c7)", featureColor:"#0284c7",
+    icon:'<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>' },
+  doctors:{ color:"linear-gradient(135deg,#f9a8d4,#ec4899)", featureColor:"#ec4899",
+    icon:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>' },
+  daily:{ color:"linear-gradient(135deg,#10b981,#059669)", featureColor:"#10b981",
+    icon:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>' }
+};
+
+var SOURCES = [
+  { path:"data/fiqh/hanafi.json",          cat:"ahkam", variant:"hanafi" },
+  { path:"data/fiqh/jafari/sistani.json",  cat:"ahkam", variant:"sistani" },
+  { path:"data/fiqh/jafari/shirazi.json",  cat:"ahkam", variant:"shirazi" },
+  { path:"data/fiqh/jafari/fayyaz.json",   cat:"ahkam", variant:"fayyaz" },
+  { path:"data/medical/general-health.json",   cat:"health" },
+  { path:"data/medical/menstruation.json",     cat:"health" },
+  { path:"data/medical/pregnancy.json",        cat:"health" },
+  { path:"data/medical/childbirth.json",       cat:"health" },
+  { path:"data/medical/breast-health.json",    cat:"health" },
+  { path:"data/medical/vaginal-health.json",   cat:"health" },
+  { path:"data/medical/anal-health.json",      cat:"health" },
+  { path:"data/medical/nutrition.json",        cat:"health" },
+  { path:"data/medical/personal-hygiene.json", cat:"health" },
+  { path:"data/hamraz/questions.json",  cat:"hamraz" },
+  { path:"data/hamraz/categories.json", cat:"hamraz", isCategories:true },
+  { path:"data/duas/duas.json", cat:"duas" },
+  { path:"data/duas/amal.json", cat:"duas" },
+  { path:"data/education/education.json", cat:"education" },
+  { path:"data/education/videos.json",    cat:"education" },
+  { path:"data/articles/articles.json", cat:"articles" },
+  { path:"data/doctors/doctors.json", cat:"doctors" },
+  { path:"data/daily/daily.json", cat:"daily" }
+];
+
+var searchIndex = [];
+var currentFilter = "all";
+var currentQuery = "";
+var currentResult = null;
+
+var CACHE_KEY = "bn_search_cache_v1";
+var CACHE_TTL = 6 * 60 * 60 * 1000;
+
+function loadFromCache(){
+  try{
+    var raw = localStorage.getItem(CACHE_KEY);
+    if(!raw) return null;
+    var obj = JSON.parse(raw);
+    if(!obj || !obj.ts || !Array.isArray(obj.items)) return null;
+    if(Date.now() - obj.ts > CACHE_TTL) return null;
+    return obj.items;
+  }catch(e){ return null; }
+}
+function saveToCache(items){
+  try{
+    var trimmed = items.slice(0, 5000).map(function(it){
+      return {
+        c: it.cat,
+        t: it.title.slice(0, 100),
+        x: it.text.slice(0, 300),
+        s: it.source.slice(0, 60)
       };
+    });
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), items: trimmed }));
+  }catch(e){}
+}
+function restoreFromCache(items){
+  searchIndex = items.map(function(it){
+    return {
+      cat: it.c,
+      title: it.t,
+      text: it.x,
+      source: it.s,
+      normTitle: normalizeText(it.t),
+      normText: normalizeText(it.x)
+    };
+  });
+}
 
-      var typeIcons = {
-        fiqh: '<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
-        health: '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
-        hamraz: '<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
-        duas: '<svg viewBox="0 0 24 24"><path d="M12 2v20M5 7l7-5 7 5M5 17l7 5 7-5"/></svg>',
-        education: '<svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>'
-      };
+function addItem(cat, title, text, source){
+  title = String(title || "").trim();
+  text = String(text || "").trim();
+  if(!title && !text) return;
+  searchIndex.push({
+    cat: cat,
+    title: title,
+    text: text,
+    source: source || "",
+    normTitle: normalizeText(title),
+    normText: normalizeText(text)
+  });
+}
 
-      var typeUrls = {
-        fiqh: 'ahkam.html',
-        health: 'health.html',
-        hamraz: 'hamraz.html',
-        duas: 'duas.html',
-        education: 'education.html'
-      };
+function extractText(v){
+  if(!v) return "";
+  if(typeof v === "string") return v;
+  if(typeof v === "number") return String(v);
+  if(typeof v !== "object") return "";
+  if(Array.isArray(v)) return v.map(extractText).filter(Boolean).join("\n");
+  var keys = ["fa","jafari","hanafi","sistani","shirazi","fayyaz","text","answer","body","content"];
+  for(var i=0; i<keys.length; i++){
+    if(typeof v[keys[i]] === "string") return v[keys[i]];
+  }
+  var vals = Object.values(v);
+  for(var j=0; j<vals.length; j++){
+    if(typeof vals[j] === "string") return vals[j];
+  }
+  return "";
+}
 
-      /* ============ INDEX BUILDER ============ */
-      async function buildIndex() {
-        var sources = [
-          { path: 'data/fiqh/jafari.json', type: 'fiqh' },
-          { path: 'data/fiqh/hanafi.json', type: 'fiqh' },
-          { path: 'data/medical/general-health.json', type: 'health' },
-          { path: 'data/medical/menstruation.json', type: 'health' },
-          { path: 'data/medical/pregnancy.json', type: 'health' },
-          { path: 'data/medical/childbirth.json', type: 'health' },
-          { path: 'data/medical/personal-hygiene.json', type: 'health' },
-          { path: 'data/medical/nutrition.json', type: 'health' },
-          { path: 'data/medical/breast-health.json', type: 'health' },
-          { path: 'data/medical/vaginal-health.json', type: 'health' },
-          { path: 'data/medical/anal-health.json', type: 'health' },
-          { path: 'data/hamraz/questions.json', type: 'hamraz' },
-          { path: 'data/duas/duas.json', type: 'duas' },
-          { path: 'data/education/education.json', type: 'education' }
-        ];
-
-        var tasks = sources.map(async function (src) {
-          var data = await BN.loadJSON(src.path);
-          if (!data) return;
-          indexData(data, src.type);
-        });
-
-        await Promise.all(tasks);
-        isIndexReady = true;
-        updateStatus();
-      }
-
-      function indexData(data, type) {
-        // ساختار fiqh: { sections: [ { title, items: [{title, subtitle}] } ] }
-        if (data.sections && Array.isArray(data.sections)) {
-          data.sections.forEach(function (sec) {
-            if (sec.items && Array.isArray(sec.items)) {
-              sec.items.forEach(function (item) {
-                addToIndex({
-                  id: type + '_' + (item.id || item.title || Math.random()),
-                  title: item.title || '',
-                  text: (item.subtitle || '') + ' ' + (item.description || ''),
-                  type: type,
-                  category: sec.title || '',
-                  url: typeUrls[type]
-                });
-              });
-            }
-          });
-        }
-
-        // ساختار hamraz: { categories: [ { title, questions: [{q, a}] } ] }
-        if (data.categories && Array.isArray(data.categories)) {
-          data.categories.forEach(function (cat) {
-            if (cat.questions && Array.isArray(cat.questions)) {
-              cat.questions.forEach(function (q, idx) {
-                addToIndex({
-                  id: type + '_' + (cat.id || 'cat') + '_' + idx,
-                  title: q.q || '',
-                  text: q.a || '',
-                  type: type,
-                  category: cat.title || '',
-                  url: typeUrls[type]
-                });
-              });
-            }
-          });
-        }
-
-        // ساختار آرایه مستقیم: [ { title, description } ]
-        if (Array.isArray(data.items)) {
-          data.items.forEach(function (item, idx) {
-            addToIndex({
-              id: type + '_' + idx,
-              title: item.title || item.name || '',
-              text: (item.description || item.text || item.subtitle || ''),
-              type: type,
-              category: item.category || '',
-              url: typeUrls[type]
-            });
-          });
-        }
-
-        // ساختار آرایه ریشه: [ {title, description} ]
-        if (Array.isArray(data) && !Array.isArray(data.items)) {
-          data.forEach(function (item, idx) {
-            addToIndex({
-              id: type + '_root_' + idx,
-              title: item.title || item.name || item.q || '',
-              text: item.description || item.text || item.a || '',
-              type: type,
-              category: item.category || '',
-              url: typeUrls[type]
-            });
-          });
-        }
-      }
-
-      function addToIndex(entry) {
-        if (!entry || !entry.title) return;
-        searchIndex.push(entry);
-      }
-
-      /* ============ SEARCH ============ */
-      function normalize(str) {
-        if (!str) return '';
-        return String(str)
-          .toLowerCase()
-          .replace(/ي/g, 'ی')
-          .replace(/ك/g, 'ک')
-          .replace(/[\u064B-\u065F\u0670]/g, '')  // حذف اعراب
-          .trim();
-      }
-
-      function escapeHTML(s) {
-        if (s == null) return '';
-        return String(s)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#39;');
-      }
-
-      function highlight(text, query) {
-        if (!text || !query) return escapeHTML(text);
-        var safeText = escapeHTML(text);
-        var safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        var re = new RegExp('(' + safeQuery + ')', 'gi');
-        return safeText.replace(re, '<mark>$1</mark>');
-      }
-
-      function getSnippet(text, query, maxLen) {
-        maxLen = maxLen || 120;
-        if (!text) return '';
-        text = String(text);
-        var lowerText = normalize(text);
-        var lowerQuery = normalize(query);
-        var idx = lowerText.indexOf(lowerQuery);
-        if (idx === -1) {
-          return text.substring(0, maxLen) + (text.length > maxLen ? '...' : '');
-        }
-        var start = Math.max(0, idx - 40);
-        var end = Math.min(text.length, start + maxLen);
-        return (start > 0 ? '...' : '') + text.substring(start, end) + (end < text.length ? '...' : '');
-      }
-
-      function doSearch(query) {
-        var container = document.getElementById('results');
-        var status = document.getElementById('status');
-        query = (query || '').trim();
-
-        // فیلتر
-        var pool = searchIndex;
-        if (currentFilter !== 'all') {
-          pool = pool.filter(function (it) { return it.type === currentFilter; });
-        }
-
-        // اگه خالیه
-        if (!query) {
-          container.innerHTML =
-            '<div class="empty">' +
-              '<div class="empty-icon">🔍</div>' +
-              '<div class="empty-text">جستجو در احکام، سلامت، همراز، دعا و آموزش<br>تایپ کنید تا نتایج نمایش داده شود</div>' +
-            '</div>';
-          status.textContent = pool.length + ' محتوا در فهرست آماده است';
-          return;
-        }
-
-        // سرچ
-        var q = normalize(query);
-        var results = pool.filter(function (item) {
-          var titleMatch = normalize(item.title).indexOf(q) > -1;
-          var textMatch = normalize(item.text).indexOf(q) > -1;
-          var catMatch = normalize(item.category).indexOf(q) > -1;
-          return titleMatch || textMatch || catMatch;
-        });
-
-        // رتبه‌بندی
-        results.forEach(function (r) {
-          var score = 0;
-          if (normalize(r.title).indexOf(q) > -1) score += 100;
-          if (normalize(r.title).indexOf(q) === 0) score += 50;
-          if (normalize(r.category).indexOf(q) > -1) score += 30;
-          if (normalize(r.text).indexOf(q) > -1) score += 10;
-          r._score = score;
-        });
-        results.sort(function (a, b) { return b._score - a._score; });
-
-        status.textContent = results.length > 0
-          ? 'یافت شد: ' + results.length + ' نتیجه'
-          : 'نتیجه‌ای یافت نشد';
-
-        if (results.length === 0) {
-          container.innerHTML =
-            '<div class="empty">' +
-              '<div class="empty-icon">📭</div>' +
-              '<div class="empty-text">برای «' + escapeHTML(query) + '» نتیجه‌ای یافت نشد<br>کلمه دیگری را امتحان کنید</div>' +
-            '</div>';
-          return;
-        }
-
-        // نمایش
-        container.innerHTML = results.slice(0, 40).map(function (r) {
-          var badgeClass = r.type;
-          var badgeLabel = typeLabels[r.type] || r.type;
-          var badgeIcon = typeIcons[r.type] || '';
-          var snippet = getSnippet(r.text, query, 120);
-          var titleHL = highlight(r.title, query);
-          var snippetHL = highlight(snippet, query);
-          var cat = r.category ? ' • ' + escapeHTML(r.category) : '';
-          return '<a class="result-item" href="' + (r.url || '#') + '">' +
-            '<div class="result-head">' +
-              '<span class="result-badge ' + badgeClass + '">' + badgeIcon + ' ' + escapeHTML(badgeLabel) + '</span>' +
-              '<span style="font-size:0.7rem;color:var(--text-muted);font-weight:600">' + cat + '</span>' +
-            '</div>' +
-            '<div class="result-title">' + titleHL + '</div>' +
-            '<div class="result-snippet">' + snippetHL + '</div>' +
-          '</a>';
-        }).join('');
-      }
-
-      /* ============ FILTERS ============ */
-      function setupFilters() {
-        var chips = document.querySelectorAll('.filter-chip');
-        chips.forEach(function (chip) {
-          chip.addEventListener('click', function () {
-            chips.forEach(function (c) { c.classList.remove('active'); });
-            chip.classList.add('active');
-            currentFilter = chip.dataset.filter;
-            doSearch(document.getElementById('searchInput').value);
-          });
+function parseFiqh(data, variant){
+  if(!data) return;
+  var questions = [];
+  if(Array.isArray(data)) questions = data;
+  else if(Array.isArray(data.questions)) questions = data.questions;
+  else if(Array.isArray(data.categories)){
+    data.categories.forEach(function(cat){
+      if(Array.isArray(cat.questions)){
+        cat.questions.forEach(function(q){
+          var copy = Object.assign({}, q);
+          copy._catTitle = cat.title || "";
+          questions.push(copy);
         });
       }
+    });
+  }
+  questions.forEach(function(q){
+    var title = q.q || q.title || q.question || q.name || "";
+    var answer = "";
+    if(q.a){
+      if(typeof q.a === "string") answer = q.a;
+      else if(variant && q.a[variant]) answer = q.a[variant];
+      else answer = extractText(q.a);
+    } else {
+      answer = extractText(q.answer || q.text || q.content || q.body);
+    }
+    var srcLabel = q._catTitle || "احکام";
+    if(variant === "hanafi") srcLabel = "حنفی — " + srcLabel;
+    else if(variant === "sistani") srcLabel = "سیستانی — " + srcLabel;
+    else if(variant === "shirazi") srcLabel = "شیرازی — " + srcLabel;
+    else if(variant === "fayyaz") srcLabel = "فیاض — " + srcLabel;
+    addItem("ahkam", title, answer, srcLabel);
+  });
+}
 
-      /* ============ STATUS ============ */
-      function updateStatus() {
-        var status = document.getElementById('status');
-        if (isIndexReady) {
-          status.textContent = searchIndex.length + ' محتوا در فهرست آماده است';
-        } else {
-          status.textContent = 'در حال بارگذاری فهرست...';
+function parseGeneric(data, cat){
+  if(!data) return;
+  var items = [];
+  if(Array.isArray(data)) items = data;
+  else if(Array.isArray(data.items)) items = data.items;
+  else if(Array.isArray(data.sections)) items = data.sections;
+  else if(Array.isArray(data.topics)) items = data.topics;
+  else if(Array.isArray(data.content)) items = data.content;
+  else if(Array.isArray(data.data)) items = data.data;
+  else if(Array.isArray(data.articles)) items = data.articles;
+  else if(Array.isArray(data.doctors)) items = data.doctors;
+  else if(data.title || data.q || data.name || data.question) items = [data];
+
+  items.forEach(function(it){
+    if(!it) return;
+    if(typeof it === "string"){ addItem(cat, it, "", ""); return; }
+    if(typeof it !== "object") return;
+    var title = it.title || it.q || it.question || it.name || it.heading || "";
+    var text = extractText(it.text || it.a || it.answer || it.description || it.content || it.body || it.summary);
+    var srcLabel = it.category || it.source || it.section || it.tag || "";
+    addItem(cat, title, text, srcLabel);
+  });
+}
+
+function parseHamrazCategories(data){
+  if(!data || !Array.isArray(data.categories)) return;
+  data.categories.forEach(function(cat){
+    if(!Array.isArray(cat.questions)) return;
+    cat.questions.forEach(function(q){
+      var title = q.q || "";
+      var answer = extractText(q.a || q.answer || q.text);
+      addItem("hamraz", title, answer, cat.title || "");
+    });
+  });
+}
+
+function parseDoctors(data){
+  if(!data) return;
+  var items = [];
+  if(Array.isArray(data)) items = data;
+  else if(Array.isArray(data.doctors)) items = data.doctors;
+  else if(Array.isArray(data.items)) items = data.items;
+  items.forEach(function(d){
+    if(!d) return;
+    var name = d.name || d.title || "";
+    var spec = d.specialty || d.speciality || d.field || "";
+    var city = d.city || d.location || "";
+    var bio = d.bio || d.description || d.about || "";
+    var text = [spec, city, bio].filter(Boolean).join(" • ");
+    addItem("doctors", name, text, spec);
+  });
+}
+
+function parseDaily(data){
+  if(!data) return;
+  if(Array.isArray(data.hikm)){
+    data.hikm.forEach(function(h){
+      addItem("daily", h.title || "حکم روز", h.text || "", h.source || "");
+    });
+  }
+  if(Array.isArray(data.tip)){
+    data.tip.forEach(function(t){
+      addItem("daily", t.title || "نکته روز", t.text || "", t.source || "");
+    });
+  }
+}
+
+function fetchJSON(path){
+  return fetch(path, { cache:"force-cache" })
+    .then(function(res){
+      if(!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    });
+}
+
+function loadAll(){
+  var total = SOURCES.length;
+  var done = 0;
+  var progressEl = $("loadingProgress");
+
+  var promises = SOURCES.map(function(src){
+    return fetchJSON(src.path)
+      .then(function(data){
+        if(src.cat === "ahkam") parseFiqh(data, src.variant);
+        else if(src.cat === "hamraz" && src.isCategories) parseHamrazCategories(data);
+        else if(src.cat === "hamraz") parseGeneric(data, "hamraz");
+        else if(src.cat === "doctors") parseDoctors(data);
+        else if(src.cat === "daily") parseDaily(data);
+        else parseGeneric(data, src.cat);
+        done++;
+        if(progressEl) progressEl.textContent = currentT.loading_progress + " " + Math.round((done/total)*100) + "%";
+      })
+      .catch(function(err){
+        done++;
+        console.warn("⚠️", src.path, "-", err.message);
+      });
+  });
+
+  return Promise.all(promises);
+}
+
+function searchItems(query){
+  var nq = normalizeText(query);
+  if(!nq || nq.length < 2) return [];
+
+  var qWords = nq.split(" ").filter(function(w){ return w.length > 1; });
+  if(qWords.length === 0) return [];
+  var qStems = qWords.map(stemWord);
+
+  var results = [];
+  var filter = currentFilter;
+
+  for(var i=0; i<searchIndex.length; i++){
+    var item = searchIndex[i];
+    if(filter !== "all" && item.cat !== filter) continue;
+
+    var score = 0;
+
+    if(item.normTitle === nq){ score += 1000; }
+    else if(item.normTitle.indexOf(nq) > -1){ score += 300; }
+
+    if(item.normText.indexOf(nq) > -1){ score += 100; }
+
+    var tWords = item.normTitle ? item.normTitle.split(" ") : [];
+    var tStems = tWords.map(stemWord);
+    var tText = item.normText;
+
+    for(var j=0; j<qWords.length; j++){
+      var qw = qWords[j];
+      var qs = qStems[j];
+
+      if(tWords.indexOf(qw) > -1 || tStems.indexOf(qs) > -1){
+        score += 80;
+        continue;
+      }
+
+      if(qs.length >= 3){
+        var found = false;
+        for(var k=0; k<tStems.length; k++){
+          if(tStems[k].length < 3) continue;
+          if(tStems[k] === qs){ score += 70; found = true; break; }
+          var dist = levenshtein(qs, tStems[k]);
+          if(dist === 1){ score += 40; found = true; break; }
         }
+        if(found) continue;
       }
 
-      /* ============ INPUT ============ */
-      function setupInput() {
-        var input = document.getElementById('searchInput');
-        var clearBtn = document.getElementById('clearBtn');
+      if(tText.indexOf(qw) > -1){ score += 25; }
+    }
 
-        var timer = null;
-        input.addEventListener('input', function () {
-          clearBtn.classList.toggle('show', input.value.length > 0);
-          clearTimeout(timer);
-          timer = setTimeout(function () {
-            doSearch(input.value);
-          }, 150);
-        });
+    if(score > 30) results.push({ item:item, score:score });
+  }
 
-        clearBtn.addEventListener('click', function () {
-          input.value = '';
-          clearBtn.classList.remove('show');
-          input.focus();
-          doSearch('');
-        });
+  results.sort(function(a,b){ return b.score - a.score; });
+  return results.slice(0, 100);
+}
 
-        // Enter → جستجوی فوری
-        input.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter') {
-            clearTimeout(timer);
-            doSearch(input.value);
-            input.blur();
-          }
-        });
+function highlight(text, query){
+  if(!text) return "";
+  var safe = escapeHtml(text);
+  if(!query) return safe;
+
+  var nq = normalizeText(query);
+  var words = nq.split(" ").filter(function(w){ return w.length > 1; });
+  if(!words.length) return safe;
+
+  var pattern = words
+    .map(function(w){ return w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"); })
+    .join("|");
+  if(!pattern) return safe;
+
+  try{
+    var re = new RegExp("(" + pattern + ")", "gi");
+    return safe.replace(re, "<mark>$1</mark>");
+  }catch(e){
+    return safe;
+  }
+}
+
+var SUGGESTS = {
+  fa:["وضو","نماز مسافر","قاعدگی","بارداری","حجاب","دعای فرج","همراز"],
+  ps:["وضو","مسافر لمونځ","حیض","امیدواري","حجاب","دعا","همراز"],
+  en:["Wudu","Traveler prayer","Menstruation","Pregnancy","Hijab","Dua","Companion"]
+};
+
+var RECENT_KEY = "bn_search_recent_v1";
+var MAX_RECENT = 6;
+
+function getRecent(){
+  try{
+    var raw = localStorage.getItem(RECENT_KEY);
+    if(!raw) return [];
+    var arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  }catch(e){ return []; }
+}
+function saveRecent(q){
+  q = String(q || "").trim();
+  if(q.length < 2) return;
+  var arr = getRecent().filter(function(x){ return x !== q; });
+  arr.unshift(q);
+  if(arr.length > MAX_RECENT) arr = arr.slice(0, MAX_RECENT);
+  try{ localStorage.setItem(RECENT_KEY, JSON.stringify(arr)); }catch(e){}
+}
+function clearRecent(){
+  try{ localStorage.removeItem(RECENT_KEY); }catch(e){}
+  renderRecent();
+}
+
+function renderSuggestions(){
+  var lang = getLang();
+  var list = SUGGESTS[lang] || SUGGESTS.fa;
+  var container = $("suggestionChips");
+  if(!container) return;
+  container.innerHTML = "";
+  list.forEach(function(s){
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "suggestion-chip";
+    btn.textContent = s;
+    btn.addEventListener("click", function(){
+      $("searchInput").value = s;
+      $("clearBtn").classList.add("show");
+      runSearch(s);
+    });
+    container.appendChild(btn);
+  });
+}
+
+function renderRecent(){
+  var recent = getRecent();
+  var container = $("recentChips");
+  var wrap = $("recentBlock");
+  if(!container || !wrap) return;
+
+  if(recent.length === 0){
+    wrap.style.display = "none";
+    return;
+  }
+  wrap.style.display = "";
+  container.innerHTML = "";
+  recent.forEach(function(s){
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "suggestion-chip";
+    btn.textContent = s;
+    btn.addEventListener("click", function(){
+      $("searchInput").value = s;
+      $("clearBtn").classList.add("show");
+      runSearch(s);
+    });
+    container.appendChild(btn);
+  });
+}
+
+function renderResults(results, query){
+  var container = $("results");
+  var stats = $("resultStats");
+  var empty = $("emptyState");
+  var sugg = $("suggestions");
+  var recent = $("recentBlock");
+
+  container.innerHTML = "";
+
+  if(!query){
+    stats.classList.remove("show");
+    empty.classList.remove("show");
+    sugg.style.display = "";
+    if(recent) renderRecent();
+    return;
+  }
+
+  sugg.style.display = "none";
+  if(recent) recent.style.display = "none";
+
+  if(results.length === 0){
+    stats.classList.remove("show");
+    empty.classList.add("show");
+    return;
+  }
+
+  empty.classList.remove("show");
+  stats.classList.add("show");
+  stats.innerHTML = '<b>' + results.length + '</b> ' + currentT.result_count;
+
+  var frag = document.createDocumentFragment();
+
+  results.forEach(function(r){
+    var item = r.item;
+    var cat = CATS[item.cat] || CATS.hamraz;
+
+    var card = document.createElement("div");
+    card.className = "result-card";
+    card.style.setProperty("--result-color", cat.featureColor);
+
+    var titleH = highlight(item.title, query) || '<span style="color:var(--text-muted)">بدون عنوان</span>';
+    var snippetRaw = item.text || "";
+    if(snippetRaw.length > 220) snippetRaw = snippetRaw.slice(0, 220) + "...";
+    var snippetH = highlight(snippetRaw, query);
+
+    card.innerHTML =
+      '<div class="result-head">' +
+        '<div class="result-icon" style="background:' + cat.color + '">' + cat.icon + '</div>' +
+        '<div class="result-cat">' + escapeHtml(currentT["cat_" + item.cat] || item.cat) + '</div>' +
+      '</div>' +
+      '<div class="result-title">' + titleH + '</div>' +
+      (snippetH ? '<div class="result-snippet">' + snippetH + '</div>' : '');
+
+    card.addEventListener("click", function(){ openDetail(item); });
+    frag.appendChild(card);
+  });
+
+  container.appendChild(frag);
+}
+
+function renderNoQuery(){
+  renderResults([], "");
+}
+
+var searchTimeout = null;
+function runSearch(query){
+  currentQuery = query;
+  if(searchTimeout) clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(function(){
+    var results = searchItems(query);
+    renderResults(results, query);
+    // ثبت رویداد آنالیتیکس
+    if (window.bnAnalytics && query.length >= 2) {
+      window.bnAnalytics.track('search', {
+        query: query,
+        filter: currentFilter,
+        results: results.length
+      });
+    }
+  }, 120);
+}
+
+function openDetail(item){
+  currentResult = item;
+  var cat = CATS[item.cat] || CATS.hamraz;
+
+  var icon = $("detailIcon");
+  icon.style.background = cat.color;
+  icon.innerHTML = cat.icon;
+
+  $("detailCat").textContent = currentT["cat_" + item.cat] || item.cat;
+  $("detailTitle").textContent = item.title || "—";
+  $("detailText").textContent = item.text || "—";
+
+  var src = $("detailSource");
+  if(item.source){
+    src.style.display = "inline-flex";
+    src.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>' + escapeHtml(item.source) + '</span>';
+  } else {
+    src.style.display = "none";
+  }
+
+  $("detailModal").classList.add("show");
+
+  if(currentQuery) saveRecent(currentQuery);
+
+  // ثبت رویداد
+  if (window.bnAnalytics) {
+    window.bnAnalytics.track('search_result_open', {
+      cat: item.cat,
+      title: (item.title || '').slice(0, 60)
+    });
+  }
+}
+
+function closeDetail(){
+  stopSpeech();
+  $("detailModal").classList.remove("show");
+  currentResult = null;
+}
+
+function setupSwipeToClose(){
+  var modal = $("detailModal");
+  var box = modal.querySelector(".detail-box");
+  if(!box) return;
+  var startY = 0, currentY = 0, isDragging = false;
+
+  box.addEventListener("touchstart", function(e){
+    if(box.scrollTop > 10) return;
+    startY = e.touches[0].clientY;
+    isDragging = true;
+    box.style.transition = "none";
+  }, { passive:true });
+
+  box.addEventListener("touchmove", function(e){
+    if(!isDragging) return;
+    currentY = e.touches[0].clientY;
+    var diff = currentY - startY;
+    if(diff > 0){
+      box.style.transform = "translateY(" + diff + "px)";
+    }
+  }, { passive:true });
+
+  box.addEventListener("touchend", function(){
+    if(!isDragging) return;
+    isDragging = false;
+    var diff = currentY - startY;
+    box.style.transition = "";
+    box.style.transform = "";
+    if(diff > 100){
+      closeDetail();
+    }
+  });
+}
+
+function fallbackCopy(text){
+  var ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.top = "-1000px";
+  document.body.appendChild(ta);
+  ta.select();
+  try{ document.execCommand("copy"); showMsg(currentT.copied); }catch(e){}
+  document.body.removeChild(ta);
+}
+function copyText(text){
+  if(!text) return;
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text)
+      .then(function(){ showMsg(currentT.copied); })
+      .catch(function(){ fallbackCopy(text); });
+  } else { fallbackCopy(text); }
+}
+function shareText(text, title){
+  if(!text) return;
+  if(navigator.share){
+    navigator.share({ title:title || "بانوان نور", text:text }).catch(function(){});
+  } else {
+    copyText(text);
+    showMsg(currentT.share_fallback);
+  }
+}
+
+var speechBtn = null;
+function speakText(text, button){
+  if(!text) return;
+  if(!("speechSynthesis" in window)){ showMsg(currentT.speech_unsupported); return; }
+  if(window.speechSynthesis.speaking || window.speechSynthesis.pending){
+    window.speechSynthesis.cancel();
+    if(speechBtn) speechBtn.classList.remove("speaking");
+    if(speechBtn === button){ speechBtn = null; return; }
+  }
+  var utt = new SpeechSynthesisUtterance(text);
+  utt.lang = currentT.lang === "en" ? "en-US" : (currentT.lang === "ps" ? "ps-AF" : "fa-IR");
+  utt.rate = .95; utt.pitch = 1;
+  try{
+    var voices = window.speechSynthesis.getVoices();
+    for(var i=0; i<voices.length; i++){
+      if(voices[i].lang && voices[i].lang.toLowerCase().indexOf(currentT.lang) === 0){
+        utt.voice = voices[i]; break;
       }
+    }
+  }catch(e){}
+  if(button){ button.classList.add("speaking"); speechBtn = button; }
+  utt.onend = function(){ if(button) button.classList.remove("speaking"); if(speechBtn === button) speechBtn = null; };
+  utt.onerror = function(){ if(button) button.classList.remove("speaking"); if(speechBtn === button) speechBtn = null; };
+  window.speechSynthesis.speak(utt);
+}
+function stopSpeech(){
+  try{
+    if("speechSynthesis" in window) window.speechSynthesis.cancel();
+    if(speechBtn) speechBtn.classList.remove("speaking");
+    speechBtn = null;
+  }catch(e){}
+}
 
-      /* ============ INIT ============ */
-      async function init() {
-        // تم
-        BN.applySavedTheme();
+function setupHandlers(){
+  var input = $("searchInput");
+  var clearBtn = $("clearBtn");
 
-        // زبان
-        var lang = BN.getSavedLang();
-        await BN.switchLanguage(lang);
+  input.addEventListener("input", function(){
+    var v = input.value.trim();
+    clearBtn.classList.toggle("show", v.length > 0);
+    if(v.length === 0) renderNoQuery();
+    else runSearch(v);
+  });
 
-        // input و filters
-        setupInput();
-        setupFilters();
+  clearBtn.addEventListener("click", function(){
+    input.value = "";
+    clearBtn.classList.remove("show");
+    input.focus();
+    renderNoQuery();
+  });
 
-        // نمایش loader اولیه
-        document.getElementById('status').textContent = 'در حال بارگذاری فهرست...';
-        document.getElementById('results').innerHTML =
-          '<div class="loader">در حال بارگذاری محتوا...</div>';
+  var chips = document.querySelectorAll(".filter-chip");
+  for(var i=0; i<chips.length; i++){
+    (function(chip){
+      chip.addEventListener("click", function(){
+        for(var j=0; j<chips.length; j++) chips[j].classList.remove("active");
+        chip.classList.add("active");
+        currentFilter = chip.getAttribute("data-filter");
+        if(input.value.trim()) runSearch(input.value);
+      });
+    })(chips[i]);
+  }
 
-        // ساخت ایندکس
-        await buildIndex();
+  var clearRecentBtn = $("clearRecentBtn");
+  if(clearRecentBtn) clearRecentBtn.addEventListener("click", clearRecent);
 
-        // نمایش اولیه
-        doSearch('');
-      }
+  $("detailClose").addEventListener("click", closeDetail);
+  $("detailModal").addEventListener("click", function(e){
+    if(e.target === $("detailModal")) closeDetail();
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape") closeDetail();
+  });
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-    })();
-  </script>
-<script src="analytics.js"></script>
+  var actions = document.querySelector(".detail-actions");
+  if(actions){
+    actions.addEventListener("click", function(e){
+      var btn = e.target.closest("[data-act]");
+      if(!btn || !currentResult) return;
+      var act = btn.getAttribute("data-act");
+      var fullText = (currentResult.title || "") + "\n\n" + (currentResult.text || "") +
+                     (currentResult.source ? "\n\n— " + currentResult.source : "");
+      if(act === "copy") copyText(fullText);
+      else if(act === "share") shareText(fullText + "\n\n— بانوان نور", "بانوان نور");
+      else if(act === "speak") speakText((currentResult.title || "") + ". " + (currentResult.text || ""), btn);
+    });
+  }
+
+  window.addEventListener("storage", function(e){
+    if(e.key === THEME_KEY) applyTheme(e.newValue || getSystemTheme());
+    if(e.key === "bn_lang") applyLang(e.newValue || DEFAULT_LANG);
+  });
+}
+
+function tryOpenFromURL(){
+  try{
+    var params = new URLSearchParams(window.location.search);
+    var q = params.get("q");
+    if(q){
+      $("searchInput").value = q;
+      $("clearBtn").classList.add("show");
+      runSearch(q);
+    }
+  }catch(e){}
+}
+
+function init(){
+  applyLang(getLang());
+  setupHandlers();
+  setupSwipeToClose();
+  renderSuggestions();
+  renderRecent();
+
+  var cached = loadFromCache();
+  if(cached && cached.length > 0){
+    restoreFromCache(cached);
+    $("loadingState").classList.remove("show");
+    console.log("⚡ از cache — " + searchIndex.length + " آیتم");
+    tryOpenFromURL();
+    return;
+  }
+
+  $("loadingState").classList.add("show");
+
+  loadAll().then(function(){
+    $("loadingState").classList.remove("show");
+    saveToCache(searchIndex);
+    console.log("✅ Search index built:", searchIndex.length, "items");
+    tryOpenFromURL();
+  });
+}
+
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
+})();
+</script>
+
+<!-- ═══ آنالیتیکس (اول لود بشه) ═══ -->
+<script src="js/bn-analytics.js"></script>
+
+<!-- ═══ ماژول اصلی BN ═══ -->
+<script src="js/bn-app.js"></script>
+
+<!-- ═══ Firebase ═══ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/bn-tracker.js"></script>
+<script src="js/bn-auth-gate.js"></script>
+
+<!-- ═══ ثبت Service Worker ═══ -->
+<script>
+(function(){
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function(reg){
+        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
+      }).catch(function(e){ console.warn('SW register failed:', e.message); });
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
