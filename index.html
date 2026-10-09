@@ -1,535 +1,1110 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#4c1d95" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>بانوان نور | BANOVAN NOOR</title>
-  <link rel="icon" href="assets/icon-192.png" type="image/png" />
-  <link rel="apple-touch-icon" href="assets/icon-192.png" />
-  <link rel="manifest" href="manifest.json" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#db2777" id="themeMeta">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="بانوان نور">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="بانوان نور — همراه آموزشی، فرهنگی و سلامت بانوان مسلمان">
+<title>بانوان نور | BANOVAN NOOR</title>
+<link rel="icon" href="assets/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.json">
 
-  <style>
-    @font-face {
-      font-family: 'Vazirmatn';
-      src: url('assets/fonts/Vazirmatn-Regular.woff2') format('woff2');
-      font-weight: 400;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Vazirmatn';
-      src: url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');
-      font-weight: 700;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Vazirmatn';
-      src: url('assets/fonts/Vazirmatn-Black.woff2') format('woff2');
-      font-weight: 900;
-      font-display: swap;
-    }
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('bn_theme');
+    if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+    if (t === 'dark') document.body && document.body.classList.add('dark');
+  }catch(e){}
+})();
+</script>
 
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    html, body { height: 100%; width: 100%; }
-    html[dir="ltr"] body { direction: ltr; }
+<style>
+/* ═══════════════════════════════════════════════════════════
+   BANOVAN NOOR — INDEX (Welcome) v3 — هماهنگ با برند
+   ═══════════════════════════════════════════════════════════ */
 
-    body {
-      font-family: 'Vazirmatn', Tahoma, 'Segoe UI', Arial, sans-serif;
-      direction: rtl;
-      color: #ffffff;
-      background: #1e1b4b;
-      background-image:
-        radial-gradient(ellipse 700px 500px at 15% 10%, rgba(236, 72, 153, 0.35) 0%, transparent 55%),
-        radial-gradient(ellipse 600px 500px at 90% 20%, rgba(168, 85, 247, 0.42) 0%, transparent 60%),
-        radial-gradient(ellipse 650px 550px at 10% 85%, rgba(139, 92, 246, 0.5) 0%, transparent 55%),
-        radial-gradient(ellipse 700px 600px at 95% 95%, rgba(236, 72, 153, 0.32) 0%, transparent 55%),
-        radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.25) 0%, transparent 70%),
-        linear-gradient(160deg, #1e1b4b 0%, #3b0764 20%, #4c1d95 45%, #5b21b6 60%, #3b0764 80%, #1e1b4b 100%);
-      background-attachment: fixed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow-x: hidden;
-      overflow-y: auto;
-      position: relative;
-      min-height: 100vh;
-      min-height: 100dvh;
-    }
+:root{
+  --bg-1:#fdf5ff;
+  --bg-2:#f6e9ff;
+  --bg-3:#f0e0ff;
+  --bg-4:#e9d5ff;
+  --text:#2d1259;
+  --text-soft:#4c1d95;
+  --text-card:#1f1147;
+  --text-muted:#7c6f9a;
+  --card:rgba(255,255,255,.85);
+  --card-border:rgba(219,39,119,.18);
+  --icon-bg:rgba(255,255,255,.85);
+  --icon-border:rgba(219,39,119,.25);
+  --icon-color:#db2777;
+  --accent:#db2777;
+  --accent-soft:rgba(219,39,119,.10);
+  --accent-2:#a855f7;
+  --pink:#f9a8d4;
+  --purple:#a78bfa;
+  --gold:#fde68a;
+  --green:#10b981;
+  --shadow-sm:0 4px 12px rgba(219,39,119,.15);
+  --shadow-lg:0 14px 34px rgba(219,39,119,.28);
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 12% 18%, rgba(253, 230, 138, 0.9) 0%, transparent 1.1%),
-        radial-gradient(circle at 88% 12%, rgba(253, 230, 138, 0.8) 0%, transparent 0.9%),
-        radial-gradient(circle at 78% 88%, rgba(253, 230, 138, 0.7) 0%, transparent 0.9%),
-        radial-gradient(circle at 8% 72%, rgba(253, 230, 138, 0.6) 0%, transparent 0.8%),
-        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.9) 0%, transparent 0.6%),
-        radial-gradient(circle at 70% 35%, rgba(255, 255, 255, 0.7) 0%, transparent 0.5%),
-        radial-gradient(circle at 25% 65%, rgba(255, 255, 255, 0.6) 0%, transparent 0.6%),
-        radial-gradient(circle at 82% 65%, rgba(255, 255, 255, 0.7) 0%, transparent 0.5%),
-        radial-gradient(circle at 18% 45%, rgba(244, 114, 182, 0.85) 0%, transparent 0.7%),
-        radial-gradient(circle at 90% 45%, rgba(244, 114, 182, 0.75) 0%, transparent 0.7%);
-      pointer-events: none;
-      z-index: 0;
-      animation: starTwinkle 5s ease-in-out infinite alternate;
-    }
-    @keyframes starTwinkle {
-      0% { opacity: 0.5; }
-      100% { opacity: 1; }
-    }
+  /* ✅ گرادیان برند اصلی */
+  --brand-grad:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
+  --brand-grad-anim:linear-gradient(105deg,#e11d48 0%,#db2777 50%,#a855f7 100%);
+}
 
-    .bg-flowers { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .flower { position: absolute; opacity: 0.14; animation: floatFlower 10s ease-in-out infinite; }
-    .flower svg { width: 100%; height: 100%; display: block; }
-    .flower-1 { top: 4%; left: 2%; width: 120px; height: 120px; }
-    .flower-2 { top: 10%; right: 3%; width: 90px; height: 90px; animation-delay: -2s; }
-    .flower-3 { bottom: 6%; left: 4%; width: 100px; height: 100px; animation-delay: -4s; }
-    .flower-4 { bottom: 12%; right: 3%; width: 130px; height: 130px; animation-delay: -1s; }
-    @keyframes floatFlower {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-18px) rotate(8deg); }
-    }
+html[data-theme="dark"]{
+  --bg-1:#000000;
+  --bg-2:#000000;
+  --bg-3:#000000;
+  --bg-4:#000000;
+  --text:#ffffff;
+  --text-soft:#e4e6eb;
+  --text-card:#ffffff;
+  --text-muted:#8e8e93;
+  --card:#1c1c1e;
+  --card-border:#2c2c2e;
+  --icon-bg:#1c1c1e;
+  --icon-border:#2c2c2e;
+  --icon-color:#ec4899;
+  --accent:#ec4899;
+  --accent-soft:rgba(236,72,153,.14);
+  --accent-2:#a855f7;
+  --pink:#f9a8d4;
+  --purple:#a78bfa;
+  --gold:#fde68a;
+  --green:#30d158;
+  --shadow-sm:0 4px 12px rgba(0,0,0,.4);
+  --shadow-lg:0 4px 16px rgba(0,0,0,.5);
+}
 
-    .welcome {
-      width: 100%;
-      max-width: 480px;
-      padding: 24px 22px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      animation: fadeIn 1s ease-out;
-      min-height: 100vh;
-      min-height: 100dvh;
-      position: relative;
-      z-index: 1;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;overflow:hidden}
 
-    .welcome-logo-wrap {
-      position: relative;
-      margin-bottom: 22px;
-      animation: logoEnter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @keyframes logoEnter {
-      from { opacity: 0; transform: translateY(-25px) scale(0.85); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .welcome-logo-wrap::before {
-      content: "";
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, rgba(139, 92, 246, 0.25) 40%, transparent 72%);
-      pointer-events: none;
-      animation: pulseGlow 4s ease-in-out infinite;
-      z-index: -2;
-    }
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-    }
-    .welcome-logo-wrap::after {
-      content: "";
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 230px; height: 230px;
-      border-radius: 50%;
-      border: 2px dashed rgba(253, 230, 138, 0.4);
-      pointer-events: none;
-      animation: rotateRing 25s linear infinite;
-      z-index: -1;
-    }
-    @keyframes rotateRing {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
+body{
+  font-family:Tahoma,'Segoe UI',Arial,sans-serif;
+  direction:rtl;
+  color:var(--text);
+  background-color:var(--bg-1);
+  background-image:
+    radial-gradient(ellipse 500px 400px at 20% 5%,rgba(225,29,72,.12) 0,transparent 60%),
+    radial-gradient(ellipse 400px 350px at 85% 15%,rgba(168,85,247,.15) 0,transparent 65%),
+    radial-gradient(ellipse 450px 400px at 15% 90%,rgba(219,39,119,.14) 0,transparent 60%),
+    linear-gradient(160deg,var(--bg-1) 0,var(--bg-2) 25%,var(--bg-3) 50%,var(--bg-2) 75%,var(--bg-4) 100%);
+  background-attachment:fixed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  transition:background-color .5s ease,color .4s ease;
+  -webkit-font-smoothing:antialiased;
+}
+html[data-theme="dark"] body{
+  background-image:none;
+  background-color:#000;
+}
 
-    .welcome-logo {
-      width: 185px;
-      height: 185px;
-      border-radius: 42px;
-      overflow: hidden;
-      box-shadow:
-        0 20px 50px rgba(76, 29, 149, 0.7),
-        0 8px 22px rgba(236, 72, 153, 0.4),
-        0 0 0 3px rgba(253, 230, 138, 0.5),
-        0 0 0 6px rgba(139, 92, 246, 0.4),
-        0 0 36px rgba(253, 230, 138, 0.3);
-      position: relative;
-      background: linear-gradient(135deg, #2d1259 0%, #4c1d95 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .welcome-logo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      border-radius: 42px;
-    }
-    .logo-fallback {
-      font-size: 5rem;
-      line-height: 1;
-      filter: drop-shadow(0 6px 18px rgba(253, 230, 138, 0.6));
-      user-select: none;
-    }
+.bg-orb{
+  position:fixed;
+  border-radius:50%;
+  pointer-events:none;
+  filter:blur(10px);
+  z-index:0;
+  will-change:transform;
+}
+.orb-one{
+  width:190px;height:190px;
+  top:5%;left:-70px;
+  background:radial-gradient(circle,rgba(225,29,72,.32),transparent 70%);
+  animation:orbOne 12s ease-in-out infinite;
+}
+.orb-two{
+  width:250px;height:250px;
+  right:-100px;top:28%;
+  background:radial-gradient(circle,rgba(168,85,247,.30),transparent 70%);
+  animation:orbTwo 15s ease-in-out infinite;
+}
+.orb-three{
+  width:190px;height:190px;
+  left:22%;bottom:-100px;
+  background:radial-gradient(circle,rgba(252,176,69,.18),transparent 70%);
+  animation:orbThree 13s ease-in-out infinite;
+}
+html[data-theme="dark"] .bg-orb{opacity:.15}
+@keyframes orbOne{50%{transform:translate(35px,35px) scale(1.12)}}
+@keyframes orbTwo{50%{transform:translate(-35px,-25px) scale(.9)}}
+@keyframes orbThree{50%{transform:translate(45px,-35px) scale(1.1)}}
 
-    .welcome-title {
-      font-size: 2.4rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, #ffffff 0%, #fde68a 20%, #f9a8d4 45%, #c4b5fd 70%, #fde68a 100%);
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-      margin-bottom: 12px;
-      line-height: 1.15;
-      animation: titleShine 4s ease-in-out infinite;
-    }
-    @keyframes titleShine {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  pointer-events:none;
+  background:radial-gradient(circle at center,transparent 40%,rgba(0,0,0,.15) 100%);
+  z-index:0;
+}
+html[data-theme="dark"] body::before{
+  background:radial-gradient(circle at center,transparent 40%,rgba(0,0,0,.5) 100%);
+}
 
-    .welcome-sub {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      margin-bottom: 12px;
-      width: 100%;
-    }
-    .welcome-sub-en {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 1.35rem;
-      color: #fbcfe8;
-      letter-spacing: 0.4em;
-      padding-left: 0.4em;
-      font-weight: 900;
-      text-transform: uppercase;
-      text-align: center;
-      text-shadow: 0 0 20px rgba(244, 114, 182, 0.8), 0 0 40px rgba(236, 72, 153, 0.5);
-    }
-    .welcome-sub-en.noor {
-      font-size: 1.5rem;
-      color: #fde68a;
-      letter-spacing: 0.5em;
-      padding-left: 0.5em;
-      text-shadow: 0 0 20px rgba(253, 230, 138, 0.9), 0 0 40px rgba(251, 191, 36, 0.5);
-    }
+.topbar{
+  position:fixed;
+  top:calc(14px + env(safe-area-inset-top, 0px));
+  left:16px;right:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  z-index:20;
+  pointer-events:none;
+}
+.topbar > *{pointer-events:auto}
 
-    .welcome-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin: 18px 0 22px;
-      width: 100%;
-      max-width: 260px;
-    }
-    .welcome-divider::before,
-    .welcome-divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(253, 230, 138, 0.7) 50%, transparent 100%);
-    }
-    .welcome-divider-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #fde68a 0%, #fbbf24 100%);
-      box-shadow: 0 0 12px rgba(253, 230, 138, 1), 0 0 24px rgba(253, 230, 138, 0.7);
-      animation: dotPulse 2s ease-in-out infinite;
-    }
-    @keyframes dotPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.35); }
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 14px;
+  border-radius:16px;
+  background:var(--card);
+  border:1px solid var(--card-border);
+  backdrop-filter:blur(22px) saturate(150%);
+  -webkit-backdrop-filter:blur(22px) saturate(150%);
+  box-shadow:var(--shadow-sm);
+  font-size:.78rem;
+  font-weight:900;
+  color:var(--text);
+  transition:all .4s ease;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:55vw;
+}
+html[data-theme="dark"] .brand{backdrop-filter:none}
+.brand-dot{
+  width:9px;height:9px;
+  border-radius:50%;
+  background:var(--brand-grad);
+  box-shadow:0 0 14px rgba(219,39,119,.70);
+  flex-shrink:0;
+  animation:dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.15);opacity:.7}
+}
 
-    .welcome-text {
-      font-size: 1.45rem;
-      line-height: 1.9;
-      color: #ffffff;
-      max-width: 400px;
-      margin: 0 auto 28px;
-      font-weight: 800;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
-      text-align: center;
-    }
-    .welcome-text strong {
-      color: #fde68a;
-      font-weight: 900;
-      text-shadow: 0 0 24px rgba(253, 230, 138, 0.7);
-      display: inline-block;
-      padding: 0 6px;
-    }
+.theme-button{
+  width:46px;height:46px;
+  border-radius:15px;
+  border:1px solid var(--card-border);
+  background:var(--card);
+  color:var(--text);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  backdrop-filter:blur(22px) saturate(150%);
+  -webkit-backdrop-filter:blur(22px) saturate(150%);
+  box-shadow:var(--shadow-sm);
+  transition:all .3s ease;
+  flex-shrink:0;
+}
+html[data-theme="dark"] .theme-button{backdrop-filter:none}
+.theme-button:active{transform:scale(.9)}
+.theme-button svg{
+  width:21px;height:21px;
+  fill:none;stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .5s cubic-bezier(.16,1,.3,1);
+}
+.theme-button.spin svg{transform:rotate(360deg)}
+.theme-button .icon-moon{display:block}
+.theme-button .icon-sun{display:none}
+html[data-theme="dark"] .theme-button .icon-moon{display:none}
+html[data-theme="dark"] .theme-button .icon-sun{display:block}
 
-    .btn-start {
-      position: relative;
-      background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #6d28d9 100%);
-      color: #ffffff;
-      border: 1.5px solid rgba(253, 230, 138, 0.55);
-      padding: 16px 54px;
-      border-radius: 50px;
-      font-family: inherit;
-      font-weight: 900;
-      font-size: 1.05rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 16px 40px rgba(236, 72, 153, 0.55), 0 10px 28px rgba(109, 40, 217, 0.55);
-      transition: transform 0.15s ease;
-      outline: none;
-      letter-spacing: 1.5px;
-      overflow: hidden;
-      text-decoration: none;
-    }
-    .btn-start:active { transform: scale(0.96); }
-    .btn-start svg {
-      width: 22px; height: 22px;
-      fill: none; stroke: currentColor;
-      stroke-width: 3;
-      stroke-linecap: round; stroke-linejoin: round;
-      transform: scaleX(-1);
-      position: relative; z-index: 1;
-    }
-    html[dir="ltr"] .btn-start svg { transform: scaleX(1); }
-    .btn-start span { position: relative; z-index: 1; }
+.welcome{
+  width:min(100%,500px);
+  max-height:100vh;
+  max-height:100dvh;
+  padding:78px 18px 25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  z-index:2;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-width:none;
+}
+.welcome::-webkit-scrollbar{display:none}
 
-    .lang-row {
-      display: flex;
-      gap: 10px;
-      margin-top: 32px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .lang-btn {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1.5px solid rgba(244, 114, 182, 0.35);
-      color: #fbcfe8;
-      border-radius: 30px;
-      padding: 10px 20px;
-      font-family: inherit;
-      font-size: 0.88rem;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      outline: none;
-      min-width: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .lang-btn .flag { font-size: 1.05rem; line-height: 1; }
-    .lang-btn:active { transform: scale(0.95); }
-    .lang-btn.active {
-      background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #6d28d9 100%);
-      color: #ffffff;
-      border-color: rgba(253, 230, 138, 0.75);
-      transform: translateY(-2px);
-    }
+.card{
+  width:100%;
+  padding:30px 22px 25px;
+  border-radius:32px;
+  border:1px solid var(--card-border);
+  background:linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,.7));
+  backdrop-filter:blur(30px) saturate(145%);
+  -webkit-backdrop-filter:blur(30px) saturate(145%);
+  box-shadow:var(--shadow-lg);
+  position:relative;
+  overflow:hidden;
+  transition:all .4s ease;
+}
+html[data-theme="dark"] .card{
+  background:#1c1c1e;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  backdrop-filter:none;
+}
+.card::before{
+  content:"";
+  position:absolute;inset:0;
+  pointer-events:none;
+  background:linear-gradient(125deg,
+    rgba(225,29,72,.07),
+    transparent 32%,
+    rgba(168,85,247,.07) 70%,
+    rgba(252,176,69,.04));
+}
+html[data-theme="dark"] .card::before{display:none}
 
-    @media (max-width: 380px) {
-      .welcome-title { font-size: 2rem; }
-      .welcome-logo { width: 160px; height: 160px; border-radius: 36px; }
-      .welcome-logo-wrap::after { width: 200px; height: 200px; }
-      .welcome-sub-en { font-size: 1.1rem; letter-spacing: 0.32em; padding-left: 0.32em; }
-      .welcome-sub-en.noor { font-size: 1.25rem; letter-spacing: 0.42em; padding-left: 0.42em; }
-      .welcome-text { font-size: 1.25rem; }
-      .btn-start { padding: 14px 44px; font-size: 1rem; }
-    }
-  </style>
+.content{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.logo-wrapper{
+  width:158px;height:158px;
+  margin:0 auto 21px;
+  position:relative;
+  display:grid;
+  place-items:center;
+}
+.logo-wrapper::before{
+  content:"";
+  position:absolute;
+  inset:-18px;
+  border-radius:50%;
+  background:conic-gradient(from 210deg,
+    #e11d48,#db2777,#a855f7,#e11d48);
+  filter:blur(18px);
+  opacity:.5;
+  animation:logoGlow 9s linear infinite;
+  z-index:0;
+}
+html[data-theme="dark"] .logo-wrapper::before{opacity:.35}
+@keyframes logoGlow{to{transform:rotate(360deg)}}
+
+.logo-ring{
+  width:158px;height:158px;
+  padding:4px;
+  border-radius:50%;
+  background:conic-gradient(from 210deg,
+    #e11d48,#db2777,#a855f7,#e11d48);
+  box-shadow:
+    0 0 35px rgba(219,39,119,.32),
+    0 20px 55px rgba(0,0,0,.2);
+  position:relative;
+  z-index:1;
+  animation:ringRotate 18s linear infinite;
+}
+html[data-theme="dark"] .logo-ring{
+  box-shadow:0 0 35px rgba(219,39,119,.4),0 20px 55px rgba(0,0,0,.6);
+}
+@keyframes ringRotate{to{transform:rotate(-360deg)}}
+
+.logo-inner{
+  width:100%;height:100%;
+  padding:6px;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid var(--card-border);
+  transition:background .4s ease;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+html[data-theme="dark"] .logo-inner{background:#000}
+
+.logo{
+  width:100%;height:100%;
+  display:block;
+  object-fit:cover;
+  border-radius:50%;
+  background:var(--brand-grad);
+  animation:ringRotateReverse 18s linear infinite;
+}
+@keyframes ringRotateReverse{to{transform:rotate(360deg)}}
+
+.logo-fallback{
+  display:none;
+  position:absolute;
+  width:80px;height:80px;
+  inset:0;margin:auto;
+  z-index:3;
+  filter:drop-shadow(0 4px 12px rgba(252,176,69,.5));
+  animation:fallbackFloat 4s ease-in-out infinite;
+}
+@keyframes fallbackFloat{
+  0%,100%{transform:translateY(0) rotate(-1deg)}
+  50%{transform:translateY(-4px) rotate(1deg)}
+}
+
+.logo-wrapper.no-logo .logo{display:none}
+.logo-wrapper.no-logo .logo-fallback{display:block}
+.logo-wrapper.no-logo .logo-inner{
+  background:radial-gradient(circle at 50% 40%,#db2777 0,#a855f7 70%,#1a0b3d 100%);
+}
+html[data-theme="dark"] .logo-wrapper.no-logo .logo-inner{
+  background:radial-gradient(circle at 50% 40%,#a855f7 0,#1c1c1e 70%,#000 100%);
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border-radius:99px;
+  color:var(--text);
+  font-size:.72rem;
+  font-weight:800;
+  background:linear-gradient(90deg,rgba(225,29,72,.15),rgba(168,85,247,.15));
+  border:1px solid var(--card-border);
+  margin-bottom:14px;
+  transition:all .4s ease;
+}
+html[data-theme="dark"] .badge{
+  background:var(--accent-soft);
+  color:var(--accent);
+  border-color:rgba(236,72,153,.3);
+}
+.badge-dot{
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 12px var(--green);
+  flex-shrink:0;
+  animation:badgeBlink 1.5s ease-in-out infinite;
+}
+@keyframes badgeBlink{
+  0%,100%{opacity:1}
+  50%{opacity:.4}
+}
+
+.title{
+  font-size:clamp(2.1rem,9vw,3.1rem);
+  line-height:1.1;
+  font-weight:900;
+  letter-spacing:-.5px;
+  margin-bottom:9px;
+  background:linear-gradient(90deg,
+    #a855f7 0%,#db2777 25%,#e11d48 50%,#db2777 75%,#a855f7 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  animation:titleMove 6s ease-in-out infinite;
+  text-align:center;
+}
+html[data-theme="dark"] .title{
+  background:linear-gradient(90deg,#fff 0,#a855f7 30%,#ec4899 55%,#a855f7 80%,#fff 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+@keyframes titleMove{50%{background-position:100% center}}
+
+.english{
+  font-family:Georgia,serif;
+  font-size:1rem;
+  letter-spacing:.45em;
+  padding-left:.45em;
+  color:var(--accent);
+  font-weight:700;
+  margin-bottom:17px;
+  text-align:center;
+  transition:color .4s ease;
+}
+html[data-theme="dark"] .english{color:var(--purple)}
+
+.divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:76%;
+  margin:0 auto 18px;
+}
+.divider span{
+  height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,var(--card-border),transparent);
+}
+.divider i{
+  width:8px;height:8px;
+  transform:rotate(45deg);
+  background:var(--brand-grad);
+  box-shadow:0 0 16px rgba(219,39,119,.65);
+  animation:dividerSpin 3s ease-in-out infinite;
+  flex-shrink:0;
+}
+@keyframes dividerSpin{
+  0%,100%{transform:rotate(45deg) scale(1)}
+  50%{transform:rotate(225deg) scale(1.3)}
+}
+
+.description{
+  color:var(--text-muted);
+  font-size:1rem;
+  line-height:1.95;
+  max-width:380px;
+  margin:0 auto 24px;
+  text-align:center;
+  transition:color .4s ease;
+}
+.description strong{
+  color:var(--text);
+  font-weight:900;
+}
+
+.start-button{
+  width:100%;
+  max-width:310px;
+  min-height:57px;
+  margin:auto;
+  border:0;
+  border-radius:19px;
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:11px;
+  font-family:inherit;
+  font-size:1rem;
+  font-weight:900;
+  background:var(--brand-grad-anim);
+  background-size:200% 100%;
+  box-shadow:
+    0 18px 40px rgba(219,39,119,.35),
+    0 8px 23px rgba(168,85,247,.24),
+    inset 0 1px rgba(255,255,255,.45);
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .2s ease;
+  animation:gradientMove 5s ease infinite;
+  -webkit-tap-highlight-color:transparent;
+  opacity:1 !important;
+}
+@keyframes gradientMove{50%{background-position:100% 0}}
+
+.start-button::before{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;
+  width:45%;
+  left:-65%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-22deg);
+  animation:buttonShine 4s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes buttonShine{
+  0%,55%{left:-65%}
+  80%,100%{left:125%}
+}
+.start-button:active{transform:scale(.97)}
+
+.start-button span,
+.start-button svg{position:relative;z-index:2}
+
+.start-button svg{
+  width:20px;height:20px;
+  fill:none;stroke:currentColor;
+  stroke-width:2.5;
+  stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .3s ease;
+}
+.start-button:hover svg{transform:translateX(-3px)}
+[dir="ltr"] .start-button svg{transform:scaleX(-1)}
+
+.start-button.loading{pointer-events:none;opacity:.9}
+.start-button.loading svg{
+  animation:spin 1s linear infinite;
+  transform:none !important;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.languages{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  width:100%;
+  max-width:310px;
+  margin:15px auto 0;
+}
+.language{
+  min-height:43px;
+  border-radius:14px;
+  border:1px solid var(--card-border);
+  color:var(--text-muted);
+  background:var(--accent-soft);
+  font-family:inherit;
+  font-size:.78rem;
+  font-weight:800;
+  cursor:pointer;
+  transition:.25s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.language:hover{border-color:var(--accent);color:var(--text)}
+.language.active{
+  color:#fff;
+  border-color:transparent;
+  background:var(--brand-grad);
+  box-shadow:0 8px 22px rgba(219,39,119,.22);
+}
+html[data-theme="dark"] .language.active{
+  background:var(--brand-grad);
+  box-shadow:0 8px 22px rgba(219,39,119,.3);
+}
+.language:active{transform:scale(.95)}
+
+/* ═══ FOOTER ═══ */
+.footer{
+  margin-top:22px;
+  padding:8px 4px 2px;
+  text-align:center;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-top:1px solid transparent;
+  border-image:linear-gradient(90deg,transparent,rgba(225,29,72,.35),rgba(168,85,247,.35),transparent) 1;
+}
+
+.footer::after{
+  content:"";
+  position:absolute;
+  bottom:-6px;
+  left:50%;
+  transform:translateX(-50%);
+  width:55%;
+  height:2px;
+  border-radius:2px;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    #db2777 20%,
+    #a855f7 50%,
+    #e11d48 80%,
+    transparent 100%);
+  background-size:200% 100%;
+  animation:footerBar 4s ease-in-out infinite;
+  opacity:.85;
+}
+@keyframes footerBar{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+.footer-dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--brand-grad);
+  box-shadow:0 0 10px rgba(219,39,119,.65);
+  flex-shrink:0;
+  animation:dotPulse 2s ease-in-out infinite;
+}
+
+.footer-text{
+  position:relative;
+  font-size:.78rem;
+  font-weight:900;
+  letter-spacing:.2px;
+  background:linear-gradient(90deg,
+    #db2777 0%,
+    #a855f7 20%,
+    #e11d48 40%,
+    #db2777 60%,
+    #a855f7 80%,
+    #db2777 100%);
+  background-size:300% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  animation:footerTextFlow 5s linear infinite;
+  filter:drop-shadow(0 1px 2px rgba(219,39,119,.15));
+  padding:2px 4px;
+}
+html[data-theme="dark"] .footer-text{
+  background:linear-gradient(90deg,
+    #ec4899 0%,
+    #a855f7 20%,
+    #e11d48 40%,
+    #ec4899 60%,
+    #a855f7 80%,
+    #ec4899 100%);
+  background-size:300% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  filter:drop-shadow(0 1px 3px rgba(168,85,247,.25));
+}
+@keyframes footerTextFlow{
+  0%{background-position:0% center}
+  100%{background-position:300% center}
+}
+
+.footer-text::before{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;
+  left:-30%;
+  width:30%;
+  background:linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,.9),
+    transparent);
+  transform:skewX(-20deg);
+  animation:footerShine 4s ease-in-out infinite;
+  mix-blend-mode:overlay;
+  pointer-events:none;
+  border-radius:6px;
+}
+@keyframes footerShine{
+  0%,60%{left:-30%}
+  85%,100%{left:130%}
+}
+
+/* ═══ ANIMATIONS ═══ */
+.fade{
+  opacity:0;
+  transform:translateY(18px);
+  animation:fadeIn .75s cubic-bezier(.16,1,.3,1) forwards;
+}
+.delay-1{animation-delay:.08s}
+.delay-2{animation-delay:.18s}
+.delay-3{animation-delay:.28s}
+.delay-4{animation-delay:.38s}
+.delay-5{animation-delay:.48s}
+.delay-6{animation-delay:.58s}
+@keyframes fadeIn{to{opacity:1;transform:none}}
+
+.ripple{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,.45);
+  transform:scale(0);
+  animation:rippleAnim .65s ease-out;
+  pointer-events:none;
+}
+@keyframes rippleAnim{to{transform:scale(4);opacity:0}}
+
+@media(max-width:370px){
+  .welcome{padding:70px 13px 18px}
+  .card{padding:20px 14px;border-radius:28px}
+  .logo-wrapper,.logo-ring{width:116px;height:116px}
+  .logo-wrapper{margin-bottom:15px}
+  .logo-wrapper .logo-fallback{width:60px;height:60px}
+  .title{font-size:1.9rem}
+  .description{font-size:.87rem}
+  .start-button{min-height:52px;font-size:.9rem}
+  .language{font-size:.7rem}
+  .brand{font-size:.7rem;padding:7px 10px;max-width:50vw}
+  .footer-text{font-size:.7rem}
+}
+
+@media(max-height:700px){
+  .welcome{padding-top:65px}
+  .card{padding-top:20px;padding-bottom:20px}
+  .logo-wrapper,.logo-ring{width:120px;height:120px}
+  .logo-wrapper{margin-bottom:13px}
+  .logo-wrapper .logo-fallback{width:64px;height:64px}
+  .title{font-size:2.15rem}
+  .english{margin-bottom:10px}
+  .description{margin-bottom:15px;font-size:.9rem}
+  .start-button{min-height:51px}
+  .footer{margin-top:16px}
+}
+
+@media(max-height:520px) and (orientation:landscape){
+  .welcome{padding:55px 16px 12px;align-items:flex-start}
+  .card{padding:14px 18px}
+  .logo-wrapper,.logo-ring{width:80px;height:80px;margin-bottom:10px}
+  .logo-wrapper::before{inset:-10px}
+  .logo-wrapper .logo-fallback{width:44px;height:44px}
+  .title{font-size:1.5rem;margin-bottom:4px}
+  .english{font-size:.75rem;margin-bottom:8px;letter-spacing:.35em}
+  .divider{margin:0 auto 8px}
+  .description{font-size:.8rem;margin-bottom:10px;line-height:1.6}
+  .start-button{min-height:44px;font-size:.85rem;max-width:260px}
+  .languages{margin-top:10px;max-width:260px}
+  .language{min-height:36px;font-size:.7rem}
+  .footer{display:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+  .bg-orb{display:none}
+  .footer-text::before{display:none}
+}
+</style>
 </head>
 
 <body>
 
-  <div class="bg-flowers" aria-hidden="true">
-    <div class="flower flower-1"><svg viewBox="0 0 100 100"><g fill="#f9a8d4"><ellipse cx="50" cy="25" rx="14" ry="22"/><ellipse cx="50" cy="75" rx="14" ry="22"/><ellipse cx="25" cy="50" rx="22" ry="14"/><ellipse cx="75" cy="50" rx="22" ry="14"/></g><circle cx="50" cy="50" r="10" fill="#fde68a"/></svg></div>
-    <div class="flower flower-2"><svg viewBox="0 0 100 100"><g fill="#c4b5fd"><ellipse cx="50" cy="25" rx="13" ry="21"/><ellipse cx="50" cy="75" rx="13" ry="21"/><ellipse cx="25" cy="50" rx="21" ry="13"/><ellipse cx="75" cy="50" rx="21" ry="13"/></g><circle cx="50" cy="50" r="9" fill="#fbbf24"/></svg></div>
-    <div class="flower flower-3"><svg viewBox="0 0 100 100"><g fill="#f472b6"><ellipse cx="50" cy="28" rx="13" ry="20"/><ellipse cx="50" cy="72" rx="13" ry="20"/><ellipse cx="28" cy="50" rx="20" ry="13"/><ellipse cx="72" cy="50" rx="20" ry="13"/></g><circle cx="50" cy="50" r="8" fill="#fde68a"/></svg></div>
-    <div class="flower flower-4"><svg viewBox="0 0 100 100"><g fill="#a78bfa"><ellipse cx="50" cy="22" rx="15" ry="24"/><ellipse cx="50" cy="78" rx="15" ry="24"/><ellipse cx="22" cy="50" rx="24" ry="15"/><ellipse cx="78" cy="50" rx="24" ry="15"/></g><circle cx="50" cy="50" r="11" fill="#fbcfe8"/></svg></div>
+<div class="bg-orb orb-one" aria-hidden="true"></div>
+<div class="bg-orb orb-two" aria-hidden="true"></div>
+<div class="bg-orb orb-three" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-dot"></span>
+    <span id="miniBrand">بانوان نور</span>
   </div>
 
-  <div class="welcome">
+  <button class="theme-button" id="themeButton" type="button" aria-label="تغییر تم">
+    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3A7 7 0 0 0 21 12.8Z"/>
+    </svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+    </svg>
+  </button>
+</header>
 
-    <div class="welcome-logo-wrap">
-      <div class="welcome-logo">
-        <img id="logoImg" src="assets/logo.png" alt="بانوان نور" />
+<main class="welcome">
+  <section class="card">
+    <div class="content">
+
+      <div class="logo-wrapper fade delay-1" id="logoWrapper">
+        <div class="logo-ring">
+          <div class="logo-inner">
+            <img class="logo"
+                 id="logoImg"
+                 src="assets/icon-512.png"
+                 alt="بانوان نور"
+                 loading="eager"
+                 decoding="async">
+          </div>
+        </div>
+
+        <svg class="logo-fallback" viewBox="0 0 120 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="noorGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#db2777"/>
+              <stop offset="50%" stop-color="#e11d48"/>
+              <stop offset="100%" stop-color="#a855f7"/>
+            </linearGradient>
+            <linearGradient id="noorGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#fde68a"/>
+            </linearGradient>
+          </defs>
+          <path d="M60 12 L63 20 L71 23 L63 26 L60 34 L57 26 L49 23 L57 20 Z" fill="url(#noorGrad2)" stroke="#db2777" stroke-width=".5"/>
+          <path d="M60 32 C 42 44, 36 56, 36 66 L 84 66 C 84 56, 78 44, 60 32 Z" fill="url(#noorGrad1)" stroke="rgba(255,255,255,.4)" stroke-width=".8"/>
+          <path d="M60 40 A 10 10 0 1 0 60 56 A 8 8 0 1 1 60 40 Z" fill="#fde68a" opacity=".9"/>
+          <rect x="34" y="66" width="4" height="22" fill="url(#noorGrad1)" rx="1"/>
+          <rect x="82" y="66" width="4" height="22" fill="url(#noorGrad1)" rx="1"/>
+          <rect x="58" y="66" width="4" height="22" fill="url(#noorGrad1)" rx="1" opacity=".8"/>
+          <path d="M32 66 L88 66 L86 70 L34 70 Z" fill="rgba(255,255,255,.2)"/>
+          <path d="M30 88 L90 88 L92 96 L28 96 Z" fill="url(#noorGrad1)"/>
+          <ellipse cx="60" cy="102" rx="28" ry="3" fill="rgba(219,39,119,.4)"/>
+        </svg>
       </div>
+
+      <div class="badge fade delay-2">
+        <span class="badge-dot"></span>
+        <span id="badgeText">همراه آموزشی، فرهنگی و سلامت بانوان</span>
+      </div>
+
+      <h1 class="title fade delay-3" id="titleText">بانوان نور</h1>
+      <div class="english fade delay-3">BANOVAN NOOR</div>
+
+      <div class="divider fade delay-4" aria-hidden="true">
+        <span></span>
+        <i></i>
+        <span></span>
+      </div>
+
+      <p class="description fade delay-4">
+        <span id="welcomeLine">به</span>
+        <strong id="appName">بانوان نور</strong>
+        <span id="welcomeEnd">خوش آمدید؛ دانایی، آرامش و آگاهی را همراه خود داشته باشید.</span>
+      </p>
+
+      <a class="start-button fade delay-5" id="startButton" href="home.html" role="button">
+        <span id="startText">ورود به برنامه</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h13"/>
+          <path d="M13 6l6 6-6 6"/>
+        </svg>
+      </a>
+
+      <div class="languages fade delay-6" role="group" aria-label="زبان">
+        <button class="language active" data-lang="fa" type="button">فارسی</button>
+        <button class="language" data-lang="ps" type="button">پښتو</button>
+        <button class="language" data-lang="en" type="button">English</button>
+      </div>
+
+      <div class="footer fade delay-6">
+        <span class="footer-dot" aria-hidden="true"></span>
+        <span class="footer-text" id="footerText">تهیه کننده: سید مقدس حسینی</span>
+      </div>
+
     </div>
+  </section>
+</main>
 
-    <h1 class="welcome-title" id="titleText">بانوان نور</h1>
+<!-- ✅ اسکریپت‌ها با مسیرهای صحیح -->
+<script src="js/bn-analytics.js"></script>
+<script src="js/bn-app.js"></script>
 
-    <div class="welcome-sub">
-      <span class="welcome-sub-en">BANOVAN</span>
-      <span class="welcome-sub-en noor">NOOR</span>
-    </div>
+<script>
+(function(){
+"use strict";
 
-    <div class="welcome-divider"><span class="welcome-divider-dot"></span></div>
+/* ═══ THEME MANAGER — هماهنگ با bn-app.js ═══ */
+var THEME_KEY = 'bn_theme';
 
-    <p class="welcome-text">
-      <span id="line1Text">به</span>
-      <strong id="appNameText">بانوان نور</strong>
-      <span id="line2Text">خوش آمدید</span>
-    </p>
+function getSystemTheme(){
+  try{ return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  catch(e){ return 'light'; }
+}
+function getSavedTheme(){
+  try{
+    var t = localStorage.getItem(THEME_KEY);
+    if (t === 'dark' || t === 'light') return t;
+  }catch(e){}
+  return getSystemTheme();
+}
+function applyTheme(theme){
+  if (theme !== 'dark') theme = 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+  document.body.classList.toggle('dark', theme === 'dark'); // ✅ هماهنگ با bn-app.js
+  var meta = document.getElementById('themeMeta');
+  if (meta) meta.setAttribute('content', theme === 'dark' ? '#000000' : '#db2777');
+}
+function setTheme(theme){
+  try{ localStorage.setItem(THEME_KEY, theme); }catch(e){}
+  applyTheme(theme);
+  if (window.bnAnalytics) window.bnAnalytics.track('theme_changed', { theme: theme });
+}
+function toggleTheme(){
+  var cur = document.documentElement.getAttribute('data-theme');
+  var next = cur === 'dark' ? 'light' : 'dark';
+  var btn = document.getElementById('themeButton');
+  if (btn){
+    btn.classList.add('spin');
+    setTimeout(function(){ btn.classList.remove('spin'); }, 500);
+  }
+  setTheme(next);
+}
 
-    <a class="btn-start" id="btnStart" href="home.html">
-      <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-      <span id="startText">شروع</span>
-    </a>
+applyTheme(getSavedTheme());
 
-    <div class="lang-row" role="group" aria-label="زبان">
-      <button class="lang-btn active" type="button" data-lang="fa"><span class="flag">🇮🇷</span><span>فارسی</span></button>
-      <button class="lang-btn" type="button" data-lang="ps"><span class="flag">🇦🇫</span><span>پښتو</span></button>
-      <button class="lang-btn" type="button" data-lang="en"><span class="flag">🇬🇧</span><span>English</span></button>
-    </div>
-
-  </div>
-
-  <script>
-    (function () {
-      'use strict';
-
-      /* ---------- ترجمه‌های پیش‌فرض (fallback برای file://) ---------- */
-      var FALLBACK = {
-        fa: { appName: 'بانوان نور', line1: 'به', line2: 'خوش آمدید', start: 'شروع', dir: 'rtl', lang: 'fa' },
-        ps: { appName: 'بانوان نور', line1: 'ته', line2: 'ښه راغلاست', start: 'پیل', dir: 'rtl', lang: 'ps' },
-        en: { appName: 'Banovan Noor', line1: 'Welcome to', line2: '', start: 'Start', dir: 'ltr', lang: 'en' }
-      };
-
-      var SUPPORTED = ['fa', 'ps', 'en'];
-      var DEFAULT_LANG = 'fa';
-      var cache = {};  // ترجمه‌های لودشده از i18n
-
-      function safeGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
-      function safeSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-
-      function getLang() {
-        var l = safeGet('bn_lang');
-        return (l && SUPPORTED.indexOf(l) > -1) ? l : DEFAULT_LANG;
+try{
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e){
+    try{
+      if (!localStorage.getItem(THEME_KEY)){
+        applyTheme(e.matches ? 'dark' : 'light');
       }
+    }catch(err){}
+  });
+}catch(e){}
 
-      /* تلاش برای خواندن از i18n/*.json — اگه نشد، fallback */
-      function loadTranslation(lang) {
-        if (cache[lang]) return Promise.resolve(cache[lang]);
+window.addEventListener('storage', function(e){
+  if (e.key === THEME_KEY) applyTheme(e.newValue || getSystemTheme());
+});
 
-        // اگه روی file:// هستیم، مستقیم fallback بده
-        if (location.protocol === 'file:') {
-          cache[lang] = FALLBACK[lang];
-          return Promise.resolve(FALLBACK[lang]);
-        }
+/* ═══ SMART LOGO LOADER ═══ */
+(function(){
+  var sources = [
+    'assets/icon-512.png','assets/logo.png','assets/icon-192.png',
+    'assets/icon-72.png','logo.png','icon-512.png'
+  ];
+  var img = document.getElementById('logoImg');
+  var wrap = document.getElementById('logoWrapper');
+  if (!img || !wrap) return;
+  var i = 0;
+  function next(){
+    if (i >= sources.length){ wrap.classList.add('no-logo'); return; }
+    img.src = sources[i]; i++;
+  }
+  img.addEventListener('load', function(){
+    if (img.naturalWidth > 0) wrap.classList.remove('no-logo');
+    else next();
+  });
+  img.addEventListener('error', next);
+  next();
+})();
 
-        return fetch('i18n/' + lang + '.json', { cache: 'no-store' })
-          .then(function (r) { return r.ok ? r.json() : null; })
-          .then(function (data) {
-            var merged = Object.assign({}, FALLBACK[lang], data || {});
-            cache[lang] = merged;
-            return merged;
-          })
-          .catch(function () {
-            cache[lang] = FALLBACK[lang];
-            return FALLBACK[lang];
-          });
-      }
+/* ═══ THEME BUTTON ═══ */
+var themeBtn = document.getElementById('themeButton');
+if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
 
-      function applyTranslation(t, lang) {
-        var setText = function (id, val) {
-          var el = document.getElementById(id);
-          if (el) el.textContent = val || '';
-        };
-        setText('titleText', t.appName);
-        setText('line1Text', t.line1);
-        setText('appNameText', t.appName);
-        setText('startText', t.start);
+/* ═══ TRANSLATIONS ═══ */
+var T = {
+  fa: {
+    appName:'بانوان نور',
+    badge:'همراه آموزشی، فرهنگی و سلامت بانوان',
+    line1:'به',
+    line2:'خوش آمدید؛ دانایی، آرامش و آگاهی را همراه خود داشته باشید.',
+    start:'ورود به برنامه',
+    footer:'تهیه کننده: سید مقدس حسینی',
+    dir:'rtl', lang:'fa'
+  },
+  ps: {
+    appName:'بانوان نور',
+    badge:'د ښځو لپاره ښوونیز، فرهنګي او روغتیايي ملګری',
+    line1:'',
+    line2:'ته ښه راغلاست؛ پوهه، آرامتیا او پوهاوی له ځان سره ولرئ.',
+    start:'پروګرام ته ننوتل',
+    footer:'چمتو کوونکی: سید مقدس حسینی',
+    dir:'rtl', lang:'ps'
+  },
+  en: {
+    appName:'Banovan Noor',
+    badge:'Educational, cultural and wellness companion for women',
+    line1:'Welcome to',
+    line2:'Your companion for knowledge, wellbeing and awareness.',
+    start:'Enter the app',
+    footer:'Produced by: Sayed Moghaddas Hosseini',
+    dir:'ltr', lang:'en'
+  }
+};
+var SUPPORTED = ['fa','ps','en'];
+var DEFAULT_LANG = 'fa';
 
-        var l2 = document.getElementById('line2Text');
-        if (l2) {
-          l2.textContent = t.line2 || '';
-          l2.style.display = t.line2 ? '' : 'none';
-        }
+function getLang(){
+  try{ var l = localStorage.getItem('bn_lang'); if (l && SUPPORTED.indexOf(l)>-1) return l; }catch(e){}
+  return DEFAULT_LANG;
+}
+function setLang(l){ try{ localStorage.setItem('bn_lang', l); }catch(e){} }
 
-        var html = document.documentElement;
-        html.setAttribute('dir', t.dir || 'rtl');
-        html.setAttribute('lang', t.lang || lang);
-        document.body.setAttribute('dir', t.dir || 'rtl');
-        document.title = (t.appName || 'Banovan Noor') + ' | BANOVAN NOOR';
+function applyLang(lang){
+  if (SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
+  setLang(lang);
+  var t = T[lang] || T.fa;
 
-        var btns = document.querySelectorAll('.lang-btn');
-        for (var i = 0; i < btns.length; i++) {
-          if (btns[i].getAttribute('data-lang') === lang) btns[i].classList.add('active');
-          else btns[i].classList.remove('active');
-        }
-      }
+  var el;
+  el = document.getElementById('titleText');   if(el) el.textContent = t.appName;
+  el = document.getElementById('miniBrand');    if(el) el.textContent = t.appName;
+  el = document.getElementById('badgeText');    if(el) el.textContent = t.badge;
+  el = document.getElementById('welcomeLine');  if(el) el.textContent = t.line1;
+  el = document.getElementById('appName');      if(el) el.textContent = t.appName;
+  el = document.getElementById('welcomeEnd');   if(el) el.textContent = t.line2;
+  el = document.getElementById('startText');    if(el) el.textContent = t.start;
+  el = document.getElementById('footerText');   if(el) el.textContent = t.footer;
 
-      function changeLang(lang) {
-        if (SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
-        safeSet('bn_lang', lang);
-        loadTranslation(lang).then(function (t) { applyTranslation(t, lang); });
-      }
+  document.documentElement.setAttribute('dir', t.dir);
+  document.documentElement.setAttribute('lang', t.lang);
+  document.title = t.appName + ' | BANOVAN NOOR';
 
-      function initLogo() {
-        var img = document.getElementById('logoImg');
-        if (!img) return;
-        img.addEventListener('error', function () {
-          var parent = img.parentNode;
-          if (!parent || parent.querySelector('.logo-fallback')) return;
-          img.style.display = 'none';
-          var fb = document.createElement('div');
-          fb.className = 'logo-fallback';
-          fb.textContent = '🌸';
-          parent.appendChild(fb);
-        });
-      }
+  var btns = document.querySelectorAll('.language');
+  for (var i=0; i<btns.length; i++){
+    if (btns[i].getAttribute('data-lang') === lang) btns[i].classList.add('active');
+    else btns[i].classList.remove('active');
+  }
 
-      function registerSW() {
-        // فقط روی http/https — روی file:// کار نمی‌کنه
-        if (!('serviceWorker' in navigator)) return;
-        if (location.protocol !== 'http:' && location.protocol !== 'https:') return;
-        navigator.serviceWorker.register('sw.js').catch(function () {});
-      }
+  // ثبت رویداد آنالیتیکس
+  if (window.bnAnalytics) {
+    window.bnAnalytics.track('language_changed', { lang: lang });
+  }
+}
 
-      function init() {
-        initLogo();
-        changeLang(getLang());
+applyLang(getLang());
 
-        var btns = document.querySelectorAll('.lang-btn');
-        for (var i = 0; i < btns.length; i++) {
-          (function (btn) {
-            btn.addEventListener('click', function (e) {
-              e.preventDefault();
-              changeLang(btn.getAttribute('data-lang'));
-            });
-          })(btns[i]);
-        }
+var langButtons = document.querySelectorAll('.language');
+for (var i=0; i<langButtons.length; i++){
+  (function(btn){
+    btn.addEventListener('click', function(){
+      applyLang(btn.getAttribute('data-lang'));
+    });
+  })(langButtons[i]);
+}
 
-        registerSW();
-      }
+window.addEventListener('storage', function(e){
+  if (e.key === 'bn_lang') applyLang(e.newValue || DEFAULT_LANG);
+});
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-    })();
-  </script>
-<script src="analytics.js"></script>
+/* ═══ RIPPLE + START ═══ */
+function createRipple(event, element){
+  var rect = element.getBoundingClientRect();
+  var size = Math.max(rect.width, rect.height);
+  var clientX = (event.touches && event.touches[0]) ? event.touches[0].clientX : event.clientX;
+  var clientY = (event.touches && event.touches[0]) ? event.touches[0].clientY : event.clientY;
+  if (clientX == null) clientX = rect.left + rect.width/2;
+  if (clientY == null) clientY = rect.top + rect.height/2;
+  var x = clientX - rect.left - size/2;
+  var y = clientY - rect.top - size/2;
+  var ripple = document.createElement("span");
+  ripple.className = "ripple";
+  ripple.style.width = ripple.style.height = size + "px";
+  ripple.style.left = x + "px";
+  ripple.style.top = y + "px";
+  element.appendChild(ripple);
+  setTimeout(function(){ ripple.remove(); }, 700);
+}
+
+var startBtn = document.getElementById("startButton");
+if (startBtn){
+  startBtn.addEventListener("click", function(event){
+    event.preventDefault();
+    var href = startBtn.getAttribute("href") || "home.html";
+
+    // ثبت رویداد
+    if (window.bnAnalytics) window.bnAnalytics.track('app_started');
+
+    createRipple(event, startBtn);
+    startBtn.classList.add("loading");
+    var svg = startBtn.querySelector("svg");
+    if (svg){
+      svg.innerHTML = '<circle cx="12" cy="12" r="10" opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10"/>';
+      svg.style.animation = "spin 1s linear infinite";
+    }
+    document.body.style.transition = "opacity .5s ease";
+    document.body.style.opacity = "0";
+    setTimeout(function(){ window.location.href = href; }, 450);
+  });
+}
+
+/* ═══ ثبت Service Worker ═══ */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function (e) {
+      console.warn('SW register failed:', e.message);
+    });
+  });
+}
+
+console.log('🌸 index.html ready — theme:', getSavedTheme());
+})();
+</script>
+
+<!-- Firebase (با مسیر صحیح) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/bn-tracker.js"></script>
+<script src="js/bn-auth-gate.js"></script>
+
 </body>
 </html>
