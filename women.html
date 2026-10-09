@@ -3,12 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#8b3dff" id="themeMeta">
+<meta name="theme-color" content="#db2777" id="themeMeta">
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="بانوان نور">
 <meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="بانوان نمونه — الگوهای برتر بانوان در تاریخ اسلام و معاصر">
 <title>بانوان نمونه | بانوان نور</title>
 <link rel="icon" href="assets/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="manifest" href="manifest.json">
 <style>
 :root{
   --bg:#fbf8ff;--bg2:#f5ecfb;
@@ -22,8 +27,9 @@
   --shadow-md:0 14px 34px rgba(168,50,214,.15);
   --nav-h:78px;
 }
-html[data-theme="dark"]{
-  --bg:#000;--bg2:#0a0510;
+html[data-theme="dark"],
+body.dark{
+  --bg:#000;--bg2:#000;
   --card:rgba(28,28,30,.70);--card-solid:#1c1c1e;
   --text:#fff;--muted:#8e8e93;
   --line:rgba(192,132,252,.16);
@@ -46,12 +52,25 @@ body{
   transition:background .35s ease,color .35s ease;
   -webkit-font-smoothing:antialiased;
 }
-html[data-theme="dark"] body{
+html[data-theme="dark"] body,
+body.dark{
   background:
     radial-gradient(circle at 10% 0%,rgba(168,85,247,.13),transparent 30%),
     radial-gradient(circle at 100% 20%,rgba(236,72,153,.08),transparent 30%),
     #000;
 }
+/* ✅ LTR */
+body.lang-ltr { direction: ltr; }
+body.lang-ltr .woman-card:before { right: auto; left: 0; }
+body.lang-ltr .fc-arrow svg,
+body.lang-ltr .woman-open svg { transform: none; }
+body.lang-ltr #backBtn svg { transform: none; }
+body.lang-ltr .search-box svg { right: auto; left: 14px; }
+body.lang-ltr .search-box input { padding: 0 16px 0 46px; }
+body.lang-ltr .lessons-list { padding: 0 0 0 18px; }
+body.lang-ltr .lessons-list li { padding: 7px 0 7px 20px; }
+body.lang-ltr .lessons-list li:before { right: auto; left: 0; }
+
 button,input{font:inherit}
 button{border:0;cursor:pointer;background:transparent;color:inherit}
 a{color:inherit;text-decoration:none}
@@ -60,16 +79,15 @@ svg{width:21px;height:21px;display:block}
 
 .app{width:100%;max-width:560px;margin:0 auto;padding:0 16px;position:relative;z-index:2}
 
-/* TOPBAR */
 .topbar{
   display:flex;align-items:center;justify-content:space-between;
   padding:16px 0 14px;gap:8px;
   position:sticky;top:0;z-index:50;
   background:linear-gradient(to bottom,var(--bg) 70%,transparent);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
 }
-html[data-theme="dark"] .topbar{background:linear-gradient(to bottom,#000 70%,transparent)}
+html[data-theme="dark"] .topbar,
+body.dark .topbar{background:linear-gradient(to bottom,#000 70%,transparent)}
 .top-side{
   width:42px;height:42px;flex:0 0 42px;
   border-radius:14px;display:flex;align-items:center;justify-content:center;
@@ -85,7 +103,6 @@ html[data-theme="dark"] .topbar{background:linear-gradient(to bottom,#000 70%,tr
 .page-title-box strong{display:block;font-size:.95rem;font-weight:950}
 .page-title-box span{display:block;margin-top:1px;font-size:.6rem;color:var(--muted);font-weight:700}
 
-/* HERO */
 .hero{
   position:relative;overflow:hidden;
   border-radius:26px;padding:20px 18px 18px;
@@ -112,7 +129,6 @@ html[data-theme="dark"] .topbar{background:linear-gradient(to bottom,#000 70%,tr
 .hero h1{margin:12px 0 6px;font-size:1.18rem;line-height:1.35;font-weight:950;text-shadow:0 2px 12px rgba(0,0,0,.2)}
 .hero p{margin:0;font-size:.72rem;line-height:2;opacity:.95;max-width:420px;font-weight:700}
 
-/* SEARCH */
 .search-box{position:relative;margin-top:14px}
 .search-box svg{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .search-box input{
@@ -127,14 +143,12 @@ html[data-theme="dark"] .topbar{background:linear-gradient(to bottom,#000 70%,tr
 .search-box input:focus{border-color:rgba(168,50,214,.5);box-shadow:0 0 0 4px rgba(168,50,214,.08)}
 .search-box input::placeholder{color:var(--muted)}
 
-/* SECTION TITLE */
 .section-title{display:flex;align-items:center;justify-content:space-between;margin:22px 4px 12px}
 .section-title-main{display:flex;align-items:center;gap:9px}
 .section-line{width:4px;height:20px;border-radius:8px;background:var(--brand);box-shadow:0 0 12px rgba(219,39,119,.5)}
 .section-title h2{font-size:.9rem;font-weight:950;color:var(--text)}
 .section-count{font-size:.6rem;color:var(--muted);font-weight:800;padding:5px 11px;border-radius:20px;background:var(--soft);border:1px solid var(--line)}
 
-/* FEATURED CAROUSEL */
 .featured-row{
   display:flex;gap:11px;overflow-x:auto;
   padding:4px 0 14px;scrollbar-width:none;-ms-overflow-style:none;
@@ -167,7 +181,6 @@ html[data-theme="dark"] .topbar{background:linear-gradient(to bottom,#000 70%,tr
 .fc-arrow{margin-top:auto;position:relative;z-index:2;display:flex;align-items:center;gap:4px;font-size:.55rem;font-weight:850;padding-top:9px}
 .fc-arrow svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2.2;transform:scaleX(-1)}
 
-/* CATEGORY CHIPS */
 .chips{display:flex;gap:7px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
 .chips::-webkit-scrollbar{display:none}
 .chip{
@@ -183,7 +196,6 @@ html[data-theme="dark"] .topbar{background:linear-gradient(to bottom,#000 70%,tr
 .chip .chip-count{font-size:.58rem;background:rgba(168,50,214,.12);color:var(--primary);padding:1px 7px;border-radius:10px;font-weight:900;min-width:16px;text-align:center}
 .chip.active .chip-count{background:rgba(255,255,255,.28);color:#fff}
 
-/* WOMEN LIST */
 .list{display:grid;gap:11px;margin-top:4px}
 
 .woman-card{
@@ -242,14 +254,12 @@ html[data-theme="dark"] .topbar{background:linear-gradient(to bottom,#000 70%,tr
 }
 .woman-open svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2.4;transform:scaleX(-1)}
 
-/* STATES */
 .state{padding:40px 18px;text-align:center;color:var(--muted);font-size:.8rem;font-weight:700;line-height:2}
 .loader{width:32px;height:32px;margin:0 auto 14px;border-radius:50%;border:3px solid rgba(168,50,214,.15);border-top-color:var(--primary);animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .empty-icon{width:60px;height:60px;margin:0 auto 12px;display:grid;place-items:center;border-radius:19px;color:var(--primary);background:var(--soft)}
 .empty-icon svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.9}
 
-/* MODAL */
 .modal{position:fixed;inset:0;z-index:5000;display:none;align-items:flex-end;justify-content:center;padding:15px;background:rgba(15,8,20,.65);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .modal.show{display:flex;animation:mFade .25s ease}
 @keyframes mFade{from{opacity:0}to{opacity:1}}
@@ -272,7 +282,6 @@ html[data-theme="dark"] .topbar{background:linear-gradient(to bottom,#000 70%,tr
 .sheet-spacer{width:38px;flex:0 0 38px}
 .sheet-scroll{overflow-y:auto;overscroll-behavior:contain;padding:14px 14px 26px;-webkit-overflow-scrolling:touch}
 
-/* MODAL PROFILE */
 .m-profile{
   position:relative;overflow:hidden;padding:18px 16px 16px;
   border-radius:20px;color:#fff;
@@ -317,7 +326,6 @@ html[data-theme="dark"] .topbar{background:linear-gradient(to bottom,#000 70%,tr
 .m-action.speaking{color:var(--primary);background:var(--soft);animation:pulse 1.1s infinite}
 @keyframes pulse{50%{opacity:.55}}
 
-/* TOAST */
 .toast{
   position:fixed;left:50%;bottom:calc(110px + env(safe-area-inset-bottom));
   transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:7000;
@@ -330,7 +338,6 @@ html[data-theme="dark"] .topbar{background:linear-gradient(to bottom,#000 70%,tr
 }
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
-/* BOTTOM NAV — مثل خانه */
 .bottom-nav{
   position:fixed;left:50%;bottom:0;transform:translateX(-50%);
   width:100%;max-width:560px;z-index:1000;
@@ -344,7 +351,8 @@ html[data-theme="dark"] .topbar{background:linear-gradient(to bottom,#000 70%,tr
   backdrop-filter:blur(55px) saturate(220%);
   -webkit-backdrop-filter:blur(55px) saturate(220%);
 }
-html[data-theme="dark"] .bottom-nav{border-top:1px solid rgba(255,255,255,.06);box-shadow:0 -10px 28px rgba(0,0,0,.55),0 -24px 55px rgba(219,39,119,.14)}
+html[data-theme="dark"] .bottom-nav,
+body.dark .bottom-nav{border-top:1px solid rgba(255,255,255,.06);box-shadow:0 -10px 28px rgba(0,0,0,.55),0 -24px 55px rgba(219,39,119,.14)}
 .nav-item{
   min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:4px;position:relative;color:var(--muted);border-radius:14px;
@@ -579,14 +587,25 @@ const sourceArea = $("sourceArea");
 const toastEl = $("toast");
 
 /* THEME */
-(function(){
-  let t = localStorage.getItem(THEME_KEY);
-  if(t !== "dark" && t !== "light"){
-    t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
+function getSystemTheme(){
+  try{ return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+  catch(e){ return "light"; }
+}
+function getSavedTheme(){
+  try{
+    const t = localStorage.getItem(THEME_KEY);
+    if(t === "dark" || t === "light") return t;
+  }catch(e){}
+  return getSystemTheme();
+}
+function applyTheme(){
+  const t = getSavedTheme();
   document.documentElement.setAttribute("data-theme", t);
-  const m = $("themeMeta"); if(m) m.setAttribute("content", t === "dark" ? "#09050d" : "#8b3dff");
-})();
+  document.body.classList.toggle("dark", t === "dark");
+  const m = $("themeMeta");
+  if(m) m.setAttribute("content", t === "dark" ? "#000000" : "#db2777");
+}
+applyTheme();
 
 /* HELPERS */
 function escapeHTML(v){
@@ -655,6 +674,7 @@ async function loadWomen(){
     renderFeatured();
     renderChips();
     applyFilters();
+    if (window.bnAnalytics) window.bnAnalytics.track("women_loaded", { count: allWomen.length });
   }catch(err){
     console.warn("women.json:", err.message);
     allWomen = [];
@@ -847,7 +867,6 @@ function openWoman(id){
     </div>
   `;
 
-  /* اطلاعات خانوادگی */
   if(w.family){
     familyArea.innerHTML = `
       <div class="info-block">
@@ -862,7 +881,6 @@ function openWoman(id){
     familyArea.innerHTML = "";
   }
 
-  /* درباره ایشان */
   if(w.about){
     infoArea.innerHTML = `
       <div class="info-block">
@@ -877,7 +895,6 @@ function openWoman(id){
     infoArea.innerHTML = "";
   }
 
-  /* ویژگی‌های برجسته */
   if(w.virtues && w.virtues.length){
     virtuesArea.innerHTML = `
       <div class="info-block">
@@ -894,7 +911,6 @@ function openWoman(id){
     virtuesArea.innerHTML = "";
   }
 
-  /* درس‌های زندگی */
   if(w.lessons && w.lessons.length){
     lessonsArea.innerHTML = `
       <div class="info-block">
@@ -911,7 +927,6 @@ function openWoman(id){
     lessonsArea.innerHTML = "";
   }
 
-  /* Tags */
   if(w.tags && w.tags.length){
     modalTags.innerHTML = w.tags.map(t => '<span class="m-tag">' + escapeHTML(t) + '</span>').join("");
     modalTags.style.display = "flex";
@@ -920,7 +935,6 @@ function openWoman(id){
     modalTags.style.display = "none";
   }
 
-  /* منبع */
   if(w.source){
     sourceArea.style.display = "flex";
     sourceArea.innerHTML = '<svg><use href="#i-info"></use></svg><span>منبع: ' + escapeHTML(w.source) + '</span>';
@@ -931,6 +945,8 @@ function openWoman(id){
   modal.classList.add("show");
   document.body.style.overflow = "hidden";
   modalScroll.scrollTop = 0;
+
+  if (window.bnAnalytics) window.bnAnalytics.track("woman_open", { id: w.id, category: w.category });
 }
 
 function closeModal(){
@@ -1064,14 +1080,41 @@ document.addEventListener("keydown", e => {
   if(e.key === "Escape" && modal.classList.contains("show")) closeModal();
 });
 
+window.addEventListener("storage", e => {
+  if(e.key === THEME_KEY) applyTheme();
+  if(e.key === "bn_lang") location.reload();
+});
+
 /* START */
 if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", loadWomen);
 else loadWomen();
 </script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+
+<!-- ═══ آنالیتیکس (اول لود بشه) ═══ -->
+<script src="js/bn-analytics.js"></script>
+
+<!-- ═══ ماژول اصلی BN ═══ -->
+<script src="js/bn-app.js"></script>
+
+<!-- ═══ Firebase ═══ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
-<script src="firebase-config.js"></script>
-<script src="bn-tracker.js"></script>
-  <script src="bn-auth-gate.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/bn-tracker.js"></script>
+<script src="js/bn-auth-gate.js"></script>
+
+<!-- ═══ ثبت Service Worker ═══ -->
+<script>
+(function(){
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').then(function(reg){
+        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
+      }).catch(function(e){ console.warn('SW register failed:', e.message); });
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
