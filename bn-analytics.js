@@ -1,13 +1,15 @@
 /* =========================================================
-   BANOVAN NOOR — Analytics (PostHog)
+   BANOVAN NOOR — Analytics (PostHog) - نسخه نهایی و اصلاح‌شده
    ========================================================= */
 (function () {
   'use strict';
 
+  var APP_VERSION = '1.0.0'; // نسخه اپ — برای آپدیت‌های آینده اینجا تغییر بده
+
   // اگر کاربر Do Not Track فعال کرده، آنالیتیکس رو اجرا نکن
   if (navigator.doNotTrack === '1' || window.doNotTrack === '1') {
-    console.info('[BN Analytics] Nonaktif: Do Not Track aktif ast.');
-    window.bnAnalytics = { track: function () {}, identify: function () {} };
+    console.info('[BN Analytics] غیرفعال: Do Not Track فعال است.');
+    window.bnAnalytics = { track: function () {}, identify: function () {}, trackSection: function () {} };
     return;
   }
 
@@ -39,15 +41,15 @@
   posthog.init('phc_thu6zvysqiEhV3DCyZPu57QbepXhLofDf9A6idNNB3r3', {
     api_host: 'https://eu.i.posthog.com',
     person_profiles: 'identified_only',
-    capture_pageview: true,
+    capture_pageview: false, // خاموش شد تا با bn-tracker.js تداخل نداشته باشه
     capture_pageleave: true,
-    autocapture: false, // بهتره دستی کنترل کنیم
+    autocapture: false, // برای حریم خصوصی
     disable_session_recording: true, // برای حریم خصوصی
     loaded: function (ph) {
       // ثبت اولین رویداد بعد از آماده شدن
       ph.capture('app_loaded', {
         app: 'banovan_noor',
-        version: '1.0.0',
+        version: APP_VERSION,
         lang: (localStorage.getItem('bn_lang') || 'fa'),
         theme: (localStorage.getItem('bn_theme') || 'light')
       });
@@ -69,7 +71,7 @@
           ts: Date.now()
         }, props || {}));
       } catch (e) {
-        // بی‌صدا رد کن
+        console.warn('[BN Analytics] Track error:', e.message);
       }
     },
 
@@ -81,8 +83,12 @@
     identify: function (userId, props) {
       try {
         if (!window.posthog || typeof posthog.identify !== 'function') return;
-        posthog.identify(userId, props || {});
-      } catch (e) {}
+        posthog.identify(userId, Object.assign({
+          app: 'banovan_noor'
+        }, props || {}));
+      } catch (e) {
+        console.warn('[BN Analytics] Identify error:', e.message);
+      }
     },
 
     /**
