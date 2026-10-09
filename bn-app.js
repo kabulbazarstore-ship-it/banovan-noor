@@ -1,5 +1,5 @@
 /* =========================================================
-   BANOVAN NOOR — Shared JavaScript (نسخه اصلاح‌شده)
+   BANOVAN NOOR — Shared JavaScript (نسخه نهایی و اصلاح‌شده)
    ========================================================= */
 const BN = (function () {
   'use strict';
@@ -183,9 +183,10 @@ const BN = (function () {
     // هر دو روش برای سازگاری کامل
     document.documentElement.setAttribute('data-theme', theme);
     document.body.classList.toggle('dark', theme === 'dark');
-    // آپدیت theme-color
+    
+    // آپدیت theme-color با رنگ برند (صورتی)
     const meta = document.getElementById('themeMeta');
-    if (meta) meta.setAttribute('content', theme === 'dark' ? '#000000' : '#8b3dff');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#000000' : '#db2777');
   }
 
   function applySavedTheme() { applyTheme(getSavedTheme()); }
@@ -219,27 +220,29 @@ const BN = (function () {
     const gt = document.getElementById('greetTime');
     if (gt) gt.textContent = getGreeting();
 
+    // نکته: برای ترجمه این متون، باید کلیدهای مربوطه به فایل‌های i18n اضافه شوند.
+    // در حال حاضر از fallback فارسی استفاده می‌کنیم.
     const quotes = [
-      'امروز یک فرصت تازه برای یادگیری است',
-      'علم، نور است و نور، راه را روشن می‌کند',
-      'هر روز یک قدم به آگاهی نزدیک‌تر',
-      'سلامتی، بزرگ‌ترین نعمت است',
-      'دعا، آرامش قلب‌هاست',
-      'آگاهی، بهترین سرمایه‌ی یک زن است',
-      'هر سؤال، آغاز یک آگاهی تازه است'
+      t('home.quote_1', 'امروز یک فرصت تازه برای یادگیری است'),
+      t('home.quote_2', 'علم، نور است و نور، راه را روشن می‌کند'),
+      t('home.quote_3', 'هر روز یک قدم به آگاهی نزدیک‌تر'),
+      t('home.quote_4', 'سلامتی، بزرگ‌ترین نعمت است'),
+      t('home.quote_5', 'دعا، آرامش قلب‌هاست'),
+      t('home.quote_6', 'آگاهی، بهترین سرمایه‌ی یک زن است'),
+      t('home.quote_7', 'هر سؤال، آغاز یک آگاهی تازه است')
     ];
     const q = document.getElementById('greetQuote');
     if (q) q.textContent = quotes[new Date().getDate() % quotes.length];
 
     const tips = [
-      'نوشیدن آب گرم در دوران قاعدگی مفید است',
-      'ویتامین D برای سلامت استخوان ضروری است',
-      'ورزش سبک در دوران بارداری مفید است',
-      'مصرف آهن در دوران قاعدگی توصیه می‌شود',
-      'خواب کافی ۷ تا ۸ ساعت ضروری است',
-      'میوه و سبزیجات تازه در برنامه غذایی روزانه',
-      'شیر و لبنیات برای سلامت استخوان',
-      'کاهش مصرف قند و نمک مفید است'
+      t('home.tip_1', 'نوشیدن آب گرم در دوران قاعدگی مفید است'),
+      t('home.tip_2', 'ویتامین D برای سلامت استخوان ضروری است'),
+      t('home.tip_3', 'ورزش سبک در دوران بارداری مفید است'),
+      t('home.tip_4', 'مصرف آهن در دوران قاعدگی توصیه می‌شود'),
+      t('home.tip_5', 'خواب کافی ۷ تا ۸ ساعت ضروری است'),
+      t('home.tip_6', 'میوه و سبزیجات تازه در برنامه غذایی روزانه'),
+      t('home.tip_7', 'شیر و لبنیات برای سلامت استخوان'),
+      t('home.tip_8', 'کاهش مصرف قند و نمک مفید است')
     ];
     const tEl = document.getElementById('dailyTip');
     if (tEl) tEl.textContent = tips[new Date().getDate() % tips.length];
@@ -264,7 +267,7 @@ const BN = (function () {
   }
 
   /* =========================================================
-     TOAST (با CSS کلاس — تمیزتر)
+     TOAST (با CSS کلاس — هماهنگ با هویت برند)
      ========================================================= */
   function ensureToastStyles() {
     if (document.getElementById('bn-toast-styles')) return;
@@ -272,8 +275,8 @@ const BN = (function () {
     s.id = 'bn-toast-styles';
     s.textContent =
       '#bn-toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);' +
-      'background:linear-gradient(135deg,#6d28d9,#a855f7);color:#fff;padding:12px 22px;border-radius:30px;' +
-      'font-family:inherit;font-size:.85rem;font-weight:800;box-shadow:0 12px 30px rgba(139,92,246,.45);' +
+      'background:linear-gradient(105deg, #e11d48 0%, #db2777 42%, #a855f7 100%);color:#fff;padding:12px 22px;border-radius:30px;' +
+      'font-family:inherit;font-size:.85rem;font-weight:800;box-shadow:0 12px 30px rgba(219,39,119,.45);' +
       'z-index:9999;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;' +
       'white-space:nowrap;max-width:90vw;text-align:center;overflow:hidden;text-overflow:ellipsis}' +
       '#bn-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}';
