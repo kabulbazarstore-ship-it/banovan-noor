@@ -16,7 +16,7 @@ if (!Promise.allSettled) {
 }
 
 /* ---------- نسخه و نام کش‌ها ---------- */
-var SW_VERSION = 'v18';
+var SW_VERSION = 'v19';
 var STATIC_CACHE  = 'banovan-noor-static-'  + SW_VERSION;
 var RUNTIME_CACHE = 'banovan-noor-runtime-' + SW_VERSION;
 var MEDIA_CACHE   = 'banovan-noor-media-v1';
