@@ -25,6 +25,7 @@
   --soft:rgba(168,50,214,.09);
   --shadow2:0 8px 25px rgba(88,37,111,.10);
   --nav-h:78px;
+  --font-scale:1;
 }
 html[data-theme="dark"],
 body.dark{
@@ -268,6 +269,41 @@ main{
   padding:13px 13px 26px;-webkit-overflow-scrolling:touch;
 }
 
+/* ═══ FONT SIZE CONTROLS ═══ */
+.font-controls{
+  display:flex;
+  gap:3px;
+  flex:0 0 auto;
+  margin:0 4px;
+}
+.font-btn{
+  width:32px;
+  height:32px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  background:var(--soft);
+  border:1px solid var(--line);
+  color:var(--text-soft, var(--muted));
+  font-family:inherit;
+  font-weight:900;
+  cursor:pointer;
+  transition:all .2s;
+  padding:0;
+  line-height:1;
+}
+.font-btn:active{transform:scale(.9)}
+.font-btn.active{
+  background:var(--brand);
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 5px 14px rgba(219,39,119,.32);
+}
+.font-btn[data-font="s"]{font-size:11px}
+.font-btn[data-font="m"]{font-size:13px}
+.font-btn[data-font="l"]{font-size:15px}
+.font-btn[data-font="xl"]{font-size:17px}
+
 .player{
   position:relative;overflow:hidden;padding:13px;
   border-radius:22px;
@@ -339,22 +375,35 @@ main{
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto;min-height:34px;padding:0 12px;border-radius:11px;color:var(--muted);background:var(--soft);font-size:10.5px;font-weight:850}
 .tab.active{color:#fff;background:var(--brand);box-shadow:0 5px 13px rgba(185,40,130,.17)}
+
+/* ═══ CONTENT PANEL با font-scale ═══ */
 .content-panel{
   padding:14px 13px;border-radius:16px;
   background:var(--soft);border:1px solid var(--line);
   line-height:2.1;
+  font-size:calc(13.5px * var(--font-scale));
 }
 .arabic-text{
   font-family:"Noto Naskh Arabic","Amiri",serif;
-  font-size:16.5px;line-height:2.2;
+  font-size:calc(16.5px * var(--font-scale));
+  line-height:2.2;
   text-align:right;direction:rtl;margin:6px 0;
 }
-.translation-text,.normal-text{font-size:12.5px;line-height:2.05}
+.translation-text,.normal-text{
+  font-size:calc(12.5px * var(--font-scale));
+  line-height:2.05;
+}
 .instruction-list{margin:0;padding:0 17px 0 0}
-.instruction-list li{margin:0 0 8px;line-height:1.9;font-size:12.5px}
+.instruction-list li{
+  margin:0 0 8px;
+  line-height:1.9;
+  font-size:calc(12.5px * var(--font-scale));
+}
 .virtue-box{
   padding:12px;border-radius:13px;background:rgba(236,72,153,.07);
-  border-right:3px solid var(--pink);line-height:2;font-size:12.5px;
+  border-right:3px solid var(--pink);
+  line-height:2;
+  font-size:calc(12.5px * var(--font-scale));
 }
 .source-box{margin-top:11px;color:var(--muted);font-size:10px;line-height:1.8}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px}
@@ -555,6 +604,12 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
         <strong id="modalTitle">عنوان</strong>
         <span id="modalSubtitle">بانوان نور</span>
       </div>
+      <div class="font-controls">
+        <button class="font-btn" data-font="s" type="button" aria-label="کوچک">ک</button>
+        <button class="font-btn active" data-font="m" type="button" aria-label="متوسط">م</button>
+        <button class="font-btn" data-font="l" type="button" aria-label="بزرگ">ب</button>
+        <button class="font-btn" data-font="xl" type="button" aria-label="خیلی بزرگ">خ</button>
+      </div>
       <button class="sheet-close" id="modalBookmark" aria-label="نشان‌گذاری">
         <svg><use href="#i-bookmark"></use></svg>
       </button>
@@ -579,7 +634,7 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
 "use strict";
 
 const BASE_PATH = "data/duas/";
-const CACHE_VERSION = "v12";
+const CACHE_VERSION = "v13";
 const DUA_FILES = [
   { id:"dua",       title:"دعا",       icon:"prayer", file:"duas.json" },
   { id:"ziyarat",   title:"زیارت",     icon:"star",   file:"ziyarat.json" },
@@ -595,7 +650,10 @@ const CATEGORIES = [
 ];
 const BM_KEY="bn_duas_bm_v1", POSITION_KEY="bn_audio_positions_v1",
       SPEED_KEY="bn_audio_speed", LOOP_KEY="bn_audio_loop",
-      VOLUME_KEY="bn_audio_volume_v1", THEME_KEY="bn_theme";
+      VOLUME_KEY="bn_audio_volume_v1", THEME_KEY="bn_theme",
+      FONT_KEY="bn_duas_font";
+
+const FONT_SCALES = { s: 0.9, m: 1, l: 1.15, xl: 1.3 };
 
 let allArticles=[], filteredArticles=[], currentCategory=null, currentView="categories";
 let showBookmarks=false, currentArticle=null, currentTab="main";
@@ -636,6 +694,36 @@ function applyTheme(){
   const m=$("themeMeta"); if(m) m.setAttribute("content",t==="dark"?"#000000":"#db2777");
 }
 applyTheme();
+
+/* ═══ FONT SIZE SYSTEM ═══ */
+function getSavedFont(){
+  try {
+    const f = localStorage.getItem(FONT_KEY);
+    return FONT_SCALES[f] ? f : "m";
+  } catch(e) { return "m"; }
+}
+
+function applyFont(size){
+  if(!FONT_SCALES[size]) size = "m";
+  document.documentElement.style.setProperty("--font-scale", FONT_SCALES[size]);
+  try { localStorage.setItem(FONT_KEY, size); } catch(e){}
+  const btns = document.querySelectorAll(".font-btn");
+  for(let i=0; i<btns.length; i++){
+    btns[i].classList.toggle("active", btns[i].dataset.font === size);
+  }
+}
+
+function initFont(){
+  applyFont(getSavedFont());
+  const btns = document.querySelectorAll(".font-btn");
+  for(let i=0; i<btns.length; i++){
+    btns[i].addEventListener("click", function(e){
+      e.stopPropagation();
+      applyFont(btns[i].dataset.font);
+      if (window.bnAnalytics) window.bnAnalytics.track("duas_font_changed", { size: btns[i].dataset.font });
+    });
+  }
+}
 
 /* HELPERS */
 function loadObject(k){try{const v=JSON.parse(localStorage.getItem(k)||"{}");return v&&typeof v==="object"?v:{}}catch(e){return{}}}
@@ -1055,24 +1143,16 @@ function buildAudioPlayer(a){
     if(isFinite(audio.currentTime)&&audio.currentTime>0){ positions[id]=Math.floor(audio.currentTime); saveObject(POSITION_KEY,positions); }
   };
 
-  /* ✅ دکمه پخش هوشمند با Media Player */
   playBtn.addEventListener("click", async () => {
-    // اگر در حال پخش است، متوقف کن
     if (!audio.paused) { audio.pause(); return; }
-
-    // اگر قبلاً آماده شده، مستقیم پخش کن
     if (audio._bnReady) {
       try { await audio.play(); } catch(e) { showErr("خطا در پخش"); }
       return;
     }
-
-    // اگر Media Player موجود نیست، مستقیم پخش کن
     if (!window.bnMedia || typeof window.bnMedia.play !== "function") {
       try { await audio.play(); } catch(e) { showErr("فایل صوتی در دسترس نیست"); }
       return;
     }
-
-    // جلوگیری از کلیک تکراری
     if (isBusy) return;
     isBusy = true;
     status.textContent = "در حال آماده‌سازی...";
@@ -1418,6 +1498,8 @@ window.addEventListener("storage",e=>{
   if(e.key==="bn_lang") location.reload();
 });
 
+/* INIT */
+initFont();
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",loadAllData);
 else loadAllData();
 </script>
