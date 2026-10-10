@@ -53,7 +53,6 @@ body.dark{
     radial-gradient(circle at 100% 20%,rgba(236,72,153,.08),transparent 30%),
     #000;
 }
-/* ✅ LTR */
 body.lang-ltr { direction: ltr; }
 body.lang-ltr #backBtn svg { transform: none; }
 body.lang-ltr .article:before { right: auto; left: 0; }
@@ -71,7 +70,6 @@ a{color:inherit;text-decoration:none}
 svg{width:21px;height:21px;display:block}
 .hidden{display:none!important}
 
-/* TOPBAR */
 .topbar{
   position:sticky;top:0;z-index:60;min-height:64px;
   padding:calc(8px + env(safe-area-inset-top)) 12px 8px;
@@ -100,7 +98,6 @@ main{
   padding:14px 12px calc(var(--nav-h) + 30px + env(safe-area-inset-bottom));
 }
 
-/* HERO */
 .hero{
   position:relative;overflow:hidden;min-height:150px;padding:18px;
   border-radius:24px;color:#fff;background:var(--brand);
@@ -120,7 +117,6 @@ main{
 .hero h1{margin:11px 0 5px;font-size:20px;line-height:1.3;font-weight:950}
 .hero p{margin:0;max-width:400px;font-size:11px;line-height:1.9;opacity:.92}
 
-/* DAILY */
 .daily{
   margin-top:12px;padding:11px 13px;border-radius:18px;
   background:var(--card);border:1px solid var(--line);
@@ -135,7 +131,6 @@ main{
 .daily-text strong{display:block;margin-top:3px;font-size:12.5px}
 .daily-text span{display:block;margin-top:2px;color:var(--muted);font-size:10.5px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 
-/* SEARCH */
 .search-box{position:relative;margin-top:12px}
 .search-box svg{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;width:18px;height:18px}
 .search-box input{
@@ -147,7 +142,6 @@ main{
 .search-box input:focus{border-color:rgba(168,50,214,.4);box-shadow:0 0 0 4px rgba(168,50,214,.08)}
 .search-box input::placeholder{color:var(--muted)}
 
-/* CATEGORY GRID */
 .cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
 .cat-card{
   position:relative;overflow:hidden;padding:14px;
@@ -161,7 +155,6 @@ main{
 .cat-title{font-size:14px;font-weight:900;line-height:1.4}
 .cat-count{display:block;margin-top:3px;font-size:10.5px;color:var(--muted);font-weight:700}
 
-/* LIST */
 .list-header{display:flex;align-items:center;justify-content:space-between;margin:14px 2px 10px;gap:8px}
 .list-title{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:900}
 .list-title svg{width:20px;height:20px;color:var(--primary)}
@@ -229,14 +222,12 @@ main{
 .has-audio{display:flex;align-items:center;gap:4px;color:var(--primary);font-size:9.5px;font-weight:800}
 .has-audio svg{width:12px;height:12px}
 
-/* STATES */
 .state{padding:36px 16px;text-align:center;color:var(--muted);font-size:12px}
 .loader{width:30px;height:30px;margin:0 auto 12px;border-radius:50%;border:3px solid rgba(168,50,214,.15);border-top-color:var(--primary);animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .empty-icon{width:52px;height:52px;margin:0 auto 10px;display:grid;place-items:center;border-radius:17px;color:var(--muted);background:var(--soft)}
 .empty-icon svg{width:24px;height:24px}
 
-/* MODAL */
 .modal{
   position:fixed;inset:0;z-index:100;
   display:flex;align-items:flex-end;justify-content:center;
@@ -277,7 +268,6 @@ main{
   padding:13px 13px 26px;-webkit-overflow-scrolling:touch;
 }
 
-/* AUDIO PLAYER */
 .player{
   position:relative;overflow:hidden;padding:13px;
   border-radius:22px;
@@ -325,7 +315,6 @@ main{
 .audio-message{position:relative;z-index:2;margin-top:9px;padding:7px 9px;border-radius:9px;color:#ffb4c9;background:rgba(225,29,72,.1);font-size:9.5px;display:none}
 .audio-message.show{display:block}
 
-/* VIDEO */
 .video-box{
   overflow:hidden;margin-bottom:12px;border-radius:18px;
   background:#08070a;box-shadow:var(--shadow2);position:relative;
@@ -346,7 +335,6 @@ main{
 .video-fullscreen-btn svg{width:17px;height:17px}
 .video-caption{padding:9px 11px;color:#b9adbd;font-size:10px;background:#100d12}
 
-/* TABS */
 .tabs{display:flex;gap:5px;overflow-x:auto;padding:2px 1px 7px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto;min-height:34px;padding:0 12px;border-radius:11px;color:var(--muted);background:var(--soft);font-size:10.5px;font-weight:850}
@@ -372,14 +360,12 @@ main{
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px}
 .tag{padding:4px 8px;border-radius:7px;color:var(--primary);background:var(--soft);font-size:9.5px;font-weight:700}
 
-/* ACTIONS */
 .actions{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:11px}
 .action{min-height:40px;display:flex;align-items:center;justify-content:center;gap:5px;border-radius:12px;color:var(--muted);background:var(--card);border:1px solid var(--line);font-size:10px;font-weight:800}
 .action svg{width:15px;height:15px}
 .action.active{color:#e39a19;background:rgba(227,154,25,.08)}
 .action.active svg{fill:currentColor}
 
-/* TOAST */
 .toast{
   position:fixed;z-index:300;right:50%;
   bottom:calc(88px + env(safe-area-inset-bottom));
@@ -392,7 +378,6 @@ main{
 }
 .toast.show{opacity:1;transform:translate(50%,0)}
 
-/* BOTTOM NAV */
 .bottom-nav{
   position:fixed;z-index:70;right:0;bottom:0;left:0;
   min-height:var(--nav-h);
@@ -412,7 +397,7 @@ body.dark .bottom-nav{background:rgba(0,0,0,.88)}
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:3px;color:var(--muted);border-radius:13px;background:transparent;
   font-size:9px;font-weight:800;padding:6px 2px;
-  transition:color .18s;
+  transition:color .18s;text-decoration:none;
 }
 .nav-item svg{width:20px;height:20px}
 .nav-item.active{color:var(--primary)}
@@ -423,6 +408,7 @@ body.dark .bottom-nav{background:rgba(0,0,0,.88)}
   display:grid;place-items:center;color:#fff;background:var(--brand);
   box-shadow:0 10px 24px rgba(185,40,130,.3);
   border:4px solid var(--bg);
+  text-decoration:none;
 }
 .nav-home svg{width:23px;height:23px}
 
@@ -593,7 +579,7 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
 "use strict";
 
 const BASE_PATH = "data/duas/";
-const CACHE_VERSION = "v11";
+const CACHE_VERSION = "v12";
 const DUA_FILES = [
   { id:"dua",       title:"دعا",       icon:"prayer", file:"duas.json" },
   { id:"ziyarat",   title:"زیارت",     icon:"star",   file:"ziyarat.json" },
@@ -1032,6 +1018,7 @@ function buildAudioPlayer(a){
   const vIcon=w.querySelector(".volume-icon");
   const msgEl=w.querySelector(".audio-message");
   let restored=false;
+  let isBusy=false;
 
   const updProg=()=>{
     if(!isFinite(audio.duration)||audio.duration<=0)return;
@@ -1068,10 +1055,74 @@ function buildAudioPlayer(a){
     if(isFinite(audio.currentTime)&&audio.currentTime>0){ positions[id]=Math.floor(audio.currentTime); saveObject(POSITION_KEY,positions); }
   };
 
-  playBtn.addEventListener("click",async()=>{
-    if(audio.paused){ try{await audio.play()}catch(e){showErr("فایل صوتی در دسترس نیست")} }
-    else audio.pause();
+  /* ✅ دکمه پخش هوشمند با Media Player */
+  playBtn.addEventListener("click", async () => {
+    // اگر در حال پخش است، متوقف کن
+    if (!audio.paused) { audio.pause(); return; }
+
+    // اگر قبلاً آماده شده، مستقیم پخش کن
+    if (audio._bnReady) {
+      try { await audio.play(); } catch(e) { showErr("خطا در پخش"); }
+      return;
+    }
+
+    // اگر Media Player موجود نیست، مستقیم پخش کن
+    if (!window.bnMedia || typeof window.bnMedia.play !== "function") {
+      try { await audio.play(); } catch(e) { showErr("فایل صوتی در دسترس نیست"); }
+      return;
+    }
+
+    // جلوگیری از کلیک تکراری
+    if (isBusy) return;
+    isBusy = true;
+    status.textContent = "در حال آماده‌سازی...";
+    let blobUrl = null;
+
+    try {
+      const result = await window.bnMedia.play(a.audioUrl, {
+        onPlay: (res) => {
+          if (res && res.blob) {
+            try {
+              blobUrl = URL.createObjectURL(res.blob);
+              audio.src = blobUrl;
+              audio.load();
+            } catch(e) {}
+          }
+          audio._bnReady = true;
+          status.textContent = res && res.offline ? "آماده (آفلاین)" : "آماده";
+        },
+        onError: (err) => {
+          const msg = (err && err.message) ? err.message : "فایل در دسترس نیست";
+          showErr("خطا: " + msg);
+          status.textContent = "خطا";
+        }
+      });
+
+      if (result && result.cancelled) {
+        status.textContent = "لغو شد";
+        setTimeout(() => { status.textContent = "آماده پخش"; }, 2000);
+        return;
+      }
+      if (result && result.error) return;
+
+      try { await audio.play(); }
+      catch(e) {
+        if (blobUrl) {
+          try {
+            audio.src = a.audioUrl;
+            audio.load();
+            await audio.play();
+          } catch(e2) { showErr("خطا در پخش فایل"); status.textContent = "خطا"; }
+        } else { showErr("خطا در پخش فایل"); status.textContent = "خطا"; }
+      }
+    } catch(e) {
+      showErr("خطا: " + (e.message || "عملیات ناموفق"));
+      status.textContent = "خطا";
+    } finally {
+      isBusy = false;
+    }
   });
+
   w.querySelector(".skip-back").addEventListener("click",()=>{audio.currentTime=Math.max(0,audio.currentTime-15);updProg()});
   w.querySelector(".skip-forward").addEventListener("click",()=>{
     audio.currentTime=isFinite(audio.duration)?Math.min(audio.duration,audio.currentTime+15):audio.currentTime+15;
@@ -1376,6 +1427,9 @@ else loadAllData();
 
 <!-- ═══ ماژول اصلی BN ═══ -->
 <script src="js/bn-app.js"></script>
+
+<!-- ═══ Media Player (پخش هوشمند) ═══ -->
+<script src="js/bn-media-player.js"></script>
 
 <!-- ═══ Firebase ═══ -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
