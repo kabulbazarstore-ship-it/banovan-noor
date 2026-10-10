@@ -1,6 +1,6 @@
 /* =========================================================
    BANOVAN NOOR | بانوان نور — Service Worker
-   نسخه: v3 — با پشتیبانی کامل از آفلاین، کش رسانه و آپدیت هوشمند
+   نسخه: v6 — با پشتیبانی کامل از آفلاین، کش رسانه و آپدیت هوشمند
    ========================================================= */
 
 /* ---------- Polyfill برای Promise.allSettled (گوشی‌های قدیمی) ---------- */
@@ -16,7 +16,7 @@ if (!Promise.allSettled) {
 }
 
 /* ---------- نسخه و نام کش‌ها ---------- */
-var SW_VERSION = 'v5';
+var SW_VERSION = 'v6';
 var STATIC_CACHE  = 'banovan-noor-static-'  + SW_VERSION;
 var RUNTIME_CACHE = 'banovan-noor-runtime-' + SW_VERSION;
 var MEDIA_CACHE   = 'banovan-noor-media-v1';
@@ -39,6 +39,7 @@ var APP_FILES = [
   './guide.html',
   './admin.html',
   './notes.html',
+  './offline.html',
 
   // ===== صفحات بخش‌ها =====
   './ahkam.html',
@@ -61,7 +62,8 @@ var APP_FILES = [
   './js/bn-analytics.js',
   './js/bn-tracker.js',
   './js/bn-auth-gate.js',
-   './js/bn-media-player.js',
+  './js/bn-media-player.js',
+  './js/bn-downloader.js',
   './js/firebase-config.js',
   './manifest.json',
 
@@ -70,7 +72,7 @@ var APP_FILES = [
   './i18n/ps.json',
   './i18n/en.json',
 
-  // ===== آیکون‌ها و لوگو (شامل فایل‌های جدید) =====
+  // ===== آیکون‌ها و لوگو =====
   './assets/icon-144.png',
   './assets/icon-192.png',
   './assets/icon-512.png',
@@ -138,7 +140,6 @@ var APP_FILES = [
 ];
 
 /* ---------- الگوی فایل‌های رسانه (کش در Runtime) ---------- */
-/*  نکته: SVG و فونت‌ها عمداً حذف شدن چون در APP_FILES کش میشن */
 var MEDIA_PATTERN = /\.(mp3|mp4|m4a|ogg|wav|webm|jpg|jpeg|png|gif|webp)(\?.*)?$/i;
 
 /* =========================================================
@@ -167,7 +168,6 @@ function trimCache(cacheName, maxBytes) {
 
         if (totalSize <= maxBytes) return;
 
-        // حذف قدیمی‌ترین‌ها (اولین‌ها در keys)
         var toDelete = [];
         var sizeToFree = totalSize - maxBytes;
         var freed = 0;
@@ -202,7 +202,6 @@ self.addEventListener('install', function (event) {
         })
       );
     }).then(function () {
-      // فعال‌سازی فوری نسخه جدید (اجباری برای آپدیت)
       return self.skipWaiting();
     })
   );
@@ -224,7 +223,6 @@ self.addEventListener('activate', function (event) {
     }).then(function () {
       return self.clients.claim();
     }).then(function () {
-      // به همه کلاینت‌ها اطلاع بده که SW جدید فعال شد
       return self.clients.matchAll({ type: 'window' }).then(function (clients) {
         clients.forEach(function (client) {
           try {
@@ -242,29 +240,21 @@ self.addEventListener('activate', function (event) {
 self.addEventListener('fetch', function (event) {
   var req = event.request;
 
-  // فقط GET
   if (req.method !== 'GET') return;
-
-  // نادیده گرفتن درخواست‌های weird
   if (req.cache === 'only-if-cached' && req.mode !== 'same-origin') return;
 
   var url;
   try { url = new URL(req.url); } catch (e) { return; }
 
-  // فقط همون دامنه (نه گوگل، فیسبوک، PostHog و...)
   if (url.origin !== self.location.origin) return;
-
-  // فقط http/https
   if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
 
-  /* ====== ۱. فایل‌های رسانه (mp3, mp4, تصویر): Cache-First ====== */
+  /* ====== ۱. فایل‌های رسانه: Cache-First ====== */
   if (MEDIA_PATTERN.test(url.pathname)) {
     event.respondWith(
       caches.match(req).then(function (cached) {
-        // اگر در هر کدام از کش‌ها بود، فوراً بده
         if (cached) return cached;
 
-        // وگرنه از شبکه بگیر و در MEDIA_CACHE کش کن
         return fetch(req).then(function (fresh) {
           if (fresh && fresh.ok && fresh.status === 200) {
             caches.open(MEDIA_CACHE).then(function (cache) {
@@ -296,20 +286,21 @@ self.addEventListener('fetch', function (event) {
         }
         return fresh;
       }).catch(function () {
-        // آفلاین: از کش بده یا index.html
         return caches.match(req).then(function (cached) {
           if (cached) return cached;
-          return caches.match('./index.html');
+          return caches.match('./offline.html').then(function(off) {
+            if (off) return off;
+            return caches.match('./index.html');
+          });
         });
       })
     );
     return;
   }
 
-  /* ====== ۳. بقیه فایل‌ها (CSS, JS, JSON, SVG, فونت): Stale-While-Revalidate ====== */
+  /* ====== ۳. بقیه فایل‌ها: Stale-While-Revalidate ====== */
   event.respondWith(
     caches.match(req).then(function (cached) {
-      // در پس‌زمینه از شبکه آپدیت کن
       var fetchPromise = fetch(req).then(function (fresh) {
         if (fresh && fresh.ok) {
           caches.open(RUNTIME_CACHE).then(function (cache) {
@@ -319,10 +310,8 @@ self.addEventListener('fetch', function (event) {
         return fresh;
       }).catch(function () { return null; });
 
-      // اگر کش داریم (در هر کدام از کش‌ها)، فوراً بده
       if (cached) return cached;
 
-      // وگرنه منتظر شبکه بمون
       return fetchPromise.then(function (fresh) {
         if (fresh) return fresh;
         return new Response('BANOVAN NOOR offline: فایل در دسترس نیست', {
@@ -340,12 +329,10 @@ self.addEventListener('fetch', function (event) {
 self.addEventListener('message', function (event) {
   if (!event.data) return;
 
-  // فعال‌سازی فوری نسخه جدید
   if (event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
 
-  // پاک کردن دستی کش‌ها (مثلاً از پنل ادمین)
   if (event.data.type === 'CLEAR_CACHES') {
     event.waitUntil(
       caches.keys().then(function (keys) {
@@ -360,7 +347,6 @@ self.addEventListener('message', function (event) {
     );
   }
 
-  // نمایش نوتیفیکیشن
   if (event.data.type === 'SHOW_NOTIFICATION') {
     var d = event.data;
     event.waitUntil(
@@ -387,13 +373,11 @@ self.addEventListener('notificationclick', function (event) {
 
   event.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (clients) {
-      // اگر پنجره‌ای باز بود، فوکوس کن
       for (var i = 0; i < clients.length; i++) {
         if (clients[i].url.indexOf(self.location.origin) === 0 && 'focus' in clients[i]) {
           return clients[i].focus();
         }
       }
-      // وگرنه پنجره جدید باز کن
       if (self.clients.openWindow) {
         return self.clients.openWindow(targetUrl);
       }
