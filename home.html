@@ -101,7 +101,6 @@ body.dark{
     #000;
 }
 
-/* ✅ پشتیبانی از LTR (انگلیسی) */
 body.lang-ltr { direction: ltr; }
 body.lang-ltr .hero-title,
 body.lang-ltr .hero-text { padding-left: 0; padding-right: 42px; }
@@ -434,6 +433,157 @@ body.dark .admin-error{color:#fca5a5}
 .admin-btn svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .admin-hint{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:.58rem;font-weight:700;color:var(--text-muted);text-align:center;line-height:1.8}
 
+/* ═══════════════════════════════════════════════════════════
+   SHARE / QR MODAL
+   ═══════════════════════════════════════════════════════════ */
+.bn-share-modal{
+  position:fixed;inset:0;z-index:9999;
+  display:none;align-items:center;justify-content:center;
+  padding:20px;
+  background:rgba(15,8,20,.75);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.bn-share-modal.show{display:flex;animation:bnShareFade .3s ease}
+@keyframes bnShareFade{from{opacity:0}to{opacity:1}}
+
+.bn-share-box{
+  width:100%;max-width:360px;
+  background:var(--surface-solid);
+  border:1px solid var(--border);
+  border-radius:26px;
+  padding:26px 22px 22px;
+  text-align:center;
+  box-shadow:0 24px 70px rgba(219,39,119,.40),0 8px 24px rgba(0,0,0,.35);
+  animation:bnShareSlide .4s cubic-bezier(.2,.8,.2,1);
+  position:relative;
+  overflow:hidden;
+}
+@keyframes bnShareSlide{
+  from{transform:translateY(40px) scale(.95);opacity:0}
+  to{transform:translateY(0) scale(1);opacity:1}
+}
+.bn-share-box::before{
+  content:"";position:absolute;top:0;right:0;left:0;height:4px;
+  background:var(--brand-grad);
+}
+
+.bn-share-icon{
+  width:72px;height:72px;
+  margin:0 auto 16px;
+  border-radius:22px;
+  background:var(--brand-grad);
+  display:grid;place-items:center;
+  font-size:2rem;
+  box-shadow:0 10px 28px rgba(219,39,119,.35);
+  position:relative;
+}
+.bn-share-icon::after{
+  content:"";position:absolute;inset:0;border-radius:22px;
+  background:linear-gradient(180deg,rgba(255,255,255,.25),transparent 60%);
+  pointer-events:none;
+}
+.bn-share-title{
+  font-size:1.1rem;font-weight:950;
+  color:var(--text);
+  margin-bottom:8px;
+  line-height:1.5;
+}
+.bn-share-sub{
+  font-size:.75rem;font-weight:700;
+  color:var(--text-muted);
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+/* QR Code */
+.bn-qr-wrap{
+  background:#fff;
+  border-radius:18px;
+  padding:14px;
+  margin:0 auto 14px;
+  display:inline-block;
+  box-shadow:0 8px 22px rgba(0,0,0,.10);
+  border:2px solid #db2777;
+}
+.bn-qr-img{
+  display:block;
+  width:200px;height:200px;
+  border-radius:10px;
+  background:#fff;
+}
+.bn-qr-caption{
+  font-size:.68rem;font-weight:800;
+  color:var(--text-muted);
+  margin-top:10px;
+  direction:ltr;
+  word-break:break-all;
+  padding:0 10px;
+  line-height:1.6;
+}
+
+/* دکمه‌های اشتراک‌گذاری */
+.bn-share-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:8px;
+}
+.bn-share-btn{
+  min-height:46px;
+  padding:0 12px;
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  gap:7px;
+  font-family:inherit;font-size:.75rem;font-weight:900;
+  cursor:pointer;border:0;
+  transition:transform .15s;
+  text-decoration:none;
+}
+.bn-share-btn:active{transform:scale(.96)}
+.bn-share-btn.primary{
+  grid-column:1 / -1;
+  background:var(--brand-grad);
+  color:#fff;
+  box-shadow:0 10px 24px rgba(219,39,119,.35);
+}
+.bn-share-btn.ghost{
+  background:var(--soft-grad);
+  color:var(--text);
+  border:1.5px solid var(--border);
+}
+.bn-share-btn svg{
+  width:17px;height:17px;
+  fill:none;stroke:currentColor;
+  stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;
+}
+
+.bn-share-close{
+  position:absolute;top:12px;right:12px;
+  width:34px;height:34px;
+  border-radius:11px;
+  background:var(--soft-grad);
+  border:0;
+  color:var(--text-muted);
+  display:grid;place-items:center;
+  cursor:pointer;
+  font-size:1.2rem;line-height:1;
+  padding:0;
+  transition:transform .15s;
+}
+.bn-share-close:active{transform:scale(.9)}
+
+.bn-qr-loading{
+  width:200px;height:200px;
+  display:grid;place-items:center;
+  color:var(--text-muted);
+  font-size:.72rem;font-weight:800;
+  background:var(--soft-grad);
+  border-radius:10px;
+  padding:20px;
+  line-height:1.8;
+}
+
 @media(max-width:390px){
   .app{padding:0 12px}
   .hero{padding:16px 15px 14px;border-radius:24px}
@@ -484,6 +634,23 @@ body.dark .admin-error{color:#fca5a5}
     <a class="icon-btn" href="search.html" aria-label="جستجو">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.7-3.7"/></svg>
     </a>
+    <button class="icon-btn" id="shareBtn" type="button" aria-label="اشتراک‌گذاری">
+      <svg viewBox="0 0 24 24">
+        <circle cx="18" cy="5" r="2.5"/>
+        <circle cx="6" cy="12" r="2.5"/>
+        <circle cx="18" cy="19" r="2.5"/>
+        <path d="m8.2 10.8 7.5-4.3"/>
+        <path d="m8.2 13.2 7.5 4.3"/>
+      </svg>
+    </button>
+    <button class="icon-btn" id="qrBtn" type="button" aria-label="QR Code">
+      <svg viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <path d="M14 14h3v3h-3zM20 14h1M14 20h1M17 20h4v1M20 17v3"/>
+      </svg>
+    </button>
     <button class="icon-btn" id="themeButton" type="button" aria-label="تغییر تم">
       <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
       <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2"/><path d="m4.9 4.9 1.4 1.4M17.7 17.7l1.4 1.4"/><path d="M2 12h2M20 12h2"/><path d="m6.3 17.7-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
@@ -688,6 +855,52 @@ body.dark .admin-error{color:#fca5a5}
       ورود به پنل
     </button>
     <div class="admin-hint">🛡️ تلاش‌های ناموفق ثبت می‌شوند</div>
+  </div>
+</div>
+
+<!-- ═══ SHARE / QR MODAL ═══ -->
+<div class="bn-share-modal" id="bnShareModal" role="dialog" aria-modal="true">
+  <div class="bn-share-box">
+    <button class="bn-share-close" id="bnShareClose" type="button" aria-label="بستن">×</button>
+
+    <div class="bn-share-icon" id="bnShareIcon">📤</div>
+    <div class="bn-share-title" id="bnShareTitle">اشتراک‌گذاری برنامه</div>
+    <div class="bn-share-sub" id="bnShareSub">بانوان نور را با دوستان و آشنایان خود به اشتراک بگذارید</div>
+
+    <!-- QR Code -->
+    <div id="bnQrBox" style="display:none">
+      <div class="bn-qr-wrap">
+        <img class="bn-qr-img" id="bnQrImg" alt="QR Code" />
+      </div>
+      <div class="bn-qr-caption" id="bnQrCaption"></div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="bn-share-actions" id="bnShareActions">
+      <button class="bn-share-btn primary" id="bnShareBtnAction" type="button">
+        <svg viewBox="0 0 24 24">
+          <circle cx="18" cy="5" r="2.5"/>
+          <circle cx="6" cy="12" r="2.5"/>
+          <circle cx="18" cy="19" r="2.5"/>
+          <path d="m8.2 10.8 7.5-4.3"/>
+          <path d="m8.2 13.2 7.5 4.3"/>
+        </svg>
+        اشتراک‌گذاری
+      </button>
+      <button class="bn-share-btn ghost" id="bnCopyLinkBtn" type="button">
+        <svg viewBox="0 0 24 24">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+        کپی لینک
+      </button>
+      <button class="bn-share-btn ghost" id="bnWhatsappBtn" type="button">
+        <svg viewBox="0 0 24 24">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+        واتساپ
+      </button>
+    </div>
   </div>
 </div>
 
@@ -988,6 +1201,141 @@ function setupDailyHandlers(){
     if(e.key === "Escape" && modal && modal.classList.contains("show")) closeDailyModal();
   });
 }
+
+/* ═══════════════════════════════════════════════════════════
+   SHARE & QR SYSTEM
+   ═══════════════════════════════════════════════════════════ */
+(function(){
+  var SHARE_URL = "https://kabulbazarstore-ship-it.github.io/banovan-noor/";
+  var SHARE_TITLE = "بانوان نور";
+  var SHARE_TEXT = "بانوان نور — همراه هوشمند بانوان مسلمان\n\nهمراه آموزشی، فرهنگی و سلامت ویژه بانوان\nبا پشتیبانی سه‌زبانه و کارکرد کامل آفلاین";
+
+  var modal = document.getElementById("bnShareModal");
+  var icon = document.getElementById("bnShareIcon");
+  var title = document.getElementById("bnShareTitle");
+  var sub = document.getElementById("bnShareSub");
+  var qrBox = document.getElementById("bnQrBox");
+  var qrImg = document.getElementById("bnQrImg");
+  var qrCaption = document.getElementById("bnQrCaption");
+  var actions = document.getElementById("bnShareActions");
+
+  var shareBtn = document.getElementById("shareBtn");
+  var qrBtn = document.getElementById("qrBtn");
+  var closeBtn = document.getElementById("bnShareClose");
+  var shareAction = document.getElementById("bnShareBtnAction");
+  var copyLinkBtn = document.getElementById("bnCopyLinkBtn");
+  var whatsappBtn = document.getElementById("bnWhatsappBtn");
+
+  function openModal(mode){
+    if(!modal) return;
+
+    if(mode === "qr"){
+      if(icon) icon.textContent = "📱";
+      if(title) title.textContent = "اسکن QR Code";
+      if(sub) sub.textContent = "با دوربین گوشی خود اسکن کنید تا مستقیم برنامه را دانلود کنید";
+      if(qrBox) qrBox.style.display = "block";
+      if(actions) actions.style.display = "none";
+
+      if(qrImg){
+        qrImg.style.display = "none";
+        var qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=10&data=" + encodeURIComponent(SHARE_URL);
+        qrImg.src = qrUrl;
+        qrImg.onload = function(){ qrImg.style.display = "block"; };
+        qrImg.onerror = function(){
+          qrBox.innerHTML = '<div class="bn-qr-loading">خطا در بارگذاری QR<br>اتصال اینترنت را بررسی کنید</div>';
+        };
+      }
+      if(qrCaption) qrCaption.textContent = SHARE_URL;
+    } else {
+      if(icon) icon.textContent = "📤";
+      if(title) title.textContent = "اشتراک‌گذاری برنامه";
+      if(sub) sub.textContent = "بانوان نور را با دوستان و آشنایان خود به اشتراک بگذارید";
+      if(qrBox) qrBox.style.display = "none";
+      if(actions) actions.style.display = "grid";
+    }
+
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal(){
+    if(!modal) return;
+    modal.classList.remove("show");
+    document.body.style.overflow = "";
+  }
+
+  if(qrBtn){
+    qrBtn.addEventListener("click", function(){ openModal("qr"); });
+  }
+
+  if(shareBtn){
+    shareBtn.addEventListener("click", function(){ openModal("share"); });
+  }
+
+  if(closeBtn){
+    closeBtn.addEventListener("click", closeModal);
+  }
+
+  if(modal){
+    modal.addEventListener("click", function(e){
+      if(e.target === modal) closeModal();
+    });
+  }
+
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && modal && modal.classList.contains("show")) closeModal();
+  });
+
+  if(shareAction){
+    shareAction.addEventListener("click", async function(){
+      var shareData = {
+        title: SHARE_TITLE,
+        text: SHARE_TEXT,
+        url: SHARE_URL
+      };
+
+      try{
+        if(navigator.share){
+          await navigator.share(shareData);
+          if (window.bnAnalytics) window.bnAnalytics.track("share_used", { method: "native" });
+          closeModal();
+        } else {
+          await navigator.clipboard.writeText(SHARE_URL);
+          showMsg("لینک کپی شد ✓");
+          if (window.bnAnalytics) window.bnAnalytics.track("share_used", { method: "clipboard_fallback" });
+        }
+      }catch(e){ /* کاربر لغو کرد */ }
+    });
+  }
+
+  if(copyLinkBtn){
+    copyLinkBtn.addEventListener("click", async function(){
+      try{
+        await navigator.clipboard.writeText(SHARE_URL);
+        showMsg("لینک کپی شد ✓");
+        if (window.bnAnalytics) window.bnAnalytics.track("share_used", { method: "copy" });
+      }catch(e){
+        var ta = document.createElement("textarea");
+        ta.value = SHARE_URL;
+        ta.style.position = "fixed";
+        ta.style.top = "-1000px";
+        document.body.appendChild(ta);
+        ta.select();
+        try{ document.execCommand("copy"); showMsg("لینک کپی شد ✓"); }catch(x){}
+        document.body.removeChild(ta);
+      }
+    });
+  }
+
+  if(whatsappBtn){
+    whatsappBtn.addEventListener("click", function(){
+      var waText = encodeURIComponent(SHARE_TEXT + "\n\n" + SHARE_URL);
+      window.open("https://wa.me/?text=" + waText, "_blank");
+      if (window.bnAnalytics) window.bnAnalytics.track("share_used", { method: "whatsapp" });
+    });
+  }
+})();
+
 function init(){
   applyLang(getLang());
   var themeButton = $("themeButton");
