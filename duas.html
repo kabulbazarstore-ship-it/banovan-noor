@@ -284,7 +284,7 @@ main{
   place-items:center;
   background:var(--soft);
   border:1px solid var(--line);
-  color:var(--text-soft, var(--muted));
+  color:var(--muted);
   font-family:inherit;
   font-weight:900;
   cursor:pointer;
@@ -634,7 +634,6 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
 "use strict";
 
 const BASE_PATH = "data/duas/";
-const CACHE_VERSION = "v13";
 const DUA_FILES = [
   { id:"dua",       title:"دعا",       icon:"prayer", file:"duas.json" },
   { id:"ziyarat",   title:"زیارت",     icon:"star",   file:"ziyarat.json" },
@@ -809,13 +808,13 @@ function extractArticles(data,category){
   return result;
 }
 
-/* LOAD */
+/* LOAD - ✅ اصلاح شده برای کار آفلاین */
 async function loadAllData(){
   catGrid.innerHTML='<div class="state" style="grid-column:span 2"><div class="loader"></div>در حال بارگذاری...</div>';
   const loaded=[];
   for(const item of DUA_FILES){
     try{
-      const r=await fetch(BASE_PATH+item.file+"?v="+CACHE_VERSION,{cache:"no-cache"});
+      const r=await fetch(BASE_PATH+item.file);
       if(!r.ok) throw new Error("HTTP "+r.status);
       const data=await r.json();
       loaded.push(...extractArticles(data,item.id));
@@ -1504,23 +1503,15 @@ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded"
 else loadAllData();
 </script>
 
-<!-- ═══ آنالیتیکس (اول لود بشه) ═══ -->
 <script src="js/bn-analytics.js"></script>
-
-<!-- ═══ ماژول اصلی BN ═══ -->
 <script src="js/bn-app.js"></script>
-
-<!-- ═══ Media Player (پخش هوشمند) ═══ -->
 <script src="js/bn-media-player.js"></script>
-
-<!-- ═══ Firebase ═══ -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 <script src="js/firebase-config.js"></script>
 <script src="js/bn-tracker.js"></script>
 <script src="js/bn-auth-gate.js"></script>
 
-<!-- ═══ ثبت Service Worker ═══ -->
 <script>
 (function(){
   if ('serviceWorker' in navigator) {
