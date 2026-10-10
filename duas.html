@@ -398,7 +398,7 @@ body.dark .bottom-nav{background:rgba(0,0,0,.88)}
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:3px;color:var(--muted);border-radius:13px;background:transparent;
   font-size:9px;font-weight:800;padding:6px 2px;
-  transition:color .18s;
+  transition:color .18s;text-decoration:none;
 }
 .nav-item svg{width:20px;height:20px}
 .nav-item.active{color:var(--primary)}
@@ -409,6 +409,7 @@ body.dark .bottom-nav{background:rgba(0,0,0,.88)}
   display:grid;place-items:center;color:#fff;background:var(--brand);
   box-shadow:0 10px 24px rgba(185,40,130,.3);
   border:4px solid var(--bg);
+  text-decoration:none;
 }
 .nav-home svg{width:23px;height:23px}
 
@@ -448,7 +449,7 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V5a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2h2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
   <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="19" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 10.8l7.5-4.3M8.2 13.2l7.5 4.3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
   <symbol id="i-speak" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4zM17 9a4 4 0 010 6M19.5 7a7 7 0 010 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l10-2v13M9 18a3 3 0 11-3-3 3 3 0 013 3zM19 16a3 3 11-3-3 3 3 0 013 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l10-2v13M9 18a3 3 0 11-3-3 3 3 0 013 3zM19 16a3 3 0 11-3-3 3 3 0 013 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M17 10l4-2v8l-4-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
   <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5v.1a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V2a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1h.1a2 2 0 110 4h-.1a1.7 1.7 0 00-1.4 1z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
   <symbol id="i-fullscreen" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -530,9 +531,9 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
     همراز
   </button>
   <div class="nav-fab-slot">
-    <button class="nav-home" id="navHome" aria-label="خانه" type="button">
+    <a class="nav-home" href="home.html" aria-label="خانه">
       <svg><use href="#i-home"></use></svg>
-    </button>
+    </a>
   </div>
   <button class="nav-item" id="navAhkam" type="button">
     <svg><use href="#i-book"></use></svg>
@@ -579,7 +580,7 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
 "use strict";
 
 const BASE_PATH = "data/duas/";
-const CACHE_VERSION = "v11";
+const CACHE_VERSION = "v12";
 const DUA_FILES = [
   { id:"dua",       title:"دعا",       icon:"prayer", file:"duas.json" },
   { id:"ziyarat",   title:"زیارت",     icon:"star",   file:"ziyarat.json" },
@@ -620,7 +621,6 @@ const modalBookmark=$("modalBookmark"), modalScroll=$("modalScroll");
 const mediaArea=$("mediaArea"), tabsArea=$("tabsArea"), contentArea=$("contentArea");
 const toastEl=$("toast");
 
-/* THEME */
 function getSystemTheme(){
   try{return window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}
   catch(e){return"light"}
@@ -637,7 +637,6 @@ function applyTheme(){
 }
 applyTheme();
 
-/* HELPERS */
 function loadObject(k){try{const v=JSON.parse(localStorage.getItem(k)||"{}");return v&&typeof v==="object"?v:{}}catch(e){return{}}}
 function saveObject(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 function clampNumber(v,min,max,fb){const n=Number(v);if(!isFinite(n))return fb;return Math.min(max,Math.max(min,n))}
@@ -675,7 +674,6 @@ function getYouTubeId(url){
   }catch(e){return null}
 }
 
-/* NORMALIZE */
 function normalizeArticle(a,category){
   if(!a||typeof a!=="object") return null;
   const found=DUA_FILES.find(x=>x.id===category);
@@ -721,7 +719,6 @@ function extractArticles(data,category){
   return result;
 }
 
-/* LOAD */
 async function loadAllData(){
   catGrid.innerHTML='<div class="state" style="grid-column:span 2"><div class="loader"></div>در حال بارگذاری...</div>';
   const loaded=[];
@@ -737,8 +734,6 @@ async function loadAllData(){
   renderCategories();
   renderDaily();
 }
-
-/* DAILY */
 function renderDaily(){
   if(!allArticles.length) return;
   const day=Math.floor(Date.now()/86400000);
@@ -747,8 +742,6 @@ function renderDaily(){
   $("dailyTitle").textContent = a.category==="lecture"&&a.speaker ? "سخنرانی "+a.speaker : a.title;
   $("dailyExcerpt").textContent = a.excerpt || a.categoryTitle;
 }
-
-/* CATEGORIES */
 function renderCategories(){
   const counts={};
   allArticles.forEach(a=>counts[a.category]=(counts[a.category]||0)+1);
@@ -763,8 +756,6 @@ function renderCategories(){
       </button>`;
   }).join("");
 }
-
-/* VIEW */
 function openCategory(catId){
   currentCategory=catId; currentView="list";
   categoriesView.classList.add("hidden");
@@ -787,8 +778,6 @@ function backToCategories(){
   $("bookmarkFilter").classList.remove("active");
   window.scrollTo({top:0,behavior:"smooth"});
 }
-
-/* FILTER */
 function applyFilters(){
   const q=normalizeSearch(searchInput.value);
   filteredArticles=allArticles.filter(a=>{
@@ -846,10 +835,7 @@ function renderArticleCard(a){
       </div>
     </article>`;
 }
-
-/* OPEN */
 function findArticle(id){ return allArticles.find(a=>getArticleId(a)===String(id)); }
-
 function openArticle(a){
   if(!a) return;
   stopAudio();
@@ -874,8 +860,6 @@ function getInitialTab(a){
   if(a.virtue) return "virtue";
   return "main";
 }
-
-/* MEDIA */
 function renderMedia(a){
   mediaArea.innerHTML="";
   if(a.audioUrl) mediaArea.appendChild(buildAudioPlayer(a));
@@ -924,8 +908,6 @@ function buildVideoPlayer(a){
   }
   return box;
 }
-
-/* AUDIO PLAYER */
 function buildAudioPlayer(a){
   const w=document.createElement("section");
   w.className="player";
@@ -1020,45 +1002,30 @@ function buildAudioPlayer(a){
     if(isFinite(audio.currentTime)&&audio.currentTime>0){ positions[id]=Math.floor(audio.currentTime); saveObject(POSITION_KEY,positions); }
   };
 
-  /* ═══════════════════════════════════════════════════════
-     ✅ دکمه پخش اصلاح‌شده با مدیریت کامل cancel و خطا
-     ═══════════════════════════════════════════════════════ */
   playBtn.addEventListener("click", async () => {
-    // اگر در حال پخش است، متوقف کن
-    if (!audio.paused) {
-      audio.pause();
-      return;
-    }
-
-    // اگر قبلاً تأیید شده و در کش است، مستقیم پخش کن
+    if (!audio.paused) { audio.pause(); return; }
     if (audio._bnReady) {
       try { await audio.play(); } catch(e) { showErr("خطا در پخش"); }
       return;
     }
-
-    // اگر Media Player موجود نیست، مستقیم پخش کن (fallback)
     if (!window.bnMedia || typeof window.bnMedia.play !== "function") {
       try { await audio.play(); } catch(e) { showErr("فایل صوتی در دسترس نیست"); }
       return;
     }
-
-    // جلوگیری از کلیک تکراری
     if (isBusy) return;
     isBusy = true;
     status.textContent = "در حال آماده‌سازی...";
     let blobUrl = null;
 
     try {
-      // فراخوانی Media Player
       const result = await window.bnMedia.play(a.audioUrl, {
         onPlay: (res) => {
-          // اگر فایل تازه دانلود شده و blob داریم، از blob استفاده کن
           if (res && res.blob) {
             try {
               blobUrl = URL.createObjectURL(res.blob);
               audio.src = blobUrl;
               audio.load();
-            } catch(e) { console.warn("Blob error:", e); }
+            } catch(e) {}
           }
           audio._bnReady = true;
           status.textContent = res && res.offline ? "آماده (آفلاین)" : "آماده";
@@ -1070,36 +1037,22 @@ function buildAudioPlayer(a){
         }
       });
 
-      // ✅ مدیریت نتیجه: لغو شده توسط کاربر
       if (result && result.cancelled) {
         status.textContent = "لغو شد";
         setTimeout(() => { status.textContent = "آماده پخش"; }, 2000);
         return;
       }
+      if (result && result.error) return;
 
-      // ✅ اگر خطا داشتیم، onError خودش نمایش داده
-      if (result && result.error) {
-        return;
-      }
-
-      // ✅ حالا پخش کن
-      try {
-        await audio.play();
-      } catch(e) {
-        // اگر blob url خراب بود، به url اصلی برگرد
+      try { await audio.play(); }
+      catch(e) {
         if (blobUrl) {
           try {
             audio.src = a.audioUrl;
             audio.load();
             await audio.play();
-          } catch(e2) {
-            showErr("خطا در پخش فایل");
-            status.textContent = "خطا";
-          }
-        } else {
-          showErr("خطا در پخش فایل");
-          status.textContent = "خطا";
-        }
+          } catch(e2) { showErr("خطا در پخش فایل"); status.textContent = "خطا"; }
+        } else { showErr("خطا در پخش فایل"); status.textContent = "خطا"; }
       }
     } catch(e) {
       showErr("خطا: " + (e.message || "عملیات ناموفق"));
@@ -1178,7 +1131,6 @@ function buildAudioPlayer(a){
 }
 function stopAudio(){ if(audioCleanup){try{audioCleanup()}catch(e){}} audioCleanup=null; audioEl=null; }
 
-/* TABS */
 function renderTabs(a){
   const tabs=[];
   if(a.contentAr||a.content) tabs.push({id:"main",title:"متن اصلی"});
@@ -1226,7 +1178,6 @@ function formatInstructions(v){
   return '<div class="normal-text">'+formatPlainText(v)+'</div>';
 }
 
-/* BOOKMARK */
 function isBookmarked(a){return !!bookmarks[getArticleId(a)]}
 function toggleBookmark(a){
   if(!a) return;
@@ -1244,8 +1195,6 @@ function updateModalBookmark(){
   modalBookmark.classList.toggle("active",active);
   $("actionBookmark").classList.toggle("active",active);
 }
-
-/* COPY / SHARE / SPEAK */
 function getCopyText(a){return [a.title,a.contentAr,a.translationFa,a.content,a.instructions,a.virtue,a.source].filter(Boolean).join("\n\n")}
 async function copyArticle(){
   if(!currentArticle) return;
@@ -1279,8 +1228,6 @@ function speakArticle(){
   u.onend=u.onerror=()=>{speechActive=false;btn.innerHTML='<svg><use href="#i-speak"></use></svg>خواندن'};
   speechSynthesis.cancel(); speechSynthesis.speak(u);
 }
-
-/* CLOSE MODAL */
 function closeModal(){
   stopAudio();
   if("speechSynthesis" in window) speechSynthesis.cancel();
@@ -1293,7 +1240,6 @@ function closeModal(){
   if(lastFocusedElement&&lastFocusedElement.focus){try{lastFocusedElement.focus()}catch(e){}}
 }
 
-/* EVENTS */
 catGrid.addEventListener("click",e=>{
   const c=e.target.closest("[data-cat]");
   if(c) openCategory(c.dataset.cat);
@@ -1336,7 +1282,6 @@ searchInput.addEventListener("input",()=>{
 });
 $("topSearchBtn").addEventListener("click",()=>{searchInput.focus();window.scrollTo({top:0,behavior:"smooth"})});
 $("navSearch").addEventListener("click",()=>{searchInput.focus();window.scrollTo({top:0,behavior:"smooth"})});
-$("navHome").addEventListener("click",()=>{location.href="home.html"});
 $("navHamraz").addEventListener("click",()=>{location.href="hamraz.html"});
 $("navAhkam").addEventListener("click",()=>{location.href="ahkam.html"});
 $("navMore").addEventListener("click",()=>{location.href="settings.html"});
