@@ -1,9 +1,9 @@
 /* =========================================================
    BANOVAN NOOR | بانوان نور — Service Worker
-   نسخه: v6 — با پشتیبانی کامل از آفلاین، کش رسانه و آپدیت هوشمند
+   نسخه: v7 — با پشتیبانی کامل از آفلاین، کش رسانه و آپدیت هوشمند
    ========================================================= */
 
-/* ---------- Polyfill برای Promise.allSettled (گوشی‌های قدیمی) ---------- */
+/* ---------- Polyfill برای Promise.allSettled ---------- */
 if (!Promise.allSettled) {
   Promise.allSettled = function (promises) {
     return Promise.all(promises.map(function (p) {
@@ -16,17 +16,17 @@ if (!Promise.allSettled) {
 }
 
 /* ---------- نسخه و نام کش‌ها ---------- */
-var SW_VERSION = 'v6';
+var SW_VERSION = 'v7';
 var STATIC_CACHE  = 'banovan-noor-static-'  + SW_VERSION;
 var RUNTIME_CACHE = 'banovan-noor-runtime-' + SW_VERSION;
 var MEDIA_CACHE   = 'banovan-noor-media-v1';
 
-/* ---------- محدودیت حجم کش رسانه (به بایت) ---------- */
+/* ---------- محدودیت حجم کش رسانه ---------- */
 var MEDIA_CACHE_LIMIT = 50 * 1024 * 1024; // ۵۰ مگابایت
 
-/* ---------- فایل‌های اصلی پروژه (کش آپ‌فرانت) ---------- */
+/* ---------- فایل‌های اصلی پروژه ---------- */
 var APP_FILES = [
-  // ===== صفحات اصلی =====
+  // صفحات اصلی
   './',
   './index.html',
   './home.html',
@@ -41,7 +41,7 @@ var APP_FILES = [
   './notes.html',
   './offline.html',
 
-  // ===== صفحات بخش‌ها =====
+  // صفحات بخش‌ها
   './ahkam.html',
   './audio.html',
   './childbirth.html',
@@ -54,7 +54,7 @@ var APP_FILES = [
   './pregnancy.html',
   './women.html',
 
-  // ===== استایل و اسکریپت =====
+  // استایل و اسکریپت
   './styles.css',
   './assets/theme.css',
   './assets/theme.js',
@@ -67,12 +67,12 @@ var APP_FILES = [
   './js/firebase-config.js',
   './manifest.json',
 
-  // ===== i18n =====
+  // i18n
   './i18n/fa.json',
   './i18n/ps.json',
   './i18n/en.json',
 
-  // ===== آیکون‌ها و لوگو =====
+  // آیکون‌ها
   './assets/icon-144.png',
   './assets/icon-192.png',
   './assets/icon-512.png',
@@ -82,39 +82,39 @@ var APP_FILES = [
   './assets/screenshot-home.png',
   './assets/screenshot-health.png',
 
-  // ===== فونت‌ها =====
+  // فونت‌ها
   './assets/fonts/Vazirmatn-Regular.woff2',
   './assets/fonts/Vazirmatn-Bold.woff2',
   './assets/fonts/Vazirmatn-Black.woff2',
 
-  // ===== داده‌های اصلی =====
+  // داده‌های اصلی
   './data/articles/articles.json',
   './data/audio/ahkam-audio.json',
   './data/daily/daily.json',
   './data/doctors/doctors.json',
 
-  // ===== دعاها =====
+  // دعاها
   './data/duas/amal.json',
   './data/duas/duas.json',
   './data/duas/lectures.json',
   './data/duas/mahdaviat.json',
   './data/duas/ziyarat.json',
 
-  // ===== آموزش =====
+  // آموزش
   './data/education/education.json',
   './data/education/videos.json',
 
-  // ===== فقه =====
+  // فقه
   './data/fiqh/hanafi.json',
   './data/fiqh/jafari/fayyaz.json',
   './data/fiqh/jafari/shirazi.json',
   './data/fiqh/jafari/sistani.json',
 
-  // ===== همراز =====
+  // همراز
   './data/hamraz/categories.json',
   './data/hamraz/questions.json',
 
-  // ===== پزشکی (کامل) =====
+  // پزشکی (کامل)
   './data/medical/anal-health.json',
   './data/medical/anemia.json',
   './data/medical/breast-health.json',
@@ -135,15 +135,15 @@ var APP_FILES = [
   './data/medical/sleep.json',
   './data/medical/vaginal-health.json',
 
-  // ===== بانوان =====
+  // بانوان
   './data/women/women.json'
 ];
 
-/* ---------- الگوی فایل‌های رسانه (کش در Runtime) ---------- */
+/* ---------- الگوی فایل‌های رسانه ---------- */
 var MEDIA_PATTERN = /\.(mp3|mp4|m4a|ogg|wav|webm|jpg|jpeg|png|gif|webp)(\?.*)?$/i;
 
 /* =========================================================
-   کمکی: محدود کردن حجم کش رسانه
+   محدود کردن حجم کش رسانه
    ========================================================= */
 function trimCache(cacheName, maxBytes) {
   return caches.open(cacheName).then(function (cache) {
@@ -186,7 +186,7 @@ function trimCache(cacheName, maxBytes) {
 }
 
 /* =========================================================
-   نصب: کش کردن فایل‌های اصلی (Best-Effort)
+   نصب
    ========================================================= */
 self.addEventListener('install', function (event) {
   event.waitUntil(
@@ -208,7 +208,7 @@ self.addEventListener('install', function (event) {
 });
 
 /* =========================================================
-   فعال‌سازی: پاک‌کردن کش‌های قدیمی + اطلاع به کلاینت‌ها
+   فعال‌سازی
    ========================================================= */
 self.addEventListener('activate', function (event) {
   event.waitUntil(
@@ -235,7 +235,7 @@ self.addEventListener('activate', function (event) {
 });
 
 /* =========================================================
-   fetch: استراتژی‌های مختلف بر اساس نوع فایل
+   fetch
    ========================================================= */
 self.addEventListener('fetch', function (event) {
   var req = event.request;
@@ -249,7 +249,7 @@ self.addEventListener('fetch', function (event) {
   if (url.origin !== self.location.origin) return;
   if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
 
-  /* ====== ۱. فایل‌های رسانه: Cache-First ====== */
+  /* ====== ۱. رسانه ====== */
   if (MEDIA_PATTERN.test(url.pathname)) {
     event.respondWith(
       caches.match(req).then(function (cached) {
@@ -265,17 +265,14 @@ self.addEventListener('fetch', function (event) {
           }
           return fresh;
         }).catch(function () {
-          return new Response('', {
-            status: 503,
-            statusText: 'Media Offline'
-          });
+          return new Response('', { status: 503, statusText: 'Media Offline' });
         });
       })
     );
     return;
   }
 
-  /* ====== ۲. صفحات ناوبری: Network-First با fallback ====== */
+  /* ====== ۲. صفحات ناوبری ====== */
   if (req.mode === 'navigate') {
     event.respondWith(
       fetch(req).then(function (fresh) {
@@ -298,7 +295,7 @@ self.addEventListener('fetch', function (event) {
     return;
   }
 
-  /* ====== ۳. بقیه فایل‌ها: Stale-While-Revalidate ====== */
+  /* ====== ۳. بقیه فایل‌ها ====== */
   event.respondWith(
     caches.match(req).then(function (cached) {
       var fetchPromise = fetch(req).then(function (fresh) {
@@ -324,7 +321,7 @@ self.addEventListener('fetch', function (event) {
 });
 
 /* =========================================================
-   پیام‌ها از کلاینت
+   پیام‌ها
    ========================================================= */
 self.addEventListener('message', function (event) {
   if (!event.data) return;
@@ -386,7 +383,7 @@ self.addEventListener('notificationclick', function (event) {
 });
 
 /* =========================================================
-   Push Notifications (آماده برای آینده)
+   Push Notifications
    ========================================================= */
 self.addEventListener('push', function (event) {
   if (!event.data) return;
