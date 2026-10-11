@@ -170,10 +170,12 @@ main{width:min(720px,100%);margin:auto;padding:14px 12px calc(var(--nav-h) + 30p
 .player::after{content:"";position:absolute;width:180px;height:180px;left:-90px;bottom:-100px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.28),transparent 70%);pointer-events:none;animation:floatGlow 10s ease-in-out infinite reverse}
 @keyframes floatGlow{0%,100%{transform:scale(1) translate(0,0);opacity:.8}50%{transform:scale(1.15) translate(-10px,10px);opacity:1}}
 .player-top{position:relative;z-index:2;display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.cover{position:relative;width:84px;height:84px;flex:0 0 84px;display:grid;place-items:center;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#e11d48,#db2777,#a855f7);box-shadow:0 12px 28px rgba(219,39,119,.42),inset 0 1px 0 rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.15)}
+.cover{position:relative;width:96px;height:96px;flex:0 0 96px;display:grid;place-items:center;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#e11d48,#db2777,#a855f7);box-shadow:0 12px 28px rgba(219,39,119,.42),inset 0 1px 0 rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.15)}
 .cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0}
-.cover::before{content:"";position:absolute;inset:6px;border-radius:15px;border:1px solid rgba(255,255,255,.22);pointer-events:none;z-index:1}
-.cover svg{position:relative;z-index:1;width:30px;height:30px}
+.cover::before{content:"";position:absolute;inset:6px;border-radius:15px;border:1px solid rgba(255,255,255,.16);pointer-events:none;z-index:1}
+.cover svg{position:relative;z-index:1;width:42px;height:42px}
+/* Portraits stay clean: never place animated equalizer bars over a speaker image. */
+.cover .cover-equalizer,.cover .equalizer,.cover .visualizer{display:none!important;animation:none!important}
 .player-info{min-width:0;flex:1}
 .player-label{display:flex;align-items:center;gap:6px;color:#d9b8e5;font-size:9.5px;font-weight:800;margin-bottom:5px}
 .player-label i{width:6px;height:6px;border-radius:50%;background:#f472b6;box-shadow:0 0 0 4px rgba(244,114,182,.15),0 0 12px #f472b6;animation:pulseDot 1.5s ease-in-out infinite}
@@ -389,6 +391,7 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
 "use strict";
 
 const BASE_PATH = "data/duas/";
+// Audio/video are cached by sw.js after the first successful online request, then served offline.
 
 /* مسیر رسانه‌ها: اجازهٔ هر فایل محلی امن با مسیر نسبی؛ فایل باید واقعاً در پروژه وجود داشته باشد. */
 function availableMediaPath(value){
@@ -424,15 +427,15 @@ const SPEAKER_IMAGES = {
 };
 
 /* تشخیص خودکار عکس از روی مسیر فایل صوتی */
-function detectSpeakerImage(audioUrl, explicitImage){
-  if(explicitImage && String(explicitImage).trim()) return String(explicitImage).trim();
-  if(!audioUrl) return "";
-  const fname=String(audioUrl).split("/").pop().toLowerCase();
-  /* جستجوی کلیدواژه در اسم فایل */
+function detectSpeakerImage(audioUrl, explicitImage, speakerName){
+  if(explicitImage && String(explicitImage).trim()) return String(explicitImage).trim().replace(/\\/g,"/").replace(/^\.\//,"");
+  const fname=String(audioUrl||"").split("/").pop().toLowerCase();
+  const speaker=String(speakerName||"").toLowerCase().replace(/[\u200c\s_-]+/g,"");
+  const haystack=(fname+" "+String(speakerName||"").toLowerCase());
+  /* نام سخنران و نام فایل صوتی هر دو برای یافتن تصویر بررسی می‌شوند. */
   for(const key in SPEAKER_IMAGES){
-    if(fname.indexOf(key)!==-1){
-      return SPEAKER_IMAGES[key];
-    }
+    const normalizedKey=key.replace(/[-_\s]+/g,"");
+    if(haystack.indexOf(key)!==-1 || fname.indexOf(key)!==-1 || (speaker && speaker.indexOf(normalizedKey)!==-1)) return SPEAKER_IMAGES[key];
   }
   return "";
 }
@@ -590,7 +593,7 @@ function normalizeArticle(a,category){
     categoryTitle:(found&&found.title)||category
   };
   /* تشخیص خودکار عکس سخنران */
-  art.speakerImage=detectSpeakerImage(art.audioUrl, a.speakerImage||a.speaker_image||a.avatar);
+  art.speakerImage=detectSpeakerImage(art.audioUrl, a.speakerImage||a.speaker_image||a.avatar, art.speaker);
   art.id=String(art.id||(category+"_"+art.title));
   return art;
 }
@@ -710,7 +713,7 @@ function renderArticleCard(a){
   /* تصویر سخنران؛ اگر تصویر موجود نباشد، آیکون SVG هدفون نمایش داده می‌شود. */
   const headphoneSVG = '<svg viewBox="0 0 24 24" aria-label="هدفون" role="img" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13v-1a9 9 0 0 1 18 0v1"/><rect x="3" y="12" width="4" height="7" rx="2"/><rect x="17" y="12" width="4" height="7" rx="2"/></svg>';
   const iconHTML = a.speakerImage
-    ? '<img src="'+escapeHTML(a.speakerImage)+'" alt="'+escapeHTML(a.speaker||"")+'" loading="lazy" onerror="this.onerror=null;this.src=\'assets/speakers/default.svg\'">'
+    ? '<img src="'+escapeHTML(a.speakerImage)+'" alt="'+escapeHTML(a.speaker||"")+'" loading="lazy" onerror="this.onerror=null;this.src=\'assets/speakers/default.svg\';this.classList.add(\'speaker-fallback\')">'
     : ((a.speaker || a.audioUrl) ? headphoneSVG : iconUse(a.icon));
   return `
     <article class="article" data-open="${escapeHTML(id)}" role="button" tabindex="0">
@@ -976,6 +979,8 @@ function buildAudioPlayer(a){
     try{
       if(!audio.paused){audio.pause();return;}
       status.textContent="در حال بارگذاری...";
+      // Ask the browser to protect saved offline media from automatic eviction when supported.
+      try { if(navigator.storage && typeof navigator.storage.persist === "function") await navigator.storage.persist(); } catch(storageError) {}
       await audio.play();
       msgEl.classList.remove("show");
     }catch(e){

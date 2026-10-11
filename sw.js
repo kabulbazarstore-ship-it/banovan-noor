@@ -1,12 +1,13 @@
 /* BANOVAN NOOR | Service Worker — cache-first/offline-first
- * v23: precache all local pages, scripts, styles, JSON and images.
+ * v26: offline-first media cache persists across app updates; audio/video are saved after first successful online fetch.
  * Core assets are pre-cached; existing audio/video files are fetched in the home-page background downloader.
  */
 'use strict';
-var SW_VERSION = 'v24-offline-charity';
+var SW_VERSION = 'v25-audio-fix';
 var STATIC_CACHE = 'banovan-noor-static-' + SW_VERSION;
 var RUNTIME_CACHE = 'banovan-noor-runtime-' + SW_VERSION;
-var MEDIA_CACHE = 'banovan-noor-media-' + SW_VERSION;
+// Stable cache name: keep downloaded audio/video across app updates.
+var MEDIA_CACHE = 'banovan-noor-media-v1';
 var MAX_MEDIA_BYTES = 200 * 1024 * 1024;
 var PRECACHE_URLS = [
   "./",
@@ -137,7 +138,7 @@ self.addEventListener('activate', function (event) {
   event.waitUntil((async function () {
     var keys = await caches.keys();
     await Promise.all(keys.map(function (key) {
-      if (key.indexOf('banovan-noor-') === 0 && key !== STATIC_CACHE && key !== RUNTIME_CACHE && key !== MEDIA_CACHE) return caches.delete(key);
+      if (key.indexOf('banovan-noor-') === 0 && key !== STATIC_CACHE && key !== RUNTIME_CACHE && key !== MEDIA_CACHE && key.indexOf('banovan-noor-media-') !== 0) return caches.delete(key);
     }));
     await self.clients.claim();
     console.log('[BANOVAN SW] active', SW_VERSION);
