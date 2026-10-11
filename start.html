@@ -366,7 +366,6 @@ body::before{
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').then(function(reg){
-        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
       }).catch(function(e){ console.warn('SW register failed:', e.message); });
     });
   }

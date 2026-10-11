@@ -830,6 +830,7 @@ body.dark .admin-error{color:#fca5a5}
     <div class="feature-icon" style="background:linear-gradient(135deg,#c4b5fd,#7c3aed)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
     <span data-i18n="f_guide">راهنما</span>
   </a>
+  <a class="feature" href="support.html" style="border:1px solid rgba(168,50,214,.25)"><div class="feature-icon" style="background:linear-gradient(135deg,#d9468b,#7541a5);--feature-color:#a832d6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/><path d="M8 12h8M12 8v8"/></svg></div><span class="support-home-label"><span data-support-label="fa">حمایت و خیریه</span><span data-support-label="ps" hidden>ملاتړ او خیریه</span><span data-support-label="en" hidden>Support &amp; Charity</span></span></a>
   <a class="feature" href="settings.html">
     <div class="feature-icon" style="background:linear-gradient(135deg,#fbcfe8,#ec4899)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5v.1a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1A2 2 0 0 1 7 3.3l.1.1a1.7 1.7 0 0 0 1.8.3h.1a1.7 1.7 0 0 0 1-1.5V2a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v.1a1.7 1.7 0 0 0 1.5 1h.1a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.4 1z"/></svg></div>
     <span data-i18n="f_settings">تنظیمات</span>
@@ -1752,9 +1753,8 @@ else init();
 <script src="js/bn-app.js"></script>
 
 <!-- ═══ Firebase ═══ -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 <script src="js/firebase-config.js"></script>
+<script src="js/bn-firebase-loader.js"></script>
 <script src="js/bn-tracker.js"></script>
 <script src="js/bn-auth-gate.js"></script>
 
@@ -1764,7 +1764,6 @@ else init();
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').then(function(reg){
-        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
         reg.addEventListener('updatefound', function(){
           var newWorker = reg.installing;
           if(!newWorker) return;
@@ -1792,5 +1791,7 @@ else init();
 })();
 </script>
 
+<script src="js/bn-offline-download.js"></script>
+<script>(function(){function updateSupportTile(){var l=document.documentElement.lang||localStorage.getItem("bn_lang")||"fa";if(!["fa","ps","en"].includes(l))l="fa";document.querySelectorAll("[data-support-label]").forEach(function(e){e.hidden=e.getAttribute("data-support-label")!==l;});}updateSupportTile();new MutationObserver(updateSupportTile).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});window.addEventListener("storage",updateSupportTile);})();</script>
 </body>
 </html>

@@ -1279,9 +1279,8 @@ else init();
 <script src="js/bn-app.js"></script>
 
 <!-- ═══ Firebase ═══ -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 <script src="js/firebase-config.js"></script>
+<script src="js/bn-firebase-loader.js"></script>
 <script src="js/bn-tracker.js"></script>
 <script src="js/bn-auth-gate.js"></script>
 
@@ -1291,7 +1290,6 @@ else init();
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').then(function(reg){
-        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
       }).catch(function(e){ console.warn('SW register failed:', e.message); });
     });
   }

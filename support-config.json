@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "projectName": "BANOVAN NOOR",
+  "charityPartner": {
+    "name": "مؤسسه افغان حمایت از محرومین",
+    "facebookUrl": "",
+    "verified": false,
+    "note": "نام و ارتباط این مؤسسه باید پیش از انتشار عمومی با صفحه رسمی و مسئول مجاز آن تأیید شود."
+  },
+  "supportMethods": [
+    {
+      "id": "afghan_bank",
+      "type": "bank_transfer",
+      "region": "afghanistan",
+      "enabled": false,
+      "title": {
+        "fa": "انتقال بانکی داخل افغانستان",
+        "ps": "د افغانستان دننه بانکي لېږد",
+        "en": "Bank transfer inside Afghanistan"
+      },
+      "bankName": "",
+      "accountName": "",
+      "accountNumber": "",
+      "iban": "",
+      "currency": "AFN",
+      "instructions": {
+        "fa": "پس از تأیید مشخصات حساب، این بخش فعال می‌شود.",
+        "ps": "د حساب د معلوماتو تر تایید وروسته به دا برخه فعاله شي.",
+        "en": "This method will be enabled after the account details are verified."
+      }
+    },
+    {
+      "id": "afghan_local",
+      "type": "local_payment",
+      "region": "afghanistan",
+      "enabled": false,
+      "title": {
+        "fa": "پرداخت محلی افغانستان",
+        "ps": "د افغانستان محلي تادیه",
+        "en": "Local payment in Afghanistan"
+      },
+      "provider": "",
+      "accountName": "",
+      "accountNumber": "",
+      "currency": "AFN",
+      "instructions": {
+        "fa": "نام سرویس و شماره دریافت‌کننده باید تأیید شود.",
+        "ps": "د خدمت نوم او د ترلاسه کوونکي شمېره باید تایید شي.",
+        "en": "The provider and recipient details must be verified."
+      }
+    },
+    {
+      "id": "international_bank",
+      "type": "bank_transfer",
+      "region": "international",
+      "enabled": false,
+      "title": {
+        "fa": "انتقال بانکی بین‌المللی",
+        "ps": "نړیوال بانکي لېږد",
+        "en": "International bank transfer"
+      },
+      "bankName": "",
+      "accountName": "",
+      "swift": "",
+      "iban": "",
+      "currency": "USD",
+      "instructions": {
+        "fa": "فقط پس از تأیید بانک، کارمزدها و امکان دریافت از کشور فرستنده فعال شود.",
+        "ps": "یوازې د بانک، فیسونو او د لېږد د امکان تر تایید وروسته فعاله شي.",
+        "en": "Enable only after the bank confirms incoming transfers, fees, and sender-country availability."
+      }
+    },
+    {
+      "id": "international_card",
+      "type": "card_gateway",
+      "region": "international",
+      "enabled": false,
+      "title": {
+        "fa": "پرداخت با کارت بین‌المللی",
+        "ps": "د نړیوال کارت له لارې تادیه",
+        "en": "International card payment"
+      },
+      "provider": "",
+      "checkoutUrl": "",
+      "instructions": {
+        "fa": "برای فعال‌شدن، درگاه قانونی با امکان تسویه به حساب مقصد لازم است. اطلاعات کارت بانکی را داخل این اپ وارد نکنید.",
+        "ps": "د فعالېدو لپاره داسې قانوني دروازه پکار ده چې ټاکلي حساب ته پیسې تصفیه کړي. د کارت معلومات په اپ کې مه داخلوئ.",
+        "en": "A compliant payment gateway that can settle to the destination account is required. Do not enter card details inside this app."
+      }
+    }
+  ],
+  "privacy": {
+    "publicByDefault": false,
+    "phonePublicByDefault": false,
+    "hideNonDonors": true
+  },
+  "notice": {
+    "fa": "این صفحه به‌تنهایی پول دریافت نمی‌کند. فقط روش‌هایی را فعال کنید که حساب و امکان تسویه آن‌ها تأیید شده باشد.",
+    "ps": "دا پاڼه په خپله پیسې نه ترلاسه کوي. یوازې هغه لارې فعاله کړئ چې حساب او د پیسو تصفیه یې تایید شوې وي.",
+    "en": "This page does not collect money by itself. Enable only payment methods whose account and settlement capability have been verified."
+  }
+}

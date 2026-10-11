@@ -248,6 +248,8 @@ body.dark .list-tab:not(.active) .count{
   box-shadow:0 8px 24px rgba(219,39,119,.15);
 }
 .track-item:active{transform:scale(.98)}
+.track-item.unavailable{opacity:.58;cursor:not-allowed;filter:saturate(.55)}
+.track-item.unavailable:active{transform:none}
 
 .track-num{
   width:42px;height:42px;border-radius:13px;
@@ -809,6 +811,7 @@ function loadTracks(){
 function updateCachedBadges(){
   if(!window.bnMedia || typeof window.bnMedia.isCached !== "function") return;
   audioTracks.forEach(function(t, i){
+    if(t.available === false) return;
     var url = AUDIO_BASE + t.id + ".mp3";
     window.bnMedia.isCached(url).then(function(cached){
       if(cached){
@@ -859,13 +862,15 @@ function renderList(){
     var liked = favs.indexOf(t.id) > -1;
     var pos = getPosition(t.id);
     var meta;
-    if(pos > 3){
+    if(t.available === false){
+      meta = '<div class="track-meta"><span>فایل صوتی در این نسخه موجود نیست</span></div>';
+    } else if(pos > 3){
       meta = '<div class="track-meta"><span>ادامه از ' + fmt(pos) + '</span></div>';
     } else {
       meta = '<div class="track-meta"><span>درس ' + (realIdx+1) + '</span></div>';
     }
 
-    return '<div class="track-item' + (playing ? ' playing' : '') + '" data-i="' + realIdx + '">' +
+    return '<div class="track-item' + (playing ? ' playing' : '') + (t.available === false ? ' unavailable' : '') + '" data-i="' + realIdx + '">' +
       '<div class="track-num">' +
         '<span>' + (realIdx+1) + '</span>' +
         '<svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20"/></svg>' +
@@ -898,6 +903,7 @@ function renderList(){
     el.addEventListener("click", function(e){
       if(e.target.closest(".icon-act")) return;
       var i = parseInt(el.getAttribute("data-i"), 10);
+      if(audioTracks[i] && audioTracks[i].available === false){ showMsg("این فایل صوتی در بسته فعلی موجود نیست"); return; }
       if(i === audioIdx){
         if(!audioEl.paused) audioEl.pause();
         else audioEl.play();
@@ -999,8 +1005,8 @@ function restorePosition(t){
 function playAudio(i){
   if(i < 0 || i >= audioTracks.length) return;
   if(isLoadingTrack) return;
-  
   var t = audioTracks[i];
+  if(t.available === false){ showMsg("این فایل صوتی در بسته فعلی موجود نیست"); return; }
   var url = AUDIO_BASE + t.id + ".mp3";
   audioIdx = i;
 
@@ -1268,9 +1274,8 @@ else init();
 
 
 <!-- ═══ Firebase ═══ -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 <script src="js/firebase-config.js"></script>
+<script src="js/bn-firebase-loader.js"></script>
 <script src="js/bn-tracker.js"></script>
 <script src="js/bn-auth-gate.js"></script>
 
@@ -1280,7 +1285,6 @@ else init();
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').then(function(reg){
-        setInterval(function(){ reg.update().catch(function(){}); }, 3600000);
       }).catch(function(e){ console.warn('SW register failed:', e.message); });
     });
   }
