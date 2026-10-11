@@ -1,0 +1,78 @@
+{
+  "articles": [
+    {
+      "id": "video_raefipoor_goosh",
+      "type": "video",
+      "title": "فقط گوش کنید — استاد رائفی پور",
+      "excerpt": "سخنرانی کوتاه استاد رائفی پور درباره شنیدن و دقت در انتخاب",
+      "speaker": "استاد رائفی پور",
+      "videoUrl": "assets/video/mahdaviat/video-01-raefipoor-goosh.mp4",
+      "icon": "video",
+      "tags": ["رائفی پور", "سخنرانی", "شنیدن"]
+    },
+    {
+      "id": "video_emamzaman",
+      "type": "video",
+      "title": "امام زمان (عج)",
+      "excerpt": "مطلبی زیبا درباره حضرت ولی‌عصر امام زمان علیه‌السلام",
+      "videoUrl": "assets/video/mahdaviat/video-02-emamzaman.mp4",
+      "icon": "video",
+      "tags": ["امام زمان", "مهدویت"]
+    },
+    {
+      "id": "video_javanane_akhar",
+      "type": "video",
+      "title": "جوانان آخر الزمان",
+      "excerpt": "نقش مهم جوانان در دوران آخر الزمان و زمینه‌سازی ظهور",
+      "videoUrl": "assets/video/mahdaviat/video-03-javanane-akharozaman.mp4",
+      "icon": "video",
+      "tags": ["جوانان", "آخر الزمان", "ظهور"]
+    },
+    {
+      "id": "video_khabar_amad",
+      "type": "video",
+      "title": "خبر آمد، خبری در راه است",
+      "excerpt": "بیان نشانه‌ها و بشارت‌های ظهور حضرت مهدی علیه‌السلام",
+      "videoUrl": "assets/video/mahdaviat/video-04-khabar-amad.mp4",
+      "icon": "video",
+      "tags": ["ظهور", "بشارت", "نشانه‌ها"]
+    },
+    {
+      "id": "video_dard_del",
+      "type": "video",
+      "title": "درد دل با امام زمان (عج)",
+      "excerpt": "مناجات و درد دل عاشقانه با حضرت صاحب الزمان",
+      "videoUrl": "assets/video/mahdaviat/video-05-dard-del-emamzaman.mp4",
+      "icon": "video",
+      "tags": ["درد دل", "مناجات", "امام زمان"]
+    },
+    {
+      "id": "video_raefipoor_alaem",
+      "type": "video",
+      "title": "علائم ظهور — استاد رائفی پور",
+      "excerpt": "تحلیل و بررسی علائم ظهور در منابع اسلامی",
+      "speaker": "استاد رائفی پور",
+      "videoUrl": "assets/video/mahdaviat/video-06-raefipoor-alaem-zohor.mp4",
+      "icon": "video",
+      "tags": ["علائم ظهور", "رائفی پور", "مهدویت"]
+    },
+    {
+      "id": "video_molaqat",
+      "type": "video",
+      "title": "ملاقات با امام زمان (عج) — مقدس اردبیلی",
+      "excerpt": "داستان ملاقات با حضرت ولی‌عصر و عنایت ایشان",
+      "videoUrl": "assets/video/mahdaviat/video-07-molaqat-emamzaman.mp4",
+      "icon": "video",
+      "tags": ["ملاقات", "قدس اردبیلی", "کرامات"]
+    },
+    {
+      "id": "video_shabah_mahdi",
+      "type": "video",
+      "title": "شبه‌مهدی‌ها و مدعیان دروغین",
+      "excerpt": "شناخت حکومت‌های شبه‌مهدی و مدعیان دروغین مهدویت در آخر الزمان",
+      "videoUrl": "assets/video/mahdaviat/video-08-agar18day.mp4",
+      "icon": "video",
+      "tags": ["شبه‌مهدی", "مدعیان دروغین", "مهدویت", "آخر الزمان"]
+    }
+  ]
+}
