@@ -11,7 +11,7 @@
 (function(){
   'use strict';
 
-  const MEDIA_CACHE = 'banovan-noor-media-v1';
+  const MEDIA_CACHE = 'banovan-noor-media-v21';
   const SIZE_ESTIMATE_KEY = 'bn_media_sizes';
 
   /* ═══ تخمین حجم فایل ═══ */
