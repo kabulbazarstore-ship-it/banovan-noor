@@ -1,0 +1,1580 @@
+{
+  "schema_version": 1,
+  "name": "BANOVAN NOOR Calendar Occasions",
+  "languages": [
+    "fa",
+    "ps",
+    "en"
+  ],
+  "note": {
+    "fa": "این فهرست گزیده‌ای گسترده از مناسبت‌های مهم افغانستان، مناسبت‌های بین‌المللی و مناسبت‌های اسلامی و اهل‌بیت است؛ ادعای پوشش تک‌تک مناسبت‌های محلی و جهانی را ندارد. تاریخ‌های قمری متغیرند و باید با تقویم مرجع/اعلام رسمی تطبیق شوند.",
+    "ps": "دا د افغانستان، نړیوالو او اسلامي/اهل‌بیت د مهمو مناسبتونو پراخ انتخاب دی؛ د هرې محلي او نړیوالې ورځې بشپړ لست نه دی. قمري نېټې بدلېدای شي او له باوري کلیزې سره دې پرتله شي.",
+    "en": "A broad curated selection of important Afghan, international, Islamic and Ahlul Bayt observances; it does not claim to include every local or global observance. Lunar dates can vary and should be checked against trusted calendars and official announcements."
+  },
+  "events": [
+    {
+      "id": "nowruz",
+      "calendar": "solar",
+      "month": 1,
+      "day": 1,
+      "category": "national",
+      "title": {
+        "fa": "نوروز و آغاز سال هجری شمسی",
+        "ps": "نوروز او د لمریز کال پیل",
+        "en": "Nowruz / Solar New Year"
+      },
+      "description": {
+        "fa": "آغاز سال هجری شمسی و از جشن‌های کهن منطقه؛ شیوهٔ برگزاری در مناطق مختلف متفاوت است.",
+        "ps": "د لمریز کال پیل او د سیمې له پخوانیو جشنونو څخه دی؛ دودونه په بېلابېلو سیمو کې توپیر لري.",
+        "en": "Beginning of the Solar Hijri year and a longstanding regional celebration; customs vary by area."
+      }
+    },
+    {
+      "id": "afghan_mujahideen_victory",
+      "calendar": "solar",
+      "month": 2,
+      "day": 8,
+      "category": "national",
+      "title": {
+        "fa": "روز پیروزی مجاهدین (افغانستان)",
+        "ps": "د مجاهدینو د بریا ورځ",
+        "en": "Mujahideen Victory Day (Afghanistan)"
+      },
+      "description": {
+        "fa": "در تقویم رسمی/رایج افغانستان، ۸ ثور به‌عنوان روز پیروزی مجاهدین شناخته می‌شود.",
+        "ps": "په افغانستان کې ۸ ثور د مجاهدینو د بریا د ورځې په توګه پېژندل کېږي.",
+        "en": "May 8 Sawr is commonly observed in Afghanistan as Mujahideen Victory Day."
+      }
+    },
+    {
+      "id": "afghan_independence",
+      "calendar": "solar",
+      "month": 5,
+      "day": 28,
+      "category": "national",
+      "title": {
+        "fa": "روز استقلال افغانستان",
+        "ps": "د افغانستان د خپلواکۍ ورځ",
+        "en": "Afghanistan Independence Day"
+      },
+      "description": {
+        "fa": "یادبود استقلال افغانستان در ۲۸ اسد؛ در تقویم میلادی معمولاً ۱۹ آگست است.",
+        "ps": "د افغانستان د خپلواکۍ یاد، د اسد ۲۸؛ په میلادي کلیزه کې عموماً د اګست ۱۹مه ده.",
+        "en": "Commemorates Afghanistan’s independence; observed on 28 Asad, usually August 19."
+      }
+    },
+    {
+      "id": "afghan_flag_day",
+      "calendar": "solar",
+      "month": 4,
+      "day": 28,
+      "category": "national",
+      "title": {
+        "fa": "روز ملی بیرق افغانستان",
+        "ps": "د افغانستان د ملي بیرغ ورځ",
+        "en": "Afghanistan National Flag Day"
+      },
+      "description": {
+        "fa": "۲۸ سرطان به‌عنوان روز ملی بیرق در افغانستان یاد می‌شود؛ جزئیات تعطیلی ممکن است تغییر کند.",
+        "ps": "۲۸ سرطان په افغانستان کې د ملي بیرغ د ورځې په توګه یادېږي؛ د رخصتۍ جزئیات بدلېدای شي.",
+        "en": "July 19 is commonly marked as Afghanistan’s National Flag Day; official arrangements may vary."
+      }
+    },
+    {
+      "id": "afghan_constitution_day",
+      "calendar": "gregorian",
+      "month": 1,
+      "day": 4,
+      "category": "national",
+      "title": {
+        "fa": "روز قانون اساسی افغانستان",
+        "ps": "د افغانستان د اساسي قانون ورځ",
+        "en": "Afghanistan Constitution Day"
+      },
+      "description": {
+        "fa": "این مناسبت در برخی تقویم‌های افغانستان در ۱۵ جدی/۴ جنوری یاد می‌شود؛ عنوان رسمی و تعطیلی ممکن است تغییر کند.",
+        "ps": "دا ورځ په ځینو افغاني کلیزو کې د جنورۍ په ۴مه یادېږي؛ رسمي نوم او رخصتي بدلېدای شي.",
+        "en": "Observed in some Afghan calendars on January 4; official status may vary."
+      }
+    },
+    {
+      "id": "afghan_mothers_day",
+      "calendar": "gregorian",
+      "month": 6,
+      "day": 14,
+      "category": "national",
+      "title": {
+        "fa": "روز مادر در افغانستان (رایج)",
+        "ps": "په افغانستان کې د مور ورځ",
+        "en": "Mother’s Day in Afghanistan (commonly observed)"
+      },
+      "description": {
+        "fa": "در سال‌های اخیر ۲۴ جوزا/۱۴ جون در افغانستان به‌عنوان روز مادر گرامی داشته شده است؛ تاریخ رسمی ممکن است تغییر کند.",
+        "ps": "په وروستیو کلونو کې د جون ۱۴مه په افغانستان کې د مور ورځې په توګه نمانځل شوې؛ رسمي نېټه بدلېدای شي.",
+        "en": "June 14 has been commonly observed as Mother’s Day in Afghanistan in recent years; official dates can vary."
+      }
+    },
+    {
+      "id": "new_year",
+      "calendar": "gregorian",
+      "month": 1,
+      "day": 1,
+      "category": "international",
+      "title": {
+        "fa": "آغاز سال میلادی",
+        "ps": "د میلادي کال پیل",
+        "en": "New Year’s Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "education_day",
+      "calendar": "gregorian",
+      "month": 1,
+      "day": 24,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی آموزش",
+        "ps": "د زده‌کړې نړیواله ورځ",
+        "en": "International Day of Education"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "cancer_day",
+      "calendar": "gregorian",
+      "month": 2,
+      "day": 4,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی مبارزه با سرطان",
+        "ps": "د سرطان پر ضد نړیواله ورځ",
+        "en": "World Cancer Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "women_science",
+      "calendar": "gregorian",
+      "month": 2,
+      "day": 11,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی زنان و دختران در علم",
+        "ps": "په ساینس کې د ښځو او نجونو نړیواله ورځ",
+        "en": "International Day of Women and Girls in Science"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "mother_language",
+      "calendar": "gregorian",
+      "month": 2,
+      "day": 21,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی زبان مادری",
+        "ps": "د مورنۍ ژبې نړیواله ورځ",
+        "en": "International Mother Language Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "women_day",
+      "calendar": "gregorian",
+      "month": 3,
+      "day": 8,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی زن",
+        "ps": "د ښځو نړیواله ورځ",
+        "en": "International Women’s Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "happiness_day",
+      "calendar": "gregorian",
+      "month": 3,
+      "day": 20,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی خوشبختی",
+        "ps": "د خوښۍ نړیواله ورځ",
+        "en": "International Day of Happiness"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "down_syndrome",
+      "calendar": "gregorian",
+      "month": 3,
+      "day": 21,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی سندروم داون",
+        "ps": "د ډاون سنډروم نړیواله ورځ",
+        "en": "World Down Syndrome Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "water_day",
+      "calendar": "gregorian",
+      "month": 3,
+      "day": 22,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی آب",
+        "ps": "د اوبو نړیواله ورځ",
+        "en": "World Water Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "autism_day",
+      "calendar": "gregorian",
+      "month": 4,
+      "day": 2,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی آگاهی از اوتیسم",
+        "ps": "د اوټیزم په اړه د پوهاوي نړیواله ورځ",
+        "en": "World Autism Awareness Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "health_day",
+      "calendar": "gregorian",
+      "month": 4,
+      "day": 7,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی صحت",
+        "ps": "د روغتیا نړیواله ورځ",
+        "en": "World Health Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "earth_day",
+      "calendar": "gregorian",
+      "month": 4,
+      "day": 22,
+      "category": "international",
+      "title": {
+        "fa": "روز زمین",
+        "ps": "د ځمکې ورځ",
+        "en": "Earth Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "book_day",
+      "calendar": "gregorian",
+      "month": 4,
+      "day": 23,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی کتاب و حق مؤلف",
+        "ps": "د کتاب او چاپ حق نړیواله ورځ",
+        "en": "World Book and Copyright Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "workers_day",
+      "calendar": "gregorian",
+      "month": 5,
+      "day": 1,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی کارگر",
+        "ps": "د کارګر نړیواله ورځ",
+        "en": "International Workers’ Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "press_freedom",
+      "calendar": "gregorian",
+      "month": 5,
+      "day": 3,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی آزادی مطبوعات",
+        "ps": "د مطبوعاتو د ازادۍ نړیواله ورځ",
+        "en": "World Press Freedom Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "nurses_day",
+      "calendar": "gregorian",
+      "month": 5,
+      "day": 12,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی پرستار",
+        "ps": "د نرسانو نړیواله ورځ",
+        "en": "International Nurses Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "families_day",
+      "calendar": "gregorian",
+      "month": 5,
+      "day": 15,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی خانواده",
+        "ps": "د کورنۍ نړیواله ورځ",
+        "en": "International Day of Families"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "no_tobacco",
+      "calendar": "gregorian",
+      "month": 5,
+      "day": 31,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی بدون دخانیات",
+        "ps": "د تنباکو نه کارولو نړیواله ورځ",
+        "en": "World No Tobacco Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "environment_day",
+      "calendar": "gregorian",
+      "month": 6,
+      "day": 5,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی محیط زیست",
+        "ps": "د چاپېریال نړیواله ورځ",
+        "en": "World Environment Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "child_labor",
+      "calendar": "gregorian",
+      "month": 6,
+      "day": 12,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی مبارزه با کار کودکان",
+        "ps": "د ماشومانو د کار پر ضد نړیواله ورځ",
+        "en": "World Day Against Child Labour"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "refugee_day",
+      "calendar": "gregorian",
+      "month": 6,
+      "day": 20,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی پناهندگان",
+        "ps": "د کډوالو نړیواله ورځ",
+        "en": "World Refugee Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "drug_day",
+      "calendar": "gregorian",
+      "month": 6,
+      "day": 26,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی مبارزه با مواد مخدر",
+        "ps": "د نشه‌يي توکو پر ضد نړیواله ورځ",
+        "en": "International Day Against Drug Abuse and Illicit Trafficking"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "population_day",
+      "calendar": "gregorian",
+      "month": 7,
+      "day": 11,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی جمعیت",
+        "ps": "د نفوس نړیواله ورځ",
+        "en": "World Population Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "friendship_day",
+      "calendar": "gregorian",
+      "month": 7,
+      "day": 30,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی دوستی",
+        "ps": "د دوستۍ نړیواله ورځ",
+        "en": "International Day of Friendship"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "youth_day",
+      "calendar": "gregorian",
+      "month": 8,
+      "day": 12,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی جوانان",
+        "ps": "د ځوانانو نړیواله ورځ",
+        "en": "International Youth Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "humanitarian_day",
+      "calendar": "gregorian",
+      "month": 8,
+      "day": 19,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی کمک‌های بشردوستانه",
+        "ps": "د بشري مرستو نړیواله ورځ",
+        "en": "World Humanitarian Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "literacy_day",
+      "calendar": "gregorian",
+      "month": 9,
+      "day": 8,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی سوادآموزی",
+        "ps": "د سواد نړیواله ورځ",
+        "en": "International Literacy Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "peace_day",
+      "calendar": "gregorian",
+      "month": 9,
+      "day": 21,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی صلح",
+        "ps": "د سولې نړیواله ورځ",
+        "en": "International Day of Peace"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "tourism_day",
+      "calendar": "gregorian",
+      "month": 9,
+      "day": 27,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی گردشگری",
+        "ps": "د ګرځندوی نړیواله ورځ",
+        "en": "World Tourism Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "older_persons_day",
+      "calendar": "gregorian",
+      "month": 10,
+      "day": 1,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی سالمندان",
+        "ps": "د مشرانو نړیواله ورځ",
+        "en": "International Day of Older Persons"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "teachers_day",
+      "calendar": "gregorian",
+      "month": 10,
+      "day": 5,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی معلم",
+        "ps": "د ښوونکي نړیواله ورځ",
+        "en": "World Teachers’ Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "mental_health_day",
+      "calendar": "gregorian",
+      "month": 10,
+      "day": 10,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی سلامت روان",
+        "ps": "د رواني روغتیا نړیواله ورځ",
+        "en": "World Mental Health Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "girl_child_day",
+      "calendar": "gregorian",
+      "month": 10,
+      "day": 11,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی دختر",
+        "ps": "د نجلۍ نړیواله ورځ",
+        "en": "International Day of the Girl Child"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "food_day",
+      "calendar": "gregorian",
+      "month": 10,
+      "day": 16,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی غذا",
+        "ps": "د خوړو نړیواله ورځ",
+        "en": "World Food Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "diabetes_day",
+      "calendar": "gregorian",
+      "month": 11,
+      "day": 14,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی دیابت",
+        "ps": "د شکرې ناروغۍ نړیواله ورځ",
+        "en": "World Diabetes Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "childrens_day",
+      "calendar": "gregorian",
+      "month": 11,
+      "day": 20,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی کودک",
+        "ps": "د ماشومانو نړیواله ورځ",
+        "en": "World Children’s Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "violence_against_women",
+      "calendar": "gregorian",
+      "month": 11,
+      "day": 25,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی منع خشونت علیه زنان",
+        "ps": "د ښځو پر وړاندې د تاوتریخوالي د له منځه وړلو نړیواله ورځ",
+        "en": "International Day for the Elimination of Violence against Women"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "aids_day",
+      "calendar": "gregorian",
+      "month": 12,
+      "day": 1,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی ایدز",
+        "ps": "د ایډز نړیواله ورځ",
+        "en": "World AIDS Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "disability_day",
+      "calendar": "gregorian",
+      "month": 12,
+      "day": 3,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی افراد دارای معلولیت",
+        "ps": "د معلولیت لرونکو کسانو نړیواله ورځ",
+        "en": "International Day of Persons with Disabilities"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "human_rights_day",
+      "calendar": "gregorian",
+      "month": 12,
+      "day": 10,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی حقوق بشر",
+        "ps": "د بشري حقونو نړیواله ورځ",
+        "en": "Human Rights Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "migrants_day",
+      "calendar": "gregorian",
+      "month": 12,
+      "day": 18,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی مهاجران",
+        "ps": "د کډوالو نړیواله ورځ",
+        "en": "International Migrants Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "human_solidarity",
+      "calendar": "gregorian",
+      "month": 12,
+      "day": 20,
+      "category": "international",
+      "title": {
+        "fa": "روز جهانی همبستگی انسانی",
+        "ps": "د انساني پیوستون نړیواله ورځ",
+        "en": "International Human Solidarity Day"
+      },
+      "description": {
+        "fa": "از مناسبت‌های مهم تقویمی است. تاریخ‌های قمری ممکن است با رؤیت هلال یک روز تفاوت داشته باشند.",
+        "ps": "دا د کلیزې له مهمو مناسبتونو څخه ده. قمري نېټه د سپوږمۍ لیدلو له مخې یوه ورځ توپیر لرلای شي.",
+        "en": "An important calendar observance. Lunar dates may vary by one day according to local moon sighting."
+      }
+    },
+    {
+      "id": "islamic_new_year",
+      "calendar": "hijri",
+      "month": 1,
+      "day": 1,
+      "category": "islamic",
+      "title": {
+        "fa": "آغاز سال هجری قمری",
+        "ps": "د هجري قمري کال پیل",
+        "en": "Islamic New Year"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "tasua",
+      "calendar": "hijri",
+      "month": 1,
+      "day": 9,
+      "category": "islamic",
+      "title": {
+        "fa": "تاسوعای حسینی",
+        "ps": "د امام حسین د تاسوعا ورځ",
+        "en": "Tasua"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "ashura",
+      "calendar": "hijri",
+      "month": 1,
+      "day": 10,
+      "category": "islamic",
+      "title": {
+        "fa": "عاشورای حسینی",
+        "ps": "د امام حسین د عاشورا ورځ",
+        "en": "Ashura"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_sajjad_martyrdom",
+      "calendar": "hijri",
+      "month": 1,
+      "day": 25,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "شهادت امام زین‌العابدین (ع)",
+        "ps": "د امام زین العابدین (ع) شهادت",
+        "en": "Martyrdom of Imam al-Sajjad"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_baqir_martyrdom",
+      "calendar": "hijri",
+      "month": 2,
+      "day": 7,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "شهادت امام محمد باقر (ع) (نقل مشهور)",
+        "ps": "د امام محمد باقر (ع) شهادت (مشهور روایت)",
+        "en": "Martyrdom of Imam Muhammad al-Baqir (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "arbaeen",
+      "calendar": "hijri",
+      "month": 2,
+      "day": 20,
+      "category": "islamic",
+      "title": {
+        "fa": "اربعین حسینی",
+        "ps": "د امام حسین (ع) اربعین",
+        "en": "Arbaeen"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "prophet_death",
+      "calendar": "hijri",
+      "month": 2,
+      "day": 28,
+      "category": "islamic",
+      "title": {
+        "fa": "رحلت پیامبر اسلام (ص) و شهادت امام حسن (ع) (تقویم شیعی)",
+        "ps": "د رسول الله (ص) رحلت او د امام حسن (ع) شهادت",
+        "en": "Death of Prophet Muhammad and martyrdom of Imam Hasan (Shia calendars)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_askari_martyrdom",
+      "calendar": "hijri",
+      "month": 3,
+      "day": 8,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "شهادت امام حسن عسکری (ع)",
+        "ps": "د امام حسن عسکري (ع) شهادت",
+        "en": "Martyrdom of Imam Hasan al-Askari"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_mahdi_imamate",
+      "calendar": "hijri",
+      "month": 3,
+      "day": 9,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "آغاز امامت امام مهدی (عج) (تقویم رایج شیعی)",
+        "ps": "د امام مهدي (عج) د امامت پیل",
+        "en": "Beginning of Imam Mahdi’s Imamate (common Shia calendar)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "prophet_birth",
+      "calendar": "hijri",
+      "month": 3,
+      "day": 17,
+      "category": "islamic",
+      "title": {
+        "fa": "میلاد پیامبر اسلام (ص) و امام جعفر صادق (ع)",
+        "ps": "د رسول الله (ص) او امام جعفر صادق (ع) زوکړه",
+        "en": "Birth of Prophet Muhammad and Imam Ja’far al-Sadiq"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_hasan_askari_birth",
+      "calendar": "hijri",
+      "month": 4,
+      "day": 8,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام حسن عسکری (ع) (نقل مشهور)",
+        "ps": "د امام حسن عسکري (ع) زوکړه",
+        "en": "Birth of Imam Hasan al-Askari (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_hadi_birth",
+      "calendar": "hijri",
+      "month": 4,
+      "day": 10,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام علی النقی الهادی (ع) (نقل مشهور)",
+        "ps": "د امام علي النقي الهادي (ع) زوکړه",
+        "en": "Birth of Imam Ali al-Hadi (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "zaynab_birth",
+      "calendar": "hijri",
+      "month": 5,
+      "day": 5,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد حضرت زینب کبری (س) (نقل مشهور)",
+        "ps": "د حضرت زینب کبری (س) زوکړه",
+        "en": "Birth of Lady Zaynab (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "fatima_martyrdom",
+      "calendar": "hijri",
+      "month": 6,
+      "day": 3,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "شهادت حضرت فاطمه زهرا (س) (روایت ۷۵ روز)",
+        "ps": "د حضرت فاطمه زهرا (س) شهادت (۷۵ ورځې روایت)",
+        "en": "Martyrdom of Lady Fatima (75-day narration)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "fatima_martyrdom_95",
+      "calendar": "hijri",
+      "month": 6,
+      "day": 13,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "شهادت حضرت فاطمه زهرا (س) (روایت ۹۵ روز)",
+        "ps": "د حضرت فاطمه زهرا (س) شهادت (۹۵ ورځې روایت)",
+        "en": "Martyrdom of Lady Fatima (95-day narration)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "fatima_birth",
+      "calendar": "hijri",
+      "month": 6,
+      "day": 20,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد حضرت فاطمه زهرا (س) و روز زن در تقویم شیعی",
+        "ps": "د حضرت فاطمه زهرا (س) زوکړه او د ښځو ورځ",
+        "en": "Birth of Lady Fatima and Women’s Day in Shia calendars"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_baqir_birth",
+      "calendar": "hijri",
+      "month": 7,
+      "day": 1,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام محمد باقر (ع) (نقل مشهور)",
+        "ps": "د امام محمد باقر (ع) زوکړه",
+        "en": "Birth of Imam Muhammad al-Baqir (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_hadi_martyrdom",
+      "calendar": "hijri",
+      "month": 7,
+      "day": 3,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "شهادت امام علی الهادی (ع) (نقل مشهور)",
+        "ps": "د امام علي الهادي (ع) شهادت",
+        "en": "Martyrdom of Imam Ali al-Hadi (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_jawad_birth",
+      "calendar": "hijri",
+      "month": 7,
+      "day": 10,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام محمد تقی الجواد (ع)",
+        "ps": "د امام محمد تقي الجواد (ع) زوکړه",
+        "en": "Birth of Imam Muhammad al-Jawad"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_ali_birth",
+      "calendar": "hijri",
+      "month": 7,
+      "day": 13,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام علی (ع)",
+        "ps": "د امام علي (ع) زوکړه",
+        "en": "Birth of Imam Ali"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "zaynab_death",
+      "calendar": "hijri",
+      "month": 7,
+      "day": 15,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "وفات حضرت زینب کبری (س) (نقل مشهور)",
+        "ps": "د حضرت زینب کبری (س) وفات",
+        "en": "Death of Lady Zaynab (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_kazim_martyrdom",
+      "calendar": "hijri",
+      "month": 7,
+      "day": 25,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "شهادت امام موسی کاظم (ع)",
+        "ps": "د امام موسی کاظم (ع) شهادت",
+        "en": "Martyrdom of Imam Musa al-Kazim"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "mabath",
+      "calendar": "hijri",
+      "month": 7,
+      "day": 27,
+      "category": "islamic",
+      "title": {
+        "fa": "عید مبعث پیامبر اکرم (ص)",
+        "ps": "د رسول الله (ص) د بعثت ورځ",
+        "en": "Mab’ath / Prophetic Mission"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_baqir_birth_alt",
+      "calendar": "hijri",
+      "month": 8,
+      "day": 1,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام محمد باقر (ع) (در برخی تقویم‌ها)",
+        "ps": "د امام محمد باقر (ع) زوکړه (په ځینو کلیزو کې)",
+        "en": "Birth of Imam Muhammad al-Baqir (some calendars)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_hussain_birth",
+      "calendar": "hijri",
+      "month": 8,
+      "day": 3,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام حسین (ع)",
+        "ps": "د امام حسین (ع) زوکړه",
+        "en": "Birth of Imam Husayn"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "abbas_birth",
+      "calendar": "hijri",
+      "month": 8,
+      "day": 4,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد حضرت ابوالفضل العباس (ع)",
+        "ps": "د حضرت ابوالفضل العباس (ع) زوکړه",
+        "en": "Birth of al-Abbas ibn Ali"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "sajjad_birth",
+      "calendar": "hijri",
+      "month": 8,
+      "day": 5,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام زین‌العابدین (ع)",
+        "ps": "د امام زین العابدین (ع) زوکړه",
+        "en": "Birth of Imam al-Sajjad"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "ali_akbar_birth",
+      "calendar": "hijri",
+      "month": 8,
+      "day": 11,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد حضرت علی‌اکبر (ع) (نقل مشهور)",
+        "ps": "د حضرت علي اکبر (ع) زوکړه",
+        "en": "Birth of Ali al-Akbar (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_mahdi_birth",
+      "calendar": "hijri",
+      "month": 8,
+      "day": 15,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام مهدی (عج)، نیمه شعبان",
+        "ps": "د امام مهدي (عج) زوکړه، نیمه شعبان",
+        "en": "Birth of Imam Mahdi, Mid-Sha’ban"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "ramadan_start",
+      "calendar": "hijri",
+      "month": 9,
+      "day": 1,
+      "category": "islamic",
+      "title": {
+        "fa": "آغاز ماه رمضان (تاریخ تقریبی قمری)",
+        "ps": "د رمضان میاشت پیل",
+        "en": "Beginning of Ramadan"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_hasan_birth",
+      "calendar": "hijri",
+      "month": 9,
+      "day": 15,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام حسن مجتبی (ع)",
+        "ps": "د امام حسن مجتبی (ع) زوکړه",
+        "en": "Birth of Imam Hasan al-Mujtaba"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_ali_strike",
+      "calendar": "hijri",
+      "month": 9,
+      "day": 19,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "ضربت خوردن امام علی (ع) (تقویم شیعی)",
+        "ps": "پر امام علي (ع) د ګوزار ورځ",
+        "en": "Imam Ali injured (Shia calendars)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_ali_martyrdom",
+      "calendar": "hijri",
+      "month": 9,
+      "day": 21,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "شهادت امام علی (ع)",
+        "ps": "د امام علي (ع) شهادت",
+        "en": "Martyrdom of Imam Ali"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "eid_fitr",
+      "calendar": "hijri",
+      "month": 10,
+      "day": 1,
+      "category": "islamic",
+      "title": {
+        "fa": "عید سعید فطر (روز اول شوال)",
+        "ps": "د کوچني اختر لومړۍ ورځ",
+        "en": "Eid al-Fitr"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_sadiq_birth_alt",
+      "calendar": "hijri",
+      "month": 10,
+      "day": 8,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام جعفر صادق (ع) (در برخی تقویم‌ها)",
+        "ps": "د امام جعفر صادق (ع) زوکړه",
+        "en": "Birth of Imam Ja’far al-Sadiq (some calendars)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_sadiq_martyrdom",
+      "calendar": "hijri",
+      "month": 10,
+      "day": 25,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "شهادت امام جعفر صادق (ع)",
+        "ps": "د امام جعفر صادق (ع) شهادت",
+        "en": "Martyrdom of Imam Ja’far al-Sadiq"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_ridha_birth",
+      "calendar": "hijri",
+      "month": 11,
+      "day": 1,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام علی بن موسی الرضا (ع) (نقل مشهور)",
+        "ps": "د امام علي بن موسی الرضا (ع) زوکړه",
+        "en": "Birth of Imam Ali al-Ridha (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_jawad_martyrdom",
+      "calendar": "hijri",
+      "month": 11,
+      "day": 11,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "شهادت امام محمد تقی الجواد (ع) (نقل مشهور)",
+        "ps": "د امام محمد تقي الجواد (ع) شهادت",
+        "en": "Martyrdom of Imam al-Jawad (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "ali_fatima_marriage",
+      "calendar": "hijri",
+      "month": 12,
+      "day": 1,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "سالروز ازدواج امام علی (ع) و حضرت فاطمه (س) (نقل مشهور)",
+        "ps": "د امام علي (ع) او حضرت فاطمې (س) د واده کلیزه",
+        "en": "Anniversary of Ali and Fatima’s marriage (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "arafat_day",
+      "calendar": "hijri",
+      "month": 12,
+      "day": 9,
+      "category": "islamic",
+      "title": {
+        "fa": "روز عرفه",
+        "ps": "د عرفې ورځ",
+        "en": "Day of Arafah"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "eid_adha",
+      "calendar": "hijri",
+      "month": 12,
+      "day": 10,
+      "category": "islamic",
+      "title": {
+        "fa": "عید سعید قربان",
+        "ps": "لوی اختر",
+        "en": "Eid al-Adha"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "ghadir",
+      "calendar": "hijri",
+      "month": 12,
+      "day": 18,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "عید غدیر خم",
+        "ps": "د غدیر خم اختر",
+        "en": "Eid al-Ghadir"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "mubahala",
+      "calendar": "hijri",
+      "month": 12,
+      "day": 24,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "روز مباهله (تقویم شیعی)",
+        "ps": "د مباهلې ورځ",
+        "en": "Mubahala (Shia calendars)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    },
+    {
+      "id": "imam_sajjad_birth",
+      "calendar": "hijri",
+      "month": 12,
+      "day": 25,
+      "category": "ahlulbayt",
+      "title": {
+        "fa": "میلاد امام زین‌العابدین (ع) (نقل مشهور)",
+        "ps": "د امام زین العابدین (ع) زوکړه",
+        "en": "Birth of Imam al-Sajjad (commonly cited)"
+      },
+      "description": {
+        "fa": "تاریخ بر پایه تقویم قمری رایج ثبت شده است؛ ممکن است با رؤیت هلال یا اختلاف تقویم‌های مذهبی تفاوت داشته باشد.",
+        "ps": "نېټه د عامې قمري کلیزې له مخې ده؛ د سپوږمۍ لیدلو یا مذهبي کلیزو له مخې توپیر لرلای شي.",
+        "en": "Based on commonly used lunar calendars; the date may vary by moon sighting or religious calendar tradition."
+      }
+    }
+  ]
+}
