@@ -1,102 +1,342 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "projectName": "BANOVAN NOOR",
-  "charityPartner": {
-    "name": "مؤسسه افغان حمایت از محرومین",
-    "facebookUrl": "",
-    "verified": false,
-    "note": "نام و ارتباط این مؤسسه باید پیش از انتشار عمومی با صفحه رسمی و مسئول مجاز آن تأیید شود."
-  },
+  "defaultCurrency": "AFN",
+  "supportedLanguages": [
+    "fa",
+    "ps",
+    "en",
+    "ar",
+    "ur"
+  ],
   "supportMethods": [
     {
-      "id": "afghan_bank",
-      "type": "bank_transfer",
-      "region": "afghanistan",
-      "enabled": false,
-      "title": {
-        "fa": "انتقال بانکی داخل افغانستان",
-        "ps": "د افغانستان دننه بانکي لېږد",
-        "en": "Bank transfer inside Afghanistan"
-      },
-      "bankName": "",
-      "accountName": "",
-      "accountNumber": "",
-      "iban": "",
-      "currency": "AFN",
-      "instructions": {
-        "fa": "پس از تأیید مشخصات حساب، این بخش فعال می‌شود.",
-        "ps": "د حساب د معلوماتو تر تایید وروسته به دا برخه فعاله شي.",
-        "en": "This method will be enabled after the account details are verified."
-      }
-    },
-    {
-      "id": "afghan_local",
+      "id": "azizi_money",
       "type": "local_payment",
       "region": "afghanistan",
       "enabled": false,
-      "title": {
-        "fa": "پرداخت محلی افغانستان",
-        "ps": "د افغانستان محلي تادیه",
-        "en": "Local payment in Afghanistan"
-      },
-      "provider": "",
-      "accountName": "",
-      "accountNumber": "",
-      "currency": "AFN",
+      "title": "عزیزی مانی",
       "instructions": {
-        "fa": "نام سرویس و شماره دریافت‌کننده باید تأیید شود.",
-        "ps": "د خدمت نوم او د ترلاسه کوونکي شمېره باید تایید شي.",
-        "en": "The provider and recipient details must be verified."
+        "fa": "مشخصات رسمی دریافت‌کننده و رسید معتبر باید قبل از فعال‌سازی تأیید شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
       }
     },
     {
-      "id": "international_bank",
-      "type": "bank_transfer",
-      "region": "international",
+      "id": "m_paisa",
+      "type": "local_payment",
+      "region": "afghanistan",
       "enabled": false,
-      "title": {
-        "fa": "انتقال بانکی بین‌المللی",
-        "ps": "نړیوال بانکي لېږد",
-        "en": "International bank transfer"
-      },
-      "bankName": "",
-      "accountName": "",
-      "swift": "",
-      "iban": "",
-      "currency": "USD",
+      "title": "M-Paisa (روشن)",
       "instructions": {
-        "fa": "فقط پس از تأیید بانک، کارمزدها و امکان دریافت از کشور فرستنده فعال شود.",
-        "ps": "یوازې د بانک، فیسونو او د لېږد د امکان تر تایید وروسته فعاله شي.",
-        "en": "Enable only after the bank confirms incoming transfers, fees, and sender-country availability."
+        "fa": "مشخصات رسمی دریافت‌کننده و رسید معتبر باید قبل از فعال‌سازی تأیید شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
       }
     },
     {
-      "id": "international_card",
-      "type": "card_gateway",
+      "id": "hesabpay",
+      "type": "local_payment",
+      "region": "afghanistan",
+      "enabled": false,
+      "title": "حساب‌پی / HesabPay",
+      "instructions": {
+        "fa": "مشخصات رسمی دریافت‌کننده و رسید معتبر باید قبل از فعال‌سازی تأیید شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "e_money",
+      "type": "local_payment",
+      "region": "afghanistan",
+      "enabled": false,
+      "title": "E-Money",
+      "instructions": {
+        "fa": "مشخصات رسمی دریافت‌کننده و رسید معتبر باید قبل از فعال‌سازی تأیید شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "cash_in_person",
+      "type": "local_payment",
+      "region": "afghanistan",
+      "enabled": false,
+      "title": "پرداخت نقدی حضوری",
+      "instructions": {
+        "fa": "مشخصات رسمی دریافت‌کننده و رسید معتبر باید قبل از فعال‌سازی تأیید شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "paypal",
+      "type": "international_payment",
       "region": "international",
       "enabled": false,
-      "title": {
-        "fa": "پرداخت با کارت بین‌المللی",
-        "ps": "د نړیوال کارت له لارې تادیه",
-        "en": "International card payment"
-      },
-      "provider": "",
-      "checkoutUrl": "",
+      "title": "PayPal",
       "instructions": {
-        "fa": "برای فعال‌شدن، درگاه قانونی با امکان تسویه به حساب مقصد لازم است. اطلاعات کارت بانکی را داخل این اپ وارد نکنید.",
-        "ps": "د فعالېدو لپاره داسې قانوني دروازه پکار ده چې ټاکلي حساب ته پیسې تصفیه کړي. د کارت معلومات په اپ کې مه داخلوئ.",
-        "en": "A compliant payment gateway that can settle to the destination account is required. Do not enter card details inside this app."
+        "fa": "در دسترس‌بودن قانونی برای کشور ثبت حساب و امکان تسویه باید بررسی شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "wise",
+      "type": "international_payment",
+      "region": "international",
+      "enabled": false,
+      "title": "Wise",
+      "instructions": {
+        "fa": "در دسترس‌بودن قانونی برای کشور ثبت حساب و امکان تسویه باید بررسی شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "payoneer",
+      "type": "international_payment",
+      "region": "international",
+      "enabled": false,
+      "title": "Payoneer",
+      "instructions": {
+        "fa": "در دسترس‌بودن قانونی برای کشور ثبت حساب و امکان تسویه باید بررسی شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "stripe",
+      "type": "international_payment",
+      "region": "international",
+      "enabled": false,
+      "title": "Stripe",
+      "instructions": {
+        "fa": "در دسترس‌بودن قانونی برای کشور ثبت حساب و امکان تسویه باید بررسی شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "revolut",
+      "type": "international_payment",
+      "region": "international",
+      "enabled": false,
+      "title": "Revolut",
+      "instructions": {
+        "fa": "در دسترس‌بودن قانونی برای کشور ثبت حساب و امکان تسویه باید بررسی شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "usdt_trc20",
+      "type": "crypto",
+      "region": "crypto",
+      "enabled": false,
+      "title": "USDT (TRC20)",
+      "instructions": {
+        "fa": "آدرس کیف پول، شبکه و مسئولیت خطر نوسان باید پیش از فعال‌سازی تأیید شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "usdt_erc20",
+      "type": "crypto",
+      "region": "crypto",
+      "enabled": false,
+      "title": "USDT (ERC20)",
+      "instructions": {
+        "fa": "آدرس کیف پول، شبکه و مسئولیت خطر نوسان باید پیش از فعال‌سازی تأیید شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "bitcoin",
+      "type": "crypto",
+      "region": "crypto",
+      "enabled": false,
+      "title": "Bitcoin",
+      "instructions": {
+        "fa": "آدرس کیف پول، شبکه و مسئولیت خطر نوسان باید پیش از فعال‌سازی تأیید شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "ethereum",
+      "type": "crypto",
+      "region": "crypto",
+      "enabled": false,
+      "title": "Ethereum",
+      "instructions": {
+        "fa": "آدرس کیف پول، شبکه و مسئولیت خطر نوسان باید پیش از فعال‌سازی تأیید شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "usdc",
+      "type": "crypto",
+      "region": "crypto",
+      "enabled": false,
+      "title": "USDC",
+      "instructions": {
+        "fa": "آدرس کیف پول، شبکه و مسئولیت خطر نوسان باید پیش از فعال‌سازی تأیید شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "jazzcash",
+      "type": "regional_payment",
+      "region": "regional",
+      "enabled": false,
+      "title": "JazzCash",
+      "instructions": {
+        "fa": "محدودیت‌های کشور، هویت صاحب حساب و امکان تسویه باید بررسی شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "easypaisa",
+      "type": "regional_payment",
+      "region": "regional",
+      "enabled": false,
+      "title": "Easypaisa",
+      "instructions": {
+        "fa": "محدودیت‌های کشور، هویت صاحب حساب و امکان تسویه باید بررسی شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "zarinpal",
+      "type": "regional_payment",
+      "region": "regional",
+      "enabled": false,
+      "title": "زرین‌پال",
+      "instructions": {
+        "fa": "محدودیت‌های کشور، هویت صاحب حساب و امکان تسویه باید بررسی شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "papara",
+      "type": "regional_payment",
+      "region": "regional",
+      "enabled": false,
+      "title": "Papara",
+      "instructions": {
+        "fa": "محدودیت‌های کشور، هویت صاحب حساب و امکان تسویه باید بررسی شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
+      }
+    },
+    {
+      "id": "careem_pay",
+      "type": "regional_payment",
+      "region": "regional",
+      "enabled": false,
+      "title": "Careem Pay",
+      "instructions": {
+        "fa": "محدودیت‌های کشور، هویت صاحب حساب و امکان تسویه باید بررسی شود.",
+        "ps": "دا طریقه تر هغه مه فعالوئ چې حساب او ترلاسه کول یې تایید شوي نه وي.",
+        "en": "Do not enable until the recipient account and settlement availability are verified.",
+        "ar": "لا تُفعّل هذه الطريقة قبل التحقق من الحساب وإمكانية استلام الأموال.",
+        "ur": "اکاؤنٹ اور رقم وصول کرنے کی تصدیق تک یہ طریقہ فعال نہ کریں۔"
       }
     }
   ],
+  "campaigns": [],
+  "financialReports": {
+    "published": false,
+    "currency": "AFN",
+    "applicationFund": {
+      "received": null,
+      "spent": null,
+      "balance": null
+    },
+    "charityFund": {
+      "received": null,
+      "spent": null,
+      "balance": null
+    },
+    "transactions": [],
+    "message": "گزارش مالی تا زمان تأیید اسناد و اتصال به ثبت امن، منتشر نشده است."
+  },
   "privacy": {
     "publicByDefault": false,
     "phonePublicByDefault": false,
+    "neverStoreCardDetails": true,
     "hideNonDonors": true
   },
+  "security": {
+    "requireHttps": true,
+    "paymentCardFieldsInApp": false,
+    "backendRequiredForReceiptsAndTracking": true
+  },
+  "currency": {
+    "apiUrl": "https://api.frankfurter.app/latest?from=USD",
+    "note": "نرخ زنده تضمین نمی‌شود؛ تبدیل ارز صرفاً تخمینی است و باید در مرورگر دارای اینترنت انجام شود."
+  },
   "notice": {
-    "fa": "این صفحه به‌تنهایی پول دریافت نمی‌کند. فقط روش‌هایی را فعال کنید که حساب و امکان تسویه آن‌ها تأیید شده باشد.",
-    "ps": "دا پاڼه په خپله پیسې نه ترلاسه کوي. یوازې هغه لارې فعاله کړئ چې حساب او د پیسو تصفیه یې تایید شوې وي.",
-    "en": "This page does not collect money by itself. Enable only payment methods whose account and settlement capability have been verified."
+    "fa": "این بسته رابط کاربری است و به‌تنهایی پول دریافت نمی‌کند. تمام روش‌های پرداخت غیرفعال‌اند تا حساب واقعی و امکان تسویه تأیید شود.",
+    "ps": "دا د کارنومخ بسته ده او پخپله پیسې نه ترلاسه کوي. ټولې لارې تر تایید پورې بندې دي.",
+    "en": "This is a user-interface package and does not collect money. All payment methods remain disabled until real recipient accounts and settlement are verified.",
+    "ar": "هذه واجهة فقط ولا تستقبل الأموال. جميع طرق الدفع معطلة حتى التحقق من الحسابات وإمكانية التسوية.",
+    "ur": "یہ صرف انٹرفیس ہے، خود رقم وصول نہیں کرتا۔ تصدیق تک تمام ادائیگی کے طریقے بند ہیں."
+  },
+  "backend": {
+    "provider": "supabase",
+    "url": "",
+    "anonKey": "",
+    "campaignsTable": "bn_campaigns",
+    "reportsTable": "bn_expense_reports",
+    "storageBucket": "campaign-media",
+    "note": "Configure with the public Supabase project URL and anon key only. Never put service_role or secret keys in this file."
   }
 }

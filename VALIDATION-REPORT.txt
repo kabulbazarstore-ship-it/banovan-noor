@@ -1,0 +1,8 @@
+BANOVAN NOOR SUPPORT & CHARITY v28 — VALIDATION
+
+Included: support pages, admin-support.html, support-campaigns.js, support-config.json backend placeholder, updated sw.js, Supabase schema and setup guide.
+Campaign photos: maximum 5 per campaign.
+Expense report photos: maximum 5 per report.
+Image formats: JPEG, PNG, WebP; max 5 MiB each.
+Dynamic content is fetched from Supabase REST API and is not cached by this Service Worker; changing campaigns/photos does not require SW update.
+Backend setup is required for shared online uploads. Payment processing is not implemented.
