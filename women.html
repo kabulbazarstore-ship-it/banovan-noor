@@ -364,6 +364,8 @@ body.dark .bottom-nav{border-top:1px solid rgba(255,255,255,.06);box-shadow:0 -1
 .nav-fab-wrap{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
 .nav-fab{
   position:absolute;top:-30px;width:60px;height:60px;border-radius:50%;
+   background:linear-gradient(135deg,#8b5cf6 0%,#a855f7 58%,#ec4899 100%);
+   box-shadow:0 12px 28px rgba(139,92,246,.35),0 5px 14px rgba(168,85,247,.24);
   display:flex;align-items:center;justify-content:center;
   background:var(--brand);
   box-shadow:0 14px 32px rgba(225,29,72,.48),0 6px 16px rgba(168,85,247,.35);
@@ -493,14 +495,14 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
 
 </div>
 
-<nav class="bottom-nav">
-  <button class="nav-item" id="navSearch" type="button">
-    <svg><use href="#i-search"></use></svg>
-    جستجو
+<nav class="bottom-nav" aria-label="ناوبری اصلی">
+  <button class="nav-item" id="navMore" type="button" aria-label="بیشتر">
+    <svg><use href="#i-settings"></use></svg>
+    بیشتر
   </button>
-  <button class="nav-item" id="navHamraz" type="button">
-    <svg><use href="#i-chat"></use></svg>
-    همراز
+  <button class="nav-item" id="navAhkam" type="button" aria-label="احکام">
+    <svg><use href="#i-book"></use></svg>
+    احکام
   </button>
   <div class="nav-fab-wrap">
     <button class="nav-fab" id="navHome" aria-label="خانه" type="button">
@@ -508,13 +510,13 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
     </button>
     <span class="nav-fab-label">خانه</span>
   </div>
-  <button class="nav-item" id="navAhkam" type="button">
-    <svg><use href="#i-book"></use></svg>
-    احکام
+  <button class="nav-item" id="navHamraz" type="button" aria-label="همراز">
+    <svg><use href="#i-chat"></use></svg>
+    همراز
   </button>
-  <button class="nav-item" id="navMore" type="button">
-    <svg><use href="#i-settings"></use></svg>
-    بیشتر
+  <button class="nav-item" id="navSearch" type="button" aria-label="جستجو">
+    <svg><use href="#i-search"></use></svg>
+    جستجو
   </button>
 </nav>
 

@@ -484,6 +484,7 @@ const SPEAKER_IMAGES = {
   "gholiyan":         "assets/speakers/gholiyan.webp",
   "hosseini-ghomi":   "assets/speakers/hosseini-ghomi.webp",
   "mondegari":        "assets/speakers/mondegari.webp",
+  "mandegari":        "assets/speakers/mondegari.webp",
   "panahian":         "assets/speakers/panahian.webp",
   "shirafkan":        "assets/speakers/shirafkan.webp"
 };
@@ -873,7 +874,7 @@ function buildAudioPlayer(a){
   /* تعیین محتوای کاور: عکس سخنران یا آیکون هدفون */
   const hasImage = !!a.speakerImage;
   const coverInner = hasImage
-    ? `<img src="${escapeHTML(a.speakerImage)}" alt="${escapeHTML(a.speaker||a.title)}" onerror="this.style.display='none';this.parentNode.classList.add('no-img')">`
+    ? `<img src="${escapeHTML(a.speakerImage)}" alt="${escapeHTML(a.speaker||a.title)}" onerror="this.onerror=null;this.style.display='none';this.parentNode.classList.add('no-img');var s=document.createElementNS('http://www.w3.org/2000/svg','svg');var u=document.createElementNS('http://www.w3.org/2000/svg','use');u.setAttribute('href','#i-headphone');s.appendChild(u);this.parentNode.insertBefore(s,this.parentNode.firstChild)">`
     : `<svg><use href="#i-headphone"></use></svg>`;
 
   w.innerHTML=`

@@ -761,6 +761,16 @@ body.dark .bottom-nav{
 (function(){
 'use strict';
 
+/* زبان صفحه: این فایل currentLang سراسری ندارد؛ از تنظیم ذخیره‌شده بخوان */
+var currentLang = (function(){
+  try {
+    var saved = localStorage.getItem('bn_lang');
+    return (saved === 'fa' || saved === 'ps' || saved === 'en') ? saved : 'fa';
+  } catch (e) {
+    return 'fa';
+  }
+})();
+
 var THEME_KEY = 'bn_theme';
 var EDUCATION_PATH = 'data/education/education.json';
 var BOOKMARKS_KEY = 'bn_edu_bookmarks_v1';
