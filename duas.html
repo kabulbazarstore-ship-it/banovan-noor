@@ -52,16 +52,6 @@ html[data-theme="dark"] body,body.dark{
     radial-gradient(circle at 100% 20%,rgba(236,72,153,.08),transparent 30%),
     #000;
 }
-body.lang-ltr { direction: ltr; }
-body.lang-ltr #backBtn svg { transform: none; }
-body.lang-ltr .article:before { right: auto; left: 0; }
-body.lang-ltr .article-main { padding-left: 0; padding-right: 4px; }
-body.lang-ltr .back-cat-btn svg { transform: none; }
-body.lang-ltr .open-btn svg { transform: none; }
-body.lang-ltr .search-box svg { right: auto; left: 14px; }
-body.lang-ltr .search-box input { padding: 0 14px 0 42px; }
-body.lang-ltr .instruction-list { padding: 0 0 0 17px; }
-body.lang-ltr .virtue-box { border-right: 0; border-left: 3px solid var(--pink); }
 button,input{font:inherit}
 button{border:0;cursor:pointer;background:transparent;color:inherit}
 a{color:inherit;text-decoration:none}
@@ -128,7 +118,8 @@ main{width:min(720px,100%);margin:auto;padding:14px 12px calc(var(--nav-h) + 30p
 .article:before{content:"";position:absolute;top:0;right:0;width:3.5px;height:100%;background:var(--brand);opacity:.85}
 .article:active{transform:scale(.988)}
 .article-top{display:flex;align-items:flex-start;gap:10px}
-.article-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:13px;color:var(--primary);background:var(--soft);border:1px solid rgba(168,50,214,.08)}
+.article-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:13px;color:var(--primary);background:var(--soft);border:1px solid rgba(168,50,214,.08);overflow:hidden;position:relative}
+.article-icon img{width:100%;height:100%;object-fit:cover;display:block;border-radius:13px}
 .article-icon svg{width:20px;height:20px}
 .article-main{min-width:0;flex:1;padding-left:4px}
 .article-title{margin:0 0 3px;font-size:13.5px;font-weight:950;line-height:1.6}
@@ -172,51 +163,81 @@ main{width:min(720px,100%);margin:auto;padding:14px 12px calc(var(--nav-h) + 30p
 .font-btn[data-font="m"]{font-size:13px}
 .font-btn[data-font="l"]{font-size:15px}
 .font-btn[data-font="xl"]{font-size:17px}
-.player{position:relative;overflow:hidden;padding:13px;border-radius:22px;background:radial-gradient(circle at 0 100%,rgba(236,72,153,.15),transparent 35%),linear-gradient(145deg,#24112d,#160d1d 58%,#28102d);color:#fff;box-shadow:0 14px 34px rgba(60,16,70,.24);margin-bottom:12px}
-.player:after{content:"";position:absolute;width:160px;height:160px;right:-85px;top:-100px;border-radius:50%;border:1px solid rgba(255,255,255,.1);box-shadow:0 0 0 22px rgba(255,255,255,.025)}
-.player-top{position:relative;z-index:2;display:flex;align-items:center;gap:10px}
-.cover{position:relative;width:54px;height:54px;flex:0 0 54px;display:grid;place-items:center;border-radius:17px;background:var(--brand);overflow:hidden}
-.cover:before{content:"";position:absolute;inset:5px;border-radius:13px;border:1px solid rgba(255,255,255,.2)}
-.cover svg{position:relative;z-index:2;width:24px;height:24px}
+
+/* ═══ PLAYER ═══ */
+.player{position:relative;overflow:hidden;padding:16px;border-radius:26px;background:radial-gradient(circle at 0% 0%,rgba(236,72,153,.22),transparent 45%),radial-gradient(circle at 100% 100%,rgba(168,85,247,.20),transparent 45%),linear-gradient(155deg,#1a0d23 0%,#0d0612 55%,#1e0e2a 100%);color:#fff;box-shadow:0 20px 44px rgba(60,16,70,.32),0 8px 20px rgba(219,39,119,.18),inset 0 1px 0 rgba(255,255,255,.08);margin-bottom:14px;isolation:isolate}
+.player::before{content:"";position:absolute;width:220px;height:220px;right:-110px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(236,72,153,.35),transparent 70%);pointer-events:none;animation:floatGlow 8s ease-in-out infinite}
+.player::after{content:"";position:absolute;width:180px;height:180px;left:-90px;bottom:-100px;border-radius:50%;background:radial-gradient(circle,rgba(168,85,247,.28),transparent 70%);pointer-events:none;animation:floatGlow 10s ease-in-out infinite reverse}
+@keyframes floatGlow{0%,100%{transform:scale(1) translate(0,0);opacity:.8}50%{transform:scale(1.15) translate(-10px,10px);opacity:1}}
+.player-top{position:relative;z-index:2;display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.cover{position:relative;width:68px;height:68px;flex:0 0 68px;display:grid;place-items:center;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#e11d48,#db2777,#a855f7);box-shadow:0 12px 28px rgba(219,39,119,.42),inset 0 1px 0 rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.15)}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0}
+.cover::before{content:"";position:absolute;inset:6px;border-radius:15px;border:1px solid rgba(255,255,255,.22);pointer-events:none;z-index:1}
+.cover svg{position:relative;z-index:1;width:30px;height:30px}
+.cover .cover-eq{position:absolute;inset:0;display:none;z-index:2;align-items:center;justify-content:center;gap:3px;background:rgba(0,0,0,.42);backdrop-filter:blur(2px)}
+.cover .cover-eq span{width:3px;height:20px;border-radius:4px;background:#fff;animation:coverEq 1s ease-in-out infinite;animation-play-state:paused}
+.player.playing .cover-eq{display:flex}
+.player.playing .cover-eq span{animation-play-state:running}
+.cover .cover-eq span:nth-child(2){animation-delay:-.15s}
+.cover .cover-eq span:nth-child(3){animation-delay:-.3s}
+.cover .cover-eq span:nth-child(4){animation-delay:-.45s}
+.cover .cover-eq span:nth-child(5){animation-delay:-.6s}
+@keyframes coverEq{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
 .player-info{min-width:0;flex:1}
-.player-label{display:flex;align-items:center;gap:6px;color:#d9b8e5;font-size:9px;font-weight:800}
-.player-label i{width:5px;height:5px;border-radius:50%;background:#f472b6;box-shadow:0 0 0 4px rgba(244,114,182,.1)}
-.player-title{margin-top:4px;font-size:13px;font-weight:900;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.player-speaker{margin-top:2px;color:#bba6c2;font-size:9.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.equalizer{width:34px;height:24px;display:flex;align-items:flex-end;justify-content:center;gap:3px;opacity:.75;flex:0 0 auto}
-.equalizer span{width:3px;height:7px;border-radius:5px;background:#f472b6;animation:eq 1s ease-in-out infinite;animation-play-state:paused}
-.equalizer span:nth-child(2){height:14px;animation-delay:-.2s}
-.equalizer span:nth-child(3){height:20px;animation-delay:-.4s}
-.equalizer span:nth-child(4){height:11px;animation-delay:-.6s}
-.equalizer span:nth-child(5){height:16px;animation-delay:-.8s}
-.player.playing .equalizer span{animation-play-state:running}
-@keyframes eq{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
-.progress-area{position:relative;z-index:2;margin-top:15px;direction:ltr}
-.progress-track{position:relative;height:18px;display:flex;align-items:center;cursor:pointer;touch-action:none}
-.progress-line{position:relative;width:100%;height:5px;border-radius:20px;background:rgba(255,255,255,.14)}
-.progress-fill{position:absolute;top:0;left:0;height:100%;width:0;border-radius:20px;background:linear-gradient(90deg,#f472b6,#c084fc)}
-.progress-thumb{position:absolute;top:50%;left:0;width:12px;height:12px;transform:translate(-50%,-50%);border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.12),0 2px 6px rgba(0,0,0,.25)}
-.time-row{display:flex;justify-content:space-between;direction:ltr;margin-top:5px;color:#aa94b2;font-size:9px;font-variant-numeric:tabular-nums}
-.player-controls{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:6px}
-.ctrl{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
-.ctrl svg{width:16px;height:16px}
-.play-btn{width:54px;height:54px;color:#34112e;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.22)}
-.play-btn svg{width:21px;height:21px}
-.player-tools{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:11px}
-.tool{min-height:33px;padding:0 7px;display:flex;align-items:center;justify-content:center;gap:5px;border-radius:10px;color:#cbb9d0;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.06);font-size:9.5px;font-weight:800}
-.tool svg{width:13px;height:13px}
-.tool.active{color:#fff;background:rgba(236,72,153,.18);border-color:rgba(236,72,153,.25)}
-.volume-row{position:relative;z-index:2;display:flex;align-items:center;gap:8px;margin-top:9px;color:#aa94b2}
-.volume-row svg{width:14px;height:14px;flex:0 0 14px}
-.volume-slider{width:100%;height:4px;accent-color:#f472b6;background:transparent}
-.audio-message{position:relative;z-index:2;margin-top:9px;padding:7px 9px;border-radius:9px;color:#ffb4c9;background:rgba(225,29,72,.1);font-size:9.5px;display:none}
+.player-label{display:flex;align-items:center;gap:6px;color:#d9b8e5;font-size:9.5px;font-weight:800;margin-bottom:5px}
+.player-label i{width:6px;height:6px;border-radius:50%;background:#f472b6;box-shadow:0 0 0 4px rgba(244,114,182,.15),0 0 12px #f472b6;animation:pulseDot 1.5s ease-in-out infinite}
+.player.paused .player-label i{animation:none;opacity:.5}
+@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
+.player-title{font-size:14px;font-weight:900;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:3px}
+.player-speaker{color:#b8a3c0;font-size:10.5px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;gap:4px}
+.player-speaker svg{width:12px;height:12px;opacity:.7}
+.waveform{position:relative;z-index:2;height:36px;display:flex;align-items:flex-end;justify-content:space-between;gap:2px;margin-bottom:12px;padding:0 2px;opacity:.85;cursor:pointer}
+.waveform .bar{flex:1;min-width:2px;border-radius:3px;background:linear-gradient(180deg,#f472b6,#c084fc);opacity:.35;transition:opacity .15s;min-height:3px}
+.waveform .bar.played{opacity:1}
+.waveform.playing .bar{animation:wavePulse 1.2s ease-in-out infinite}
+@keyframes wavePulse{0%,100%{transform:scaleY(.6)}50%{transform:scaleY(1)}}
+.progress-area{position:relative;z-index:2;direction:ltr;margin-bottom:12px}
+.progress-track{position:relative;height:22px;display:flex;align-items:center;cursor:pointer;touch-action:none}
+.progress-line{position:relative;width:100%;height:6px;border-radius:20px;background:rgba(255,255,255,.12);overflow:visible}
+.progress-buffered{position:absolute;top:0;left:0;height:100%;width:0;border-radius:20px;background:rgba(255,255,255,.18);transition:width .3s}
+.progress-fill{position:absolute;top:0;left:0;height:100%;width:0;border-radius:20px;background:linear-gradient(90deg,#f472b6,#c084fc,#a855f7);box-shadow:0 0 14px rgba(244,114,182,.75);transition:width .1s linear}
+.progress-thumb{position:absolute;top:50%;left:0;width:16px;height:16px;transform:translate(-50%,-50%) scale(.5);border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(244,114,182,.25),0 4px 10px rgba(0,0,0,.4);opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
+.progress-track:hover .progress-thumb,.progress-track:active .progress-thumb,.player.playing .progress-thumb{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.time-row{display:flex;justify-content:space-between;direction:ltr;margin-top:2px;color:#a894b2;font-size:10px;font-variant-numeric:tabular-nums;font-weight:700}
+.player-controls{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:12px}
+.ctrl{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);transition:transform .15s,background .2s}
+.ctrl:active{transform:scale(.88)}
+.ctrl svg{width:18px;height:18px}
+.ctrl:not(.play-btn):hover{background:rgba(255,255,255,.15)}
+.play-btn{width:66px;height:66px;color:#2b0a23;background:linear-gradient(135deg,#fff 0%,#ffd9ec 100%);border:0;box-shadow:0 14px 28px rgba(244,114,182,.45),0 6px 14px rgba(168,85,247,.3),inset 0 1px 0 rgba(255,255,255,.6)}
+.play-btn svg{width:26px;height:26px;fill:#2b0a23}
+.player-tools{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:10px}
+.tool{min-height:40px;padding:4px 2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:13px;color:#cbb9d0;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.07);font-size:9px;font-weight:800;transition:all .2s}
+.tool:active{transform:scale(.94)}
+.tool svg{width:15px;height:15px;stroke-width:2}
+.tool.active{color:#fff;background:linear-gradient(135deg,rgba(236,72,153,.28),rgba(168,85,247,.25));border-color:rgba(236,72,153,.4);box-shadow:0 5px 14px rgba(236,72,153,.25)}
+.volume-row{position:relative;z-index:2;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+.volume-row svg{width:15px;height:15px;flex:0 0 15px;color:#cbb9d0}
+.volume-slider{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:10px;background:rgba(255,255,255,.15);outline:none;cursor:pointer}
+.volume-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:15px;height:15px;border-radius:50%;background:#f472b6;box-shadow:0 0 10px rgba(244,114,182,.7);cursor:pointer;border:2px solid #fff}
+.volume-slider::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:#f472b6;box-shadow:0 0 10px rgba(244,114,182,.7);cursor:pointer;border:2px solid #fff}
+.vol-percent{color:#cbb9d0;font-size:10px;font-weight:800;min-width:32px;text-align:center;font-variant-numeric:tabular-nums}
+.audio-message{position:relative;z-index:2;margin-top:10px;padding:9px 12px;border-radius:12px;color:#ffb4c9;background:rgba(225,29,72,.14);border:1px solid rgba(225,29,72,.25);font-size:10.5px;font-weight:700;display:none;text-align:center}
 .audio-message.show{display:block}
+.speed-picker{position:absolute;bottom:100%;right:0;margin-bottom:8px;padding:6px;border-radius:14px;background:rgba(30,15,42,.96);border:1px solid rgba(255,255,255,.1);box-shadow:0 14px 30px rgba(0,0,0,.4);backdrop-filter:blur(14px);display:none;grid-template-columns:repeat(4,1fr);gap:4px;z-index:10}
+.speed-picker.show{display:grid}
+.speed-opt{min-width:44px;padding:8px 6px;border-radius:9px;color:#cbb9d0;background:rgba(255,255,255,.05);font-size:10.5px;font-weight:800;border:0;cursor:pointer;transition:all .15s}
+.speed-opt.active{color:#fff;background:linear-gradient(135deg,#ec4899,#a855f7);box-shadow:0 4px 10px rgba(236,72,153,.4)}
+
+/* ویدیو */
 .video-box{overflow:hidden;margin-bottom:12px;border-radius:18px;background:#08070a;box-shadow:var(--shadow2);position:relative}
 .video-box iframe,.video-box video{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
 .video-fullscreen-btn{position:absolute;bottom:52px;left:12px;z-index:4;width:36px;height:36px;border-radius:10px;background:rgba(0,0,0,.65);color:#fff;display:grid;place-items:center;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);transition:transform .15s}
 .video-fullscreen-btn:active{transform:scale(.9)}
 .video-fullscreen-btn svg{width:17px;height:17px}
 .video-caption{padding:9px 11px;color:#b9adbd;font-size:10px;background:#100d12}
+
+/* تب‌ها */
 .tabs{display:flex;gap:5px;overflow-x:auto;padding:2px 1px 7px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto;min-height:34px;padding:0 12px;border-radius:11px;color:var(--muted);background:var(--soft);font-size:10.5px;font-weight:850}
@@ -230,31 +251,35 @@ main{width:min(720px,100%);margin:auto;padding:14px 12px calc(var(--nav-h) + 30p
 .source-box{margin-top:11px;color:var(--muted);font-size:10px;line-height:1.8}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px}
 .tag{padding:4px 8px;border-radius:7px;color:var(--primary);background:var(--soft);font-size:9.5px;font-weight:700}
-.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:11px}
-.action{min-height:40px;display:flex;align-items:center;justify-content:center;gap:5px;border-radius:12px;color:var(--muted);background:var(--card);border:1px solid var(--line);font-size:10px;font-weight:800}
-.action svg{width:15px;height:15px}
+.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:11px}
+.action{min-height:44px;display:flex;align-items:center;justify-content:center;gap:5px;border-radius:13px;color:var(--muted);background:var(--card);border:1px solid var(--line);font-size:10px;font-weight:800}
+.action svg{width:16px;height:16px}
 .action.active{color:#e39a19;background:rgba(227,154,25,.08)}
 .action.active svg{fill:currentColor}
-.toast{position:fixed;z-index:300;right:50%;bottom:calc(88px + env(safe-area-inset-bottom));transform:translate(50%,20px);max-width:calc(100% - 30px);padding:10px 14px;border-radius:12px;color:#fff;background:#24162a;box-shadow:0 12px 35px rgba(0,0,0,.25);font-size:11px;font-weight:800;opacity:0;pointer-events:none;transition:.25s}
+.toast{position:fixed;z-index:300;right:50%;bottom:calc(110px + env(safe-area-inset-bottom));transform:translate(50%,20px);max-width:calc(100% - 30px);padding:10px 14px;border-radius:12px;color:#fff;background:#24162a;box-shadow:0 12px 35px rgba(0,0,0,.25);font-size:11px;font-weight:800;opacity:0;pointer-events:none;transition:.25s}
 .toast.show{opacity:1;transform:translate(50%,0)}
-.bottom-nav{position:fixed;z-index:70;right:0;bottom:0;left:0;min-height:var(--nav-h);padding:6px max(10px,env(safe-area-inset-left)) calc(6px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-right));display:grid;grid-template-columns:1fr 1fr 68px 1fr 1fr;align-items:end;gap:2px;background:rgba(251,248,255,.86);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border-top:1px solid var(--line)}
-html[data-theme="dark"] .bottom-nav,body.dark .bottom-nav{background:rgba(0,0,0,.88)}
-.nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--muted);border-radius:13px;background:transparent;font-size:9px;font-weight:800;padding:6px 2px;transition:color .18s;text-decoration:none}
-.nav-item svg{width:20px;height:20px}
-.nav-item.active{color:var(--primary)}
+
+/* نوار پایین */
+.bottom-nav{position:fixed;z-index:70;right:0;bottom:0;left:0;min-height:74px;padding:6px max(8px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-right));display:grid;grid-template-columns:1fr 1fr 74px 1fr 1fr;align-items:end;gap:2px;background:rgba(15,8,20,.72);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border-top:1px solid rgba(255,255,255,.06);box-shadow:0 -12px 34px rgba(0,0,0,.32)}
+html[data-theme="light"] .bottom-nav{background:rgba(251,248,255,.88);border-top:1px solid rgba(112,55,140,.10);box-shadow:0 -8px 24px rgba(88,37,111,.10)}
+.nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--muted);border-radius:13px;background:transparent;font-size:9px;font-weight:800;padding:8px 2px;transition:color .18s,transform .12s;text-decoration:none;border:0;cursor:pointer}
+.nav-item svg{width:21px;height:21px;stroke-width:1.9}
+html[data-theme="dark"] .nav-item,body.dark .nav-item{color:#a89bb0}
+.nav-item.active{color:#f472b6}
 .nav-item:active{transform:scale(.92)}
-.nav-fab-slot{position:relative;display:flex;justify-content:center;align-items:flex-end}
-.nav-home{position:absolute;bottom:0;width:54px;height:54px;border-radius:18px;display:grid;place-items:center;color:#fff;background:var(--brand);box-shadow:0 10px 24px rgba(185,40,130,.3);border:4px solid var(--bg);text-decoration:none}
-.nav-home svg{width:23px;height:23px}
+.nav-fab-slot{position:relative;display:flex;justify-content:center;align-items:flex-end;height:100%}
+.nav-home{position:absolute;bottom:8px;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--brand);box-shadow:0 10px 26px rgba(236,72,153,.55),0 4px 14px rgba(168,85,247,.45),0 0 0 5px rgba(15,8,20,.85),inset 0 1px 0 rgba(255,255,255,.22);border:0;text-decoration:none;transition:transform .15s;z-index:2}
+html[data-theme="light"] .nav-home{box-shadow:0 10px 26px rgba(236,72,153,.45),0 4px 14px rgba(168,85,247,.32),0 0 0 5px rgba(251,248,255,.95),inset 0 1px 0 rgba(255,255,255,.25)}
+.nav-home:active{transform:scale(.92)}
+.nav-home svg{width:26px;height:26px;stroke-width:2}
+.nav-home::before{content:"";position:absolute;inset:-4px;border-radius:50%;background:var(--brand);filter:blur(18px);opacity:.55;z-index:-1}
 button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);outline-offset:2px}
 @media (min-width:700px){
-  .bottom-nav{width:500px;right:50%;left:auto;transform:translateX(50%);border:1px solid var(--line);border-bottom:0;border-radius:22px 22px 0 0}
+  .bottom-nav{width:520px;right:50%;left:auto;transform:translateX(50%);border:1px solid var(--line);border-bottom:0;border-radius:24px 24px 0 0}
   .modal{align-items:center}
   .sheet{max-height:90vh;border-radius:26px}
 }
-@media (prefers-reduced-motion:reduce){
-  *,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important}
-}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
 </style>
 </head>
 <body>
@@ -276,24 +301,23 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
   <symbol id="i-back15" viewBox="0 0 24 24"><path d="M7 8V4l-4 4 4 4V9c5.2-1.4 9.8 1.7 10.5 6.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><text x="13" y="15" text-anchor="middle" font-size="6" fill="currentColor" font-family="Arial">15</text></symbol>
   <symbol id="i-forward15" viewBox="0 0 24 24"><path d="M17 8V4l4 4-4 4V9c-5.2-1.4-9.8 1.7-10.5 6.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><text x="11" y="15" text-anchor="middle" font-size="6" fill="currentColor" font-family="Arial">15</text></symbol>
   <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M17 3l3 3-3 3M4 8h13a3 3 0 013 3M7 21l-3-3 3-3M20 16H7a3 3 0 01-3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-repeat-one" viewBox="0 0 24 24"><path d="M17 3l3 3-3 3M4 8h13a3 3 0 013 3M7 21l-3-3 3-3M20 16H7a3 3 0 01-3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="15" text-anchor="middle" font-size="7" fill="currentColor" font-family="Arial" font-weight="bold">1</text></symbol>
   <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4zM16 9.5a4 4 0 010 5M18.5 7a7.5 7.5 0 010 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-volume-off" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4zM18 9l4 6M22 9l-4 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-speed" viewBox="0 0 24 24"><path d="M4 15a8 8 0 1116 0M12 12l4-4M6.5 18h11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V5a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2h2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
   <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="19" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 10.8l7.5-4.3M8.2 13.2l7.5 4.3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
-  <symbol id="i-speak" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4zM17 9a4 4 0 010 6M19.5 7a7 7 0 010 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l10-2v13M9 18a3 3 0 11-3-3 3 3 0 013 3zM19 16a3 3 0 11-3-3 3 3 0 013 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M17 10l4-2v8l-4-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
   <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5v.1a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3h.1a1.7 1.7 0 001-1.5V2a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8v.1a1.7 1.7 0 001.5 1h.1a2 2 0 110 4h-.1a1.7 1.7 0 00-1.4 1z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
   <symbol id="i-fullscreen" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-headphone" viewBox="0 0 24 24"><path d="M3 17v-5a9 9 0 0118 0v5M3 17a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3M21 17a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 11a7 7 0 0014 0M12 18v3M8 21h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
 <header class="topbar">
   <button class="top-side" id="backBtn" aria-label="بازگشت"><svg><use href="#i-arrow-right"></use></svg></button>
-  <div class="brand-title">
-    <strong id="pageTitle">دعا و اعمال</strong>
-    <span>بانوان نور</span>
-  </div>
+  <div class="brand-title"><strong id="pageTitle">دعا و اعمال</strong><span>بانوان نور</span></div>
   <button class="top-side" id="topSearchBtn" aria-label="جستجو"><svg><use href="#i-search"></use></svg></button>
 </header>
 
@@ -317,9 +341,7 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
     <svg><use href="#i-search"></use></svg>
     <input id="searchInput" type="search" autocomplete="off" placeholder="جستجو در دعا، زیارت، سخنرانی..." aria-label="جستجو">
   </div>
-  <div id="categoriesView">
-    <section class="cat-grid" id="catGrid"></section>
-  </div>
+  <div id="categoriesView"><section class="cat-grid" id="catGrid"></section></div>
   <div id="listView" class="hidden">
     <div class="list-header">
       <div class="list-title" id="listTitle"><svg><use href="#i-book"></use></svg><span>دعا</span></div>
@@ -334,29 +356,26 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
 </main>
 
 <nav class="bottom-nav">
-  <button class="nav-item" id="navSearch" type="button"><svg><use href="#i-search"></use></svg>جستجو</button>
-  <button class="nav-item" id="navHamraz" type="button"><svg><use href="#i-chat"></use></svg>همراز</button>
+  <button class="nav-item" id="navSearch" type="button"><svg><use href="#i-search"></use></svg><span>جستجو</span></button>
+  <button class="nav-item" id="navHamraz" type="button"><svg><use href="#i-chat"></use></svg><span>همراز</span></button>
   <div class="nav-fab-slot">
     <button class="nav-home" id="navHome" aria-label="خانه" type="button"><svg><use href="#i-home"></use></svg></button>
   </div>
-  <button class="nav-item" id="navAhkam" type="button"><svg><use href="#i-book"></use></svg>احکام</button>
-  <button class="nav-item" id="navMore" type="button"><svg><use href="#i-settings"></use></svg>بیشتر</button>
+  <button class="nav-item" id="navAhkam" type="button"><svg><use href="#i-book"></use></svg><span>احکام</span></button>
+  <button class="nav-item" id="navMore" type="button"><svg><use href="#i-settings"></use></svg><span>بیشتر</span></button>
 </nav>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div class="modal" id="modal" role="dialog" aria-modal="true">
   <div class="sheet">
     <div class="sheet-handle"></div>
     <header class="sheet-head">
       <button class="sheet-close" id="closeModal" aria-label="بستن"><svg><use href="#i-x"></use></svg></button>
-      <div class="sheet-title">
-        <strong id="modalTitle">عنوان</strong>
-        <span id="modalSubtitle">بانوان نور</span>
-      </div>
+      <div class="sheet-title"><strong id="modalTitle">عنوان</strong><span id="modalSubtitle">بانوان نور</span></div>
       <div class="font-controls">
-        <button class="font-btn" data-font="s" type="button" aria-label="کوچک">ک</button>
-        <button class="font-btn active" data-font="m" type="button" aria-label="متوسط">م</button>
-        <button class="font-btn" data-font="l" type="button" aria-label="بزرگ">ب</button>
-        <button class="font-btn" data-font="xl" type="button" aria-label="خیلی بزرگ">خ</button>
+        <button class="font-btn" data-font="s" type="button">ک</button>
+        <button class="font-btn active" data-font="m" type="button">م</button>
+        <button class="font-btn" data-font="l" type="button">ب</button>
+        <button class="font-btn" data-font="xl" type="button">خ</button>
       </div>
       <button class="sheet-close" id="modalBookmark" aria-label="نشان‌گذاری"><svg><use href="#i-bookmark"></use></svg></button>
     </header>
@@ -366,8 +385,7 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
       <div id="contentArea"></div>
       <div class="actions">
         <button class="action" id="copyBtn" type="button"><svg><use href="#i-copy"></use></svg>کپی</button>
-        <button class="action" id="shareBtn" type="button"><svg><use href="#i-share"></use></svg>اشتراک</button>
-        <button class="action" id="speakBtn" type="button"><svg><use href="#i-speak"></use></svg>خواندن</button>
+        <button class="action" id="shareBtn" type="button"><svg><use href="#i-share"></use></svg>اشتراک‌گذاری</button>
         <button class="action" id="actionBookmark" type="button"><svg><use href="#i-bookmark"></use></svg>نشان</button>
       </div>
     </div>
@@ -380,18 +398,125 @@ button:focus-visible,input:focus-visible{outline:3px solid rgba(168,50,214,.25);
 "use strict";
 
 const BASE_PATH = "data/duas/";
+
+/* ═══════════════════════════════════════════════════════════
+   ✅ لیست کامل رسانه‌های موجود
+   ═══════════════════════════════════════════════════════════ */
+const AVAILABLE_MEDIA = new Set([
+  "assets/audio/duas/01-ayatolkorsi.mp3","assets/audio/duas/02-faraj.mp3",
+  "assets/audio/duas/03-salamati.mp3","assets/audio/duas/04-tavassol.mp3",
+  "assets/audio/ziyarat/01-aleyasin.mp3","assets/audio/ziyarat/02-ashura.mp3",
+  "assets/audio/lectures/daneshmand-01.mp3","assets/audio/lectures/daneshmand-02.mp3",
+  "assets/audio/lectures/darestani-01.mp3","assets/audio/lectures/darestani-02.mp3",
+  "assets/audio/lectures/darestani-03.mp3","assets/audio/lectures/darestani-04.mp3",
+  "assets/audio/lectures/mehrabian-01.mp3","assets/audio/lectures/mehrabian-02.mp3",
+  "assets/audio/lectures/mehrabian-03.mp3","assets/audio/lectures/mojtahedi-01.mp3",
+  "assets/audio/lectures/mojtahedi-02.mp3","assets/audio/lectures/momeni-01.mp3",
+  "assets/audio/lectures/momeni-02.mp3","assets/audio/lectures/momeni-03.mp3",
+  "assets/audio/lectures/raefipoor-02.mp3","assets/audio/lectures/raefipoor-03.mp3",
+  "assets/audio/lectures/raefipor-01.mp3","assets/audio/lectures/raefipor-04.mp3",
+  "assets/audio/lectures/raefipor-05.mp3","assets/audio/lectures/raefipor-06.mp3",
+  "assets/audio/mahdaviat/alaem-akharozaman-mehrabian.mp3",
+  "assets/audio/mahdaviat/arzesh-dindari-akharezaman-biazar-tehrani.mp3",
+  "assets/audio/mahdaviat/cheghadr-emamzaman-mishnasim-alipanah.mp3",
+  "assets/audio/mahdaviat/chera-emamzaman-nemibinim-darestani.mp3",
+  "assets/audio/mahdaviat/dasteto-be-emamzaman-bespar-daneshmand.mp3",
+  "assets/audio/mahdaviat/doaye-emamzaman-momeni.mp3",
+  "assets/audio/mahdaviat/emamzaman-darestani.mp3",
+  "assets/audio/mahdaviat/emamzaman-momeni.mp3",
+  "assets/audio/mahdaviat/emamzaman-yar-fahmidemikhad-mandegari.mp3",
+  "assets/audio/mahdaviat/ertebat-ba-emamzaman-momeni.mp3",
+  "assets/audio/mahdaviat/ertebat-emamzaman-mehrabian.mp3",
+  "assets/audio/mahdaviat/fasele-ba-emamzaman-hosseini-ghomi.mp3",
+  "assets/audio/mahdaviat/gheibat-emamzaman-ansarian.mp3",
+  "assets/audio/mahdaviat/gheybat-emamzaman-mehrabian.mp3",
+  "assets/audio/mahdaviat/hobe-emamzaman-gholiyan.mp3",
+  "assets/audio/mahdaviat/javanane-akharozaman-mondegari.mp3",
+  "assets/audio/mahdaviat/mahabat-emamzaman-panahian.mp3",
+  "assets/audio/mahdaviat/modiriat-emamzaman-raefipoor.mp3",
+  "assets/audio/mahdaviat/niat-emamzaman-darestani.mp3",
+  "assets/audio/mahdaviat/shogh-didan-emamzaman-alipanah.mp3",
+  "assets/audio/mahdaviat/vaghaye-zaman-zohor-shirafkan.mp3",
+  "assets/audio/mahdaviat/zendegi-emamzaman-ali.mp3",
+  "assets/audio/ahkam/track-01.mp3","assets/audio/ahkam/track-02.mp3",
+  "assets/audio/ahkam/track-03.mp3","assets/audio/ahkam/track-04.mp3",
+  "assets/audio/ahkam/track-05.mp3","assets/audio/ahkam/track-06.mp3",
+  "assets/audio/ahkam/track-07.mp3","assets/audio/ahkam/track-08.mp3",
+  "assets/audio/ahkam/track-09.mp3","assets/audio/ahkam/track-10.mp3",
+  "assets/audio/ahkam/track-11.mp3","assets/audio/ahkam/track-12.mp3",
+  "assets/audio/ahkam/track-13.mp3","assets/audio/ahkam/track-14.mp3",
+  "assets/audio/ahkam/track-15.mp3","assets/audio/ahkam/track-17.mp3",
+  "assets/audio/ahkam/track-18.mp3","assets/audio/ahkam/track-19.mp3",
+  "assets/audio/ahkam/track-20.mp3","assets/audio/ahkam/track-21.mp3",
+  "assets/audio/ahkam/track-22.mp3","assets/audio/ahkam/track-23.mp3",
+  "assets/audio/ahkam/track-24.mp3","assets/audio/ahkam/track-25.mp3",
+  /* ویدیوها */
+  "assets/video/mahdaviat/video-01-raefipoor-goosh.mp4",
+  "assets/video/mahdaviat/video-02-emamzaman.mp4",
+  "assets/video/mahdaviat/video-03-javanane-akharozaman.mp4",
+  "assets/video/mahdaviat/video-04-khabar-amad.mp4",
+  "assets/video/mahdaviat/video-05-dard-del-emamzaman.mp4",
+  "assets/video/mahdaviat/video-06-raefipoor-alaem-zohor.mp4",
+  "assets/video/mahdaviat/video-07-molaqat-emamzaman.mp4"
+]);
+
+function availableMediaPath(value){
+  if(typeof value!=="string"||!value.trim()) return "";
+  const path=value.trim().replace(/^\.\//,"");
+  return AVAILABLE_MEDIA.has(path)?path:"";
+}
+
+/* ═══════════════════════════════════════════════════════════
+   🎤 نقشه عکس سخنرانان
+   اسم فایل صوتی → عکس سخنران
+   ═══════════════════════════════════════════════════════════ */
+const SPEAKER_IMAGES = {
+  "daneshmand":       "assets/speakers/daneshmand.webp",
+  "darestani":        "assets/speakers/darestani.webp",
+  "mehrabian":        "assets/speakers/mehrabian.webp",
+  "mojtahedi":        "assets/speakers/mojtahedi.webp",
+  "momeni":           "assets/speakers/momeni.webp",
+  "raefipoor":        "assets/speakers/raefipoor.webp",
+  "raefipor":         "assets/speakers/raefipoor.webp",
+  "alipanah":         "assets/speakers/alipanah.webp",
+  "ansarian":         "assets/speakers/ansarian.webp",
+  "biazar-tehrani":   "assets/speakers/biazar-tehrani.webp",
+  "gholiyan":         "assets/speakers/gholiyan.webp",
+  "hosseini-ghomi":   "assets/speakers/hosseini-ghomi.webp",
+  "mondegari":        "assets/speakers/mondegari.webp",
+  "panahian":         "assets/speakers/panahian.webp",
+  "shirafkan":        "assets/speakers/shirafkan.webp"
+};
+
+/* تشخیص خودکار عکس از روی مسیر فایل صوتی */
+function detectSpeakerImage(audioUrl, explicitImage){
+  if(explicitImage && String(explicitImage).trim()) return String(explicitImage).trim();
+  if(!audioUrl) return "";
+  const fname=String(audioUrl).split("/").pop().toLowerCase();
+  /* جستجوی کلیدواژه در اسم فایل */
+  for(const key in SPEAKER_IMAGES){
+    if(fname.indexOf(key)!==-1){
+      return SPEAKER_IMAGES[key];
+    }
+  }
+  return "";
+}
+
 const DUA_FILES = [
-  { id:"dua",       title:"دعا",       icon:"prayer", file:"duas.json" },
-  { id:"ziyarat",   title:"زیارت",     icon:"star",   file:"ziyarat.json" },
-  { id:"lecture",   title:"سخنرانی",   icon:"chat",   file:"lectures.json" },
-  { id:"mahdaviat", title:"مهدویت",    icon:"heart",  file:"mahdaviat.json" }
+  { id:"dua",       title:"دعا",       icon:"prayer",  file:"duas.json" },
+  { id:"ziyarat",   title:"زیارت",     icon:"star",    file:"ziyarat.json" },
+  { id:"lecture",   title:"سخنرانی",   icon:"chat",    file:"lectures.json" },
+  { id:"mahdaviat", title:"مهدویت",    icon:"heart",   file:"mahdaviat.json" },
+  { id:"amal",      title:"اعمال",     icon:"sparkle", file:"amal.json" },
+  { id:"video",     title:"ویدیوها",   icon:"video",   file:"videos.json" }
 ];
 const CATEGORIES = [
   { id:"dua",       title:"دعا",       icon:"prayer" },
   { id:"ziyarat",   title:"زیارت",     icon:"star" },
   { id:"lecture",   title:"سخنرانی",   icon:"chat" },
   { id:"mahdaviat", title:"مهدویت",    icon:"heart" },
-  { id:"videos",    title:"ویدیوها",   icon:"video" }
+  { id:"amal",      title:"اعمال",     icon:"sparkle" },
+  { id:"video",     title:"ویدیوها",   icon:"video" }
 ];
 const BM_KEY="bn_duas_bm_v1", POSITION_KEY="bn_audio_positions_v1",
       SPEED_KEY="bn_audio_speed", LOOP_KEY="bn_audio_loop",
@@ -399,37 +524,42 @@ const BM_KEY="bn_duas_bm_v1", POSITION_KEY="bn_audio_positions_v1",
       FONT_KEY="bn_duas_font";
 
 const FONT_SCALES = { s: 0.9, m: 1, l: 1.15, xl: 1.3 };
+const SPEED_OPTIONS = [0.75, 1, 1.25, 1.5, 1.75, 2];
+
+function safeStorageGet(key, fallback=null){
+  try { const value=localStorage.getItem(key); return value===null?fallback:value; }
+  catch(e){ return fallback; }
+}
+function safeStorageSet(key, value){
+  try { localStorage.setItem(key, String(value)); return true; }
+  catch(e){ return false; }
+}
 
 let allArticles=[], filteredArticles=[], currentCategory=null, currentView="categories";
 let showBookmarks=false, currentArticle=null, currentTab="main";
 let audioEl=null, audioCleanup=null;
 let bookmarks=loadObject(BM_KEY), positions=loadObject(POSITION_KEY);
-let playbackSpeed=clampNumber(localStorage.getItem(SPEED_KEY),.5,2,1);
-let volumeValue=clampNumber(localStorage.getItem(VOLUME_KEY),0,1,1);
-let loopEnabled=localStorage.getItem(LOOP_KEY)==="1";
-let toastTimer=null, speechActive=false, lastFocusedElement=null;
+let playbackSpeed=clampNumber(safeStorageGet(SPEED_KEY),.5,2,1);
+let volumeValue=clampNumber(safeStorageGet(VOLUME_KEY),0,1,1);
+let loopMode=safeStorageGet(LOOP_KEY)||"off";
+if(loopMode!=="off"&&loopMode!=="all"&&loopMode!=="one") loopMode="off";
+let toastTimer=null, lastFocusedElement=null;
 
 const $=id=>document.getElementById(id);
-const articleList=$("articleList");
-const searchInput=$("searchInput");
-const resultCount=$("resultCount");
-const catGrid=$("catGrid");
-const categoriesView=$("categoriesView");
-const listView=$("listView");
-const listTitle=$("listTitle");
-const pageTitle=$("pageTitle");
+const articleList=$("articleList"), searchInput=$("searchInput"), resultCount=$("resultCount");
+const catGrid=$("catGrid"), categoriesView=$("categoriesView"), listView=$("listView");
+const listTitle=$("listTitle"), pageTitle=$("pageTitle");
 const modal=$("modal"), modalTitle=$("modalTitle"), modalSubtitle=$("modalSubtitle");
 const modalBookmark=$("modalBookmark"), modalScroll=$("modalScroll");
 const mediaArea=$("mediaArea"), tabsArea=$("tabsArea"), contentArea=$("contentArea");
 const toastEl=$("toast");
 
-/* THEME */
 function getSystemTheme(){
   try{return window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}
   catch(e){return"light"}
 }
 function getSavedTheme(){
-  try{const t=localStorage.getItem(THEME_KEY);if(t==="dark"||t==="light")return t}catch(e){}
+  try{const t=safeStorageGet(THEME_KEY);if(t==="dark"||t==="light")return t}catch(e){}
   return getSystemTheme();
 }
 function applyTheme(){
@@ -440,15 +570,14 @@ function applyTheme(){
 }
 applyTheme();
 
-/* FONT SIZE */
 function getSavedFont(){
-  try { const f = localStorage.getItem(FONT_KEY); return FONT_SCALES[f] ? f : "m"; }
+  try { const f = safeStorageGet(FONT_KEY); return FONT_SCALES[f] ? f : "m"; }
   catch(e) { return "m"; }
 }
 function applyFont(size){
   if(!FONT_SCALES[size]) size = "m";
   document.documentElement.style.setProperty("--font-scale", FONT_SCALES[size]);
-  try { localStorage.setItem(FONT_KEY, size); } catch(e){}
+  safeStorageSet(FONT_KEY, size);
   const btns = document.querySelectorAll(".font-btn");
   for(let i=0; i<btns.length; i++){
     btns[i].classList.toggle("active", btns[i].dataset.font === size);
@@ -456,20 +585,17 @@ function applyFont(size){
 }
 function initFont(){
   applyFont(getSavedFont());
-  const btns = document.querySelectorAll(".font-btn");
-  for(let i=0; i<btns.length; i++){
-    btns[i].addEventListener("click", function(e){
+  document.querySelectorAll(".font-btn").forEach(b=>{
+    b.addEventListener("click", function(e){
       e.stopPropagation();
-      applyFont(btns[i].dataset.font);
-      if (window.bnAnalytics) window.bnAnalytics.track("duas_font_changed", { size: btns[i].dataset.font });
+      applyFont(b.dataset.font);
     });
-  }
+  });
 }
 
-/* HELPERS */
-function loadObject(k){try{const v=JSON.parse(localStorage.getItem(k)||"{}");return v&&typeof v==="object"?v:{}}catch(e){return{}}}
-function saveObject(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
-function clampNumber(v,min,max,fb){const n=Number(v);if(!isFinite(n))return fb;return Math.min(max,Math.max(min,n))}
+function loadObject(k){try{const v=JSON.parse(safeStorageGet(k,"{}")||"{}");return v&&typeof v==="object"&&!Array.isArray(v)?v:{}}catch(e){return{}}}
+function saveObject(k,v){safeStorageSet(k,JSON.stringify(v))}
+function clampNumber(v,min,max,fb){if(v===null||v===undefined||String(v).trim()==="")return fb;const n=Number(v);if(!Number.isFinite(n))return fb;return Math.min(max,Math.max(min,n))}
 function escapeHTML(v){return String(v==null?"":v).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}
 function normalizeSearch(v){
   return String(v||"").toLowerCase()
@@ -499,15 +625,15 @@ function formatTime(s){
 function getArticleId(a){return String(a.id||a.title||"unknown")}
 function getYouTubeId(url){
   try{
-    const m=String(url||"").match(/(?:youtube\.com\/(?:watch\?v=|embed\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    const m=String(url||"").match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:.*[?&]v=|embed\/|shorts\/|v\/))([A-Za-z0-9_-]{11})/);
     return m?m[1]:null;
   }catch(e){return null}
 }
 
-/* NORMALIZE */
 function normalizeArticle(a,category){
   if(!a||typeof a!=="object") return null;
   const found=DUA_FILES.find(x=>x.id===category);
+  const audioUrl=availableMediaPath(a.audioUrl||a.audio_url||(typeof a.audio==="string"?a.audio:"")||(a.audio&&a.audio.url?a.audio.url:""));
   const art={
     id:a.id||a.slug||a.key||a.title||a.name,
     title:a.title||a.name||"بدون عنوان",
@@ -522,26 +648,25 @@ function normalizeArticle(a,category){
     icon:a.icon||(found&&found.icon)||"book",
     speaker:a.speaker||a.reciter||a.author||"",
     type:a.type||category,
-    audioUrl:a.audioUrl||a.audio_url||(typeof a.audio==="string"?a.audio:"")||(a.audio&&a.audio.url?a.audio.url:""),
-    videoUrl:a.videoUrl||a.video_url||(typeof a.video==="string"?a.video:"")||(a.video&&a.video.url?a.video.url:""),
+    audioUrl:audioUrl,
+    videoUrl:availableMediaPath(a.videoUrl||a.video_url||(typeof a.video==="string"?a.video:"")||(a.video&&a.video.url?a.video.url:"")),
     duration:a.duration||a.audioDuration||"",
     category,
     categoryTitle:(found&&found.title)||category
   };
+  /* تشخیص خودکار عکس سخنران */
+  art.speakerImage=detectSpeakerImage(art.audioUrl, a.speakerImage||a.speaker_image||a.avatar);
   art.id=String(art.id||(category+"_"+art.title));
   return art;
 }
 function extractArticles(data,category){
   const result=[];
-  if(Array.isArray(data)){
-    data.forEach(item=>{const a=normalizeArticle(item,category);if(a)result.push(a)});
-    return result;
-  }
+  if(Array.isArray(data)){data.forEach(i=>{const a=normalizeArticle(i,category);if(a)result.push(a)});return result;}
   if(!data||typeof data!=="object") return result;
-  const keys=["articles","items","duas","ziyarat","lectures","mahdaviat","data","results"];
+  const keys=["articles","items","duas","ziyarat","lectures","mahdaviat","amal","videos","data","results"];
   for(const k of keys){
     if(Array.isArray(data[k])){
-      data[k].forEach(item=>{const a=normalizeArticle(item,category);if(a)result.push(a)});
+      data[k].forEach(i=>{const a=normalizeArticle(i,category);if(a)result.push(a)});
       if(result.length) return result;
     }
   }
@@ -550,31 +675,30 @@ function extractArticles(data,category){
   return result;
 }
 
-/* LOAD */
 async function loadAllData(){
-  catGrid.innerHTML='<div class="state" style="grid-column:span 2"><div class="loader"></div>در حال بارگذاری...</div>';
-  const loaded=[];
-  for(const item of DUA_FILES){
+  catGrid.innerHTML='<div class="state" style="grid-column:1/-1"><div class="loader"></div>در حال بارگذاری اطلاعات...</div>';
+  const results=await Promise.all(DUA_FILES.map(async item=>{
     try{
-      const r=await fetch(BASE_PATH+item.file);
-      if(!r.ok) throw new Error("HTTP "+r.status);
-      const data=await r.json();
-      const arts = extractArticles(data,item.id);
-      console.log("[duas] فایل", item.file, "→", arts.length, "مطلب");
-      loaded.push(...arts);
-    }catch(err){
-      console.warn("[duas] خطا در لود:",item.file,err.message);
+      const response=await fetch(BASE_PATH+item.file,{cache:"no-cache"});
+      if(!response.ok) throw new Error("HTTP "+response.status);
+      const data=await response.json();
+      return extractArticles(data,item.id);
+    }catch(error){
+      console.warn("[duas] "+item.file+":",error);
+      return [];
     }
-  }
-  allArticles=loaded;
-  console.log("[duas] ✅ مجموع مطالب:", allArticles.length);
+  }));
+  allArticles=results.flat();
   renderCategories();
   renderDaily();
+  if(!allArticles.length){
+    articleList.innerHTML='<div class="state"><div class="empty-icon"><svg><use href="#i-book"></use></svg></div><strong>اطلاعات دعاها بارگذاری نشد.</strong></div>';
+    resultCount.textContent="۰ مطلب";
+  }
 }
 
-/* DAILY */
 function renderDaily(){
-  if(!allArticles.length) return;
+  if(!allArticles.length){$("dailyTitle").textContent="مطالب دعا در دسترس نیست";$("dailyExcerpt").textContent="برای بارگذاری دوباره، صفحه را تازه‌سازی کنید.";return;}
   const day=Math.floor(Date.now()/86400000);
   const idx=Math.abs(day)%allArticles.length;
   const a=allArticles[idx];
@@ -582,13 +706,12 @@ function renderDaily(){
   $("dailyExcerpt").textContent = a.excerpt || a.categoryTitle;
 }
 
-/* CATEGORIES */
 function renderCategories(){
   const counts={};
   allArticles.forEach(a=>counts[a.category]=(counts[a.category]||0)+1);
-  const videosCount = allArticles.filter(a=>a.videoUrl).length;
   catGrid.innerHTML = CATEGORIES.map(c=>{
-    const count = c.id==="videos" ? videosCount : (counts[c.id]||0);
+    const count = counts[c.id]||0;
+    if(count===0) return "";
     return `
       <button class="cat-card" data-cat="${c.id}" type="button">
         <div class="cat-icon">${iconUse(c.icon)}</div>
@@ -598,41 +721,32 @@ function renderCategories(){
   }).join("");
 }
 
-/* VIEW MANAGEMENT */
 function openCategory(catId){
   currentCategory=catId; currentView="list";
-  categoriesView.classList.add("hidden");
-  listView.classList.remove("hidden");
+  categoriesView.classList.add("hidden"); listView.classList.remove("hidden");
   const cat=CATEGORIES.find(c=>c.id===catId);
   const title=cat?cat.title:"";
   pageTitle.textContent=title;
   listTitle.innerHTML='<svg><use href="#i-'+(cat?cat.icon:"book")+'"></use></svg><span>'+title+'</span>';
   applyFilters();
   window.scrollTo({top:0,behavior:"smooth"});
-  if (window.bnAnalytics) window.bnAnalytics.track("duas_category", { cat: catId });
 }
 function backToCategories(){
   currentCategory=null; currentView="categories";
-  listView.classList.add("hidden");
-  categoriesView.classList.remove("hidden");
+  listView.classList.add("hidden"); categoriesView.classList.remove("hidden");
   pageTitle.textContent="دعا و اعمال";
-  searchInput.value="";
-  showBookmarks=false;
+  searchInput.value=""; showBookmarks=false;
   $("bookmarkFilter").classList.remove("active");
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
-/* FILTER */
 function applyFilters(){
   const q=normalizeSearch(searchInput.value);
   filteredArticles=allArticles.filter(a=>{
-    if(currentCategory==="videos"){ if(!a.videoUrl) return false; }
-    else if(currentCategory && a.category!==currentCategory) return false;
+    if(currentCategory && a.category!==currentCategory) return false;
     if(showBookmarks && !bookmarks[getArticleId(a)]) return false;
     if(!q) return true;
-    const hay=normalizeSearch([a.title,a.excerpt,a.content,a.contentAr,
-      a.translationFa,a.instructions,a.virtue,a.source,a.speaker,
-      (a.tags||[]).join(" "),a.categoryTitle].join(" "));
+    const hay=normalizeSearch([a.title,a.excerpt,a.content,a.contentAr,a.translationFa,a.instructions,a.virtue,a.source,a.speaker,(a.tags||[]).join(" "),a.categoryTitle].join(" "));
     return hay.includes(q);
   });
   renderArticles();
@@ -640,13 +754,8 @@ function applyFilters(){
 
 function renderArticles(){
   if(!filteredArticles.length){
-    articleList.innerHTML=
-      '<div class="state">'+
-        '<div class="empty-icon"><svg><use href="#i-search"></use></svg></div>'+
-        '<strong>موردی پیدا نشد</strong>'+
-      '</div>';
-    resultCount.textContent="۰ مطلب";
-    return;
+    articleList.innerHTML='<div class="state"><div class="empty-icon"><svg><use href="#i-search"></use></svg></div><strong>موردی پیدا نشد</strong></div>';
+    resultCount.textContent="۰ مطلب"; return;
   }
   resultCount.textContent=filteredArticles.length+" مطلب";
   articleList.innerHTML=filteredArticles.map(renderArticleCard).join("");
@@ -662,11 +771,15 @@ function renderArticleCard(a){
   if(!isLecture) metaBits.push('<span class="meta">'+iconUse(a.icon)+escapeHTML(a.categoryTitle)+'</span>');
   if(a.audioUrl) metaBits.push('<span class="meta"><svg><use href="#i-music"></use></svg>صوتی</span>');
   if(a.videoUrl) metaBits.push('<span class="meta"><svg><use href="#i-video"></use></svg>ویدیو</span>');
-  if(a.speaker && !isLecture) metaBits.push('<span class="meta"><svg><use href="#i-chat"></use></svg>'+escapeHTML(a.speaker)+'</span>');
+  if(a.speaker && !isLecture) metaBits.push('<span class="meta"><svg><use href="#i-mic"></use></svg>'+escapeHTML(a.speaker)+'</span>');
+  /* آیکون کارت: اگر عکس سخنران داره، عکس، وگرنه آیکون معمولی */
+  const iconHTML = a.speakerImage
+    ? '<img src="'+escapeHTML(a.speakerImage)+'" alt="'+escapeHTML(a.speaker||"")+'" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\'"><svg style="display:none"><use href="#i-'+(a.icon||"book")+'"></use></svg>'
+    : iconUse(a.icon);
   return `
     <article class="article" data-open="${escapeHTML(id)}" role="button" tabindex="0">
       <div class="article-top">
-        <div class="article-icon">${iconUse(a.icon)}</div>
+        <div class="article-icon">${iconHTML}</div>
         <div class="article-main">
           <h2 class="article-title">${escapeHTML(displayTitle)}</h2>
           ${showExcerpt ? '<p class="article-excerpt">'+escapeHTML(a.excerpt||a.translationFa||a.content||a.categoryTitle)+'</p>' : ''}
@@ -677,19 +790,18 @@ function renderArticleCard(a){
       </div>
       <div class="article-meta">${metaBits.join("")}</div>
       <div class="article-footer">
-        ${a.audioUrl?'<span class="has-audio"><svg><use href="#i-music"></use></svg>پخش صوتی</span>':'<span></span>'}
+        ${a.audioUrl?'<span class="has-audio"><svg><use href="#i-music"></use></svg>پخش صوتی</span>':''}
+        ${a.videoUrl?'<span class="has-audio"><svg><use href="#i-video"></use></svg>ویدیو</span>':''}
         <span class="open-btn">مشاهده<svg><use href="#i-arrow-right"></use></svg></span>
       </div>
     </article>`;
 }
 
-/* OPEN ARTICLE */
 function findArticle(id){ return allArticles.find(a=>getArticleId(a)===String(id)); }
 function openArticle(a){
   if(!a) return;
   stopAudio();
-  currentArticle=a;
-  currentTab=getInitialTab(a);
+  currentArticle=a; currentTab=getInitialTab(a);
   const displayTitle = a.category==="lecture"&&a.speaker ? "سخنرانی "+a.speaker : a.title;
   modalTitle.textContent=displayTitle;
   modalSubtitle.textContent=a.speaker||a.categoryTitle||"بانوان نور";
@@ -700,7 +812,6 @@ function openArticle(a){
   document.body.style.overflow="hidden";
   modalScroll.scrollTop=0;
   setTimeout(()=>{const c=$("closeModal");if(c)c.focus()},200);
-  if (window.bnAnalytics) window.bnAnalytics.track("duas_open", { id: a.id, category: a.category });
 }
 function getInitialTab(a){
   if(a.contentAr||a.content) return "main";
@@ -710,7 +821,6 @@ function getInitialTab(a){
   return "main";
 }
 
-/* MEDIA */
 function renderMedia(a){
   mediaArea.innerHTML="";
   if(a.audioUrl) mediaArea.appendChild(buildAudioPlayer(a));
@@ -731,11 +841,8 @@ function buildVideoPlayer(a){
   }else{
     const v=document.createElement("video");
     v.controls=true; v.preload="metadata"; v.playsInline=true;
-    v.setAttribute("playsinline","");
-    v.setAttribute("webkit-playsinline","");
-    v.setAttribute("x5-playsinline","");
-    v.src=a.videoUrl;
-    box.appendChild(v);
+    v.setAttribute("playsinline",""); v.setAttribute("webkit-playsinline","");
+    v.src=a.videoUrl; box.appendChild(v);
     const fsBtn=document.createElement("button");
     fsBtn.className="video-fullscreen-btn";
     fsBtn.type="button";
@@ -744,38 +851,51 @@ function buildVideoPlayer(a){
     fsBtn.addEventListener("click",function(e){
       e.stopPropagation();
       try{
-        const req = v.requestFullscreen || v.webkitRequestFullscreen || v.webkitEnterFullscreen;
-        if(req){ req.call(v); }
+        const req=v.requestFullscreen||v.webkitRequestFullscreen||v.webkitEnterFullscreen;
+        if(req){ const p=req.call(v); if(p&&p.catch)p.catch(()=>{}); }
       }catch(err){ showToast("تمام‌صفحه پشتیبانی نمی‌شود"); }
     });
     box.appendChild(fsBtn);
   }
   if(a.speaker){
     const c=document.createElement("div");
-    c.className="video-caption";
-    c.textContent=a.speaker;
+    c.className="video-caption"; c.textContent=a.speaker;
     box.appendChild(c);
   }
   return box;
 }
 
-/* ✅ AUDIO PLAYER - مستقل و بدون وابستگی به bn-media-player.js */
+/* ═══ AUDIO PLAYER با پشتیبانی از عکس سخنران ═══ */
 function buildAudioPlayer(a){
   const w=document.createElement("section");
-  w.className="player";
+  w.className="player paused";
+
+  /* تعیین محتوای کاور: عکس سخنران یا آیکون هدفون */
+  const hasImage = !!a.speakerImage;
+  const coverInner = hasImage
+    ? `<img src="${escapeHTML(a.speakerImage)}" alt="${escapeHTML(a.speaker||a.title)}" onerror="this.style.display='none';this.parentNode.classList.add('no-img')">`
+    : `<svg><use href="#i-headphone"></use></svg>`;
+
   w.innerHTML=`
     <div class="player-top">
-      <div class="cover"><svg><use href="#i-music"></use></svg></div>
+      <div class="cover ${hasImage?'':'no-img'}">
+        ${coverInner}
+        <div class="cover-eq"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
       <div class="player-info">
         <div class="player-label"><i></i><span class="status-text">آماده پخش</span></div>
         <div class="player-title">${escapeHTML(a.category==="lecture"&&a.speaker?"سخنرانی "+a.speaker:a.title)}</div>
-        <div class="player-speaker">${escapeHTML(a.speaker||"پخش صوتی بانوان نور")}</div>
+        <div class="player-speaker">
+          <svg><use href="#i-mic"></use></svg>
+          <span>${escapeHTML(a.speaker||"پخش صوتی بانوان نور")}</span>
+        </div>
       </div>
-      <div class="equalizer"><span></span><span></span><span></span><span></span><span></span></div>
     </div>
+    <div class="waveform" aria-hidden="true"></div>
     <div class="progress-area">
       <div class="progress-track">
         <div class="progress-line">
+          <div class="progress-buffered"></div>
           <div class="progress-fill"></div>
           <div class="progress-thumb"></div>
         </div>
@@ -788,42 +908,74 @@ function buildAudioPlayer(a){
       <button class="ctrl skip-forward" type="button" aria-label="۱۵ ثانیه جلو"><svg><use href="#i-forward15"></use></svg></button>
     </div>
     <div class="player-tools">
-      <button class="tool speed-btn" type="button"><svg><use href="#i-speed"></use></svg><span>سرعت ${playbackSpeed}×</span></button>
+      <button class="tool speed-btn" type="button"><svg><use href="#i-speed"></use></svg><span class="speed-label">${playbackSpeed}×</span></button>
       <button class="tool loop-btn" type="button"><svg><use href="#i-repeat"></use></svg><span>تکرار</span></button>
       <button class="tool mute-btn" type="button"><svg><use href="#i-volume"></use></svg><span>صدا</span></button>
+      <button class="tool share-btn" type="button"><svg><use href="#i-share"></use></svg><span>اشتراک</span></button>
     </div>
     <div class="volume-row">
       <svg class="volume-icon"><use href="#i-volume"></use></svg>
       <input class="volume-slider" type="range" min="0" max="1" step="0.01" value="${volumeValue}">
+      <span class="vol-percent">${Math.round(volumeValue*100)}٪</span>
     </div>
+    <div class="speed-picker" role="menu"></div>
     <div class="audio-message"></div>
   `;
 
-  // ساخت مستقیم Audio
-  const audio = new Audio();
-  audio.preload = "metadata";
-  audio.src = a.audioUrl;
-  audio.volume = volumeValue;
-  audio.playbackRate = playbackSpeed;
-  audio.loop = loopEnabled;
-  audioEl = audio;
+  /* موج صوتی */
+  const wave=w.querySelector(".waveform");
+  const BAR_COUNT=48;
+  const barHeights=[];
+  for(let i=0;i<BAR_COUNT;i++){
+    const base=Math.sin(i/3)*30+50;
+    const rand=Math.random()*30;
+    barHeights.push(Math.max(20,Math.min(95,Math.round(base+rand))));
+  }
+  wave.innerHTML=barHeights.map((h,i)=>`<div class="bar" style="--i:${i};height:${h}%"></div>`).join("");
+  const bars=wave.querySelectorAll(".bar");
 
-  console.log("[audio] src:", audio.src);
+  const audio=new Audio();
+  audio.preload="metadata";
+  audio.src=a.audioUrl;
+  audio.volume=volumeValue;
+  audio.playbackRate=playbackSpeed;
+  audio.loop=(loopMode==="one");
+  audioEl=audio;
 
   const playBtn=w.querySelector(".play-btn");
   const track=w.querySelector(".progress-track");
   const fill=w.querySelector(".progress-fill");
+  const buffered=w.querySelector(".progress-buffered");
   const thumb=w.querySelector(".progress-thumb");
   const cur=w.querySelector(".current-time");
   const tot=w.querySelector(".total-time");
   const status=w.querySelector(".status-text");
   const speedBtn=w.querySelector(".speed-btn");
+  const speedLabel=w.querySelector(".speed-label");
+  const speedPicker=w.querySelector(".speed-picker");
   const loopBtn=w.querySelector(".loop-btn");
   const muteBtn=w.querySelector(".mute-btn");
+  const shareBtn=w.querySelector(".share-btn");
   const slider=w.querySelector(".volume-slider");
+  const volPercent=w.querySelector(".vol-percent");
   const vIcon=w.querySelector(".volume-icon");
   const msgEl=w.querySelector(".audio-message");
   let restored=false;
+
+  speedPicker.innerHTML=SPEED_OPTIONS.map(s=>
+    `<button class="speed-opt ${s===playbackSpeed?'active':''}" data-speed="${s}" type="button">${s}×</button>`
+  ).join("");
+  speedPicker.addEventListener("click",(e)=>{
+    const opt=e.target.closest(".speed-opt");
+    if(!opt) return;
+    const s=Number(opt.dataset.speed);
+    playbackSpeed=s; audio.playbackRate=s;
+    safeStorageSet(SPEED_KEY,s);
+    speedLabel.textContent=s+"×";
+    speedPicker.querySelectorAll(".speed-opt").forEach(b=>b.classList.toggle("active",Number(b.dataset.speed)===s));
+    speedPicker.classList.remove("show");
+    showToast("سرعت پخش: "+s+"×");
+  });
 
   const updProg=()=>{
     if(!isFinite(audio.duration)||audio.duration<=0)return;
@@ -831,16 +983,38 @@ function buildAudioPlayer(a){
     fill.style.width=p+"%"; thumb.style.left=p+"%";
     cur.textContent=formatTime(audio.currentTime);
     tot.textContent=formatTime(audio.duration);
+    const playedCount=Math.round((p/100)*BAR_COUNT);
+    for(let i=0;i<bars.length;i++) bars[i].classList.toggle("played",i<=playedCount);
+  };
+  const updBuffered=()=>{
+    try{
+      if(audio.buffered.length>0&&isFinite(audio.duration)&&audio.duration>0){
+        const end=audio.buffered.end(audio.buffered.length-1);
+        buffered.style.width=Math.min(100,(end/audio.duration)*100)+"%";
+      }
+    }catch(e){}
   };
   const updPlay=()=>{
     playBtn.innerHTML=audio.paused?'<svg><use href="#i-play"></use></svg>':'<svg><use href="#i-pause"></use></svg>';
     w.classList.toggle("playing",!audio.paused);
+    w.classList.toggle("paused",audio.paused);
     status.textContent=audio.paused?"متوقف":"در حال پخش";
   };
   const updLoop=()=>{
-    loopBtn.classList.toggle("active",loopEnabled);
-    loopBtn.querySelector("span").textContent=loopEnabled?"تکرار روشن":"تکرار";
-    audio.loop=loopEnabled;
+    loopBtn.classList.toggle("active",loopMode!=="off");
+    if(loopMode==="off"){
+      loopBtn.querySelector("svg").innerHTML='<use href="#i-repeat"></use>';
+      loopBtn.querySelector("span").textContent="تکرار";
+      audio.loop=false;
+    }else if(loopMode==="all"){
+      loopBtn.querySelector("svg").innerHTML='<use href="#i-repeat"></use>';
+      loopBtn.querySelector("span").textContent="همه";
+      audio.loop=false;
+    }else{
+      loopBtn.querySelector("svg").innerHTML='<use href="#i-repeat-one"></use>';
+      loopBtn.querySelector("span").textContent="یکی";
+      audio.loop=true;
+    }
   };
   const updMute=()=>{
     const m=audio.muted||audio.volume===0;
@@ -857,52 +1031,59 @@ function buildAudioPlayer(a){
   };
   const savePos=()=>{
     const id=getArticleId(a);
-    if(isFinite(audio.currentTime)&&audio.currentTime>0){ positions[id]=Math.floor(audio.currentTime); saveObject(POSITION_KEY,positions); }
+    if(isFinite(audio.currentTime)&&audio.currentTime>0){
+      positions[id]=Math.floor(audio.currentTime);
+      saveObject(POSITION_KEY,positions);
+    }
   };
 
-  // پخش مستقیم
-  playBtn.addEventListener("click", async () => {
-    try {
-      if (!audio.paused) { audio.pause(); return; }
-      status.textContent = "در حال بارگذاری...";
+  playBtn.addEventListener("click",async()=>{
+    try{
+      if(!audio.paused){audio.pause();return;}
+      status.textContent="در حال بارگذاری...";
       await audio.play();
       msgEl.classList.remove("show");
-    } catch(e) {
-      console.error("[audio] خطای پخش:", e);
-      showErr("خطا: " + (e.message || "ناشناخته"));
-      status.textContent = "خطا";
+    }catch(e){
+      showErr("خطا: "+(e.message||"ناشناخته"));
+      status.textContent="خطا";
     }
   });
-
   w.querySelector(".skip-back").addEventListener("click",()=>{audio.currentTime=Math.max(0,audio.currentTime-15);updProg()});
   w.querySelector(".skip-forward").addEventListener("click",()=>{
     audio.currentTime=isFinite(audio.duration)?Math.min(audio.duration,audio.currentTime+15):audio.currentTime+15;
     updProg();
   });
-  speedBtn.addEventListener("click",()=>{
-    const sp=[.5,.75,1,1.25,1.5,1.75,2];
-    let i=sp.indexOf(playbackSpeed); i=(i+1)%sp.length;
-    playbackSpeed=sp[i]; audio.playbackRate=playbackSpeed;
-    localStorage.setItem(SPEED_KEY,String(playbackSpeed));
-    speedBtn.querySelector("span").textContent="سرعت "+playbackSpeed+"×";
-    showToast("سرعت: "+playbackSpeed+"×");
-  });
+  speedBtn.addEventListener("click",e=>{e.stopPropagation();speedPicker.classList.toggle("show")});
+  document.addEventListener("click",()=>speedPicker.classList.remove("show"));
   loopBtn.addEventListener("click",()=>{
-    loopEnabled=!loopEnabled;
-    localStorage.setItem(LOOP_KEY,loopEnabled?"1":"0");
+    if(loopMode==="off") loopMode="all";
+    else if(loopMode==="all") loopMode="one";
+    else loopMode="off";
+    safeStorageSet(LOOP_KEY,loopMode);
     updLoop();
+    showToast(loopMode==="off"?"تکرار خاموش":loopMode==="all"?"تکرار همه":"تکرار یک فایل");
   });
   muteBtn.addEventListener("click",()=>{
     if(audio.muted||audio.volume===0){
-      audio.muted=false; if(volumeValue===0) volumeValue=.7;
+      audio.muted=false;
+      if(volumeValue===0) volumeValue=.7;
       audio.volume=volumeValue; slider.value=volumeValue;
+      volPercent.textContent=Math.round(volumeValue*100)+"٪";
     }else audio.muted=true;
     updMute();
+  });
+  shareBtn.addEventListener("click",async()=>{
+    const text="🎧 "+a.title+(a.speaker?"\n🎤 "+a.speaker:"")+"\n\n📱 بانوان نور — پخش صوتی";
+    try{
+      if(navigator.share) await navigator.share({title:a.title,text});
+      else{await navigator.clipboard.writeText(text);showToast("متن کپی شد")}
+    }catch(e){}
   });
   slider.addEventListener("input",function(){
     volumeValue=Math.min(1,Math.max(0,Number(this.value)));
     audio.volume=volumeValue; audio.muted=false;
-    localStorage.setItem(VOLUME_KEY,String(volumeValue));
+    safeStorageSet(VOLUME_KEY,volumeValue);
+    volPercent.textContent=Math.round(volumeValue*100)+"٪";
     updMute();
   });
 
@@ -917,12 +1098,16 @@ function buildAudioPlayer(a){
   track.addEventListener("pointermove",e=>{if(seeking)seek(e)});
   track.addEventListener("pointerup",()=>seeking=false);
   track.addEventListener("pointercancel",()=>seeking=false);
-
-  audio.addEventListener("loadedmetadata",()=>{
-    console.log("[audio] ✅ لود شد - مدت:", audio.duration);
-    restore(); updProg();
+  wave.addEventListener("click",e=>{
+    const r=wave.getBoundingClientRect();
+    let ratio=(e.clientX-r.left)/r.width;
+    ratio=Math.max(0,Math.min(1,ratio));
+    if(isFinite(audio.duration)){audio.currentTime=ratio*audio.duration;updProg()}
   });
+
+  audio.addEventListener("loadedmetadata",()=>{restore();updProg()});
   audio.addEventListener("durationchange",updProg);
+  audio.addEventListener("progress",updBuffered);
   audio.addEventListener("timeupdate",()=>{
     updProg();
     const s=Math.floor(audio.currentTime);
@@ -931,24 +1116,27 @@ function buildAudioPlayer(a){
   audio.addEventListener("play",updPlay);
   audio.addEventListener("playing",()=>{msgEl.classList.remove("show");updPlay();status.textContent="در حال پخش"});
   audio.addEventListener("pause",()=>{savePos();updPlay()});
-  audio.addEventListener("ended",()=>{savePos();updPlay();updProg()});
+  audio.addEventListener("ended",()=>{
+    savePos();updPlay();updProg();
+    if(loopMode==="all"){
+      const next=getNextArticle(a);
+      if(next) setTimeout(()=>openArticle(next),300);
+    }
+  });
   audio.addEventListener("waiting",()=>{status.textContent="در حال بارگذاری..."});
   audio.addEventListener("canplay",()=>{msgEl.classList.remove("show");if(!restored)restore()});
   audio.addEventListener("error",()=>{
-    const err = audio.error;
-    let msg = "خطای نامشخص";
+    const err=audio.error; let msg="خطای نامشخص";
     if(err){
-      if(err.code === 1) msg = "پخش لغو شد";
-      else if(err.code === 2) msg = "خطای شبکه — فایل پیدا نشد";
-      else if(err.code === 3) msg = "خطای رمزگشایی — فایل خراب است";
-      else if(err.code === 4) msg = "فرمت پشتیبانی نمی‌شود";
+      if(err.code===1) msg="پخش لغو شد";
+      else if(err.code===2) msg="خطای شبکه — فایل پیدا نشد";
+      else if(err.code===3) msg="خطای رمزگذاری";
+      else if(err.code===4) msg="فرمت پشتیبانی نمی‌شود";
     }
-    console.error("[audio] ❌ خطا:", msg, "- src:", audio.src);
-    showErr("خطا: " + msg);
-    status.textContent = "خطا";
+    showErr("خطا: "+msg); status.textContent="خطا";
   });
 
-  updLoop(); updMute(); updPlay();
+  updLoop();updMute();updPlay();
 
   audioCleanup=()=>{
     try{savePos()}catch(e){}
@@ -956,9 +1144,19 @@ function buildAudioPlayer(a){
   };
   return w;
 }
+
+function getNextArticle(current){
+  if(!current) return null;
+  const list=filteredArticles.length?filteredArticles:allArticles;
+  const idx=list.findIndex(x=>getArticleId(x)===getArticleId(current));
+  if(idx<0) return null;
+  for(let i=idx+1;i<list.length;i++){ if(list[i].audioUrl) return list[i]; }
+  for(let i=0;i<idx;i++){ if(list[i].audioUrl) return list[i]; }
+  return null;
+}
+
 function stopAudio(){ if(audioCleanup){try{audioCleanup()}catch(e){}} audioCleanup=null; audioEl=null; }
 
-/* TABS */
 function renderTabs(a){
   const tabs=[];
   if(a.contentAr||a.content) tabs.push({id:"main",title:"متن اصلی"});
@@ -983,9 +1181,7 @@ function renderContent(a){
   contentArea.innerHTML=html;
 }
 
-function formatPlainText(t){
-  return escapeHTML(t||"").replace(/\r\n/g,"\n").replace(/\r/g,"\n").replace(/\n{3,}/g,"\n\n").replace(/\n/g,"<br>");
-}
+function formatPlainText(t){return escapeHTML(t||"").replace(/\r\n/g,"\n").replace(/\r/g,"\n").replace(/\n{3,}/g,"\n\n").replace(/\n/g,"<br>");}
 function formatMainText(text,isAr){
   if(!text) return '<div class="normal-text">متنی برای نمایش وجود ندارد.</div>';
   const esc=escapeHTML(text).replace(/\r\n/g,"\n").replace(/\r/g,"\n");
@@ -1008,7 +1204,6 @@ function formatInstructions(v){
   return '<div class="normal-text">'+formatPlainText(v)+'</div>';
 }
 
-/* BOOKMARK */
 function isBookmarked(a){return !!bookmarks[getArticleId(a)]}
 function toggleBookmark(a){
   if(!a) return;
@@ -1017,8 +1212,7 @@ function toggleBookmark(a){
   else{bookmarks[id]=true;showToast("به نشان‌شده‌ها اضافه شد")}
   saveObject(BM_KEY,bookmarks);
   updateModalBookmark();
-  renderArticles();
-  if (window.bnAnalytics) window.bnAnalytics.track("duas_bookmark", { id: id });
+  applyFilters();
 }
 function updateModalBookmark(){
   if(!currentArticle) return;
@@ -1027,8 +1221,11 @@ function updateModalBookmark(){
   $("actionBookmark").classList.toggle("active",active);
 }
 
-/* COPY / SHARE / SPEAK */
-function getCopyText(a){return [a.title,a.contentAr,a.translationFa,a.content,a.instructions,a.virtue,a.source].filter(Boolean).join("\n\n")}
+function getCopyText(a){
+  return [a.title,a.contentAr,a.translationFa,a.content,
+    Array.isArray(a.instructions)?a.instructions.join("\n"):a.instructions,
+    a.virtue,a.source].filter(v=>v!==null&&v!==undefined&&String(v).trim()!=="").map(String).join("\n\n");
+}
 async function copyArticle(){
   if(!currentArticle) return;
   const text=getCopyText(currentArticle);
@@ -1048,41 +1245,17 @@ async function shareArticle(){
     else{await navigator.clipboard.writeText(text);showToast("متن کپی شد")}
   }catch(e){}
 }
-function speakArticle(){
-  if(!currentArticle) return;
-  if(!("speechSynthesis" in window)){showToast("پشتیبانی نمی‌شود");return}
-  const btn=$("speakBtn");
-  if(speechActive){speechSynthesis.cancel();speechActive=false;btn.innerHTML='<svg><use href="#i-speak"></use></svg>خواندن';showToast("متوقف شد");return}
-  const text=currentArticle.translationFa||currentArticle.content||currentArticle.contentAr||"";
-  if(!text){showToast("متنی وجود ندارد");return}
-  const u=new SpeechSynthesisUtterance(text);
-  u.lang="fa-IR"; u.rate=.9; u.pitch=1;
-  u.onstart=()=>{speechActive=true;btn.innerHTML='<svg><use href="#i-pause"></use></svg>توقف'};
-  u.onend=u.onerror=()=>{speechActive=false;btn.innerHTML='<svg><use href="#i-speak"></use></svg>خواندن'};
-  speechSynthesis.cancel(); speechSynthesis.speak(u);
-}
 
-/* CLOSE MODAL */
 function closeModal(){
   stopAudio();
-  if("speechSynthesis" in window) speechSynthesis.cancel();
-  speechActive=false;
-  $("speakBtn").innerHTML='<svg><use href="#i-speak"></use></svg>خواندن';
   modal.classList.remove("show");
   document.body.style.overflow="";
   currentArticle=null;
-  mediaArea.innerHTML=""; tabsArea.innerHTML=""; contentArea.innerHTML="";
+  mediaArea.innerHTML="";tabsArea.innerHTML="";contentArea.innerHTML="";
   if(lastFocusedElement&&lastFocusedElement.focus){try{lastFocusedElement.focus()}catch(e){}}
-  if(currentView === "list"){
-    setTimeout(backToCategories, 220);
-  }
 }
 
-/* EVENTS */
-catGrid.addEventListener("click",e=>{
-  const c=e.target.closest("[data-cat]");
-  if(c) openCategory(c.dataset.cat);
-});
+catGrid.addEventListener("click",e=>{const c=e.target.closest("[data-cat]");if(c)openCategory(c.dataset.cat)});
 articleList.addEventListener("click",e=>{
   const bm=e.target.closest("[data-bookmark]");
   if(bm){e.stopPropagation();toggleBookmark(findArticle(bm.dataset.bookmark));return}
@@ -1108,18 +1281,17 @@ $("bookmarkFilter").addEventListener("click",function(){
 });
 searchInput.addEventListener("input",()=>{
   if(searchInput.value.trim()&&currentView==="categories"){
-    currentView="list"; currentCategory=null;
-    categoriesView.classList.add("hidden");
-    listView.classList.remove("hidden");
+    currentView="list";currentCategory=null;
+    categoriesView.classList.add("hidden");listView.classList.remove("hidden");
     pageTitle.textContent="نتایج جستجو";
     listTitle.innerHTML='<svg><use href="#i-search"></use></svg><span>نتایج جستجو</span>';
   }else if(!searchInput.value.trim()&&currentView==="list"&&!currentCategory){
-    backToCategories(); return;
+    backToCategories();return;
   }
   applyFilters();
 });
 $("topSearchBtn").addEventListener("click",()=>{searchInput.focus();window.scrollTo({top:0,behavior:"smooth"})});
-$("navSearch").addEventListener("click",()=>{searchInput.focus();window.scrollTo({top:0,behavior:"smooth"})});
+$("navSearch").addEventListener("click",()=>{location.href="search.html"});
 $("navHome").addEventListener("click",()=>{location.href="home.html"});
 $("navHamraz").addEventListener("click",()=>{location.href="hamraz.html"});
 $("navAhkam").addEventListener("click",()=>{location.href="ahkam.html"});
@@ -1137,7 +1309,6 @@ modalBookmark.addEventListener("click",()=>toggleBookmark(currentArticle));
 $("actionBookmark").addEventListener("click",()=>toggleBookmark(currentArticle));
 $("copyBtn").addEventListener("click",copyArticle);
 $("shareBtn").addEventListener("click",shareArticle);
-$("speakBtn").addEventListener("click",speakArticle);
 tabsArea.addEventListener("click",e=>{
   const tab=e.target.closest("[data-tab]");
   if(!tab||!currentArticle) return;
@@ -1145,29 +1316,14 @@ tabsArea.addEventListener("click",e=>{
   renderTabs(currentArticle);renderContent(currentArticle);
   modalScroll.scrollTo({top:0,behavior:"smooth"});
 });
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"&&modal.classList.contains("show")) closeModal();
-});
-modal.addEventListener("keydown",e=>{
-  if(e.key!=="Tab") return;
-  const f=modal.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
-  if(!f.length) return;
-  const first=f[0], last=f[f.length-1];
-  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
-  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
-});
-window.addEventListener("storage",e=>{
-  if(e.key===THEME_KEY) applyTheme();
-  if(e.key==="bn_lang") location.reload();
-});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("show")) closeModal()});
+window.addEventListener("storage",e=>{if(e.key===THEME_KEY) applyTheme()});
 
-/* INIT */
 initFont();
 if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",loadAllData);
 else loadAllData();
 </script>
 
-<!-- ═══ آنالیتیکس (اختیاری - اگر فایل موجود نیست مشکلی پیش نمیاد) ═══ -->
 <script src="js/bn-analytics.js" onerror="console.warn('bn-analytics.js نیست')"></script>
 <script src="js/bn-app.js" onerror="console.warn('bn-app.js نیست')"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" onerror="console.warn('Firebase لود نشد')"></script>
@@ -1177,7 +1333,6 @@ else loadAllData();
 <script src="js/bn-auth-gate.js" onerror="console.warn('bn-auth-gate.js نیست')"></script>
 
 <script>
-/* ثبت Service Worker (اختیاری) */
 (function(){
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {

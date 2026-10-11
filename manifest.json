@@ -1,5 +1,5 @@
 {
-  "id": "banovan-noor-pwa",
+  "id": "./",
   "name": "بانوان نور — همراه بانوان مسلمان",
   "short_name": "بانوان نور",
   "description": "اپلیکیشن جامع بانوان مسلمان: احکام، سلامت، دعاها، آموزش و همراه معنوی",
@@ -8,11 +8,19 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "orientation": "portrait",
   "background_color": "#fdf5ff",
   "theme_color": "#db2777",
-  "categories": ["education", "health", "lifestyle", "books"],
+  "categories": [
+    "education",
+    "health",
+    "lifestyle",
+    "books"
+  ],
   "prefer_related_applications": false,
   "icons": [
     {
@@ -46,50 +54,59 @@
       "purpose": "maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "assets/screenshot-home.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "صفحه اصلی بانوان نور"
-    },
-    {
-      "src": "assets/screenshot-health.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "بخش سلامت بانوان"
-    }
-  ],
+  "screenshots": [],
   "shortcuts": [
     {
       "name": "احکام بانوان",
       "short_name": "احکام",
       "description": "مرکز احکام شرعی",
       "url": "./ahkam.html",
-      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "سلامت بانوان",
       "short_name": "سلامت",
       "description": "اطلاعات پزشکی و سلامت",
       "url": "./health.html",
-      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "دعاها و زیارات",
       "short_name": "دعاها",
       "description": "دعاهای روزانه و زیارات",
       "url": "./duas.html",
-      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "همراز",
       "short_name": "همراز",
       "description": "همراز معنوی و سوالات",
       "url": "./hamraz.html",
-      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     }
   ]
 }

@@ -701,7 +701,7 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(168,50,214,.25);outl
     <div class="acc-content">
       <ol class="steps">
         <li>روی آیکون برنامه بزن تا باز بشه</li>
-        <li>توی صفحه اصلی، ۹ بخش مختلف رو می‌بینی</li>
+        <li>توی صفحهٔ اصلی، کارت‌های بخش‌های اصلی و ابزارهای کاربردی مثل تقویم و اوقات نماز رو می‌بینی</li>
         <li>هر بخش رو که بخوای، روی کارت‌ش کلیک کن</li>
         <li>برای برگشت، از دکمه بازگشت گوشه بالا راست استفاده کن</li>
         <li>توی صفحه‌های داخل، معمولاً چند تب داری که با کشیدن به چپ و راست عوض می‌شن</li>
@@ -735,8 +735,8 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(168,50,214,.25);outl
         <li>روی کارت پروفایل (بالای صفحه) کلیک کن</li>
         <li>نام و شماره واتساپ خودت رو وارد کن</li>
         <li>اگه خواستی، یه عکس هم انتخاب کن</li>
-        <li>روی «ذخیره پروفایل» بزن</li>
-        <li>برای گرفتن کد تایید، دکمه سبز رو بزن</li>
+        <li>روی «ذخیره پروفایل» بزن؛ شناسهٔ داخلی برنامه به کاربر نمایش داده نمی‌شود</li>
+        <li>برای گرفتن کد تأیید، دکمهٔ سبز رو بزن</li>
         <li>کد ۶ رقمی که نشون داده می‌شه رو، به مدیریت ارسال کن</li>
       </ol>
       <div class="tip tip-warn">
@@ -1033,7 +1033,7 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(168,50,214,.25);outl
         <li>روی «دعا و اعمال» توی صفحه اصلی بزن</li>
         <li>یکی از چهار کارت رو انتخاب کن</li>
         <li>لیست مطالب باز می‌شه</li>
-        <li>روی هر مطلب بزن → پلیر صوتی و متن عربی و ترجمه فارسی باز می‌شه</li>
+        <li>روی هر مطلب بزن تا صفحهٔ متن و امکانات پخش مربوط به آن باز بشه</li>
       </ol>
       <p><strong>امکانات پلیر صوتی:</strong></p>
       <div class="mini-grid">
@@ -1045,7 +1045,7 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(168,50,214,.25);outl
       <div class="tip tip-info">
         <svg><use href="#i-info"></use></svg>
         <div>
-          برای ویدیوها، دکمه <strong>تمام‌صفحه</strong> روی صفحه کلیک کن تا با چرخش افقی ببینی.
+          فایل‌های صوتی و تصویری اختصاصی در مرحلهٔ بعد، پس از فشرده‌سازی و بررسی کیفیت، به برنامه افزوده می‌شوند. پس از اضافه‌شدن رسانه‌ها، از دکمهٔ <strong>تمام‌صفحه</strong> برای تماشای ویدیوها استفاده کن.
         </div>
       </div>
     </div>
@@ -1208,6 +1208,82 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(168,50,214,.25);outl
           ستاره کنار هر مطلب در همه بخش‌ها کار می‌کنه: احکام، سلامت، دعاها، مقالات و...
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ابزارهای جدید: تقویم و اوقات نماز -->
+<div class="accordion">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">
+      <svg><use href="#i-book"></use></svg>
+    </div>
+    <div class="acc-title-box">
+      <div class="acc-title">تقویم و مناسبت‌ها</div>
+      <div class="acc-sub">تاریخ امروز، جستجو و مناسبت‌ها</div>
+    </div>
+    <svg class="acc-arrow"><use href="#i-chevron-left"></use></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>از کارت «تقویم و مناسبت‌ها» در صفحهٔ خانه وارد تقویم شو.</p>
+      <ul class="steps">
+        <li>تاریخ را در قالب هجری شمسی، قمری و میلادی ببین.</li>
+        <li>با دکمه‌های قبلی و بعدی بین ماه‌ها حرکت کن.</li>
+        <li>برای پیدا کردن مناسبت، از نوار جستجو استفاده کن و روی نتیجه بزن تا جزئیاتش را ببینی.</li>
+        <li>تاریخ‌های قمری ممکن است با توجه به رؤیت هلال و تقویم مرجع یک روز تفاوت داشته باشند.</li>
+      </ul>
+      <a class="contact-btn" href="calendar.html">بازکردن تقویم</a>
+    </div>
+  </div>
+</div>
+
+<div class="accordion">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#f59e0b,#ec4899)">
+      <svg><use href="#i-clock"></use></svg>
+    </div>
+    <div class="acc-title-box">
+      <div class="acc-title">اوقات نماز و قبله‌نما</div>
+      <div class="acc-sub">انتخاب شهر، اوقات نماز و جهت قبله</div>
+    </div>
+    <svg class="acc-arrow"><use href="#i-chevron-left"></use></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>از کارت «اوقات نماز و قبله‌نما» در صفحهٔ خانه وارد این بخش شو.</p>
+      <ul class="steps">
+        <li>شهر و روش محاسبهٔ مناسب را انتخاب کن.</li>
+        <li>اوقات نماز بر اساس مختصات شهر و روش انتخاب‌شده محاسبه می‌شوند؛ برای اطمینان شرعی با تقویم معتبر محلی تطبیق بده.</li>
+        <li>برای استفاده از قطب‌نمای زنده، اجازهٔ حسگر/جهت‌یابی گوشی را بده و گوشی را دور از آهن‌ربا و وسایل الکترونیکی نگه دار.</li>
+        <li>اگر حسگر گوشی پشتیبانی نشود یا کالیبره نباشد، زاویهٔ محاسباتی قبله همچنان قابل مشاهده است؛ چرخش زنده ممکن است در دسترس نباشد.</li>
+      </ul>
+      <a class="contact-btn" href="prayer-times.html">بازکردن اوقات نماز</a>
+    </div>
+  </div>
+</div>
+
+<div class="accordion">
+  <button class="acc-header" type="button">
+    <div class="acc-icon" style="background:linear-gradient(135deg,#0f766e,#14b8a6)">
+      <svg><use href="#i-play"></use></svg>
+    </div>
+    <div class="acc-title-box">
+      <div class="acc-title">افزودن فایل‌های صوتی و تصویری</div>
+      <div class="acc-sub">مرحلهٔ بعدی آماده‌سازی رسانه‌ها</div>
+    </div>
+    <svg class="acc-arrow"><use href="#i-chevron-left"></use></svg>
+  </button>
+  <div class="acc-body">
+    <div class="acc-content">
+      <p>رسانه‌های اختصاصی هنوز باید جداگانه آماده شوند. ابتدا حجم فایل‌ها را با حفظ کیفیت مناسب کاهش می‌دهیم، سپس آن‌ها را در مسیرهای مشخص پروژه قرار می‌دهیم و فهرست پخش و کش آفلاین را به‌روزرسانی می‌کنیم.</p>
+      <div class="mini-grid">
+        <div class="mini-item"><svg><use href="#i-check"></use></svg><span>صوت: ترجیحاً MP3 یا AAC با نرخ بیت مناسب گفتار</span></div>
+        <div class="mini-item"><svg><use href="#i-check"></use></svg><span>ویدیو: MP4 با کُدک H.264 و وضوح متناسب با موبایل</span></div>
+        <div class="mini-item"><svg><use href="#i-info"></use></svg><span>پیش از افزودن، اندازه و کیفیت هر فایل بررسی می‌شود</span></div>
+        <div class="mini-item"><svg><use href="#i-info"></use></svg><span>برای آفلاین، فایل‌ها و مسیرهایشان باید در فهرست کش ثبت شوند</span></div>
+      </div>
+      <div class="tip tip-info"><svg><use href="#i-info"></use></svg><div>وقتی فایل‌های اصلی را فرستادی، آن‌ها را بهینه می‌کنیم و بدون حذف محتوای فعلی به برنامه اضافه خواهیم کرد.</div></div>
     </div>
   </div>
 </div>
@@ -1398,6 +1474,16 @@ button:focus-visible,a:focus-visible{outline:3px solid rgba(168,50,214,.25);outl
   </div>
   <div class="faq-a">
     نه، هیچ نسخه پشتیبان ابری از اطلاعاتت گرفته نمی‌شه. اگه برنامه رو پاک کنی، همه داده‌ها از بین می‌رن. پس اطلاعات مهم رو جایی دیگه هم نگه‌دار.
+  </div>
+</div>
+
+<div class="faq">
+  <div class="faq-q">
+    <svg><use href="#i-help"></use></svg>
+    <span>چرا بعضی فایل‌های صوتی یا تصویری هنوز پخش نمی‌شوند؟</span>
+  </div>
+  <div class="faq-a">
+    فایل‌های اختصاصی باید ابتدا فشرده و بهینه شوند و سپس همراه با مسیر درست در فهرست رسانه و کش آفلاین قرار بگیرند. این کار در مرحلهٔ بعد انجام می‌شود.
   </div>
 </div>
 

@@ -48,6 +48,8 @@
   --brand-grad:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
   --hikm-grad:linear-gradient(135deg,#be185d 0%,#7c3aed 100%);
   --tip-grad:linear-gradient(135deg,#f43f5e 0%,#d946ef 100%);
+  --calendar-card-grad:linear-gradient(135deg,#6366f1,#8b5cf6);
+  --prayer-card-grad:linear-gradient(135deg,#f59e0b,#ec4899);
   --soft-grad:linear-gradient(135deg,rgba(225,29,72,.13),rgba(168,85,247,.10));
 }
 
@@ -73,6 +75,8 @@ body.dark{
   --brand-grad:linear-gradient(105deg,#e11d48 0%,#db2777 42%,#a855f7 100%);
   --hikm-grad:linear-gradient(135deg,#be185d 0%,#7c3aed 100%);
   --tip-grad:linear-gradient(135deg,#f43f5e 0%,#d946ef 100%);
+  --calendar-card-grad:linear-gradient(135deg,#6366f1,#8b5cf6);
+  --prayer-card-grad:linear-gradient(135deg,#f59e0b,#ec4899);
   --soft-grad:linear-gradient(135deg,rgba(225,29,72,.18),rgba(168,85,247,.14));
 }
 
@@ -179,8 +183,9 @@ body.dark .icon-sun{display:block}
 
 .hero{
   position:relative;
+  min-height:130px;
   border-radius:26px;
-  padding:18px 18px 16px;
+  padding:16px 16px 14px;
   margin-bottom:16px;
   color:#fff;
   background:var(--hero-grad);
@@ -197,7 +202,7 @@ body.dark .icon-sun{display:block}
 .hero-mini{position:absolute;top:14px;left:14px;width:34px;height:34px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:3}
 .hero-mini svg{width:17px;height:17px;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .hero-title{
-  font-size:.98rem;line-height:1.55;font-weight:900;margin-bottom:8px;letter-spacing:-.2px;
+  font-size:1.15rem;line-height:1.55;font-weight:900;margin-bottom:8px;letter-spacing:-.2px;
   display:inline-flex;align-items:center;gap:7px;padding-left:42px;
   background:linear-gradient(180deg,#ffffff 0%,#ffffff 42%,rgba(255,255,255,.72) 50%,#ffffff 58%,#ffffff 100%);
   -webkit-background-clip:text;background-clip:text;
@@ -205,24 +210,53 @@ body.dark .icon-sun{display:block}
   filter:drop-shadow(0 1px 1.2px rgba(0,0,0,.22));
 }
 .hero-title::after{content:"";width:16px;height:1.5px;border-radius:2px;background:rgba(255,255,255,.55)}
-.hero-text{max-width:420px;font-size:.74rem;line-height:2.05;font-weight:700;padding-left:42px;color:#ffffff;text-shadow:0 1px 2px rgba(0,0,0,.32),0 2px 8px rgba(0,0,0,.18);letter-spacing:.1px}
-.hero-bottom{margin-top:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.hero-text{max-width:420px;font-size:.8rem;line-height:2.05;font-weight:700;padding-left:42px;color:#ffffff;text-shadow:0 1px 2px rgba(0,0,0,.32),0 2px 8px rgba(0,0,0,.18);letter-spacing:.1px}
+.hero-bottom{margin-top:10px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
 .hero-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);font-size:.54rem;font-weight:800;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff}
 .hero-chip svg{width:11px;height:11px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-.daily-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.daily-card{position:relative;min-height:112px;padding:11px 12px;border-radius:18px;color:#fff;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;box-shadow:0 12px 26px rgba(0,0,0,.16);transition:transform .22s ease;border:none}
+.daily-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:8px}
+.daily-card{position:relative;min-height:104px;padding:10px 11px;border-radius:16px;color:#fff;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;box-shadow:0 12px 26px rgba(0,0,0,.16);transition:transform .22s ease;border:none}
 .daily-card:active{transform:scale(.97)}
 .daily-card.hikm{background:var(--hikm-grad);box-shadow:0 12px 26px rgba(190,24,93,.32),0 5px 14px rgba(124,58,237,.22)}
 .daily-card.tip{background:var(--tip-grad);box-shadow:0 12px 26px rgba(244,63,94,.30),0 5px 14px rgba(217,70,239,.22)}
 .daily-card::after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-42px;top:-42px;opacity:.20;pointer-events:none;background:radial-gradient(circle,rgba(255,255,255,.6),transparent 70%)}
 .daily-head{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
-.daily-icon{width:30px;height:30px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.daily-icon svg{width:15px;height:15px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.daily-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.daily-icon svg{width:19px;height:19px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .daily-label{font-size:.55rem;font-weight:900;color:rgba(255,255,255,.90);letter-spacing:.2px}
-.daily-title{position:relative;z-index:1;margin-top:9px;font-size:.70rem;line-height:1.75;font-weight:800;color:#fff;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-shadow:0 1px 2px rgba(0,0,0,.10)}
-.daily-more{margin-top:auto;padding-top:8px;display:flex;align-items:center;gap:5px;font-size:.54rem;font-weight:850;color:#fff}
-.daily-more svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.daily-title{position:relative;z-index:1;margin-top:6px;font-size:.82rem;line-height:1.55;font-weight:800;color:#fff;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-shadow:0 1px 2px rgba(0,0,0,.10)}
+.daily-more{margin-top:auto;padding-top:5px;display:flex;align-items:center;gap:5px;font-size:.54rem;font-weight:850;color:#fff}
+ .daily-more svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.daily-card.calendar-card{background:var(--calendar-card-grad);text-decoration:none}
+.daily-card.prayer-card{background:var(--prayer-card-grad);text-decoration:none}
+.daily-card.link-card{min-width:0}
+.daily-card.link-card .daily-title{display:block;overflow:visible;-webkit-line-clamp:unset}
+.daily-card.link-card:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
+
+
+/* اوقات نماز و قطب‌نمای قبله در صفحهٔ خانه */
+.home-worship{margin:0 0 22px;padding:16px;border:1px solid var(--border);border-radius:24px;background:var(--surface);box-shadow:var(--shadow-sm);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.worship-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}.worship-title{display:flex;align-items:center;gap:9px;font-size:.94rem;font-weight:950}.worship-title svg{width:22px;height:22px;fill:none;stroke:var(--primary);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.worship-subtitle{font-size:.66rem;color:var(--text-muted);line-height:1.7;margin-top:3px}
+.worship-controls{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-bottom:12px}.worship-select{width:100%;min-width:0;padding:11px 10px;border-radius:13px;border:1px solid var(--border);background:var(--surface-solid);color:var(--text);font:inherit;font-size:.72rem;outline:none}.worship-btn{border:1px solid var(--border);border-radius:13px;background:var(--soft-grad);color:var(--primary);font:inherit;font-size:.68rem;font-weight:900;padding:10px 12px;cursor:pointer}.worship-btn:disabled{opacity:.55;cursor:wait}
+.worship-method-controls{grid-template-columns:1fr 1fr;margin-top:-2px}.worship-city{font-size:.7rem;color:var(--text-soft);line-height:1.8;margin:-3px 1px 11px}.prayer-grid-home{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.prayer-chip-home{padding:10px 7px;border:1px solid var(--border);border-radius:14px;background:var(--surface-solid);min-width:0}.prayer-chip-home span{display:block;font-size:.63rem;color:var(--text-muted);margin-bottom:6px}.prayer-chip-home strong{font-size:.86rem;font-variant-numeric:tabular-nums;color:var(--text)}.prayer-chip-home.next{border-color:rgba(217,70,239,.45);background:var(--soft-grad)}
+.qibla-home{display:grid;grid-template-columns:minmax(145px, .9fr) minmax(0,1.1fr);align-items:center;gap:14px;margin-top:15px;padding:13px;border-radius:20px;background:var(--soft-grad);border:1px solid var(--border)}.compass-home{width:min(100%,190px);aspect-ratio:1;border-radius:50%;position:relative;margin:auto;border:2px solid color-mix(in srgb,var(--primary) 45%,transparent);background:radial-gradient(circle at 50% 50%,var(--surface-solid) 0 48%,transparent 49%),conic-gradient(from 0deg,rgba(168,50,214,.10),rgba(236,72,153,.08),rgba(168,50,214,.10));box-shadow:inset 0 0 0 7px var(--surface),0 8px 25px rgba(124,58,237,.13);touch-action:manipulation}.compass-home:before,.compass-home:after{content:"";position:absolute;background:var(--border);left:50%;top:9%;width:1px;height:82%;transform:translateX(-50%)}.compass-home:after{transform:translateX(-50%) rotate(90deg)}.compass-mark{position:absolute;font-size:.62rem;font-weight:950;color:var(--text-soft);z-index:2}.compass-mark.n{top:8%;left:50%;transform:translateX(-50%);color:var(--pink)}.compass-mark.s{bottom:8%;left:50%;transform:translateX(-50%)}.compass-mark.e{right:8%;top:50%;transform:translateY(-50%)}.compass-mark.w{left:8%;top:50%;transform:translateY(-50%)}.compass-needle-home{position:absolute;inset:0;transform:rotate(0deg);transition:transform .25s ease;z-index:3}.compass-needle-home:before{content:"";position:absolute;left:calc(50% - 3px);top:21%;height:29%;width:6px;border-radius:7px 7px 2px 2px;background:linear-gradient(#e11d48,#be185d);clip-path:polygon(50% 0,100% 100%,50% 82%,0 100%);filter:drop-shadow(0 2px 3px #0003)}.compass-needle-home:after{content:"";position:absolute;left:calc(50% - 3px);top:50%;height:27%;width:6px;border-radius:2px 2px 7px 7px;background:linear-gradient(var(--text-muted),var(--text-soft));clip-path:polygon(0 0,100% 0,50% 100%)}.compass-center-home{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:var(--surface-solid);border:3px solid var(--primary);z-index:4;box-shadow:0 2px 6px #0002}.qibla-info-home strong{display:block;font-size:1.2rem;font-weight:950;color:var(--primary);margin-bottom:5px}.qibla-info-home p{font-size:.68rem;line-height:1.9;color:var(--text-soft);margin:0 0 8px}.qibla-status-home{font-size:.65rem;line-height:1.8;color:var(--text-muted);margin-top:10px}.qibla-actions-home{display:flex;flex-wrap:wrap;gap:7px}.worship-note{font-size:.62rem;line-height:1.9;color:var(--text-muted);margin-top:11px}
+@media(max-width:370px){.qibla-home{grid-template-columns:1fr}.compass-home{width:165px}.prayer-grid-home{grid-template-columns:repeat(2,minmax(0,1fr))}.worship-controls{grid-template-columns:1fr}.worship-btn{min-height:42px}}
+
+/* تقویم و مناسبت روز در صفحهٔ خانه */
+.home-calendar{margin:0 0 14px;padding:10px 11px;border:1px solid var(--border);border-radius:22px;background:var(--surface);box-shadow:var(--shadow-sm);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.home-calendar-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px}
+.home-calendar-title{display:flex;align-items:center;gap:7px;font-size:.84rem;font-weight:950}
+.home-calendar-title svg{width:21px;height:21px;stroke:var(--primary);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.home-calendar-link{display:inline-flex;align-items:center;gap:4px;text-decoration:none;border-radius:10px;padding:6px 8px;background:var(--soft-grad);border:1px solid var(--border);color:var(--primary);font-size:.65rem;font-weight:900;white-space:nowrap}
+.home-calendar-date{font-size:.80rem;color:var(--text-soft);line-height:1.65;padding:7px 9px;border-radius:11px;background:var(--soft-grad);margin-bottom:6px}
+.home-calendar-events{display:grid;gap:5px}
+.home-calendar-event{padding:7px 9px;border:1px solid var(--border);border-radius:11px;background:var(--surface-solid)}
+.home-calendar-event strong{display:block;font-size:.79rem;line-height:1.6;color:var(--text)}
+.home-calendar-event p{font-size:.64rem;line-height:1.6;color:var(--text-soft);margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.home-calendar-event-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:3px;font-size:.59rem;color:var(--text-muted)}
+.home-calendar-tag{display:inline-block;border-radius:20px;padding:3px 8px;background:var(--soft-grad);color:var(--primary);font-weight:850}
+.home-calendar-empty{font-size:.72rem;line-height:1.7;color:var(--text-muted);padding:4px 2px}
 
 .section-title{display:flex;align-items:center;justify-content:space-between;margin:22px 3px 12px}
 .section-title-main{display:flex;align-items:center;gap:9px}
@@ -590,9 +624,9 @@ body.dark .admin-error{color:#fca5a5}
   .hero-title{font-size:.9rem;padding-left:38px}
   .hero-text{font-size:.7rem;padding-left:38px}
   .hero-mini{width:30px;height:30px;top:12px;left:12px}
-  .daily-row{gap:8px}
-  .daily-card{min-height:106px;padding:10px 11px}
-  .daily-title{font-size:.66rem}
+  .daily-row{gap:7px}
+  .daily-card{min-height:91px;padding:8px 9px}
+  .daily-title{font-size:.70rem;line-height:1.5}
   .grid{gap:8px}
   .feature{min-height:108px}
   .feature-icon{width:46px;height:46px}
@@ -634,15 +668,6 @@ body.dark .admin-error{color:#fca5a5}
     <a class="icon-btn" href="search.html" aria-label="جستجو">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.7-3.7"/></svg>
     </a>
-    <button class="icon-btn" id="shareBtn" type="button" aria-label="اشتراک‌گذاری">
-      <svg viewBox="0 0 24 24">
-        <circle cx="18" cy="5" r="2.5"/>
-        <circle cx="6" cy="12" r="2.5"/>
-        <circle cx="18" cy="19" r="2.5"/>
-        <path d="m8.2 10.8 7.5-4.3"/>
-        <path d="m8.2 13.2 7.5 4.3"/>
-      </svg>
-    </button>
     <button class="icon-btn" id="qrBtn" type="button" aria-label="QR Code">
       <svg viewBox="0 0 24 24">
         <rect x="3" y="3" width="7" height="7" rx="1"/>
@@ -700,6 +725,41 @@ body.dark .admin-error{color:#fca5a5}
     </div>
   </div>
 </div>
+
+<div class="daily-row home-tools-row" aria-label="تقویم و اوقات نماز">
+  <a class="daily-card calendar-card link-card" href="calendar.html">
+    <div class="daily-head">
+      <div class="daily-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h3M8 17h6"/></svg></div>
+      <div class="daily-label" data-i18n="home_calendar_card">تقویم و مناسبت‌ها</div>
+    </div>
+    <div class="daily-title" data-i18n="home_calendar_card">تقویم و مناسبت‌ها</div>
+    <div class="daily-more"><span data-i18n="tap_more">مشاهده کامل</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l6-6-6-6M3 12h18"/></svg></div>
+  </a>
+  <a class="daily-card prayer-card link-card" href="prayer-times.html">
+    <div class="daily-head">
+      <div class="daily-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2M19 5l2-2"/></svg></div>
+      <div class="daily-label" data-i18n="home_prayer_card">اوقات نماز و قبله‌نما</div>
+    </div>
+    <div class="daily-title" data-i18n="home_prayer_card">اوقات نماز و قبله‌نما</div>
+    <div class="daily-more"><span data-i18n="tap_more">مشاهده کامل</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l6-6-6-6M3 12h18"/></svg></div>
+  </a>
+</div>
+
+<section class="home-calendar" aria-labelledby="homeCalendarHeading">
+  <div class="home-calendar-head">
+    <h2 class="home-calendar-title" id="homeCalendarHeading">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h3M8 17h6"/></svg>
+      <span data-i18n="home_calendar_title">تقویم و مناسبت‌های روز</span>
+    </h2>
+    <a class="home-calendar-link" href="calendar.html"><span data-i18n="home_calendar_all">مشاهده تقویم</span><span aria-hidden="true">›</span></a>
+  </div>
+  <div class="home-calendar-date" id="homeCalendarDate">—</div>
+  <div class="home-calendar-events" id="homeCalendarEvents" aria-live="polite">
+    <p class="home-calendar-empty" data-i18n="home_calendar_loading">در حال بارگذاری مناسبت‌ها…</p>
+  </div>
+</section>
+
+
 
 <div class="section-title">
   <div class="section-title-main">
@@ -900,6 +960,10 @@ body.dark .admin-error{color:#fca5a5}
         </svg>
         واتساپ
       </button>
+      <button class="bn-share-btn ghost" id="bnSaveQrBtn" type="button">
+        <svg viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5"/><path d="M5 17v3h14v-3"/></svg>
+        ذخیرهٔ QR کد
+      </button>
     </div>
   </div>
 </div>
@@ -944,7 +1008,7 @@ var T = {
 fa:{
   headerTitle:"بانوان نور",brandSub:"همراه فرهنگی و آموزشی بانوان",sister:"خواهر گرامی",
   greetQuoteText:"اینجا همراهی برای آگاهی، آرامش، سلامت و رشد توست.",brandChip:"بانوان نور",usefulChip:"محتوای کاربردی",
-  daily_hokm:"حکم امروز",daily_tip:"نکته امروز",tap_more:"مشاهده کامل",
+  daily_hokm:"حکم امروز",daily_tip:"نکته امروز",tap_more:"مشاهده کامل",home_calendar_card:"تقویم و مناسبت‌ها",home_prayer_card:"اوقات نماز و قبله‌نما",
   main_sections:"بخش‌های اصلی",quick_access:"دسترسی سریع",sections_count:"۹ بخش",
   f_ahkam:"احکام من",f_health:"سلامت بانوان",f_menstruation:"قاعدگی",f_pregnancy:"بارداری",
   f_childbirth:"زایمان",f_hamraz:"همراز بانوان",f_education:"آموزش",f_duas:"دعا و اعمال",
@@ -953,12 +1017,13 @@ fa:{
   reset_welcome:"بازگشت به صفحه شروع",modal_label_hikm:"حکم امروز",modal_label_tip:"نکته امروز",
   not_found:"محتوایی یافت نشد",copied:"متن کپی شد",share_fallback:"متن کپی شد",
   speech_unsupported:"خواندن صوتی پشتیبانی نمی‌شود",daily_load_fail:"فایل daily.json یافت نشد",
-  v2_toast:"بانوان نور • نسخه ۲ ✨",dir:"rtl",lang:"fa"
+  home_calendar_title:"تقویم و مناسبت‌های روز",home_calendar_all:"مشاهده تقویم",home_calendar_loading:"در حال بارگذاری مناسبت‌ها…",home_calendar_none:"برای امروز مناسبتی ثبت نشده است.",home_calendar_today:"امروز",home_calendar_upcoming:"مناسبت نزدیک",home_calendar_error:"اطلاعات مناسبت‌ها در دسترس نیست؛ صفحه تقویم را یک بار با اینترنت باز کنید.",
+  worship_title:"اوقات نماز و قبله‌نما",worship_subtitle:"بر اساس موقعیت انتخاب‌شده و تاریخ امروز",worship_full:"جزئیات",worship_gps:"استفاده از GPS",worship_qibla_text:"زاویهٔ قبله از شمال حقیقی",worship_compass_enable:"فعال‌سازی قطب‌نما",worship_note:"اوقات نماز محاسبهٔ آفلاین و تخمینی است و به روش فقهی، افق و منطقهٔ زمانی بستگی دارد. GPS موقعیت را می‌دهد، نه جهت گوشی؛ دقت قطب‌نمای زنده به حسگر و کالیبراسیون گوشی وابسته است. برای وقت شرعی، با تقویم معتبر محلی تطبیق دهید.",worship_select_city:"انتخاب شهر",worship_location_gps:"موقعیت فعلی (GPS)",worship_gps_loading:"در حال دریافت موقعیت…",worship_gps_error:"موقعیت دریافت نشد. اجازهٔ GPS را بررسی کنید یا شهر را دستی انتخاب کنید.",worship_gps_ok:"موقعیت GPS دریافت شد؛ منطقهٔ زمانی گوشی استفاده می‌شود.",worship_sensor_on:"قطب‌نمای زنده فعال است؛ گوشی را دور از فلز و آهن‌ربا نگه دارید.",worship_sensor_missing:"حسگر جهت در این مرورگر در دسترس نیست؛ فلش نسبت به شمال حقیقی نمایش داده می‌شود.",worship_sensor_permission:"برای فعال‌سازی قطب‌نما، اجازهٔ حسگر را بدهید.",worship_north_reference:"فلش نسبت به شمال حقیقی است؛ قطب‌نمای زنده فعال نیست.",worship_fajr:"فجر",worship_sunrise:"طلوع",worship_dhuhr:"ظهر",worship_asr:"عصر",worship_maghrib:"مغرب",worship_isha:"عشا",worship_calc_method:"روش محاسبه",worship_method_standard:"استاندارد (۱۸°/۱۷°)",worship_method_karachi:"کراچی (۱۸°/۱۸°)",worship_method_jafari:"جعفری (۱۶°/۱۴°)",worship_asr_hanafi:"عصر حنفی",worship_asr_standard:"عصر جعفری/شافعی",dir:"rtl",lang:"fa"
 },
 ps:{
   headerTitle:"بانوان نور",brandSub:"د ښځو لپاره فرهنګي او زده کړیزه ملګری",sister:"ګرانه خور",
   greetQuoteText:"دلته ستا د پوهاوي، آرامتیا، روغتیا او ودې لپاره ملګرتیا ده.",brandChip:"بانوان نور",usefulChip:"ګټور منځپانګه",
-  daily_hokm:"د نن حکم",daily_tip:"د نن ټکی",tap_more:"بشپړ وګوره",
+  daily_hokm:"د نن حکم",daily_tip:"د نن ټکی",tap_more:"بشپړ وګوره",home_calendar_card:"کلیزه او مناسبتونه",home_prayer_card:"د لمانځه وختونه او قبله‌نما",
   main_sections:"اصلي برخې",quick_access:"ژر لاسرسی",sections_count:"۹ برخې",
   f_ahkam:"زما احکام",f_health:"د ښځو روغتیا",f_menstruation:"حیض",f_pregnancy:"امیدواري",
   f_childbirth:"زېږون",f_hamraz:"د ښځو همراز",f_education:"زده کړه",f_duas:"دعا او اعمال",
@@ -967,12 +1032,13 @@ ps:{
   reset_welcome:"د پیل پاڼې ته بېرته",modal_label_hikm:"د نن حکم",modal_label_tip:"د نن ټکی",
   not_found:"منځپانګه ونه موندل شوه",copied:"متن کاپي شو",share_fallback:"متن کاپي شو",
   speech_unsupported:"غږیز لوستل نشي",daily_load_fail:"daily.json ونه موندل شو",
-  v2_toast:"بانوان نور • دوهمه نسخه ✨",dir:"rtl",lang:"ps"
+  home_calendar_title:"کلیزه او د ورځې مناسبتونه",home_calendar_all:"کلیزه وګوره",home_calendar_loading:"مناسبتونه بارېږي…",home_calendar_none:"د نن ورځې لپاره مناسبت نه دی ثبت شوی.",home_calendar_today:"نن",home_calendar_upcoming:"راتلونکی مناسبت",home_calendar_error:"د مناسبتونو معلومات نشته؛ د کلیزې پاڼه یو ځل له انټرنېټ سره پرانیزئ.",
+  worship_title:"د لمانځه وختونه او قبله‌نما",worship_subtitle:"د ټاکل شوي ځای او نننۍ نېټې له مخې",worship_full:"تفصیل",worship_gps:"GPS وکاروئ",worship_qibla_text:"له حقیقي شماله د قبلې زاویه",worship_compass_enable:"قطب‌نما فعال کړئ",worship_note:"د لمانځه وختونه آفلاین اټکل دي او فقهي طریقې، افق او وخت‌زون پورې تړاو لري. GPS ځای ښيي، نه د موبایل لوری؛ د ژوندۍ قبله‌نما دقت د موبایل پر حسګر او کالیبراسیون پورې تړلی دی. له باوري محلي مهالوېش سره یې پرتله کړئ.",worship_select_city:"ښار وټاکئ",worship_location_gps:"اوسنی ځای (GPS)",worship_gps_loading:"ځای ترلاسه کېږي…",worship_gps_error:"ځای ترلاسه نه شو؛ د GPS اجازه وګورئ یا ښار په لاس وټاکئ.",worship_gps_ok:"GPS ځای ترلاسه شو؛ د موبایل وخت‌زون کارول کېږي.",worship_sensor_on:"ژوندۍ قبله‌نما فعاله ده؛ موبایل له فلز او مقناطیسه لرې وساتئ.",worship_sensor_missing:"د لوري حسګر په دې براوزر کې نشته؛ غشی د حقیقي شمال له مخې ښودل کېږي.",worship_sensor_permission:"د قطب‌نما لپاره د حسګر اجازه ورکړئ.",worship_north_reference:"غشی د حقیقي شمال له مخې دی؛ ژوندۍ قبله‌نما فعاله نه ده.",worship_fajr:"سهار",worship_sunrise:"لمر خاته",worship_dhuhr:"ماسپښین",worship_asr:"مازدیګر",worship_maghrib:"ماښام",worship_isha:"ماخوستن",worship_calc_method:"د محاسبې طریقه",worship_method_standard:"معیاري (۱۸°/۱۷°)",worship_method_karachi:"کراچۍ (۱۸°/۱۸°)",worship_method_jafari:"جعفري (۱۶°/۱۴°)",worship_asr_hanafi:"حنفي مازدیګر",worship_asr_standard:"جعفري/شافعي مازدیګر",dir:"rtl",lang:"ps"
 },
 en:{
   headerTitle:"Banovan Noor",brandSub:"Cultural and educational companion for women",sister:"Dear Sister",
   greetQuoteText:"Here is a companionship for your awareness, calm, health and growth.",brandChip:"Banovan Noor",usefulChip:"Useful content",
-  daily_hokm:"Today's Ruling",daily_tip:"Today's Tip",tap_more:"View more",
+  daily_hokm:"Today's Ruling",daily_tip:"Today's Tip",tap_more:"View more",home_calendar_card:"Calendar & occasions",home_prayer_card:"Prayer times & Qibla",
   main_sections:"Main Sections",quick_access:"Quick Access",sections_count:"9 sections",
   f_ahkam:"My Rulings",f_health:"Women's Health",f_menstruation:"Menstruation",f_pregnancy:"Pregnancy",
   f_childbirth:"Childbirth",f_hamraz:"Women's Companion",f_education:"Education",f_duas:"Prayers",
@@ -981,7 +1047,8 @@ en:{
   reset_welcome:"Back to start page",modal_label_hikm:"Today's Ruling",modal_label_tip:"Today's Tip",
   not_found:"No content found",copied:"Text copied",share_fallback:"Text copied",
   speech_unsupported:"Speech not supported",daily_load_fail:"daily.json not found",
-  v2_toast:"Banovan Noor • Version 2 ✨",dir:"ltr",lang:"en"
+  home_calendar_title:"Calendar & Daily Observances",home_calendar_all:"Open calendar",home_calendar_loading:"Loading observances…",home_calendar_none:"No observance is listed for today.",home_calendar_today:"Today",home_calendar_upcoming:"Upcoming observance",home_calendar_error:"Observance data is unavailable. Open the calendar once while connected.",
+  worship_title:"Prayer Times & Qibla Compass",worship_subtitle:"Based on the selected location and today’s date",worship_full:"Details",worship_gps:"Use GPS",worship_qibla_text:"Qibla bearing from true north",worship_compass_enable:"Enable compass",worship_note:"Prayer times are approximate offline calculations and depend on the fiqh method, horizon and time zone. GPS gives location, not phone heading; live compass accuracy depends on the phone sensor and calibration. Compare prayer times with a trusted local timetable.",worship_select_city:"Select city",worship_location_gps:"Current location (GPS)",worship_gps_loading:"Getting location…",worship_gps_error:"Could not get location. Check GPS permission or select a city manually.",worship_gps_ok:"GPS location received; using the phone time zone.",worship_sensor_on:"Live compass is active; keep the phone away from metal and magnets.",worship_sensor_missing:"No orientation sensor is available in this browser; arrow is shown relative to true north.",worship_sensor_permission:"Allow sensor access to enable the compass.",worship_north_reference:"Arrow is relative to true north; live compass is not active.",worship_fajr:"Fajr",worship_sunrise:"Sunrise",worship_dhuhr:"Dhuhr",worship_asr:"Asr",worship_maghrib:"Maghrib",worship_isha:"Isha",worship_calc_method:"Calculation method",worship_method_standard:"Standard (18°/17°)",worship_method_karachi:"Karachi (18°/18°)",worship_method_jafari:"Jafari (16°/14°)",worship_asr_hanafi:"Hanafi Asr",worship_asr_standard:"Jafari/Shafi’i Asr",dir:"ltr",lang:"en"
 }
 };
 
@@ -1015,6 +1082,8 @@ function applyLang(lang){
   var brand = document.getElementById("miniBrand");
   if(brand) brand.textContent = t.headerTitle;
   document.title = t.headerTitle + " | BANOVAN NOOR";
+  if(typeof renderHomeOccasions === "function") renderHomeOccasions();
+  if(typeof homeBuildCityOptions === "function"){var oldCity=$("homePrayerCity");var oldValue=oldCity?oldCity.value:"kabul";homeBuildCityOptions();if(oldCity&&oldValue==="gps"&&homeGpsPosition)oldCity.value="gps";homeRenderPrayerCompass();}
 }
 
 function $(id){ return document.getElementById(id); }
@@ -1069,6 +1138,166 @@ function renderDailyCards(){
   if(hokm) hokm.textContent = hikm ? hikm.title : currentT.not_found;
   if(tip) tip.textContent = tipData ? tipData.title : currentT.not_found;
 }
+
+var homeOccasionData = null;
+var HOME_OCCASION_PATH = "data/calendar/occasions.json";
+var HOME_CATEGORY_LABELS = {
+ fa:{national:"ملی افغانستان",international:"جهانی و بین‌المللی",ahlulbayt:"اهل‌بیت (ع)",islamic:"اسلامی"},
+ ps:{national:"د افغانستان ملي",international:"نړیوالې او نړیوالې ورځې",ahlulbayt:"اهل‌بیت (ع)",islamic:"اسلامي"},
+ en:{national:"Afghan national",international:"World / international",ahlulbayt:"Ahlul Bayt",islamic:"Islamic"}
+};
+function homeCalendarParts(date, calendar){
+  try{
+    var f = new Intl.DateTimeFormat("en-u-ca-"+calendar,{year:"numeric",month:"numeric",day:"numeric",timeZone:"UTC"});
+    var out={}; f.formatToParts(date).forEach(function(p){if(p.type==="year"||p.type==="month"||p.type==="day")out[p.type]=parseInt(p.value,10)});
+    return out;
+  }catch(e){return null;}
+}
+function homeOccasionsFor(date){
+  if(!homeOccasionData || !Array.isArray(homeOccasionData.events))return [];
+  var g=homeCalendarParts(date,"gregory"), j=homeCalendarParts(date,"persian"), h=homeCalendarParts(date,"islamic-umalqura")||homeCalendarParts(date,"islamic");
+  return homeOccasionData.events.filter(function(ev){var parts=ev.calendar==="gregorian"?g:ev.calendar==="solar"?j:h;return parts && parts.month===Number(ev.month) && parts.day===Number(ev.day);});
+}
+function homeOccasionDateText(date){
+  var l=currentT.lang||"fa", loc=l==="en"?"en-US":l==="ps"?"ps-AF":"fa-AF";
+  function parts(cal){try{var f=new Intl.DateTimeFormat("en-u-ca-"+cal,{year:"numeric",month:"numeric",day:"numeric",timeZone:"UTC"}),o={};f.formatToParts(date).forEach(function(p){if(["year","month","day"].indexOf(p.type)>-1)o[p.type]=parseInt(p.value,10)});return o}catch(e){return null}}
+  var g=parts("gregory"),j=parts("persian"),h=parts("islamic-umalqura")||parts("islamic");
+  var months={fa:["حمل","ثور","جوزا","سرطان","اسد","سنبله","میزان","عقرب","قوس","جدی","دلو","حوت"],ps:["وری","غویی","غبرګولی","چنګاښ","زمری","وږی","تله","لړم","لیندۍ","مرغومی","سلواغه","کب"],en:["Hamal","Saur","Jawza","Saratan","Asad","Sonbola","Mizan","Aqrab","Qaws","Jadi","Dalw","Hoot"]};
+  function num(n){return new Intl.NumberFormat(loc,{useGrouping:false}).format(n)}
+  var weekday=new Intl.DateTimeFormat(loc,{weekday:"long",timeZone:"UTC"}).format(date);
+  var solar=j?num(j.day)+" "+months[l][j.month-1]+" "+num(j.year):"";
+  var lunar=h?new Intl.DateTimeFormat(loc+"-u-ca-islamic-umalqura",{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(date):"";
+  var greg=g?new Intl.DateTimeFormat(loc,{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(date):"";
+  var labels=l==="en"?["Afghan Solar","Hijri lunar","Gregorian"]:l==="ps"?["افغان لمریز","هجري قمري","میلادي"]:["هجری شمسی افغانستان","هجری قمری","میلادی"];
+  return weekday+" · "+labels[0]+": "+solar+" · "+labels[1]+": "+lunar+" · "+labels[2]+": "+greg;
+}
+function renderHomeOccasions(){
+  var dateBox=$("homeCalendarDate"), box=$("homeCalendarEvents");
+  if(!dateBox||!box)return;
+  var localNow=new Date();var now=new Date(Date.UTC(localNow.getFullYear(),localNow.getMonth(),localNow.getDate()));dateBox.textContent=homeOccasionDateText(now);
+  box.innerHTML="";
+  if(!homeOccasionData){var wait=document.createElement("p");wait.className="home-calendar-empty";wait.textContent=currentT.home_calendar_loading;box.appendChild(wait);return;}
+  /* صفحهٔ خانه فقط مناسبت‌های همان امروز را نشان می‌دهد؛ مناسبت‌های آینده در صفحهٔ کامل تقویم هستند. */
+  var items=homeOccasionsFor(now).map(function(ev){return {ev:ev,date:new Date(now),today:true};});
+  if(!items.length){var empty=document.createElement("p");empty.className="home-calendar-empty";empty.textContent=currentT.home_calendar_none;box.appendChild(empty);return;}
+  var l=currentT.lang,loc=l==="en"?"en-US":l==="ps"?"ps-AF":"fa-AF";
+  items.forEach(function(item){
+    var ev=item.ev, card=document.createElement("article");card.className="home-calendar-event";
+    var title=document.createElement("strong");title.textContent=(ev.title&&ev.title[l])||(ev.title&&ev.title.en)||"";
+    var desc=document.createElement("p");desc.textContent=(ev.description&&ev.description[l])||(ev.description&&ev.description.en)||"";
+    var meta=document.createElement("div");meta.className="home-calendar-event-meta";
+    var tag=document.createElement("span");tag.className="home-calendar-tag";tag.textContent=(HOME_CATEGORY_LABELS[l]&&HOME_CATEGORY_LABELS[l][ev.category])||ev.category||"";
+    var date=document.createElement("span");date.textContent=item.today?currentT.home_calendar_today:new Intl.DateTimeFormat(loc,{day:"numeric",month:"short"}).format(item.date);
+    meta.append(tag,date);card.append(title,desc,meta);box.appendChild(card);
+  });
+}
+function loadHomeOccasions(){
+  fetch(HOME_OCCASION_PATH).then(function(res){if(!res.ok)throw new Error("HTTP "+res.status);return res.json();}).then(function(data){homeOccasionData=data;renderHomeOccasions();}).catch(function(){var box=$("homeCalendarEvents");if(!box)return;box.innerHTML="";var p=document.createElement("p");p.className="home-calendar-empty";p.textContent=currentT.home_calendar_error;box.appendChild(p);});
+}
+
+/* =========================================================
+   اوقات نماز و قبله‌نمای خانه — محاسبهٔ محلی و بدون API
+   توجه: محاسبات نجومی آفلاین‌اند و جایگزین تقویم رسمی محلی نیستند.
+   ========================================================= */
+var HOME_CITIES=[
+{id:"kabul",name:"کابل، افغانستان",en:"Kabul, Afghanistan",ps:"کابل، افغانستان",lat:34.5553,lon:69.2075,tz:"Asia/Kabul"},
+{id:"herat",name:"هرات، افغانستان",en:"Herat, Afghanistan",ps:"هرات، افغانستان",lat:34.3529,lon:62.2040,tz:"Asia/Kabul"},
+{id:"mazar",name:"مزار شریف، افغانستان",en:"Mazar-i-Sharif, Afghanistan",ps:"مزارشریف، افغانستان",lat:36.7069,lon:67.1109,tz:"Asia/Kabul"},
+{id:"kandahar",name:"قندهار، افغانستان",en:"Kandahar, Afghanistan",ps:"کندهار، افغانستان",lat:31.6289,lon:65.7372,tz:"Asia/Kabul"},
+{id:"jalalabad",name:"جلال‌آباد، افغانستان",en:"Jalalabad, Afghanistan",ps:"جلال‌آباد، افغانستان",lat:34.4342,lon:70.4478,tz:"Asia/Kabul"},
+{id:"bamyan",name:"بامیان، افغانستان",en:"Bamyan, Afghanistan",ps:"بامیان، افغانستان",lat:34.8216,lon:67.8273,tz:"Asia/Kabul"},
+{id:"khost",name:"خوست، افغانستان",en:"Khost, Afghanistan",ps:"خوست، افغانستان",lat:33.3395,lon:69.9204,tz:"Asia/Kabul"},
+{id:"ghazni",name:"غزنی، افغانستان",en:"Ghazni, Afghanistan",ps:"غزني، افغانستان",lat:33.5539,lon:68.4209,tz:"Asia/Kabul"},
+{id:"kunduz",name:"کندز، افغانستان",en:"Kunduz, Afghanistan",ps:"کندز، افغانستان",lat:36.7286,lon:68.8681,tz:"Asia/Kabul"},
+{id:"baghlan",name:"پلخمری، بغلان، افغانستان",en:"Pul-e-Khumri, Baghlan",ps:"پلخمري، بغلان",lat:35.9446,lon:68.7151,tz:"Asia/Kabul"},
+{id:"faizabad",name:"فیض‌آباد، بدخشان، افغانستان",en:"Fayzabad, Badakhshan",ps:"فیض‌آباد، بدخشان",lat:37.1211,lon:70.5792,tz:"Asia/Kabul"},
+{id:"sheberghan",name:"شبرغان، جوزجان، افغانستان",en:"Sheberghan, Jowzjan",ps:"شبرغان، جوزجان",lat:36.6674,lon:65.7529,tz:"Asia/Kabul"},
+{id:"saripul",name:"سرپل، افغانستان",en:"Sar-e Pol, Afghanistan",ps:"سرپل، افغانستان",lat:36.2154,lon:65.9325,tz:"Asia/Kabul"},
+{id:"samangan",name:"ایبک، سمنگان، افغانستان",en:"Aybak, Samangan",ps:"ایبک، سمنګان",lat:36.2647,lon:68.0155,tz:"Asia/Kabul"},
+{id:"maymana",name:"میمنه، فاریاب، افغانستان",en:"Maymana, Faryab",ps:"میمنه، فاریاب",lat:35.9214,lon:64.7742,tz:"Asia/Kabul"},
+{id:"taloqan",name:"تالقان، تخار، افغانستان",en:"Taloqan, Takhar",ps:"تالقان، تخار",lat:36.7361,lon:69.5345,tz:"Asia/Kabul"},
+{id:"parwan",name:"چاریکار، پروان، افغانستان",en:"Charikar, Parwan",ps:"چاریکار، پروان",lat:35.0136,lon:69.1714,tz:"Asia/Kabul"},
+{id:"mahmudraq",name:"محمودراقی، کاپیسا، افغانستان",en:"Mahmud Raqi, Kapisa",ps:"محمودراقي، کاپیسا",lat:35.0167,lon:69.3333,tz:"Asia/Kabul"},
+{id:"pulalam",name:"پل علم، لوگر، افغانستان",en:"Pul-e Alam, Logar",ps:"پل علم، لوګر",lat:33.9953,lon:69.0227,tz:"Asia/Kabul"},
+{id:"gardez",name:"گردیز، پکتیا، افغانستان",en:"Gardez, Paktia",ps:"ګردېز، پکتیا",lat:33.5974,lon:69.2259,tz:"Asia/Kabul"},
+{id:"sharana",name:"شرنه، پکتیکا، افغانستان",en:"Sharana, Paktika",ps:"شرنه، پکتیکا",lat:33.1258,lon:68.7800,tz:"Asia/Kabul"},
+{id:"lashkargah",name:"لشکرگاه، هلمند، افغانستان",en:"Lashkargah, Helmand",ps:"لښکرګاه، هلمند",lat:31.5830,lon:64.3692,tz:"Asia/Kabul"},
+{id:"zaranj",name:"زرنج، نیمروز، افغانستان",en:"Zaranj, Nimroz",ps:"زرنج، نیمروز",lat:30.9596,lon:61.8604,tz:"Asia/Kabul"},
+{id:"farah",name:"فراه، افغانستان",en:"Farah, Afghanistan",ps:"فراه، افغانستان",lat:32.3745,lon:62.1164,tz:"Asia/Kabul"},
+{id:"qalat",name:"قلات، زابل، افغانستان",en:"Qalat, Zabul",ps:"قلات، زابل",lat:32.1058,lon:66.9083,tz:"Asia/Kabul"},
+{id:"tarinkot",name:"ترینکوت، ارزگان، افغانستان",en:"Tarin Kot, Uruzgan",ps:"ترینکوټ، اروزګان",lat:32.6290,lon:65.8789,tz:"Asia/Kabul"},
+{id:"nili",name:"نیلی، دایکندی، افغانستان",en:"Nili, Daykundi",ps:"نیلي، دایکندي",lat:33.7218,lon:66.1302,tz:"Asia/Kabul"},
+{id:"charikar",name:"چاریکار، افغانستان",en:"Charikar, Afghanistan",ps:"چاریکار، افغانستان",lat:35.0136,lon:69.1714,tz:"Asia/Kabul"},
+{id:"parun",name:"پارون، نورستان، افغانستان",en:"Parun, Nuristan",ps:"پارون، نورستان",lat:35.4200,lon:70.9220,tz:"Asia/Kabul"},
+{id:"asmar",name:"اسعدآباد، کنر، افغانستان",en:"Asadabad, Kunar",ps:"اسعدآباد، کونړ",lat:34.8731,lon:71.1469,tz:"Asia/Kabul"},
+{id:"mehtarlam",name:"مهترلام، لغمان، افغانستان",en:"Mehtarlam, Laghman",ps:"مهترلام، لغمان",lat:34.6714,lon:70.2094,tz:"Asia/Kabul"},
+{id:"sharan",name:"شرنه، افغانستان",en:"Sharana, Afghanistan",ps:"شرنه، افغانستان",lat:33.1258,lon:68.7800,tz:"Asia/Kabul"},
+{id:"turghundi",name:"تورغندی، هرات، افغانستان",en:"Torghundi, Herat",ps:"تورغونډۍ، هرات",lat:34.5167,lon:62.3000,tz:"Asia/Kabul"},
+{id:"qalaenaw",name:"قلعه‌نو، بادغیس، افغانستان",en:"Qala-e-Naw, Badghis",ps:"قلعه نو، بادغیس",lat:34.9870,lon:63.1289,tz:"Asia/Kabul"},
+{id:"chaghcharan",name:"چغچران، غور، افغانستان",en:"Chaghcharan, Ghor",ps:"چغچران، غور",lat:34.5247,lon:65.2500,tz:"Asia/Kabul"},
+{id:"maidan",name:"میدان‌شهر، وردک، افغانستان",en:"Maidan Shahr, Wardak",ps:"میدان ښار، وردګ",lat:34.3956,lon:68.8662,tz:"Asia/Kabul"},
+{id:"bazarak",name:"بازارک، پنجشیر، افغانستان",en:"Bazarak, Panjshir",ps:"بازارک، پنجشېر",lat:35.3129,lon:69.5152,tz:"Asia/Kabul"},
+{id:"tehran",name:"تهران، ایران",en:"Tehran, Iran",ps:"تهران، ایران",lat:35.6892,lon:51.3890,tz:"Asia/Tehran"},
+{id:"mashhad",name:"مشهد، ایران",en:"Mashhad, Iran",ps:"مشهد، ایران",lat:36.2605,lon:59.6168,tz:"Asia/Tehran"},
+{id:"qom",name:"قم، ایران",en:"Qom, Iran",ps:"قم، ایران",lat:34.6416,lon:50.8746,tz:"Asia/Tehran"},
+{id:"isfahan",name:"اصفهان، ایران",en:"Isfahan, Iran",ps:"اصفهان، ایران",lat:32.6546,lon:51.6680,tz:"Asia/Tehran"},
+{id:"shiraz",name:"شیراز، ایران",en:"Shiraz, Iran",ps:"شیراز، ایران",lat:29.5918,lon:52.5837,tz:"Asia/Tehran"},
+{id:"tabriz",name:"تبریز، ایران",en:"Tabriz, Iran",ps:"تبریز، ایران",lat:38.0962,lon:46.2738,tz:"Asia/Tehran"},
+{id:"karachi",name:"کراچی، پاکستان",en:"Karachi, Pakistan",ps:"کراچۍ، پاکستان",lat:24.8607,lon:67.0011,tz:"Asia/Karachi"},
+{id:"islamabad",name:"اسلام‌آباد، پاکستان",en:"Islamabad, Pakistan",ps:"اسلام‌آباد، پاکستان",lat:33.6844,lon:73.0479,tz:"Asia/Karachi"},
+{id:"lahore",name:"لاهور، پاکستان",en:"Lahore, Pakistan",ps:"لاهور، پاکستان",lat:31.5204,lon:74.3587,tz:"Asia/Karachi"},
+{id:"peshawar",name:"پشاور، پاکستان",en:"Peshawar, Pakistan",ps:"پېښور، پاکستان",lat:34.0151,lon:71.5249,tz:"Asia/Karachi"},
+{id:"quetta",name:"کویته، پاکستان",en:"Quetta, Pakistan",ps:"کوټه، پاکستان",lat:30.1798,lon:66.9750,tz:"Asia/Karachi"},
+{id:"istanbul",name:"استانبول، ترکیه",en:"Istanbul, Türkiye",ps:"استانبول، ترکیه",lat:41.0082,lon:28.9784,tz:"Europe/Istanbul"},
+{id:"ankara",name:"آنکارا، ترکیه",en:"Ankara, Türkiye",ps:"انقره، ترکیه",lat:39.9334,lon:32.8597,tz:"Europe/Istanbul"},
+{id:"berlin",name:"برلین، آلمان",en:"Berlin, Germany",ps:"برلین، جرمني",lat:52.5200,lon:13.4050,tz:"Europe/Berlin"},
+{id:"hamburg",name:"هامبورگ، آلمان",en:"Hamburg, Germany",ps:"هامبورګ، جرمني",lat:53.5488,lon:9.9872,tz:"Europe/Berlin"},
+{id:"paris",name:"پاریس، فرانسه",en:"Paris, France",ps:"پاریس، فرانسه",lat:48.8566,lon:2.3522,tz:"Europe/Paris"},
+{id:"london",name:"لندن، بریتانیا",en:"London, United Kingdom",ps:"لندن، بریتانیا",lat:51.5072,lon:-0.1276,tz:"Europe/London"},
+{id:"newyork",name:"نیویارک، امریکا",en:"New York, USA",ps:"نیویارک، امریکا",lat:40.7128,lon:-74.0060,tz:"America/New_York"},
+{id:"losangeles",name:"لس‌آنجلس، امریکا",en:"Los Angeles, USA",ps:"لاس انجلس، امریکا",lat:34.0522,lon:-118.2437,tz:"America/Los_Angeles"},
+{id:"chicago",name:"شیکاگو، امریکا",en:"Chicago, USA",ps:"شیکاګو، امریکا",lat:41.8781,lon:-87.6298,tz:"America/Chicago"},
+{id:"houston",name:"هیوستون، امریکا",en:"Houston, USA",ps:"هیوستن، امریکا",lat:29.7604,lon:-95.3698,tz:"America/Chicago"},
+{id:"toronto",name:"تورنتو، کانادا",en:"Toronto, Canada",ps:"ټورنټو، کاناډا",lat:43.6532,lon:-79.3832,tz:"America/Toronto"},
+{id:"kualalumpur",name:"کوالالامپور، مالیزیا",en:"Kuala Lumpur, Malaysia",ps:"کوالالمپور، مالیزیا",lat:3.1390,lon:101.6869,tz:"Asia/Kuala_Lumpur"},
+{id:"jakarta",name:"جاکارتا، اندونیزیا",en:"Jakarta, Indonesia",ps:"جاکارتا، اندونیزیا",lat:-6.2088,lon:106.8456,tz:"Asia/Jakarta"},
+{id:"delhi",name:"دهلی، هند",en:"Delhi, India",ps:"ډیلي، هند",lat:28.6139,lon:77.2090,tz:"Asia/Kolkata"},
+{id:"mumbai",name:"ممبئی، هند",en:"Mumbai, India",ps:"ممبۍ، هند",lat:19.0760,lon:72.8777,tz:"Asia/Kolkata"},
+{id:"hyderabadin",name:"حیدرآباد، هند",en:"Hyderabad, India",ps:"حیدرآباد، هند",lat:17.3850,lon:78.4867,tz:"Asia/Kolkata"},
+{id:"baghdad",name:"بغداد، عراق",en:"Baghdad, Iraq",ps:"بغداد، عراق",lat:33.3152,lon:44.3661,tz:"Asia/Baghdad"},
+{id:"najaf",name:"نجف، عراق",en:"Najaf, Iraq",ps:"نجف، عراق",lat:31.9996,lon:44.3267,tz:"Asia/Baghdad"},
+{id:"karbala",name:"کربلا، عراق",en:"Karbala, Iraq",ps:"کربلا، عراق",lat:32.6160,lon:44.0249,tz:"Asia/Baghdad"},
+{id:"basra",name:"بصره، عراق",en:"Basra, Iraq",ps:"بصره، عراق",lat:30.5085,lon:47.7804,tz:"Asia/Baghdad"},
+{id:"riyadh",name:"ریاض، عربستان سعودی",en:"Riyadh, Saudi Arabia",ps:"ریاض، سعودي عربستان",lat:24.7136,lon:46.6753,tz:"Asia/Riyadh"},
+{id:"makkah",name:"مکه، عربستان سعودی",en:"Makkah, Saudi Arabia",ps:"مکه، سعودي عربستان",lat:21.3891,lon:39.8579,tz:"Asia/Riyadh"},
+{id:"madinah",name:"مدینه، عربستان سعودی",en:"Madinah, Saudi Arabia",ps:"مدینه، سعودي عربستان",lat:24.5247,lon:39.5692,tz:"Asia/Riyadh"},
+{id:"dubai",name:"دبی، امارات",en:"Dubai, UAE",ps:"دوبۍ، امارات",lat:25.2048,lon:55.2708,tz:"Asia/Dubai"},
+{id:"doha",name:"دوحه، قطر",en:"Doha, Qatar",ps:"دوحه، قطر",lat:25.2854,lon:51.5310,tz:"Asia/Qatar"},
+{id:"cairo",name:"قاهره، مصر",en:"Cairo, Egypt",ps:"قاهره، مصر",lat:30.0444,lon:31.2357,tz:"Africa/Cairo"},
+{id:"casablanca",name:"کازابلانکا، مراکش",en:"Casablanca, Morocco",ps:"کازابلانکا، مراکش",lat:33.5731,lon:-7.5898,tz:"Africa/Casablanca"},
+{id:"dhaka",name:"داکا، بنگلادش",en:"Dhaka, Bangladesh",ps:"ډاکه، بنګله‌دېش",lat:23.8103,lon:90.4125,tz:"Asia/Dhaka"},
+{id:"singapore",name:"سنگاپور",en:"Singapore",ps:"سنګاپور",lat:1.3521,lon:103.8198,tz:"Asia/Singapore"},
+{id:"sydney",name:"سیدنی، استرالیا",en:"Sydney, Australia",ps:"سیډني، استرالیا",lat:-33.8688,lon:151.2093,tz:"Australia/Sydney"}
+];
+var homeGpsPosition=null,homeCompassHeading=null,homeCompassActive=false,homeQiblaBearingValue=0,homeSelectedCity=null;
+function homeFmtNumber(n){return new Intl.NumberFormat(currentT.lang==="en"?"en-US":currentT.lang==="ps"?"ps-AF":"fa-AF",{useGrouping:false}).format(n)}
+function homeCityName(c){return currentT.lang==="en"?c.en:currentT.lang==="ps"?c.ps:c.name}
+function homeNormDeg(x){return (x%360+360)%360}function homeRad(x){return x*Math.PI/180}function homeDeg(x){return x*180/Math.PI}
+function homeOffsetMinutes(date,tz){try{var f=new Intl.DateTimeFormat("en-GB",{timeZone:tz,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}),o={};f.formatToParts(date).forEach(function(p){if(p.type!=="literal")o[p.type]=+p.value});var utc=Date.UTC(o.year,o.month-1,o.day,o.hour,o.minute,o.second);return (utc-date.getTime())/60000}catch(e){return -date.getTimezoneOffset()}}
+function homeSunData(date,lat,lon,tz){var noonDate=new Date(date.getTime()),parts={};try{new Intl.DateTimeFormat("en-US",{timeZone:tz,year:"numeric",month:"numeric",day:"numeric"}).formatToParts(noonDate).forEach(function(p){if(["year","month","day"].indexOf(p.type)>-1)parts[p.type]=+p.value})}catch(e){parts={year:noonDate.getFullYear(),month:noonDate.getMonth()+1,day:noonDate.getDate()}}var localDate=Date.UTC(parts.year,parts.month-1,parts.day),day=Math.floor((localDate-Date.UTC(parts.year,0,0))/86400000),gamma=2*Math.PI/365*(day-1),eq=229.18*(0.000075+0.001868*Math.cos(gamma)-0.032077*Math.sin(gamma)-0.014615*Math.cos(2*gamma)-0.040849*Math.sin(2*gamma)),decl=0.006918-0.399912*Math.cos(gamma)+0.070257*Math.sin(gamma)-0.006758*Math.cos(2*gamma)+0.000907*Math.sin(2*gamma)-0.002697*Math.cos(3*gamma)+0.00148*Math.sin(3*gamma),offset=homeOffsetMinutes(date,tz),solarNoon=720-4*lon-eq+offset;
+ function hourAngle(alt){var c=(Math.sin(homeRad(alt))-Math.sin(homeRad(lat))*Math.sin(decl))/(Math.cos(homeRad(lat))*Math.cos(decl));if(c < -1 || c > 1)return null;return 4*homeDeg(Math.acos(Math.max(-1,Math.min(1,c))))}
+ return {noon:solarNoon,decl:decl,hour:hourAngle};}
+function homeTimeString(minutes){if(minutes==null||!isFinite(minutes))return "—";minutes=((Math.round(minutes)%1440)+1440)%1440;var h=Math.floor(minutes/60),m=minutes%60;return homeFmtNumber(h).padStart(2,"0")+":"+homeFmtNumber(m).padStart(2,"0")}
+function homeCalcPrayer(date,lat,lon,tz,method,hanafi){var s=homeSunData(date,lat,lon,tz),angles=method==="jafari"?[16,14]:method==="karachi"?[18,18]:[18,17],sun=s.hour(-0.833),fajr=s.hour(-angles[0]),isha=s.hour(-angles[1]),asrAlt=homeDeg(Math.atan(1/((hanafi?2:1)+Math.tan(Math.abs(homeRad(lat)-s.decl))))),asr=s.hour(asrAlt),night=Math.max(0,2*(sun||0));if(fajr===null)fajr=night*angles[0]/60;if(isha===null)isha=night*angles[1]/60;if(asr===null)asr=(sun||0)*0.5;return [{k:"worship_fajr",v:homeTimeString(s.noon-fajr)},{k:"worship_sunrise",v:homeTimeString(s.noon-(sun||0))},{k:"worship_dhuhr",v:homeTimeString(s.noon)},{k:"worship_asr",v:homeTimeString(s.noon+asr)},{k:"worship_maghrib",v:homeTimeString(s.noon+(sun||0)+2)},{k:"worship_isha",v:homeTimeString(s.noon+isha)}]}
+function homeQiblaBearing(lat,lon){var kaLat=homeRad(21.422487),kaLon=homeRad(39.826206),la=homeRad(lat),dl=kaLon-homeRad(lon);return homeNormDeg(homeDeg(Math.atan2(Math.sin(dl),Math.cos(la)*Math.tan(kaLat)-Math.sin(la)*Math.cos(dl))))}
+function homeGetLocation(){if(homeGpsPosition)return {lat:homeGpsPosition.lat,lon:homeGpsPosition.lon,tz:Intl.DateTimeFormat().resolvedOptions().timeZone||"Asia/Kabul",name:currentT.lang==="en"?"Current GPS location":currentT.lang==="ps"?"اوسنی GPS ځای":"موقعیت فعلی GPS"};var c=homeSelectedCity||HOME_CITIES[0];return {lat:c.lat,lon:c.lon,tz:c.tz,name:homeCityName(c)}}
+function homeRenderPrayerCompass(){var sel=$("homePrayerCity"),city=homeGetLocation(),date=new Date(),method=$("homePrayerMethod")?$("homePrayerMethod").value:"standard",hanafi=$("homeAsrMethod")?$("homeAsrMethod").value==="hanafi":false;try{localStorage.setItem("bn_prayer_method",method);localStorage.setItem("bn_asr_hanafi",hanafi?"1":"0")}catch(e){}if(sel&&sel.value==="gps"&&homeGpsPosition){city=homeGetLocation()}var label=$("homePrayerLocation");if(label)label.textContent=city.name+" · "+homeFmtNumber(city.lat.toFixed(4))+", "+homeFmtNumber(city.lon.toFixed(4));var prayers=homeCalcPrayer(date,city.lat,city.lon,city.tz,method,hanafi),box=$("homePrayerTimes");if(box){box.innerHTML="";prayers.forEach(function(p){var card=document.createElement("div");card.className="prayer-chip-home";var label=document.createElement("span");label.textContent=currentT[p.k]||p.k;var val=document.createElement("strong");val.textContent=p.v;card.append(label,val);box.appendChild(card)})}homeQiblaBearingValue=homeQiblaBearing(city.lat,city.lon);var bearing=$("homeQiblaBearing"),needle=$("homeCompassNeedle");if(bearing)bearing.textContent=homeFmtNumber(Math.round(homeQiblaBearingValue))+"°";if(needle)needle.style.transform="rotate("+(homeQiblaBearingValue-(homeCompassHeading||0))+"deg)";var st=$("homeCompassStatus");if(st)st.textContent=homeCompassActive?currentT.worship_sensor_on:currentT.worship_north_reference}
+function homeBuildCityOptions(){var sel=$("homePrayerCity");if(!sel)return;var saved="kabul";try{saved=localStorage.getItem("bn_prayer_city")||"kabul"}catch(e){}sel.innerHTML="";var labels=currentT.lang==="en"?{"افغانستان":"Afghanistan","ایران":"Iran","پاکستان":"Pakistan","ترکیه":"Türkiye","اروپا":"Europe","امریکا و کانادا":"USA & Canada","آسیا و خاورمیانه":"Asia & Middle East","دیگر کشورها":"Other countries"}:currentT.lang==="ps"?{"افغانستان":"افغانستان","ایران":"ایران","پاکستان":"پاکستان","ترکیه":"ترکیه","اروپا":"اروپا","امریکا و کانادا":"امریکا او کاناډا","آسیا و خاورمیانه":"اسیا او منځنی ختیځ","دیگر کشورها":"نور هېوادونه"}:{};var groups={"افغانستان":[],"ایران":[],"پاکستان":[],"ترکیه":[],"اروپا":[],"امریکا و کانادا":[],"آسیا و خاورمیانه":[],"دیگر کشورها":[]};HOME_CITIES.forEach(function(c){var group=c.id==="kabul"||c.tz==="Asia/Kabul"?"افغانستان":c.tz==="Asia/Tehran"?"ایران":c.tz==="Asia/Karachi"?"پاکستان":c.tz==="Europe/Istanbul"?"ترکیه":/^Europe\//.test(c.tz)?"اروپا":/^America\//.test(c.tz)?"امریکا و کانادا":/Asia\/(Baghdad|Riyadh|Dubai|Qatar|Kuala_Lumpur|Jakarta|Kolkata|Dhaka|Singapore|Tehran|Karachi|Kabul|Istanbul)/.test(c.tz)?"آسیا و خاورمیانه":"دیگر کشورها";groups[group].push(c)});Object.keys(groups).forEach(function(g){if(!groups[g].length)return;var og=document.createElement("optgroup");og.label=labels[g]||g;groups[g].forEach(function(c){var o=document.createElement("option");o.value=c.id;o.textContent=homeCityName(c);og.appendChild(o)});sel.appendChild(og)});var gps=document.createElement("option");gps.value="gps";gps.textContent=currentT.worship_location_gps;sel.appendChild(gps);if(HOME_CITIES.some(function(c){return c.id===saved}))sel.value=saved;homeSelectedCity=HOME_CITIES.find(function(c){return c.id===sel.value})||HOME_CITIES[0];}
+function homeEnableCompass(){var status=$("homeCompassStatus");function activate(){if(homeCompassActive)return;window.addEventListener("deviceorientationabsolute",homeOrientationHandler,true);window.addEventListener("deviceorientation",homeOrientationHandler,true);setTimeout(function(){if(!homeCompassActive&&status)status.textContent=currentT.worship_sensor_missing},1200)}if(typeof DeviceOrientationEvent!=="undefined"&&typeof DeviceOrientationEvent.requestPermission==="function"){DeviceOrientationEvent.requestPermission().then(function(state){if(state==="granted")activate();else if(status)status.textContent=currentT.worship_sensor_permission}).catch(function(){if(status)status.textContent=currentT.worship_sensor_permission})}else activate()}
+function homeOrientationHandler(e){var heading=null;if(typeof e.webkitCompassHeading==="number")heading=e.webkitCompassHeading;else if(e.absolute===true&&typeof e.alpha==="number")heading=360-e.alpha;if(heading===null||!isFinite(heading))return;homeCompassHeading=homeNormDeg(heading);homeCompassActive=true;var n=$("homeCompassNeedle");if(n)n.style.transform="rotate("+(homeQiblaBearingValue-homeCompassHeading)+"deg)";var st=$("homeCompassStatus");if(st)st.textContent=currentT.worship_sensor_on}
+function homeUseGPS(){var btn=$("homeUseGPS");if(!navigator.geolocation){showMsg(currentT.worship_gps_error);return}if(btn){btn.disabled=true;btn.textContent=currentT.worship_gps_loading}navigator.geolocation.getCurrentPosition(function(pos){homeGpsPosition={lat:pos.coords.latitude,lon:pos.coords.longitude};homeSelectedCity=null;var sel=$("homePrayerCity");if(sel)sel.value="gps";try{localStorage.setItem("bn_prayer_city","gps")}catch(e){}if(btn){btn.disabled=false;btn.textContent=currentT.worship_gps}homeRenderPrayerCompass();var lab=$("homePrayerLocation");if(lab)lab.textContent=currentT.worship_gps_ok+" · "+homeFmtNumber(homeGpsPosition.lat.toFixed(4))+", "+homeFmtNumber(homeGpsPosition.lon.toFixed(4));},function(){if(btn){btn.disabled=false;btn.textContent=currentT.worship_gps}showMsg(currentT.worship_gps_error)}, {enableHighAccuracy:true,timeout:15000,maximumAge:300000})}
+function initHomeWorship(){var sel=$("homePrayerCity");if(!sel)return;homeBuildCityOptions();var methodSel=$("homePrayerMethod"),asrSel=$("homeAsrMethod");try{if(methodSel)methodSel.value=localStorage.getItem("bn_prayer_method")||"standard";if(asrSel)asrSel.value=localStorage.getItem("bn_asr_hanafi")==="1"?"hanafi":"standard"}catch(e){}if(methodSel)methodSel.addEventListener("change",homeRenderPrayerCompass);if(asrSel)asrSel.addEventListener("change",homeRenderPrayerCompass);sel.addEventListener("change",function(){if(sel.value==="gps"){homeUseGPS();return}homeGpsPosition=null;homeSelectedCity=HOME_CITIES.find(function(c){return c.id===sel.value})||HOME_CITIES[0];try{localStorage.setItem("bn_prayer_city",sel.value)}catch(e){}homeRenderPrayerCompass()});var gps=$("homeUseGPS");if(gps)gps.addEventListener("click",homeUseGPS);var comp=$("homeCompassEnable");if(comp)comp.addEventListener("click",homeEnableCompass);homeRenderPrayerCompass()}
+
 function fallbackCopy(text){
   var textarea = document.createElement("textarea");
   textarea.value = text;
@@ -1219,12 +1448,12 @@ function setupDailyHandlers(){
   var qrCaption = document.getElementById("bnQrCaption");
   var actions = document.getElementById("bnShareActions");
 
-  var shareBtn = document.getElementById("shareBtn");
   var qrBtn = document.getElementById("qrBtn");
   var closeBtn = document.getElementById("bnShareClose");
   var shareAction = document.getElementById("bnShareBtnAction");
   var copyLinkBtn = document.getElementById("bnCopyLinkBtn");
   var whatsappBtn = document.getElementById("bnWhatsappBtn");
+  var saveQrBtn = document.getElementById("bnSaveQrBtn");
 
   function openModal(mode){
     if(!modal) return;
@@ -1232,18 +1461,13 @@ function setupDailyHandlers(){
     if(mode === "qr"){
       if(icon) icon.textContent = "📱";
       if(title) title.textContent = "اسکن QR Code";
-      if(sub) sub.textContent = "با دوربین گوشی خود اسکن کنید تا مستقیم برنامه را دانلود کنید";
+      if(sub) sub.textContent = "QR کد لینک رسمی برنامه را آفلاین نشان می‌دهد؛ از دکمه‌های زیر برای فرستادن لینک استفاده کنید";
       if(qrBox) qrBox.style.display = "block";
-      if(actions) actions.style.display = "none";
+      if(actions) actions.style.display = "grid";
 
       if(qrImg){
-        qrImg.style.display = "none";
-        var qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=10&data=" + encodeURIComponent(SHARE_URL);
-        qrImg.src = qrUrl;
-        qrImg.onload = function(){ qrImg.style.display = "block"; };
-        qrImg.onerror = function(){
-          qrBox.innerHTML = '<div class="bn-qr-loading">خطا در بارگذاری QR<br>اتصال اینترنت را بررسی کنید</div>';
-        };
+        qrImg.style.display = "block";
+        qrImg.src = "assets/banovan-noor-qr.png";
       }
       if(qrCaption) qrCaption.textContent = SHARE_URL;
     } else {
@@ -1266,10 +1490,6 @@ function setupDailyHandlers(){
 
   if(qrBtn){
     qrBtn.addEventListener("click", function(){ openModal("qr"); });
-  }
-
-  if(shareBtn){
-    shareBtn.addEventListener("click", function(){ openModal("share"); });
   }
 
   if(closeBtn){
@@ -1334,6 +1554,17 @@ function setupDailyHandlers(){
       if (window.bnAnalytics) window.bnAnalytics.track("share_used", { method: "whatsapp" });
     });
   }
+
+  if(saveQrBtn){
+    saveQrBtn.addEventListener("click", function(){
+      var a = document.createElement("a");
+      a.href = "assets/banovan-noor-qr.png";
+      a.download = "BANOVAN-NOOR-QR.png";
+      document.body.appendChild(a); a.click(); a.remove();
+      if (window.bnAnalytics) window.bnAnalytics.track("share_used", { method: "save_qr" });
+      showMsg("تصویر QR آمادهٔ ذخیره است");
+    });
+  }
 })();
 
 function init(){
@@ -1358,6 +1589,8 @@ function init(){
     if(e.key === "bn_lang") applyLang(e.newValue || DEFAULT_LANG);
   });
   setupDailyHandlers();
+  loadHomeOccasions();
+  initHomeWorship();
   loadDaily().then(function(data){
     if(!data){
       var h = $("dailyHokm");

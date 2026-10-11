@@ -14,7 +14,6 @@
 <link rel="icon" href="assets/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <link rel="manifest" href="manifest.json">
-
 <script>
 (function(){
   try{
@@ -42,8 +41,7 @@
   --warn-grad:linear-gradient(135deg,#f59e0b,#dc2626);
   --warn-soft:linear-gradient(135deg,rgba(245,158,11,.10),rgba(220,38,38,.08));
 }
-html[data-theme="dark"],
-body.dark{
+html[data-theme="dark"],body.dark{
   --bg:#000000;--bg-soft:#000000;
   --surface:rgba(28,28,30,.72);--surface-solid:#1c1c1e;
   --text:#ffffff;--text-soft:#e4e6eb;--text-muted:#8e8e93;
@@ -70,14 +68,12 @@ body{
   overflow-x:hidden;transition:background .35s ease,color .35s ease;
   -webkit-font-smoothing:antialiased;
 }
-html[data-theme="dark"] body,
-body.dark{
+html[data-theme="dark"] body,body.dark{
   background:
     radial-gradient(circle at 10% 0%,rgba(168,85,247,.13),transparent 30%),
     radial-gradient(circle at 100% 20%,rgba(236,72,153,.08),transparent 30%),
     #000;
 }
-/* ✅ LTR */
 body.lang-ltr { direction: ltr; }
 body.lang-ltr .back-btn svg { transform: none; }
 body.lang-ltr .q-item::before { right: auto; left: 0; border-radius: 12px 0 0 12px; }
@@ -88,15 +84,13 @@ body.lang-ltr .msg.bot { flex-direction: row-reverse; }
 body.lang-ltr .msg.user .msg-time { justify-content: flex-start; }
 body.lang-ltr .chat-cta-arrow { transform: none; }
 body.lang-ltr .acc-card::before { right: auto; left: 0; }
-
 .app{width:100%;max-width:640px;margin:0 auto;padding:0 16px;position:relative;z-index:2}
 .topbar{
   display:flex;align-items:center;gap:10px;padding:18px 0 14px;
   position:sticky;top:0;background:linear-gradient(to bottom,var(--bg) 70%,transparent);
   z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
 }
-html[data-theme="dark"] .topbar,
-body.dark .topbar{background:linear-gradient(to bottom,#000 70%,transparent)}
+html[data-theme="dark"] .topbar,body.dark .topbar{background:linear-gradient(to bottom,#000 70%,transparent)}
 .back-btn,.icon-btn-mini{
   width:42px;height:42px;border-radius:14px;background:var(--surface);
   border:1px solid var(--border);color:var(--primary);
@@ -118,440 +112,146 @@ body.dark .topbar{background:linear-gradient(to bottom,#000 70%,transparent)}
   display:flex;align-items:center;gap:14px;position:relative;overflow:hidden;
 }
 @keyframes heroShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.hero::before{
-  content:"";position:absolute;width:220px;height:220px;top:-120px;left:-80px;
-  border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.30),transparent 70%);
-  pointer-events:none;
-}
-.hero-icon{
-  width:54px;height:54px;border-radius:17px;background:rgba(255,255,255,.22);
-  border:1.5px solid rgba(255,255,255,.32);
-  display:flex;align-items:center;justify-content:center;flex:0 0 54px;
-  backdrop-filter:blur(10px);position:relative;z-index:1;
-}
+.hero::before{content:"";position:absolute;width:220px;height:220px;top:-120px;left:-80px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.30),transparent 70%);pointer-events:none}
+.hero-icon{width:54px;height:54px;border-radius:17px;background:rgba(255,255,255,.22);border:1.5px solid rgba(255,255,255,.32);display:flex;align-items:center;justify-content:center;flex:0 0 54px;backdrop-filter:blur(10px);position:relative;z-index:1}
 .hero-icon svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .hero-text{flex:1;min-width:0;position:relative;z-index:1}
 .hero-title{font-size:1rem;font-weight:900;line-height:1.4;margin-bottom:4px}
 .hero-sub{font-size:.7rem;line-height:1.75;opacity:.95;font-weight:600}
-.qs-card{
-  background:var(--surface);backdrop-filter:blur(22px);
-  border:1.5px solid var(--border);border-radius:16px;
-  padding:10px 12px;margin-bottom:12px;
-  box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:8px;
-}
+.qs-card{background:var(--surface);backdrop-filter:blur(22px);border:1.5px solid var(--border);border-radius:16px;padding:10px 12px;margin-bottom:12px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:8px}
 .qs-row{display:flex;align-items:center;gap:8px}
 .qs-label{font-size:.66rem;font-weight:900;color:var(--text-muted);min-width:40px;text-align:center}
-.qs-options{
-  display:flex;gap:3px;flex:1;background:var(--violet-soft);
-  border-radius:11px;padding:3px;border:1px solid var(--border);
-}
-.qs-btn{
-  flex:1;padding:7px 6px;border-radius:8px;border:0;background:transparent;
-  color:var(--text-soft);font-family:inherit;font-size:.7rem;font-weight:800;
-  cursor:pointer;transition:all .25s;
-  display:flex;align-items:center;justify-content:center;gap:4px;
-}
+.qs-options{display:flex;gap:3px;flex:1;background:var(--violet-soft);border-radius:11px;padding:3px;border:1px solid var(--border)}
+.qs-btn{flex:1;padding:7px 6px;border-radius:8px;border:0;background:transparent;color:var(--text-soft);font-family:inherit;font-size:.7rem;font-weight:800;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:4px}
 .qs-btn.active{background:var(--brand-grad);color:#fff;box-shadow:0 4px 12px rgba(219,39,119,.35)}
 .qs-btn svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.notice-card{
-  background:var(--warn-soft);border:1.5px solid rgba(245,158,11,.35);
-  border-radius:16px;padding:12px 14px;margin-bottom:12px;
-  box-shadow:var(--shadow-sm);display:flex;gap:10px;align-items:flex-start;
-}
-.notice-icon{
-  width:36px;height:36px;border-radius:12px;background:var(--warn-grad);
-  display:flex;align-items:center;justify-content:center;flex:0 0 36px;
-  box-shadow:0 6px 16px rgba(245,158,11,.35);margin-top:2px;
-  animation:warnPulse 2.5s ease-in-out infinite;
-}
-@keyframes warnPulse{
-  0%,100%{transform:scale(1);box-shadow:0 6px 16px rgba(245,158,11,.35)}
-  50%{transform:scale(1.05);box-shadow:0 8px 22px rgba(245,158,11,.50)}
-}
+.notice-card{background:var(--warn-soft);border:1.5px solid rgba(245,158,11,.35);border-radius:16px;padding:12px 14px;margin-bottom:12px;box-shadow:var(--shadow-sm);display:flex;gap:10px;align-items:flex-start}
+.notice-icon{width:36px;height:36px;border-radius:12px;background:var(--warn-grad);display:flex;align-items:center;justify-content:center;flex:0 0 36px;box-shadow:0 6px 16px rgba(245,158,11,.35);margin-top:2px;animation:warnPulse 2.5s ease-in-out infinite}
+@keyframes warnPulse{0%,100%{transform:scale(1);box-shadow:0 6px 16px rgba(245,158,11,.35)}50%{transform:scale(1.05);box-shadow:0 8px 22px rgba(245,158,11,.50)}}
 .notice-icon svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
 .notice-body{flex:1;min-width:0}
 .notice-title{font-size:.78rem;font-weight:900;color:var(--text);margin-bottom:4px}
 .notice-text{font-size:.7rem;line-height:1.75;color:var(--text-soft);font-weight:700}
 .notice-text strong{color:var(--text);font-weight:900}
-.notice-hint{
-  display:flex;align-items:flex-start;gap:6px;
-  margin-top:8px;padding-top:8px;
-  border-top:1px dashed var(--border);
-  font-size:.68rem;font-weight:700;color:var(--text-soft);
-  line-height:1.65;
-}
-.notice-hint svg{
-  width:13px;height:13px;flex:0 0 13px;margin-top:3px;
-  fill:none;stroke:var(--amber);stroke-width:2.2;
-  stroke-linecap:round;stroke-linejoin:round;
-}
-.chat-cta{
-  background:var(--brand-grad);background-size:200% 200%;
-  border-radius:18px;padding:16px;margin-bottom:12px;
-  display:flex;align-items:center;gap:12px;color:#fff;
-  box-shadow:0 14px 34px rgba(219,39,119,.40),0 6px 18px rgba(168,85,247,.28);
-  cursor:pointer;transition:transform .2s;
-  animation:ctaShift 8s ease infinite;position:relative;overflow:hidden;
-  border:0;width:100%;font-family:inherit;text-align:right;
-}
+.notice-hint{display:flex;align-items:flex-start;gap:6px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);font-size:.68rem;font-weight:700;color:var(--text-soft);line-height:1.65}
+.notice-hint svg{width:13px;height:13px;flex:0 0 13px;margin-top:3px;fill:none;stroke:var(--amber);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.chat-cta{background:var(--brand-grad);background-size:200% 200%;border-radius:18px;padding:16px;margin-bottom:12px;display:flex;align-items:center;gap:12px;color:#fff;box-shadow:0 14px 34px rgba(219,39,119,.40),0 6px 18px rgba(168,85,247,.28);cursor:pointer;transition:transform .2s;animation:ctaShift 8s ease infinite;position:relative;overflow:hidden;border:0;width:100%;font-family:inherit;text-align:right}
 @keyframes ctaShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.chat-cta::before{
-  content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
-  transform:skewX(-22deg);animation:shine 4s ease-in-out infinite;pointer-events:none;
-}
+.chat-cta::before{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-22deg);animation:shine 4s ease-in-out infinite;pointer-events:none}
 @keyframes shine{0%,55%{left:-60%}80%,100%{left:130%}}
 .chat-cta:active{transform:scale(.98)}
-.chat-cta-icon{
-  width:48px;height:48px;border-radius:15px;background:rgba(255,255,255,.20);
-  border:1.5px solid rgba(255,255,255,.35);
-  display:flex;align-items:center;justify-content:center;flex:0 0 48px;
-  position:relative;z-index:1;
-}
+.chat-cta-icon{width:48px;height:48px;border-radius:15px;background:rgba(255,255,255,.20);border:1.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;flex:0 0 48px;position:relative;z-index:1}
 .chat-cta-icon svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .chat-cta-text{flex:1;position:relative;z-index:1}
 .chat-cta-title{font-size:.94rem;font-weight:900;margin-bottom:3px}
 .chat-cta-sub{font-size:.68rem;opacity:.95;font-weight:700;line-height:1.6}
 .chat-cta-arrow{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1);position:relative;z-index:1}
 .search-wrap{margin-bottom:12px;position:relative}
-.search-input{
-  width:100%;padding:13px 46px 13px 16px;border-radius:14px;
-  border:1.5px solid var(--border);background:var(--surface);
-  color:var(--text);font-family:inherit;font-size:.88rem;font-weight:700;
-  outline:none;transition:border-color .25s;box-shadow:var(--shadow-sm);
-}
+.search-input{width:100%;padding:13px 46px 13px 16px;border-radius:14px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-family:inherit;font-size:.88rem;font-weight:700;outline:none;transition:border-color .25s;box-shadow:var(--shadow-sm)}
 .search-input:focus{border-color:var(--primary);box-shadow:0 0 0 4px var(--brand-grad-soft)}
 .search-input::placeholder{color:var(--text-muted)}
-.search-icon{
-  position:absolute;left:14px;top:50%;transform:translateY(-50%);
-  width:20px;height:20px;fill:none;stroke:var(--text-muted);
-  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;
-}
-.section-title{
-  display:flex;align-items:center;gap:10px;margin:6px 4px 12px;
-  font-size:.94rem;font-weight:900;color:var(--text);
-}
-.section-title::before{
-  content:"";width:4px;height:18px;border-radius:2px;
-  background:var(--brand-grad);box-shadow:0 0 12px rgba(219,39,119,.55);
-}
-.acc-card{
-  background:var(--surface);backdrop-filter:blur(22px);
-  border:1.5px solid var(--border);border-radius:18px;
-  box-shadow:var(--shadow-md);margin-bottom:16px;overflow:hidden;
-  position:relative;
-}
-.acc-card::before{
-  content:"";position:absolute;top:0;right:0;width:100%;height:3px;
-  background:var(--brand-grad);
-}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:20px;height:20px;fill:none;stroke:var(--text-muted);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.section-title{display:flex;align-items:center;gap:10px;margin:6px 4px 12px;font-size:.94rem;font-weight:900;color:var(--text)}
+.section-title::before{content:"";width:4px;height:18px;border-radius:2px;background:var(--brand-grad);box-shadow:0 0 12px rgba(219,39,119,.55)}
+.acc-card{background:var(--surface);backdrop-filter:blur(22px);border:1.5px solid var(--border);border-radius:18px;box-shadow:var(--shadow-md);margin-bottom:16px;overflow:hidden;position:relative}
+.acc-card::before{content:"";position:absolute;top:0;right:0;width:100%;height:3px;background:var(--brand-grad)}
 .acc-item{border-bottom:1px solid var(--border);transition:background .2s}
 .acc-item:last-child{border-bottom:none}
 .acc-item.open{background:var(--brand-grad-soft)}
 .acc-item.open .acc-chevron{transform:rotate(180deg)}
-.acc-header{
-  display:flex;align-items:center;gap:12px;padding:13px 15px;
-  cursor:pointer;user-select:none;transition:background .2s;
-}
+.acc-header{display:flex;align-items:center;gap:12px;padding:13px 15px;cursor:pointer;user-select:none;transition:background .2s}
 .acc-header:active{background:var(--brand-grad-soft)}
-.acc-icon{
-  width:44px;height:44px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;flex:0 0 44px;
-  box-shadow:0 6px 16px rgba(219,39,119,.28);
-  transition:transform .3s;position:relative;
-}
-.acc-icon::after{
-  content:"";position:absolute;inset:0;border-radius:14px;
-  background:linear-gradient(180deg,rgba(255,255,255,.22),transparent 60%);
-  pointer-events:none;
-}
+.acc-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex:0 0 44px;box-shadow:0 6px 16px rgba(219,39,119,.28);transition:transform .3s;position:relative}
+.acc-icon::after{content:"";position:absolute;inset:0;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.22),transparent 60%);pointer-events:none}
 .acc-icon svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:1}
 .acc-info{flex:1;min-width:0}
 .acc-title{font-size:.9rem;font-weight:900;color:var(--text);line-height:1.4;margin-bottom:3px}
-.acc-count{
-  display:inline-block;font-size:.62rem;font-weight:800;
-  background:var(--brand-grad-soft);color:var(--primary);
-  padding:2px 8px;border-radius:10px;border:1px solid var(--border);
-}
-.acc-chevron{
-  width:18px;height:18px;flex:0 0 18px;fill:none;stroke:var(--text-muted);
-  stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
-  transition:transform .3s cubic-bezier(.16,1,.3,1);
-}
+.acc-count{display:inline-block;font-size:.62rem;font-weight:800;background:var(--brand-grad-soft);color:var(--primary);padding:2px 8px;border-radius:10px;border:1px solid var(--border)}
+.acc-chevron{width:18px;height:18px;flex:0 0 18px;fill:none;stroke:var(--text-muted);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s cubic-bezier(.16,1,.3,1)}
 .acc-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1)}
 .acc-item.open .acc-body{max-height:2000px}
 .acc-body-inner{padding:4px 10px 12px;display:flex;flex-direction:column;gap:6px}
-.q-item{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:12px;padding:11px 13px;cursor:pointer;transition:all .22s;
-  display:flex;align-items:center;gap:10px;text-align:right;
-  font-family:inherit;width:100%;position:relative;overflow:hidden;
-}
-.q-item::before{
-  content:"";position:absolute;top:0;right:0;width:3px;height:100%;
-  background:var(--brand-grad);border-radius:0 12px 12px 0;opacity:.75;
-}
+.q-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:11px 13px;cursor:pointer;transition:all .22s;display:flex;align-items:center;gap:10px;text-align:right;font-family:inherit;width:100%;position:relative;overflow:hidden}
+.q-item::before{content:"";position:absolute;top:0;right:0;width:3px;height:100%;background:var(--brand-grad);border-radius:0 12px 12px 0;opacity:.75}
 .q-item:active{transform:scale(.985)}
 .q-item:hover{border-color:rgba(219,39,119,.4);background:var(--brand-grad-soft)}
-.q-num{
-  width:28px;height:28px;border-radius:9px;background:var(--brand-grad);
-  color:#fff;font-size:.7rem;font-weight:900;
-  display:flex;align-items:center;justify-content:center;flex:0 0 28px;
-  box-shadow:0 4px 12px rgba(219,39,119,.28);
-}
+.q-num{width:28px;height:28px;border-radius:9px;background:var(--brand-grad);color:#fff;font-size:.7rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex:0 0 28px;box-shadow:0 4px 12px rgba(219,39,119,.28)}
 .q-text{flex:1;min-width:0;font-size:.8rem;font-weight:800;color:var(--text);line-height:1.55}
-.q-item svg.arrow{
-  width:16px;height:16px;flex:0 0 16px;fill:none;
-  stroke:var(--text-muted);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
-  transform:scaleX(-1);
-}
-.modal{
-  position:fixed;inset:0;background:rgba(15,8,20,.65);
-  backdrop-filter:blur(12px);display:none;align-items:flex-end;
-  justify-content:center;z-index:5000;padding:15px;
-}
+.q-item svg.arrow{width:16px;height:16px;flex:0 0 16px;fill:none;stroke:var(--text-muted);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:scaleX(-1)}
+.modal{position:fixed;inset:0;background:rgba(15,8,20,.65);backdrop-filter:blur(12px);display:none;align-items:flex-end;justify-content:center;z-index:5000;padding:15px}
 .modal.show{display:flex;animation:mFade .25s ease}
 @keyframes mFade{from{opacity:0}to{opacity:1}}
-.modal-box{
-  width:100%;max-width:560px;max-height:90vh;overflow-y:auto;
-  background:var(--surface-solid);border:1px solid var(--border);
-  border-radius:26px 26px 20px 20px;
-  padding:20px 20px calc(24px + env(safe-area-inset-bottom,0px));
-  animation:mSlide .3s ease;box-shadow:0 -10px 55px rgba(219,39,119,.28);
-}
+.modal-box{width:100%;max-width:560px;max-height:90vh;overflow-y:auto;background:var(--surface-solid);border:1px solid var(--border);border-radius:26px 26px 20px 20px;padding:20px 20px calc(24px + env(safe-area-inset-bottom,0px));animation:mSlide .3s ease;box-shadow:0 -10px 55px rgba(219,39,119,.28)}
 @keyframes mSlide{from{transform:translateY(45px);opacity:0}to{transform:translateY(0);opacity:1}}
 .modal-handle{width:44px;height:4px;border-radius:10px;margin:0 auto 14px;background:var(--text-muted);opacity:.25}
-.modal-head{
-  display:flex;align-items:flex-start;justify-content:space-between;
-  margin-bottom:14px;padding-bottom:12px;border-bottom:1.5px solid var(--border);gap:10px;
-}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;padding-bottom:12px;border-bottom:1.5px solid var(--border);gap:10px}
 .modal-head-text{flex:1;min-width:0}
-.modal-badge{
-  display:inline-block;font-size:.64rem;font-weight:900;
-  padding:4px 12px;border-radius:20px;background:var(--brand-grad);
-  color:#fff;margin-bottom:8px;box-shadow:0 4px 12px rgba(219,39,119,.32);
-}
+.modal-badge{display:inline-block;font-size:.64rem;font-weight:900;padding:4px 12px;border-radius:20px;background:var(--brand-grad);color:#fff;margin-bottom:8px;box-shadow:0 4px 12px rgba(219,39,119,.32)}
 .modal-q{font-size:.96rem;font-weight:900;color:var(--text);line-height:1.7}
-.modal-close{
-  width:38px;height:38px;border-radius:13px;background:var(--surface);
-  border:1px solid var(--border);color:var(--text-soft);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 38px;
-}
+.modal-close{width:38px;height:38px;border-radius:13px;background:var(--surface);border:1px solid var(--border);color:var(--text-soft);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 38px}
 .modal-close:active{transform:scale(.9)}
 .modal-close svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.modal-answer{
-  background:var(--brand-grad-soft);border:1px solid var(--border);
-  border-radius:16px;padding:16px;margin-top:6px;
-}
-.answer-label{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:.68rem;font-weight:900;color:var(--primary);margin-bottom:10px;
-}
+.modal-answer{background:var(--brand-grad-soft);border:1px solid var(--border);border-radius:16px;padding:16px;margin-top:6px}
+.answer-label{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;font-weight:900;color:var(--primary);margin-bottom:10px}
 .answer-label svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .answer-text{font-size:.86rem;line-height:2.1;color:var(--text);font-weight:650;white-space:pre-line}
-.ahkam-link-btn{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  width:100%;margin-top:12px;padding:11px 16px;
-  border:0;border-radius:13px;
-  background:var(--brand-grad);color:#fff;
-  font-family:inherit;font-size:.82rem;font-weight:900;
-  cursor:pointer;box-shadow:0 8px 22px rgba(219,39,119,.35);
-  transition:transform .2s;
-}
+.ahkam-link-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:12px;padding:11px 16px;border:0;border-radius:13px;background:var(--brand-grad);color:#fff;font-family:inherit;font-size:.82rem;font-weight:900;cursor:pointer;box-shadow:0 8px 22px rgba(219,39,119,.35);transition:transform .2s}
 .ahkam-link-btn:active{transform:scale(.97)}
-.ahkam-link-btn svg{
-  width:16px;height:16px;fill:none;stroke:currentColor;
-  stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
-}
+.ahkam-link-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .msg .ahkam-link-btn{margin-top:8px;font-size:.74rem;padding:9px 12px}
 .msg .ahkam-link-btn svg{width:14px;height:14px}
-.coming-soon{
-  position:fixed;inset:0;background:rgba(15,8,20,.70);
-  backdrop-filter:blur(14px);display:none;align-items:center;
-  justify-content:center;z-index:9000;padding:20px;
-}
+.coming-soon{position:fixed;inset:0;background:rgba(15,8,20,.70);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;z-index:9000;padding:20px}
 .coming-soon.show{display:flex;animation:mFade .3s ease}
-.cs-box{
-  width:100%;max-width:480px;
-  background:var(--surface-solid);
-  border:1px solid var(--border);
-  border-radius:28px;
-  padding:28px 24px 24px;
-  text-align:center;
-  box-shadow:0 20px 60px rgba(219,39,119,.35);
-  animation:mSlide .4s ease;
-  position:relative;
-  overflow:hidden;
-}
-.cs-box::before{
-  content:"";position:absolute;
-  top:0;left:0;right:0;height:5px;
-  background:var(--brand-grad);
-}
-.cs-icon-wrap{
-  width:90px;height:90px;
-  margin:0 auto 18px;
-  border-radius:50%;
-  background:var(--brand-grad);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 12px 32px rgba(219,39,119,.45);
-  animation:csPulse 2.5s ease-in-out infinite;
-  position:relative;
-}
-@keyframes csPulse{
-  0%,100%{transform:scale(1);box-shadow:0 12px 32px rgba(219,39,119,.45)}
-  50%{transform:scale(1.05);box-shadow:0 16px 40px rgba(219,39,119,.60)}
-}
-.cs-icon-wrap::before{
-  content:"";position:absolute;inset:-8px;border-radius:50%;
-  border:2px solid rgba(219,39,119,.35);
-  animation:csRing 2s ease-out infinite;
-}
-@keyframes csRing{
-  0%{transform:scale(1);opacity:.8}
-  100%{transform:scale(1.35);opacity:0}
-}
+.cs-box{width:100%;max-width:480px;background:var(--surface-solid);border:1px solid var(--border);border-radius:28px;padding:28px 24px 24px;text-align:center;box-shadow:0 20px 60px rgba(219,39,119,.35);animation:mSlide .4s ease;position:relative;overflow:hidden}
+.cs-box::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--brand-grad)}
+.cs-icon-wrap{width:90px;height:90px;margin:0 auto 18px;border-radius:50%;background:var(--brand-grad);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 32px rgba(219,39,119,.45);animation:csPulse 2.5s ease-in-out infinite;position:relative}
+@keyframes csPulse{0%,100%{transform:scale(1);box-shadow:0 12px 32px rgba(219,39,119,.45)}50%{transform:scale(1.05);box-shadow:0 16px 40px rgba(219,39,119,.60)}}
+.cs-icon-wrap::before{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(219,39,119,.35);animation:csRing 2s ease-out infinite}
+@keyframes csRing{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.35);opacity:0}}
 .cs-icon-wrap svg{width:44px;height:44px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:1}
-.cs-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:5px 14px;border-radius:20px;
-  background:var(--brand-grad-soft);
-  border:1px solid var(--border);
-  color:var(--primary);
-  font-size:.68rem;font-weight:900;
-  margin-bottom:14px;
-}
+.cs-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;background:var(--brand-grad-soft);border:1px solid var(--border);color:var(--primary);font-size:.68rem;font-weight:900;margin-bottom:14px}
 .cs-badge svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
-.cs-title{
-  font-size:1.2rem;font-weight:900;
-  color:var(--text);line-height:1.5;
-  margin-bottom:10px;
-}
-.cs-desc{
-  font-size:.84rem;line-height:1.95;
-  color:var(--text-soft);font-weight:700;
-  margin-bottom:20px;
-}
-.cs-features{
-  display:flex;flex-direction:column;gap:8px;
-  margin-bottom:22px;text-align:right;
-}
-.cs-feature{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 12px;
-  background:var(--brand-grad-soft);
-  border:1px solid var(--border);
-  border-radius:12px;
-}
-.cs-feature-icon{
-  width:32px;height:32px;border-radius:10px;
-  background:var(--brand-grad);
-  display:flex;align-items:center;justify-content:center;
-  flex:0 0 32px;
-}
+.cs-title{font-size:1.2rem;font-weight:900;color:var(--text);line-height:1.5;margin-bottom:10px}
+.cs-desc{font-size:.84rem;line-height:1.95;color:var(--text-soft);font-weight:700;margin-bottom:20px}
+.cs-features{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;text-align:right}
+.cs-feature{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--brand-grad-soft);border:1px solid var(--border);border-radius:12px}
+.cs-feature-icon{width:32px;height:32px;border-radius:10px;background:var(--brand-grad);display:flex;align-items:center;justify-content:center;flex:0 0 32px}
 .cs-feature-icon svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.cs-feature-text{
-  font-size:.76rem;font-weight:800;
-  color:var(--text);line-height:1.5;
-}
-.cs-close{
-  padding:13px 24px;border-radius:14px;border:0;
-  background:var(--brand-grad);color:#fff;
-  font-family:inherit;font-size:.9rem;font-weight:900;
-  cursor:pointer;width:100%;
-  box-shadow:0 8px 22px rgba(219,39,119,.42);
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  transition:transform .2s;
-}
+.cs-feature-text{font-size:.76rem;font-weight:800;color:var(--text);line-height:1.5}
+.cs-close{padding:13px 24px;border-radius:14px;border:0;background:var(--brand-grad);color:#fff;font-family:inherit;font-size:.9rem;font-weight:900;cursor:pointer;width:100%;box-shadow:0 8px 22px rgba(219,39,119,.42);display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .2s}
 .cs-close:active{transform:scale(.97)}
 .cs-close svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.chat-panel{
-  position:fixed;inset:0;background:rgba(15,8,20,.65);
-  backdrop-filter:blur(12px);display:none;align-items:flex-end;
-  justify-content:center;z-index:10000;
-}
+.chat-panel{position:fixed;inset:0;background:rgba(15,8,20,.65);backdrop-filter:blur(12px);display:none;align-items:flex-end;justify-content:center;z-index:10000}
 .chat-panel.show{display:flex;animation:mFade .3s ease}
-.chat-box{
-  width:100%;max-width:560px;height:92vh;max-height:92vh;
-  background:var(--surface-solid);border-radius:26px 26px 0 0;
-  display:flex;flex-direction:column;animation:mSlide .35s ease;overflow:hidden;
-}
-.chat-header{
-  display:flex;align-items:center;gap:10px;padding:12px 14px;
-  background:var(--brand-grad);color:#fff;flex:0 0 auto;
-  position:relative;overflow:hidden;
-}
-.chat-header::before{
-  content:"";position:absolute;top:-30px;right:-30px;width:120px;height:120px;
-  border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.20),transparent 70%);
-  pointer-events:none;
-}
-.chat-header-icon{
-  width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.20);
-  border:1.5px solid rgba(255,255,255,.32);
-  display:flex;align-items:center;justify-content:center;flex:0 0 40px;position:relative;z-index:1;
-}
+.chat-box{width:100%;max-width:560px;height:92vh;max-height:92vh;background:var(--surface-solid);border-radius:26px 26px 0 0;display:flex;flex-direction:column;animation:mSlide .35s ease;overflow:hidden}
+.chat-header{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--brand-grad);color:#fff;flex:0 0 auto;position:relative;overflow:hidden}
+.chat-header::before{content:"";position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.20),transparent 70%);pointer-events:none}
+.chat-header-icon{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.20);border:1.5px solid rgba(255,255,255,.32);display:flex;align-items:center;justify-content:center;flex:0 0 40px;position:relative;z-index:1}
 .chat-header-icon svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
 .chat-header-info{flex:1;position:relative;z-index:1}
 .chat-header-title{font-size:.94rem;font-weight:900;margin-bottom:2px}
 .chat-header-sub{font-size:.64rem;opacity:.95;font-weight:700;display:flex;align-items:center;gap:5px}
 .online-dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 8px rgba(52,211,153,.9);animation:onlinePulse 2s ease-in-out infinite}
 @keyframes onlinePulse{0%,100%{opacity:1}50%{opacity:.5}}
-.chat-header-close{
-  width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.18);
-  border:1.5px solid rgba(255,255,255,.28);color:#fff;
-  display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 36px;position:relative;z-index:1;
-}
+.chat-header-close{width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.28);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 36px;position:relative;z-index:1}
 .chat-header-close svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.chat-messages{
-  flex:1;overflow-y:auto;padding:16px 12px;
-  display:flex;flex-direction:column;gap:14px;background:var(--bg);
-}
+.chat-messages{flex:1;overflow-y:auto;padding:16px 12px;display:flex;flex-direction:column;gap:14px;background:var(--bg)}
 .chat-messages::-webkit-scrollbar{width:6px}
 .chat-messages::-webkit-scrollbar-thumb{background:rgba(168,50,214,.3);border-radius:3px}
 .msg{display:flex;gap:8px;max-width:94%;animation:msgIn .3s ease-out}
 @keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .msg.bot{align-self:flex-start}
 .msg.user{align-self:flex-end;flex-direction:row-reverse}
-.msg-avatar{
-  width:34px;height:34px;border-radius:11px;display:flex;
-  align-items:center;justify-content:center;flex:0 0 34px;
-  box-shadow:0 4px 10px rgba(0,0,0,.12);background:var(--brand-grad);
-}
+.msg-avatar{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:0 0 34px;box-shadow:0 4px 10px rgba(0,0,0,.12);background:var(--brand-grad)}
 .msg-avatar svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
 .msg-content{min-width:0;flex:1}
-.msg-bubble{
-  padding:12px 16px;border-radius:18px;font-size:.85rem;
-  line-height:1.95;font-weight:700;word-wrap:break-word;
-  white-space:pre-line;max-width:100%;
-}
-.msg.bot .msg-bubble{
-  background:var(--surface);color:var(--text);border:1px solid var(--border);
-  border-top-right-radius:4px;box-shadow:var(--shadow-sm);
-}
-.msg.user .msg-bubble{
-  background:var(--brand-grad);color:#fff;
-  border-top-left-radius:4px;box-shadow:0 4px 12px rgba(219,39,119,.28);
-}
-.msg-actions{
-  display:inline-flex;
-  gap:2px;
-  margin-top:6px;
-  padding:3px 4px;
-  background:rgba(168,50,214,.05);
-  border-radius:10px;
-  align-items:center;
-  flex-wrap:wrap;
-  animation:actionsIn .3s ease-out;
-}
-html[data-theme="dark"] .msg-actions,
-body.dark .msg-actions{background:rgba(192,132,252,.08)}
+.msg-bubble{padding:12px 16px;border-radius:18px;font-size:.85rem;line-height:1.95;font-weight:700;word-wrap:break-word;white-space:pre-line;max-width:100%}
+.msg.bot .msg-bubble{background:var(--surface);color:var(--text);border:1px solid var(--border);border-top-right-radius:4px;box-shadow:var(--shadow-sm)}
+.msg.user .msg-bubble{background:var(--brand-grad);color:#fff;border-top-left-radius:4px;box-shadow:0 4px 12px rgba(219,39,119,.28)}
+.msg-actions{display:inline-flex;gap:2px;margin-top:6px;padding:3px 4px;background:rgba(168,50,214,.05);border-radius:10px;align-items:center;flex-wrap:wrap;animation:actionsIn .3s ease-out}
+html[data-theme="dark"] .msg-actions,body.dark .msg-actions{background:rgba(192,132,252,.08)}
 @keyframes actionsIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.msg-actions .act-btn{
-  width:28px;height:28px;border-radius:8px;background:transparent;border:0;
-  color:var(--text-muted);display:flex;align-items:center;justify-content:center;
-  cursor:pointer;padding:0;transition:all .2s;flex:0 0 28px;
-}
+.msg-actions .act-btn{width:28px;height:28px;border-radius:8px;background:transparent;border:0;color:var(--text-muted);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:all .2s;flex:0 0 28px}
 .msg-actions .act-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .msg-actions .act-btn:hover{background:var(--brand-grad-soft);color:var(--primary);transform:scale(1.12)}
 .msg-actions .act-btn:active{transform:scale(.9)}
@@ -563,115 +263,44 @@ body.dark .msg-actions{background:rgba(192,132,252,.08)}
 @keyframes pulseBtn{0%,100%{opacity:1}50%{opacity:.55}}
 .msg-actions .act-btn.spinning svg{animation:spinAnim .8s linear infinite}
 @keyframes spinAnim{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.msg-time{
-  font-size:.58rem;color:var(--text-muted);
-  margin-top:4px;font-weight:800;
-  display:flex;align-items:center;gap:4px;opacity:.85;
-}
+.msg-time{font-size:.58rem;color:var(--text-muted);margin-top:4px;font-weight:800;display:flex;align-items:center;gap:4px;opacity:.85}
 .msg.user .msg-time{color:rgba(255,255,255,.85);justify-content:flex-end}
 .typing-dots{display:flex;gap:4px;align-items:center;padding:4px}
 .typing-dots span{width:8px;height:8px;border-radius:50%;background:var(--primary);animation:dotBounce 1.3s ease-in-out infinite}
 .typing-dots span:nth-child(2){animation-delay:.15s}
 .typing-dots span:nth-child(3){animation-delay:.3s}
 @keyframes dotBounce{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-8px);opacity:1}}
-.chat-suggestions{
-  padding:8px 12px;display:flex;gap:6px;overflow-x:auto;
-  background:var(--surface);border-top:1px solid var(--border);
-  flex:0 0 auto;scrollbar-width:none;
-}
+.chat-suggestions{padding:8px 12px;display:flex;gap:6px;overflow-x:auto;background:var(--surface);border-top:1px solid var(--border);flex:0 0 auto;scrollbar-width:none}
 .chat-suggestions::-webkit-scrollbar{display:none}
-.sug-btn{
-  flex:0 0 auto;background:var(--surface);border:1.5px solid var(--border);
-  color:var(--text-soft);border-radius:18px;padding:7px 12px;
-  font-family:inherit;font-size:.7rem;font-weight:800;
-  cursor:pointer;transition:all .2s;white-space:nowrap;
-}
+.sug-btn{flex:0 0 auto;background:var(--surface);border:1.5px solid var(--border);color:var(--text-soft);border-radius:18px;padding:7px 12px;font-family:inherit;font-size:.7rem;font-weight:800;cursor:pointer;transition:all .2s;white-space:nowrap}
 .sug-btn:active{transform:scale(.95)}
 .sug-btn:hover{border-color:rgba(219,39,119,.5);color:var(--text);background:var(--brand-grad-soft)}
-.chat-input-area{
-  display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));
-  background:var(--surface);border-top:1.5px solid var(--border);
-  flex:0 0 auto;align-items:flex-end;
-}
-.chat-input{
-  flex:1;padding:11px 15px;border-radius:22px;
-  border:1.5px solid var(--border);background:var(--bg);
-  color:var(--text);font-family:inherit;font-size:.86rem;font-weight:700;
-  outline:none;transition:border-color .25s;
-  resize:none;max-height:100px;min-height:46px;line-height:1.5;
-}
+.chat-input-area{display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1.5px solid var(--border);flex:0 0 auto;align-items:flex-end}
+.chat-input{flex:1;padding:11px 15px;border-radius:22px;border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit;font-size:.86rem;font-weight:700;outline:none;transition:border-color .25s;resize:none;max-height:100px;min-height:46px;line-height:1.5}
 .chat-input:focus{border-color:var(--primary);box-shadow:0 0 0 4px var(--brand-grad-soft)}
 .chat-input::placeholder{color:var(--text-muted)}
-.chat-mic,.chat-send{
-  width:46px;height:46px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;flex:0 0 46px;transition:transform .15s;padding:0;
-  border:1.5px solid var(--border);background:var(--surface);color:var(--primary);
-}
+.chat-mic,.chat-send{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 46px;transition:transform .15s;padding:0;border:1.5px solid var(--border);background:var(--surface);color:var(--primary)}
 .chat-send{background:var(--brand-grad);border:0;color:#fff;box-shadow:0 6px 18px rgba(219,39,119,.40)}
 .chat-mic svg,.chat-send svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .chat-send svg{transform:scaleX(-1)}
 .chat-mic.recording{background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff;border-color:transparent;animation:micPulse 1s ease-in-out infinite}
 @keyframes micPulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.6)}50%{box-shadow:0 0 0 12px rgba(239,68,68,0)}}
 .chat-mic:active,.chat-send:active{transform:scale(.9)}
-.loader,.empty{
-  text-align:center;padding:50px 20px;color:var(--text-muted);
-  font-size:.86rem;font-weight:700;line-height:2;
-}
-.loader::before{
-  content:"";display:block;width:32px;height:32px;
-  border:3px solid var(--border);border-top-color:var(--primary);
-  border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite;
-}
+.loader,.empty{text-align:center;padding:50px 20px;color:var(--text-muted);font-size:.86rem;font-weight:700;line-height:2}
+.loader::before{content:"";display:block;width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.bottom-nav{
-  position:fixed;left:50%;bottom:0;transform:translateX(-50%);
-  width:100%;max-width:640px;z-index:1000;
-  padding:8px 10px calc(8px + env(safe-area-inset-bottom));
-  display:grid;grid-template-columns:1fr 1fr 78px 1fr 1fr;
-  gap:4px;align-items:center;background:var(--nav-bg);
-  border-top:1px solid rgba(255,255,255,.18);border-radius:26px 26px 0 0;
-  box-shadow:0 -10px 28px rgba(225,29,72,.14),0 -24px 55px rgba(168,85,247,.10),inset 0 1px 0 rgba(255,255,255,.10);
-  backdrop-filter:blur(55px) saturate(220%);
-  -webkit-backdrop-filter:blur(55px) saturate(220%);
-}
-html[data-theme="dark"] .bottom-nav,
-body.dark .bottom-nav{
-  border-top:1px solid rgba(255,255,255,.06);
-  box-shadow:0 -10px 28px rgba(0,0,0,.55),0 -24px 55px rgba(219,39,119,.14);
-}
-.nav-item{
-  min-height:56px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:4px;position:relative;
-  color:var(--text-muted);text-decoration:none;
-  border-radius:14px;font-size:.56rem;font-weight:850;
-  transition:color .2s ease,background .2s ease;padding:6px 2px;
-}
+.bottom-nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:640px;z-index:1000;padding:8px 10px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr 78px 1fr 1fr;gap:4px;align-items:center;background:var(--nav-bg);border-top:1px solid rgba(255,255,255,.18);border-radius:26px 26px 0 0;box-shadow:0 -10px 28px rgba(225,29,72,.14),0 -24px 55px rgba(168,85,247,.10),inset 0 1px 0 rgba(255,255,255,.10);backdrop-filter:blur(55px) saturate(220%);-webkit-backdrop-filter:blur(55px) saturate(220%)}
+html[data-theme="dark"] .bottom-nav,body.dark .bottom-nav{border-top:1px solid rgba(255,255,255,.06);box-shadow:0 -10px 28px rgba(0,0,0,.55),0 -24px 55px rgba(219,39,119,.14)}
+.nav-item{min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;position:relative;color:var(--text-muted);text-decoration:none;border-radius:14px;font-size:.56rem;font-weight:850;transition:color .2s ease,background .2s ease;padding:6px 2px}
 .nav-item svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .nav-item:active{transform:scale(.92)}
 .nav-item.active{color:var(--primary)}
 .nav-fab-wrap{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
-.nav-fab{
-  position:absolute;top:-30px;width:60px;height:60px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--brand-grad);
-  box-shadow:0 14px 32px rgba(225,29,72,.48),0 6px 16px rgba(168,85,247,.35);
-  cursor:pointer;text-decoration:none;
-  border:4px solid var(--surface-solid);
-  transition:transform .25s ease;z-index:10;
-}
+.nav-fab{position:absolute;top:-30px;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--brand-grad);box-shadow:0 14px 32px rgba(225,29,72,.48),0 6px 16px rgba(168,85,247,.35);cursor:pointer;text-decoration:none;border:4px solid var(--surface-solid);transition:transform .25s ease;z-index:10}
 .nav-fab:active{transform:scale(.92)}
 .nav-fab svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
 .nav-fab-label{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:.56rem;font-weight:900;color:var(--primary);white-space:nowrap}
-.toast{
-  position:fixed;bottom:calc(108px + env(safe-area-inset-bottom));
-  left:50%;transform:translateX(-50%) translateY(20px);
-  background:var(--brand-grad);color:#fff;padding:12px 22px;border-radius:30px;
-  font-size:.82rem;font-weight:900;z-index:7000;opacity:0;
-  transition:all .3s;pointer-events:none;
-  box-shadow:0 14px 38px rgba(219,39,119,.42);
-  max-width:90vw;text-align:center;white-space:pre-line;line-height:1.7;
-}
+.toast{position:fixed;bottom:calc(108px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(20px);background:var(--brand-grad);color:#fff;padding:12px 22px;border-radius:30px;font-size:.82rem;font-weight:900;z-index:7000;opacity:0;transition:all .3s;pointer-events:none;box-shadow:0 14px 38px rgba(219,39,119,.42);max-width:90vw;text-align:center;white-space:pre-line;line-height:1.7}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 @media(max-width:380px){
   .app{padding:0 12px}
@@ -699,9 +328,7 @@ body.dark .bottom-nav{
   .cs-icon-wrap svg{width:36px;height:36px}
   .cs-title{font-size:1.05rem}
 }
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none !important;transition:none !important}
-}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
 </style>
 </head>
 <body>
@@ -760,12 +387,10 @@ body.dark .bottom-nav{
   </div>
   <div class="notice-body">
     <div class="notice-title">حالت آفلاین</div>
-    <div class="notice-text">
-      پاسخ فوری از بانک اطلاعاتی داخلی — <strong>بدون نیاز به اینترنت</strong>
-    </div>
+    <div class="notice-text">پاسخ فوری از بانک اطلاعاتی داخلی — <strong>بدون نیاز به اینترنت</strong></div>
     <div class="notice-hint">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-      <span>سؤالت رو با <strong>زبان ادبی و محترمانه</strong> بپرس — هم برای تایپ و هم برای دکمه میکروفون</span>
+      <span>سؤالت رو با <strong>زبان ادبی و محترمانه</strong> بپرس</span>
     </div>
   </div>
 </div>
@@ -773,9 +398,7 @@ body.dark .bottom-nav{
   <div class="chat-cta-icon">
     <svg viewBox="0 0 24 24">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-      <circle cx="9" cy="10" r="1" fill="#fff"/>
-      <circle cx="12" cy="10" r="1" fill="#fff"/>
-      <circle cx="15" cy="10" r="1" fill="#fff"/>
+      <circle cx="9" cy="10" r="1" fill="#fff"/><circle cx="12" cy="10" r="1" fill="#fff"/><circle cx="15" cy="10" r="1" fill="#fff"/>
     </svg>
   </div>
   <div class="chat-cta-text">
@@ -786,9 +409,7 @@ body.dark .bottom-nav{
 </button>
 <button class="chat-cta" id="aiCta" type="button" style="background:linear-gradient(105deg,#7c3aed 0%,#a855f7 45%,#d946ef 100%)">
   <div class="chat-cta-icon">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-    </svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
   </div>
   <div class="chat-cta-text">
     <div class="chat-cta-title">دستیار هوشمند همراز</div>
@@ -798,14 +419,11 @@ body.dark .bottom-nav{
 </button>
 <div class="search-wrap">
   <svg class="search-icon" viewBox="0 0 24 24">
-    <circle cx="11" cy="11" r="8"/>
-    <path d="m21 21-4.35-4.35"/>
+    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
   </svg>
   <input type="text" class="search-input" id="searchInput" placeholder="جستجو در سؤالات..." autocomplete="off" />
 </div>
-<div id="hamrazContent">
-  <div class="loader">در حال بارگذاری سؤالات...</div>
-</div>
+<div id="hamrazContent"><div class="loader">در حال بارگذاری سؤالات...</div></div>
 <div style="height:20px"></div>
 </div>
 <div class="modal" id="answerModal">
@@ -839,63 +457,26 @@ body.dark .bottom-nav{
 </div>
 <div class="coming-soon" id="comingSoon">
   <div class="cs-box">
-    <div class="cs-icon-wrap">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-      </svg>
-    </div>
-    <div class="cs-badge">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      <span>به‌زودی در v3</span>
-    </div>
+    <div class="cs-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+    <div class="cs-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>به‌زودی در v3</span></div>
     <h2 class="cs-title">دستیار هوشمند همراز</h2>
-    <p class="cs-desc">
-      ما در حال آماده‌سازی یک دستیار هوشمند واقعی هستیم که با هوش مصنوعی پیشرفته، به تمام سؤالات شما پاسخ می‌دهد.
-    </p>
+    <p class="cs-desc">ما در حال آماده‌سازی یک دستیار هوشمند واقعی هستیم که با هوش مصنوعی پیشرفته، به تمام سؤالات شما پاسخ می‌دهد.</p>
     <div class="cs-features">
-      <div class="cs-feature">
-        <div class="cs-feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <div class="cs-feature-text">گفتگوی هوشمند و طبیعی با درک احساسات</div>
-      </div>
-      <div class="cs-feature">
-        <div class="cs-feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5"/></svg>
-        </div>
-        <div class="cs-feature-text">پاسخ دقیق در تمام حوزه‌های احکام و سلامت</div>
-      </div>
-      <div class="cs-feature">
-        <div class="cs-feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
-        </div>
-        <div class="cs-feature-text">پشتیبانی کامل از ورودی و خروجی صوتی</div>
-      </div>
-      <div class="cs-feature">
-        <div class="cs-feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </div>
-        <div class="cs-feature-text">حافظه مکالمه و درک متنی پیشرفته</div>
-      </div>
+      <div class="cs-feature"><div class="cs-feature-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="cs-feature-text">گفتگوی هوشمند و طبیعی با درک احساسات</div></div>
+      <div class="cs-feature"><div class="cs-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5"/></svg></div><div class="cs-feature-text">پاسخ دقیق در تمام حوزه‌های احکام و سلامت</div></div>
+      <div class="cs-feature"><div class="cs-feature-icon"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div><div class="cs-feature-text">پشتیبانی کامل از ورودی و خروجی صوتی</div></div>
+      <div class="cs-feature"><div class="cs-feature-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="cs-feature-text">حافظه مکالمه و درک متنی پیشرفته</div></div>
     </div>
-    <button class="cs-close" id="csCloseBtn" type="button">
-      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-      <span>متوجه شدم</span>
-    </button>
+    <button class="cs-close" id="csCloseBtn" type="button"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>متوجه شدم</span></button>
   </div>
 </div>
 <div class="chat-panel" id="chatPanel">
   <div class="chat-box">
     <div class="chat-header">
-      <div class="chat-header-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
+      <div class="chat-header-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
       <div class="chat-header-info">
         <div class="chat-header-title">همراز بانوان</div>
-        <div class="chat-header-sub">
-          <span class="online-dot"></span>
-          <span>آماده پاسخ‌گویی آفلاین</span>
-        </div>
+        <div class="chat-header-sub"><span class="online-dot"></span><span>آماده پاسخ‌گویی آفلاین</span></div>
       </div>
       <button class="chat-header-close" id="chatCloseBtn" type="button" aria-label="بستن">
         <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -908,6 +489,7 @@ body.dark .bottom-nav{
       <button class="sug-btn" type="button" data-q="حکم سقط جنین چیه؟">سقط جنین</button>
       <button class="sug-btn" type="button" data-q="حدود حجاب شرعی چقدره؟">حدود حجاب</button>
       <button class="sug-btn" type="button" data-q="حیض چند روزه؟">حیض چند روزه</button>
+      <button class="sug-btn" type="button" data-q="حکم استمنا چیه؟">حکم استمنا</button>
     </div>
     <div class="chat-input-area">
       <button class="chat-mic" id="chatMic" type="button" aria-label="ورودی صوتی">
@@ -920,50 +502,20 @@ body.dark .bottom-nav{
       </button>
       <textarea class="chat-input" id="chatInput" placeholder="سؤال خود را بنویسید..." autocomplete="off" rows="1"></textarea>
       <button class="chat-send" id="chatSendBtn" type="button" aria-label="ارسال">
-        <svg viewBox="0 0 24 24">
-          <line x1="22" y1="2" x2="11" y2="13"/>
-          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </button>
     </div>
   </div>
 </div>
 <nav class="bottom-nav">
-  <a class="nav-item" href="search.html">
-    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.7-3.7"/></svg>
-    <span>جستجو</span>
-  </a>
-  <a class="nav-item active" href="hamraz.html">
-    <svg viewBox="0 0 24 24">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-      <path d="M8 9h8M8 13h5"/>
-    </svg>
-    <span>همراز</span>
-  </a>
+  <a class="nav-item" href="search.html"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m20 20-3.7-3.7"/></svg><span>جستجو</span></a>
+  <a class="nav-item active" href="hamraz.html"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg><span>همراز</span></a>
   <div class="nav-fab-wrap">
-    <a class="nav-fab" href="home.html" aria-label="خانه">
-      <svg viewBox="0 0 24 24">
-        <path d="m3 10 9-7 9 7"/>
-        <path d="M5 9v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9"/>
-        <path d="M9 22v-8h6v8"/>
-      </svg>
-    </a>
+    <a class="nav-fab" href="home.html" aria-label="خانه"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7"/><path d="M5 9v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9"/><path d="M9 22v-8h6v8"/></svg></a>
     <span class="nav-fab-label">خانه</span>
   </div>
-  <a class="nav-item" href="ahkam.html">
-    <svg viewBox="0 0 24 24">
-      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-    </svg>
-    <span>احکام</span>
-  </a>
-  <a class="nav-item" href="settings.html">
-    <svg viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="3"/>
-      <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5v.1a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1A2 2 0 0 1 7 3.3l.1.1a1.7 1.7 0 0 0 1.8.3h.1a1.7 1.7 0 0 0 1-1.5V2a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v.1a1.7 1.7 0 0 0 1.5 1h.1a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.4 1z"/>
-    </svg>
-    <span>بیشتر</span>
-  </a>
+  <a class="nav-item" href="ahkam.html"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>احکام</span></a>
+  <a class="nav-item" href="settings.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5v.1a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1A2 2 0 0 1 7 3.3l.1.1a1.7 1.7 0 0 0 1.8.3h.1a1.7 1.7 0 0 0 1-1.5V2a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v.1a1.7 1.7 0 0 0 1.5 1h.1a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.4 1z"/></svg><span>بیشتر</span></a>
 </nav>
 <div class="toast" id="toast"></div>
 <script>
@@ -973,9 +525,10 @@ var CONFIG = {
   CATS_PATH: 'data/hamraz/categories.json',
   QUESTIONS_PATH: 'data/hamraz/questions.json'
 };
-var CHAT_HISTORY_KEY = 'bn_chat_history_v14';
-var FEEDBACK_KEY = 'bn_hamraz_feedback_v14';
+var CHAT_HISTORY_KEY = 'bn_chat_history_v16';
+var FEEDBACK_KEY = 'bn_hamraz_feedback_v16';
 var allData = null;
+var fiqhData = null;
 var currentModalQuestion = null;
 var cache = {};
 var chatHistory = [];
@@ -985,51 +538,29 @@ var lastUserQuery = '';
 var feedbackStore = {};
 var lastWasVoice = false;
 
-/* THEME */
 var THEME_KEY = 'bn_theme';
-function getSystemTheme(){
-  try{ return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
-  catch(e){ return 'light'; }
-}
-function getSavedTheme(){
-  try{
-    var t = localStorage.getItem(THEME_KEY);
-    if(t === 'dark' || t === 'light') return t;
-  }catch(e){}
-  return getSystemTheme();
-}
+function getSystemTheme(){try{return window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}catch(e){return"light"}}
+function getSavedTheme(){try{var t=localStorage.getItem(THEME_KEY);if(t==="dark"||t==="light")return t}catch(e){}return getSystemTheme()}
 function applyTheme(){
-  var t = getSavedTheme();
-  document.documentElement.setAttribute('data-theme', t);
-  document.body.classList.toggle('dark', t === 'dark');
-  var meta = document.getElementById('themeMeta');
-  if(meta) meta.setAttribute('content', t === 'dark' ? '#000000' : '#db2777');
+  var t=getSavedTheme();
+  document.documentElement.setAttribute("data-theme",t);
+  document.body.classList.toggle("dark",t==="dark");
+  var meta=document.getElementById("themeMeta");
+  if(meta) meta.setAttribute("content",t==="dark"?"#000000":"#db2777");
 }
 applyTheme();
 
 var CAT_MAP = {
-  'hejab_poshesh': 'hejab',
-  'negah_erabt': 'mahram_namahram',
-  'ezdevaj_khastegari': 'ezdevaj',
-  'aqd_nikah': 'ezdevaj',
-  'mahr_nafaqah': 'ezdevaj',
-  'talaq_iddah': 'ezdevaj',
-  'hoqooq_hamsar_khanevadeh': 'ezdevaj',
-  'children_hadanah': 'ezdevaj',
-  'namaz_banovan': 'namaz',
-  'wuzu_ghosl_tayammum': 'taharat',
-  'hayez_estehaze_nefas': 'hayz',
-  'roozeh_banovan': 'rooze',
-  'zakat_sadaqah': 'ers_wasiyyat',
-  'nazar_qasam': 'ers_wasiyyat',
-  'hajj_umrah_banovan': 'hajj_umrah',
-  'kasb_moamelat_banovan': 'kasb_moamelat',
-  'adab_akhlaq_banovan': 'adab_akhlaq'
+  'hejab_poshesh':'hejab','negah_erabt':'mahram_namahram','ezdevaj_khastegari':'ezdevaj',
+  'aqd_nikah':'ezdevaj','mahr_nafaqah':'ezdevaj','talaq_iddah':'ezdevaj',
+  'hoqooq_hamsar_khanevadeh':'ezdevaj','children_hadanah':'ezdevaj',
+  'namaz_banovan':'namaz','wuzu_ghosl_tayammum':'taharat','hayez_estehaze_nefas':'hayz',
+  'roozeh_banovan':'rooze','zakat_sadaqah':'ers_wasiyyat','nazar_qasam':'ers_wasiyyat',
+  'hajj_umrah_banovan':'hajj_umrah','kasb_moamelat_banovan':'kasb_moamelat',
+  'adab_akhlaq_banovan':'adab_akhlaq'
 };
-function mapCat(oldCat){
-  if(!oldCat) return 'moteferrege';
-  return CAT_MAP[oldCat] || oldCat;
-}
+function mapCat(oldCat){if(!oldCat)return'moteferrege';return CAT_MAP[oldCat]||oldCat}
+
 var catIcons = {
   taharat:'<svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
   najasa:'<svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg>',
@@ -1090,44 +621,25 @@ var iconAliases = {
   sparkles:'<svg viewBox="0 0 24 24"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/><path d="M19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7z"/><path d="M5 3l.7 2.3L8 6l-2.3.7L5 9l-.7-2.3L2 6l2.3-.7z"/></svg>'
 };
 var catColors = {
-  taharat:'linear-gradient(135deg,#a855f7,#6d28d9)',
-  najasa:'linear-gradient(135deg,#6366f1,#4338ca)',
-  hayz:'linear-gradient(135deg,#ec4899,#be185d)',
-  nifas:'linear-gradient(135deg,#f472b6,#db2777)',
-  istihaza:'linear-gradient(135deg,#8b5cf6,#6d28d9)',
-  janabat:'linear-gradient(135deg,#a78bfa,#7c3aed)',
-  namaz:'linear-gradient(135deg,#6366f1,#4338ca)',
-  rooze:'linear-gradient(135deg,#fbbf24,#d97706)',
-  ezdevaj:'linear-gradient(135deg,#ec4899,#6d28d9)',
-  zenaashooei:'linear-gradient(135deg,#f472b6,#be185d)',
-  estemna:'linear-gradient(135deg,#ef4444,#b91c1c)',
-  porn_mustehan:'linear-gradient(135deg,#dc2626,#991b1b)',
-  hejab:'linear-gradient(135deg,#a78bfa,#7c3aed)',
-  mahram_namahram:'linear-gradient(135deg,#8b5cf6,#6d28d9)',
-  female_anatomy:'linear-gradient(135deg,#a855f7,#6d28d9)',
-  breast:'linear-gradient(135deg,#ec4899,#be185d)',
-  anal_health:'linear-gradient(135deg,#64748b,#334155)',
-  urinary:'linear-gradient(135deg,#06b6d4,#0e7490)',
-  vaginal_health:'linear-gradient(135deg,#8b5cf6,#6d28d9)',
-  pregnancy:'linear-gradient(135deg,#f472b6,#db2777)',
-  childbirth:'linear-gradient(135deg,#f472b6,#be185d)',
-  breastfeeding:'linear-gradient(135deg,#fbbf24,#d97706)',
-  abortion:'linear-gradient(135deg,#ef4444,#b91c1c)',
-  contraception:'linear-gradient(135deg,#6366f1,#4338ca)',
-  fertility:'linear-gradient(135deg,#ec4899,#6d28d9)',
-  medical:'linear-gradient(135deg,#ef4444,#b91c1c)',
-  cancer_screening:'linear-gradient(135deg,#ef4444,#991b1b)',
-  mental_health:'linear-gradient(135deg,#a78bfa,#7c3aed)',
-  personal_hygiene:'linear-gradient(135deg,#06b6d4,#0891b2)',
-  skin_hair:'linear-gradient(135deg,#f472b6,#db2777)',
-  nutrition:'linear-gradient(135deg,#10b981,#059669)',
-  anemia:'linear-gradient(135deg,#ef4444,#dc2626)',
-  adab_akhlaq:'linear-gradient(135deg,#a855f7,#6d28d9)',
-  amr_nahy:'linear-gradient(135deg,#8b5cf6,#6d28d9)',
-  ers_wasiyyat:'linear-gradient(135deg,#64748b,#334155)',
-  hajj_umrah:'linear-gradient(135deg,#fbbf24,#d97706)',
-  kasb_moamelat:'linear-gradient(135deg,#10b981,#059669)',
-  moteferrege:'linear-gradient(135deg,#64748b,#334155)'
+  taharat:'linear-gradient(135deg,#a855f7,#6d28d9)',najasa:'linear-gradient(135deg,#6366f1,#4338ca)',
+  hayz:'linear-gradient(135deg,#ec4899,#be185d)',nifas:'linear-gradient(135deg,#f472b6,#db2777)',
+  istihaza:'linear-gradient(135deg,#8b5cf6,#6d28d9)',janabat:'linear-gradient(135deg,#a78bfa,#7c3aed)',
+  namaz:'linear-gradient(135deg,#6366f1,#4338ca)',rooze:'linear-gradient(135deg,#fbbf24,#d97706)',
+  ezdevaj:'linear-gradient(135deg,#ec4899,#6d28d9)',zenaashooei:'linear-gradient(135deg,#f472b6,#be185d)',
+  estemna:'linear-gradient(135deg,#ef4444,#b91c1c)',porn_mustehan:'linear-gradient(135deg,#dc2626,#991b1b)',
+  hejab:'linear-gradient(135deg,#a78bfa,#7c3aed)',mahram_namahram:'linear-gradient(135deg,#8b5cf6,#6d28d9)',
+  female_anatomy:'linear-gradient(135deg,#a855f7,#6d28d9)',breast:'linear-gradient(135deg,#ec4899,#be185d)',
+  anal_health:'linear-gradient(135deg,#64748b,#334155)',urinary:'linear-gradient(135deg,#06b6d4,#0e7490)',
+  vaginal_health:'linear-gradient(135deg,#8b5cf6,#6d28d9)',pregnancy:'linear-gradient(135deg,#f472b6,#db2777)',
+  childbirth:'linear-gradient(135deg,#f472b6,#be185d)',breastfeeding:'linear-gradient(135deg,#fbbf24,#d97706)',
+  abortion:'linear-gradient(135deg,#ef4444,#b91c1c)',contraception:'linear-gradient(135deg,#6366f1,#4338ca)',
+  fertility:'linear-gradient(135deg,#ec4899,#6d28d9)',medical:'linear-gradient(135deg,#ef4444,#b91c1c)',
+  cancer_screening:'linear-gradient(135deg,#ef4444,#991b1b)',mental_health:'linear-gradient(135deg,#a78bfa,#7c3aed)',
+  personal_hygiene:'linear-gradient(135deg,#06b6d4,#0891b2)',skin_hair:'linear-gradient(135deg,#f472b6,#db2777)',
+  nutrition:'linear-gradient(135deg,#10b981,#059669)',anemia:'linear-gradient(135deg,#ef4444,#dc2626)',
+  adab_akhlaq:'linear-gradient(135deg,#a855f7,#6d28d9)',amr_nahy:'linear-gradient(135deg,#8b5cf6,#6d28d9)',
+  ers_wasiyyat:'linear-gradient(135deg,#64748b,#334155)',hajj_umrah:'linear-gradient(135deg,#fbbf24,#d97706)',
+  kasb_moamelat:'linear-gradient(135deg,#10b981,#059669)',moteferrege:'linear-gradient(135deg,#64748b,#334155)'
 };
 var fallbackColors = [
   'linear-gradient(135deg,#a855f7,#6d28d9)','linear-gradient(135deg,#ec4899,#be185d)',
@@ -1137,65 +649,42 @@ var fallbackColors = [
   'linear-gradient(135deg,#ef4444,#b91c1c)','linear-gradient(135deg,#64748b,#334155)'
 ];
 var fallbackIcons = ['heart','book','shield','star','droplet','chat','moon','eye'];
-function hashString(str){
-  var h = 0, i;
-  for(i = 0; i < str.length; i++) h = ((h << 5) - h + str.charCodeAt(i)) | 0;
-  return Math.abs(h);
-}
-function autoIconFor(id){
-  var h = hashString(id);
-  var name = fallbackIcons[h % fallbackIcons.length];
-  return iconAliases[name] || defaultIcon;
-}
-function autoColorFor(id){
-  var h = hashString(id);
-  return fallbackColors[h % fallbackColors.length];
-}
+function hashString(str){var h=0;for(var i=0;i<str.length;i++)h=((h<<5)-h+str.charCodeAt(i))|0;return Math.abs(h)}
+function autoIconFor(id){var h=hashString(id);var name=fallbackIcons[h%fallbackIcons.length];return iconAliases[name]||defaultIcon}
+function autoColorFor(id){var h=hashString(id);return fallbackColors[h%fallbackColors.length]}
 var ICON_COPY = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
 var ICON_LIKE = '<svg viewBox="0 0 24 24"><path d="M7 10v12"/><path d="M15 5.88L14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88z"/></svg>';
 var ICON_DISLIKE = '<svg viewBox="0 0 24 24"><path d="M17 14V2"/><path d="M9 18.12L10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22h0a3.13 3.13 0 0 1-3-3.88z"/></svg>';
-var ICON_SPEAK = '<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
-var ICON_SHARE = '<svg viewBox="0 0 24 24"><path d="M15 14l5-5-5-5"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>';
-var ICON_RETRY = '<svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>';
-function $(id){ return document.getElementById(id); }
-function escapeHtml(s){
-  if(s==null) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-}
-function faNum(n){ return String(n).replace(/\d/g,function(d){ return '۰۱۲۳۴۵۶۷۸۹'[d]; }); }
-function pad2(n){ return n<10?'0'+n:''+n; }
-function pickRandom(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
-function getSavedFiqh(){
-  try{ var f = localStorage.getItem('bn_fiqh'); if(f==='jafari'||f==='hanafi') return f; }catch(e){}
-  return 'jafari';
-}
-function getSavedMarja(){
-  try{ var m = localStorage.getItem('bn_marja'); if(m==='sistani'||m==='shirazi'||m==='fayyaz') return m; }catch(e){}
-  return 'sistani';
-}
+var ICON_SHARE = '<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></svg>';
+function $(id){return document.getElementById(id)}
+function escapeHtml(s){if(s==null)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+function faNum(n){return String(n).replace(/\d/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'[d]})}
+function pad2(n){return n<10?'0'+n:''+n}
+function pickRandom(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function getSavedFiqh(){try{var f=localStorage.getItem('bn_fiqh');if(f==='jafari'||f==='hanafi')return f}catch(e){}return 'jafari'}
+function getSavedMarja(){try{var m=localStorage.getItem('bn_marja');if(m==='sistani'||m==='shirazi'||m==='fayyaz')return m}catch(e){}return 'sistani'}
 var toastTimer = null;
-function showToast(msg, duration){
-  duration = duration || 2200;
-  var t = $('toast'); if(!t) return;
-  t.textContent = msg;
-  t.classList.add('show');
+function showToast(msg,duration){
+  duration = duration||2200;
+  var t=$('toast');if(!t)return;
+  t.textContent=msg;t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(function(){ t.classList.remove('show'); }, duration);
+  toastTimer=setTimeout(function(){t.classList.remove('show')},duration);
 }
 function resolveIcon(cat){
-  if(!cat) return defaultIcon;
-  if(cat.id && catIcons[cat.id]) return catIcons[cat.id];
-  if(cat.icon && iconAliases[cat.icon]) return iconAliases[cat.icon];
-  if(cat.icon && typeof cat.icon==='string' && cat.icon.indexOf('<svg')===0) return cat.icon;
-  return autoIconFor(cat.id || 'default');
+  if(!cat)return defaultIcon;
+  if(cat.id && catIcons[cat.id])return catIcons[cat.id];
+  if(cat.icon && iconAliases[cat.icon])return iconAliases[cat.icon];
+  if(cat.icon && typeof cat.icon==='string' && cat.icon.indexOf('<svg')===0)return cat.icon;
+  return autoIconFor(cat.id||'default');
 }
 function resolveColor(cat){
-  if(!cat) return fallbackColors[0];
-  if(cat.id && catColors[cat.id]) return catColors[cat.id];
-  return autoColorFor(cat.id || 'default');
+  if(!cat)return fallbackColors[0];
+  if(cat.id && catColors[cat.id])return catColors[cat.id];
+  return autoColorFor(cat.id||'default');
 }
 function normalizeText(s){
-  if(!s) return '';
+  if(!s)return'';
   return String(s).toLowerCase()
     .replace(/[يىئ]/g,'ی').replace(/[كک]/g,'ک').replace(/[ۀهة]/g,'ه')
     .replace(/[أإآا]/g,'ا').replace(/[ؤو]/g,'و')
@@ -1204,11 +693,11 @@ function normalizeText(s){
     .replace(/\s+/g,' ').trim();
 }
 function stemWord(w){
-  if(!w || w.length < 3) return w;
-  var suffixes = ['هایمان','هایتان','هایشان','هایم','هایت','هایش','های','هایی','مان','تان','شان','ها','ترین','تر','م','ت','ش','ی'];
+  if(!w || w.length < 3)return w;
+  var suffixes=['هایمان','هایتان','هایشان','هایم','هایت','هایش','های','هایی','مان','تان','شان','ها','ترین','تر','م','ت','ش','ی'];
   for(var i=0;i<suffixes.length;i++){
-    var suf = suffixes[i];
-    if(w.length > suf.length + 1 && w.slice(-suf.length) === suf) return w.slice(0,-suf.length);
+    var suf=suffixes[i];
+    if(w.length > suf.length + 1 && w.slice(-suf.length) === suf)return w.slice(0,-suf.length);
   }
   return w;
 }
@@ -1236,16 +725,14 @@ var slangSynonyms = {
   'ماچ':'بوسه','بوس':'بوسه','بوسیدن':'بوسه',
   'لمس':'لمس','دستمالی':'لمس','دست مالی':'لمس',
   'ارضا':'ارضاء','ارگاسم':'ارضاء','اوج لذت':'ارضاء',
-  'آب منی':'منی',
-  'شاش':'ادرار','پیپی':'ادرار','میز':'ادرار','جیش':'ادرار',
+  'آب منی':'منی','شاش':'ادرار','پیپی':'ادرار','میز':'ادرار','جیش':'ادرار',
   'گه':'مدفوع','خر':'مدفوع','پیپی بزرگ':'مدفوع',
   'دستشویی':'توالت','توال':'توالت',
   'پریود':'حیض','قاعدگی':'حیض','عادت ماهانه':'حیض','خون ماهانه':'حیض',
   'خون پریود':'حیض','پریود شدن':'حیض','قاعده':'حیض','قاعده شدن':'حیض',
   'لکه بینی':'لکه بینی','لکه':'لکه بینی',
   'حامله':'باردار','حاملگی':'بارداری','آبستن':'باردار','بچه دار':'باردار',
-  'شوهر':'زوج','همسر':'زوج','مرد':'زوج','شوی':'زوج',
-  'زن':'زوجه','خانم':'زوجه',
+  'شوهر':'زوج','همسر':'زوج','مرد':'زوج','شوی':'زوج','زن':'زوجه','خانم':'زوجه',
   'جدا':'طلاق','جدایی':'طلاق',
   'چشم':'نگاه','دیدن':'نگاه','چشم چرانی':'نگاه','چشم زدن':'نگاه',
   'روسری':'حجاب','چادر':'حجاب','مانتو':'حجاب','پوشش':'حجاب',
@@ -1258,657 +745,685 @@ var slangSynonyms = {
   'فیلم زشت':'فیلم مستهجن','فیلم بزرگسال':'فیلم مستهجن','سایت پورن':'فیلم مستهجن',
   'عکس سکسی':'تصویر مستهجن','عکس مستهجن':'تصویر مستهجن'
 };
-var slangKeys = Object.keys(slangSynonyms).sort(function(a,b){ return b.length - a.length; });
+var slangKeys = Object.keys(slangSynonyms).sort(function(a,b){return b.length - a.length});
 function levenshtein(a,b){
-  if(a===b) return 0; if(!a.length) return b.length; if(!b.length) return a.length;
-  var prev = [], curr = [];
-  for(var j=0;j<=a.length;j++) prev[j] = j;
+  if(a===b)return 0;if(!a.length)return b.length;if(!b.length)return a.length;
+  var prev=[],curr=[];
+  for(var j=0;j<=a.length;j++)prev[j]=j;
   for(var i=1;i<=b.length;i++){
-    curr[0] = i;
+    curr[0]=i;
     for(j=1;j<=a.length;j++){
-      var cost = (b.charAt(i-1)===a.charAt(j-1)) ? 0 : 1;
-      curr[j] = Math.min(curr[j-1]+1, prev[j]+1, prev[j-1]+cost);
+      var cost=(b.charAt(i-1)===a.charAt(j-1))?0:1;
+      curr[j]=Math.min(curr[j-1]+1,prev[j]+1,prev[j-1]+cost);
     }
-    var tmp = prev; prev = curr; curr = tmp;
+    var tmp=prev;prev=curr;curr=tmp;
   }
   return prev[a.length];
 }
 function expandSlang(text){
-  if(!text) return '';
-  var result = text;
+  if(!text)return'';
+  var result=text;
   slangKeys.forEach(function(slang){
-    if(slang.indexOf(' ') === -1) return;
-    var escaped = slang.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    var re = new RegExp('(^|\\s)'+escaped+'(?=\\s|$)','g');
-    result = result.replace(re, '$1'+slangSynonyms[slang]);
+    if(slang.indexOf(' ') === -1)return;
+    var escaped=slang.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    var re=new RegExp('(^|\\s)'+escaped+'(?=\\s|$)','g');
+    result=result.replace(re,'$1'+slangSynonyms[slang]);
   });
-  result = result.split(/\s+/).map(function(w){
-    if(!w) return '';
-    if(slangSynonyms[w]) return slangSynonyms[w];
-    var st = stemWord(w);
-    if(slangSynonyms[st]) return slangSynonyms[st];
+  result=result.split(/\s+/).map(function(w){
+    if(!w)return'';
+    if(slangSynonyms[w])return slangSynonyms[w];
+    var st=stemWord(w);
+    if(slangSynonyms[st])return slangSynonyms[st];
     return w;
   }).join(' ');
   return result.replace(/\s+/g,' ').trim();
 }
 function fetchJSON(path){
-  if(cache[path]) return Promise.resolve(cache[path]);
+  if(cache[path])return Promise.resolve(cache[path]);
   return fetch(path).then(function(res){
-    if(!res.ok) throw new Error('HTTP '+res.status);
+    if(!res.ok)throw new Error('HTTP '+res.status);
     return res.json();
-  }).then(function(data){ cache[path] = data; return data; });
+  }).then(function(data){cache[path]=data;return data});
 }
 function extractCatsArray(data){
-  if(!data) return [];
-  if(Array.isArray(data)) return data;
-  if(Array.isArray(data.categories)) return data.categories;
-  return [];
+  if(!data)return[];
+  if(Array.isArray(data))return data;
+  if(Array.isArray(data.categories))return data.categories;
+  return[];
 }
 function extractQArray(data){
-  if(!data) return [];
-  if(Array.isArray(data.questions)) return data.questions;
-  if(Array.isArray(data)){
-    if(data.length && (data[0].q || data[0].question)) return data;
-  }
+  if(!data)return[];
+  if(Array.isArray(data.questions))return data.questions;
+  if(Array.isArray(data)){if(data.length && (data[0].q || data[0].question))return data}
   if(Array.isArray(data.categories)){
-    var out = [];
+    var out=[];
     data.categories.forEach(function(c){
       if(Array.isArray(c.questions)){
         c.questions.forEach(function(q){
-          var qq = Object.assign({}, q);
-          if(!qq.cat) qq.cat = c.id;
+          var qq=Object.assign({},q);
+          if(!qq.cat)qq.cat=c.id;
           out.push(qq);
         });
       }
     });
-    if(out.length) return out;
+    if(out.length)return out;
   }
-  return [];
+  return[];
 }
+function loadActiveFiqhData(){
+  var path=getSavedFiqh()==='hanafi'?'data/fiqh/hanafi.json':'data/fiqh/jafari/'+getSavedMarja()+'.json';
+  return fetchJSON(path).then(function(data){fiqhData=data;return data}).catch(function(){fiqhData=null;return null});
+}
+function findFiqhItem(query){
+  if(!fiqhData || !Array.isArray(fiqhData.sections))return null;
+  var n=expandSlang(normalizeText(query));
+  var terms=n.split(/\s+/).filter(function(w){return w.length > 1 && COMMON_WORDS.indexOf(w) === -1});
+  if(!terms.length)return null;
+  var best=null,bestScore=0;
+  fiqhData.sections.forEach(function(sec){
+    (sec.items||[]).forEach(function(item,index){
+      var title=normalizeText(item.title||''),sub=normalizeText(item.subtitle||'');
+      var score=title===n?50:0;
+      terms.forEach(function(term){
+        var t=stemWord(term);
+        if(title===term || title===t)score+=18;
+        else if(title.indexOf(term) >= 0 || title.indexOf(t) >= 0)score+=10;
+        if(sub.indexOf(term) >= 0 || sub.indexOf(t) >= 0)score+=5;
+      });
+      if(score > bestScore){bestScore=score;best={section:sec,item:item,index:index,score:score}}
+    });
+  });
+  return bestScore >= 10?best:null;
+}
+
+/* ═══ نقشه اتصال FAQ به بخش‌های احکام ═══ */
+var FAQ_TO_FIQH_MAP = {
+  'hayz':['hayz','taharat','namaz','rooze'],
+  'nifas':['nifas','taharat','namaz'],
+  'istihaza':['istihaza','taharat','namaz'],
+  'janabat':['janabat','taharat','ghosl'],
+  'taharat':['taharat','ghosl','wuzu'],
+  'namaz':['namaz','jamaat','namaz_ayat'],
+  'rooze':['rooze','helal'],
+  'ezdevaj':['ezdevaj','mehr','mahram','arayesh'],
+  'zenaashooei':['mahram','negah_ertebat','nazar'],
+  'estemna':['negah_ertebat','nazar','mahram'],
+  'porn_mustehan':['negah_ertebat','nazar'],
+  'hejab':['hejab','arayesh','nazar'],
+  'mahram_namahram':['mahram','negah_ertebat','nazar'],
+  'female_anatomy':['taharat','hayz'],
+  'breast':['taharat','shirdahi'],
+  'pregnancy':['bardari','pezeshki'],
+  'childbirth':['tavalod','nifas','pezeshki'],
+  'breastfeeding':['shirdahi','tavalod'],
+  'abortion':['segh_jenin','pezeshki'],
+  'contraception':['prevention','ezdevaj'],
+  'fertility':['bardari','ezdevaj'],
+  'medical':['pezeshki'],
+  'cancer_screening':['pezeshki'],
+  'mental_health':['pezeshki'],
+  'personal_hygiene':['taharat'],
+  'skin_hair':['arayesh'],
+  'nutrition':['pezeshki'],
+  'anemia':['pezeshki'],
+  'adab_akhlaq':['adab_akhlaq'],
+  'amr_nahy':['adab_akhlaq'],
+  'ers_wasiyyat':['ers','vasiyat'],
+  'hajj_umrah':['hajj'],
+  'kasb_moamelat':['kasb','kar']
+};
+
+function findFiqhRelatedItem(query,faqMatch){
+  if(!fiqhData || !Array.isArray(fiqhData.sections))return null;
+  var direct=findFiqhItem(query);
+  if(direct){
+    var directTitle=normalizeText(direct.item.title||'');
+    var queryNorm=normalizeText(query);
+    var titleWords=directTitle.split(/\s+/).filter(function(w){return w.length > 2});
+    var hasMatch=false;
+    titleWords.forEach(function(w){if(queryNorm.indexOf(w) >= 0)hasMatch=true});
+    if(hasMatch)return direct;
+  }
+  if(faqMatch && faqMatch.cat && faqMatch.cat.id){
+    var targets=FAQ_TO_FIQH_MAP[faqMatch.cat.id]||[];
+    for(var i=0;i<targets.length;i++){
+      var found=findFiqhItem(targets[i]);
+      if(found)return found;
+    }
+  }
+  if(faqMatch && faqMatch.q){
+    var answer=getAnswer(faqMatch.q);
+    var combined=normalizeText((faqMatch.q.q||'')+' '+answer);
+    var keywords=['حیض','نفاس','استحاضه','جنابت','غسل','وضو','تیمم',
+                  'نماز','روزه','طلاق','عده','مهریه','نفقه','حجاب','محرم','نامحرم',
+                  'استمنا','خودارضایی','نگاه','لمس','رابطه',
+                  'بارداری','زایمان','شیردهی','سقط','جلوگیری'];
+    for(var j=0;j<keywords.length;j++){
+      var kw=normalizeText(keywords[j]);
+      if(combined.indexOf(kw) >= 0){
+        var found2=findFiqhItem(keywords[j]);
+        if(found2)return found2;
+      }
+    }
+  }
+  return null;
+}
+
+/* ═══ سوالات مرتبط از همان دسته (عمومی) ═══ */
+function getFaqTopicAnswers(match){
+  if(!match || !match.cat)return'';
+  var questions=match.cat.questions||[];
+  if(questions.length < 2)return'';
+  var items=questions.filter(function(q){return q.id !== match.q.id});
+  if(items.length === 0)return'';
+  items=items.slice(0,5);
+  return items.map(function(q){
+    return '❓ ' + (q.q||q.question||'پرسش') + '\n\n' + getAnswer(q);
+  }).join('\n\n━━━━━━━━━━━━━━━\n\n');
+}
+
 function loadData(){
-  if(allData) return Promise.resolve(allData);
-  var catData = null, qData = null;
+  if(allData)return Promise.resolve(allData);
+  var catData=null,qData=null;
   return Promise.resolve()
     .then(function(){
       return fetchJSON(CONFIG.CATS_PATH).catch(function(){
-        return fetchJSON('categories.json').catch(function(){ return null; });
+        return fetchJSON('categories.json').catch(function(){return null});
       });
     })
     .then(function(d){
-      catData = d;
+      catData=d;
       return fetchJSON(CONFIG.QUESTIONS_PATH).catch(function(){
-        return fetchJSON('questions.json').catch(function(){ return null; });
+        return fetchJSON('questions.json').catch(function(){return null});
       });
     })
     .then(function(d){
-      qData = d;
-      var catsRaw = extractCatsArray(catData);
-      var qsRaw = extractQArray(qData);
-      if(!qsRaw.length && !catsRaw.length) return null;
-      var catMap = {}, order = [];
+      qData=d;
+      var catsRaw=extractCatsArray(catData);
+      var qsRaw=extractQArray(qData);
+      if(!qsRaw.length && !catsRaw.length)return null;
+      var catMap={},order=[];
       catsRaw.forEach(function(c){
-        var id = c.id || c.key || c.slug;
-        if(!id) return;
-        if(catMap[id]) return;
-        catMap[id] = {
-          id: id,
-          title: c.title || c.name || id,
-          icon: c.icon || null,
-          keywords: c.keywords || c.aliases || [],
-          questions: []
-        };
+        var id=c.id||c.key||c.slug;
+        if(!id)return;
+        if(catMap[id])return;
+        catMap[id]={id:id,title:c.title||c.name||id,icon:c.icon||null,keywords:c.keywords||c.aliases||[],questions:[]};
         order.push(id);
       });
-      var usedCats = {};
       qsRaw.forEach(function(q){
-        var oldCid = q.cat || q.category || q.catId || q.cat_id || 'moteferrege';
-        var cid = mapCat(oldCid);
+        var oldCid=q.cat||q.category||q.catId||q.cat_id||'moteferrege';
+        var cid=mapCat(oldCid);
         if(!catMap[cid]){
-          catMap[cid] = {
-            id: cid,
-            title: cid.replace(/_/g,' '),
-            icon: null,
-            keywords: [],
-            questions: []
-          };
+          catMap[cid]={id:cid,title:cid.replace(/_/g,' '),icon:null,keywords:[],questions:[]};
           order.push(cid);
         }
         catMap[cid].questions.push(q);
-        usedCats[cid] = true;
       });
-      var finalCats = order.map(function(id){ return catMap[id]; });
-      finalCats.sort(function(a, b){
-        var aHas = a.questions.length > 0 ? 1 : 0;
-        var bHas = b.questions.length > 0 ? 1 : 0;
-        if(aHas !== bHas) return bHas - aHas;
+      var finalCats=order.map(function(id){return catMap[id]});
+      finalCats.sort(function(a,b){
+        var aHas=a.questions.length > 0?1:0;
+        var bHas=b.questions.length > 0?1:0;
+        if(aHas !== bHas)return bHas - aHas;
         return 0;
       });
-      allData = { categories: finalCats };
+      allData={categories:finalCats};
       return allData;
     });
 }
 function getAnswer(item){
-  if(!item || !item.a) return 'پاسخی موجود نیست.';
-  if(typeof item.a === 'string') return item.a;
-  var fiqh = getSavedFiqh(), marja = getSavedMarja();
-  if(fiqh === 'hanafi' && item.a.hanafi) return item.a.hanafi;
-  if(fiqh === 'jafari' && item.a[marja]) return item.a[marja];
-  if(item.a.jafari) return item.a.jafari;
-  if(item.a.hanafi) return item.a.hanafi;
-  var keys = Object.keys(item.a);
-  if(keys.length) return item.a[keys[0]];
-  return 'پاسخی برای این مرجع موجود نیست.';
+  if(!item || !item.a)return'پاسخی موجود نیست.';
+  if(typeof item.a === 'string')return item.a;
+  var fiqh=getSavedFiqh(),marja=getSavedMarja();
+  if(fiqh === 'hanafi' && item.a.hanafi)return item.a.hanafi;
+  if(fiqh === 'jafari' && item.a[marja])return item.a[marja];
+  if(item.a.jafari)return item.a.jafari;
+  if(item.a.hanafi)return item.a.hanafi;
+  var keys=Object.keys(item.a);
+  if(keys.length)return item.a[keys[0]];
+  return'پاسخی برای این مرجع موجود نیست.';
 }
 function findCategory(catId){
-  if(!allData || !allData.categories) return null;
-  for(var i=0;i<allData.categories.length;i++){
-    if(allData.categories[i].id === catId) return allData.categories[i];
-  }
+  if(!allData || !allData.categories)return null;
+  for(var i=0;i<allData.categories.length;i++){if(allData.categories[i].id === catId)return allData.categories[i]}
   return null;
 }
-function findQuestion(catId, qid){
-  var cat = findCategory(catId);
-  if(!cat) return null;
-  for(var j=0;j<(cat.questions||[]).length;j++){
-    if(cat.questions[j].id === qid) return cat.questions[j];
-  }
+function findQuestion(catId,qid){
+  var cat=findCategory(catId);
+  if(!cat)return null;
+  for(var j=0;j<(cat.questions||[]).length;j++){if(cat.questions[j].id === qid)return cat.questions[j]}
   return null;
 }
 function renderAccordion(){
-  var container = $('hamrazContent');
+  var container=$('hamrazContent');
   if(!allData || !allData.categories || allData.categories.length === 0){
-    container.innerHTML = '<div class="empty">محتوایی یافت نشد</div>';
+    container.innerHTML='<div class="empty">محتوایی یافت نشد</div>';
     return;
   }
-  var html = '<div class="section-title">دسته‌بندی سؤالات</div><div class="acc-card">';
-  var shown = 0;
+  var html='<div class="section-title">دسته‌بندی سؤالات</div><div class="acc-card">';
+  var shown=0;
   allData.categories.forEach(function(cat){
-    var count = (cat.questions||[]).length;
-    if(count === 0) return;
+    var count=(cat.questions||[]).length;
+    if(count === 0)return;
     shown++;
-    var icon = resolveIcon(cat);
-    var color = resolveColor(cat);
-    html += '<div class="acc-item" data-cat="'+escapeHtml(cat.id)+'">' +
-      '<div class="acc-header">' +
-        '<div class="acc-icon" style="background:'+color+';">'+icon+'</div>' +
-        '<div class="acc-info">' +
-          '<div class="acc-title">'+escapeHtml(cat.title)+'</div>' +
-          '<span class="acc-count">'+faNum(count)+' سؤال</span>' +
-        '</div>' +
-        '<svg class="acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>' +
-      '</div>' +
+    var icon=resolveIcon(cat);
+    var color=resolveColor(cat);
+    html+='<div class="acc-item" data-cat="'+escapeHtml(cat.id)+'">'+
+      '<div class="acc-header">'+
+        '<div class="acc-icon" style="background:'+color+';">'+icon+'</div>'+
+        '<div class="acc-info">'+
+          '<div class="acc-title">'+escapeHtml(cat.title)+'</div>'+
+          '<span class="acc-count">'+faNum(count)+' سؤال</span>'+
+        '</div>'+
+        '<svg class="acc-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>'+
+      '</div>'+
       '<div class="acc-body"><div class="acc-body-inner">';
-    cat.questions.forEach(function(q, qidx){
-      html += '<button class="q-item" data-cat="'+escapeHtml(cat.id)+'" data-qid="'+escapeHtml(q.id)+'" type="button">' +
-        '<div class="q-num">'+faNum(qidx+1)+'</div>' +
-        '<div class="q-text">'+escapeHtml(q.q || q.question || 'بدون متن')+'</div>' +
-        '<svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
+    cat.questions.forEach(function(q,qidx){
+      html+='<button class="q-item" data-cat="'+escapeHtml(cat.id)+'" data-qid="'+escapeHtml(q.id)+'" type="button">'+
+        '<div class="q-num">'+faNum(qidx+1)+'</div>'+
+        '<div class="q-text">'+escapeHtml(q.q||q.question||'بدون متن')+'</div>'+
+        '<svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>'+
       '</button>';
     });
-    html += '</div></div></div>';
+    html+='</div></div></div>';
   });
-  html += '</div>';
-  if(shown === 0) html += '<div class="empty">هیچ دسته‌بندی سؤال ندارد</div>';
-  container.innerHTML = html;
+  html+='</div>';
+  if(shown === 0)html+='<div class="empty">هیچ دسته‌بندی سؤال ندارد</div>';
+  container.innerHTML=html;
   container.querySelectorAll('.acc-header').forEach(function(header){
-    header.addEventListener('click', function(){
-      var item = header.parentElement;
-      var wasOpen = item.classList.contains('open');
-      container.querySelectorAll('.acc-item').forEach(function(el){ el.classList.remove('open'); });
-      if(!wasOpen) item.classList.add('open');
+    header.addEventListener('click',function(){
+      var item=header.parentElement;
+      var wasOpen=item.classList.contains('open');
+      container.querySelectorAll('.acc-item').forEach(function(el){el.classList.remove('open')});
+      if(!wasOpen)item.classList.add('open');
     });
   });
   container.querySelectorAll('.q-item').forEach(function(item){
-    item.addEventListener('click', function(e){
+    item.addEventListener('click',function(e){
       e.stopPropagation();
-      openAnswer(item.getAttribute('data-cat'), item.getAttribute('data-qid'));
+      openAnswer(item.getAttribute('data-cat'),item.getAttribute('data-qid'));
     });
   });
 }
-function openAnswer(catId, qid){
-  var cat = findCategory(catId);
-  var question = findQuestion(catId, qid);
-  if(!cat || !question) return;
-  currentModalQuestion = { catId: catId, qid: qid, id: question.id };
-  $('modalBadge').textContent = cat.title;
-  $('modalQuestion').textContent = question.q || question.question || '—';
-  $('modalAnswer').textContent = getAnswer(question);
-  var actions = $('modalActions');
-  actions.innerHTML = buildActionsHTML(question.id || qid, 'full');
-  applyFeedbackToActions(actions, question.id || qid);
-  var ahkamBtn = $('openAhkamBtn');
+
+/* ═══ openAnswer با سوالات مرتبط و لینک دقیق به احکام ═══ */
+function openAnswer(catId,qid){
+  var cat=findCategory(catId);
+  var question=findQuestion(catId,qid);
+  if(!cat || !question)return;
+  currentModalQuestion={catId:catId,qid:qid,id:question.id};
+  $('modalBadge').textContent=cat.title;
+  $('modalQuestion').textContent=question.q||question.question||'—';
+  var mainAnswer=getAnswer(question);
+  var topicAnswers=getFaqTopicAnswers({cat:cat,q:question});
+  var fullAnswer=mainAnswer;
+  if(topicAnswers){
+    fullAnswer+='\n\n━━━━━━━━━━━━━━━\n📖 سایر پرسش‌های مرتبط:\n\n'+topicAnswers;
+  }
+  $('modalAnswer').textContent=fullAnswer;
+  var actions=$('modalActions');
+  actions.innerHTML=buildActionsHTML(question.id||qid,'full');
+  applyFeedbackToActions(actions,question.id||qid);
+  var ahkamBtn=$('openAhkamBtn');
   if(ahkamBtn){
-    ahkamBtn.onclick = function(){
-      window.location.href = 'ahkam.html?cat=' + encodeURIComponent(catId);
+    var relatedFiqh=findFiqhRelatedItem(question.q||question.question||'',''+{cat:cat,q:question});
+    ahkamBtn.onclick=function(){
+      if(relatedFiqh){
+        window.location.href='ahkam.html?section='+encodeURIComponent(relatedFiqh.section.id)+'&item='+encodeURIComponent(relatedFiqh.index||0);
+      }else{
+        window.location.href='ahkam.html';
+      }
     };
-    ahkamBtn.style.display = 'flex';
+    ahkamBtn.style.display='flex';
   }
   $('answerModal').classList.add('show');
-
-  if (window.bnAnalytics) {
-    window.bnAnalytics.track('hamraz_answer_open', { cat: catId, qid: qid });
-  }
+  if(window.bnAnalytics)window.bnAnalytics.track('hamraz_answer_open',{cat:catId,qid:qid});
 }
 function closeModal(){
-  stopSpeech();
   $('answerModal').classList.remove('show');
-  currentModalQuestion = null;
+  currentModalQuestion=null;
 }
-function buildActionsHTML(msgId, mode){
-  msgId = msgId || '';
-  var copy = '<button class="act-btn" data-act="copy" data-msgid="'+escapeHtml(msgId)+'" title="کپی">'+ICON_COPY+'</button>';
-  var share = '<button class="act-btn" data-act="share" data-msgid="'+escapeHtml(msgId)+'" title="اشتراک">'+ICON_SHARE+'</button>';
-  var like = '<button class="act-btn" data-act="like" data-msgid="'+escapeHtml(msgId)+'" title="پسندیدم">'+ICON_LIKE+'</button>';
-  var dislike = '<button class="act-btn" data-act="dislike" data-msgid="'+escapeHtml(msgId)+'" title="نپسندیدم">'+ICON_DISLIKE+'</button>';
-  var speak = '<button class="act-btn" data-act="speak" data-msgid="'+escapeHtml(msgId)+'" title="خواندن صوتی">'+ICON_SPEAK+'</button>';
-  var retry = '<button class="act-btn" data-act="retry" data-msgid="'+escapeHtml(msgId)+'" title="بازخوانی">'+ICON_RETRY+'</button>';
-  if(mode === 'user') return copy + share;
-  return copy + like + dislike + speak + share + retry;
+function buildActionsHTML(msgId,mode){
+  msgId=msgId||'';
+  var copy='<button class="act-btn" data-act="copy" data-msgid="'+escapeHtml(msgId)+'" title="کپی" aria-label="کپی">'+ICON_COPY+'</button>';
+  var share='<button class="act-btn" data-act="share" data-msgid="'+escapeHtml(msgId)+'" title="اشتراک‌گذاری" aria-label="اشتراک‌گذاری">'+ICON_SHARE+'</button>';
+  var like='<button class="act-btn" data-act="like" data-msgid="'+escapeHtml(msgId)+'" title="پسندیدم" aria-label="پسندیدم">'+ICON_LIKE+'</button>';
+  var dislike='<button class="act-btn" data-act="dislike" data-msgid="'+escapeHtml(msgId)+'" title="گزارش مشکل" aria-label="گزارش مشکل">'+ICON_DISLIKE+'</button>';
+  if(mode === 'user')return copy+share;
+  return copy+like+dislike+share;
 }
-function applyFeedbackToActions(container, msgId){
-  var fb = feedbackStore[msgId];
+function applyFeedbackToActions(container,msgId){
+  var fb=feedbackStore[msgId];
   container.querySelectorAll('.act-btn').forEach(function(b){
     b.classList.remove('liked','disliked');
-    var act = b.getAttribute('data-act');
-    if(fb === 'like' && act === 'like') b.classList.add('liked');
-    if(fb === 'dislike' && act === 'dislike') b.classList.add('disliked');
+    var act=b.getAttribute('data-act');
+    if(fb === 'like' && act === 'like')b.classList.add('liked');
+    if(fb === 'dislike' && act === 'dislike')b.classList.add('disliked');
   });
 }
 function loadFeedback(){
   try{
-    var raw = localStorage.getItem(FEEDBACK_KEY);
-    feedbackStore = raw ? JSON.parse(raw) : {};
-    if(typeof feedbackStore !== 'object' || feedbackStore === null) feedbackStore = {};
-  }catch(e){ feedbackStore = {}; }
+    var raw=localStorage.getItem(FEEDBACK_KEY);
+    feedbackStore=raw?JSON.parse(raw):{};
+    if(typeof feedbackStore !== 'object' || feedbackStore === null)feedbackStore={};
+  }catch(e){feedbackStore={}}
 }
-function saveFeedback(msgId, val){
-  if(val === null) delete feedbackStore[msgId];
-  else feedbackStore[msgId] = val;
-  try{ localStorage.setItem(FEEDBACK_KEY, JSON.stringify(feedbackStore)); }catch(e){}
+function saveFeedback(msgId,val){
+  if(val === null)delete feedbackStore[msgId];
+  else feedbackStore[msgId]=val;
+  try{localStorage.setItem(FEEDBACK_KEY,JSON.stringify(feedbackStore))}catch(e){}
 }
 function fallbackCopy(text){
-  var ta = document.createElement('textarea');
-  ta.value = text; ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.opacity = '0';
-  document.body.appendChild(ta); ta.select();
-  try{ document.execCommand('copy'); showToast('کپی شد ✓'); }catch(e){ showToast('کپی نشد'); }
+  var ta=document.createElement('textarea');
+  ta.value=text;ta.style.position='fixed';ta.style.top='-1000px';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');showToast('متن کپی شد')}catch(e){showToast('کپی متن ناموفق بود')}
   document.body.removeChild(ta);
 }
 function copyText(text){
-  if(!text) return;
+  if(!text)return;
   if(navigator.clipboard && window.isSecureContext){
-    navigator.clipboard.writeText(text).then(function(){ showToast('کپی شد ✓'); }).catch(function(){ fallbackCopy(text); });
-  } else fallbackCopy(text);
+    navigator.clipboard.writeText(text).then(function(){showToast('متن کپی شد')}).catch(function(){fallbackCopy(text)});
+  }else fallbackCopy(text);
 }
-function shareText(text, title){
-  if(!text) return;
-  if(navigator.share){ navigator.share({ title: title||'همراز بانوان', text: text }).catch(function(){}); }
-  else { copyText(text); showToast('کپی شد'); }
-}
-var speechBtn = null;
-var cachedFaVoice = null;
-function findPersianVoice(){
-  if(cachedFaVoice) return cachedFaVoice;
-  if(!('speechSynthesis' in window)) return null;
-  try{
-    var voices = window.speechSynthesis.getVoices() || [];
-    var i, l, n;
-    for(i=0;i<voices.length;i++){
-      l = (voices[i].lang || '').toLowerCase();
-      if(l === 'fa-ir' || l === 'fa_ir'){ cachedFaVoice = voices[i]; return cachedFaVoice; }
-    }
-    for(i=0;i<voices.length;i++){
-      l = (voices[i].lang || '').toLowerCase();
-      if(l.indexOf('fa') === 0){ cachedFaVoice = voices[i]; return cachedFaVoice; }
-    }
-    for(i=0;i<voices.length;i++){
-      n = (voices[i].name || '').toLowerCase();
-      if(n.indexOf('persian') > -1 || n.indexOf('farsi') > -1){ cachedFaVoice = voices[i]; return cachedFaVoice; }
-    }
-  }catch(e){}
-  return null;
-}
-function preloadVoices(){
-  if(!('speechSynthesis' in window)) return;
-  var load = function(){
-    try{ window.speechSynthesis.getVoices(); findPersianVoice(); }catch(e){}
-  };
-  load();
-  window.speechSynthesis.onvoiceschanged = load;
-  setTimeout(load, 500);
-  setTimeout(load, 1500);
-}
-function stripEmoji(text){
-  return String(text)
-    .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}]/gu,'')
-    .replace(/\s+/g,' ').trim();
-}
-function speakText(text, btn){
-  if(!text) return;
-  if(!('speechSynthesis' in window)){ showToast('خواندن صوتی پشتیبانی نمی‌شود'); return; }
-  if(window.speechSynthesis.speaking || window.speechSynthesis.pending){
-    window.speechSynthesis.cancel();
-    if(speechBtn) speechBtn.classList.remove('speaking');
-    if(speechBtn === btn){ speechBtn = null; return; }
-  }
-  var faVoice = findPersianVoice();
-  if(!faVoice){
-    showToast('🔇 صدای فارسی روی این دستگاه نصب نیست\nتنظیمات گوشی → Text-to-speech → نصب فارسی', 4500);
-    return;
-  }
-  var cleanText = stripEmoji(text);
-  if(!cleanText) return;
-  var utt = new SpeechSynthesisUtterance(cleanText);
-  utt.lang = 'fa-IR';
-  utt.voice = faVoice;
-  utt.rate = 1.0;
-  utt.pitch = 1;
-  if(btn){ btn.classList.add('speaking'); speechBtn = btn; }
-  utt.onend = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
-  utt.onerror = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
-  window.speechSynthesis.speak(utt);
-}
-function stopSpeech(){
-  try{
-    if('speechSynthesis' in window) window.speechSynthesis.cancel();
-    if(speechBtn) speechBtn.classList.remove('speaking');
-    speechBtn = null;
-  }catch(e){}
+function shareText(text,title){
+  if(!text)return;
+  if(navigator.share){navigator.share({title:title||'همراز بانوان',text:text}).catch(function(){})}
+  else{copyText(text)}
 }
 function handleActionClick(btn){
-  var act = btn.getAttribute('data-act');
-  var msgId = btn.getAttribute('data-msgid');
-  var isModal = !!btn.closest('#modalActions');
-  var text = '', qText = '';
+  var act=btn.getAttribute('data-act');
+  var msgId=btn.getAttribute('data-msgid');
+  var isModal=!!btn.closest('#modalActions');
+  var text='',qText='';
   if(isModal){
-    text = $('modalAnswer').textContent || '';
-    qText = $('modalQuestion').textContent || '';
-  } else {
-    var msgEl = btn.closest('.msg');
+    text=$('modalAnswer').textContent||'';
+    qText=$('modalQuestion').textContent||'';
+  }else{
+    var msgEl=btn.closest('.msg');
     if(msgEl){
-      var bubble = msgEl.querySelector('.msg-bubble');
-      if(bubble) text = bubble.textContent || '';
+      var bubble=msgEl.querySelector('.msg-bubble');
+      if(bubble)text=bubble.textContent||'';
     }
   }
-  if(act === 'copy'){ copyText(text); return; }
+  if(act === 'copy'){copyText(text);return}
   if(act === 'share'){
-    var body = (isModal && qText) ? (qText + '\n\n' + text + '\n\n— همراز بانوان') : (text + '\n\n— همراز بانوان');
-    shareText(body, 'همراز بانوان');
+    var body=(isModal && qText)?(qText+'\n\n'+text+'\n\n— همراز بانوان'):(text+'\n\n— همراز بانوان');
+    shareText(body,'همراز بانوان');
     return;
   }
-  if(act === 'speak'){ speakText(text, btn); return; }
   if(act === 'like' || act === 'dislike'){
-    var target = act;
-    var current = feedbackStore[msgId];
-    var newVal = (current === target) ? null : target;
-    saveFeedback(msgId, newVal);
-    if(isModal){ applyFeedbackToActions($('modalActions'), msgId); }
-    else {
-      var parentContainer = btn.closest('.msg-actions');
-      if(parentContainer) applyFeedbackToActions(parentContainer, msgId);
+    var target=act;
+    var current=feedbackStore[msgId];
+    var newVal=(current === target)?null:target;
+    saveFeedback(msgId,newVal);
+    if(isModal){applyFeedbackToActions($('modalActions'),msgId)}
+    else{
+      var parentContainer=btn.closest('.msg-actions');
+      if(parentContainer)applyFeedbackToActions(parentContainer,msgId);
     }
-    if(newVal === 'like') showToast('ممنون از بازخورد شما');
-    else if(newVal === 'dislike') showToast('بازخورد ثبت شد');
-    else showToast('بازخورد حذف شد');
+    if(newVal === 'like')showToast('تشکر از انتخاب شما');
+    else if(newVal === 'dislike')showToast('آیا مشکلی هست؟ به پشتیبانی پیام دهید');
+    else showToast('بازخورد شما لغو شد');
     return;
-  }
-  if(act === 'retry'){
-    btn.classList.add('spinning');
-    setTimeout(function(){ btn.classList.remove('spinning'); }, 800);
-    if(isModal){
-      if(currentModalQuestion){
-        var q = findQuestion(currentModalQuestion.catId, currentModalQuestion.qid);
-        if(q){ $('modalAnswer').textContent = getAnswer(q); showToast('پاسخ بازخوانی شد'); }
-      }
-      return;
-    }
-    if(!lastUserQuery){ showToast('سؤالی برای بازخوانی نیست'); return; }
-    var msgEl2 = btn.closest('.msg');
-    if(msgEl2){
-      var prevUserMsg = msgEl2.previousElementSibling;
-      msgEl2.remove();
-      if(prevUserMsg && prevUserMsg.classList.contains('user')) prevUserMsg.remove();
-      if(chatHistory.length >= 2){ chatHistory.pop(); chatHistory.pop(); saveChatHistory(); }
-      handleChatSend(lastUserQuery);
-    }
   }
 }
 function loadChatHistory(){
   try{
-    var raw = localStorage.getItem(CHAT_HISTORY_KEY);
-    if(!raw) return [];
-    var arr = JSON.parse(raw);
-    return Array.isArray(arr) ? arr.slice(-30) : [];
-  }catch(e){ return []; }
+    var raw=localStorage.getItem(CHAT_HISTORY_KEY);
+    if(!raw)return[];
+    var arr=JSON.parse(raw);
+    return Array.isArray(arr)?arr.slice(-30):[];
+  }catch(e){return[]}
 }
 function saveChatHistory(){
-  try{ localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(chatHistory.slice(-30))); }catch(e){}
+  try{localStorage.setItem(CHAT_HISTORY_KEY,JSON.stringify(chatHistory.slice(-30)))}catch(e){}
 }
 function openChat(){
   $('chatPanel').classList.add('show');
-  var container = $('chatMessages');
+  var container=$('chatMessages');
   if(!container.hasChildNodes() && chatHistory.length === 0){
-    addBotMessage('سلام 🌸\nخوش آمدید به همراز بانوان\nمن همراه شما هستم تا بتونم به سؤالات شرعی و پزشکی‌تون پاسخ بدم\n\nهر وقت آماده بودید، سوالتون رو بپرسید\nبدون خجالت، راحت باشید 💜', { skipActions:true });
-  } else if(!container.hasChildNodes()){
+    addBotMessage('سلام 🌸\nخوش آمدید به همراز بانوان\nمن همراه شما هستم تا بتونم به سؤالات شرعی و پزشکی‌تون پاسخ بدم\n\nهر وقت آماده بودید، سوالتون رو بپرسید\nبدون خجالت، راحت باشید 💜',{skipActions:true});
+  }else if(!container.hasChildNodes()){
     chatHistory.forEach(function(h){
-      if(h.role === 'user') addUserMessage(h.text, { silent:true });
-      else addBotMessage(h.text, { silent:true, id: h.id, skipActions: h.skipActions, catId: h.catId });
+      if(h.role === 'user')addUserMessage(h.text,{silent:true});
+      else addBotMessage(h.text,{silent:true,id:h.id,skipActions:h.skipActions,catId:h.catId,ahkamSectionId:h.ahkamSectionId,ahkamItemIndex:h.ahkamItemIndex});
     });
   }
-  setTimeout(function(){ var inp = $('chatInput'); if(inp) inp.focus(); }, 400);
-
-  if (window.bnAnalytics) window.bnAnalytics.track('hamraz_chat_open');
+  setTimeout(function(){var inp=$('chatInput');if(inp)inp.focus()},400);
+  if(window.bnAnalytics)window.bnAnalytics.track('hamraz_chat_open');
 }
-function closeChat(){
-  stopSpeech();
-  $('chatPanel').classList.remove('show');
-}
+function closeChat(){$('chatPanel').classList.remove('show')}
 function getTimeString(){
-  var d = new Date(); var h = d.getHours(); var m = d.getMinutes();
-  var hh = h < 12 ? (h === 0 ? 12 : h) : (h === 12 ? 12 : h - 12);
-  var ampm = h < 12 ? 'ق.ظ' : 'ب.ظ';
+  var d=new Date();var h=d.getHours();var m=d.getMinutes();
+  var hh=h < 12?(h === 0?12:h):(h === 12?12:h - 12);
+  var ampm=h < 12?'ق.ظ':'ب.ظ';
   return faNum(pad2(hh))+':'+faNum(pad2(m))+' '+ampm;
 }
-function makeMsgId(){ return 'm_'+Date.now()+'_'+Math.floor(Math.random()*1e6); }
-function addUserMessage(text, opts){
-  opts = opts || {};
-  var container = $('chatMessages');
-  var msg = document.createElement('div');
-  msg.className = 'msg user';
-  msg.dataset.text = text;
-  var msgId = 'u_'+Date.now()+'_'+Math.floor(Math.random()*1e6);
-  msg.dataset.msgid = msgId;
-  var actionsHTML = '<div class="msg-actions" data-msgid="'+escapeHtml(msgId)+'">' + buildActionsHTML(msgId, 'user') + '</div>';
-  msg.innerHTML =
-    '<div class="msg-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>' +
-    '<div class="msg-content">' +
-      '<div class="msg-bubble">'+escapeHtml(text)+'</div>' +
-      '<span class="msg-time">'+getTimeString()+'</span>' +
-      actionsHTML +
+function makeMsgId(){return 'm_'+Date.now()+'_'+Math.floor(Math.random()*1e6)}
+function addUserMessage(text,opts){
+  opts=opts||{};
+  var container=$('chatMessages');
+  var msg=document.createElement('div');
+  msg.className='msg user';
+  msg.dataset.text=text;
+  var msgId='u_'+Date.now()+'_'+Math.floor(Math.random()*1e6);
+  msg.dataset.msgid=msgId;
+  var actionsHTML='<div class="msg-actions" data-msgid="'+escapeHtml(msgId)+'">'+buildActionsHTML(msgId,'user')+'</div>';
+  msg.innerHTML=
+    '<div class="msg-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>'+
+    '<div class="msg-content">'+
+      '<div class="msg-bubble">'+escapeHtml(text)+'</div>'+
+      '<span class="msg-time">'+getTimeString()+'</span>'+
+      actionsHTML+
     '</div>';
   container.appendChild(msg);
   scrollChatToBottom();
-  if(!opts.silent){ chatHistory.push({ role:'user', text:text }); saveChatHistory(); }
+  if(!opts.silent){chatHistory.push({role:'user',text:text});saveChatHistory()}
 }
-function addBotMessage(text, opts){
-  opts = opts || {};
-  var container = $('chatMessages');
-  var msg = document.createElement('div');
-  msg.className = 'msg bot';
-  var msgId = opts.id || makeMsgId();
-  msg.dataset.msgid = msgId;
-  msg.dataset.text = text;
-  var actionsHTML = '';
+function addBotMessage(text,opts){
+  opts=opts||{};
+  var container=$('chatMessages');
+  var msg=document.createElement('div');
+  msg.className='msg bot';
+  var msgId=opts.id||makeMsgId();
+  msg.dataset.msgid=msgId;
+  msg.dataset.text=text;
+  var actionsHTML='';
   if(!opts.skipActions){
-    actionsHTML = '<div class="msg-actions" data-msgid="'+escapeHtml(msgId)+'">'+buildActionsHTML(msgId)+'</div>';
+    actionsHTML='<div class="msg-actions" data-msgid="'+escapeHtml(msgId)+'">'+buildActionsHTML(msgId)+'</div>';
   }
-  var ahkamHTML = '';
-  if(opts.catId){
-    ahkamHTML = '<button class="ahkam-link-btn" data-ahkam-cat="'+escapeHtml(opts.catId)+'" type="button">' +
-      '<svg viewBox="0 0 24 24">' +
-        '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>' +
-        '<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>' +
-      '</svg>' +
-      '<span>مشاهده در بخش احکام</span>' +
+  var ahkamHTML='';
+  if(opts.ahkamSectionId || opts.catId){
+    var ahkamLinkAttrs=opts.ahkamSectionId?(' data-ahkam-section="'+escapeHtml(opts.ahkamSectionId)+'" data-ahkam-item="'+escapeHtml(String(opts.ahkamItemIndex == null?'':opts.ahkamItemIndex))+'"'):(' data-ahkam-cat="'+escapeHtml(opts.catId)+'"');
+    ahkamHTML='<button class="ahkam-link-btn"'+ahkamLinkAttrs+' type="button">'+
+      '<svg viewBox="0 0 24 24">'+
+        '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>'+
+        '<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>'+
+      '</svg>'+
+      '<span>مشاهده در احکام</span>'+
     '</button>';
   }
-  msg.innerHTML =
-    '<div class="msg-avatar"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>' +
-    '<div class="msg-content">' +
-      '<div class="msg-bubble">'+escapeHtml(text)+'</div>' +
-      '<span class="msg-time">'+getTimeString()+'</span>' +
-      actionsHTML +
-      ahkamHTML +
+  msg.innerHTML=
+    '<div class="msg-avatar"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>'+
+    '<div class="msg-content">'+
+      '<div class="msg-bubble">'+escapeHtml(text)+'</div>'+
+      '<span class="msg-time">'+getTimeString()+'</span>'+
+      actionsHTML+
+      ahkamHTML+
     '</div>';
   container.appendChild(msg);
-  var actions = msg.querySelector('.msg-actions');
-  if(actions) applyFeedbackToActions(actions, msgId);
+  var actions=msg.querySelector('.msg-actions');
+  if(actions)applyFeedbackToActions(actions,msgId);
   scrollChatToBottom();
   if(!opts.silent){
-    chatHistory.push({ role:'bot', text:text, id:msgId, skipActions:!!opts.skipActions, catId: opts.catId || null });
+    chatHistory.push({
+      role:'bot',text:text,id:msgId,skipActions:!!opts.skipActions,
+      catId:opts.catId||null,
+      ahkamSectionId:opts.ahkamSectionId||null,
+      ahkamItemIndex:opts.ahkamItemIndex
+    });
     saveChatHistory();
   }
 }
 function showTyping(){
-  var container = $('chatMessages');
-  var msg = document.createElement('div');
-  msg.className = 'msg bot';
-  msg.id = 'typingIndicator';
-  msg.innerHTML =
-    '<div class="msg-avatar"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>' +
+  var container=$('chatMessages');
+  var msg=document.createElement('div');
+  msg.className='msg bot';
+  msg.id='typingIndicator';
+  msg.innerHTML=
+    '<div class="msg-avatar"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>'+
     '<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
   container.appendChild(msg);
   scrollChatToBottom();
 }
-function hideTyping(){ var t = $('typingIndicator'); if(t) t.remove(); }
+function hideTyping(){var t=$('typingIndicator');if(t)t.remove()}
 function scrollChatToBottom(){
-  setTimeout(function(){ var c = $('chatMessages'); if(c) c.scrollTop = c.scrollHeight; }, 60);
+  setTimeout(function(){var c=$('chatMessages');if(c)c.scrollTop=c.scrollHeight},60);
 }
-function handleChatSend(overrideText, wasVoice){
-  var input = $('chatInput');
-  if(!input && overrideText === undefined) return;
-  var text = (overrideText !== undefined ? overrideText : input.value).trim();
-  if(!text) return;
-  if(overrideText === undefined) input.value = '';
-  lastUserQuery = text;
-  lastWasVoice = !!wasVoice;
+
+/* ═══ handleChatSend بهبودیافته ═══ */
+function handleChatSend(overrideText,wasVoice){
+  var input=$('chatInput');
+  if(!input && overrideText === undefined)return;
+  var text=(overrideText !== undefined?overrideText:input.value).trim();
+  if(!text)return;
+  if(overrideText === undefined)input.value='';
+  lastUserQuery=text;
+  lastWasVoice=!!wasVoice;
   addUserMessage(text);
   showTyping();
   setTimeout(function(){
     hideTyping();
-    var greeting = detectGreeting(text);
+    var greeting=detectGreeting(text);
     if(greeting){
-      var remaining = stripGreetingWords(text);
+      var remaining=stripGreetingWords(text);
       if(remaining.length < 3){
-        var resp = pickRandom(greeting.responses);
-        addBotMessage(resp, { skipActions:false });
-        autoSpeakIfVoice();
+        addBotMessage(pickRandom(greeting.responses),{skipActions:false});
         return;
       }
     }
-    var match = findBestAnswer(text);
+    var match=findBestAnswer(text);
     if(match){
-      var prefix = greeting ? pickRandom(['سلام 🌸\n\n','سلام و درود 💜\n\n']) : '';
-      addBotMessage(
-        prefix + 'پاسخ از بخش ' + match.cat.title + ':\n\n' + (match.q.q || match.q.question) + '\n\n' + getAnswer(match.q),
-        { skipActions:false, catId: match.cat.id }
-      );
-      autoSpeakIfVoice();
-      if (window.bnAnalytics) window.bnAnalytics.track('hamraz_chat_answer', { cat: match.cat.id });
-    } else if(greeting){
-      addBotMessage(pickRandom(greeting.responses), { skipActions:false });
-      autoSpeakIfVoice();
-    } else {
-      addBotMessage('متأسفانه پاسخ این سؤال در بانک اطلاعاتی من نیست 🌸\n\nمی‌تونید:\n• سؤالتون رو با کلمه دیگه‌ای بپرسید\n• از دسته‌بندی سؤالات استفاده کنید\n• یا از دکمه میکروفون استفاده کنید\n\nامیدوارم بتونم کمکتون کنم 💜', { skipActions:false });
-      autoSpeakIfVoice();
+      var prefix=greeting?pickRandom(['سلام\n\n','سلام و درود\n\n']):'';
+      var topicAnswers=getFaqTopicAnswers(match);
+      var relatedFiqh=findFiqhRelatedItem(text,match);
+      var answerText=prefix+'📚 پاسخ از بخش «'+match.cat.title+'»:\n\n';
+      answerText+='❓ '+(match.q.q||match.q.question)+'\n\n';
+      answerText+='✅ '+getAnswer(match.q);
+      if(topicAnswers){
+        answerText+='\n\n━━━━━━━━━━━━━━━\n📖 سایر پرسش‌های مرتبط:\n\n'+topicAnswers;
+      }
+      if(relatedFiqh && relatedFiqh.item){
+        answerText+='\n\n━━━━━━━━━━━━━━━\n📕 از بخش احکام — '+relatedFiqh.section.title+':\n\n';
+        answerText+='▪️ '+(relatedFiqh.item.title||'')+'\n\n';
+        answerText+=(relatedFiqh.item.content||'');
+      }
+      var ahkamSectionId=relatedFiqh?relatedFiqh.section.id:'';
+      var ahkamItemIndex=relatedFiqh?relatedFiqh.index:'';
+      addBotMessage(answerText,{
+        skipActions:false,
+        catId:match.cat.id,
+        ahkamSectionId:ahkamSectionId,
+        ahkamItemIndex:ahkamItemIndex
+      });
+      if(window.bnAnalytics)window.bnAnalytics.track('hamraz_chat_answer',{cat:match.cat.id});
+    }else{
+      var fiqhMatch=findFiqhItem(text);
+      if(fiqhMatch){
+        var fiqhText='📕 پاسخ از بخش احکام — «'+fiqhMatch.section.title+'»:\n\n';
+        fiqhText+='▪️ '+fiqhMatch.item.title+'\n\n';
+        fiqhText+=(fiqhMatch.item.content||'');
+        addBotMessage(fiqhText,{
+          skipActions:false,
+          ahkamSectionId:fiqhMatch.section.id,
+          ahkamItemIndex:fiqhMatch.index
+        });
+        if(window.bnAnalytics)window.bnAnalytics.track('hamraz_fiqh_answer',{section:fiqhMatch.section.id});
+      }else if(greeting){
+        addBotMessage(pickRandom(greeting.responses),{skipActions:false});
+      }else{
+        addBotMessage('متأسفانه پاسخ این سؤال در بانک اطلاعاتی من نیست 🌸\n\nمی‌تونید:\n• سؤالتون رو با کلمه دیگه‌ای بپرسید\n• از دسته‌بندی سؤالات استفاده کنید\n• یا از دکمه میکروفون استفاده کنید\n\nامیدوارم بتونم کمکتون کنم 💜',{skipActions:false});
+      }
     }
-  }, 600);
+  },600);
 }
-function autoSpeakIfVoice(){
-  if(!lastWasVoice) return;
-  lastWasVoice = false;
-  if(!findPersianVoice()) return;
-  setTimeout(function(){
-    var bubbles = document.querySelectorAll('.chat-messages .msg.bot .msg-bubble');
-    var last = bubbles[bubbles.length - 1];
-    if(!last) return;
-    var speakBtn = last.parentElement.querySelector('[data-act="speak"]');
-    speakText(last.textContent, speakBtn);
-  }, 400);
-}
-var greetingPatterns = [
-  { keywords:['سلام','سلام علیکم','درود','hi','hello'],
-    responses:['سلام 🌸\nخوش آمدید\nچطور می‌تونم کمکتون کنم؟','سلام و درود 💜\nدر خدمتم'] },
-  { keywords:['چطوری','حالت چطوره','خوبی'],
-    responses:['ممنون که پرسیدید 🌸\nمن خوبم\nشما چطورید؟','خدا رو شکر، خوبم 💜'] },
-  { keywords:['خوبم','خوب هستم','بهترم'],
-    responses:['خدا رو شکر 🌸\nخوشحالم\nبفرمایید چه سؤالی دارید؟','چه خوب 💜\nسؤالتون رو بپرسید'] },
-  { keywords:['خداحافظ','بای','خدانگهدار'],
-    responses:['خداحافظ 🌸\nهر وقت سؤالی داشتید در خدمتم','به سلامت 💜'] },
-  { keywords:['ممنون','مرسی','متشکرم','سپاس'],
-    responses:['خواهش می‌کنم 🌸\nوظیفه‌ست','خوشحالم که مفید بودم 💜'] },
-  { keywords:['ببخشید','معذرت','شرمنده'],
-    responses:['خواهش می‌کنم 🌸\nنیازی به عذرخواهی نیست','راحت باشید 💜'] }
+function autoSpeakIfVoice(){lastWasVoice=false}
+var greetingPatterns=[
+  {keywords:['سلام','سلام علیکم','درود','hi','hello'],responses:['سلام 🌸\nخوش آمدید\nچطور می‌تونم کمکتون کنم؟','سلام و درود 💜\nدر خدمتم']},
+  {keywords:['چطوری','حالت چطوره','خوبی'],responses:['ممنون که پرسیدید 🌸\nمن خوبم\nشما چطورید؟','خدا رو شکر، خوبم 💜']},
+  {keywords:['خوبم','خوب هستم','بهترم'],responses:['خدا رو شکر 🌸\nخوشحالم\nبفرمایید چه سؤالی دارید؟','چه خوب 💜\nسؤالتون رو بپرسید']},
+  {keywords:['خداحافظ','بای','خدانگهدار'],responses:['خداحافظ 🌸\nهر وقت سؤالی داشتید در خدمتم','به سلامت 💜']},
+  {keywords:['ممنون','مرسی','متشکرم','سپاس'],responses:['خواهش می‌کنم 🌸\nوظیفه‌ست','خوشحالم که مفید بودم 💜']},
+  {keywords:['ببخشید','معذرت','شرمنده'],responses:['خواهش می‌کنم 🌸\nنیازی به عذرخواهی نیست','راحت باشید 💜']}
 ];
-var greetingStopWords = ['سلام','علیکم','درود','hi','hello','چطوری','حالت','چطوره','خوبی','خوب','هستی','چه','طوری',
+var greetingStopWords=['سلام','علیکم','درود','hi','hello','چطوری','حالت','چطوره','خوبی','خوب','هستی','چه','طوری',
   'مرسی','ممنون','متشکرم','سپاس','خدا','شکر','لطف','داری','کردی',
   'ببخشید','معذرت','شرمنده','بای','خداحافظ','خدانگهدار','نگهدار',
   'خوبم','بد','نیستم','بهترم','حالم','حال',
   'و','با','به','از','که','این','آن','من','ما','تو','شما','برای','در','تا'];
 function detectGreeting(text){
-  if(!text) return null;
-  var n = normalizeText(text);
-  var words = n.split(/\s+/);
+  if(!text)return null;
+  var n=normalizeText(text);
+  var words=n.split(/\s+/);
   for(var i=0;i<greetingPatterns.length;i++){
-    var g = greetingPatterns[i];
+    var g=greetingPatterns[i];
     for(var j=0;j<g.keywords.length;j++){
-      var kw = normalizeText(g.keywords[j]);
-      if(words.indexOf(kw) > -1) return g;
+      var kw=normalizeText(g.keywords[j]);
+      if(words.indexOf(kw) > -1)return g;
     }
   }
   return null;
 }
 function stripGreetingWords(text){
-  var n = normalizeText(text);
+  var n=normalizeText(text);
   return n.split(/\s+/).filter(function(w){
     return w.length >= 2 && greetingStopWords.indexOf(w) === -1;
   }).join(' ').trim();
 }
-var COMMON_WORDS = [
-  'حکم','شرعی','چیه','چیست','چی','است','هست','ایا','آیا','چگونه','چطور','کدام','چه',
+var COMMON_WORDS=['حکم','شرعی','چیه','چیست','چی','است','هست','ایا','آیا','چگونه','چطور','کدام','چه',
   'چند','چقدر','چندم','چندمین','وقت','زمان','سال','ماه','هفته','روز','ساعت','مدت',
   'کجا','کی','چه وقت','چه‌وقت','کی وقت','کی‌وقت',
   'میشه','می‌شه','دارد','دارم','باشد','بشه','کنم','کنه','باید','لطفا','لطفاً',
   'سوال','سؤال','پرسش','موضوع','مسئله','باره','مورد','درمورد','در مورد','درباره','بگو',
   'میخوام','می‌خوام','بدانم','بدونم','بپرسم','میخواستم','می‌خواستم','کنید',
-  'و','با','به','از','که','این','آن','من','ما','تو','شما','برای','در','تا','بر','را'
-];
+  'و','با','به','از','که','این','آن','من','ما','تو','شما','برای','در','تا','بر','را'];
 function findBestAnswer(userQuery){
-  if(!allData || !allData.categories) return null;
-  var nq = normalizeText(userQuery);
-  if(!nq) return null;
-  var eq = expandSlang(nq);
-  var qw = eq.split(/\s+/).filter(function(w){ return w.length > 1; });
-  var qs = qw.map(stemWord);
-  var contentIdx = [];
-  for(var i = 0; i < qw.length; i++){
-    if(COMMON_WORDS.indexOf(qw[i]) === -1 && qs[i].length >= 2){
-      contentIdx.push(i);
+  if(!allData || !allData.categories)return null;
+  var nq=normalizeText(userQuery);
+  if(!nq)return null;
+  var eq=expandSlang(nq);
+  /* Exact alias lookup */
+  for(var ai=0;ai<allData.categories.length;ai++){
+    var aliasCat=allData.categories[ai];
+    for(var aj=0;aj<(aliasCat.questions||[]).length;aj++){
+      var aliasQ=aliasCat.questions[aj];
+      var aliasList=Array.isArray(aliasQ.aliases)?aliasQ.aliases:[];
+      for(var ak=0;ak<aliasList.length;ak++){
+        var aliasNorm=normalizeText(aliasList[ak]);
+        if(aliasNorm && (aliasNorm === nq || expandSlang(aliasNorm) === eq)){
+          return {cat:aliasCat,q:aliasQ,matchType:'alias'};
+        }
+      }
     }
   }
-  if(contentIdx.length === 0) return null;
-
-  var best = null, bestScore = -Infinity, bestContentRatio = 0;
-
+  var qw=eq.split(/\s+/).filter(function(w){return w.length > 1});
+  var qs=qw.map(stemWord);
+  var contentIdx=[];
+  for(var i=0;i<qw.length;i++){
+    if(COMMON_WORDS.indexOf(qw[i]) === -1 && qs[i].length >= 2)contentIdx.push(i);
+  }
+  if(contentIdx.length === 0)return null;
+  var best=null,bestScore=-Infinity,bestContentRatio=0;
   allData.categories.forEach(function(cat){
-    var catBonus = 0;
-    var catKeywordHits = 0;
-    var catKeywords = (cat.keywords || []).concat(cat.aliases || []);
+    var catBonus=0;
+    var catKeywordHits=0;
+    var catKeywords=(cat.keywords||[]).concat(cat.aliases||[]);
     catKeywords.forEach(function(kw){
-      var nk = normalizeText(kw);
-      if(!nk || nk.length < 2) return;
-      for(var ci = 0; ci < contentIdx.length; ci++){
-        var w = qw[contentIdx[ci]], s = qs[contentIdx[ci]];
-        var nks = stemWord(nk);
+      var nk=normalizeText(kw);
+      if(!nk || nk.length < 2)return;
+      for(var ci=0;ci<contentIdx.length;ci++){
+        var w=qw[contentIdx[ci]],s=qs[contentIdx[ci]];
+        var nks=stemWord(nk);
         if(nk === w || nks === s || nk.indexOf(w) > -1 || w.indexOf(nk) > -1 ||
            nks.indexOf(s) > -1 || s.indexOf(nks) > -1){
           catKeywordHits++;
@@ -1917,148 +1432,125 @@ function findBestAnswer(userQuery){
         }
       }
     });
-
-    (cat.questions || []).forEach(function(q){
-      var qtext = q.q || q.question || '';
-      var nqT = normalizeText(qtext);
-      if(!nqT) return;
-      var expandedQ = expandSlang(nqT);
-      var qwT = expandedQ.split(/\s+/).filter(function(w){ return w.length > 1; });
-      var qsT = qwT.map(stemWord);
-      var score = 0;
-
-      if(expandedQ === eq) score += 10000;
-      if(nqT === nq) score += 8000;
-
-      var contentHit = 0;
-      for(var ci = 0; ci < contentIdx.length; ci++){
-        var w = qw[contentIdx[ci]];
-        var s = qs[contentIdx[ci]];
-        var matched = false;
-
-        if(qwT.indexOf(w) > -1 || qsT.indexOf(s) > -1) matched = true;
+    (cat.questions||[]).forEach(function(q){
+      var qtext=q.q||q.question||'';
+      var nqT=normalizeText(qtext);
+      if(!nqT)return;
+      var expandedQ=expandSlang(nqT);
+      var qwT=expandedQ.split(/\s+/).filter(function(w){return w.length > 1});
+      var qsT=qwT.map(stemWord);
+      var score=0;
+      if(expandedQ === eq)score += 10000;
+      if(nqT === nq)score += 8000;
+      var contentHit=0;
+      for(var ci=0;ci<contentIdx.length;ci++){
+        var w=qw[contentIdx[ci]];
+        var s=qs[contentIdx[ci]];
+        var matched=false;
+        if(qwT.indexOf(w) > -1 || qsT.indexOf(s) > -1)matched=true;
         if(!matched){
-          for(var k = 0; k < qsT.length; k++){
-            var qst = qsT[k];
-            if(qst.length < 2) continue;
-            if(qst === s || qst.indexOf(s) > -1 || s.indexOf(qst) > -1){
-              matched = true; break;
-            }
-            if(qst.length >= 4 && s.length >= 4 && levenshtein(s, qst) <= 1){
-              matched = true; break;
-            }
+          for(var k=0;k<qsT.length;k++){
+            var qst=qsT[k];
+            if(qst.length < 2)continue;
+            if(qst === s || qst.indexOf(s) > -1 || s.indexOf(qst) > -1){matched=true;break}
+            if(qst.length >= 4 && s.length >= 4 && levenshtein(s,qst) <= 1){matched=true;break}
           }
         }
-        if(matched) contentHit++;
+        if(matched)contentHit++;
       }
-
-      var contentRatio = contentHit / contentIdx.length;
-      if(contentRatio < 0.6) return;
-
+      var contentRatio=contentHit/contentIdx.length;
+      if(contentRatio < 0.6)return;
       score += contentRatio * 3000;
       score += catBonus;
-      if(catKeywordHits > 0) score += 1200;
-
-      var allHit = 0;
-      qw.forEach(function(w, i){
-        if(qwT.indexOf(w) > -1 || qsT.indexOf(qs[i]) > -1) allHit++;
-      });
-      score += (allHit / Math.max(qw.length,1)) * 300;
-
+      if(catKeywordHits > 0)score += 1200;
+      var allHit=0;
+      qw.forEach(function(w,i){if(qwT.indexOf(w) > -1 || qsT.indexOf(qs[i]) > -1)allHit++});
+      score += (allHit/Math.max(qw.length,1)) * 300;
       if(q.tags && Array.isArray(q.tags)){
         q.tags.forEach(function(tag){
-          var nt = normalizeText(tag);
-          var nts = stemWord(nt);
-          for(var ci = 0; ci < contentIdx.length; ci++){
-            var s = qs[contentIdx[ci]];
-            var w = qw[contentIdx[ci]];
-            if(!s || s.length < 2) continue;
-            if(nt === w || nts === s || nt === s) score += 700;
-            else if(nt.length >= 3 && (nt.indexOf(w) > -1 || w.indexOf(nt) > -1)) score += 300;
+          var nt=normalizeText(tag);
+          var nts=stemWord(nt);
+          for(var ci=0;ci<contentIdx.length;ci++){
+            var s=qs[contentIdx[ci]];
+            var w=qw[contentIdx[ci]];
+            if(!s || s.length < 2)continue;
+            if(nt === w || nts === s || nt === s)score += 700;
+            else if(nt.length >= 3 && (nt.indexOf(w) > -1 || w.indexOf(nt) > -1))score += 300;
           }
         });
       }
-
-      if(score > bestScore){
-        bestScore = score;
-        best = { cat: cat, q: q };
-        bestContentRatio = contentRatio;
-      }
+      if(score > bestScore){bestScore=score;best={cat:cat,q:q};bestContentRatio=contentRatio}
     });
   });
-
-  if(!best || bestContentRatio < 0.6) return null;
-  return bestScore > 1000 ? best : null;
+  if(!best || bestContentRatio < 0.6)return null;
+  return bestScore > 1000?best:null;
 }
 function isInWebView(){
-  var ua = navigator.userAgent || '';
-  if(ua.indexOf('; wv)') > -1) return true;
-  if(ua.indexOf('WebView') > -1) return true;
-  if(/iPhone|iPad|iPod/.test(ua) && !/Safari/.test(ua)) return true;
+  var ua=navigator.userAgent||'';
+  if(ua.indexOf('; wv)') > -1)return true;
+  if(ua.indexOf('WebView') > -1)return true;
+  if(/iPhone|iPad|iPod/.test(ua) && !/Safari/.test(ua))return true;
   return false;
 }
 function requestMicPermission(){
   if(typeof window.isSecureContext !== 'undefined' && !window.isSecureContext){
-    return Promise.resolve({ ok:false, reason:'insecure' });
+    return Promise.resolve({ok:false,reason:'insecure'});
   }
   if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
-    return Promise.resolve({ ok:true });
+    return Promise.resolve({ok:true});
   }
-  return navigator.mediaDevices.getUserMedia({ audio:true })
-    .then(function(stream){
-      stream.getTracks().forEach(function(t){ t.stop(); });
-      return { ok:true };
-    })
+  return navigator.mediaDevices.getUserMedia({audio:true})
+    .then(function(stream){stream.getTracks().forEach(function(t){t.stop()});return {ok:true}})
     .catch(function(err){
-      var name = (err && err.name) ? err.name : 'Error';
-      return { ok:false, reason:'denied', errorName:name };
+      var name=(err && err.name)?err.name:'Error';
+      return {ok:false,reason:'denied',errorName:name};
     });
 }
 function setupVoiceInput(){
-  var micBtn = $('chatMic');
-  if(!micBtn) return;
-  var webView = isInWebView();
-  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var micBtn=$('chatMic');
+  if(!micBtn)return;
+  var webView=isInWebView();
+  var SR=window.SpeechRecognition || window.webkitSpeechRecognition;
   if(!SR){
-    micBtn.addEventListener('click', function(){
+    micBtn.addEventListener('click',function(){
       var msg;
-      if(webView) msg = '⚠️ در Acode و WebView میکروفون کار نمی‌کند\nلطفاً فایل را در Chrome باز کنید';
-      else msg = '⚠️ مرورگر شما از ورودی صوتی پشتیبانی نمی‌کند\nاز Chrome استفاده کنید';
-      showToast(msg, 5500);
+      if(webView)msg='⚠️ در Acode و WebView میکروفون کار نمی‌کند\nلطفاً فایل را در Chrome باز کنید';
+      else msg='⚠️ مرورگر شما از ورودی صوتی پشتیبانی نمی‌کند\nاز Chrome استفاده کنید';
+      showToast(msg,5500);
     });
     return;
   }
-  recognition = new SR();
-  recognition.lang = 'fa-IR';
-  recognition.continuous = false;
-  recognition.interimResults = true;
-  recognition.maxAlternatives = 1;
-  var finalText = '';
-  var sendTimer = null;
-  recognition.onresult = function(e){
-    var interim = '', final = '';
-    for(var i = e.resultIndex; i < e.results.length; i++){
-      var t = e.results[i][0].transcript;
-      if(e.results[i].isFinal) final += t;
+  recognition=new SR();
+  recognition.lang='fa-IR';
+  recognition.continuous=false;
+  recognition.interimResults=true;
+  recognition.maxAlternatives=1;
+  var finalText='';
+  var sendTimer=null;
+  recognition.onresult=function(e){
+    var interim='',final='';
+    for(var i=e.resultIndex;i<e.results.length;i++){
+      var t=e.results[i][0].transcript;
+      if(e.results[i].isFinal)final += t;
       else interim += t;
     }
-    var inp = $('chatInput');
-    if(inp) inp.value = (final || interim).trim();
+    var inp=$('chatInput');
+    if(inp)inp.value=(final||interim).trim();
     if(final.trim()){
-      finalText = final.trim();
+      finalText=final.trim();
       clearTimeout(sendTimer);
-      sendTimer = setTimeout(function(){
-        try{ recognition.stop(); }catch(err){}
-        if(inp) inp.value = finalText;
-        handleChatSend(undefined, true);
-      }, 400);
+      sendTimer=setTimeout(function(){
+        try{recognition.stop()}catch(err){}
+        if(inp)inp.value=finalText;
+        handleChatSend(undefined,true);
+      },400);
     }
   };
-  recognition.onerror = function(e){
-    isRecording = false;
+  recognition.onerror=function(e){
+    isRecording=false;
     micBtn.classList.remove('recording');
-    var err = (e && e.error) ? e.error : 'unknown';
-    var msgs = {
+    var err=(e && e.error)?e.error:'unknown';
+    var msgs={
       'not-allowed':'🎤 دسترسی میکروفون رد شد\nاز تنظیمات مرورگر اجازه بده',
       'service-not-allowed':'🎤 سرویس تشخیص گفتار در دسترس نیست',
       'no-speech':'🤫 صدایی شنیده نشد، دوباره تلاش کن',
@@ -2068,155 +1560,128 @@ function setupVoiceInput(){
       'bad-grammar':'⚠️ خطای گرامر گفتار',
       'language-not-supported':'⚠️ زبان فارسی پشتیبانی نمی‌شود'
     };
-    if(msgs[err] !== null && msgs[err] !== undefined){
-      showToast(msgs[err] || ('خطا: ' + err), 3500);
-    }
+    if(msgs[err] !== null && msgs[err] !== undefined)showToast(msgs[err]||('خطا: '+err),3500);
   };
-  recognition.onend = function(){
-    isRecording = false;
-    micBtn.classList.remove('recording');
-  };
-  recognition.onaudiostart = function(){
-    showToast('🎤 صحبت کن...', 1200);
-  };
-  micBtn.addEventListener('click', function(){
-    if(webView && !isRecording){
-      showToast('ℹ️ در WebView ممکن است میکروفون کار نکند', 2500);
-    }
+  recognition.onend=function(){isRecording=false;micBtn.classList.remove('recording')};
+  recognition.onaudiostart=function(){showToast('🎤 صحبت کن...',1200)};
+  micBtn.addEventListener('click',function(){
+    if(webView && !isRecording)showToast('ℹ️ در WebView ممکن است میکروفون کار نکند',2500);
     if(isRecording){
-      try{ recognition.stop(); }catch(e){}
-      isRecording = false;
+      try{recognition.stop()}catch(e){}
+      isRecording=false;
       micBtn.classList.remove('recording');
       return;
     }
-    if(!window.isSecureContext){
-      showToast('⚠️ برای میکروفون باید صفحه HTTPS باشد\nآدرس با https:// باز شود', 4500);
-      return;
-    }
+    if(!window.isSecureContext){showToast('⚠️ برای میکروفون باید صفحه HTTPS باشد',4500);return}
     requestMicPermission().then(function(res){
-      if(!res.ok && res.reason === 'insecure'){
-        showToast('⚠️ برای میکروفون باید HTTPS باشد', 4500);
-        return;
-      }
+      if(!res.ok && res.reason === 'insecure'){showToast('⚠️ برای میکروفون باید HTTPS باشد',4500);return}
       if(!res.ok && res.reason === 'denied'){
-        var msg = '🎤 دسترسی میکروفون رد شد';
-        if(res.errorName === 'NotAllowedError') msg += '\nاز تنظیمات مرورگر اجازه بده';
-        else if(res.errorName === 'NotFoundError') msg += '\nمیکروفونی پیدا نشد';
-        else if(res.errorName === 'NotReadableError') msg += '\nمیکروفون در حال استفاده است';
-        showToast(msg, 4500);
+        var msg='🎤 دسترسی میکروفون رد شد';
+        if(res.errorName === 'NotAllowedError')msg+='\nاز تنظیمات مرورگر اجازه بده';
+        else if(res.errorName === 'NotFoundError')msg+='\nمیکروفونی پیدا نشد';
+        else if(res.errorName === 'NotReadableError')msg+='\nمیکروفون در حال استفاده است';
+        showToast(msg,4500);
         return;
       }
-      try{
-        recognition.start();
-        isRecording = true;
-        micBtn.classList.add('recording');
-      }catch(err){
+      try{recognition.start();isRecording=true;micBtn.classList.add('recording')}
+      catch(err){
         if(err && err.name === 'InvalidStateError'){
-          try{ recognition.stop(); }catch(e2){}
+          try{recognition.stop()}catch(e2){}
           setTimeout(function(){
-            try{
-              recognition.start();
-              isRecording = true;
-              micBtn.classList.add('recording');
-            }catch(e3){
-              showToast('شروع ضبط ممکن نشد', 3000);
-              isRecording = false;
-              micBtn.classList.remove('recording');
-            }
-          }, 300);
-        } else {
-          showToast('شروع ضبط ممکن نشد', 3000);
-          isRecording = false;
-          micBtn.classList.remove('recording');
-        }
+            try{recognition.start();isRecording=true;micBtn.classList.add('recording')}
+            catch(e3){showToast('شروع ضبط ممکن نشد',3000);isRecording=false;micBtn.classList.remove('recording')}
+          },300);
+        }else{showToast('شروع ضبط ممکن نشد',3000);isRecording=false;micBtn.classList.remove('recording')}
       }
     });
   });
 }
 function setupQuickSelector(){
-  var fiqh = getSavedFiqh(), marja = getSavedMarja();
+  var fiqh=getSavedFiqh(),marja=getSavedMarja();
+  document.querySelectorAll('#fiqhOptions .qs-btn').forEach(function(btn){btn.classList.toggle('active',btn.getAttribute('data-fiqh') === fiqh)});
+  document.querySelectorAll('#marjaOptions .qs-btn').forEach(function(btn){btn.classList.toggle('active',btn.getAttribute('data-marja') === marja)});
+  var marjaRow=$('marjaRow');
+  if(marjaRow)marjaRow.style.display=(fiqh === 'hanafi')?'none':'flex';
   document.querySelectorAll('#fiqhOptions .qs-btn').forEach(function(btn){
-    btn.classList.toggle('active', btn.getAttribute('data-fiqh') === fiqh);
-  });
-  document.querySelectorAll('#marjaOptions .qs-btn').forEach(function(btn){
-    btn.classList.toggle('active', btn.getAttribute('data-marja') === marja);
-  });
-  var marjaRow = $('marjaRow');
-  if(marjaRow) marjaRow.style.display = (fiqh === 'hanafi') ? 'none' : 'flex';
-  document.querySelectorAll('#fiqhOptions .qs-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var nf = btn.getAttribute('data-fiqh');
-      try{ localStorage.setItem('bn_fiqh', nf); }catch(e){}
-      document.querySelectorAll('#fiqhOptions .qs-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.addEventListener('click',function(){
+      var nf=btn.getAttribute('data-fiqh');
+      try{localStorage.setItem('bn_fiqh',nf)}catch(e){}
+      document.querySelectorAll('#fiqhOptions .qs-btn').forEach(function(b){b.classList.remove('active')});
       btn.classList.add('active');
-      if(marjaRow) marjaRow.style.display = (nf === 'hanafi') ? 'none' : 'flex';
+      if(marjaRow)marjaRow.style.display=(nf === 'hanafi')?'none':'flex';
       renderAccordion();
     });
   });
   document.querySelectorAll('#marjaOptions .qs-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var nm = btn.getAttribute('data-marja');
-      try{ localStorage.setItem('bn_marja', nm); }catch(e){}
-      document.querySelectorAll('#marjaOptions .qs-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.addEventListener('click',function(){
+      var nm=btn.getAttribute('data-marja');
+      try{localStorage.setItem('bn_marja',nm)}catch(e){}
+      document.querySelectorAll('#marjaOptions .qs-btn').forEach(function(b){b.classList.remove('active')});
       btn.classList.add('active');
       renderAccordion();
     });
   });
 }
 function setupChat(){
-  var cta = $('chatCta');
-  var sendBtn = $('chatSendBtn');
-  var input = $('chatInput');
-  var closeBtn = $('chatCloseBtn');
-  var panel = $('chatPanel');
-  if(cta) cta.addEventListener('click', openChat);
-  if(sendBtn) sendBtn.addEventListener('click', function(){ handleChatSend(); });
+  var cta=$('chatCta');
+  var sendBtn=$('chatSendBtn');
+  var input=$('chatInput');
+  var closeBtn=$('chatCloseBtn');
+  var panel=$('chatPanel');
+  if(cta)cta.addEventListener('click',openChat);
+  if(sendBtn)sendBtn.addEventListener('click',function(){handleChatSend()});
   if(input){
-    input.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); handleChatSend(); }
+    input.addEventListener('keydown',function(e){
+      if(e.key === 'Enter' && !e.shiftKey){e.preventDefault();handleChatSend()}
     });
-    input.addEventListener('input', function(){
-      input.style.height = 'auto';
-      input.style.height = Math.min(input.scrollHeight, 100) + 'px';
+    input.addEventListener('input',function(){
+      input.style.height='auto';
+      input.style.height=Math.min(input.scrollHeight,100)+'px';
     });
   }
-  if(closeBtn) closeBtn.addEventListener('click', closeChat);
-  if(panel) panel.addEventListener('click', function(e){ if(e.target === panel) closeChat(); });
+  if(closeBtn)closeBtn.addEventListener('click',closeChat);
+  if(panel)panel.addEventListener('click',function(e){if(e.target === panel)closeChat()});
   document.querySelectorAll('.sug-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var q = btn.getAttribute('data-q');
-      var inp = $('chatInput');
-      if(inp){ inp.value = q; handleChatSend(); }
+    btn.addEventListener('click',function(){
+      var q=btn.getAttribute('data-q');
+      var inp=$('chatInput');
+      if(inp){inp.value=q;handleChatSend()}
     });
   });
   setupVoiceInput();
 }
 function setupComingSoon(){
-  var aiCta = $('aiCta');
-  var csPanel = $('comingSoon');
-  var csClose = $('csCloseBtn');
-  if(aiCta) aiCta.addEventListener('click', function(){ csPanel.classList.add('show'); });
-  if(csClose) csClose.addEventListener('click', function(){ csPanel.classList.remove('show'); });
-  if(csPanel) csPanel.addEventListener('click', function(e){ if(e.target === csPanel) csPanel.classList.remove('show'); });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && csPanel.classList.contains('show')) csPanel.classList.remove('show');
+  var aiCta=$('aiCta');
+  var csPanel=$('comingSoon');
+  var csClose=$('csCloseBtn');
+  if(aiCta)aiCta.addEventListener('click',function(){csPanel.classList.add('show')});
+  if(csClose)csClose.addEventListener('click',function(){csPanel.classList.remove('show')});
+  if(csPanel)csPanel.addEventListener('click',function(e){if(e.target === csPanel)csPanel.classList.remove('show')});
+  document.addEventListener('keydown',function(e){
+    if(e.key === 'Escape' && csPanel.classList.contains('show'))csPanel.classList.remove('show');
   });
 }
 function setupActionDelegation(){
-  document.addEventListener('click', function(e){
-    var ahkamBtn = e.target.closest('.ahkam-link-btn');
+  document.addEventListener('click',function(e){
+    var ahkamBtn=e.target.closest('.ahkam-link-btn');
     if(ahkamBtn && ahkamBtn.id !== 'openAhkamBtn'){
-      var catId = ahkamBtn.getAttribute('data-ahkam-cat');
+      var sectionId=ahkamBtn.getAttribute('data-ahkam-section');
+      var itemIndex=ahkamBtn.getAttribute('data-ahkam-item');
+      var catId=ahkamBtn.getAttribute('data-ahkam-cat');
+      if(sectionId){
+        e.preventDefault();e.stopPropagation();
+        window.location.href='ahkam.html?section='+encodeURIComponent(sectionId)+'&item='+encodeURIComponent(itemIndex||'0');
+        return;
+      }
       if(catId){
-        e.preventDefault();
-        e.stopPropagation();
-        window.location.href = 'ahkam.html?cat=' + encodeURIComponent(catId);
+        e.preventDefault();e.stopPropagation();
+        window.location.href='ahkam.html';
         return;
       }
     }
-    var btn = e.target.closest('.act-btn');
-    if(!btn) return;
-    if(!btn.closest('.msg-actions') && !btn.closest('#modalActions')) return;
+    var btn=e.target.closest('.act-btn');
+    if(!btn)return;
+    if(!btn.closest('.msg-actions') && !btn.closest('#modalActions'))return;
     e.preventDefault();
     e.stopPropagation();
     handleActionClick(btn);
@@ -2224,132 +1689,124 @@ function setupActionDelegation(){
 }
 function init(){
   loadFeedback();
-  chatHistory = loadChatHistory();
-  preloadVoices();
+  chatHistory=loadChatHistory();
   setupQuickSelector();
   setupComingSoon();
-  loadData().then(function(data){
+  Promise.all([loadData(),loadActiveFiqhData()]).then(function(results){
+    var data=results[0];
     if(!data || !data.categories || data.categories.length === 0){
-      $('hamrazContent').innerHTML = '<div class="empty">خطا در بارگذاری سؤالات<br><br>مسیرها:<br><strong>data/hamraz/categories.json</strong><br><strong>data/hamraz/questions.json</strong></div>';
+      $('hamrazContent').innerHTML='<div class="empty">خطا در بارگذاری سؤالات<br><br>مسیرها:<br><strong>data/hamraz/categories.json</strong><br><strong>data/hamraz/questions.json</strong></div>';
       return;
     }
     renderAccordion();
-    var searchTimer = null;
-    var si = $('searchInput');
-    if(si) si.addEventListener('input', function(){
+    var searchTimer=null;
+    var si=$('searchInput');
+    if(si)si.addEventListener('input',function(){
       clearTimeout(searchTimer);
-      searchTimer = setTimeout(function(){ doSearch(si.value); }, 200);
+      searchTimer=setTimeout(function(){doSearch(si.value)},200);
     });
-    var closeBtn = $('modalCloseBtn');
-    if(closeBtn) closeBtn.addEventListener('click', closeModal);
-    var modal = $('answerModal');
-    if(modal) modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+    var closeBtn=$('modalCloseBtn');
+    if(closeBtn)closeBtn.addEventListener('click',closeModal);
+    var modal=$('answerModal');
+    if(modal)modal.addEventListener('click',function(e){if(e.target === modal)closeModal()});
     setupChat();
     setupActionDelegation();
-    var withQ = allData.categories.filter(function(c){ return c.questions.length > 0; }).length;
-    var totalQ = allData.categories.reduce(function(s,c){ return s + c.questions.length; }, 0);
-    console.log('همراز v14 آماده ✅');
-    console.log('دسته‌ها:', allData.categories.length, '— دارای سؤال:', withQ, '— مجموع سؤالات:', totalQ);
+    var withQ=allData.categories.filter(function(c){return c.questions.length > 0}).length;
+    var totalQ=allData.categories.reduce(function(s,c){return s+c.questions.length},0);
+    console.log('همراز v16 آماده ✅ — دسته‌ها:',allData.categories.length,'— مجموع سؤالات:',totalQ);
   });
 }
 function doSearch(query){
-  query = (query||'').trim();
-  if(!query){ renderAccordion(); return; }
-  if(!allData) return;
-  var nq = normalizeText(query);
-  var eq = expandSlang(nq);
-  var qw = nq.split(' ').filter(function(w){ return w.length > 1; });
-  var qs = qw.map(stemWord);
-  var ew = eq.split(' ').filter(function(w){ return w.length > 1; });
-  var es = ew.map(stemWord);
+  query=(query||'').trim();
+  if(!query){renderAccordion();return}
+  if(!allData)return;
+  var nq=normalizeText(query);
+  var eq=expandSlang(nq);
+  var qw=nq.split(' ').filter(function(w){return w.length > 1});
+  var qs=qw.map(stemWord);
+  var ew=eq.split(' ').filter(function(w){return w.length > 1});
+  var es=ew.map(stemWord);
   function match(text){
-    if(!text) return 0;
-    var nt = normalizeText(text);
-    var ntw = nt.split(' ').filter(function(w){ return w.length > 1; });
-    var nts = ntw.map(stemWord);
-    var sc = 0;
-    if(nt === nq) return 1000;
-    if(nt.indexOf(nq) > -1) sc += 200;
-    qw.forEach(function(w, i){
-      if(ntw.indexOf(w) > -1 || nts.indexOf(qs[i]) > -1) sc += 80;
-      else if(ew[i] && (ntw.indexOf(ew[i]) > -1 || nts.indexOf(es[i]) > -1)) sc += 60;
-      else {
+    if(!text)return 0;
+    var nt=normalizeText(text);
+    var ntw=nt.split(' ').filter(function(w){return w.length > 1});
+    var nts=ntw.map(stemWord);
+    var sc=0;
+    if(nt === nq)return 1000;
+    if(nt.indexOf(nq) > -1)sc += 200;
+    qw.forEach(function(w,i){
+      if(ntw.indexOf(w) > -1 || nts.indexOf(qs[i]) > -1)sc += 80;
+      else if(ew[i] && (ntw.indexOf(ew[i]) > -1 || nts.indexOf(es[i]) > -1))sc += 60;
+      else{
         for(var k=0;k<nts.length;k++){
-          if(nts[k].length < 3) continue;
-          if(levenshtein(qs[i], nts[k]) <= 1 && Math.max(qs[i].length, nts[k].length) >= 4){ sc += 40; break; }
+          if(nts[k].length < 3)continue;
+          if(levenshtein(qs[i],nts[k]) <= 1 && Math.max(qs[i].length,nts[k].length) >= 4){sc += 40;break}
         }
       }
     });
     return sc;
   }
-  var results = [];
+  var results=[];
   allData.categories.forEach(function(cat){
     if(cat.keywords && cat.keywords.length){
       cat.keywords.forEach(function(kw){
-        var s = match(kw);
-        if(s > 100){
-          (cat.questions||[]).forEach(function(q){
-            results.push({ cat:cat, q:q, score:s * 0.5 });
-          });
-        }
+        var s=match(kw);
+        if(s > 100)(cat.questions||[]).forEach(function(q){results.push({cat:cat,q:q,score:s*0.5})});
       });
     }
-    (cat.questions || []).forEach(function(q){
-      var score = match(q.q || q.question) * 2;
-      if(q.tags) q.tags.forEach(function(t){ score += match(t) * 1.5; });
-      if(score > 50) results.push({ cat:cat, q:q, score:score });
+    (cat.questions||[]).forEach(function(q){
+      var score=match(q.q||q.question)*2;
+      if(q.tags)q.tags.forEach(function(t){score += match(t)*1.5});
+      if(Array.isArray(q.aliases)){
+        var aliasScore=0;
+        q.aliases.forEach(function(alias){aliasScore=Math.max(aliasScore,match(alias))});
+        score=Math.max(score,aliasScore*1.8);
+      }
+      if(score > 50)results.push({cat:cat,q:q,score:score});
     });
   });
-  var seen = {};
-  results = results.filter(function(r){
-    var key = r.cat.id + '_' + (r.q.id || r.q.q);
-    if(seen[key]) return false;
-    seen[key] = true;
+  var seen={};
+  results=results.filter(function(r){
+    var key=r.cat.id+'_'+(r.q.id||r.q.q);
+    if(seen[key])return false;
+    seen[key]=true;
     return true;
   });
-  results.sort(function(a,b){ return b.score - a.score; });
-  var container = $('hamrazContent');
+  results.sort(function(a,b){return b.score - a.score});
+  var container=$('hamrazContent');
   if(results.length === 0){
-    container.innerHTML = '<div class="empty">برای «'+escapeHtml(query)+'» نتیجه‌ای یافت نشد</div>';
+    container.innerHTML='<div class="empty">برای «'+escapeHtml(query)+'» نتیجه‌ای یافت نشد</div>';
     return;
   }
-  var html = '<div class="section-title">'+faNum(results.length)+' نتیجه</div>' +
+  var html='<div class="section-title">'+faNum(results.length)+' نتیجه</div>'+
     '<div class="acc-card" style="padding:10px;display:flex;flex-direction:column;gap:6px;">';
-  results.slice(0, 40).forEach(function(r, idx){
-    html += '<button class="q-item" data-cat="'+escapeHtml(r.cat.id)+'" data-qid="'+escapeHtml(r.q.id)+'" type="button">' +
-      '<div class="q-num">'+faNum(idx+1)+'</div>' +
-      '<div class="q-text"><div style="font-size:0.66rem;color:var(--text-muted);margin-bottom:2px;">'+escapeHtml(r.cat.title)+'</div>'+escapeHtml(r.q.q || r.q.question || '')+'</div>' +
-      '<svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
+  results.slice(0,40).forEach(function(r,idx){
+    html+='<button class="q-item" data-cat="'+escapeHtml(r.cat.id)+'" data-qid="'+escapeHtml(r.q.id)+'" type="button">'+
+      '<div class="q-num">'+faNum(idx+1)+'</div>'+
+      '<div class="q-text"><div style="font-size:0.66rem;color:var(--text-muted);margin-bottom:2px;">'+escapeHtml(r.cat.title)+'</div>'+escapeHtml(r.q.q||r.q.question||'')+'</div>'+
+      '<svg class="arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>'+
     '</button>';
   });
-  html += '</div>';
-  container.innerHTML = html;
+  html+='</div>';
+  container.innerHTML=html;
   container.querySelectorAll('.q-item').forEach(function(item){
-    item.addEventListener('click', function(){
-      openAnswer(item.getAttribute('data-cat'), item.getAttribute('data-qid'));
+    item.addEventListener('click',function(){
+      openAnswer(item.getAttribute('data-cat'),item.getAttribute('data-qid'));
     });
   });
 }
 if(document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', init);
-} else init();
+  document.addEventListener('DOMContentLoaded',init);
+}else init();
 })();
 </script>
-
-<!-- ═══ آنالیتیکس (اول لود بشه) ═══ -->
 <script src="js/bn-analytics.js"></script>
-
-<!-- ═══ ماژول اصلی BN ═══ -->
 <script src="js/bn-app.js"></script>
-
-<!-- ═══ Firebase ═══ -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 <script src="js/firebase-config.js"></script>
 <script src="js/bn-tracker.js"></script>
 <script src="js/bn-auth-gate.js"></script>
-
-<!-- ═══ ثبت Service Worker ═══ -->
 <script>
 (function(){
   if ('serviceWorker' in navigator) {
@@ -2361,6 +1818,5 @@ if(document.readyState === 'loading'){
   }
 })();
 </script>
-
 </body>
 </html>

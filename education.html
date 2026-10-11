@@ -924,14 +924,21 @@ function normalizeItem(a, idx){
   if(!a) return null;
   var id = a.id || ('ed_'+(idx+1));
   var type = a.type || 'article';
+  var tr = a.translations && a.translations[currentLang] ? a.translations[currentLang] : null;
+  var fa = a.translations && a.translations.fa ? a.translations.fa : null;
+  var pick = function(key, fallback){
+    if(tr && tr[key] != null && tr[key] !== '') return tr[key];
+    if(fa && fa[key] != null && fa[key] !== '') return fa[key];
+    return fallback || '';
+  };
   return {
     id: String(id), type: type,
-    title: a.title || '', excerpt: a.excerpt || '',
-    category: a.category || '', icon: a.icon || '',
-    content: a.content || '', videoUrl: a.videoUrl || '',
+    title: pick('title', a.title), excerpt: pick('excerpt', a.excerpt),
+    category: pick('category', a.category), icon: a.icon || '',
+    content: pick('content', a.content), videoUrl: a.videoUrl || '',
     duration: a.duration || '',
-    tags: Array.isArray(a.tags) ? a.tags : [],
-    source: a.source || ''
+    tags: Array.isArray(pick('tags', a.tags)) ? pick('tags', a.tags) : (Array.isArray(a.tags) ? a.tags : []),
+    source: a.source || '', contentLanguage: (tr && tr.content === a.content && currentLang !== 'fa') ? 'fa' : currentLang
   };
 }
 function extractItems(data){
@@ -1262,12 +1269,11 @@ function speakText(text,btn){
     if(speechBtn === btn){ speechBtn = null; return; }
   }
   var faVoice = findPersianVoice();
-  if(!faVoice){
-    showMsg('🔇 صدای فارسی روی این دستگاه نصب نیست\nتنظیمات گوشی → Text-to-Speech', 4000);
-    return;
-  }
   var utt = new SpeechSynthesisUtterance(text);
-  utt.lang='fa-IR'; utt.voice=faVoice; utt.rate=0.95; utt.pitch=1;
+  utt.lang = currentLang === 'en' ? 'en-US' : (currentLang === 'ps' ? 'ps-AF' : 'fa-IR');
+  if(currentLang === 'fa' && !faVoice){ showMsg('صدای فارسی روی این دستگاه نصب نیست؛ تنظیمات گوشی را بررسی کنید.', 4000); return; }
+  if(currentLang === 'fa' && faVoice) utt.voice=faVoice;
+  utt.rate=0.95; utt.pitch=1;
   if(btn){ btn.classList.add('speaking'); speechBtn = btn; }
   utt.onend = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
   utt.onerror = function(){ if(btn) btn.classList.remove('speaking'); if(speechBtn===btn) speechBtn=null; };
@@ -1356,6 +1362,9 @@ function setupSearch(){
 }
 
 function init(){
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === 'en' ? 'ltr' : 'rtl';
+  document.body.classList.toggle('lang-ltr', currentLang === 'en');
   loadBookmarks();
   loadRead();
   setupTabs();
